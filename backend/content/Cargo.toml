@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.4", features = ["derive"] }
-roxmltree = "0.19"
+sxd-xpath = "0.4"
+sxd-document = "0.3"
