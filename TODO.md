@@ -1,5 +1,5 @@
 - (x) minimal (dumb) app
   - (/) get FOSDEM content (pentabarf)
-  - (x) ingest into a DB
+  - (/) ingest into a DB
   - (x) front-end calling backend and showing all items
 - (x) ...

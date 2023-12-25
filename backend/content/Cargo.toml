@@ -10,3 +10,4 @@ clap = { version = "4.4", features = ["derive"] }
 quick-xml = { version = "0.29", features = ["serialize"] }
 xmlserde = "0.5"
 xmlserde_derives = "0.5"
+csv = "1.3"

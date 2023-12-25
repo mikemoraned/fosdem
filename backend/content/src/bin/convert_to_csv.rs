@@ -1,14 +1,20 @@
+use std::fs::File;
+
 use clap::{arg, Parser};
 use xmlserde::xml_deserialize_from_str;
 use xmlserde_derives::XmlDeserialize;
 
-/// Load all content from a Pentabarf file
+/// Convert all content from a Pentabarf file into a CSV
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// input Pentabarf xml path
     #[arg(short, long)]
     pentabarf: String,
+
+    /// output csv path
+    #[arg(short, long)]
+    csv: String,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]
@@ -58,13 +64,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let xml = std::fs::read_to_string(args.pentabarf)?;
+    let mut csv = csv::Writer::from_writer(File::create(args.csv)?);
     let schedule: Schedule = xml_deserialize_from_str(&xml)?;
+    csv.write_record(&["title", "abstract"])?;
     for day in schedule.days {
-        println!("day: {}", day.date);
         for room in day.rooms {
             for event in room.events {
-                println!("\tTitle: {}", event.title.value);
-                println!("\t{}\n", event.r#abstract.value);
+                csv.write_record(&[event.title.value, event.r#abstract.value])?;
             }
         }
     }
