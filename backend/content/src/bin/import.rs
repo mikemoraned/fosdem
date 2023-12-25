@@ -20,7 +20,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Value::Nodeset(days) = evaluate_xpath(&document, "/schedule/day")? {
         for day in days {
             if let nodeset::Node::Element(e) = day {
-                println!("day: {:?}", e.attribute("date").unwrap().value());
+                let date = e.attribute("date").unwrap().value();
+                println!("day: {:?}", date);
+                if let Value::Nodeset(events) =
+                    evaluate_xpath(&document, &format!("/schedule/day//event"))?
+                {
+                    for event in events {
+                        if let nodeset::Node::Element(e) = event {
+                            println!("event: {:?}", e);
+                        }
+                    }
+                }
             }
         }
     }
