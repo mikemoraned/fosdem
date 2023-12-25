@@ -1,6 +1,6 @@
 use clap::{arg, Parser};
 use sxd_document::parser;
-use sxd_xpath::{evaluate_xpath, Value};
+use sxd_xpath::{evaluate_xpath, nodeset, Value};
 
 /// Load all content from a Pentabarf file
 #[derive(Parser, Debug)]
@@ -17,9 +17,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let xml = std::fs::read_to_string(args.pentabarf)?;
     let package = parser::parse(&xml)?;
     let document = package.as_document();
-    let value = evaluate_xpath(&document, "/schedule")?;
-
-    println!("value: {:?}", value);
+    if let Value::Nodeset(days) = evaluate_xpath(&document, "/schedule/day")? {
+        for day in days {
+            if let nodeset::Node::Element(e) = day {
+                println!("day: {:?}", e.attribute("date").unwrap().value());
+            }
+        }
+    }
 
     Ok(())
 }
