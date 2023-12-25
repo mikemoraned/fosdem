@@ -1,6 +1,6 @@
 use clap::{arg, Parser};
-use sxd_document::parser;
-use sxd_xpath::{evaluate_xpath, nodeset, Value};
+use xmlserde::xml_deserialize_from_str;
+use xmlserde_derives::XmlDeserialize;
 
 /// Load all content from a Pentabarf file
 #[derive(Parser, Debug)]
@@ -11,29 +11,25 @@ struct Args {
     pentabarf: String,
 }
 
+#[derive(XmlDeserialize, Default, Debug)]
+#[xmlserde(root = b"schedule")]
+struct Schedule {
+    #[xmlserde(name = b"day", ty = "child")]
+    days: Vec<Day>,
+}
+
+#[derive(XmlDeserialize, Default, Debug)]
+struct Day {
+    #[xmlserde(name = b"date", ty = "attr")]
+    date: String,
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let xml = std::fs::read_to_string(args.pentabarf)?;
-    let package = parser::parse(&xml)?;
-    let document = package.as_document();
-    if let Value::Nodeset(days) = evaluate_xpath(&document, "/schedule/day")? {
-        for day in days {
-            if let nodeset::Node::Element(e) = day {
-                let date = e.attribute("date").unwrap().value();
-                println!("day: {:?}", date);
-                if let Value::Nodeset(events) =
-                    evaluate_xpath(&document, &format!("/schedule/day//event"))?
-                {
-                    for event in events {
-                        if let nodeset::Node::Element(e) = event {
-                            println!("event: {:?}", e);
-                        }
-                    }
-                }
-            }
-        }
-    }
+    let schedule: Schedule = xml_deserialize_from_str(&xml)?;
+    println!("schedule: {:?}", schedule);
 
     Ok(())
 }

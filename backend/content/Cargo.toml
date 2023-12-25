@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.4", features = ["derive"] }
-sxd-xpath = "0.4"
-sxd-document = "0.3"
+quick-xml = { version = "0.29", features = ["serialize"] }
+xmlserde = "0.5"
+xmlserde_derives = "0.5"
