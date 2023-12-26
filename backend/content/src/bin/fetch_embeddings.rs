@@ -1,7 +1,9 @@
+use std::fmt::Write;
 use std::fs::File;
 
 use clap::Parser;
 use dotenv;
+use indicatif::{ProgressBar, ProgressState, ProgressStyle};
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
 use serde::Deserialize;
@@ -35,14 +37,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let client = Client::new(api_key);
 
-    let mut event_reader = csv::Reader::from_reader(File::open(args.event_csv)?);
-    let mut embedding_writer = csv::Writer::from_writer(File::create(args.embedding_csv)?);
-    embedding_writer.write_record(&["title", "embedding"])?;
+    let mut event_reader = csv::Reader::from_reader(File::open(&args.event_csv)?);
+    print!("Reading events from {} ... ", args.event_csv);
+    let mut events = vec![];
     for result in event_reader.deserialize() {
         let event: EventRecord = result?;
+        events.push(event);
+    }
+    println!("done ");
+
+    println!(
+        "Looking up and writing embeddings to {} ... ",
+        args.embedding_csv
+    );
+    let mut embedding_writer = csv::Writer::from_writer(File::create(args.embedding_csv)?);
+    embedding_writer.write_record(&["title", "embedding"])?;
+    let progress = progress_bar(events.len() as u64);
+    for event in events.iter() {
         let response = get_embedding(&client, &event).await?;
         let embedding = &response.data[0];
-        embedding_writer.write_record(&[event.title, embedding_as_string(embedding)])?;
+        embedding_writer.write_record(&[&event.title, &embedding_as_string(embedding)])?;
+        progress.inc(1);
     }
 
     Ok(())
@@ -67,10 +82,29 @@ async fn get_embedding(
 }
 
 fn embedding_as_string(embedding: &Embedding) -> String {
-    embedding
-        .embedding
-        .iter()
-        .map(|f| f.to_string())
-        .collect::<Vec<String>>()
-        .join(",")
+    format!(
+        "[{}]",
+        embedding
+            .embedding
+            .iter()
+            .map(|f| f.to_string())
+            .collect::<Vec<String>>()
+            .join(",")
+    )
+}
+
+fn progress_bar(total_size: u64) -> ProgressBar {
+    use indicatif::HumanDuration;
+
+    let bar = ProgressBar::new(total_size);
+    bar.set_style(
+        ProgressStyle::with_template(
+            "{spinner:.green} [{elapsed_precise}] [{wide_bar:.cyan/blue}] {pos:>5}/{len:5} ({eta})",
+        )
+        .unwrap()
+        .with_key("eta", |state: &ProgressState, w: &mut dyn Write| {
+            write!(w, "{}", HumanDuration(state.eta()).to_string()).unwrap()
+        }),
+    );
+    bar
 }
