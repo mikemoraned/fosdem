@@ -1,11 +1,9 @@
-use std::fmt::format;
 use std::fs::File;
-use std::io::Cursor;
 
 use clap::Parser;
 use dotenv;
 use openai_dive::v1::api::Client;
-use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
+use openai_dive::v1::resources::embedding::EmbeddingParameters;
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
@@ -39,22 +37,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let result = client.embeddings().create(parameters).await.unwrap();
     println!("{:#?}", result);
-    let json = single_line_json(&result.data[0])?;
-    println!("{:#?}", json);
+    let embedding_string = format!(
+        "[{}]",
+        result.data[0]
+            .embedding
+            .iter()
+            .map(|f| f.to_string())
+            .collect::<Vec<String>>()
+            .join(",")
+    );
 
     let mut csv = csv::Writer::from_writer(File::create(args.embedding_csv)?);
-    csv.write_record(&["title", "raw"])?;
-    csv.write_record(&[title, &json])?;
+    csv.write_record(&["title", "embedding"])?;
+    csv.write_record(&[title, &embedding_string])?;
 
     Ok(())
-}
-
-fn single_line_json(embedding: &Embedding) -> Result<String, Box<dyn std::error::Error>> {
-    use serde_jsonlines::WriteExt;
-    let mut buf = vec![];
-    let mut writer = Cursor::new(&mut buf);
-    writer.write_json_lines(vec![embedding.embedding.clone()])?;
-    let json_with_newlines = String::from_utf8(buf)?;
-    let json_on_single_line = json_with_newlines.trim_end();
-    Ok(String::from(json_on_single_line))
 }
