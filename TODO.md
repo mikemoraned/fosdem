@@ -1,5 +1,5 @@
 - (x) minimal thing which get some semantic content
   - (/) get FOSDEM content (pentabarf)
-  - (x) look up and store vectors based on title and abstract of event
+  - (/) look up and store vectors based on title and abstract of event
   - (x) find similar events based on vector distance
 - (x) ...
