@@ -1,5 +1,5 @@
-- (x) minimal (dumb) app
+- (x) minimal thing which get some semantic content
   - (/) get FOSDEM content (pentabarf)
-  - (/) ingest into a DB
-  - (x) front-end calling backend and showing all items
+  - (x) look up and store vectors based on title and abstract of event
+  - (x) find similar events based on vector distance
 - (x) ...
