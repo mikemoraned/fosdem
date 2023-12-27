@@ -11,4 +11,8 @@
     - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
 - (/) allow urls for events to be opened
 - (x) minimal website that allows searches and showing of links
+  - (/) create empty shuttle service
+  - (/) extract querying into shared library
+  - (x) expose as shuttle service which does query and returns json
+  - (x) expose as minimal website with a form which accepts open query and formats results
 - (x) ...
