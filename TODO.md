@@ -9,5 +9,12 @@
   - (/) call openai for a string and find related events
   - cleanup
     - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
-- (x) allow urls for events to be opened
-- (x) ...
+- (/) allow urls for events to be opened
+- (/) minimal website that allows searches and showing of links
+  - (/) create empty shuttle service
+  - (/) extract querying into shared library
+  - (x) expose as shuttle service which does query and returns json
+    - (/) get working locally
+    - (/) add size protections on input
+    - (/) publish remotely
+  - (/) expose as minimal website with a form which accepts open query and formats results
