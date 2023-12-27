@@ -1,5 +1,6 @@
-- (x) minimal thing which get some semantic content
+- (/) minimal thing which get some semantic content and allows finding similar content
   - (/) get FOSDEM content (pentabarf)
   - (/) look up and store vectors based on title and abstract of event
-  - (x) find similar events based on vector distance
+  - (/) find similar events based on vector distance
+    - see `snippets.sql`
 - (x) ...
