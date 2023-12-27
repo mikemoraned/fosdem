@@ -21,6 +21,10 @@ struct Args {
     /// how many to show
     #[arg(long)]
     limit: u8,
+
+    /// whether to show abstract
+    #[arg(long)]
+    r#abstract: bool,
 }
 
 fn setup_logging_and_tracing() -> Result<(), Box<dyn std::error::Error>> {
@@ -80,8 +84,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let distance: f64 = row.try_get("distance")?;
         let r#abstract: &str = row.try_get("abstract")?;
         println!("title: {} (distance: {:.3})", title, distance);
-        println!("{}", r#abstract);
-        println!();
+        if args.r#abstract {
+            println!("{}", r#abstract);
+            println!();
+        }
     }
 
     Ok(())
