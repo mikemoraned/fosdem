@@ -11,6 +11,13 @@ pub struct Queryable {
     pool: Pool<Postgres>,
 }
 
+pub struct Entry {
+    pub title: String,
+    pub distance: f64,
+    pub url: Url,
+    pub r#abstract: String,
+}
+
 impl Queryable {
     pub async fn connect(
         db_host: &str,
@@ -32,7 +39,11 @@ impl Queryable {
         })
     }
 
-    pub async fn find(&self, query: &str, limit: u8) -> Result<(), Box<dyn std::error::Error>> {
+    pub async fn find(
+        &self,
+        query: &str,
+        limit: u8,
+    ) -> Result<Vec<Entry>, Box<dyn std::error::Error>> {
         info!("Getting embedding for query");
         let response = get_embedding(&self.openai_client, &query).await?;
         let embedding = Vector::from(
@@ -57,19 +68,20 @@ impl Queryable {
             .bind(limit as i32)
             .fetch_all(&self.pool)
             .await?;
+        let mut entries = vec![];
         for row in rows {
-            let title: &str = row.try_get("title")?;
+            let title: String = row.try_get("title")?;
             let distance: f64 = row.try_get("distance")?;
-            let slug: &str = row.try_get("slug")?;
-            let url = base_url.join(slug)?;
-            let r#abstract: &str = row.try_get("abstract")?;
-            println!("title: {} (distance: {:.3})", title, distance);
-            println!("url: {}", url);
-            // if args.r#abstract {
-            println!("{}", r#abstract);
-            println!();
-            // }
+            let slug: String = row.try_get("slug")?;
+            let url = base_url.join(&slug)?;
+            let r#abstract: String = row.try_get("abstract")?;
+            entries.push(Entry {
+                title,
+                distance,
+                url,
+                r#abstract,
+            });
         }
-        Ok(())
+        Ok(entries)
     }
 }
