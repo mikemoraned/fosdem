@@ -1,14 +1,6 @@
+{% extends "layout.html" %}
 {%- import "form.html" as forms -%}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>FOSDEM 2024</title>
-</head>
-
-<body>
-    {% call forms::search("") %}
-</body>
-
-</html>
+{% block content %}
+{% call forms::search("") %}
+{% endblock %}
