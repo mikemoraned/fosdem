@@ -62,13 +62,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Running Query");
     let sql = "
-    SELECT id, title FROM embedding_1 
-    ORDER BY embedding <-> ($1) LIMIT 5;
+    SELECT ev.title, ev.abstract, em.embedding <-> ($1) AS distance
+    FROM embedding_1 em JOIN events_1 ev ON ev.title = em.title
+    ORDER BY em.embedding <-> ($1) LIMIT 10;
     ";
     let rows = sqlx::query(sql).bind(embedding).fetch_all(&pool).await?;
     for row in rows {
         let title: &str = row.try_get("title")?;
-        println!("title: {}", title);
+        let distance: f64 = row.try_get("distance")?;
+        let r#abstract: &str = row.try_get("abstract")?;
+        println!("title: {} (distance: {:.3})", title, distance);
+        println!("{}", r#abstract);
+        println!();
     }
 
     Ok(())
