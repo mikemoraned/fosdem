@@ -1,6 +1,6 @@
 use clap::Parser;
 use dotenv;
-use sqlx::postgres::PgPoolOptions;
+use sqlx::{postgres::PgPoolOptions, Row};
 
 /// Run a query against a remote DB
 #[derive(Parser, Debug)]
@@ -9,10 +9,6 @@ struct Args {
     /// host address of DB
     #[arg(long)]
     host: String,
-
-    /// schema to use
-    #[arg(long)]
-    schema: String,
 }
 
 #[tokio::main]
@@ -30,12 +26,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .connect(&url)
         .await?;
 
-    let row: (i64,) = sqlx::query_as("SELECT $1")
-        .bind(150_i64)
-        .fetch_one(&pool)
-        .await?;
-
-    assert_eq!(row.0, 150);
+    let sql = "
+    SELECT id, title FROM embedding_1 
+    WHERE id != 20 
+    ORDER BY embedding <-> (SELECT embedding FROM embedding_1 WHERE id = 20) LIMIT 5;
+    ";
+    let rows = sqlx::query(sql).fetch_all(&pool).await?;
+    for row in rows {
+        let title: &str = row.try_get("title")?;
+        println!("title: {}", title);
+    }
 
     Ok(())
 }

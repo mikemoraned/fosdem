@@ -5,6 +5,6 @@
     - see `snippets.sql`
 - (x) minimal thing which allows querying existing content by an open query
   - (/) connect to remote supabase DB
-  - (x) run a pgvector query from a local cli to a remote DB
+  - (/) run a query from a local cli to a remote DB
   - (x) call openai for a string and find related events
 - (x) ...
