@@ -12,7 +12,6 @@ tokio = "1.28.2"
 tracing = "0.1.40"
 axum-valid = "0.11"
 validator = { version = "0.16", features = ["derive"] }
-tower-http = { version = "0.4.0", features = ["fs"] }
 askama = "0.12"
 serde = { workspace = true }
 shared = { path = "../shared" }

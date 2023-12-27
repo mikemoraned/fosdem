@@ -7,13 +7,18 @@
 </head>
 
 <body>
+    <form method="GET" action="/search" target="_blank">
+        <input type="search" name="q" value="{{ query }}" required minlength="3" maxlength="100">
+        <input type="text" name="limit" hidden value="20">
+        <input type="submit">
+    </form>
     <dl>
         {% for entry in entries %}
         <dt>
-            <b><a href={{ entry.url }}>"{{ entry.title }}"</a></b>: score: {{ entry.distance }}
+            <b><a href="{{ entry.url }}">"{{ entry.title }}"</a></b>: score: {{ entry.distance }}
         </dt>
         <dd>
-            {{ entry.abstract }}
+            {{ entry.abstract|safe }}
         </dd>
         {% endfor %}
     </dl>

@@ -1,4 +1,4 @@
-use std::{path::PathBuf, sync::Arc};
+use std::sync::Arc;
 
 use askama::Template;
 use axum::{
@@ -11,7 +11,6 @@ use axum_valid::Valid;
 use serde::Deserialize;
 use shared::queryable::{Entry, Queryable};
 use shuttle_secrets::SecretStore;
-use tower_http::services::ServeDir;
 use validator::Validate;
 
 #[derive(Clone, Debug)]
@@ -21,7 +20,7 @@ struct AppState {
 
 #[derive(Deserialize, Validate, Debug)]
 struct Params {
-    #[validate(length(min = 3, max = 20))]
+    #[validate(length(min = 3, max = 100))]
     q: String,
     #[validate(range(min = 1, max = 20))]
     limit: u8,
@@ -30,7 +29,18 @@ struct Params {
 #[derive(Template)]
 #[template(path = "search.html")]
 struct SearchTemplate {
+    query: String,
     entries: Vec<Entry>,
+}
+
+#[derive(Template)]
+#[template(path = "index.html")]
+struct IndexTemplate {}
+
+async fn index() -> Html<String> {
+    let page = IndexTemplate {};
+    let html = page.render().unwrap();
+    Html(html)
 }
 
 async fn search(
@@ -39,7 +49,10 @@ async fn search(
 ) -> axum::response::Result<Html<String>> {
     match state.queryable.find(&params.q, params.limit).await {
         Ok(entries) => {
-            let page = SearchTemplate { entries };
+            let page = SearchTemplate {
+                query: params.q,
+                entries,
+            };
             let html = page.render().unwrap();
             Ok(Html(html))
         }
@@ -62,8 +75,8 @@ async fn main(#[shuttle_secrets::Secrets] secret_store: SecretStore) -> shuttle_
     };
 
     let router = Router::new()
+        .route("/", get(index))
         .route("/search", get(search))
-        .nest_service("/", ServeDir::new(PathBuf::from("html")))
         .with_state(state);
 
     Ok(router.into())
