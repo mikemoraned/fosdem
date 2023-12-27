@@ -7,5 +7,8 @@ edition = "2021"
 axum = "0.6.20"
 shuttle-axum = "0.35.0"
 shuttle-runtime = "0.35.0"
+shuttle-secrets = "0.35.2"
 tokio = "1.28.2"
 tracing = "0.1.40"
+serde = { workspace = true }
+shared = { path = "../shared" }

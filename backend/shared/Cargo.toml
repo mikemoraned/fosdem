@@ -11,3 +11,4 @@ sqlx = { workspace = true }
 pgvector = { workspace = true }
 log = { workspace = true }
 url = { workspace = true }
+serde = { workspace = true }

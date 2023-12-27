@@ -1,16 +1,19 @@
 use log::info;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
+use serde::Serialize;
 use sqlx::{postgres::PgPoolOptions, Pool, Postgres, Row};
 use url::Url;
 
 use crate::openai::get_embedding;
 
+#[derive(Debug)]
 pub struct Queryable {
     openai_client: Client,
     pool: Pool<Postgres>,
 }
 
+#[derive(Serialize)]
 pub struct Entry {
     pub title: String,
     pub distance: f64,
