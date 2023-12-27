@@ -1,9 +1,7 @@
 use clap::Parser;
 use dotenvy;
 use log::info;
-use openai_dive::v1::api::Client;
-use pgvector::Vector;
-use shared::openai::get_embedding;
+use shared::queryable::Queryable;
 use sqlx::{postgres::PgPoolOptions, Row};
 use url::Url;
 
@@ -56,18 +54,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key_name = "OPENAI_API_KEY";
     let api_key = dotenvy::var(api_key_name).expect(&format!("{} is not set", api_key_name));
 
-    let client = Client::new(api_key);
+    // let client = Client::new(api_key);
+
+    let queryable = Queryable::new(&api_key);
 
     info!("Getting embedding for query");
-    let response = get_embedding(&client, &args.query).await?;
-    let embedding = Vector::from(
-        response.data[0]
-            .embedding
-            .clone()
-            .into_iter()
-            .map(|f| f as f32)
-            .collect::<Vec<_>>(),
-    );
+    // let response = get_embedding(&client, &args.query).await?;
+    // let embedding = Vector::from(
+    //     response.data[0]
+    //         .embedding
+    //         .clone()
+    //         .into_iter()
+    //         .map(|f| f as f32)
+    //         .collect::<Vec<_>>(),
+    // );
+    let embedding = queryable.find(&args.query).await?;
 
     let base_url = Url::parse("https://fosdem.org/2024/schedule/event/")?;
 

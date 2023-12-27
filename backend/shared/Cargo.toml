@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 openai_dive = { workspace = true }
+pgvector = { workspace = true }
+log = { workspace = true }

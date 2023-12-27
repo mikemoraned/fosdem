@@ -1,2 +1,2 @@
 pub mod openai;
-pub mod query;
+pub mod queryable;
