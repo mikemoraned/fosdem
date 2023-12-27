@@ -7,6 +7,7 @@
   - (/) connect to remote supabase DB
   - (/) run a query from a local cli to a remote DB
   - (/) call openai for a string and find related events
-- cleanup
-  - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
+  - cleanup
+    - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
+- (x) allow urls for events to be opened
 - (x) ...
