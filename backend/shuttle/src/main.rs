@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::{path::PathBuf, sync::Arc};
 
 use axum::{
     extract::{Query, State},
@@ -9,6 +9,7 @@ use axum_valid::Valid;
 use serde::Deserialize;
 use shared::queryable::{Entry, Queryable};
 use shuttle_secrets::SecretStore;
+use tower_http::services::ServeDir;
 use validator::Validate;
 
 async fn hello_world() -> &'static str {
@@ -53,8 +54,9 @@ async fn main(#[shuttle_secrets::Secrets] secret_store: SecretStore) -> shuttle_
     };
 
     let router = Router::new()
-        .route("/", get(hello_world))
+        // .route("/", get(hello_world))
         .route("/search", get(search))
+        .nest_service("/", ServeDir::new(PathBuf::from("html")))
         .with_state(state);
 
     Ok(router.into())
