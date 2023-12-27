@@ -8,5 +8,5 @@
   - (/) run a query from a local cli to a remote DB
   - (/) call openai for a string and find related events
 - cleanup
-  - (x) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
+  - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
 - (x) ...

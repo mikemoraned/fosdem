@@ -1,6 +1,6 @@
 use clap::Parser;
 use content::openai::get_embedding;
-use dotenv;
+use dotenvy;
 use log::info;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -37,12 +37,12 @@ fn setup_logging_and_tracing() -> Result<(), Box<dyn std::error::Error>> {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     setup_logging_and_tracing()?;
 
-    dotenv::dotenv()?;
+    dotenvy::dotenv()?;
     let args = Args::parse();
 
     let password_key_name = "DB_KEY";
     let password =
-        dotenv::var(password_key_name).expect(&format!("{} is not set", password_key_name));
+        dotenvy::var(password_key_name).expect(&format!("{} is not set", password_key_name));
 
     info!("Connecting to DB");
     let url = format!("postgres://postgres:{}@{}/postgres", password, args.host);
@@ -53,7 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Creating OpenAI Client");
     let api_key_name = "OPENAI_API_KEY";
-    let api_key = dotenv::var(api_key_name).expect(&format!("{} is not set", api_key_name));
+    let api_key = dotenvy::var(api_key_name).expect(&format!("{} is not set", api_key_name));
 
     let client = Client::new(api_key);
 
