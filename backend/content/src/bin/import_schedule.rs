@@ -44,6 +44,8 @@ struct Room {
 struct Event {
     #[xmlserde(name = b"title", ty = "child")]
     title: Title,
+    #[xmlserde(name = b"slug", ty = "child")]
+    slug: Abstract,
     #[xmlserde(name = b"abstract", ty = "child")]
     r#abstract: Abstract,
 }
@@ -60,17 +62,23 @@ struct Title {
     value: String,
 }
 
+#[derive(XmlDeserialize, Default, Debug)]
+struct Slug {
+    #[xmlserde(ty = "text")]
+    value: String,
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let xml = std::fs::read_to_string(args.pentabarf)?;
     let mut csv = csv::Writer::from_writer(File::create(args.csv)?);
     let schedule: Schedule = xml_deserialize_from_str(&xml)?;
-    csv.write_record(&["title", "abstract"])?;
+    csv.write_record(&["title", "slug", "abstract"])?;
     for day in schedule.days {
         for room in day.rooms {
             for event in room.events {
-                csv.write_record(&[event.title.value, event.r#abstract.value])?;
+                csv.write_record(&[event.title.value, event.slug.value, event.r#abstract.value])?;
             }
         }
     }
