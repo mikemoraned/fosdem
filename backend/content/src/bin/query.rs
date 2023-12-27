@@ -5,6 +5,7 @@ use log::info;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
 use sqlx::{postgres::PgPoolOptions, Row};
+use url::Url;
 
 /// Run a query against a remote DB
 #[derive(Parser, Debug)]
@@ -68,10 +69,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .collect::<Vec<_>>(),
     );
 
+    let base_url = Url::parse("https://fosdem.org/2024/schedule/event/")?;
+
     info!("Running Query");
     let sql = "
-    SELECT ev.title, ev.abstract, em.embedding <-> ($1) AS distance
-    FROM embedding_1 em JOIN events_1 ev ON ev.title = em.title
+    SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
+    FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
     let rows = sqlx::query(sql)
@@ -82,8 +85,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     for row in rows {
         let title: &str = row.try_get("title")?;
         let distance: f64 = row.try_get("distance")?;
+        let slug: &str = row.try_get("slug")?;
+        let url = base_url.join(slug)?;
         let r#abstract: &str = row.try_get("abstract")?;
         println!("title: {} (distance: {:.3})", title, distance);
+        println!("url: {}", url);
         if args.r#abstract {
             println!("{}", r#abstract);
             println!();
