@@ -16,6 +16,6 @@
   - (x) expose as shuttle service which does query and returns json
     - (/) get working locally
     - (/) add size protections on input
-    - (x) publish remotely
+    - (/) publish remotely
   - (x) expose as minimal website with a form which accepts open query and formats results
 - (x) ...
