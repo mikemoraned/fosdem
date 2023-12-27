@@ -17,6 +17,10 @@ struct Args {
     /// query to search for
     #[arg(long)]
     query: String,
+
+    /// how many to show
+    #[arg(long)]
+    limit: u8,
 }
 
 fn setup_logging_and_tracing() -> Result<(), Box<dyn std::error::Error>> {
@@ -64,9 +68,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let sql = "
     SELECT ev.title, ev.abstract, em.embedding <-> ($1) AS distance
     FROM embedding_1 em JOIN events_1 ev ON ev.title = em.title
-    ORDER BY em.embedding <-> ($1) LIMIT 10;
+    ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
-    let rows = sqlx::query(sql).bind(embedding).fetch_all(&pool).await?;
+    let rows = sqlx::query(sql)
+        .bind(embedding)
+        .bind(args.limit as i32)
+        .fetch_all(&pool)
+        .await?;
     for row in rows {
         let title: &str = row.try_get("title")?;
         let distance: f64 = row.try_get("distance")?;
