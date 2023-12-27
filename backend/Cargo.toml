@@ -1,3 +1,6 @@
 [workspace]
-members = ["content","shuttle"]
+members = ["content", "shuttle", "shared"]
 resolver = "2"
+
+[workspace.dependencies]
+openai_dive = "0.3"

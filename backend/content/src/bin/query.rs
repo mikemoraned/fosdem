@@ -1,9 +1,9 @@
 use clap::Parser;
-use content::openai::get_embedding;
 use dotenvy;
 use log::info;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
+use shared::openai::get_embedding;
 use sqlx::{postgres::PgPoolOptions, Row};
 use url::Url;
 
