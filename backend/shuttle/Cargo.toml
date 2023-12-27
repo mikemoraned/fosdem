@@ -4,11 +4,14 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum = "0.6.20"
+axum = { version = "0.6", features = ["macros"] }
 shuttle-axum = "0.35.0"
 shuttle-runtime = "0.35.0"
 shuttle-secrets = "0.35.2"
 tokio = "1.28.2"
 tracing = "0.1.40"
+axum-valid = "0.11"
+validator = { version = "0.16", features = ["derive"] }
+
 serde = { workspace = true }
 shared = { path = "../shared" }

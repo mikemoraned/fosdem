@@ -5,9 +5,11 @@ use axum::{
     routing::get,
     Json, Router,
 };
+use axum_valid::Valid;
 use serde::Deserialize;
 use shared::queryable::{Entry, Queryable};
 use shuttle_secrets::SecretStore;
+use validator::Validate;
 
 async fn hello_world() -> &'static str {
     "Hello, world!"
@@ -18,14 +20,22 @@ struct AppState {
     queryable: Arc<Queryable>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Validate, Debug)]
 struct Params {
+    #[validate(length(min = 3, max = 20))]
     q: String,
+    #[validate(range(min = 1, max = 20))]
     limit: u8,
 }
 
-async fn search(State(state): State<AppState>, params: Query<Params>) -> Json<Vec<Entry>> {
-    Json(state.queryable.find(&params.q, params.limit).await.unwrap())
+async fn search(
+    State(state): State<AppState>,
+    Valid(Query(params)): Valid<Query<Params>>,
+) -> axum::response::Result<Json<Vec<Entry>>> {
+    match state.queryable.find(&params.q, params.limit).await {
+        Ok(entries) => Ok(Json(entries)),
+        Err(_) => Err("search failed".into()),
+    }
 }
 
 #[shuttle_runtime::main]
