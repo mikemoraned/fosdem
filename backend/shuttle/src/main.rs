@@ -1,9 +1,11 @@
 use std::{path::PathBuf, sync::Arc};
 
+use askama::Template;
 use axum::{
     extract::{Query, State},
+    response::Html,
     routing::get,
-    Json, Router,
+    Router,
 };
 use axum_valid::Valid;
 use serde::Deserialize;
@@ -11,10 +13,6 @@ use shared::queryable::{Entry, Queryable};
 use shuttle_secrets::SecretStore;
 use tower_http::services::ServeDir;
 use validator::Validate;
-
-async fn hello_world() -> &'static str {
-    "Hello, world!"
-}
 
 #[derive(Clone, Debug)]
 struct AppState {
@@ -29,12 +27,22 @@ struct Params {
     limit: u8,
 }
 
+#[derive(Template)]
+#[template(path = "search.html")]
+struct SearchTemplate {
+    entries: Vec<Entry>,
+}
+
 async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
-) -> axum::response::Result<Json<Vec<Entry>>> {
+) -> axum::response::Result<Html<String>> {
     match state.queryable.find(&params.q, params.limit).await {
-        Ok(entries) => Ok(Json(entries)),
+        Ok(entries) => {
+            let page = SearchTemplate { entries };
+            let html = page.render().unwrap();
+            Ok(Html(html))
+        }
         Err(_) => Err("search failed".into()),
     }
 }
@@ -54,7 +62,6 @@ async fn main(#[shuttle_secrets::Secrets] secret_store: SecretStore) -> shuttle_
     };
 
     let router = Router::new()
-        // .route("/", get(hello_world))
         .route("/search", get(search))
         .nest_service("/", ServeDir::new(PathBuf::from("html")))
         .with_state(state);

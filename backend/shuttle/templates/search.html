@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>FOSDEM 2024</title>
+</head>
+
+<body>
+    <dl>
+        {% for entry in entries %}
+        <dt>
+            <b><a href={{ entry.url }}>"{{ entry.title }}"</a></b>: score: {{ entry.distance }}
+        </dt>
+        <dd>
+            {{ entry.abstract }}
+        </dd>
+        {% endfor %}
+    </dl>
+</body>
+
+</html>
