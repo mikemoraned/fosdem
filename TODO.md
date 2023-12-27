@@ -9,5 +9,6 @@
   - (/) call openai for a string and find related events
   - cleanup
     - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
-- (x) allow urls for events to be opened
+- (/) allow urls for events to be opened
+- (x) minimal website that allows searches and showing of links
 - (x) ...
