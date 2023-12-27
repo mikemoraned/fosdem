@@ -2,7 +2,7 @@ use std::fmt::Write;
 use std::fs::File;
 
 use clap::Parser;
-use dotenv;
+use dotenvy;
 use indicatif::{ProgressBar, ProgressState, ProgressStyle};
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
@@ -29,11 +29,11 @@ struct EventRecord {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    dotenv::dotenv()?;
+    dotenvy::dotenv()?;
     let args = Args::parse();
 
     let api_key_name = "OPENAI_API_KEY";
-    let api_key = dotenv::var(api_key_name).expect(&format!("{} is not set", api_key_name));
+    let api_key = dotenvy::var(api_key_name).expect(&format!("{} is not set", api_key_name));
 
     let client = Client::new(api_key);
 

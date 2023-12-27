@@ -3,4 +3,10 @@
   - (/) look up and store vectors based on title and abstract of event
   - (/) find similar events based on vector distance
     - see `snippets.sql`
+- (/) minimal thing which allows querying existing content by an open query
+  - (/) connect to remote supabase DB
+  - (/) run a query from a local cli to a remote DB
+  - (/) call openai for a string and find related events
+- cleanup
+  - (/) switch from `dotenv` to `dotenvy` (`dotenv` no longer maintained)
 - (x) ...
