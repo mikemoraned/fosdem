@@ -23,8 +23,13 @@
   - (x) visualise all related items via D3
 - (x) migrate to fly.io
   - (/) simple "hello world" axum project working locally
-  - (x) building locally in docker (podman)
+  - (-) building locally in docker (podman)
   - (/) building and running remotely on fly.io
   - (/) extract core of webapp separate from shuttle.rs usage (e.g. just Router)
   - (/) use core in a fly.io shell, but with different secrets to distinguish usage
-  - (x) leave deployed side-by-side in both for a day or so
+  - (x) leave deployed side-by-side in both fly.io and shuttle.rs, for a day or so, before declaring fly better
+  - (x) remove shuttle support
+    - (x) upgrade to latest libraries for axum etc (shuttle required older versions)
+    - (x) remove config files
+- (x) improve fly.io deploy experience
+  - (x) multi-stage Docker
