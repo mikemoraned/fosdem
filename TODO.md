@@ -21,3 +21,10 @@
 - (x) show related items
   - (/) show 5 related items per search item
   - (x) visualise all related items via D3
+- (x) migrate to fly.io
+  - (/) simple "hello world" axum project working locally
+  - (x) building locally in docker (podman)
+  - (x) running remotely on fly.io
+  - (x) extract core of webapp separate from shuttle.rs usage (e.g. just Router)
+  - (x) use core in a fly.io shell, but with different secrets to distinguish usage
+  - (x) leave deployed side-by-side in both for a day or so
