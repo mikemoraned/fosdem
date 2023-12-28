@@ -39,7 +39,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let events = queryable.find_all_events().await?;
     let progress = progress_bar(events.len() as u64);
     for event in events.iter() {
-        thread::sleep(Duration::from_millis(12));
+        queryable.find_similar_events(&event.title, 5).await?;
         progress.inc(1);
     }
 

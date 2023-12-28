@@ -1,5 +1,5 @@
 use log::info;
-use openai_dive::v1::api::Client;
+use openai_dive::v1::{api::Client, resources::embedding};
 use pgvector::Vector;
 use serde::Serialize;
 use sqlx::{postgres::PgPoolOptions, Pool, Postgres, Row};
@@ -72,6 +72,52 @@ impl Queryable {
             });
         }
         Ok(events)
+    }
+
+    pub async fn find_similar_events(
+        &self,
+        title: &String,
+        limit: u8,
+    ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
+        info!("Running Query to find embedding for title");
+        let embedding: pgvector::Vector =
+            sqlx::query("SELECT embedding FROM embedding_1 WHERE title = $1")
+                .bind(title)
+                .fetch_one(&self.pool)
+                .await?
+                .try_get("embedding")?;
+
+        info!("Running Query to find Events similar to title");
+        let sql = "
+    SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
+    FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
+    WHERE ev.title != $1
+    ORDER BY em.embedding <-> ($2) LIMIT $3;
+    ";
+        let rows = sqlx::query(sql)
+            .bind(title)
+            .bind(embedding)
+            .bind(limit as i32)
+            .fetch_all(&self.pool)
+            .await?;
+        let mut entries = vec![];
+        for row in rows {
+            let title: String = row.try_get("title")?;
+            let distance: f64 = row.try_get("distance")?;
+            let slug: String = row.try_get("slug")?;
+            let url = self.event_url(&slug)?;
+            let r#abstract: String = row.try_get("abstract")?;
+            entries.push(SearchItem {
+                event: Event {
+                    title,
+                    slug,
+                    url,
+                    r#abstract,
+                },
+                distance,
+            });
+        }
+        Ok(entries)
     }
 
     pub async fn search(
