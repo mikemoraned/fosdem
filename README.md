@@ -7,6 +7,8 @@ This repo is behind a [small website](https://fosdem2024.shuttleapp.rs/) where y
 
 I wrote this because, whilst I really enjoy attending FOSDEM, the amount of possible things to see is large and there is always a chance I can miss something.
 
+The [main website](https://fosdem.org/2024/) does have search, so, _to be totally honest_ I should also say I just wanted to play about with OpenAI Embeddings.
+
 ## How
 
 Indexing:
