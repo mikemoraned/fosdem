@@ -9,7 +9,7 @@ use axum::{
 };
 use axum_valid::Valid;
 use serde::Deserialize;
-use shared::queryable::{Entry, Queryable};
+use shared::queryable::{Queryable, SearchItem};
 use shuttle_secrets::SecretStore;
 use validator::Validate;
 
@@ -30,7 +30,7 @@ struct Params {
 #[template(path = "search.html")]
 struct SearchTemplate {
     query: String,
-    entries: Vec<Entry>,
+    items: Vec<SearchItem>,
 }
 
 #[derive(Template)]
@@ -47,11 +47,11 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
-    match state.queryable.find(&params.q, params.limit).await {
-        Ok(entries) => {
+    match state.queryable.search(&params.q, params.limit).await {
+        Ok(items) => {
             let page = SearchTemplate {
                 query: params.q,
-                entries,
+                items,
             };
             let html = page.render().unwrap();
             Ok(Html(html))

@@ -3,12 +3,12 @@
 {% block content %}
     {% call forms::search(query) %}
     <dl>
-        {% for entry in entries %}
+        {% for item in items %}
         <dt>
-            <b><a href="{{ entry.url }}">"{{ entry.title }}"</a></b>: distance: {{ entry.distance }}
+            <b><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></b>: distance: {{ item.distance }}
         </dt>
         <dd>
-            {{ entry.abstract|safe }}
+            {{ item.event.abstract|safe }}
         </dd>
         {% endfor %}
     </dl>
