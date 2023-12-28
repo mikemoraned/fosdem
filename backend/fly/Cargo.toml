@@ -7,3 +7,4 @@ edition = "2021"
 axum = { workspace = true }
 tokio = { workspace = true }
 dotenvy = { workspace = true }
+webapp = { path = "../webapp" }

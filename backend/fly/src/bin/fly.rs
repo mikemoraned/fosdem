@@ -1,9 +1,6 @@
-use axum::{http::StatusCode, routing::get, Router};
+use axum::{http::StatusCode, routing::get};
 use dotenvy;
-
-async fn index() -> &'static str {
-    "Hello, world!"
-}
+use webapp::router::router;
 
 async fn health() -> StatusCode {
     StatusCode::NO_CONTENT
@@ -33,9 +30,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db_host = load_secret("DB_HOST");
     let db_key = load_secret("DB_KEY");
 
-    let app = Router::new()
-        .route("/", get(index))
-        .route("/health", get(health));
+    let router = router(&openai_api_key, &db_host, &db_key).await;
+    let app = router.route("/health", get(health));
 
     axum::Server::bind(&"0.0.0.0:8000".parse().unwrap())
         .serve(app.into_make_service())
