@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use askama::Template;
 use axum::{
+    debug_handler,
     extract::{Query, State},
     response::Html,
     routing::get,
@@ -30,7 +31,7 @@ struct Params {
 #[template(path = "search.html")]
 struct SearchTemplate {
     query: String,
-    items: Vec<SearchItem>,
+    items: Vec<(SearchItem, Vec<SearchItem>)>,
 }
 
 #[derive(Template)]
@@ -43,15 +44,25 @@ async fn index() -> Html<String> {
     Html(html)
 }
 
+#[debug_handler]
 async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
     match state.queryable.search(&params.q, params.limit).await {
         Ok(items) => {
+            let mut related_items = vec![];
+            for item in items.into_iter() {
+                let related = state
+                    .queryable
+                    .find_similar_events(&item.event.title, 3)
+                    .await
+                    .unwrap();
+                related_items.push((item, related));
+            }
             let page = SearchTemplate {
                 query: params.q,
-                items,
+                items: related_items,
             };
             let html = page.render().unwrap();
             Ok(Html(html))

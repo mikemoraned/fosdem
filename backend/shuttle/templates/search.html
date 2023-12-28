@@ -5,10 +5,20 @@
     <dl>
         {% for item in items %}
         <dt>
-            <b><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></b>: distance: {{ item.distance }}
+            <b><a href="{{ item.0.event.url }}">"{{ item.0.event.title }}"</a></b>: distance: {{ item.0.distance }}
         </dt>
         <dd>
-            {{ item.event.abstract|safe }}
+            {{ item.0.event.abstract|safe }}
+
+            <p>Related:
+            <ul>
+                {% for related in item.1 %}
+                <li>
+                    <b><a href="{{ related.event.url }}">"{{ related.event.title }}"</a></b>: distance: {{ related.distance }}
+                </li>
+                {% endfor %}
+            </ul>
+            </p>
         </dd>
         {% endfor %}
     </dl>
