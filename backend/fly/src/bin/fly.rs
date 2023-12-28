@@ -21,7 +21,13 @@ fn load_secret(name: &str) -> String {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    dotenvy::dotenv()?;
+    match dotenvy::dotenv() {
+        Ok(path) => println!("Loaded env file at {:?}", path),
+        Err(e) => println!(
+            "Failed to load env file, will use external env; error: {:?}",
+            e
+        ),
+    }
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
     let db_host = load_secret("DB_HOST");
