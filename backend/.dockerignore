@@ -1,0 +1,10 @@
+content/**/data
+
+shuttle/target
+shuttle/**/.shuttle-storage
+shuttle/**/Secrets*.toml
+
+supabase/**/.branches
+supabase/**/.temp
+supabase/**/.env
+fly.toml
