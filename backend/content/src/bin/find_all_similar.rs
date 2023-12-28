@@ -1,4 +1,7 @@
+use std::{thread, time::Duration};
+
 use clap::Parser;
+use content::progress_bar;
 use dotenvy;
 
 use shared::queryable::Queryable;
@@ -10,18 +13,6 @@ struct Args {
     /// host address of DB
     #[arg(long)]
     host: String,
-
-    /// query to search for
-    #[arg(long)]
-    query: String,
-
-    /// how many to show
-    #[arg(long)]
-    limit: u8,
-
-    /// whether to show abstract
-    #[arg(long)]
-    r#abstract: bool,
 }
 
 fn setup_logging_and_tracing() -> Result<(), Box<dyn std::error::Error>> {
@@ -45,18 +36,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key = dotenvy::var(api_key_name).expect(&format!("{} is not set", api_key_name));
 
     let queryable = Queryable::connect(&args.host, &password, &api_key).await?;
-
-    let items = queryable.search(&args.query, args.limit, false).await?;
-    for item in items.iter() {
-        println!(
-            "title: {} (distance: {:.3})",
-            item.event.title, item.distance
-        );
-        println!("url: {}", item.event.url);
-        if args.r#abstract {
-            println!("{}", item.event.r#abstract);
-            println!();
-        }
+    let events = queryable.find_all_events().await?;
+    let progress = progress_bar(events.len() as u64);
+    for event in events.iter() {
+        queryable.find_similar_events(&event.title, 5).await?;
+        progress.inc(1);
     }
 
     Ok(())

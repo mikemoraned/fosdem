@@ -1,9 +1,8 @@
-use std::fmt::Write;
 use std::fs::File;
 
 use clap::Parser;
+use content::progress_bar;
 use dotenvy;
-use indicatif::{ProgressBar, ProgressState, ProgressStyle};
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
 use serde::Deserialize;
@@ -91,20 +90,4 @@ fn embedding_as_string(embedding: &Embedding) -> String {
             .collect::<Vec<String>>()
             .join(",")
     )
-}
-
-fn progress_bar(total_size: u64) -> ProgressBar {
-    use indicatif::HumanDuration;
-
-    let bar = ProgressBar::new(total_size);
-    bar.set_style(
-        ProgressStyle::with_template(
-            "{spinner:.green} [{elapsed_precise}] [{wide_bar:.cyan/blue}] {pos:>5}/{len:5} ({eta})",
-        )
-        .unwrap()
-        .with_key("eta", |state: &ProgressState, w: &mut dyn Write| {
-            write!(w, "{}", HumanDuration(state.eta()).to_string()).unwrap()
-        }),
-    );
-    bar
 }

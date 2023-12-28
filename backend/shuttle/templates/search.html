@@ -3,12 +3,27 @@
 {% block content %}
     {% call forms::search(query) %}
     <dl>
-        {% for entry in entries %}
+        {% for item in items %}
         <dt>
-            <b><a href="{{ entry.url }}">"{{ entry.title }}"</a></b>: distance: {{ entry.distance }}
+            <b><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></b>: distance: {{ item.distance }}
         </dt>
         <dd>
-            {{ entry.abstract|safe }}
+            <quote>
+            {{ item.event.abstract|safe }}
+            </quote>
+
+            {% if item.related.is_some() %}
+            {% let items = item.related.as_ref().unwrap() %}
+            <p>Related:
+            <ul>
+                {% for item in items %}
+                <li>
+                    <b><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></b>: distance: {{ item.distance }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            </p>
         </dd>
         {% endfor %}
     </dl>
