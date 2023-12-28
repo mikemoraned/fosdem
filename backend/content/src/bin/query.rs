@@ -46,7 +46,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let queryable = Queryable::connect(&args.host, &password, &api_key).await?;
 
-    let items = queryable.search(&args.query, args.limit).await?;
+    let items = queryable.search(&args.query, args.limit, false).await?;
     for item in items.iter() {
         println!(
             "title: {} (distance: {:.3})",
