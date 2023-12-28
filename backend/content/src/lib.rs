@@ -1,3 +1,4 @@
+pub mod pentabarf;
 use indicatif::{ProgressBar, ProgressState, ProgressStyle};
 use std::fmt::Write;
 

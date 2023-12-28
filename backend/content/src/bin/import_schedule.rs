@@ -1,8 +1,8 @@
 use std::fs::File;
 
 use clap::{arg, Parser};
+use content::pentabarf::Schedule;
 use xmlserde::xml_deserialize_from_str;
-use xmlserde_derives::XmlDeserialize;
 
 /// Convert all content from a Pentabarf file into a CSV
 #[derive(Parser, Debug)]
@@ -15,57 +15,6 @@ struct Args {
     /// output csv path
     #[arg(short, long)]
     csv: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-#[xmlserde(root = b"schedule")]
-struct Schedule {
-    #[xmlserde(name = b"day", ty = "child")]
-    days: Vec<Day>,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-struct Day {
-    #[xmlserde(name = b"date", ty = "attr")]
-    date: String,
-    #[xmlserde(name = b"room", ty = "child")]
-    rooms: Vec<Room>,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-struct Room {
-    #[xmlserde(name = b"name", ty = "attr")]
-    name: String,
-    #[xmlserde(name = b"event", ty = "child")]
-    events: Vec<crate::Event>,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-struct Event {
-    #[xmlserde(name = b"title", ty = "child")]
-    title: Title,
-    #[xmlserde(name = b"slug", ty = "child")]
-    slug: Abstract,
-    #[xmlserde(name = b"abstract", ty = "child")]
-    r#abstract: Abstract,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-struct Abstract {
-    #[xmlserde(ty = "text")]
-    value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-struct Title {
-    #[xmlserde(ty = "text")]
-    value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-struct Slug {
-    #[xmlserde(ty = "text")]
-    value: String,
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
