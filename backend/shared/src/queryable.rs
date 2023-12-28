@@ -1,5 +1,5 @@
 use log::info;
-use openai_dive::v1::{api::Client, resources::embedding};
+use openai_dive::v1::api::Client;
 use pgvector::Vector;
 use serde::Serialize;
 use sqlx::{postgres::PgPoolOptions, Pool, Postgres, Row};
@@ -13,13 +13,14 @@ pub struct Queryable {
     pool: Pool<Postgres>,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Debug)]
 pub struct SearchItem {
     pub event: Event,
     pub distance: f64,
+    pub related: Option<Vec<SearchItem>>,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Debug)]
 pub struct Event {
     pub title: String,
     pub slug: String,
@@ -115,6 +116,7 @@ impl Queryable {
                     r#abstract,
                 },
                 distance,
+                related: None,
             });
         }
         Ok(entries)
@@ -124,6 +126,7 @@ impl Queryable {
         &self,
         query: &str,
         limit: u8,
+        find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         info!("Getting embedding for query");
         let response = get_embedding(&self.openai_client, &query).await?;
@@ -156,12 +159,17 @@ impl Queryable {
             let r#abstract: String = row.try_get("abstract")?;
             entries.push(SearchItem {
                 event: Event {
-                    title,
+                    title: title.clone(),
                     slug,
                     url,
                     r#abstract,
                 },
                 distance,
+                related: if find_related {
+                    Some(self.find_similar_events(&title, 5).await?)
+                } else {
+                    None
+                },
             });
         }
         Ok(entries)

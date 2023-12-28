@@ -25,13 +25,14 @@ struct Params {
     q: String,
     #[validate(range(min = 1, max = 20))]
     limit: u8,
+    related: Option<String>,
 }
 
-#[derive(Template)]
+#[derive(Template, Debug)]
 #[template(path = "search.html")]
 struct SearchTemplate {
     query: String,
-    items: Vec<(SearchItem, Vec<SearchItem>)>,
+    items: Vec<SearchItem>,
 }
 
 #[derive(Template)]
@@ -49,20 +50,15 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
-    match state.queryable.search(&params.q, params.limit).await {
+    match state
+        .queryable
+        .search(&params.q, params.limit, params.related.is_some())
+        .await
+    {
         Ok(items) => {
-            let mut related_items = vec![];
-            for item in items.into_iter() {
-                let related = state
-                    .queryable
-                    .find_similar_events(&item.event.title, 3)
-                    .await
-                    .unwrap();
-                related_items.push((item, related));
-            }
             let page = SearchTemplate {
                 query: params.q,
-                items: related_items,
+                items,
             };
             let html = page.render().unwrap();
             Ok(Html(html))

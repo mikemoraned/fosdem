@@ -18,3 +18,6 @@
     - (/) add size protections on input
     - (/) publish remotely
   - (/) expose as minimal website with a form which accepts open query and formats results
+- (x) show related items
+  - (/) show 5 related items per search item
+  - (x) visualise all related items via D3
