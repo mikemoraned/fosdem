@@ -24,6 +24,7 @@
 - (x) migrate to fly.io
   - (/) simple "hello world" axum project working locally
   - (-) building locally in docker (podman)
+    - does work, but is very very slow on my M1 (hours)
   - (/) building and running remotely on fly.io
   - (/) extract core of webapp separate from shuttle.rs usage (e.g. just Router)
   - (/) use core in a fly.io shell, but with different secrets to distinguish usage
