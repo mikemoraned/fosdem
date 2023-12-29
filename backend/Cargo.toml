@@ -1,5 +1,5 @@
 [workspace]
-members = ["content", "shuttle", "shared"]
+members = ["content", "shuttle", "shared", "fly", "webapp"]
 resolver = "2"
 
 [workspace.dependencies]
@@ -13,3 +13,6 @@ pgvector = { version = "0.3", features = ["sqlx"] }
 log = "0.4"
 url = "2.5"
 serde = { version = "1.0", features = ["derive"] }
+axum = { version = "0.6", features = ["macros"] }
+tokio = { version = "1.35", features = ["rt-multi-thread", "macros"] }
+dotenvy = "0.15"

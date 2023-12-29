@@ -1,0 +1,27 @@
+# This is WIP; see "multi-stage Docker"
+FROM rust:slim-buster AS builder
+
+WORKDIR /prod
+RUN cargo new --lib shared
+RUN cargo new --bin content
+RUN cargo new --bin fly
+RUN cargo new --bin shuttle
+COPY Cargo.lock .
+COPY Cargo.toml .
+COPY shared/Cargo.toml shared/Cargo.toml
+COPY content/Cargo.toml content/Cargo.toml
+COPY fly/Cargo.toml fly/Cargo.toml
+COPY shuttle/Cargo.toml shuttle/Cargo.toml
+RUN ls -R
+RUN mkdir .cargo
+# This is the trick to speed up the building process.
+RUN cargo vendor > .cargo/config
+
+RUN ls -R
+COPY . .
+RUN cargo build --release
+
+# Use any runner as you want
+# But beware that some images have old glibc which makes rust unhappy
+FROM fedora:34 AS runner
+COPY --from=builder /prod/target/release/fly /bin

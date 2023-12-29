@@ -1,0 +1,10 @@
+[package]
+name = "fly"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { workspace = true }
+tokio = { workspace = true }
+dotenvy = { workspace = true }
+webapp = { path = "../webapp" }
