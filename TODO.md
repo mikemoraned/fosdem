@@ -30,7 +30,10 @@
   - (/) use core in a fly.io shell, but with different secrets to distinguish usage
   - (x) leave deployed side-by-side in both fly.io and shuttle.rs, for a day or so, before declaring fly better
   - (x) remove shuttle support
+    - (/) switch plausible.io setup to use fly.dev domain name
     - (x) upgrade to latest libraries for axum etc (shuttle required older versions)
     - (x) remove config files
+    - (x) switch to bespoke domain name
+    - (x) switch plausible.io to domain name
 - (x) improve fly.io deploy experience
   - (x) multi-stage Docker
