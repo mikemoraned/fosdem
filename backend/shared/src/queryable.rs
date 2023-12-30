@@ -32,6 +32,7 @@ pub struct Event {
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
 
 const MAX_POOL_CONNECTIONS: u32 = 10;
+const MAX_RELATED_EVENTS: u8 = 5;
 
 impl Queryable {
     pub async fn connect(
@@ -55,7 +56,7 @@ impl Queryable {
     }
 
     #[tracing::instrument(skip(self))]
-    pub async fn find_similar_events(
+    pub async fn find_related_events(
         &self,
         title: &String,
         limit: u8,
@@ -154,7 +155,7 @@ impl Queryable {
             debug!("Running query to find related events");
             let jobs = entries.into_iter().map(|mut entry| async {
                 entry.related = Some(
-                    self.find_similar_events(&entry.event.title, 5)
+                    self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
                         .await
                         .unwrap(), // TODO: don't assume this succeeds
                 );
