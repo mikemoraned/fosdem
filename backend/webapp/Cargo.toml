@@ -16,4 +16,6 @@ tower-http = { workspace = true }
 clap = { workspace = true }
 indicatif = { workspace = true }
 dotenvy = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
 shared = { path = "../shared" }

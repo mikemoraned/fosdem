@@ -2886,11 +2886,13 @@ dependencies = [
  "dotenvy",
  "indicatif",
  "serde",
+ "serde_json",
  "shared",
  "tokio",
  "tower-http",
  "tracing",
  "tracing-subscriber",
+ "url",
  "validator",
 ]
 

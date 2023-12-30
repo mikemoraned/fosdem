@@ -1,9 +1,8 @@
 use askama::Template;
 use axum::response::Html;
-use axum::{extract::State, Json};
-use serde::Serialize;
 
-use crate::state::AppState;
+use serde::Serialize;
+use url::Url;
 
 #[derive(Serialize)]
 pub struct D3Force {
@@ -12,22 +11,22 @@ pub struct D3Force {
 }
 
 #[derive(Serialize)]
-pub struct Node {}
+pub struct Node {
+    pub index: usize,
+    pub title: String,
+    pub url: Url,
+}
 
 #[derive(Serialize)]
-pub struct Link {}
+pub struct Link {
+    pub source: usize,
+    pub target: usize,
+    pub distance: f64,
+}
 
 #[derive(Template, Debug)]
 #[template(path = "related.html")]
 struct RelatedTemplate {}
-
-#[tracing::instrument]
-pub async fn related_data(State(state): State<AppState>) -> Json<D3Force> {
-    Json(D3Force {
-        nodes: vec![],
-        links: vec![],
-    })
-}
 
 #[tracing::instrument]
 pub async fn related() -> Html<String> {

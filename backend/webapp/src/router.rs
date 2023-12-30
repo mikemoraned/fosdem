@@ -17,10 +17,8 @@ use tower_http::{
 };
 use validator::Validate;
 
-use crate::{
-    related::{related, related_data},
-    state::AppState,
-};
+use crate::related::related;
+use crate::state::AppState;
 
 #[derive(Deserialize, Validate, Debug)]
 struct Params {
@@ -89,7 +87,6 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
         .route("/", get(index))
         .route("/search", get(search))
         .route("/related/", get(related))
-        .route("/related/all.json", get(related_data))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
