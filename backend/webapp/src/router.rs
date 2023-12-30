@@ -3,6 +3,7 @@ use std::sync::Arc;
 use askama::Template;
 use axum::{
     extract::{Query, State},
+    http::Method,
     response::Html,
     routing::get,
     Router,
@@ -10,6 +11,10 @@ use axum::{
 use axum_valid::Valid;
 use serde::Deserialize;
 use shared::queryable::{Queryable, SearchItem};
+use tower_http::{
+    cors::{Any, CorsLayer},
+    services::ServeDir,
+};
 use validator::Validate;
 
 use crate::{
@@ -75,11 +80,18 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
         ),
     };
 
+    let cors = CorsLayer::new()
+        .allow_methods([Method::GET])
+        // allow requests from any origin
+        .allow_origin(Any);
+
     let router = Router::new()
         .route("/", get(index))
         .route("/search", get(search))
         .route("/related/", get(related))
         .route("/related/all.json", get(related_data))
+        .layer(cors)
+        .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
 
     router

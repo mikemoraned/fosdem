@@ -2,10 +2,5 @@
 
 {% block content %}
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script type="module">
-    console.log("Loading");
-    d3.json("/related/all.json", function (data) {
-            console.log(data);
-        });
-</script>
+<script type="module" src="/assets/main.js"></script>
 {% endblock %}
