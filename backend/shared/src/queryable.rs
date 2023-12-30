@@ -13,14 +13,14 @@ pub struct Queryable {
     pool: Pool<Postgres>,
 }
 
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Debug, Clone)]
 pub struct SearchItem {
     pub event: Event,
     pub distance: f64,
     pub related: Option<Vec<SearchItem>>,
 }
 
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Debug, Clone)]
 pub struct Event {
     pub title: String,
     pub slug: String,
@@ -117,7 +117,7 @@ impl Queryable {
                 .collect::<Vec<_>>(),
         );
 
-        debug!("Running Query");
+        debug!("Running query to find similar events");
         let sql = "
     SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
     FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
@@ -143,13 +143,19 @@ impl Queryable {
                     r#abstract,
                 },
                 distance,
-                related: if find_related {
-                    Some(self.find_similar_events(&title, 5).await?)
-                } else {
-                    None
-                },
+                related: None,
             });
         }
+
+        if find_related {
+            debug!("Running query to find related events");
+            let mut expanded_entries: Vec<SearchItem> = entries.clone();
+            for entry in expanded_entries.iter_mut() {
+                entry.related = Some(self.find_similar_events(&entry.event.title, 5).await?);
+            }
+            entries = expanded_entries;
+        }
+
         Ok(entries)
     }
 
