@@ -32,7 +32,7 @@
   - (x) remove shuttle support (switch to fly.io)
     - (/) switch plausible.io setup to use fly.dev domain name
     - (/) remove shuttle code and config files
-    - (x) upgrade to latest libraries for axum etc (shuttle required older versions)
+    - (/) upgrade to latest libraries for axum etc (shuttle required older versions)
 - (x) improve fly.io deploy experience
   - (x) multi-stage Docker
 - (x) switch to bespoke domain name

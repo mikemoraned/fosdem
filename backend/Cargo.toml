@@ -13,6 +13,6 @@ pgvector = { version = "0.3.2", features = ["sqlx"] }
 log = "0.4.20"
 url = { version = "2.5.0", features = ["serde"] }
 serde = { version = "1.0.193", features = ["derive"] }
-axum = { version = "0.6.20", features = ["macros"] }
+axum = { version = "0.7.3", features = ["macros"] }
 tokio = { version = "1.35.1", features = ["rt-multi-thread", "macros"] }
 dotenvy = "0.15.7"
