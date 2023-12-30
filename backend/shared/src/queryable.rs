@@ -1,3 +1,4 @@
+use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
 use serde::Serialize;
@@ -149,14 +150,22 @@ impl Queryable {
 
         if find_related {
             debug!("Running query to find related events");
-            let mut expanded_entries: Vec<SearchItem> = entries.clone();
-            for entry in expanded_entries.iter_mut() {
-                entry.related = Some(self.find_similar_events(&entry.event.title, 5).await?);
-            }
-            entries = expanded_entries;
+            // let mut expanded_entries: Vec<SearchItem> = entries.clone();
+            // for entry in expanded_entries.iter_mut() {
+            //     entry.related = Some(self.find_similar_events(&entry.event.title, 5).await?);
+            // }
+            let jobs = entries.into_iter().map(|mut entry| async {
+                entry.related = Some(
+                    self.find_similar_events(&entry.event.title, 5)
+                        .await
+                        .unwrap(), // TODO: don't assume this succeeds
+                );
+                entry
+            });
+            Ok(join_all(jobs).await)
+        } else {
+            Ok(entries)
         }
-
-        Ok(entries)
     }
 
     fn event_url(&self, slug: &str) -> Result<Url, Box<dyn std::error::Error>> {

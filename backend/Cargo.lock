@@ -2017,6 +2017,7 @@ dependencies = [
 name = "shared"
 version = "0.0.0"
 dependencies = [
+ "futures",
  "log",
  "openai_dive",
  "pgvector",
