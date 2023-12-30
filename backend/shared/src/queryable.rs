@@ -157,7 +157,7 @@ impl Queryable {
                 entry.related = Some(
                     self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
                         .await
-                        .unwrap(), // TODO: don't assume this succeeds
+                        .expect(&format!("find related items for {}", &entry.event.title)),
                 );
                 entry
             });
