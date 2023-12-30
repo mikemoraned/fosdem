@@ -29,7 +29,7 @@
   - (/) extract core of webapp separate from shuttle.rs usage (e.g. just Router)
   - (/) use core in a fly.io shell, but with different secrets to distinguish usage
   - (/) leave deployed side-by-side in both fly.io and shuttle.rs, for a day or so, before declaring fly better
-  - (x) remove shuttle support (switch to fly.io)
+  - (/) remove shuttle support (switch to fly.io)
     - (/) switch plausible.io setup to use fly.dev domain name
     - (/) remove shuttle code and config files
     - (/) upgrade to latest libraries for axum etc (shuttle required older versions)
