@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum = { version = "0.6", features = ["macros"] }
-tokio = "1.28.2"
-axum-valid = "0.11"
-validator = { version = "0.16", features = ["derive"] }
-askama = "0.12"
+axum-valid = "0.13.0"
+validator = { version = "0.16.1", features = ["derive"] }
+askama = "0.12.1"
+axum = { workspace = true }
+tokio = { workspace = true }
 serde = { workspace = true }
 shared = { path = "../shared" }

@@ -1,5 +1,6 @@
 use axum::{http::StatusCode, routing::get};
 use dotenvy;
+use tokio::net::TcpListener;
 use webapp::router::router;
 
 async fn health() -> StatusCode {
@@ -33,10 +34,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let router = router(&openai_api_key, &db_host, &db_key).await;
     let app = router.route("/health", get(health));
 
-    axum::Server::bind(&"0.0.0.0:8000".parse().unwrap())
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+    let listener = TcpListener::bind("0.0.0.0:8000").await?;
+    axum::serve(listener, app).await?;
 
     Ok(())
 }
