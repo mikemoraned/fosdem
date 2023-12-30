@@ -31,6 +31,8 @@ pub struct Event {
 
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
 
+const MAX_POOL_CONNECTIONS: u32 = 10;
+
 impl Queryable {
     pub async fn connect(
         db_host: &str,
@@ -43,7 +45,7 @@ impl Queryable {
         debug!("Connecting to DB");
         let db_url = format!("postgres://postgres:{}@{}/postgres", db_password, db_host);
         let pool = PgPoolOptions::new()
-            .max_connections(5)
+            .max_connections(MAX_POOL_CONNECTIONS)
             .connect(&db_url)
             .await?;
         Ok(Queryable {
@@ -150,10 +152,6 @@ impl Queryable {
 
         if find_related {
             debug!("Running query to find related events");
-            // let mut expanded_entries: Vec<SearchItem> = entries.clone();
-            // for entry in expanded_entries.iter_mut() {
-            //     entry.related = Some(self.find_similar_events(&entry.event.title, 5).await?);
-            // }
             let jobs = entries.into_iter().map(|mut entry| async {
                 entry.related = Some(
                     self.find_similar_events(&entry.event.title, 5)
