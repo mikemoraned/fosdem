@@ -56,6 +56,20 @@ impl Queryable {
     }
 
     #[tracing::instrument(skip(self))]
+    pub async fn load_all_titles(&self) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+        debug!("Running Query to find all titles");
+        let rows = sqlx::query("SELECT title FROM events_2")
+            .fetch_all(&self.pool)
+            .await?;
+        let mut titles = vec![];
+        for row in rows {
+            let title: String = row.try_get("title")?;
+            titles.push(title);
+        }
+        Ok(titles)
+    }
+
+    #[tracing::instrument(skip(self))]
     pub async fn find_related_events(
         &self,
         title: &String,

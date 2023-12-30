@@ -10,3 +10,4 @@ dotenvy = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 webapp = { path = "../webapp" }
+shared = { path = "../shared" }

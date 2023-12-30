@@ -656,6 +656,7 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "dotenvy",
+ "shared",
  "tokio",
  "tracing",
  "tracing-subscriber",
@@ -2023,7 +2024,9 @@ dependencies = [
 name = "shared"
 version = "0.0.0"
 dependencies = [
+ "dotenvy",
  "futures",
+ "indicatif",
  "log",
  "openai_dive",
  "pgvector",
@@ -2879,11 +2882,15 @@ dependencies = [
  "askama",
  "axum",
  "axum-valid",
+ "clap",
+ "dotenvy",
+ "indicatif",
  "serde",
  "shared",
  "tokio",
  "tower-http",
  "tracing",
+ "tracing-subscriber",
  "validator",
 ]
 

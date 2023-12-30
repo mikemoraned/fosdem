@@ -1,5 +1,6 @@
 use axum::{http::StatusCode, routing::get};
 use dotenvy;
+use shared::env::load_secret;
 use tokio::net::TcpListener;
 use tracing::{info, warn};
 use tracing_subscriber;
@@ -7,16 +8,6 @@ use webapp::router::router;
 
 async fn health() -> StatusCode {
     StatusCode::NO_CONTENT
-}
-
-fn load_secret(name: &str) -> String {
-    let secret = dotenvy::var(&name).expect(&format!("{} is not set", &name));
-    let suffix = secret[(secret.len() - 3)..].to_string();
-    info!(
-        "Loaded secret with name '{}', ending with '{}'",
-        name, suffix
-    );
-    secret
 }
 
 #[tokio::main]

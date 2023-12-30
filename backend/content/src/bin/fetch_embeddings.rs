@@ -1,11 +1,11 @@
 use std::fs::File;
 
 use clap::Parser;
-use content::progress_bar;
 use dotenvy;
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
 use serde::Deserialize;
+use shared::cli::progress_bar;
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
