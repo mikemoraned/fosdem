@@ -2,7 +2,6 @@ use std::sync::Arc;
 
 use askama::Template;
 use axum::{
-    debug_handler,
     extract::{Query, State},
     response::Html,
     routing::get,
@@ -38,13 +37,14 @@ struct SearchTemplate {
 #[template(path = "index.html")]
 struct IndexTemplate {}
 
+#[tracing::instrument]
 async fn index() -> Html<String> {
     let page = IndexTemplate {};
     let html = page.render().unwrap();
     Html(html)
 }
 
-#[debug_handler]
+#[tracing::instrument]
 async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,

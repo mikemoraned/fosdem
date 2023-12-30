@@ -10,4 +10,5 @@ askama = "0.12.1"
 axum = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }
+tracing = { workspace = true }
 shared = { path = "../shared" }

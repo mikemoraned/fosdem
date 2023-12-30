@@ -2850,6 +2850,7 @@ dependencies = [
  "serde",
  "shared",
  "tokio",
+ "tracing",
  "validator",
 ]
 
