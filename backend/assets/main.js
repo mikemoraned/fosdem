@@ -15,6 +15,10 @@ function createSimulation(nodes, links, distanceScale) {
   return simulation;
 }
 
+function openLink(node) {
+  window.open(node.url, "_blank");
+}
+
 function vis(data, initMinDistance, initMaxDistance) {
   const { nodes, links } = data;
 
@@ -72,6 +76,7 @@ function vis(data, initMinDistance, initMaxDistance) {
 
   linkSelection.append("title").text((d) => d.distance);
   nodeSelection.append("title").text((d) => d.title);
+  nodeSelection.on("click", (e) => openLink(e.target.__data__));
 
   function distanceControl(minDistance, maxDistance) {
     const minSeparation = 0.01;
