@@ -8,7 +8,7 @@ function createSimulation(nodes, links, distanceScale) {
         .id((d) => d.index)
         .distance((d) => distanceScale * d.distance)
     )
-    .force("charge", d3.forceManyBody())
+    .force("charge", d3.forceManyBody().strength(-40))
     .force("x", d3.forceX())
     .force("y", d3.forceY());
 
@@ -47,7 +47,7 @@ function vis(data, initMinDistance, initMaxDistance) {
     .selectAll("line")
     .data(links)
     .join("line")
-    .attr("stroke-width", (d) => d.distance);
+    .attr("stroke-width", (d) => 0.1 * distanceScale * d.distance);
 
   const nodeSelection = svg
     .append("g")
@@ -56,7 +56,7 @@ function vis(data, initMinDistance, initMaxDistance) {
     .selectAll("circle")
     .data(nodes)
     .join("circle")
-    .attr("r", 5);
+    .attr("r", 2);
 
   function tick(simulation, linkSelection, nodeSelection) {
     simulation.on("tick", () => {
