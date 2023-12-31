@@ -15,7 +15,7 @@ function createSimulation(nodes, links, distanceScale) {
   return simulation;
 }
 
-function vis(data) {
+function vis(data, initMaxDistance) {
   const { nodes, links } = data;
 
   const width = 928;
@@ -23,7 +23,8 @@ function vis(data) {
 
   const distanceScale = 100;
 
-  var simulation = createSimulation(nodes, links, distanceScale);
+  const filteredLinks = links.filter((d) => d.distance <= initMaxDistance);
+  var simulation = createSimulation(nodes, filteredLinks, distanceScale);
 
   // Create the SVG container.
   const svg = d3
@@ -69,8 +70,10 @@ function vis(data) {
 
   function distanceControl(maxDistance) {
     console.log(maxDistance);
-    simulation.stop();
     const filteredLinks = links.filter((d) => d.distance <= maxDistance);
+    console.dir(filteredLinks);
+    simulation.stop();
+
     linkSelection.data(filteredLinks);
     simulation = createSimulation(nodes, filteredLinks, distanceScale);
     tick(simulation, linkSelection, nodeSelection);
@@ -83,13 +86,14 @@ console.log("Loading");
 const data = await d3.json("/assets/all.limit2.json");
 console.log(data);
 
-const [svgElement, distanceControlFn] = vis(data);
 const containerElement = document.getElementById("container");
-containerElement.append(svgElement);
 const distanceFilterElement = document.querySelector(
   "#controls input.distance_filter"
 );
-console.log(distanceFilterElement);
+
+const currentMaxDistance = distanceFilterElement.value;
+const [svgElement, distanceControlFn] = vis(data, currentMaxDistance);
+containerElement.append(svgElement);
 distanceFilterElement.addEventListener("input", (e) => {
   distanceControlFn(distanceFilterElement.value);
 });
