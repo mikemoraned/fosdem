@@ -11,6 +11,10 @@ use webapp::related::{D3Force, Link, Node};
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
+    /// maximum number of related items to include per event
+    #[arg(short, long)]
+    limit: u8,
+
     /// output json file
     #[arg(short, long)]
     json: String,
@@ -42,11 +46,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         });
     }
 
-    info!("Loading all related Events and converting to Links");
+    info!(
+        "Loading all related Events (limit: {}) and converting to Links",
+        args.limit
+    );
     let mut links: Vec<Link> = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
-        let related = queryable.find_related_events(&event.title, 5).await?;
+        let related = queryable
+            .find_related_events(&event.title, args.limit)
+            .await?;
         let source = *titles_covered.get(&event.title).unwrap();
         for item in related.iter() {
             let target = *titles_covered.get(&item.event.title).unwrap();
