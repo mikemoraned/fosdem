@@ -3,6 +3,8 @@ members = ["content", "shared", "fly", "webapp"]
 resolver = "2"
 
 [workspace.dependencies]
+clap = { version = "4.4.12", features = ["derive"] }
+indicatif = "0.17.7"
 openai_dive = "0.3.7"
 sqlx = { version = "0.7.3", features = [
     "runtime-tokio",
@@ -13,6 +15,11 @@ pgvector = { version = "0.3.2", features = ["sqlx"] }
 log = "0.4.20"
 url = { version = "2.5.0", features = ["serde"] }
 serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
 axum = { version = "0.7.3", features = ["macros"] }
 tokio = { version = "1.35.1", features = ["rt-multi-thread", "macros"] }
+futures = "0.3.30"
 dotenvy = "0.15.7"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+tower-http = { version = "0.5.0", features = ["fs", "cors"] }

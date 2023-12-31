@@ -3,6 +3,8 @@ content/**/data
 supabase/**/.branches
 supabase/**/.temp
 supabase/**/.env
-fly.toml
+fly*.toml
 
 target/*
+
+Dockerfile*

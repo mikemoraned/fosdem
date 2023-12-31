@@ -2,8 +2,8 @@ use std::sync::Arc;
 
 use askama::Template;
 use axum::{
-    debug_handler,
     extract::{Query, State},
+    http::Method,
     response::Html,
     routing::get,
     Router,
@@ -11,12 +11,14 @@ use axum::{
 use axum_valid::Valid;
 use serde::Deserialize;
 use shared::queryable::{Queryable, SearchItem};
+use tower_http::{
+    cors::{Any, CorsLayer},
+    services::ServeDir,
+};
 use validator::Validate;
 
-#[derive(Clone, Debug)]
-struct AppState {
-    queryable: Arc<Queryable>,
-}
+use crate::related::related;
+use crate::state::AppState;
 
 #[derive(Deserialize, Validate, Debug)]
 struct Params {
@@ -38,13 +40,14 @@ struct SearchTemplate {
 #[template(path = "index.html")]
 struct IndexTemplate {}
 
+#[tracing::instrument]
 async fn index() -> Html<String> {
     let page = IndexTemplate {};
     let html = page.render().unwrap();
     Html(html)
 }
 
-#[debug_handler]
+#[tracing::instrument]
 async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
@@ -75,9 +78,17 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
         ),
     };
 
+    let cors = CorsLayer::new()
+        .allow_methods([Method::GET])
+        // allow requests from any origin
+        .allow_origin(Any);
+
     let router = Router::new()
         .route("/", get(index))
         .route("/search", get(search))
+        .route("/related/", get(related))
+        .layer(cors)
+        .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
 
     router

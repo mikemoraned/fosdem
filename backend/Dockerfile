@@ -12,5 +12,7 @@ RUN cargo build --release
 
 FROM fedora:34 AS runner
 COPY --from=builder /prod/target/release/fly /bin
+COPY --from=builder /prod/assets/ /assets/
+RUN ls -R .
 
 CMD ./bin/fly
