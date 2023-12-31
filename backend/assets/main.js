@@ -87,7 +87,6 @@ function vis(data, initMinDistance, initMaxDistance) {
 
     console.log(clampedMinDistance, clampedMaxDistance);
     const filteredLinks = filterLinks(clampedMinDistance, clampedMaxDistance);
-    console.dir(filteredLinks);
     simulation.stop();
 
     linkSelection.data(filteredLinks);
