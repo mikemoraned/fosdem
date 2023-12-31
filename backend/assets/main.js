@@ -56,7 +56,7 @@ function vis(data, initMinDistance, initMaxDistance) {
     .selectAll("circle")
     .data(nodes)
     .join("circle")
-    .attr("r", 2);
+    .attr("r", 4);
 
   function tick(simulation, linkSelection, nodeSelection) {
     simulation.on("tick", () => {
