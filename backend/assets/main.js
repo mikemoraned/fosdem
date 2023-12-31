@@ -89,7 +89,7 @@ function vis(data, initMinDistance, initMaxDistance) {
         ? maxDistance
         : clampedMinDistance + minSeparation;
 
-    console.log(clampedMinDistance, clampedMaxDistance);
+    console.log(`${clampedMinDistance} -> ${clampedMaxDistance}`);
     const filteredLinks = filterLinks(clampedMaxDistance);
     const clusteredLinks = filteredLinks.map((d) => {
       var rolledUp = {
