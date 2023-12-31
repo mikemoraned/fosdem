@@ -30,11 +30,11 @@
     - (/) switch plausible.io setup to use fly.dev domain name
     - (/) remove shuttle code and config files
     - (/) upgrade to latest libraries for axum etc (shuttle required older versions)
-- (x) show related items
+- (/) show related items
   - (/) show 5 related items per search item
   - (/) speed-up so that finding all related items is faster (less than a second for 20 items)
-  - (x) make error-handling more clear in `Queryable`
-  - (x) visualise all related items via D3
+  - (-) make error-handling more clear in `Queryable`
+  - (/) visualise all related items via D3
 - (x) improve fly.io deploy experience
   - (x) multi-stage Docker
 - (x) switch to bespoke domain name
