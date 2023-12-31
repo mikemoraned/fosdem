@@ -23,13 +23,11 @@ function vis(data, initMinDistance, initMaxDistance) {
 
   const distanceScale = 100;
 
-  function filterLinks(minDistance, maxDistance) {
-    return links.filter(
-      (d) => minDistance <= d.distance && d.distance <= maxDistance
-    );
+  function filterLinks(maxDistance) {
+    return links.filter((d) => d.distance <= maxDistance);
   }
 
-  const filteredLinks = filterLinks(initMinDistance, initMaxDistance);
+  const filteredLinks = filterLinks(initMaxDistance);
   var simulation = createSimulation(nodes, filteredLinks, distanceScale);
 
   // Create the SVG container.
@@ -86,11 +84,22 @@ function vis(data, initMinDistance, initMaxDistance) {
         : clampedMinDistance + minSeparation;
 
     console.log(clampedMinDistance, clampedMaxDistance);
-    const filteredLinks = filterLinks(clampedMinDistance, clampedMaxDistance);
+    const filteredLinks = filterLinks(clampedMaxDistance);
+    const clusteredLinks = filteredLinks.map((d) => {
+      var rolledUp = {
+        ...d,
+        distance: 0.05,
+      };
+      if (d.distance <= clampedMinDistance) {
+        return rolledUp;
+      } else {
+        return d;
+      }
+    });
     simulation.stop();
 
-    linkSelection.data(filteredLinks);
-    simulation = createSimulation(nodes, filteredLinks, distanceScale);
+    linkSelection.data(clusteredLinks);
+    simulation = createSimulation(nodes, clusteredLinks, distanceScale);
     tick(simulation, linkSelection, nodeSelection);
 
     return [clampedMinDistance, clampedMaxDistance];
