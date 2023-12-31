@@ -8,7 +8,7 @@ function createSimulation(nodes, links, distanceScale) {
         .id((d) => d.index)
         .distance((d) => distanceScale * d.distance)
     )
-    .force("charge", d3.forceManyBody().strength(-40))
+    .force("charge", d3.forceManyBody().strength(-20))
     .force("x", d3.forceX())
     .force("y", d3.forceY());
 
