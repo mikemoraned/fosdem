@@ -75,10 +75,15 @@ function vis(data, initMinDistance, initMaxDistance) {
   nodeSelection.append("title").text((d) => d.title);
 
   function distanceControl(minDistance, maxDistance) {
+    const minSeparation = 0.01;
     const clampedMinDistance =
-      minDistance <= maxDistance ? minDistance : maxDistance;
+      minDistance + minSeparation <= maxDistance
+        ? minDistance
+        : maxDistance - minSeparation;
     const clampedMaxDistance =
-      clampedMinDistance <= maxDistance ? maxDistance : clampedMinDistance;
+      clampedMinDistance + minSeparation <= maxDistance
+        ? maxDistance
+        : clampedMinDistance + minSeparation;
 
     console.log(clampedMinDistance, clampedMaxDistance);
     const filteredLinks = filterLinks(clampedMinDistance, clampedMaxDistance);
@@ -88,6 +93,8 @@ function vis(data, initMinDistance, initMaxDistance) {
     linkSelection.data(filteredLinks);
     simulation = createSimulation(nodes, filteredLinks, distanceScale);
     tick(simulation, linkSelection, nodeSelection);
+
+    return [clampedMinDistance, clampedMaxDistance];
   }
 
   return [svg.node(), distanceControl];
@@ -113,15 +120,13 @@ const [svgElement, distanceControlFn] = vis(
   currentMaxDistance
 );
 containerElement.append(svgElement);
-minDistanceFilterElement.addEventListener("input", (e) => {
-  distanceControlFn(
+function handleChange() {
+  const [clampedMinDistance, clampedMaxDistance] = distanceControlFn(
     minDistanceFilterElement.value,
     maxDistanceFilterElement.value
   );
-});
-maxDistanceFilterElement.addEventListener("input", (e) => {
-  distanceControlFn(
-    minDistanceFilterElement.value,
-    maxDistanceFilterElement.value
-  );
-});
+  minDistanceFilterElement.value = clampedMinDistance;
+  maxDistanceFilterElement.value = clampedMaxDistance;
+}
+minDistanceFilterElement.addEventListener("input", handleChange);
+maxDistanceFilterElement.addEventListener("input", handleChange);
