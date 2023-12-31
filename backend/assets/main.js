@@ -70,6 +70,7 @@ function vis(data, initMinDistance, initMaxDistance) {
 
   tick(simulation, linkSelection, nodeSelection);
 
+  linkSelection.append("title").text((d) => d.distance);
   nodeSelection.append("title").text((d) => d.title);
 
   function distanceControl(minDistance, maxDistance) {
