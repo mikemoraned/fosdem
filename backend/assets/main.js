@@ -15,7 +15,7 @@ function createSimulation(nodes, links, distanceScale) {
   return simulation;
 }
 
-function vis(data, initMaxDistance) {
+function vis(data, initMinDistance, initMaxDistance) {
   const { nodes, links } = data;
 
   const width = 928;
@@ -23,7 +23,13 @@ function vis(data, initMaxDistance) {
 
   const distanceScale = 100;
 
-  const filteredLinks = links.filter((d) => d.distance <= initMaxDistance);
+  function filterLinks(minDistance, maxDistance) {
+    return links.filter(
+      (d) => minDistance <= d.distance && d.distance <= maxDistance
+    );
+  }
+
+  const filteredLinks = filterLinks(initMinDistance, initMaxDistance);
   var simulation = createSimulation(nodes, filteredLinks, distanceScale);
 
   // Create the SVG container.
@@ -68,9 +74,14 @@ function vis(data, initMaxDistance) {
 
   nodeSelection.append("title").text((d) => d.title);
 
-  function distanceControl(maxDistance) {
-    console.log(maxDistance);
-    const filteredLinks = links.filter((d) => d.distance <= maxDistance);
+  function distanceControl(minDistance, maxDistance) {
+    const clampedMinDistance =
+      minDistance <= maxDistance ? minDistance : maxDistance;
+    const clampedMaxDistance =
+      clampedMinDistance <= maxDistance ? maxDistance : clampedMinDistance;
+
+    console.log(clampedMinDistance, clampedMaxDistance);
+    const filteredLinks = filterLinks(clampedMinDistance, clampedMaxDistance);
     console.dir(filteredLinks);
     simulation.stop();
 
@@ -87,13 +98,30 @@ const data = await d3.json("/assets/all.limit2.json");
 console.log(data);
 
 const containerElement = document.getElementById("container");
-const distanceFilterElement = document.querySelector(
-  "#controls input.distance_filter"
+const minDistanceFilterElement = document.querySelector(
+  "#controls input.min_distance_filter"
+);
+const maxDistanceFilterElement = document.querySelector(
+  "#controls input.max_distance_filter"
 );
 
-const currentMaxDistance = distanceFilterElement.value;
-const [svgElement, distanceControlFn] = vis(data, currentMaxDistance);
+const currentMinDistance = minDistanceFilterElement.value;
+const currentMaxDistance = maxDistanceFilterElement.value;
+const [svgElement, distanceControlFn] = vis(
+  data,
+  currentMinDistance,
+  currentMaxDistance
+);
 containerElement.append(svgElement);
-distanceFilterElement.addEventListener("input", (e) => {
-  distanceControlFn(distanceFilterElement.value);
+minDistanceFilterElement.addEventListener("input", (e) => {
+  distanceControlFn(
+    minDistanceFilterElement.value,
+    maxDistanceFilterElement.value
+  );
+});
+maxDistanceFilterElement.addEventListener("input", (e) => {
+  distanceControlFn(
+    minDistanceFilterElement.value,
+    maxDistanceFilterElement.value
+  );
 });
