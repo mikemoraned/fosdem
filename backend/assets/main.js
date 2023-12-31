@@ -1,4 +1,4 @@
-function related(data) {
+function simulation(data) {
   const { nodes, links } = data;
 
   // Specify the dimensions of the chart.
@@ -62,14 +62,25 @@ function related(data) {
     node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
   });
 
-  return svg.node();
+  function distanceControl(maxDistance) {
+    console.log(maxDistance);
+  }
+
+  return [svg.node(), distanceControl];
 }
 
 console.log("Loading");
 const data = await d3.json("/assets/all.json");
 console.log(data);
 
-const svg = related(data);
-console.log(svg);
-const container = document.getElementById("container");
-container.append(svg);
+const [svgElement, distanceControlFn] = simulation(data);
+const containerElement = document.getElementById("container");
+containerElement.append(svgElement);
+const distanceFilterElement = document.querySelector(
+  "#controls input.distance_filter"
+);
+console.log(distanceFilterElement);
+distanceFilterElement.addEventListener("input", (e) => {
+  //   console.log(distanceFilterElement.value);
+  distanceControlFn(distanceFilterElement.value);
+});
