@@ -16,6 +16,7 @@ function simulation(data) {
         .forceLink(links)
         .id((d) => d.index)
         .distance((d) => distanceScale * d.distance)
+        .strength((d) => 1)
     )
     .force("charge", d3.forceManyBody())
     .force("x", d3.forceX())
@@ -47,7 +48,6 @@ function simulation(data) {
     .data(nodes)
     .join("circle")
     .attr("r", 5);
-  // .attr("fill", (d) => color(d.group));
 
   node.append("title").text((d) => d.title);
 
@@ -64,6 +64,23 @@ function simulation(data) {
 
   function distanceControl(maxDistance) {
     console.log(maxDistance);
+    simulation.stop();
+    const linkForce = simulation.force("link");
+    linkForce.distance((d) => {
+      if (d.distance <= maxDistance) {
+        return distanceScale * d.distance;
+      } else {
+        return distanceScale;
+      }
+    });
+    linkForce.strength((d) => {
+      if (d.distance <= maxDistance) {
+        return 1.0;
+      } else {
+        return 0.0;
+      }
+    });
+    simulation.restart();
   }
 
   return [svg.node(), distanceControl];
@@ -80,7 +97,6 @@ const distanceFilterElement = document.querySelector(
   "#controls input.distance_filter"
 );
 console.log(distanceFilterElement);
-distanceFilterElement.addEventListener("input", (e) => {
-  //   console.log(distanceFilterElement.value);
+distanceFilterElement.addEventListener("change", (e) => {
   distanceControlFn(distanceFilterElement.value);
 });
