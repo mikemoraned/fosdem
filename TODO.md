@@ -35,6 +35,9 @@
   - (/) speed-up so that finding all related items is faster (less than a second for 20 items)
   - (-) make error-handling more clear in `Queryable`
   - (/) visualise all related items via D3
+- (x) use times and durations
+  - (x) import
+  - (x) ...
 - (x) improve fly.io deploy experience
   - (x) multi-stage Docker
 - (x) switch to bespoke domain name

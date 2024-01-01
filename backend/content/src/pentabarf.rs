@@ -25,6 +25,8 @@ pub struct Room {
 
 #[derive(XmlDeserialize, Default, Debug)]
 pub struct Event {
+    #[xmlserde(name = b"id", ty = "attr")]
+    pub id: u32,
     #[xmlserde(name = b"title", ty = "child")]
     pub title: Title,
     #[xmlserde(name = b"slug", ty = "child")]
