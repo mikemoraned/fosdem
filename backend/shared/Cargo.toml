@@ -17,3 +17,4 @@ tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 indicatif = { workspace = true }
 dotenvy = { workspace = true }
+chrono = { workspace = true }

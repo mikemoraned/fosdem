@@ -1,3 +1,4 @@
+use chrono::NaiveDate;
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -27,6 +28,7 @@ pub struct SearchItem {
 #[derive(Serialize, Debug, Clone)]
 pub struct Event {
     pub id: u32,
+    pub date: NaiveDate,
     pub title: String,
     pub slug: String,
     pub url: Url,
@@ -88,7 +90,7 @@ impl Queryable {
 
         debug!("Running Query to find Events similar to title");
         let sql = "
-    SELECT ev.id, ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
+    SELECT ev.id, ev.date, ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
     FROM embedding_1 em JOIN events_4 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
@@ -103,6 +105,7 @@ impl Queryable {
         for row in rows {
             entries.push(self.row_to_search_item(&row)?);
         }
+        debug!("Found {} Events similar to title", entries.len());
         Ok(entries)
     }
 
@@ -126,7 +129,7 @@ impl Queryable {
 
         debug!("Running query to find similar events");
         let sql = "
-    SELECT ev.id, ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
+    SELECT ev.id, ev.date, ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
     FROM embedding_1 em JOIN events_4 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
@@ -139,6 +142,7 @@ impl Queryable {
         for row in rows {
             entries.push(self.row_to_search_item(&row)?);
         }
+        debug!("Found {} Events", entries.len());
 
         if find_related {
             debug!("Running query to find related events");
@@ -150,7 +154,12 @@ impl Queryable {
                 );
                 entry
             });
-            Ok(join_all(jobs).await)
+            let entries_with_related = join_all(jobs).await;
+            debug!(
+                "Found {} Events, with related Events",
+                entries_with_related.len()
+            );
+            Ok(entries_with_related)
         } else {
             Ok(entries)
         }
@@ -167,6 +176,7 @@ impl Queryable {
 
     fn row_to_event(&self, row: &PgRow) -> Result<Event, Box<dyn std::error::Error>> {
         let id: i64 = row.try_get("id")?;
+        let date: NaiveDate = row.try_get("date")?;
         let title: String = row.try_get("title")?;
         let slug: String = row.try_get("slug")?;
         let url = self.event_url(&slug)?;
@@ -174,6 +184,7 @@ impl Queryable {
 
         Ok(Event {
             id: id as u32,
+            date,
             title,
             slug,
             url,
