@@ -2,7 +2,10 @@ use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
 use serde::Serialize;
-use sqlx::{postgres::PgPoolOptions, Pool, Postgres, Row};
+use sqlx::{
+    postgres::{PgPoolOptions, PgRow},
+    Pool, Postgres, Row,
+};
 use tracing::debug;
 use url::Url;
 
@@ -63,16 +66,7 @@ impl Queryable {
             .await?;
         let mut events = vec![];
         for row in rows {
-            let title: String = row.try_get("title")?;
-            let slug: String = row.try_get("slug")?;
-            let url = self.event_url(&slug)?;
-            let r#abstract: String = row.try_get("abstract")?;
-            events.push(Event {
-                title,
-                slug,
-                url,
-                r#abstract,
-            });
+            events.push(self.row_to_event(&row)?);
         }
         Ok(events)
     }
@@ -106,21 +100,7 @@ impl Queryable {
             .await?;
         let mut entries = vec![];
         for row in rows {
-            let title: String = row.try_get("title")?;
-            let distance: f64 = row.try_get("distance")?;
-            let slug: String = row.try_get("slug")?;
-            let url = self.event_url(&slug)?;
-            let r#abstract: String = row.try_get("abstract")?;
-            entries.push(SearchItem {
-                event: Event {
-                    title,
-                    slug,
-                    url,
-                    r#abstract,
-                },
-                distance,
-                related: None,
-            });
+            entries.push(self.row_to_search_item(&row)?);
         }
         Ok(entries)
     }
@@ -156,21 +136,7 @@ impl Queryable {
             .await?;
         let mut entries = vec![];
         for row in rows {
-            let title: String = row.try_get("title")?;
-            let distance: f64 = row.try_get("distance")?;
-            let slug: String = row.try_get("slug")?;
-            let url = self.event_url(&slug)?;
-            let r#abstract: String = row.try_get("abstract")?;
-            entries.push(SearchItem {
-                event: Event {
-                    title: title.clone(),
-                    slug,
-                    url,
-                    r#abstract,
-                },
-                distance,
-                related: None,
-            });
+            entries.push(self.row_to_search_item(&row)?);
         }
 
         if find_related {
@@ -187,6 +153,29 @@ impl Queryable {
         } else {
             Ok(entries)
         }
+    }
+
+    fn row_to_search_item(&self, row: &PgRow) -> Result<SearchItem, Box<dyn std::error::Error>> {
+        let distance: f64 = row.try_get("distance")?;
+        Ok(SearchItem {
+            event: self.row_to_event(&row)?,
+            distance,
+            related: None,
+        })
+    }
+
+    fn row_to_event(&self, row: &PgRow) -> Result<Event, Box<dyn std::error::Error>> {
+        let title: String = row.try_get("title")?;
+        let slug: String = row.try_get("slug")?;
+        let url = self.event_url(&slug)?;
+        let r#abstract: String = row.try_get("abstract")?;
+
+        Ok(Event {
+            title,
+            slug,
+            url,
+            r#abstract,
+        })
     }
 
     fn event_url(&self, slug: &str) -> Result<Url, Box<dyn std::error::Error>> {
