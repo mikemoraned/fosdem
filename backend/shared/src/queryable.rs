@@ -1,4 +1,4 @@
-use chrono::NaiveDate;
+use chrono::{NaiveDate, NaiveTime};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -28,6 +28,7 @@ pub struct SearchItem {
 pub struct Event {
     pub id: u32,
     pub date: NaiveDate,
+    pub start: NaiveTime,
     pub duration: u32,
     pub title: String,
     pub slug: String,
@@ -90,7 +91,8 @@ impl Queryable {
 
         debug!("Running Query to find Events similar to title");
         let sql = "
-    SELECT ev.id, ev.date, ev.duration, ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
+    SELECT ev.id, ev.start, ev.date, ev.duration, ev.title, ev.slug, ev.abstract, 
+           em.embedding <-> ($2) AS distance
     FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
@@ -129,7 +131,8 @@ impl Queryable {
 
         debug!("Running query to find similar events");
         let sql = "
-    SELECT ev.id, ev.date, ev.duration, ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
+    SELECT ev.id, ev.date, ev.start, ev.duration, ev.title, ev.slug, ev.abstract, 
+           em.embedding <-> ($1) AS distance
     FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
@@ -177,6 +180,7 @@ impl Queryable {
     fn row_to_event(&self, row: &PgRow) -> Result<Event, Box<dyn std::error::Error>> {
         let id: i64 = row.try_get("id")?;
         let date: NaiveDate = row.try_get("date")?;
+        let start: NaiveTime = row.try_get("start")?;
         let duration: i64 = row.try_get("duration")?;
         let title: String = row.try_get("title")?;
         let slug: String = row.try_get("slug")?;
@@ -185,8 +189,9 @@ impl Queryable {
 
         Ok(Event {
             id: id as u32,
-            duration: duration as u32,
             date,
+            start,
+            duration: duration as u32,
             title,
             slug,
             url,
