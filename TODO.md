@@ -36,7 +36,8 @@
   - (-) make error-handling more clear in `Queryable`
   - (/) visualise all related items via D3
 - (x) use times and durations
-  - (x) import
+  - (x) import and show next to events in display
+  - (x) use the time of day to group items in d3 vis
   - (x) ...
 - (x) improve fly.io deploy experience
   - (x) multi-stage Docker
