@@ -26,6 +26,7 @@ pub struct SearchItem {
 
 #[derive(Serialize, Debug, Clone)]
 pub struct Event {
+    pub id: u32,
     pub title: String,
     pub slug: String,
     pub url: Url,
@@ -61,7 +62,7 @@ impl Queryable {
     #[tracing::instrument(skip(self))]
     pub async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
-        let rows = sqlx::query("SELECT title, slug, abstract FROM events_2")
+        let rows = sqlx::query("SELECT title, slug, abstract FROM events_4")
             .fetch_all(&self.pool)
             .await?;
         let mut events = vec![];
@@ -87,8 +88,8 @@ impl Queryable {
 
         debug!("Running Query to find Events similar to title");
         let sql = "
-    SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
-    FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
+    SELECT ev.id, ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
+    FROM embedding_1 em JOIN events_4 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
     ";
@@ -125,8 +126,8 @@ impl Queryable {
 
         debug!("Running query to find similar events");
         let sql = "
-    SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
-    FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
+    SELECT ev.id, ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
+    FROM embedding_1 em JOIN events_4 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
         let rows = sqlx::query(sql)
@@ -165,12 +166,14 @@ impl Queryable {
     }
 
     fn row_to_event(&self, row: &PgRow) -> Result<Event, Box<dyn std::error::Error>> {
+        let id: i64 = row.try_get("id")?;
         let title: String = row.try_get("title")?;
         let slug: String = row.try_get("slug")?;
         let url = self.event_url(&slug)?;
         let r#abstract: String = row.try_get("abstract")?;
 
         Ok(Event {
+            id: id as u32,
             title,
             slug,
             url,
