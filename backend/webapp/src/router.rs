@@ -43,12 +43,12 @@ mod filters {
 
     pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
         let similarity = 1.0 - distance;
-        Ok((if similarity <= 0.25 {
-            "fa-solid fa-circle-quarter-stroke"
-        } else if similarity <= 0.5 {
-            "fa-solid fa-circle-half-stroke"
+        Ok((if similarity <= 0.20 {
+            "fa-thin fa-circle"
+        } else if similarity <= 0.40 {
+            "fa-duotone fa-circle"
         } else {
-            "fa-solid fa-circle-three-quarters-stroke"
+            "fa-solid fa-circle"
         })
         .into())
     }
