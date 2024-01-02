@@ -34,6 +34,11 @@ function vis(data, initMinDistance, initMaxDistance) {
   const filteredLinks = filterLinks(initMaxDistance);
   var simulation = createSimulation(nodes, filteredLinks, distanceScale);
 
+  const colorScale = d3
+    .scaleLinear()
+    .domain(d3.extent(nodes.map((d) => d.time_slot)))
+    .range(["blue", "red"]);
+
   // Create the SVG container.
   const svg = d3
     .create("svg:svg")
@@ -41,6 +46,15 @@ function vis(data, initMinDistance, initMaxDistance) {
     .attr("height", height)
     .attr("viewBox", [-width / 2, -height / 2, width, height])
     .attr("style", "max-width: 100%; height: auto;");
+
+  // a circle at 0,0, for debugging
+  svg
+    .append("g")
+    .append("circle")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("fill", "black")
+    .attr("r", 7);
 
   const linkSelection = svg
     .append("g")
@@ -58,6 +72,7 @@ function vis(data, initMinDistance, initMaxDistance) {
     .selectAll("circle")
     .data(nodes)
     .join("circle")
+    .attr("fill", (d) => colorScale(d.time_slot))
     .attr("r", 4);
 
   function tick(simulation, linkSelection, nodeSelection) {
@@ -75,7 +90,7 @@ function vis(data, initMinDistance, initMaxDistance) {
   tick(simulation, linkSelection, nodeSelection);
 
   linkSelection.append("title").text((d) => d.distance);
-  nodeSelection.append("title").text((d) => d.title);
+  nodeSelection.append("title").text((d) => `${d.title}, ${d.day}:${d.start}`);
   nodeSelection.on("click", (e) => openLink(e.target.__data__));
 
   function distanceControl(minDistance, maxDistance) {
@@ -115,7 +130,7 @@ function vis(data, initMinDistance, initMaxDistance) {
 }
 
 console.log("Loading");
-const data = await d3.json("/assets/all.json");
+const data = await d3.json("/assets/all.limit5.json");
 console.log(data);
 
 const containerElement = document.getElementById("container");

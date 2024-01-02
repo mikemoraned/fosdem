@@ -1,8 +1,11 @@
+use chrono::{NaiveDate, NaiveTime};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
-use serde::Serialize;
-use sqlx::{postgres::PgPoolOptions, Pool, Postgres, Row};
+use sqlx::{
+    postgres::{PgPoolOptions, PgRow},
+    Pool, Postgres, Row,
+};
 use tracing::debug;
 use url::Url;
 
@@ -14,15 +17,19 @@ pub struct Queryable {
     pool: Pool<Postgres>,
 }
 
-#[derive(Serialize, Debug, Clone)]
+#[derive(Debug, Clone)]
 pub struct SearchItem {
     pub event: Event,
     pub distance: f64,
     pub related: Option<Vec<SearchItem>>,
 }
 
-#[derive(Serialize, Debug, Clone)]
+#[derive(Debug, Clone)]
 pub struct Event {
+    pub id: u32,
+    pub date: NaiveDate,
+    pub start: NaiveTime,
+    pub duration: u32,
     pub title: String,
     pub slug: String,
     pub url: Url,
@@ -58,21 +65,13 @@ impl Queryable {
     #[tracing::instrument(skip(self))]
     pub async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
-        let rows = sqlx::query("SELECT title, slug, abstract FROM events_2")
-            .fetch_all(&self.pool)
-            .await?;
+        let rows =
+            sqlx::query("SELECT id, start, date, duration, title, slug, abstract FROM events_5")
+                .fetch_all(&self.pool)
+                .await?;
         let mut events = vec![];
         for row in rows {
-            let title: String = row.try_get("title")?;
-            let slug: String = row.try_get("slug")?;
-            let url = self.event_url(&slug)?;
-            let r#abstract: String = row.try_get("abstract")?;
-            events.push(Event {
-                title,
-                slug,
-                url,
-                r#abstract,
-            });
+            events.push(self.row_to_event(&row)?);
         }
         Ok(events)
     }
@@ -93,8 +92,9 @@ impl Queryable {
 
         debug!("Running Query to find Events similar to title");
         let sql = "
-    SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($2) AS distance
-    FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
+    SELECT ev.id, ev.start, ev.date, ev.duration, ev.title, ev.slug, ev.abstract, 
+           em.embedding <-> ($2) AS distance
+    FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
     ";
@@ -106,22 +106,9 @@ impl Queryable {
             .await?;
         let mut entries = vec![];
         for row in rows {
-            let title: String = row.try_get("title")?;
-            let distance: f64 = row.try_get("distance")?;
-            let slug: String = row.try_get("slug")?;
-            let url = self.event_url(&slug)?;
-            let r#abstract: String = row.try_get("abstract")?;
-            entries.push(SearchItem {
-                event: Event {
-                    title,
-                    slug,
-                    url,
-                    r#abstract,
-                },
-                distance,
-                related: None,
-            });
+            entries.push(self.row_to_search_item(&row)?);
         }
+        debug!("Found {} Events similar to title", entries.len());
         Ok(entries)
     }
 
@@ -145,8 +132,9 @@ impl Queryable {
 
         debug!("Running query to find similar events");
         let sql = "
-    SELECT ev.title, ev.slug, ev.abstract, em.embedding <-> ($1) AS distance
-    FROM embedding_1 em JOIN events_2 ev ON ev.title = em.title
+    SELECT ev.id, ev.date, ev.start, ev.duration, ev.title, ev.slug, ev.abstract, 
+           em.embedding <-> ($1) AS distance
+    FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
         let rows = sqlx::query(sql)
@@ -156,22 +144,9 @@ impl Queryable {
             .await?;
         let mut entries = vec![];
         for row in rows {
-            let title: String = row.try_get("title")?;
-            let distance: f64 = row.try_get("distance")?;
-            let slug: String = row.try_get("slug")?;
-            let url = self.event_url(&slug)?;
-            let r#abstract: String = row.try_get("abstract")?;
-            entries.push(SearchItem {
-                event: Event {
-                    title: title.clone(),
-                    slug,
-                    url,
-                    r#abstract,
-                },
-                distance,
-                related: None,
-            });
+            entries.push(self.row_to_search_item(&row)?);
         }
+        debug!("Found {} Events", entries.len());
 
         if find_related {
             debug!("Running query to find related events");
@@ -183,10 +158,46 @@ impl Queryable {
                 );
                 entry
             });
-            Ok(join_all(jobs).await)
+            let entries_with_related = join_all(jobs).await;
+            debug!(
+                "Found {} Events, with related Events",
+                entries_with_related.len()
+            );
+            Ok(entries_with_related)
         } else {
             Ok(entries)
         }
+    }
+
+    fn row_to_search_item(&self, row: &PgRow) -> Result<SearchItem, Box<dyn std::error::Error>> {
+        let distance: f64 = row.try_get("distance")?;
+        Ok(SearchItem {
+            event: self.row_to_event(&row)?,
+            distance,
+            related: None,
+        })
+    }
+
+    fn row_to_event(&self, row: &PgRow) -> Result<Event, Box<dyn std::error::Error>> {
+        let id: i64 = row.try_get("id")?;
+        let date: NaiveDate = row.try_get("date")?;
+        let start: NaiveTime = row.try_get("start")?;
+        let duration: i64 = row.try_get("duration")?;
+        let title: String = row.try_get("title")?;
+        let slug: String = row.try_get("slug")?;
+        let url = self.event_url(&slug)?;
+        let r#abstract: String = row.try_get("abstract")?;
+
+        Ok(Event {
+            id: id as u32,
+            date,
+            start,
+            duration: duration as u32,
+            title,
+            slug,
+            url,
+            r#abstract,
+        })
     }
 
     fn event_url(&self, slug: &str) -> Result<Url, Box<dyn std::error::Error>> {

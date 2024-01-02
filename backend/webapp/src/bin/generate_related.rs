@@ -1,5 +1,6 @@
 use std::{collections::HashMap, fs::File, io::Write};
 
+use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 use dotenvy;
 
@@ -36,13 +37,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
     let mut nodes: Vec<Node> = vec![];
+    let time_slots: Vec<(NaiveDate, NaiveTime)> =
+        events.iter().map(|e| (e.date, e.start)).collect();
+    let time_slot_ids = build_time_slot_ids(&time_slots);
     for event in events.iter() {
         let new_index = nodes.len();
         titles_covered.insert(event.title.clone(), new_index);
+        let time_slot = (event.date, event.start);
+        let time_slot_id = time_slot_ids.get(&time_slot).unwrap();
         nodes.push(Node {
             index: new_index,
             title: event.title.clone(),
             url: event.url.clone(),
+            time_slot: *time_slot_id,
+            day: event.date.format("%a").to_string(),
+            start: event.start.format("%H:%M").to_string(),
         });
     }
 
@@ -79,4 +88,44 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     json_file.write_all(json.as_bytes())?;
 
     Ok(())
+}
+
+fn build_time_slot_ids(
+    time_slots: &[(NaiveDate, NaiveTime)],
+) -> HashMap<(NaiveDate, NaiveTime), usize> {
+    let mut sorted = vec![];
+    for time_slot in time_slots {
+        sorted.push(time_slot);
+    }
+    sorted.sort();
+    sorted.dedup();
+    let mut time_slot_ids = HashMap::new();
+    for (id, time_slot) in sorted.into_iter().enumerate() {
+        time_slot_ids.insert(time_slot.clone(), id);
+    }
+    time_slot_ids
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_build_time_slot_ids() {
+        let day1 = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let day2 = NaiveDate::from_ymd_opt(2024, 2, 4).unwrap();
+        let slot1 = NaiveTime::from_hms_opt(13, 0, 0).unwrap();
+        let slot2 = NaiveTime::from_hms_opt(14, 10, 0).unwrap();
+
+        let mut expected = HashMap::new();
+        expected.insert((day1, slot1), 0);
+        expected.insert((day1, slot2), 1);
+        expected.insert((day2, slot1), 2);
+        expected.insert((day2, slot2), 3);
+
+        let time_slots = vec![(day2, slot2), (day2, slot1), (day1, slot1), (day1, slot2)];
+        let actual = build_time_slot_ids(&time_slots);
+
+        assert_eq!(expected, actual);
+    }
 }

@@ -25,12 +25,30 @@ pub struct Room {
 
 #[derive(XmlDeserialize, Default, Debug)]
 pub struct Event {
+    #[xmlserde(name = b"id", ty = "attr")]
+    pub id: u32,
+    #[xmlserde(name = b"start", ty = "child")]
+    pub start: Start,
+    #[xmlserde(name = b"duration", ty = "child")]
+    pub duration: Duration,
     #[xmlserde(name = b"title", ty = "child")]
     pub title: Title,
     #[xmlserde(name = b"slug", ty = "child")]
     pub slug: Abstract,
     #[xmlserde(name = b"abstract", ty = "child")]
     pub r#abstract: Abstract,
+}
+
+#[derive(XmlDeserialize, Default, Debug)]
+pub struct Start {
+    #[xmlserde(ty = "text")]
+    pub value: String,
+}
+
+#[derive(XmlDeserialize, Default, Debug)]
+pub struct Duration {
+    #[xmlserde(ty = "text")]
+    pub value: String,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]

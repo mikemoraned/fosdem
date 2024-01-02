@@ -5,9 +5,13 @@
     <dl>
         {% for item in items %}
         <dt>
-            <b><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></b>: distance: {{ item.distance }}
+            <b><a href="{{ item.event.url }}">"{{ item.event.title }}" ({{ item.event.id }})</a></b>: distance: {{ item.distance }}
         </dt>
         <dd>
+            <p>
+            {{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes
+            </p>
+
             <quote>
             {{ item.event.abstract|safe }}
             </quote>
@@ -18,7 +22,7 @@
             <ul>
                 {% for item in items %}
                 <li>
-                    <b><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></b>: distance: {{ item.distance }}
+                    <b><a href="{{ item.event.url }}">"{{ item.event.title }}" ({{ item.event.id }})</a></b>: distance: {{ item.distance }}
                 </li>
                 {% endfor %}
             </ul>

@@ -19,4 +19,5 @@ dotenvy = { workspace = true }
 openai_dive = { workspace = true }
 log = { workspace = true }
 serde = { workspace = true }
+chrono = { workspace = true }
 shared = { path = "../shared" }
