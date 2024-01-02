@@ -26,7 +26,6 @@ struct Params {
     q: String,
     #[validate(range(min = 1, max = 20))]
     limit: u8,
-    related: Option<String>,
 }
 
 #[derive(Template, Debug)]
@@ -52,11 +51,7 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
-    match state
-        .queryable
-        .search(&params.q, params.limit, params.related.is_some())
-        .await
-    {
+    match state.queryable.search(&params.q, params.limit, true).await {
         Ok(items) => {
             let page = SearchTemplate {
                 query: params.q,
