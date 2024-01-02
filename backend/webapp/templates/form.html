@@ -2,11 +2,13 @@
 
 <form method="GET" action="/search">
     <div class="field">
-        <label class="label">Search</label>
-        <div class="control">
-            <input class="input is-primary" type="search" name="q" value="{{ query }}" required minlength="2" maxlength="100">
+        <div class="control has-icons-left">
+            <input class="input is-primary" type="search" name="q" value="{{ query }}" 
+                   required minlength="2" maxlength="100" placeholder="Search Query (can be anything)">
+            <span class="icon is-small is-left">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
         </div>
-        <p class="help">Search Query (can be anything)</p>
     </div>
     <input type="text" name="limit" hidden value="20">
     <div class="field">
