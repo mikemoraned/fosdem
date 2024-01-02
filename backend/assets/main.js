@@ -1,4 +1,9 @@
-function createSimulation(nodes, links, distanceScale) {
+function createSimulation(nodes, links, distanceScale, dimensions) {
+  const { width, height } = dimensions;
+  const maxGroup = Math.max(...nodes.map((d) => d.group));
+  console.log("max group", maxGroup);
+  const numGroups = maxGroup + 1;
+
   const simulation = d3
     .forceSimulation(nodes)
     .force(
@@ -9,6 +14,14 @@ function createSimulation(nodes, links, distanceScale) {
         .distance((d) => distanceScale * d.distance)
     )
     .force("charge", d3.forceManyBody().strength(-20))
+    // .force(
+    //   "x",
+    //   d3.forceX().x((d) => {
+    //     const stride = width / numGroups;
+    //     const offset = stride * d.group;
+    //     return offset;
+    //   })
+    // )
     .force("x", d3.forceX())
     .force("y", d3.forceY());
 
@@ -21,9 +34,15 @@ function openLink(node) {
 
 function vis(data, initMinDistance, initMaxDistance) {
   const { nodes, links } = data;
+  // for now, fake the group by assigning each to a group arbitrarily
+  const numGroups = 20;
+  nodes.forEach((d) => {
+    d.group = d.index % numGroups;
+  });
 
   const width = 928;
   const height = 680;
+  const dimensions = { width, height };
 
   const distanceScale = 100;
 
@@ -32,7 +51,14 @@ function vis(data, initMinDistance, initMaxDistance) {
   }
 
   const filteredLinks = filterLinks(initMaxDistance);
-  var simulation = createSimulation(nodes, filteredLinks, distanceScale);
+  var simulation = createSimulation(
+    nodes,
+    filteredLinks,
+    distanceScale,
+    dimensions
+  );
+
+  const color = d3.scaleOrdinal(d3.schemeTableau10);
 
   // Create the SVG container.
   const svg = d3
@@ -41,6 +67,15 @@ function vis(data, initMinDistance, initMaxDistance) {
     .attr("height", height)
     .attr("viewBox", [-width / 2, -height / 2, width, height])
     .attr("style", "max-width: 100%; height: auto;");
+
+  // a circle at 0,0, for debugging
+  svg
+    .append("g")
+    .append("circle")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("fill", "black")
+    .attr("r", 7);
 
   const linkSelection = svg
     .append("g")
@@ -58,6 +93,7 @@ function vis(data, initMinDistance, initMaxDistance) {
     .selectAll("circle")
     .data(nodes)
     .join("circle")
+    .attr("fill", (d) => color(d.group))
     .attr("r", 4);
 
   function tick(simulation, linkSelection, nodeSelection) {
@@ -105,7 +141,12 @@ function vis(data, initMinDistance, initMaxDistance) {
     simulation.stop();
 
     linkSelection.data(clusteredLinks);
-    simulation = createSimulation(nodes, clusteredLinks, distanceScale);
+    simulation = createSimulation(
+      nodes,
+      clusteredLinks,
+      distanceScale,
+      dimensions
+    );
     tick(simulation, linkSelection, nodeSelection);
 
     return [clampedMinDistance, clampedMaxDistance];
