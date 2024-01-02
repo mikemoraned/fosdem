@@ -5,7 +5,7 @@
     
         {% for item in items %}
         <div class="columns">
-            <div class="column">
+            <div class="column is-two-thirds">
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">
@@ -17,7 +17,23 @@
                             {{ item.event.abstract|safe }}
                         </div>
                     </div>
+                    <footer class="card-footer">
+                        <a href="{{ item.event.url }}" class="card-footer-item">Open on FOSDEM site</a>
+                    </footer>
                 </div>
+            </div>
+            <div class="column">
+                {% if item.related.is_some() %}
+                {% let items = item.related.as_ref().unwrap() %}
+                <div class="box">
+                    Related:
+                    <ul>
+                    {% for item in items %}
+                    <li><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
