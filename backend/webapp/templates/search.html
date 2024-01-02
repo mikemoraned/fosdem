@@ -18,11 +18,8 @@
                 <div class="card">
                     <div class="card-content">
                         <p class="title is-5">
-                            <span class="icon-text">
-                                <span class="icon">
-                                    <i class="fa-light fa-calendar-day"></i>
-                                </span>
-                                <span>{{ item.event.title }}</span>
+                            <span>
+                                <i class="fa-light fa-calendar-day"></i>&nbsp;"{{ item.event.title }}"</span>
                             </span>
                         </p>
                         <p class="subtitle is-7">{{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes</p>
@@ -33,7 +30,14 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="{{ item.event.url }}" class="card-footer-item">Open on FOSDEM site</a>
+                        <a href="{{ item.event.url }}" class="card-footer-item">
+                            <span class="icon-text">
+                                <span>Open on FOSDEM site</span>
+                                <span class="icon">
+                                    <i class="fa-light fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </span>
+                        </a>
                     </footer>
                 </div>
             </div>
@@ -49,7 +53,12 @@
                     </span>:
                     <ul>
                     {% for item in items %}
-                    <li><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></li>
+
+                    <li>
+                        <a href="{{ item.event.url }}">
+                            <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
+                        </a>
+                    </li>
                     {% endfor %}
                     </ul>
                 </div>
