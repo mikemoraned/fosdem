@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{%- import "form.html" as forms -%}
+{% block content %}
+    {% call forms::search(query) %}
+    
+        {% for item in items %}
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            {{ item.event.title }}
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ item.event.abstract|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    
+{% endblock %}

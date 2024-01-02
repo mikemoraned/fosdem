@@ -22,7 +22,7 @@ use crate::state::AppState;
 
 #[derive(Deserialize, Validate, Debug)]
 struct Params {
-    #[validate(length(min = 3, max = 100))]
+    #[validate(length(min = 2, max = 100))]
     q: String,
     #[validate(range(min = 1, max = 20))]
     limit: u8,
@@ -30,7 +30,7 @@ struct Params {
 }
 
 #[derive(Template, Debug)]
-#[template(path = "search.html")]
+#[template(path = "search_bulma.html")]
 struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
