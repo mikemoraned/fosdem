@@ -87,7 +87,7 @@ function vis(data, initMinDistance, initMaxDistance) {
   tick(simulation, linkSelection, nodeSelection);
 
   linkSelection.append("title").text((d) => d.distance);
-  nodeSelection.append("title").text((d) => d.title);
+  nodeSelection.append("title").text((d) => `${d.title}, ${d.day}:${d.start}`);
   nodeSelection.on("click", (e) => openLink(e.target.__data__));
 
   function distanceControl(minDistance, maxDistance) {

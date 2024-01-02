@@ -53,6 +53,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             title: event.title.clone(),
             url: event.url.clone(),
             time_slot: *time_slot_id,
+            day: event.date.format("%a").to_string(),
+            start: event.start.format("%H:%M").to_string(),
         });
     }
 
