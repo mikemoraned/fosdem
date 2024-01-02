@@ -35,6 +35,12 @@ struct SearchTemplate {
     items: Vec<SearchItem>,
 }
 
+mod filters {
+    pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
+        Ok("fa-circle-quarter-stroke".into())
+    }
+}
+
 #[derive(Template)]
 #[template(path = "index.html")]
 struct IndexTemplate {}

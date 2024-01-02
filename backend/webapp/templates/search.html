@@ -22,7 +22,10 @@
                                 <i class="fa-light fa-calendar-day"></i>&nbsp;"{{ item.event.title }}"</span>
                             </span>
                         </p>
-                        <p class="subtitle is-7">{{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes</p>
+                        <p class="subtitle is-7">
+                            {{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes, 
+                            <span><i class="fa-regular {{item.distance|distance_icon}}"></i>&nbsp;{{ item.distance }}</span>
+                        </p>
                     </div>
                     <div class="card-content">
                         <div class="content">
