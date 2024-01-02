@@ -2,30 +2,32 @@
 {%- import "form.html" as forms -%}
 
 {% block content %}
-<div class="columns">
-    <div class="column">
-        <div class="content">
-            <p>
-                This is a small website where you can find events in
-                <a href="https://fosdem.org/2024/">FOSDEM 2024</a> based on content search.
-            </p>
-            <p>
-                <a href="https://www.houseofmoran.com">I</a> wrote this because, whilst
-                I really enjoy attending FOSDEM, the amount of possible things to see is large,
-                and there is always a chance I can miss something.
-            </p>
-            <p>
-                The <a href="https://fosdem.org/2024/">main website</a> does have search, so, 
-                <em>to be totally honest</em> I should also say I just wanted to play about with 
-                OpenAI Embeddings.
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <div class="content">
+                <p>
+                    This is a small website where you can find events in
+                    <a href="https://fosdem.org/2024/">FOSDEM 2024</a> based on content search.
+                </p>
+                <p>
+                    <a href="https://www.houseofmoran.com">I</a> wrote this because, whilst
+                    I really enjoy attending FOSDEM, the amount of possible things to see is large,
+                    and there is always a chance I can miss something.
+                </p>
+                <p>
+                    The <a href="https://fosdem.org/2024/">main website</a> does have search, so, 
+                    <em>to be totally honest</em> I should also say I just wanted to play about with 
+                    OpenAI Embeddings.
 
-                See <a href="https://github.com/mikemoraned/fosdem">Github</a> for how this was built.
-            </p>
+                    See <a href="https://github.com/mikemoraned/fosdem">Github</a> for how this was built.
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            {% call forms::search("") %}
         </div>
     </div>
-    <div class="column">
-        {% call forms::search("") %}
-    </div>
-</div>
+</section>
 {% endblock %}
 
