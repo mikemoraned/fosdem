@@ -36,8 +36,21 @@ struct SearchTemplate {
 }
 
 mod filters {
+    pub fn distance_similarity(distance: &f64) -> ::askama::Result<String> {
+        let similarity = 1.0 - distance;
+        Ok(format!("{:.2}", similarity).into())
+    }
+
     pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
-        Ok("fa-circle-quarter-stroke".into())
+        let similarity = 1.0 - distance;
+        Ok((if similarity <= 0.25 {
+            "fa-solid fa-circle-quarter-stroke"
+        } else if similarity <= 0.5 {
+            "fa-solid fa-circle-half-stroke"
+        } else {
+            "fa-solid fa-circle-three-quarters-stroke"
+        })
+        .into())
     }
 }
 
