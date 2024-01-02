@@ -34,7 +34,10 @@ function vis(data, initMinDistance, initMaxDistance) {
   const filteredLinks = filterLinks(initMaxDistance);
   var simulation = createSimulation(nodes, filteredLinks, distanceScale);
 
-  const color = d3.scaleOrdinal(d3.schemeTableau10);
+  const colorScale = d3
+    .scaleLinear()
+    .domain(d3.extent(nodes.map((d) => d.time_slot)))
+    .range(["blue", "red"]);
 
   // Create the SVG container.
   const svg = d3
@@ -69,7 +72,7 @@ function vis(data, initMinDistance, initMaxDistance) {
     .selectAll("circle")
     .data(nodes)
     .join("circle")
-    .attr("fill", (d) => color(d.time_slot))
+    .attr("fill", (d) => colorScale(d.time_slot))
     .attr("r", 4);
 
   function tick(simulation, linkSelection, nodeSelection) {
