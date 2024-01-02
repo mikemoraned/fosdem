@@ -41,7 +41,12 @@
                 {% if item.related.is_some() %}
                 {% let items = item.related.as_ref().unwrap() %}
                 <div class="box">
-                    Related:
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fa-light fa-chart-network"></i>
+                        </span>
+                        <span>Related</span>
+                    </span>:
                     <ul>
                     {% for item in items %}
                     <li><a href="{{ item.event.url }}">"{{ item.event.title }}"</a></li>
