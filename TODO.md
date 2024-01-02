@@ -45,5 +45,3 @@
     - (x) fix non-disappearing lines
 - (x) switch to bespoke domain name
   - (x) switch plausible.io to domain name
-- (x) improve fly.io deploy experience
-  - (x) multi-stage Docker
