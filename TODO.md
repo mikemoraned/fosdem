@@ -37,7 +37,7 @@
   - (/) visualise all related items via D3
 - (x) use times and durations
   - (/) import and show next to events in display
-  - (x) use the time of day to color items in D3 vis
+  - (/) use the time of day to color items in D3 vis
 - (x) polish / UI
   - (x) add design system (bulma?)
   - (x) D3 vis more stable
