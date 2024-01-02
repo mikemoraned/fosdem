@@ -39,7 +39,8 @@
   - (/) import and show next to events in display
   - (/) use the time of day to color items in D3 vis
 - (x) polish / UI
-  - (x) add design system (bulma?)
+  - (/) add design system (bulma?)
+  - (x) add icons
   - (x) D3 vis more stable
     - (x) don't re-start sim each time
     - (x) fix non-disappearing lines
