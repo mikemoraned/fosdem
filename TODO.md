@@ -35,7 +35,7 @@
   - (/) speed-up so that finding all related items is faster (less than a second for 20 items)
   - (-) make error-handling more clear in `Queryable`
   - (/) visualise all related items via D3
-- (x) use times and durations
+- (/) use times and durations
   - (/) import and show next to events in display
   - (/) use the time of day to color items in D3 vis
 - (x) polish / UI
