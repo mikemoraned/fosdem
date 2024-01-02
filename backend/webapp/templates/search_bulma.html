@@ -3,9 +3,7 @@
 {% block content %}
     <div class="columns">
         <div class="column is-two-thirds">
-            <h1 class="is-size-1 is-size-3-mobile">
-                Search results for "{{ query }}"
-            </h1>
+            <h1 class="title">Search results for "{{ query }}"</h1>
         </div>
         <div class="column">
             {% call forms::search(query) %}
