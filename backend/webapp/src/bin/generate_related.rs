@@ -1,5 +1,6 @@
 use std::{collections::HashMap, fs::File, io::Write};
 
+use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 use dotenvy;
 
@@ -36,14 +37,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
     let mut nodes: Vec<Node> = vec![];
+    let mut time_slot_ids: HashMap<(NaiveDate, NaiveTime), usize> = HashMap::new();
+    let mut next_time_slot_id = 0;
     for event in events.iter() {
         let new_index = nodes.len();
         titles_covered.insert(event.title.clone(), new_index);
+        let time_slot = (event.date, event.start);
+        let time_slot_id = time_slot_ids.entry(time_slot).or_insert_with(|| {
+            let id = next_time_slot_id;
+            next_time_slot_id += 1;
+            id
+        });
         nodes.push(Node {
             index: new_index,
             title: event.title.clone(),
             url: event.url.clone(),
-            start: event.start.format("%H:%M").to_string(),
+            time_slot: *time_slot_id,
         });
     }
 

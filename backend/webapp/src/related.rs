@@ -15,7 +15,7 @@ pub struct Node {
     pub index: usize,
     pub title: String,
     pub url: Url,
-    pub start: String
+    pub time_slot: usize,
 }
 
 #[derive(Serialize)]
