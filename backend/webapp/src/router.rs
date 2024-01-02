@@ -29,7 +29,7 @@ struct Params {
 }
 
 #[derive(Template, Debug)]
-#[template(path = "search_bulma.html")]
+#[template(path = "search.html")]
 struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
