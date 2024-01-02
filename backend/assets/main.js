@@ -156,7 +156,7 @@ function vis(data, initMinDistance, initMaxDistance) {
 }
 
 console.log("Loading");
-const data = await d3.json("/assets/all.json");
+const data = await d3.json("/assets/all.limit5.json");
 console.log(data);
 
 const containerElement = document.getElementById("container");

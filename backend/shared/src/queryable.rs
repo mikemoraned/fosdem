@@ -65,9 +65,10 @@ impl Queryable {
     #[tracing::instrument(skip(self))]
     pub async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
-        let rows = sqlx::query("SELECT title, slug, abstract FROM events_5")
-            .fetch_all(&self.pool)
-            .await?;
+        let rows =
+            sqlx::query("SELECT id, start, date, duration, title, slug, abstract FROM events_5")
+                .fetch_all(&self.pool)
+                .await?;
         let mut events = vec![];
         for row in rows {
             events.push(self.row_to_event(&row)?);

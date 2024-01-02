@@ -43,6 +43,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             index: new_index,
             title: event.title.clone(),
             url: event.url.clone(),
+            start: event.start.format("%H:%M").to_string(),
         });
     }
 
