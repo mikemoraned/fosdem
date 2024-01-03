@@ -24,7 +24,7 @@
                         </p>
                         <p class="subtitle is-7">
                             {{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes, 
-                            <span><i class="{{item.distance|distance_icon}}"></i>&nbsp;{{item.distance|distance_similarity}}</span>
+                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                         </p>
                     </div>
                     <div class="card-content">
@@ -59,7 +59,7 @@
 
                     <li>
                         <a href="{{ item.event.url }}">
-                            <span><i class="{{item.distance|distance_icon}}"></i>&nbsp;{{item.distance|distance_similarity}}</span>
+                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
                         </a>
                     </li>

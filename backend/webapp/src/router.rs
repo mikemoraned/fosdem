@@ -43,13 +43,12 @@ mod filters {
 
     pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
         let similarity = 1.0 - distance;
-        Ok((if similarity <= 0.20 {
-            "fa-thin fa-circle"
-        } else if similarity <= 0.40 {
-            "fa-duotone fa-circle"
-        } else {
-            "fa-solid fa-circle"
-        })
+        let assumed_max_typical_similarity = 0.60;
+        let opacity = (similarity / assumed_max_typical_similarity).min(1.0f64);
+        Ok(format!(
+            "<i class=\"fa-solid fa-circle\" style=\"opacity: {}\"></i>",
+            opacity
+        )
         .into())
     }
 }
