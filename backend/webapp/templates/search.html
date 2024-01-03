@@ -10,9 +10,23 @@
                 {% call forms::search(query) %}
             </div>
         </div>
+
+        <div class="columns">
+            <div class="column is-two-thirds">
+            {% for item in items %}
+            <a href="#{{item.event.id}}">
+                <span title="{{item.distance|distance_similarity}}">
+                    {{item.distance|distance_icon|safe}}
+                </span>
+            </a>
+            {% endfor %}
+            </div>
+            <div class="column"></div>
+        </div>
     
         {% for item in items %}
 
+        <a name="{{item.event.id}}"></a>
         <div class="columns">
             <div class="column is-two-thirds">
                 <div class="card">
