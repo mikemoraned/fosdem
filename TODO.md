@@ -38,11 +38,12 @@
 - (/) use times and durations
   - (/) import and show next to events in display
   - (/) use the time of day to color items in D3 vis
-- (x) polish / UI
+- (/) polish / UI
   - (/) add design system (bulma?)
   - (/) add icons
-  - (x) D3 vis more stable
-    - (x) don't re-start sim each time
-    - (x) fix non-disappearing lines
 - (x) switch to bespoke domain name
   - (x) switch plausible.io to domain name
+- (x) stable / usable clustering
+  - (x) pre-cluster on Rust side
+  - (x) don't re-start sim each time
+  - (x) fix non-disappearing lines
