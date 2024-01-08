@@ -22,11 +22,10 @@ use crate::state::AppState;
 
 #[derive(Deserialize, Validate, Debug)]
 struct Params {
-    #[validate(length(min = 3, max = 100))]
+    #[validate(length(min = 2, max = 100))]
     q: String,
     #[validate(range(min = 1, max = 20))]
     limit: u8,
-    related: Option<String>,
 }
 
 #[derive(Template, Debug)]
@@ -34,6 +33,24 @@ struct Params {
 struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
+}
+
+mod filters {
+    pub fn distance_similarity(distance: &f64) -> ::askama::Result<String> {
+        let similarity = 1.0 - distance;
+        Ok(format!("{:.2}", similarity).into())
+    }
+
+    pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
+        let similarity = 1.0 - distance;
+        let assumed_max_typical_similarity = 0.60;
+        let opacity = (similarity / assumed_max_typical_similarity).min(1.0f64);
+        Ok(format!(
+            "<i class=\"fa-solid fa-circle\" style=\"opacity: {}\"></i>",
+            opacity
+        )
+        .into())
+    }
 }
 
 #[derive(Template)]
@@ -52,11 +69,7 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
-    match state
-        .queryable
-        .search(&params.q, params.limit, params.related.is_some())
-        .await
-    {
+    match state.queryable.search(&params.q, params.limit, true).await {
         Ok(items) => {
             let page = SearchTemplate {
                 query: params.q,

@@ -1,34 +1,89 @@
 {% extends "layout.html" %}
 {%- import "form.html" as forms -%}
 {% block content %}
-    {% call forms::search(query) %}
-    <dl>
+    <section class="section">
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <h1 class="is-size-1 is-size-4-mobile">Search results for "{{ query }}"</h1>
+            </div>
+            <div class="column">
+                {% call forms::search(query) %}
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-two-thirds">
+            {% for item in items %}
+            <a href="#{{item.event.id}}">
+                <span title="{{item.distance|distance_similarity}}">
+                    {{item.distance|distance_icon|safe}}
+                </span>
+            </a>
+            {% endfor %}
+            </div>
+            <div class="column"></div>
+        </div>
+    
         {% for item in items %}
-        <dt>
-            <b><a href="{{ item.event.url }}">"{{ item.event.title }}" ({{ item.event.id }})</a></b>: distance: {{ item.distance }}
-        </dt>
-        <dd>
-            <p>
-            {{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes
-            </p>
 
-            <quote>
-            {{ item.event.abstract|safe }}
-            </quote>
+        <a name="{{item.event.id}}"></a>
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title is-5">
+                            <span>
+                                <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ item.event.title }}"</span>
+                            </span>
+                        </p>
+                        <p class="subtitle is-7">
+                            {{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes, 
+                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ item.event.abstract|safe }}
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ item.event.url }}" class="card-footer-item">
+                            <span class="icon-text">
+                                <span>Open on FOSDEM site</span>
+                                <span class="icon">
+                                    <i class="fa-light fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </footer>
+                </div>
+            </div>
+            <div class="column">
+                {% if item.related.is_some() %}
+                {% let items = item.related.as_ref().unwrap() %}
+                <div class="box">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+                        </span>
+                        <span>Related</span>
+                    </span>:
+                    <ul>
+                    {% for item in items %}
 
-            {% if item.related.is_some() %}
-            {% let items = item.related.as_ref().unwrap() %}
-            <p>Related:
-            <ul>
-                {% for item in items %}
-                <li>
-                    <b><a href="{{ item.event.url }}">"{{ item.event.title }}" ({{ item.event.id }})</a></b>: distance: {{ item.distance }}
-                </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            </p>
-        </dd>
+                    <li>
+                        <a href="{{ item.event.url }}">
+                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                            <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
         {% endfor %}
-    </dl>
+    </section>
+    
 {% endblock %}
