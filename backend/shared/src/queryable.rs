@@ -43,7 +43,7 @@ const MAX_RELATED_EVENTS: u8 = 5;
 
 impl Queryable {
     pub async fn connect(
-        db_host: &str,
+        db_id: &str,
         db_password: &str,
         openai_api_key: &str,
     ) -> Result<Queryable, Box<dyn std::error::Error>> {
@@ -51,7 +51,10 @@ impl Queryable {
         let openai_client = Client::new(openai_api_key.into());
 
         debug!("Connecting to DB");
-        let db_url = format!("postgres://postgres:{}@{}/postgres", db_password, db_host);
+        let db_url = format!(
+            "postgres://postgres:{}@db.{}.supabase.co/postgres",
+            db_password, db_id
+        );
         let pool = PgPoolOptions::new()
             .max_connections(MAX_POOL_CONNECTIONS)
             .connect(&db_url)

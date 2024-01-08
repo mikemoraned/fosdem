@@ -84,10 +84,10 @@ async fn search(
     }
 }
 
-pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {
+pub async fn router(openai_api_key: &str, db_id: &str, db_password: &str) -> Router {
     let state = AppState {
         queryable: Arc::new(
-            Queryable::connect(&db_host, &db_key, &openai_api_key)
+            Queryable::connect(&db_id, &db_password, &openai_api_key)
                 .await
                 .unwrap(),
         ),

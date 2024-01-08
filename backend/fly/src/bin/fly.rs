@@ -23,10 +23,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
-    let db_host = load_secret("DB_HOST");
-    let db_key = load_secret("DB_KEY");
+    let db_id = load_secret("DB_ID");
+    let db_password = load_secret("DB_PASSWORD");
 
-    let router = router(&openai_api_key, &db_host, &db_key).await;
+    let router = router(&openai_api_key, &db_id, &db_password).await;
     let app = router.route("/health", get(health));
 
     let listener = TcpListener::bind("0.0.0.0:8000").await?;

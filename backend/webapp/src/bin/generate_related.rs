@@ -29,11 +29,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
-    let db_host = load_secret("DB_HOST");
-    let db_key = load_secret("DB_KEY");
+    let db_id = load_secret("DB_ID");
+    let db_password = load_secret("DB_PASSWORD");
 
     info!("Loading all Events and converting to Nodes");
-    let queryable = Queryable::connect(&db_host, &db_key, &openai_api_key).await?;
+    let queryable = Queryable::connect(&db_id, &db_password, &openai_api_key).await?;
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
     let mut nodes: Vec<Node> = vec![];
