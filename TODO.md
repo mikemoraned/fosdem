@@ -49,6 +49,8 @@
   - (/) add some example queries that you won't find on main site
   - (/) add "connections" to main nav, and use "connections" consistently
   - (/) log what searches people are doing
+- (x) more searchable content
+  - (x) add author names and dev rooms titles
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
