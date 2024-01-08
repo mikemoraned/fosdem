@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOSDEM 2024</title>
-    <script defer data-domain="fosdem2024.fly.dev" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="fosdem.houseofmoran.io" src="https://plausible.io/js/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/c8c6207275.css" crossorigin="anonymous">
 </head>
@@ -13,8 +13,31 @@
 <body>
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
+            <a class="navbar-item" href="https://fosdem.houseofmoran.io/">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-duotone fa-house-person-leave"></i>
+                    </span>
+                    <span>FOSDEM</span>
+                </span>
+            </a>
+
             <a class="navbar-item" href="/">
-                FOSDEM
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <span>Search</span>
+                </span>
+            </a>
+
+            <a class="navbar-item" href="/connections/">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+                    </span>
+                    <span>Connections</span>
+                </span>
             </a>
         </div>
     </nav>
@@ -22,8 +45,18 @@
     {% block content %}{% endblock %}
 
     <footer class="footer">
-        <div class="container">
-            <a href="/">About</a>
+        <div class="content has-text-centered">
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fa-duotone fa-copyright"></i>
+                </span>
+                <span>Copyrights</span>:
+            </span>
+            <p>FOSDEM conference content: <a href="http://creativecommons.org/licenses/by/2.0/be/deed.en">licensed under the Creative Commons Attribution 2.0 Belgium Licence.</a></p>
+            <p>All content such as talks and biographies is the sole responsibility of the speaker.</p>
+            <p>All code and other content 
+                    <a href="https://github.com/mikemoraned/fosdem/blob/main/LICENSE">Apache 2.0 Licensed by Mike Moran</a>
+            </p>
         </div>
     </footer>
 </body>

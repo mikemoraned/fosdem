@@ -15,6 +15,7 @@ use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
+use tracing::info;
 use validator::Validate;
 
 use crate::related::related;
@@ -69,6 +70,7 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
+    info!("search params: {:?}", params);
     match state.queryable.search(&params.q, params.limit, true).await {
         Ok(items) => {
             let page = SearchTemplate {
@@ -99,7 +101,7 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
     let router = Router::new()
         .route("/", get(index))
         .route("/search", get(search))
-        .route("/related/", get(related))
+        .route("/connections/", get(related))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
