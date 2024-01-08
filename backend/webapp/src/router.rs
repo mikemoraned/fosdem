@@ -99,7 +99,7 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
     let router = Router::new()
         .route("/", get(index))
         .route("/search", get(search))
-        .route("/related/", get(related))
+        .route("/connections/", get(related))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
