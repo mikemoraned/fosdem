@@ -41,8 +41,12 @@
 - (/) polish / UI
   - (/) add design system (bulma?)
   - (/) add icons
-- (x) switch to bespoke domain name
-  - (x) switch plausible.io to domain name
+- (x) general release
+  - (/) switch to bespoke domain name, https://fosdem.houseofmoran.io
+  - (/) get cert
+  - (/) switch plausible.io to domain name
+  - (/) switch "home" to always go to https://fosdem.houseofmoran.io
+  - (x) add some example queries that you won't find on main site
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
