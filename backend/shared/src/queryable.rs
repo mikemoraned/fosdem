@@ -40,6 +40,7 @@ const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
 
 const MAX_POOL_CONNECTIONS: u32 = 10;
 const MAX_RELATED_EVENTS: u8 = 5;
+const DB_REGION: &str = "eu-central-1";
 
 impl Queryable {
     pub async fn connect(
@@ -52,8 +53,8 @@ impl Queryable {
 
         debug!("Connecting to DB");
         let db_url = format!(
-            "postgres://postgres:{}@db.{}.supabase.co/postgres",
-            db_password, db_id
+            "postgres://postgres.{}:{}@aws-0-{}.pooler.supabase.com:6543/postgres",
+            db_id, db_password, DB_REGION
         );
         let pool = PgPoolOptions::new()
             .max_connections(MAX_POOL_CONNECTIONS)

@@ -15,7 +15,7 @@ use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
-use tracing::info;
+use tracing::{error, info};
 use validator::Validate;
 
 use crate::related::related;
@@ -80,7 +80,10 @@ async fn search(
             let html = page.render().unwrap();
             Ok(Html(html))
         }
-        Err(_) => Err("search failed".into()),
+        Err(e) => {
+            error!("search failed: {}", e);
+            Err("search failed".into())
+        }
     }
 }
 
