@@ -28,7 +28,7 @@ pub struct Link {
 }
 
 #[derive(Template, Debug)]
-#[template(path = "related.html")]
+#[template(path = "connections.html")]
 struct RelatedTemplate {}
 
 #[tracing::instrument]
