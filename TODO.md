@@ -48,6 +48,7 @@
   - (/) switch "home" to always go to https://fosdem.houseofmoran.io
   - (/) add some example queries that you won't find on main site
   - (/) add "connections" to main nav, and use "connections" consistently
+  - (/) log what searches people are doing
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time

@@ -15,6 +15,7 @@ use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
+use tracing::info;
 use validator::Validate;
 
 use crate::related::related;
@@ -69,6 +70,7 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
+    info!("search params: {:?}", params);
     match state.queryable.search(&params.q, params.limit, true).await {
         Ok(items) => {
             let page = SearchTemplate {
