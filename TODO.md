@@ -50,6 +50,7 @@
   - (/) add "connections" to main nav, and use "connections" consistently
   - (/) log what searches people are doing
 - (x) spike: remove (external) DB dependency
+  - (x) convert `Queryable` into a trait
   - (x) find implementation of Vector distance which works outside of DB
   - (x) re-implement Queryable using a "DB" which can just take the CSV files as input
   - (x) deploy to staging and leave running for a few days
