@@ -39,6 +39,42 @@ impl QueryableTrait for Queryable {
         }
         Ok(events)
     }
+
+    #[tracing::instrument(skip(self))]
+    async fn find_related_events(
+        &self,
+        title: &String,
+        limit: u8,
+    ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
+        debug!("Running Query to find embedding for title");
+        let embedding: pgvector::Vector =
+            sqlx::query("SELECT embedding FROM embedding_1 WHERE title = $1")
+                .bind(title)
+                .fetch_one(&self.pool)
+                .await?
+                .try_get("embedding")?;
+
+        debug!("Running Query to find Events similar to title");
+        let sql = "
+    SELECT ev.id, ev.start, ev.date, ev.duration, ev.title, ev.slug, ev.abstract, 
+           em.embedding <-> ($2) AS distance
+    FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
+    WHERE ev.title != $1
+    ORDER BY em.embedding <-> ($2) LIMIT $3;
+    ";
+        let rows = sqlx::query(sql)
+            .bind(title)
+            .bind(embedding)
+            .bind(limit as i32)
+            .fetch_all(&self.pool)
+            .await?;
+        let mut entries = vec![];
+        for row in rows {
+            entries.push(self.row_to_search_item(&row)?);
+        }
+        debug!("Found {} Events similar to title", entries.len());
+        Ok(entries)
+    }
 }
 
 impl Queryable {

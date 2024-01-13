@@ -22,4 +22,9 @@ pub struct Event {
 
 pub trait QueryableTrait {
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>>;
+    async fn find_related_events(
+        &self,
+        title: &String,
+        limit: u8,
+    ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 }
