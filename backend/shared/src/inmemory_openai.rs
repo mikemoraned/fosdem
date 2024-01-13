@@ -34,18 +34,22 @@ impl InMemoryOpenAIQueryable {
     }
 
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+        debug!("Loading events data from {:?}", events_path);
+
         let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
+        let mut events = vec![];
         for result in rdr.deserialize() {
             let event: Event = result?;
-            println!("{:?}", event);
+            events.push(event);
         }
-        todo!()
+        events.sort_by(|a, b| a.id.cmp(&b.id));
+        Ok(events)
     }
 }
 
 impl Queryable for InMemoryOpenAIQueryable {
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
-        todo!()
+        Ok(self.events.clone())
     }
 
     async fn find_related_events(

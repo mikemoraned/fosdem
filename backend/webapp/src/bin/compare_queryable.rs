@@ -32,15 +32,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Creating InMemoryOpenAIQueryable");
     let queryable2 = InMemoryOpenAIQueryable::connect(&args.csv_data_dir, &openai_api_key).await?;
 
-    compare_events(&queryable1, &queryable2);
+    compare_events(&queryable1, &queryable2).await?;
 
     Ok(())
 }
 
-fn compare_events<T1, T2>(queryable1: &T1, queryable2: &T2)
+async fn compare_events<T1, T2>(
+    queryable1: &T1,
+    queryable2: &T2,
+) -> Result<(), Box<dyn std::error::Error>>
 where
     T1: Queryable,
     T2: Queryable,
 {
-    todo!()
+    let q1_events = queryable1.load_all_events().await?;
+    let q2_events = queryable2.load_all_events().await?;
+    assert_eq!(q1_events, q2_events);
+
+    Ok(())
 }
