@@ -49,6 +49,11 @@
   - (/) add some example queries that you won't find on main site
   - (/) add "connections" to main nav, and use "connections" consistently
   - (/) log what searches people are doing
+- (x) spike: remove (external) DB dependency
+  - (x) find implementation of Vector distance which works outside of DB
+  - (x) re-implement Queryable using a "DB" which can just take the CSV files as input
+  - (x) deploy to staging and leave running for a few days
+  - (x) ...
 - (x) more searchable content
   - (x) add author names and dev rooms titles
 - (x) stable / usable clustering

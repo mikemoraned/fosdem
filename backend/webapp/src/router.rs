@@ -10,7 +10,7 @@ use axum::{
 };
 use axum_valid::Valid;
 use serde::Deserialize;
-use shared::queryable::{Queryable, SearchItem};
+use shared::{queryable::Queryable, queryable_trait::SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,

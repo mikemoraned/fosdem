@@ -9,7 +9,10 @@ use sqlx::{
 use tracing::debug;
 use url::Url;
 
-use crate::openai::get_embedding;
+use crate::{
+    openai::get_embedding,
+    queryable_trait::{Event, QueryableTrait, SearchItem},
+};
 
 #[derive(Debug)]
 pub struct Queryable {
@@ -17,29 +20,25 @@ pub struct Queryable {
     pool: Pool<Postgres>,
 }
 
-#[derive(Debug, Clone)]
-pub struct SearchItem {
-    pub event: Event,
-    pub distance: f64,
-    pub related: Option<Vec<SearchItem>>,
-}
-
-#[derive(Debug, Clone)]
-pub struct Event {
-    pub id: u32,
-    pub date: NaiveDate,
-    pub start: NaiveTime,
-    pub duration: u32,
-    pub title: String,
-    pub slug: String,
-    pub url: Url,
-    pub r#abstract: String,
-}
-
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
 
 const MAX_POOL_CONNECTIONS: u32 = 10;
 const MAX_RELATED_EVENTS: u8 = 5;
+
+impl QueryableTrait for Queryable {
+    async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+        debug!("Running Query to find all events");
+        let rows =
+            sqlx::query("SELECT id, start, date, duration, title, slug, abstract FROM events_5")
+                .fetch_all(&self.pool)
+                .await?;
+        let mut events = vec![];
+        for row in rows {
+            events.push(self.row_to_event(&row)?);
+        }
+        Ok(events)
+    }
+}
 
 impl Queryable {
     pub async fn connect(
