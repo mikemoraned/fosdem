@@ -16,7 +16,8 @@ indicatif = { workspace = true }
 tokio = { workspace = true }
 dotenvy = { workspace = true }
 openai_dive = { workspace = true }
-log = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
 serde = { workspace = true }
 chrono = { workspace = true }
 csv = { workspace = true }

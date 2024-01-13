@@ -14,6 +14,8 @@ pub struct InMemoryOpenAIQueryable {
     events: Vec<Event>,
 }
 
+struct Embedding {}
+
 impl InMemoryOpenAIQueryable {
     pub async fn connect(
         csv_data_dir: &Path,

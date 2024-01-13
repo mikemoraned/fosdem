@@ -3,6 +3,7 @@ use std::fs::File;
 use chrono::{NaiveTime, Timelike};
 use clap::{arg, Parser};
 use content::pentabarf::Schedule;
+use tracing::{debug, info};
 use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
@@ -22,14 +23,20 @@ struct Args {
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    tracing_subscriber::fmt::init();
+
     let args = Args::parse();
 
+    info!("Reading from {} into string", args.pentabarf);
     let xml = std::fs::read_to_string(args.pentabarf)?;
-    let mut csv = csv::Writer::from_writer(File::create(args.csv)?);
+    info!("Will write to {}", args.csv);
+    let mut csv = csv::Writer::from_writer(File::create(&args.csv)?);
+    debug!("Deserialising");
     let schedule: Schedule = xml_deserialize_from_str(&xml)?;
     csv.write_record(&[
         "id", "date", "start", "duration", "title", "slug", "url", "abstract",
     ])?;
+    let mut row_count = 0;
     for day in schedule.days {
         for room in day.rooms {
             for event in room.events {
@@ -43,9 +50,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     event_url(&event.slug.value)?.to_string(),
                     event.r#abstract.value,
                 ])?;
+                row_count += 1;
             }
         }
     }
+    info!("Wrote {} rows to {}", row_count, args.csv);
 
     Ok(())
 }
