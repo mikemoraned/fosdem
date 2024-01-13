@@ -9,19 +9,20 @@ use crate::queryable::{Event, Queryable, SearchItem};
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
     openai_client: Client,
-    events: Vec<Event>,
+    events: Vec<EmbeddedEvent>,
 }
 
 type OpenAIVector = DVector<f32>;
+
 #[derive(Debug)]
-struct Embedding {
-    title: String,
+struct EmbeddedEvent {
+    event: Event,
     openai_embedding: OpenAIVector,
 }
 
 impl Queryable for InMemoryOpenAIQueryable {
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
-        Ok(self.events.clone())
+        Ok(self.events.iter().map(|e| e.event.clone()).collect())
     }
 
     async fn find_related_events(
@@ -51,16 +52,9 @@ impl InMemoryOpenAIQueryable {
         let openai_client = Client::new(openai_api_key.into());
 
         debug!("Loading data from {:?}", csv_data_dir);
-
-        let events_path = csv_data_dir.join("event_6.csv");
-        let events = parsing::parse_all_events(&events_path)?;
-        let embeddings_path = csv_data_dir.join("embedding.csv");
-        let embeddings: Vec<Embedding> = parsing::parse_all_embeddings(&embeddings_path)?;
-        println!("embeddings: {:?}", embeddings);
-
         Ok(InMemoryOpenAIQueryable {
             openai_client,
-            events,
+            events: parsing::parse_embedded_events(csv_data_dir)?,
         })
     }
 }
@@ -72,7 +66,39 @@ mod parsing {
 
     use crate::queryable::Event;
 
-    use super::{Embedding, OpenAIVector};
+    use super::{EmbeddedEvent, OpenAIVector};
+
+    pub fn parse_embedded_events(
+        csv_data_dir: &Path,
+    ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
+        let events_path = csv_data_dir.join("event_6.csv");
+        let events = parse_all_events(&events_path)?;
+        let embeddings_path = csv_data_dir.join("embedding.csv");
+        let embeddings: Vec<Embedding> = parse_all_embeddings(&embeddings_path)?;
+
+        let mut embedded_events = vec![];
+        for event in events {
+            let result = embeddings.iter().find(|e| e.title == event.title);
+            match result {
+                Some(embedding) => embedded_events.push(EmbeddedEvent {
+                    event,
+                    openai_embedding: embedding.openai_embedding.clone(),
+                }),
+                None => {
+                    return Err(
+                        format!("failed to find embedding for title \'{}\'", event.title).into(),
+                    );
+                }
+            }
+        }
+        Ok(embedded_events)
+    }
+
+    #[derive(Debug)]
+    struct Embedding {
+        title: String,
+        openai_embedding: OpenAIVector,
+    }
 
     #[derive(Debug, serde::Deserialize)]
     struct EmbeddingRecord {
@@ -80,7 +106,7 @@ mod parsing {
         embedding: String,
     }
 
-    pub fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+    fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
 
         let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
@@ -93,7 +119,7 @@ mod parsing {
         Ok(events)
     }
 
-    pub fn parse_all_embeddings(
+    fn parse_all_embeddings(
         embeddings_path: &Path,
     ) -> Result<Vec<Embedding>, Box<dyn std::error::Error>> {
         debug!("Loading embeddings data from {:?}", embeddings_path);
