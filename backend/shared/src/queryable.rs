@@ -26,6 +26,7 @@ const MAX_POOL_CONNECTIONS: u32 = 10;
 const MAX_RELATED_EVENTS: u8 = 5;
 
 impl QueryableTrait for Queryable {
+    #[tracing::instrument(skip(self))]
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
         let rows =
