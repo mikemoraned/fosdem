@@ -1,3 +1,5 @@
+use std::path::Path;
+
 use openai_dive::v1::api::Client;
 use tracing::debug;
 
@@ -9,16 +11,30 @@ use crate::{
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
     openai_client: Client,
+    events: Vec<Event>,
 }
 
 impl InMemoryOpenAIQueryable {
     pub async fn connect(
+        csv_data_dir: &Path,
         openai_api_key: &str,
     ) -> Result<InMemoryOpenAIQueryable, Box<dyn std::error::Error>> {
         debug!("Creating OpenAI Client");
         let openai_client = Client::new(openai_api_key.into());
 
-        Ok(InMemoryOpenAIQueryable { openai_client })
+        debug!("Loading data from {:?}", csv_data_dir);
+
+        let events_path = csv_data_dir.join("event_5.csv");
+        let events = Self::parse_all_events(&events_path)?;
+
+        Ok(InMemoryOpenAIQueryable {
+            openai_client,
+            events,
+        })
+    }
+
+    fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+        todo!()
     }
 }
 

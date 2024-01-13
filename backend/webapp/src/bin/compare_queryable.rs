@@ -1,14 +1,27 @@
+use std::path::PathBuf;
+
+use clap::Parser;
 use shared::{
     env::load_secret, inmemory_openai::InMemoryOpenAIQueryable,
     postgres_openai::PostgresOpenAIQueryable, queryable::Queryable,
 };
 use tracing::info;
 
+/// load two Queryable implementations, and compare them
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// path to directory where CSV files are kept
+    #[arg(short, long)]
+    csv_data_dir: PathBuf,
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     tracing_subscriber::fmt::init();
 
     dotenvy::dotenv()?;
+    let args = Args::parse();
 
     info!("Creating PostgresOpenAIQueryable");
     let openai_api_key = load_secret("OPENAI_API_KEY");
@@ -17,7 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let queryable1 = PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key).await?;
 
     info!("Creating InMemoryOpenAIQueryable");
-    let queryable2 = InMemoryOpenAIQueryable::connect(&openai_api_key).await?;
+    let queryable2 = InMemoryOpenAIQueryable::connect(&args.csv_data_dir, &openai_api_key).await?;
 
     compare_events(&queryable1, &queryable2);
 
