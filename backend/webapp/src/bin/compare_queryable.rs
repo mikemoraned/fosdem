@@ -2,8 +2,10 @@ use std::path::PathBuf;
 
 use clap::Parser;
 use shared::{
-    env::load_secret, inmemory_openai::InMemoryOpenAIQueryable,
-    postgres_openai::PostgresOpenAIQueryable, queryable::Queryable,
+    env::load_secret,
+    inmemory_openai::InMemoryOpenAIQueryable,
+    postgres_openai::PostgresOpenAIQueryable,
+    queryable::{Queryable, SearchItem},
 };
 use tracing::info;
 
@@ -63,17 +65,23 @@ where
     T2: Queryable,
 {
     let q1_events = queryable1.load_all_events().await?;
-    let q2_events = queryable2.load_all_events().await?;
 
     for q1_event in q1_events {
-        let q1_related = queryable1
-            .find_related_events(&q1_event.title, limit)
-            .await?;
-        let q2_related = queryable2
-            .find_related_events(&q1_event.title, limit)
-            .await?;
-        assert_eq!(q1_related, q2_related);
+        let title = &q1_event.title;
+        let q1_related = queryable1.find_related_events(title, limit).await?;
+        let q2_related = queryable2.find_related_events(title, limit).await?;
+        assert_eq!(
+            summarise_related(title, &q1_related),
+            summarise_related(title, &q2_related)
+        );
     }
 
     Ok(())
+}
+
+fn summarise_related(title: &String, related: &Vec<SearchItem>) -> Vec<(String, String, f64)> {
+    related
+        .iter()
+        .map(|r| (title.clone(), r.event.title.clone(), r.distance))
+        .collect()
 }

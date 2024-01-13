@@ -14,6 +14,10 @@ pub struct InMemoryOpenAIQueryable {
 
 type OpenAIVector = DVector<f32>;
 
+fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
+    0.0
+}
+
 #[derive(Debug)]
 struct EmbeddedEvent {
     event: Event,
@@ -36,7 +40,18 @@ impl Queryable for InMemoryOpenAIQueryable {
             None => return Err(format!("no embedding for \'{}\'", title).into()),
         };
 
-        todo!()
+        let mut found = vec![];
+        for embedded_event in &self.events {
+            found.push(SearchItem {
+                event: embedded_event.event.clone(),
+                distance: distance(&embedding, &embedded_event.openai_embedding),
+                related: None,
+            });
+        }
+        found.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+        found.truncate(limit as usize);
+
+        Ok(found)
     }
 
     async fn search(
