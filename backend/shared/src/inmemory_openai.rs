@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use nalgebra::DVector;
-use openai_dive::v1::api::Client;
+use openai_dive::v1::{api::Client, resources::embedding};
 use tracing::debug;
 
 use crate::queryable::{Event, Queryable, SearchItem};
@@ -30,6 +30,12 @@ impl Queryable for InMemoryOpenAIQueryable {
         title: &String,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
+        debug!("Finding embedding for title");
+        let embedding: OpenAIVector = match self.events.iter().find(|e| e.event.title == *title) {
+            Some(e) => e.openai_embedding.clone(),
+            None => return Err(format!("no embedding for \'{}\'", title).into()),
+        };
+
         todo!()
     }
 

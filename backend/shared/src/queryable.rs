@@ -1,7 +1,7 @@
 use chrono::{NaiveDate, NaiveTime};
 use url::Url;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SearchItem {
     pub event: Event,
     pub distance: f64,

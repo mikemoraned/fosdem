@@ -33,6 +33,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let queryable2 = InMemoryOpenAIQueryable::connect(&args.csv_data_dir, &openai_api_key).await?;
 
     compare_events(&queryable1, &queryable2).await?;
+    compare_related(&queryable1, &queryable2, 5).await?;
 
     Ok(())
 }
@@ -48,6 +49,31 @@ where
     let q1_events = queryable1.load_all_events().await?;
     let q2_events = queryable2.load_all_events().await?;
     assert_eq!(q1_events, q2_events);
+
+    Ok(())
+}
+
+async fn compare_related<T1, T2>(
+    queryable1: &T1,
+    queryable2: &T2,
+    limit: u8,
+) -> Result<(), Box<dyn std::error::Error>>
+where
+    T1: Queryable,
+    T2: Queryable,
+{
+    let q1_events = queryable1.load_all_events().await?;
+    let q2_events = queryable2.load_all_events().await?;
+
+    for q1_event in q1_events {
+        let q1_related = queryable1
+            .find_related_events(&q1_event.title, limit)
+            .await?;
+        let q2_related = queryable2
+            .find_related_events(&q1_event.title, limit)
+            .await?;
+        assert_eq!(q1_related, q2_related);
+    }
 
     Ok(())
 }
