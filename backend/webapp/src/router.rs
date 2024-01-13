@@ -70,6 +70,7 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
+    use shared::queryable_trait::QueryableTrait;
     info!("search params: {:?}", params);
     match state.queryable.search(&params.q, params.limit, true).await {
         Ok(items) => {

@@ -4,7 +4,9 @@ use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 use dotenvy;
 
-use shared::{cli::progress_bar, env::load_secret, queryable::Queryable};
+use shared::{
+    cli::progress_bar, env::load_secret, queryable::Queryable, queryable_trait::QueryableTrait,
+};
 use tracing::info;
 use webapp::related::{D3Force, Link, Node};
 
