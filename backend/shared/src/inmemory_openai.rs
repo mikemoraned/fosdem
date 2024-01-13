@@ -1,6 +1,7 @@
 use std::{fs::File, path::Path};
 
-use openai_dive::v1::api::Client;
+use nalgebra::{DVector, Point};
+use openai_dive::v1::{api::Client, endpoints::embeddings, resources::embedding};
 use tracing::debug;
 
 use crate::{
@@ -14,7 +15,18 @@ pub struct InMemoryOpenAIQueryable {
     events: Vec<Event>,
 }
 
-struct Embedding {}
+type OpenAIVector = DVector<f32>;
+#[derive(Debug)]
+struct Embedding {
+    title: String,
+    openai_embedding: OpenAIVector,
+}
+
+#[derive(Debug, serde::Deserialize)]
+struct EmbeddingRecord {
+    title: String,
+    embedding: String,
+}
 
 impl InMemoryOpenAIQueryable {
     pub async fn connect(
@@ -28,6 +40,9 @@ impl InMemoryOpenAIQueryable {
 
         let events_path = csv_data_dir.join("event_6.csv");
         let events = Self::parse_all_events(&events_path)?;
+        let embeddings_path = csv_data_dir.join("embedding.csv");
+        let embeddings: Vec<Embedding> = Self::parse_all_embeddings(&embeddings_path)?;
+        println!("embeddings: {:?}", embeddings);
 
         Ok(InMemoryOpenAIQueryable {
             openai_client,
@@ -46,6 +61,41 @@ impl InMemoryOpenAIQueryable {
         }
         events.sort_by(|a, b| a.id.cmp(&b.id));
         Ok(events)
+    }
+
+    fn parse_all_embeddings(
+        embeddings_path: &Path,
+    ) -> Result<Vec<Embedding>, Box<dyn std::error::Error>> {
+        debug!("Loading embeddings data from {:?}", embeddings_path);
+
+        let mut rdr = csv::Reader::from_reader(File::open(embeddings_path)?);
+        let mut embeddings = vec![];
+        for result in rdr.deserialize() {
+            let record: EmbeddingRecord = result?;
+            let embedding = Embedding {
+                title: record.title,
+                openai_embedding: Self::parse_openai_embedding_vector(record.embedding)?,
+            };
+            embeddings.push(embedding);
+        }
+        Ok(embeddings)
+    }
+
+    fn parse_openai_embedding_vector(
+        embedding: String,
+    ) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
+        if embedding.starts_with("[") && embedding.ends_with("]") {
+            let within = &embedding[1..&embedding.len() - 1];
+            let parts: Vec<f32> = within
+                .split(",")
+                .into_iter()
+                .map(|p| p.parse::<f32>().unwrap())
+                .collect();
+            let openaivector = OpenAIVector::from(parts);
+            Ok(openaivector)
+        } else {
+            Err("not enclosed by []".into())
+        }
     }
 }
 

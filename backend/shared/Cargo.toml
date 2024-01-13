@@ -19,3 +19,4 @@ indicatif = { workspace = true }
 dotenvy = { workspace = true }
 chrono = { workspace = true }
 csv = { workspace = true }
+nalgebra = "0.32.3"
