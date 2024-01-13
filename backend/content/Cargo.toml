@@ -9,7 +9,6 @@ edition = "2021"
 quick-xml = { version = "0.29", features = ["serialize"] }
 xmlserde = "0.5.5"
 xmlserde_derives = "0.5.5"
-csv = "1.3.0"
 env_logger = "0.10.1"
 futures = { workspace = true }
 clap = { workspace = true }
@@ -20,4 +19,6 @@ openai_dive = { workspace = true }
 log = { workspace = true }
 serde = { workspace = true }
 chrono = { workspace = true }
+csv = { workspace = true }
+url = { workspace = true }
 shared = { path = "../shared" }

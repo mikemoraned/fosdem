@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::{fs::File, path::Path};
 
 use openai_dive::v1::api::Client;
 use tracing::debug;
@@ -24,7 +24,7 @@ impl InMemoryOpenAIQueryable {
 
         debug!("Loading data from {:?}", csv_data_dir);
 
-        let events_path = csv_data_dir.join("event_5.csv");
+        let events_path = csv_data_dir.join("event_6.csv");
         let events = Self::parse_all_events(&events_path)?;
 
         Ok(InMemoryOpenAIQueryable {
@@ -34,6 +34,11 @@ impl InMemoryOpenAIQueryable {
     }
 
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+        let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
+        for result in rdr.deserialize() {
+            let event: Event = result?;
+            println!("{:?}", event);
+        }
         todo!()
     }
 }

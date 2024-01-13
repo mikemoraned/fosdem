@@ -3,6 +3,7 @@ use std::fs::File;
 use chrono::{NaiveTime, Timelike};
 use clap::{arg, Parser};
 use content::pentabarf::Schedule;
+use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
 /// Convert all content from a Pentabarf file into a CSV
@@ -18,6 +19,8 @@ struct Args {
     csv: String,
 }
 
+const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
@@ -25,7 +28,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut csv = csv::Writer::from_writer(File::create(args.csv)?);
     let schedule: Schedule = xml_deserialize_from_str(&xml)?;
     csv.write_record(&[
-        "id", "date", "start", "duration", "title", "slug", "abstract",
+        "id", "date", "start", "duration", "title", "slug", "url", "abstract",
     ])?;
     for day in schedule.days {
         for room in day.rooms {
@@ -36,7 +39,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     event.start.value,
                     parse_into_minutes(&event.duration.value)?.to_string(),
                     event.title.value,
-                    event.slug.value,
+                    event.slug.value.clone(),
+                    event_url(&event.slug.value)?.to_string(),
                     event.r#abstract.value,
                 ])?;
             }
@@ -44,6 +48,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
+}
+
+fn event_url(slug: &str) -> Result<Url, Box<dyn std::error::Error>> {
+    Ok(Url::parse(BASE_URL_STRING)?.join(slug)?)
 }
 
 fn parse_into_minutes(value: &str) -> Result<u32, Box<dyn std::error::Error>> {

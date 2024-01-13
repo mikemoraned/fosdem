@@ -456,6 +456,7 @@ dependencies = [
  "serde",
  "shared",
  "tokio",
+ "url",
  "xmlserde",
  "xmlserde_derives",
 ]
@@ -2094,6 +2095,7 @@ name = "shared"
 version = "0.0.0"
 dependencies = [
  "chrono",
+ "csv",
  "dotenvy",
  "futures",
  "indicatif",

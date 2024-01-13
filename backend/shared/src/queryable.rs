@@ -8,7 +8,7 @@ pub struct SearchItem {
     pub related: Option<Vec<SearchItem>>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Deserialize)]
 pub struct Event {
     pub id: u32,
     pub date: NaiveDate,
