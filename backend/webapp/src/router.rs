@@ -10,7 +10,7 @@ use axum::{
 };
 use axum_valid::Valid;
 use serde::Deserialize;
-use shared::{queryable::Queryable, queryable_trait::SearchItem};
+use shared::{postgres_openai::PostgresOpenAIQueryable, queryable::SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -70,7 +70,7 @@ async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
 ) -> axum::response::Result<Html<String>> {
-    use shared::queryable_trait::QueryableTrait;
+    use shared::queryable::Queryable;
     info!("search params: {:?}", params);
     match state.queryable.search(&params.q, params.limit, true).await {
         Ok(items) => {
@@ -88,7 +88,7 @@ async fn search(
 pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {
     let state = AppState {
         queryable: Arc::new(
-            Queryable::connect(&db_host, &db_key, &openai_api_key)
+            PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key)
                 .await
                 .unwrap(),
         ),
