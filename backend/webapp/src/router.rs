@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::{path::Path, sync::Arc};
 
 use askama::Template;
 use axum::{
@@ -10,7 +10,10 @@ use axum::{
 };
 use axum_valid::Valid;
 use serde::Deserialize;
-use shared::{postgres_openai::PostgresOpenAIQueryable, queryable::SearchItem};
+use shared::{
+    inmemory_openai::InMemoryOpenAIQueryable, postgres_openai::PostgresOpenAIQueryable,
+    queryable::SearchItem,
+};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -65,7 +68,7 @@ async fn index() -> Html<String> {
     Html(html)
 }
 
-#[tracing::instrument]
+#[tracing::instrument(skip(state))]
 async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
@@ -85,15 +88,27 @@ async fn search(
     }
 }
 
-pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {
-    let state = AppState {
+// pub async fn app_state(openai_api_key: &str, db_host: &str, db_key: &str) -> AppState {
+//     AppState {
+//         queryable: Arc::new(
+//             PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key)
+//                 .await
+//                 .unwrap(),
+//         ),
+//     }
+// }
+
+pub async fn app_state(openai_api_key: &str, csv_data_dir: &Path) -> AppState {
+    AppState {
         queryable: Arc::new(
-            PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key)
+            InMemoryOpenAIQueryable::connect(csv_data_dir, &openai_api_key)
                 .await
                 .unwrap(),
         ),
-    };
+    }
+}
 
+pub async fn router(state: AppState) -> Router {
     let cors = CorsLayer::new()
         .allow_methods([Method::GET])
         // allow requests from any origin
