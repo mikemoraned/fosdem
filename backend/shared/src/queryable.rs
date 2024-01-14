@@ -268,6 +268,7 @@ impl Queryable {
                 overlapping.push(event.clone());
             }
         }
+        overlapping.sort_by(|a, b| a.start.cmp(&b.start));
         overlapping
     }
 
