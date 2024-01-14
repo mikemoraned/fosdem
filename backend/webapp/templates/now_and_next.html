@@ -15,12 +15,14 @@
 
 {% macro card(event) %}
 <div class="card">
-    {% call card_header(event) %}
-    <div class="card-content">
-        <div class="content">
-            {{ event.abstract|safe }}
+    <details>
+        <summary>{% call card_header(event) %}</summary>
+        <div class="card-content">
+            <div class="content">
+                {{ event.abstract|safe }}
+            </div>
         </div>
-    </div>
+    </details>
     <footer class="card-footer">
         <a href="/next/?id={{event.id}}" class="card-footer-item">
             <span class="icon-text">
