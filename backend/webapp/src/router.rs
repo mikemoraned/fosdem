@@ -9,14 +9,14 @@ use axum::{
     Router,
 };
 use axum_valid::Valid;
-use chrono::{Duration, NaiveDate};
+
 use serde::Deserialize;
-use shared::queryable::{Event, Queryable, SearchItem};
+use shared::queryable::{NextEvents, Queryable, SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
-use tracing::{debug, info};
+use tracing::info;
 use validator::Validate;
 
 use crate::related::related;
@@ -118,48 +118,14 @@ async fn search(
 #[derive(Template, Debug)]
 #[template(path = "now_and_next.html")]
 struct NowAndNextTemplate {
-    current_events: Vec<Event>,
-    selected_event: Event,
-    next_events: Vec<Event>,
+    next: NextEvents,
 }
 
 #[tracing::instrument(skip(state))]
 async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<Html<String>> {
-    match state.queryable.load_all_events().await {
-        Ok(all_events) => {
-            let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-            let now = current_day.and_hms_opt(11, 0, 0).unwrap();
-            let one_hour_from_now = now + Duration::hours(1);
-            debug!("Current hour: {} -> {}", now, one_hour_from_now);
-            let mut current_events = vec![];
-            for event in all_events.iter() {
-                let starting_time = event.date.and_time(event.start);
-                let ending_time = starting_time + Duration::minutes(event.duration.into());
-                if now <= ending_time && ending_time <= one_hour_from_now {
-                    current_events.push(event.clone());
-                }
-            }
-            debug!("Found {} current events", current_events.len());
-            let selected_event = current_events[0].clone();
-            let selected_event_end_time = selected_event.date.and_time(selected_event.start)
-                + Duration::minutes(selected_event.duration.into());
-            let one_hour_after_selected_event_end_time =
-                selected_event_end_time + Duration::hours(1);
-            let mut next_events = vec![];
-            for event in all_events.iter() {
-                let starting_time = event.date.and_time(event.start);
-                if selected_event_end_time <= starting_time
-                    && starting_time <= one_hour_after_selected_event_end_time
-                {
-                    next_events.push(event.clone());
-                }
-            }
-            next_events.sort_by(|a, b| a.start.cmp(&b.start));
-            let page = NowAndNextTemplate {
-                current_events,
-                selected_event,
-                next_events,
-            };
+    match state.queryable.find_next_events().await {
+        Ok(next) => {
+            let page = NowAndNextTemplate { next };
             let html = page.render().unwrap();
             Ok(Html(html))
         }

@@ -33,7 +33,7 @@
         <div class="column">
             <h1 class="title is-5"><i class="fa-duotone fa-diagram-sankey"></i> Now attending</h1>
             <div class="card">
-            {% call card_header(selected_event) %}
+            {% call card_header(next.selected) %}
             </div>
         </div>
         <div class="column">
@@ -42,8 +42,8 @@
                 <div class="control has-icons-left">
                     <div class="select is-small">
                         <select name="current_event_id">
-                            {% for event in current_events %}
-                            <option value="{{ event.id }}" {% if event.id==selected_event.id %} selected {% else %} {% endif %}>
+                            {% for event in next.current %}
+                            <option value="{{ event.id }}" {% if event.id==next.selected.id %} selected {% else %} {% endif %}>
                                 {{ event.start.format("%H:%M") }}, {{ event.title|truncate_title(35) }}
                             </option>
                             {% endfor %}
@@ -60,7 +60,7 @@
         
     </div>
     <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
-    {% for event in next_events %}
+    {% for event in next.next %}
     <div class="columns">
         <div class="column">
         {% call card(event) %}

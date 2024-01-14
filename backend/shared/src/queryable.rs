@@ -1,4 +1,4 @@
-use chrono::{NaiveDate, NaiveTime};
+use chrono::{Duration, NaiveDate, NaiveTime};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -34,6 +34,13 @@ pub struct Event {
     pub slug: String,
     pub url: Url,
     pub r#abstract: String,
+}
+
+#[derive(Debug, Clone)]
+pub struct NextEvents {
+    pub current: Vec<Event>,
+    pub selected: Event,
+    pub next: Vec<Event>,
 }
 
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
@@ -167,6 +174,46 @@ impl Queryable {
         } else {
             Ok(entries)
         }
+    }
+
+    #[tracing::instrument(skip(self))]
+    pub async fn find_next_events(&self) -> Result<NextEvents, Box<dyn std::error::Error>> {
+        let all_events = self.load_all_events().await?;
+
+        let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let now = current_day.and_hms_opt(11, 0, 0).unwrap();
+        let one_hour_from_now = now + Duration::hours(1);
+        debug!("Current hour: {} -> {}", now, one_hour_from_now);
+
+        let mut current = vec![];
+        for event in all_events.iter() {
+            let starting_time = event.date.and_time(event.start);
+            let ending_time = starting_time + Duration::minutes(event.duration.into());
+            if now <= ending_time && ending_time <= one_hour_from_now {
+                current.push(event.clone());
+            }
+        }
+        debug!("Found {} current events", current.len());
+        let selected = current[0].clone();
+        let selected_end_time =
+            selected.date.and_time(selected.start) + Duration::minutes(selected.duration.into());
+        let one_hour_after_selected_end_time = selected_end_time + Duration::hours(1);
+        let mut next = vec![];
+        for event in all_events.iter() {
+            let starting_time = event.date.and_time(event.start);
+            if selected_end_time <= starting_time
+                && starting_time <= one_hour_after_selected_end_time
+            {
+                next.push(event.clone());
+            }
+        }
+        next.sort_by(|a, b| a.start.cmp(&b.start));
+
+        Ok(NextEvents {
+            current,
+            selected,
+            next,
+        })
     }
 
     fn row_to_search_item(&self, row: &PgRow) -> Result<SearchItem, Box<dyn std::error::Error>> {
