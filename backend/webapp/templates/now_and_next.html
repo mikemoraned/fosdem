@@ -25,9 +25,9 @@
 
 {% block content %}
 <section class="section">
+    <h1>Now: {{ now }}</h1>
     <div class="columns">
         <div class="column">
-            Now: {{ now }}
             <select name="current_event_id">
                 {% for event in current_events %}
                 <option value="{{ event.id }}" {% if event.id == selected_event.id %} selected {% else %} {% endif %}>
@@ -42,6 +42,9 @@
             {% call card(selected_event) %}
         </div>
     </div>
+</section>
+<section class="section">
+    <h1>In following hour</h1>
     {% for event in next_events %}
     <div class="columns">
         <div class="column">
