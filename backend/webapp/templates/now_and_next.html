@@ -1,5 +1,28 @@
 {% extends "layout.html" %}
 
+{% macro card(event) %}
+<div class="card">
+    <div class="card-content">
+        <p class="title is-5">
+            <span>
+                <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}"</span>
+            </span>
+        </p>
+        <p class="subtitle is-7">
+            {{ event.date }} at {{ event.start }}, {{ event.duration }} minutes
+        </p>
+    </div>
+    <div class="card-content">
+        <div class="content">
+            {{ event.abstract|safe }}
+        </div>
+    </div>
+    <footer class="card-footer">
+        
+    </footer>
+</div>
+{% endmacro %}
+
 {% block content %}
 <section class="section">
     <div class="columns">
@@ -13,6 +36,11 @@
                 {% endfor %}
             </select>
             </ul>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            {% call card(selected_event) %}
         </div>
     </div>
 </section>
