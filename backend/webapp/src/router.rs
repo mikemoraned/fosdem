@@ -154,6 +154,7 @@ async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<H
                     next_events.push(event.clone());
                 }
             }
+            next_events.sort_by(|a, b| a.start.cmp(&b.start));
             let page = NowAndNextTemplate {
                 current_events,
                 selected_event,
