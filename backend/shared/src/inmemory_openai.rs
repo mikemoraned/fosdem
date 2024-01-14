@@ -1,10 +1,14 @@
 use std::path::Path;
 
+use futures::future::join_all;
 use nalgebra::DVector;
 use openai_dive::v1::{api::Client, resources::embedding};
 use tracing::debug;
 
-use crate::queryable::{Event, Queryable, SearchItem};
+use crate::{
+    openai::get_embedding,
+    queryable::{Event, Queryable, SearchItem, MAX_RELATED_EVENTS},
+};
 
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
@@ -12,10 +16,10 @@ pub struct InMemoryOpenAIQueryable {
     events: Vec<EmbeddedEvent>,
 }
 
-type OpenAIVector = DVector<f32>;
+type OpenAIVector = DVector<f64>;
 
 fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
-    lhs.metric_distance(rhs) as f64
+    lhs.metric_distance(rhs)
 }
 
 #[derive(Debug)]
@@ -40,20 +44,22 @@ impl Queryable for InMemoryOpenAIQueryable {
             None => return Err(format!("no embedding for \'{}\'", title).into()),
         };
 
-        let mut found = vec![];
+        debug!("Finding all distances from embedding");
+        let mut entries = vec![];
         for embedded_event in &self.events {
             if embedded_event.event.id != event.event.id {
-                found.push(SearchItem {
+                entries.push(SearchItem {
                     event: embedded_event.event.clone(),
                     distance: distance(&event.openai_embedding, &embedded_event.openai_embedding),
                     related: None,
                 });
             }
         }
-        found.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
-        found.truncate(limit as usize);
+        debug!("Limiting to the top {}", limit);
+        entries.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+        entries.truncate(limit as usize);
 
-        Ok(found)
+        Ok(entries)
     }
 
     async fn search(
@@ -62,7 +68,42 @@ impl Queryable for InMemoryOpenAIQueryable {
         limit: u8,
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
-        todo!()
+        debug!("Getting embedding for query");
+        let response = get_embedding(&self.openai_client, &query).await?;
+        let embedding = OpenAIVector::from(response.data[0].embedding.clone());
+
+        debug!("Finding all distances from embedding");
+        let mut entries = vec![];
+        for embedded_event in &self.events {
+            entries.push(SearchItem {
+                event: embedded_event.event.clone(),
+                distance: distance(&embedding, &embedded_event.openai_embedding),
+                related: None,
+            });
+        }
+        debug!("Limiting to the top {}", limit);
+        entries.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+        entries.truncate(limit as usize);
+
+        if find_related {
+            debug!("Running query to find related events");
+            let jobs = entries.into_iter().map(|mut entry| async {
+                entry.related = Some(
+                    self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
+                        .await
+                        .expect(&format!("find related items for {}", &entry.event.title)),
+                );
+                entry
+            });
+            let entries_with_related = join_all(jobs).await;
+            debug!(
+                "Found {} Events, with related Events",
+                entries_with_related.len()
+            );
+            Ok(entries_with_related)
+        } else {
+            Ok(entries)
+        }
     }
 }
 
@@ -165,10 +206,10 @@ mod parsing {
     ) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
         if embedding.starts_with("[") && embedding.ends_with("]") {
             let within = &embedding[1..&embedding.len() - 1];
-            let parts: Vec<f32> = within
+            let parts: Vec<f64> = within
                 .split(",")
                 .into_iter()
-                .map(|p| p.parse::<f32>().unwrap())
+                .map(|p| p.parse::<f64>().unwrap())
                 .collect();
             let openaivector = OpenAIVector::from(parts);
             Ok(openaivector)

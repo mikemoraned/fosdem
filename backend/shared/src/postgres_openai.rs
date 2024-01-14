@@ -11,7 +11,7 @@ use url::Url;
 
 use crate::{
     openai::get_embedding,
-    queryable::{Event, Queryable, SearchItem},
+    queryable::{Event, Queryable, SearchItem, MAX_RELATED_EVENTS},
 };
 
 #[derive(Debug)]
@@ -23,7 +23,6 @@ pub struct PostgresOpenAIQueryable {
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
 
 const MAX_POOL_CONNECTIONS: u32 = 10;
-const MAX_RELATED_EVENTS: u8 = 5;
 
 impl Queryable for PostgresOpenAIQueryable {
     #[tracing::instrument(skip(self))]
