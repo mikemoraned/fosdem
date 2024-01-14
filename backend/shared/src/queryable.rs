@@ -1,4 +1,4 @@
-use chrono::{Duration, NaiveDate, NaiveTime};
+use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -41,6 +41,11 @@ pub struct NextEvents {
     pub current: Vec<Event>,
     pub selected: Event,
     pub next: Vec<Event>,
+}
+
+#[derive(Debug)]
+pub enum NextEventsContext {
+    Now,
 }
 
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
@@ -177,19 +182,19 @@ impl Queryable {
     }
 
     #[tracing::instrument(skip(self))]
-    pub async fn find_next_events(&self) -> Result<NextEvents, Box<dyn std::error::Error>> {
+    pub async fn find_next_events(
+        &self,
+        context: NextEventsContext,
+    ) -> Result<NextEvents, Box<dyn std::error::Error>> {
         let all_events = self.load_all_events().await?;
 
-        let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-        let now = current_day.and_hms_opt(11, 0, 0).unwrap();
-        let one_hour_from_now = now + Duration::hours(1);
-        debug!("Current hour: {} -> {}", now, one_hour_from_now);
+        let (context_start, context_end) = self.get_context_bounds(context);
 
         let mut current = vec![];
         for event in all_events.iter() {
             let starting_time = event.date.and_time(event.start);
             let ending_time = starting_time + Duration::minutes(event.duration.into());
-            if now <= ending_time && ending_time <= one_hour_from_now {
+            if context_start <= ending_time && ending_time <= context_end {
                 current.push(event.clone());
             }
         }
@@ -214,6 +219,19 @@ impl Queryable {
             selected,
             next,
         })
+    }
+
+    fn get_context_bounds(&self, context: NextEventsContext) -> (NaiveDateTime, NaiveDateTime) {
+        match context {
+            NextEventsContext::Now => {
+                let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+                let now = current_day.and_hms_opt(11, 0, 0).unwrap();
+                let one_hour_from_now = now + Duration::hours(1);
+                debug!("Current hour: {} -> {}", now, one_hour_from_now);
+
+                (now, one_hour_from_now)
+            }
+        }
     }
 
     fn row_to_search_item(&self, row: &PgRow) -> Result<SearchItem, Box<dyn std::error::Error>> {

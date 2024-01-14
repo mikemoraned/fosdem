@@ -11,7 +11,7 @@ use axum::{
 use axum_valid::Valid;
 
 use serde::Deserialize;
-use shared::queryable::{NextEvents, Queryable, SearchItem};
+use shared::queryable::{NextEvents, NextEventsContext, Queryable, SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -123,7 +123,11 @@ struct NowAndNextTemplate {
 
 #[tracing::instrument(skip(state))]
 async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<Html<String>> {
-    match state.queryable.find_next_events().await {
+    match state
+        .queryable
+        .find_next_events(NextEventsContext::Now)
+        .await
+    {
         Ok(next) => {
             let page = NowAndNextTemplate { next };
             let html = page.render().unwrap();
