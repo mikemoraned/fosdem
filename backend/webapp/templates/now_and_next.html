@@ -35,7 +35,6 @@
                 </option>
                 {% endfor %}
             </select>
-            </ul>
         </div>
     </div>
     <div class="columns">
@@ -43,6 +42,13 @@
             {% call card(selected_event) %}
         </div>
     </div>
+    {% for event in next_events %}
+    <div class="columns">
+        <div class="column">
+        {% call card(event) %}
+        </div>
+    </div>
+    {% endfor %}
 </section>
 {% endblock %}
 

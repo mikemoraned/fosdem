@@ -91,6 +91,7 @@ struct NowAndNextTemplate {
     now: NaiveDateTime,
     current_events: Vec<Event>,
     selected_event: Event,
+    next_events: Vec<Event>,
 }
 
 #[tracing::instrument(skip(state))]
@@ -105,23 +106,30 @@ async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<H
             for event in all_events.iter() {
                 let starting_time = event.date.and_time(event.start);
                 let ending_time = starting_time + Duration::minutes(event.duration.into());
-                debug!(
-                    "event: {} -> {}, {}, {}",
-                    starting_time,
-                    ending_time,
-                    now <= ending_time,
-                    ending_time <= one_hour_from_now
-                );
                 if now <= ending_time && ending_time <= one_hour_from_now {
                     current_events.push(event.clone());
                 }
             }
             debug!("Found {} current events", current_events.len());
             let selected_event = current_events[0].clone();
+            let selected_event_end_time = selected_event.date.and_time(selected_event.start)
+                + Duration::minutes(selected_event.duration.into());
+            let one_hour_after_selected_event_end_time =
+                selected_event_end_time + Duration::hours(1);
+            let mut next_events = vec![];
+            for event in all_events.iter() {
+                let starting_time = event.date.and_time(event.start);
+                if selected_event_end_time <= starting_time
+                    && starting_time <= one_hour_after_selected_event_end_time
+                {
+                    next_events.push(event.clone());
+                }
+            }
             let page = NowAndNextTemplate {
                 now,
                 current_events,
                 selected_event,
+                next_events,
             };
             let html = page.render().unwrap();
             Ok(Html(html))
