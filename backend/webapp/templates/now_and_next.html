@@ -22,7 +22,11 @@
         </div>
     </div>
     <footer class="card-footer">
-        
+        <a href="/next/?id={{event.id}}" class="card-footer-item">
+            <span class="icon-text">
+                <span>Select</span>
+            </span>
+        </a>
     </footer>
 </div>
 {% endmacro %}
@@ -33,7 +37,17 @@
         <div class="column">
             <h1 class="title is-5"><i class="fa-duotone fa-diagram-sankey"></i> Now attending</h1>
             <div class="card">
-            {% call card_header(next.selected) %}
+                {% call card_header(next.selected) %}
+                <footer class="card-footer">
+                    <a href="{{ next.selected.url }}" class="card-footer-item">
+                        <span class="icon-text">
+                            <span>Open on FOSDEM site</span>
+                            <span class="icon">
+                                <i class="fa-light fa-arrow-up-right-from-square"></i>
+                            </span>
+                        </span>
+                    </a>
+                </footer>
             </div>
         </div>
         <div class="column">

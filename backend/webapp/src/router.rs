@@ -117,7 +117,7 @@ async fn search(
 
 #[derive(Deserialize, Validate, Debug)]
 struct NextParams {
-    #[validate(range(min = 1, max = 10000))]
+    #[validate(range(min = 1, max = 20000))]
     id: Option<u32>,
 }
 
@@ -133,7 +133,7 @@ async fn next(
     Valid(Query(params)): Valid<Query<NextParams>>,
 ) -> axum::response::Result<Html<String>> {
     let context = match params.id {
-        Some(event_id) => NextEventsContext::Now,
+        Some(event_id) => NextEventsContext::EventId(event_id),
         None => NextEventsContext::Now,
     };
     match state.queryable.find_next_events(context).await {

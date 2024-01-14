@@ -46,6 +46,7 @@ pub struct NextEvents {
 #[derive(Debug)]
 pub enum NextEventsContext {
     Now,
+    EventId(u32),
 }
 
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
@@ -188,18 +189,8 @@ impl Queryable {
     ) -> Result<NextEvents, Box<dyn std::error::Error>> {
         let all_events = self.load_all_events().await?;
 
-        let (context_start, context_end) = self.get_context_bounds(context);
+        let (selected, current) = self.get_event_context(context, &all_events)?;
 
-        let mut current = vec![];
-        for event in all_events.iter() {
-            let starting_time = event.date.and_time(event.start);
-            let ending_time = starting_time + Duration::minutes(event.duration.into());
-            if context_start <= ending_time && ending_time <= context_end {
-                current.push(event.clone());
-            }
-        }
-        debug!("Found {} current events", current.len());
-        let selected = current[0].clone();
         let selected_end_time =
             selected.date.and_time(selected.start) + Duration::minutes(selected.duration.into());
         let one_hour_after_selected_end_time = selected_end_time + Duration::hours(1);
@@ -221,7 +212,11 @@ impl Queryable {
         })
     }
 
-    fn get_context_bounds(&self, context: NextEventsContext) -> (NaiveDateTime, NaiveDateTime) {
+    fn get_event_context(
+        &self,
+        context: NextEventsContext,
+        all_events: &Vec<Event>,
+    ) -> Result<(Event, Vec<Event>), Box<dyn std::error::Error>> {
         match context {
             NextEventsContext::Now => {
                 let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
@@ -229,9 +224,51 @@ impl Queryable {
                 let one_hour_from_now = now + Duration::hours(1);
                 debug!("Current hour: {} -> {}", now, one_hour_from_now);
 
-                (now, one_hour_from_now)
+                let current = self.find_overlapping_events(now, one_hour_from_now, all_events);
+                debug!("Found {} current events", current.len());
+                let selected = current[0].clone();
+
+                Ok((selected, current))
+            }
+            NextEventsContext::EventId(event_id) => {
+                let mut found = None;
+                for event in all_events.iter() {
+                    if event.id == event_id {
+                        found = Some(event.clone());
+                        break;
+                    }
+                }
+                if let Some(selected) = found {
+                    let starting_time = selected.date.and_time(selected.start);
+                    let ending_time = starting_time + Duration::minutes(selected.duration.into());
+
+                    let current =
+                        self.find_overlapping_events(starting_time, ending_time, all_events);
+
+                    debug!("Found {} current events", current.len());
+                    Ok((selected, current))
+                } else {
+                    Err(format!("could not find event with id {}", event_id).into())
+                }
             }
         }
+    }
+
+    fn find_overlapping_events(
+        &self,
+        begin: NaiveDateTime,
+        end: NaiveDateTime,
+        all_events: &Vec<Event>,
+    ) -> Vec<Event> {
+        let mut overlapping = vec![];
+        for event in all_events.iter() {
+            let starting_time = event.date.and_time(event.start);
+            let ending_time = starting_time + Duration::minutes(event.duration.into());
+            if begin <= ending_time && ending_time <= end {
+                overlapping.push(event.clone());
+            }
+        }
+        overlapping
     }
 
     fn row_to_search_item(&self, row: &PgRow) -> Result<SearchItem, Box<dyn std::error::Error>> {
