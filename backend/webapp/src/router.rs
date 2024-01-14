@@ -9,13 +9,14 @@ use axum::{
     Router,
 };
 use axum_valid::Valid;
+use chrono::{Duration, NaiveDate, NaiveDateTime};
 use serde::Deserialize;
-use shared::queryable::{Queryable, SearchItem};
+use shared::queryable::{Event, Queryable, SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
-use tracing::info;
+use tracing::{debug, info};
 use validator::Validate;
 
 use crate::related::related;
@@ -65,7 +66,7 @@ async fn index() -> Html<String> {
     Html(html)
 }
 
-#[tracing::instrument]
+#[tracing::instrument(skip(state))]
 async fn search(
     State(state): State<AppState>,
     Valid(Query(params)): Valid<Query<Params>>,
@@ -87,17 +88,43 @@ async fn search(
 #[derive(Template, Debug)]
 #[template(path = "now_and_next.html")]
 struct NowAndNextTemplate {
-    
+    now: NaiveDateTime,
+    current_events: Vec<Event>,
 }
 
-#[tracing::instrument]
-async fn now_and_next(
-    State(state): State<AppState>
-) -> axum::response::Result<Html<String>> {
-    
-    let page = NowAndNextTemplate {};
-    let html = page.render().unwrap();
-    Ok(Html(html))
+#[tracing::instrument(skip(state))]
+async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<Html<String>> {
+    match state.queryable.load_all_events().await {
+        Ok(all_events) => {
+            let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+            let now = current_day.and_hms_opt(11, 0, 0).unwrap();
+            let one_hour_from_now = now + Duration::hours(1);
+            debug!("Current hour: {} -> {}", now, one_hour_from_now);
+            let mut current_events = vec![];
+            for event in all_events.iter() {
+                let starting_time = event.date.and_time(event.start);
+                let ending_time = starting_time + Duration::minutes(event.duration.into());
+                debug!(
+                    "event: {} -> {}, {}, {}",
+                    starting_time,
+                    ending_time,
+                    now <= ending_time,
+                    ending_time <= one_hour_from_now
+                );
+                if now <= ending_time && ending_time <= one_hour_from_now {
+                    current_events.push(event.clone());
+                }
+            }
+            debug!("Found {} current events", current_events.len());
+            let page = NowAndNextTemplate {
+                now,
+                current_events,
+            };
+            let html = page.render().unwrap();
+            Ok(Html(html))
+        }
+        Err(_) => Err("failed".into()),
+    }
 }
 
 pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {

@@ -4,7 +4,12 @@
 <section class="section">
     <div class="columns">
         <div class="column">
-            Foop
+            Now: {{ now }}
+            <ul>
+            {% for event in current_events %}
+            <li>{{ event.start }}, {{ event.duration }}, {{ event.title }}</li>
+            {% endfor %}
+            </ul>
         </div>
     </div>
 </section>
