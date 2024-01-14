@@ -90,6 +90,7 @@ async fn search(
 struct NowAndNextTemplate {
     now: NaiveDateTime,
     current_events: Vec<Event>,
+    selected_event: Event,
 }
 
 #[tracing::instrument(skip(state))]
@@ -116,9 +117,11 @@ async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<H
                 }
             }
             debug!("Found {} current events", current_events.len());
+            let selected_event = current_events[0].clone();
             let page = NowAndNextTemplate {
                 now,
                 current_events,
+                selected_event,
             };
             let html = page.render().unwrap();
             Ok(Html(html))

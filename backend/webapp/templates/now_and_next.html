@@ -5,10 +5,13 @@
     <div class="columns">
         <div class="column">
             Now: {{ now }}
-            <ul>
-            {% for event in current_events %}
-            <li>{{ event.start }}, {{ event.duration }}, {{ event.title }}</li>
-            {% endfor %}
+            <select name="current_event_id">
+                {% for event in current_events %}
+                <option value="{{ event.id }}" {% if event.id == selected_event.id %} selected {% else %} {% endif %}>
+                    {{ event.start }}, {{ event.duration }}, {{ event.title }}
+                </option>
+                {% endfor %}
+            </select>
             </ul>
         </div>
     </div>
