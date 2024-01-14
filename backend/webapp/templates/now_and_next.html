@@ -37,23 +37,30 @@
             </div>
         </div>
         <div class="column">
-            <div class="field">
-                <label class="label">Select other</label>
-                <div class="control has-icons-left">
-                    <div class="select is-small">
-                        <select name="current_event_id">
-                            {% for event in next.current %}
-                            <option value="{{ event.id }}" {% if event.id==next.selected.id %} selected {% else %} {% endif %}>
-                                {{ event.start.format("%H:%M") }}, {{ event.title|truncate_title(35) }}
-                            </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="icon is-small is-left">
-                        <i class="fa-duotone fa-calendar-clock"></i>
+            <form method="GET" action="/next/">
+                <div class="field">
+                    <label class="label">Select other</label>
+                    <div class="control has-icons-left">
+                        <div class="select is-small">
+                            <select name="id">
+                                {% for event in next.current %}
+                                <option value="{{ event.id }}" {% if event.id==next.selected.id %} selected {% else %} {% endif %}>
+                                    {{ event.start.format("%H:%M") }}, {{ event.title|truncate_title(35) }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="icon is-small is-left">
+                            <i class="fa-duotone fa-calendar-clock"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-primary" type="submit">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="columns">

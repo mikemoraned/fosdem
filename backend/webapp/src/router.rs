@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use askama::Template;
 use axum::{
-    extract::{Query, State},
+    extract::{Path, Query, State},
     http::Method,
     response::Html,
     routing::get,
@@ -23,7 +23,7 @@ use crate::related::related;
 use crate::state::AppState;
 
 #[derive(Deserialize, Validate, Debug)]
-struct Params {
+struct SearchParams {
     #[validate(length(min = 2, max = 100))]
     q: String,
     #[validate(range(min = 1, max = 20))]
@@ -99,7 +99,7 @@ async fn index() -> Html<String> {
 #[tracing::instrument(skip(state))]
 async fn search(
     State(state): State<AppState>,
-    Valid(Query(params)): Valid<Query<Params>>,
+    Valid(Query(params)): Valid<Query<SearchParams>>,
 ) -> axum::response::Result<Html<String>> {
     info!("search params: {:?}", params);
     match state.queryable.search(&params.q, params.limit, true).await {
@@ -115,6 +115,12 @@ async fn search(
     }
 }
 
+#[derive(Deserialize, Validate, Debug)]
+struct NextParams {
+    #[validate(range(min = 1, max = 10000))]
+    id: Option<u32>,
+}
+
 #[derive(Template, Debug)]
 #[template(path = "now_and_next.html")]
 struct NowAndNextTemplate {
@@ -122,7 +128,29 @@ struct NowAndNextTemplate {
 }
 
 #[tracing::instrument(skip(state))]
-async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<Html<String>> {
+async fn next(
+    State(state): State<AppState>,
+    Valid(Query(params)): Valid<Query<NextParams>>,
+) -> axum::response::Result<Html<String>> {
+    let context = match params.id {
+        Some(event_id) => NextEventsContext::Now,
+        None => NextEventsContext::Now,
+    };
+    match state.queryable.find_next_events(context).await {
+        Ok(next) => {
+            let page = NowAndNextTemplate { next };
+            let html = page.render().unwrap();
+            Ok(Html(html))
+        }
+        Err(_) => Err("failed".into()),
+    }
+}
+
+#[tracing::instrument(skip(state))]
+async fn next_after_event(
+    State(state): State<AppState>,
+    Path(event_id): Path<u32>,
+) -> axum::response::Result<Html<String>> {
     match state
         .queryable
         .find_next_events(NextEventsContext::Now)
@@ -155,7 +183,7 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
         .route("/", get(index))
         .route("/search", get(search))
         .route("/connections/", get(related))
-        .route("/now/", get(now_and_next))
+        .route("/next/", get(next))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
