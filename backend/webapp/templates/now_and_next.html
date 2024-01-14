@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
-{% macro card(event) %}
-<div class="card">
+{% macro card_header(event) %}
     <div class="card-content">
         <p class="title is-5">
             <span>
@@ -12,6 +11,11 @@
             {{ event.date }} at {{ event.start }}, {{ event.duration }} minutes
         </p>
     </div>
+{% endmacro %}
+
+{% macro card(event) %}
+<div class="card">
+    {% call card_header(event) %}
     <div class="card-content">
         <div class="content">
             {{ event.abstract|safe }}
@@ -25,7 +29,7 @@
 
 {% block content %}
 <section class="section">
-    <h1>Now: {{ now }}</h1>
+    <h1 class="title is-5">Now: {{ now }}</h1>
     <div class="columns">
         <div class="column">
             <select name="current_event_id">
@@ -39,12 +43,10 @@
     </div>
     <div class="columns">
         <div class="column">
-            {% call card(selected_event) %}
+            {% call card_header(selected_event) %}
         </div>
     </div>
-</section>
-<section class="section">
-    <h1>In following hour</h1>
+    <h1 class="title is-5">In following hour</h1>
     {% for event in next_events %}
     <div class="columns">
         <div class="column">
