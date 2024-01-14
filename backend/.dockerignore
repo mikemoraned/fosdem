@@ -1,5 +1,3 @@
-content/**/data
-
 supabase/**/.branches
 supabase/**/.temp
 supabase/**/.env
