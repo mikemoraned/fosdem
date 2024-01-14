@@ -84,6 +84,22 @@ async fn search(
     }
 }
 
+#[derive(Template, Debug)]
+#[template(path = "now_and_next.html")]
+struct NowAndNextTemplate {
+    
+}
+
+#[tracing::instrument]
+async fn now_and_next(
+    State(state): State<AppState>
+) -> axum::response::Result<Html<String>> {
+    
+    let page = NowAndNextTemplate {};
+    let html = page.render().unwrap();
+    Ok(Html(html))
+}
+
 pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {
     let state = AppState {
         queryable: Arc::new(
@@ -102,6 +118,7 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
         .route("/", get(index))
         .route("/search", get(search))
         .route("/connections/", get(related))
+        .route("/now/", get(now_and_next))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);

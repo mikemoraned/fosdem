@@ -41,7 +41,7 @@
 - (/) polish / UI
   - (/) add design system (bulma?)
   - (/) add icons
-- (x) general release
+- (/) general release
   - (/) switch to bespoke domain name, https://fosdem.houseofmoran.io
   - (/) get cert
   - (/) switch plausible.io to domain name
@@ -49,6 +49,9 @@
   - (/) add some example queries that you won't find on main site
   - (/) add "connections" to main nav, and use "connections" consistently
   - (/) log what searches people are doing
+- (x) simple "now and next"
+  - (x) show a current talk (happening in current hour) + all those starting some time in the following hour
+    - 'now' is clamped to be either earliest or latest hour of the weekend
 - (x) more searchable content
   - (x) add author names and dev rooms titles
 - (x) stable / usable clustering
