@@ -35,7 +35,7 @@
             <select name="current_event_id">
                 {% for event in current_events %}
                 <option value="{{ event.id }}" {% if event.id == selected_event.id %} selected {% else %} {% endif %}>
-                    {{ event.start }}, {{ event.duration }}, {{ event.title }}
+                    {{ event.start }}, {{ event.duration }}, {{ event.title|truncate_title(40) }}
                 </option>
                 {% endfor %}
             </select>
