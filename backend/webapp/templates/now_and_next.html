@@ -8,7 +8,7 @@
             </span>
         </p>
         <p class="subtitle is-7">
-            {{ event.date }} at {{ event.start }}, {{ event.duration }} minutes
+            {{ event.date }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes
         </p>
     </div>
 {% endmacro %}
@@ -42,7 +42,7 @@
                         <select name="current_event_id">
                             {% for event in current_events %}
                             <option value="{{ event.id }}" {% if event.id==selected_event.id %} selected {% else %} {% endif %}>
-                                {{ event.start }}, {{ event.title|truncate_title(35) }}
+                                {{ event.start.format("%H:%M") }}, {{ event.title|truncate_title(35) }}
                             </option>
                             {% endfor %}
                         </select>
