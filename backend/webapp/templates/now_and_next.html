@@ -31,8 +31,10 @@
 <section class="section">
     <div class="columns">
         <div class="column">
-            <h1 class="title is-5">Now: {{ now }}</h1>
+            <h1 class="title is-5"><i class="fa-duotone fa-diagram-sankey"></i> Now attending</h1>
+            <div class="card">
             {% call card_header(selected_event) %}
+            </div>
         </div>
         <div class="column">
             <div class="field">
@@ -57,7 +59,7 @@
     <div class="columns">
         
     </div>
-    <h1 class="title is-5">Coming up: </h1>
+    <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
     {% for event in next_events %}
     <div class="columns">
         <div class="column">

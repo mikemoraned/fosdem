@@ -9,7 +9,7 @@ use axum::{
     Router,
 };
 use axum_valid::Valid;
-use chrono::{Duration, NaiveDate, NaiveDateTime};
+use chrono::{Duration, NaiveDate};
 use serde::Deserialize;
 use shared::queryable::{Event, Queryable, SearchItem};
 use tower_http::{
@@ -118,7 +118,6 @@ async fn search(
 #[derive(Template, Debug)]
 #[template(path = "now_and_next.html")]
 struct NowAndNextTemplate {
-    now: NaiveDateTime,
     current_events: Vec<Event>,
     selected_event: Event,
     next_events: Vec<Event>,
@@ -156,7 +155,6 @@ async fn now_and_next(State(state): State<AppState>) -> axum::response::Result<H
                 }
             }
             let page = NowAndNextTemplate {
-                now,
                 current_events,
                 selected_event,
                 next_events,
