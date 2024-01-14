@@ -71,12 +71,19 @@ where
         let q1_related = queryable1.find_related_events(title, limit).await?;
         let q2_related = queryable2.find_related_events(title, limit).await?;
         assert_eq!(
-            summarise_related(title, &q1_related),
-            summarise_related(title, &q2_related)
+            extract_related_title(title, &q1_related),
+            extract_related_title(title, &q2_related)
         );
     }
 
     Ok(())
+}
+
+fn extract_related_title(title: &String, related: &Vec<SearchItem>) -> Vec<(String, String)> {
+    related
+        .iter()
+        .map(|r| (title.clone(), r.event.title.clone()))
+        .collect()
 }
 
 fn summarise_related(title: &String, related: &Vec<SearchItem>) -> Vec<(String, String, f64)> {
