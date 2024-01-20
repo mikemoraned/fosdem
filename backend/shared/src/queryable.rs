@@ -1,4 +1,4 @@
-use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
+use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime, Utc};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -229,8 +229,8 @@ impl Queryable {
     ) -> Result<(Event, Vec<Event>), Box<dyn std::error::Error>> {
         match context {
             NextEventsContext::Now => {
-                let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-                let now = current_day.and_hms_opt(11, 0, 0).unwrap();
+                let now_utc = Utc::now();
+                let now = now_utc.naive_utc();
 
                 let nearest_event = self.find_nearest_event(&now, all_events).unwrap();
 
