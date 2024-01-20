@@ -49,8 +49,8 @@
   - (/) add some example queries that you won't find on main site
   - (/) add "connections" to main nav, and use "connections" consistently
   - (/) log what searches people are doing
-- (x) simple "now and next"
-  - (x) show a current talk (happening in current hour)
+- (/) simple "now and next"
+  - (/) show a current talk (happening in current hour)
     - 'now' is clamped to be either earliest or latest hour of the weekend
   - (/) show all those starting some time in the following hour
 - (x) more searchable content
