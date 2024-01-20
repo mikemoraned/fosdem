@@ -1,4 +1,4 @@
-use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime, Utc};
+use chrono::{Duration, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -230,7 +230,9 @@ impl Queryable {
         match context {
             NextEventsContext::Now => {
                 let now_utc = Utc::now();
-                let now = now_utc.naive_utc();
+                let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
+                let now_belgium = now_utc.with_timezone(&central_european_time);
+                let now = now_belgium.naive_utc();
 
                 let nearest_event = self.find_nearest_event(&now, all_events).unwrap();
 
