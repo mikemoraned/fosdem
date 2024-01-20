@@ -53,8 +53,9 @@
   - (/) show a current talk (happening in current hour)
     - 'now' is clamped to be either earliest or latest hour of the weekend
   - (/) show all those starting some time in the following hour
-- (x) more searchable content
+- (x) more searchable/usable content
   - (x) add author names and dev rooms titles
+  - (x) standardise event display
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
