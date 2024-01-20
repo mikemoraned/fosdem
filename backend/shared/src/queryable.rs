@@ -36,6 +36,16 @@ pub struct Event {
     pub r#abstract: String,
 }
 
+impl Event {
+    fn starting_time(&self) -> NaiveDateTime {
+        self.date.and_time(self.start)
+    }
+
+    fn ending_time(&self) -> NaiveDateTime {
+        self.starting_time() + Duration::minutes(self.duration.into())
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct NextEvents {
     pub current: Vec<Event>,
@@ -221,10 +231,14 @@ impl Queryable {
             NextEventsContext::Now => {
                 let current_day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
                 let now = current_day.and_hms_opt(11, 0, 0).unwrap();
-                let one_hour_from_now = now + Duration::hours(1);
-                debug!("Current hour: {} -> {}", now, one_hour_from_now);
 
-                let current = self.find_overlapping_events(now, one_hour_from_now, all_events);
+                let nearest_event = self.find_nearest_event(&now, all_events).unwrap();
+
+                let current = self.find_overlapping_events(
+                    nearest_event.starting_time(),
+                    nearest_event.ending_time(),
+                    all_events,
+                );
                 debug!("Found {} current events", current.len());
                 let selected = current[0].clone();
 
@@ -239,11 +253,11 @@ impl Queryable {
                     }
                 }
                 if let Some(selected) = found {
-                    let starting_time = selected.date.and_time(selected.start);
-                    let ending_time = starting_time + Duration::minutes(selected.duration.into());
-
-                    let current =
-                        self.find_overlapping_events(starting_time, ending_time, all_events);
+                    let current = self.find_overlapping_events(
+                        selected.starting_time(),
+                        selected.ending_time(),
+                        all_events,
+                    );
 
                     debug!("Found {} current events", current.len());
                     Ok((selected, current))
@@ -252,6 +266,23 @@ impl Queryable {
                 }
             }
         }
+    }
+
+    fn find_nearest_event(&self, now: &NaiveDateTime, all_events: &[Event]) -> Option<Event> {
+        let mut nearest = None;
+        for event in all_events {
+            let diff = event.starting_time().signed_duration_since(*now);
+            match nearest {
+                None => nearest = Some(event.clone()),
+                Some(ref e) => {
+                    let e_diff = e.starting_time().signed_duration_since(*now);
+                    if diff.abs() < e_diff.abs() {
+                        nearest = Some(event.clone())
+                    }
+                }
+            }
+        }
+        nearest
     }
 
     fn find_overlapping_events(
