@@ -212,6 +212,7 @@ impl Queryable {
             )
             .into_iter()
             .filter(|e| e.id != selected.id)
+            .filter(|e| e.starting_time() >= selected.ending_time())
             .collect();
 
         Ok(NextEvents {
