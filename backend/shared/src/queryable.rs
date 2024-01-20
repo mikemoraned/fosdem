@@ -1,4 +1,4 @@
-use chrono::{Duration, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
+use chrono::{Duration, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime, Utc};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -204,16 +204,15 @@ impl Queryable {
 
         let selected_end_time = selected.ending_time();
         let one_hour_after_selected_end_time = selected_end_time + Duration::hours(1);
-        let mut next = vec![];
-        for event in all_events.iter() {
-            let starting_time = event.starting_time();
-            if selected_end_time <= starting_time
-                && starting_time <= one_hour_after_selected_end_time
-            {
-                next.push(event.clone());
-            }
-        }
-        next.sort_by(|a, b| a.start.cmp(&b.start));
+        let next = self
+            .find_overlapping_events(
+                selected_end_time,
+                one_hour_after_selected_end_time,
+                &all_events,
+            )
+            .into_iter()
+            .filter(|e| e.id != selected.id)
+            .collect();
 
         Ok(NextEvents {
             now,
