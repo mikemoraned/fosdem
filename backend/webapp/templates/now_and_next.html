@@ -45,7 +45,13 @@
 <section class="section">
     <div class="columns">
         <div class="column">
-            <h1 class="title is-5"><i class="fa-duotone fa-diagram-sankey"></i> As of {{ next.now }}, attending:</h1>
+            <h1 class="title is-5">
+                <i class="fa-duotone fa-diagram-sankey"></i> 
+                Now attending 
+            </h1>
+            <h1 class="subtitle is-7">
+                (<i class="fa-solid fa-clock"></i> {{ next.now.format("%Y-%m-%d, %H:%M") }})
+            </h1>
             <div class="card">
                 <details>
                     <summary>{% call card_header(next.selected) %}</summary>
