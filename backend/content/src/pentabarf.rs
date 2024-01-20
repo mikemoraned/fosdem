@@ -28,43 +28,19 @@ pub struct Event {
     #[xmlserde(name = b"id", ty = "attr")]
     pub id: u32,
     #[xmlserde(name = b"start", ty = "child")]
-    pub start: Start,
+    pub start: Text,
     #[xmlserde(name = b"duration", ty = "child")]
-    pub duration: Duration,
+    pub duration: Text,
     #[xmlserde(name = b"title", ty = "child")]
-    pub title: Title,
+    pub title: Text,
     #[xmlserde(name = b"slug", ty = "child")]
-    pub slug: Abstract,
+    pub slug: Text,
     #[xmlserde(name = b"abstract", ty = "child")]
-    pub r#abstract: Abstract,
+    pub r#abstract: Text,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]
-pub struct Start {
-    #[xmlserde(ty = "text")]
-    pub value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-pub struct Duration {
-    #[xmlserde(ty = "text")]
-    pub value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-pub struct Abstract {
-    #[xmlserde(ty = "text")]
-    pub value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-pub struct Title {
-    #[xmlserde(ty = "text")]
-    pub value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-pub struct Slug {
+pub struct Text {
     #[xmlserde(ty = "text")]
     pub value: String,
 }
