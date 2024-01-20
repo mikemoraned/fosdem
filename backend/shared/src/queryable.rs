@@ -48,6 +48,7 @@ impl Event {
 
 #[derive(Debug, Clone)]
 pub struct NextEvents {
+    pub now: NaiveDateTime,
     pub current: Vec<Event>,
     pub selected: Event,
     pub next: Vec<Event>,
@@ -199,14 +200,13 @@ impl Queryable {
     ) -> Result<NextEvents, Box<dyn std::error::Error>> {
         let all_events = self.load_all_events().await?;
 
-        let (selected, current) = self.get_event_context(context, &all_events)?;
+        let (now, selected, current) = self.get_event_context(context, &all_events)?;
 
-        let selected_end_time =
-            selected.date.and_time(selected.start) + Duration::minutes(selected.duration.into());
+        let selected_end_time = selected.ending_time();
         let one_hour_after_selected_end_time = selected_end_time + Duration::hours(1);
         let mut next = vec![];
         for event in all_events.iter() {
-            let starting_time = event.date.and_time(event.start);
+            let starting_time = event.starting_time();
             if selected_end_time <= starting_time
                 && starting_time <= one_hour_after_selected_end_time
             {
@@ -216,6 +216,7 @@ impl Queryable {
         next.sort_by(|a, b| a.start.cmp(&b.start));
 
         Ok(NextEvents {
+            now,
             current,
             selected,
             next,
@@ -226,14 +227,14 @@ impl Queryable {
         &self,
         context: NextEventsContext,
         all_events: &Vec<Event>,
-    ) -> Result<(Event, Vec<Event>), Box<dyn std::error::Error>> {
+    ) -> Result<(NaiveDateTime, Event, Vec<Event>), Box<dyn std::error::Error>> {
+        let now_utc = Utc::now();
+        let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
+        let now_belgium = now_utc.with_timezone(&central_european_time);
+        let now = now_belgium.naive_utc();
+
         match context {
             NextEventsContext::Now => {
-                let now_utc = Utc::now();
-                let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
-                let now_belgium = now_utc.with_timezone(&central_european_time);
-                let now = now_belgium.naive_utc();
-
                 let nearest_event = self.find_nearest_event(&now, all_events).unwrap();
 
                 let current = self.find_overlapping_events(
@@ -244,7 +245,7 @@ impl Queryable {
                 debug!("Found {} current events", current.len());
                 let selected = current[0].clone();
 
-                Ok((selected, current))
+                Ok((now, selected, current))
             }
             NextEventsContext::EventId(event_id) => {
                 let mut found = None;
@@ -262,7 +263,7 @@ impl Queryable {
                     );
 
                     debug!("Found {} current events", current.len());
-                    Ok((selected, current))
+                    Ok((now, selected, current))
                 } else {
                     Err(format!("could not find event with id {}", event_id).into())
                 }
