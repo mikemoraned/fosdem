@@ -3000,6 +3000,7 @@ dependencies = [
  "tower-http",
  "tracing",
  "tracing-subscriber",
+ "unicode-segmentation",
  "url",
  "validator",
 ]

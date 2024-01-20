@@ -1,4 +1,4 @@
-use chrono::{NaiveDate, NaiveTime};
+use chrono::{Duration, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime, Utc};
 use futures::future::join_all;
 use openai_dive::v1::api::Client;
 use pgvector::Vector;
@@ -34,6 +34,30 @@ pub struct Event {
     pub slug: String,
     pub url: Url,
     pub r#abstract: String,
+}
+
+impl Event {
+    fn starting_time(&self) -> NaiveDateTime {
+        self.date.and_time(self.start)
+    }
+
+    fn ending_time(&self) -> NaiveDateTime {
+        self.starting_time() + Duration::minutes(self.duration.into())
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct NextEvents {
+    pub now: NaiveDateTime,
+    pub current: Vec<Event>,
+    pub selected: Event,
+    pub next: Vec<Event>,
+}
+
+#[derive(Debug)]
+pub enum NextEventsContext {
+    Now,
+    EventId(u32),
 }
 
 const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
@@ -167,6 +191,119 @@ impl Queryable {
         } else {
             Ok(entries)
         }
+    }
+
+    #[tracing::instrument(skip(self))]
+    pub async fn find_next_events(
+        &self,
+        context: NextEventsContext,
+    ) -> Result<NextEvents, Box<dyn std::error::Error>> {
+        let all_events = self.load_all_events().await?;
+
+        let (now, selected, current) = self.get_event_context(context, &all_events)?;
+
+        let selected_end_time = selected.ending_time();
+        let one_hour_after_selected_end_time = selected_end_time + Duration::hours(1);
+        let next = self
+            .find_overlapping_events(
+                selected_end_time,
+                one_hour_after_selected_end_time,
+                &all_events,
+            )
+            .into_iter()
+            .filter(|e| e.id != selected.id)
+            .filter(|e| e.starting_time() >= selected.ending_time())
+            .collect();
+
+        Ok(NextEvents {
+            now,
+            current,
+            selected,
+            next,
+        })
+    }
+
+    fn get_event_context(
+        &self,
+        context: NextEventsContext,
+        all_events: &Vec<Event>,
+    ) -> Result<(NaiveDateTime, Event, Vec<Event>), Box<dyn std::error::Error>> {
+        let now_utc = Utc::now();
+        let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
+        let now_belgium = now_utc.with_timezone(&central_european_time);
+        let now = now_belgium.naive_local();
+
+        match context {
+            NextEventsContext::Now => {
+                let nearest_event = self.find_nearest_event(&now, all_events).unwrap();
+
+                let current = self.find_overlapping_events(
+                    nearest_event.starting_time(),
+                    nearest_event.ending_time(),
+                    all_events,
+                );
+                debug!("Found {} current events", current.len());
+                let selected = current[0].clone();
+
+                Ok((now, selected, current))
+            }
+            NextEventsContext::EventId(event_id) => {
+                let mut found = None;
+                for event in all_events.iter() {
+                    if event.id == event_id {
+                        found = Some(event.clone());
+                        break;
+                    }
+                }
+                if let Some(selected) = found {
+                    let current = self.find_overlapping_events(
+                        selected.starting_time(),
+                        selected.ending_time(),
+                        all_events,
+                    );
+
+                    debug!("Found {} current events", current.len());
+                    Ok((now, selected, current))
+                } else {
+                    Err(format!("could not find event with id {}", event_id).into())
+                }
+            }
+        }
+    }
+
+    fn find_nearest_event(&self, now: &NaiveDateTime, all_events: &[Event]) -> Option<Event> {
+        let mut nearest = None;
+        for event in all_events {
+            let diff = event.starting_time().signed_duration_since(*now);
+            match nearest {
+                None => nearest = Some(event.clone()),
+                Some(ref e) => {
+                    let e_diff = e.starting_time().signed_duration_since(*now);
+                    if diff.abs() < e_diff.abs() {
+                        nearest = Some(event.clone())
+                    }
+                }
+            }
+        }
+        nearest
+    }
+
+    fn find_overlapping_events(
+        &self,
+        begin: NaiveDateTime,
+        end: NaiveDateTime,
+        all_events: &Vec<Event>,
+    ) -> Vec<Event> {
+        let mut overlapping = vec![];
+        for event in all_events.iter() {
+            let starting_time = event.date.and_time(event.start);
+            let ending_time = starting_time + Duration::minutes(event.duration.into());
+            if begin <= ending_time && ending_time <= end {
+                overlapping.push(event.clone());
+            }
+        }
+        overlapping.sort_by(|a, b| a.start.cmp(&b.start));
+        overlapping
     }
 
     fn row_to_search_item(&self, row: &PgRow) -> Result<SearchItem, Box<dyn std::error::Error>> {

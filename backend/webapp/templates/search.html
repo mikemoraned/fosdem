@@ -37,7 +37,7 @@
                             </span>
                         </p>
                         <p class="subtitle is-7">
-                            {{ item.event.date }} at {{ item.event.start }}, {{ item.event.duration }} minutes, 
+                            {{ item.event.date }} at {{ item.event.start.format("%H:%M") }}, {{ item.event.duration }} minutes, 
                             <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                         </p>
                     </div>

@@ -2,15 +2,16 @@ use std::sync::Arc;
 
 use askama::Template;
 use axum::{
-    extract::{Query, State},
+    extract::{Path, Query, State},
     http::Method,
     response::Html,
     routing::get,
     Router,
 };
 use axum_valid::Valid;
+
 use serde::Deserialize;
-use shared::queryable::{Queryable, SearchItem};
+use shared::queryable::{NextEvents, NextEventsContext, Queryable, SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -22,7 +23,7 @@ use crate::related::related;
 use crate::state::AppState;
 
 #[derive(Deserialize, Validate, Debug)]
-struct Params {
+struct SearchParams {
     #[validate(length(min = 2, max = 100))]
     q: String,
     #[validate(range(min = 1, max = 20))]
@@ -37,6 +38,36 @@ struct SearchTemplate {
 }
 
 mod filters {
+    use unicode_segmentation::UnicodeSegmentation;
+
+    fn count_graphemes(s: &str) -> usize {
+        UnicodeSegmentation::graphemes(s, true).into_iter().count()
+    }
+
+    pub fn truncate_title(title: &String, max_size: usize) -> ::askama::Result<String> {
+        if count_graphemes(&title) <= max_size {
+            return Ok(title.clone());
+        }
+
+        let suffix = " …";
+        let suffix_length = count_graphemes(suffix);
+        let mut available = max_size - suffix_length;
+
+        let chunks = title.split_word_bounds().collect::<Vec<&str>>();
+        let mut limited = vec![];
+        for chunk in chunks {
+            let chunk_length = count_graphemes(chunk);
+            if available >= chunk_length {
+                limited.push(chunk);
+                available -= chunk_length;
+            } else {
+                break;
+            }
+        }
+        limited.push(suffix);
+        Ok(limited.join(""))
+    }
+
     pub fn distance_similarity(distance: &f64) -> ::askama::Result<String> {
         let similarity = 1.0 - distance;
         Ok(format!("{:.2}", similarity).into())
@@ -65,10 +96,10 @@ async fn index() -> Html<String> {
     Html(html)
 }
 
-#[tracing::instrument]
+#[tracing::instrument(skip(state))]
 async fn search(
     State(state): State<AppState>,
-    Valid(Query(params)): Valid<Query<Params>>,
+    Valid(Query(params)): Valid<Query<SearchParams>>,
 ) -> axum::response::Result<Html<String>> {
     info!("search params: {:?}", params);
     match state.queryable.search(&params.q, params.limit, true).await {
@@ -81,6 +112,56 @@ async fn search(
             Ok(Html(html))
         }
         Err(_) => Err("search failed".into()),
+    }
+}
+
+#[derive(Deserialize, Validate, Debug)]
+struct NextParams {
+    #[validate(range(min = 1, max = 20000))]
+    id: Option<u32>,
+}
+
+#[derive(Template, Debug)]
+#[template(path = "now_and_next.html")]
+struct NowAndNextTemplate {
+    next: NextEvents,
+}
+
+#[tracing::instrument(skip(state))]
+async fn next(
+    State(state): State<AppState>,
+    Valid(Query(params)): Valid<Query<NextParams>>,
+) -> axum::response::Result<Html<String>> {
+    let context = match params.id {
+        Some(event_id) => NextEventsContext::EventId(event_id),
+        None => NextEventsContext::Now,
+    };
+    match state.queryable.find_next_events(context).await {
+        Ok(next) => {
+            let page = NowAndNextTemplate { next };
+            let html = page.render().unwrap();
+            Ok(Html(html))
+        }
+        Err(_) => Err("failed".into()),
+    }
+}
+
+#[tracing::instrument(skip(state))]
+async fn next_after_event(
+    State(state): State<AppState>,
+    Path(event_id): Path<u32>,
+) -> axum::response::Result<Html<String>> {
+    match state
+        .queryable
+        .find_next_events(NextEventsContext::Now)
+        .await
+    {
+        Ok(next) => {
+            let page = NowAndNextTemplate { next };
+            let html = page.render().unwrap();
+            Ok(Html(html))
+        }
+        Err(_) => Err("failed".into()),
     }
 }
 
@@ -102,6 +183,7 @@ pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router
         .route("/", get(index))
         .route("/search", get(search))
         .route("/connections/", get(related))
+        .route("/next/", get(next))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state);
