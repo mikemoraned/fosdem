@@ -230,7 +230,7 @@ impl Queryable {
         let now_utc = Utc::now();
         let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
         let now_belgium = now_utc.with_timezone(&central_european_time);
-        let now = now_belgium.naive_utc();
+        let now = now_belgium.naive_local();
 
         match context {
             NextEventsContext::Now => {
