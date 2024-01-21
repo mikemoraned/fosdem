@@ -31,6 +31,8 @@ pub struct Event {
     pub start: Text,
     #[xmlserde(name = b"duration", ty = "child")]
     pub duration: Text,
+    #[xmlserde(name = b"track", ty = "child")]
+    pub track: Text,
     #[xmlserde(name = b"title", ty = "child")]
     pub title: Text,
     #[xmlserde(name = b"slug", ty = "child")]

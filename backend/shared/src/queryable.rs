@@ -30,6 +30,8 @@ pub struct Event {
     pub date: NaiveDate,
     pub start: NaiveTime,
     pub duration: u32,
+    pub room: String,
+    pub track: String,
     pub title: String,
     pub slug: String,
     pub url: Url,
@@ -88,7 +90,7 @@ impl Queryable {
     pub async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
         let rows = sqlx::query(
-            "SELECT id, start, date, duration, title, slug, url, abstract FROM events_7",
+            "SELECT id, start, date, duration, room, track, title, slug, url, abstract FROM events_8",
         )
         .fetch_all(&self.pool)
         .await?;
@@ -115,9 +117,9 @@ impl Queryable {
 
         debug!("Running Query to find Events similar to title");
         let sql = "
-    SELECT ev.id, ev.start, ev.date, ev.duration, ev.title, ev.slug, ev.url, ev.abstract, 
+    SELECT ev.id, ev.start, ev.date, ev.duration, ev.room, ev.track, ev.title, ev.slug, ev.url, ev.abstract, 
            em.embedding <-> ($2) AS distance
-    FROM embedding_1 em JOIN events_7 ev ON ev.title = em.title
+    FROM embedding_1 em JOIN events_8 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
     ";
@@ -155,9 +157,9 @@ impl Queryable {
 
         debug!("Running query to find similar events");
         let sql = "
-    SELECT ev.id, ev.date, ev.start, ev.duration, ev.title, ev.slug, ev.url, ev.abstract, 
+    SELECT ev.id, ev.date, ev.start, ev.duration, ev.room, ev.track, ev.title, ev.slug, ev.url, ev.abstract, 
            em.embedding <-> ($1) AS distance
-    FROM embedding_1 em JOIN events_7 ev ON ev.title = em.title
+    FROM embedding_1 em JOIN events_8 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
         let rows = sqlx::query(sql)
@@ -319,6 +321,8 @@ impl Queryable {
         let date: NaiveDate = row.try_get("date")?;
         let start: NaiveTime = row.try_get("start")?;
         let duration: i64 = row.try_get("duration")?;
+        let track: String = row.try_get("track")?;
+        let room: String = row.try_get("room")?;
         let title: String = row.try_get("title")?;
         let slug: String = row.try_get("slug")?;
         let url = Url::parse(row.try_get("url")?)?;
@@ -329,6 +333,8 @@ impl Queryable {
             date,
             start,
             duration: duration as u32,
+            track,
+            room,
             title,
             slug,
             url,

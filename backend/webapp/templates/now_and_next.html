@@ -3,14 +3,7 @@
 
 {% macro card(event) %}
 <div class="card">
-    <details>
-        <summary>{% call event::card_header(event) %}</summary>
-        <div class="card-content">
-            <div class="content">
-                {{ event.abstract|safe }}
-            </div>
-        </div>
-    </details>
+    {% call event::expandable_card_details(event) %}
     <footer class="card-footer">
         <a href="/next/?id={{event.id}}" class="card-footer-item">
             <span class="icon-text">
@@ -32,7 +25,7 @@
 {% block content %}
 <section class="section">
     <div class="columns">
-        <div class="column">
+        <div class="column is-two-thirds">
             <h1 class="title is-5">
                 <i class="fa-duotone fa-diagram-sankey"></i> 
                 Now attending 
