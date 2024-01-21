@@ -26,9 +26,12 @@
     
         {% for item in items %}
 
-        <a name="{{item.event.id}}"></a>
         <div class="columns">
-            <div class="column is-two-thirds">
+            <div class="column is-narrow">
+                <a name="{{item.event.id}}"></a>
+                <span class="tag is-info is-size-7-mobile">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+            </div>
+            <div class="column">
                 <div class="card">
                     <div class="card-content">
                         <p class="title is-5">
@@ -37,8 +40,7 @@
                             </span>
                         </p>
                         <p class="subtitle is-7">
-                            {{ item.event.date }} at {{ item.event.start.format("%H:%M") }}, {{ item.event.duration }} minutes, 
-                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                            {{ item.event.date }} at {{ item.event.start.format("%H:%M") }}, {{ item.event.duration }} minutes
                         </p>
                     </div>
                     <div class="card-content">
@@ -58,7 +60,7 @@
                     </footer>
                 </div>
             </div>
-            <div class="column">
+            <div class="column is-3">
                 {% if item.related.is_some() %}
                 {% let items = item.related.as_ref().unwrap() %}
                 <div class="box">
@@ -73,7 +75,7 @@
 
                     <li>
                         <a href="{{ item.event.url }}">
-                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                            <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
                         </a>
                     </li>
