@@ -30,8 +30,13 @@
 
         <div class="columns">
             <div class="column">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+                    </span>
+                </span>
                 <span
-                    class="tag is-info is-size-7-mobile">{{group.distance|distance_icon|safe}}&nbsp;{{group.distance|distance_similarity}}</span>:
+                    class="tag is-info is-size-7-mobile">{{group.distance|distance_icon|safe}}&nbsp;{{group.distance|distance_similarity}}</span> group:
             </div>
         </div>
 
@@ -39,7 +44,7 @@
 
         <a name="{{item.event.id}}"></a>
         <div class="columns">
-            <div class="column">
+            <div class="column is-offset-1">
                 <div class="card">
                     {% call event::expandable_card_details(item.event) %}
                     <footer class="card-footer">
@@ -62,7 +67,7 @@
                         <span class="icon">
                             <i class="fa-duotone fa-arrow-right-arrow-left"></i>
                         </span>
-                        <span>Connections</span>
+                        <span>Related</span>
                     </span>:
                     <ul>
                     {% for item in items %}
