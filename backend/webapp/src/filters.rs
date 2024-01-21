@@ -52,9 +52,7 @@ pub struct GroupedSearchItems {
     pub items: Vec<SearchItem>,
 }
 
-pub fn group_by_distance_similarity(
-    items: &Vec<SearchItem>,
-) -> ::askama::Result<Vec<GroupedSearchItems>> {
+pub fn group_by_distance(items: &Vec<SearchItem>) -> ::askama::Result<Vec<GroupedSearchItems>> {
     let mut group_map: HashMap<String, Vec<SearchItem>> = HashMap::new();
     for item in items {
         let group_name = distance_similarity(&item.distance)?;
