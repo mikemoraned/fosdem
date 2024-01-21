@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{%- import "components/form.html" as forms -%}
+{%- import "components/search.html" as search -%}
 {% block content %}
     <section class="section">
         <div class="columns">
@@ -7,7 +7,7 @@
                 <h1 class="is-size-1 is-size-4-mobile">Search results for "{{ query }}"</h1>
             </div>
             <div class="column">
-                {% call forms::search(query) %}
+                {% call search::form(query) %}
             </div>
         </div>
 
