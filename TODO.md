@@ -55,9 +55,11 @@
   - (/) show all those starting some time in the following hour
 - (x) more searchable/usable content
   - (/) standardise event display
-  - (x) add rooms
-  - (x) add track
+  - (/) add rooms
+  - (/) add track
   - (x) add author names
+  - (x) re-index in openai (fetch new embeddings based on new info)
+  - (x) re-fetch connection distances
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
