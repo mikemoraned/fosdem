@@ -1,3 +1,6 @@
+use std::collections::HashMap;
+
+use shared::queryable::SearchItem;
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {
@@ -42,4 +45,31 @@ pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
         opacity
     )
     .into())
+}
+
+pub struct GroupedSearchItems {
+    pub distance: f64,
+    pub items: Vec<SearchItem>,
+}
+
+pub fn group_by_distance_similarity(
+    items: &Vec<SearchItem>,
+) -> ::askama::Result<Vec<GroupedSearchItems>> {
+    let mut group_map: HashMap<String, Vec<SearchItem>> = HashMap::new();
+    for item in items {
+        let group_name = distance_similarity(&item.distance)?;
+        group_map
+            .entry(group_name)
+            .and_modify(|e| e.push(item.clone()))
+            .or_insert(vec![item.clone()]);
+    }
+    let mut grouped: Vec<GroupedSearchItems> = group_map
+        .into_iter()
+        .map(|(_, items)| GroupedSearchItems {
+            distance: items[0].distance,
+            items,
+        })
+        .collect();
+    grouped.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+    Ok(grouped)
 }

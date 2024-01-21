@@ -26,13 +26,19 @@
             <div class="column"></div>
         </div>
     
-        {% for item in items %}
+        {% for group in items|group_by_distance_similarity %}
 
         <div class="columns">
-            <div class="column is-narrow">
-                <a name="{{item.event.id}}"></a>
-                <span class="tag is-info is-size-7-mobile">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>:
+            <div class="column">
+                <span
+                    class="tag is-info is-size-7-mobile">{{group.distance|distance_icon|safe}}&nbsp;{{group.distance|distance_similarity}}</span>:
             </div>
+        </div>
+
+        {% for item in group.items %}
+
+        <a name="{{item.event.id}}"></a>
+        <div class="columns">
             <div class="column">
                 <div class="card">
                     {% call event::expandable_card_details(item.event) %}
@@ -73,6 +79,7 @@
                 {% endif %}
             </div>
         </div>
+        {% endfor %}
         {% endfor %}
     </section>
     
