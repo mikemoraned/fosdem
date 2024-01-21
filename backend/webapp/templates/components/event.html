@@ -6,7 +6,9 @@
         </span>
     </p>
     <p class="subtitle is-7">
-        {{ event.date }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes, {{ event.track }}, {{ event.room }}
+        <span><i class="fa-solid fa-clock"></i> {{ event.date.format("%A") }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes</span>,
+        <span><i class="fa-solid fa-location-dot"></i> {{ event.room }}</span>,
+        <span><i class="fa-regular fa-train-track"></i> {{ event.track }}</span>
     </p>
 </div>
 {% endmacro %}
