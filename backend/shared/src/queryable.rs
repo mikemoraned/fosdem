@@ -60,8 +60,6 @@ pub enum NextEventsContext {
     EventId(u32),
 }
 
-const BASE_URL_STRING: &str = "https://fosdem.org/2024/schedule/event/";
-
 const MAX_POOL_CONNECTIONS: u32 = 10;
 const MAX_RELATED_EVENTS: u8 = 5;
 
@@ -89,10 +87,11 @@ impl Queryable {
     #[tracing::instrument(skip(self))]
     pub async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
-        let rows =
-            sqlx::query("SELECT id, start, date, duration, title, slug, abstract FROM events_5")
-                .fetch_all(&self.pool)
-                .await?;
+        let rows = sqlx::query(
+            "SELECT id, start, date, duration, title, slug, url, abstract FROM events_7",
+        )
+        .fetch_all(&self.pool)
+        .await?;
         let mut events = vec![];
         for row in rows {
             events.push(self.row_to_event(&row)?);
@@ -116,9 +115,9 @@ impl Queryable {
 
         debug!("Running Query to find Events similar to title");
         let sql = "
-    SELECT ev.id, ev.start, ev.date, ev.duration, ev.title, ev.slug, ev.abstract, 
+    SELECT ev.id, ev.start, ev.date, ev.duration, ev.title, ev.slug, ev.url, ev.abstract, 
            em.embedding <-> ($2) AS distance
-    FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
+    FROM embedding_1 em JOIN events_7 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
     ";
@@ -156,9 +155,9 @@ impl Queryable {
 
         debug!("Running query to find similar events");
         let sql = "
-    SELECT ev.id, ev.date, ev.start, ev.duration, ev.title, ev.slug, ev.abstract, 
+    SELECT ev.id, ev.date, ev.start, ev.duration, ev.title, ev.slug, ev.url, ev.abstract, 
            em.embedding <-> ($1) AS distance
-    FROM embedding_1 em JOIN events_5 ev ON ev.title = em.title
+    FROM embedding_1 em JOIN events_7 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
         let rows = sqlx::query(sql)
@@ -322,7 +321,7 @@ impl Queryable {
         let duration: i64 = row.try_get("duration")?;
         let title: String = row.try_get("title")?;
         let slug: String = row.try_get("slug")?;
-        let url = self.event_url(&slug)?;
+        let url = Url::parse(row.try_get("url")?)?;
         let r#abstract: String = row.try_get("abstract")?;
 
         Ok(Event {
@@ -335,9 +334,5 @@ impl Queryable {
             url,
             r#abstract,
         })
-    }
-
-    fn event_url(&self, slug: &str) -> Result<Url, Box<dyn std::error::Error>> {
-        Ok(Url::parse(BASE_URL_STRING)?.join(slug)?)
     }
 }

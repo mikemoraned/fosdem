@@ -25,7 +25,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut csv = csv::Writer::from_writer(File::create(args.csv)?);
     let schedule: Schedule = xml_deserialize_from_str(&xml)?;
     csv.write_record(&[
-        "id", "date", "start", "duration", "title", "slug", "abstract",
+        "id", "date", "start", "duration", "title", "slug", "url", "abstract",
     ])?;
     for day in schedule.days {
         for room in day.rooms {
@@ -37,6 +37,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     parse_into_minutes(&event.duration.value)?.to_string(),
                     event.title.value,
                     event.slug.value,
+                    event.url.value,
                     event.r#abstract.value,
                 ])?;
             }

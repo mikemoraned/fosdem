@@ -35,6 +35,8 @@ pub struct Event {
     pub title: Text,
     #[xmlserde(name = b"slug", ty = "child")]
     pub slug: Text,
+    #[xmlserde(name = b"url", ty = "child")]
+    pub url: Text,
     #[xmlserde(name = b"abstract", ty = "child")]
     pub r#abstract: Text,
 }
