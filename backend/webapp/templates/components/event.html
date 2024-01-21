@@ -11,3 +11,13 @@
 </div>
 {% endmacro %}
 
+{% macro expandable_card_details(event) %}
+<details>
+    <summary>{% call card_header(event) %}</summary>
+    <div class="card-content">
+        <div class="content">
+            {{ event.abstract|safe }}
+        </div>
+    </div>
+</details>
+{% endmacro %}

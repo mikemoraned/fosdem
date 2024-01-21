@@ -41,14 +41,7 @@
                 (<i class="fa-solid fa-clock"></i> {{ next.now.format("%Y-%m-%d, %H:%M") }})
             </h1>
             <div class="card">
-                <details>
-                    <summary>{% call event::card_header(next.selected) %}</summary>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ next.selected.abstract|safe }}
-                        </div>
-                    </div>
-                </details>
+                {% call event::expandable_card_details(next.selected) %}
                 <footer class="card-footer">
                     <a href="{{ next.selected.url }}" class="card-footer-item">
                         <span class="icon-text">
