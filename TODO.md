@@ -57,7 +57,7 @@
   - (/) standardise event display
   - (/) add rooms
   - (/) add track
-  - (x) re-index in openai (fetch new embeddings based on new info)
+  - (/) re-index in openai (fetch new embeddings based on new info)
   - (x) re-fetch connection distances
 - (x) add author names
 - (x) stable / usable clustering
