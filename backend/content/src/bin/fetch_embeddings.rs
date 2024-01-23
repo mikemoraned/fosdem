@@ -23,6 +23,7 @@ struct Args {
 #[derive(Debug, Deserialize)]
 struct EventRecord {
     title: String,
+    track: String,
     r#abstract: String,
 }
 
@@ -66,7 +67,7 @@ async fn get_embedding(
     client: &Client,
     event: &EventRecord,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
-    let input = format!("{} {}", event.title, event.r#abstract);
+    let input = format_input(event);
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
@@ -78,6 +79,13 @@ async fn get_embedding(
     let response = client.embeddings().create(parameters).await.unwrap();
 
     Ok(response)
+}
+
+fn format_input(event: &EventRecord) -> String {
+    format!(
+        "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}",
+        event.title, event.track, event.r#abstract
+    )
 }
 
 fn embedding_as_string(embedding: &Embedding) -> String {

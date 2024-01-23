@@ -1,0 +1,25 @@
+{% macro card_header(event) %}
+<div class="card-content">
+    <p class="title is-5">
+        <span>
+            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}"</span>
+        </span>
+    </p>
+    <p class="subtitle is-7">
+        <span><i class="fa-solid fa-clock"></i> {{ event.date.format("%A") }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes</span>,
+        <span><i class="fa-solid fa-location-dot"></i> {{ event.room }}</span>,
+        <span><i class="fa-regular fa-train-track"></i> {{ event.track }}</span>
+    </p>
+</div>
+{% endmacro %}
+
+{% macro expandable_card_details(event) %}
+<details>
+    <summary>{% call card_header(event) %}</summary>
+    <div class="card-content">
+        <div class="content">
+            {{ event.abstract|safe }}
+        </div>
+    </div>
+</details>
+{% endmacro %}

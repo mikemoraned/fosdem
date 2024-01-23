@@ -1,28 +1,9 @@
 {% extends "layout.html" %}
-
-{% macro card_header(event) %}
-    <div class="card-content">
-        <p class="title is-5">
-            <span>
-                <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}"</span>
-            </span>
-        </p>
-        <p class="subtitle is-7">
-            {{ event.date }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes
-        </p>
-    </div>
-{% endmacro %}
+{%- import "components/event.html" as event -%}
 
 {% macro card(event) %}
 <div class="card">
-    <details>
-        <summary>{% call card_header(event) %}</summary>
-        <div class="card-content">
-            <div class="content">
-                {{ event.abstract|safe }}
-            </div>
-        </div>
-    </details>
+    {% call event::expandable_card_details(event) %}
     <footer class="card-footer">
         <a href="/next/?id={{event.id}}" class="card-footer-item">
             <span class="icon-text">
@@ -44,7 +25,7 @@
 {% block content %}
 <section class="section">
     <div class="columns">
-        <div class="column">
+        <div class="column is-two-thirds">
             <h1 class="title is-5">
                 <i class="fa-duotone fa-diagram-sankey"></i> 
                 Now attending 
@@ -53,14 +34,7 @@
                 (<i class="fa-solid fa-clock"></i> {{ next.now.format("%Y-%m-%d, %H:%M") }})
             </h1>
             <div class="card">
-                <details>
-                    <summary>{% call card_header(next.selected) %}</summary>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ next.selected.abstract|safe }}
-                        </div>
-                    </div>
-                </details>
+                {% call event::expandable_card_details(next.selected) %}
                 <footer class="card-footer">
                     <a href="{{ next.selected.url }}" class="card-footer-item">
                         <span class="icon-text">

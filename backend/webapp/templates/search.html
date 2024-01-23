@@ -1,17 +1,19 @@
 {% extends "layout.html" %}
-{%- import "form.html" as forms -%}
+{%- import "components/search.html" as search -%}
+{%- import "components/event.html" as event -%}
+
 {% block content %}
     <section class="section">
         <div class="columns">
-            <div class="column is-two-thirds">
+            <div class="column is-two-thirds is-hidden-mobile">
                 <h1 class="is-size-1 is-size-4-mobile">Search results for "{{ query }}"</h1>
             </div>
             <div class="column">
-                {% call forms::search(query) %}
+                {% call search::form(query) %}
             </div>
         </div>
 
-        <div class="columns">
+        <div class="columns is-hidden-mobile">
             <div class="column is-two-thirds">
             {% for item in items %}
             <a href="#{{item.event.id}}">
@@ -24,28 +26,27 @@
             <div class="column"></div>
         </div>
     
-        {% for item in items %}
+        {% for group in items|group_by_distance %}
+
+        <div class="columns">
+            <div class="column">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+                    </span>
+                </span>
+                <span
+                    class="tag is-info is-size-7-mobile">{{group.distance|distance_icon|safe}}&nbsp;{{group.distance|distance_similarity}}</span> group:
+            </div>
+        </div>
+
+        {% for item in group.items %}
 
         <a name="{{item.event.id}}"></a>
         <div class="columns">
-            <div class="column is-two-thirds">
+            <div class="column is-offset-1">
                 <div class="card">
-                    <div class="card-content">
-                        <p class="title is-5">
-                            <span>
-                                <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ item.event.title }}"</span>
-                            </span>
-                        </p>
-                        <p class="subtitle is-7">
-                            {{ item.event.date }} at {{ item.event.start.format("%H:%M") }}, {{ item.event.duration }} minutes, 
-                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                        </p>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ item.event.abstract|safe }}
-                        </div>
-                    </div>
+                    {% call event::expandable_card_details(item.event) %}
                     <footer class="card-footer">
                         <a href="{{ item.event.url }}" class="card-footer-item">
                             <span class="icon-text">
@@ -58,7 +59,7 @@
                     </footer>
                 </div>
             </div>
-            <div class="column">
+            <div class="column is-3">
                 {% if item.related.is_some() %}
                 {% let items = item.related.as_ref().unwrap() %}
                 <div class="box">
@@ -66,14 +67,14 @@
                         <span class="icon">
                             <i class="fa-duotone fa-arrow-right-arrow-left"></i>
                         </span>
-                        <span>Connections</span>
+                        <span>Related</span>
                     </span>:
                     <ul>
                     {% for item in items %}
 
                     <li>
                         <a href="{{ item.event.url }}">
-                            <span>{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                            <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
                         </a>
                     </li>
@@ -83,6 +84,7 @@
                 {% endif %}
             </div>
         </div>
+        {% endfor %}
         {% endfor %}
     </section>
     

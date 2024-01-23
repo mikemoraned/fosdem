@@ -28,43 +28,39 @@ pub struct Event {
     #[xmlserde(name = b"id", ty = "attr")]
     pub id: u32,
     #[xmlserde(name = b"start", ty = "child")]
-    pub start: Start,
+    pub start: Text,
     #[xmlserde(name = b"duration", ty = "child")]
-    pub duration: Duration,
+    pub duration: Text,
+    #[xmlserde(name = b"track", ty = "child")]
+    pub track: Text,
     #[xmlserde(name = b"title", ty = "child")]
-    pub title: Title,
+    pub title: Text,
+    #[xmlserde(name = b"persons", ty = "child")]
+    pub persons: Persons,
     #[xmlserde(name = b"slug", ty = "child")]
-    pub slug: Abstract,
+    pub slug: Text,
+    #[xmlserde(name = b"url", ty = "child")]
+    pub url: Text,
     #[xmlserde(name = b"abstract", ty = "child")]
-    pub r#abstract: Abstract,
+    pub r#abstract: Text,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]
-pub struct Start {
+pub struct Text {
     #[xmlserde(ty = "text")]
     pub value: String,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]
-pub struct Duration {
-    #[xmlserde(ty = "text")]
-    pub value: String,
+pub struct Persons {
+    #[xmlserde(name = b"person", ty = "child")]
+    pub persons: Vec<Person>,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]
-pub struct Abstract {
+pub struct Person {
+    #[xmlserde(name = b"id", ty = "attr")]
+    pub id: u32,
     #[xmlserde(ty = "text")]
-    pub value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-pub struct Title {
-    #[xmlserde(ty = "text")]
-    pub value: String,
-}
-
-#[derive(XmlDeserialize, Default, Debug)]
-pub struct Slug {
-    #[xmlserde(ty = "text")]
-    pub value: String,
+    pub name: String,
 }

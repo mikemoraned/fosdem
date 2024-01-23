@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{%- import "form.html" as forms -%}
+{%- import "components/search.html" as search -%}
 
 {% block content %}
 <section class="section">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="column is-one-third">
-            {% call forms::search("") %}
+            {% call search::form("") %}
         </div>
     </div>
 </section>
