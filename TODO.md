@@ -57,9 +57,9 @@
   - (/) standardise event display
   - (/) add rooms
   - (/) add track
-  - (x) add author names
   - (x) re-index in openai (fetch new embeddings based on new info)
   - (x) re-fetch connection distances
+- (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
