@@ -59,6 +59,12 @@
   - (/) add track
   - (/) re-index in openai (fetch new embeddings based on new info)
   - (/) re-fetch connection distances
+- (x) cross-linking
+  - (x) make "Related" link to /next/?id=...
+  - (x) make Connections nodes link to /next/?id=...
+  - (x) link to https://nav.fosdem.org/ from room names
+  - (x) link to tracks on FOSDEM main site
+  - (x) use https://nav.fosdem.org/ to find routes to room in /next/ from current room
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
