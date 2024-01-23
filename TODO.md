@@ -53,12 +53,12 @@
   - (/) show a current talk (happening in current hour)
     - 'now' is clamped to be either earliest or latest hour of the weekend
   - (/) show all those starting some time in the following hour
-- (x) more searchable/usable content
+- (/) more searchable/usable content
   - (/) standardise event display
   - (/) add rooms
   - (/) add track
   - (/) re-index in openai (fetch new embeddings based on new info)
-  - (x) re-fetch connection distances
+  - (/) re-fetch connection distances
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
