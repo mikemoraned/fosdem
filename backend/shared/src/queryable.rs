@@ -109,7 +109,7 @@ impl Queryable {
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Running Query to find embedding for title");
         let embedding: pgvector::Vector =
-            sqlx::query("SELECT embedding FROM embedding_1 WHERE title = $1")
+            sqlx::query("SELECT embedding FROM embedding_3 WHERE title = $1")
                 .bind(title)
                 .fetch_one(&self.pool)
                 .await?
@@ -119,7 +119,7 @@ impl Queryable {
         let sql = "
     SELECT ev.id, ev.start, ev.date, ev.duration, ev.room, ev.track, ev.title, ev.slug, ev.url, ev.abstract, 
            em.embedding <-> ($2) AS distance
-    FROM embedding_1 em JOIN events_8 ev ON ev.title = em.title
+    FROM embedding_3 em JOIN events_8 ev ON ev.title = em.title
     WHERE ev.title != $1
     ORDER BY em.embedding <-> ($2) LIMIT $3;
     ";
@@ -159,7 +159,7 @@ impl Queryable {
         let sql = "
     SELECT ev.id, ev.date, ev.start, ev.duration, ev.room, ev.track, ev.title, ev.slug, ev.url, ev.abstract, 
            em.embedding <-> ($1) AS distance
-    FROM embedding_1 em JOIN events_8 ev ON ev.title = em.title
+    FROM embedding_3 em JOIN events_8 ev ON ev.title = em.title
     ORDER BY em.embedding <-> ($1) LIMIT $2;
     ";
         let rows = sqlx::query(sql)
