@@ -11,7 +11,10 @@ use axum::{
 use axum_valid::Valid;
 
 use serde::Deserialize;
-use shared::postgres_openai::{NextEvents, NextEventsContext, PostgresOpenAIQueryable, SearchItem};
+use shared::{
+    postgres_openai::PostgresOpenAIQueryable,
+    queryable::{NextEvents, NextEventsContext, SearchItem},
+};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -22,6 +25,7 @@ use validator::Validate;
 use crate::filters;
 use crate::related::related;
 use crate::state::AppState;
+use shared::queryable::Queryable;
 
 #[derive(Deserialize, Validate, Debug)]
 struct SearchParams {

@@ -4,6 +4,7 @@ use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 use dotenvy;
 
+use shared::queryable::Queryable;
 use shared::{cli::progress_bar, env::load_secret, postgres_openai::PostgresOpenAIQueryable};
 use tracing::info;
 use webapp::related::{D3Force, Link, Node};

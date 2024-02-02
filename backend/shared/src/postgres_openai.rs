@@ -9,7 +9,10 @@ use sqlx::{
 use tracing::debug;
 use url::Url;
 
-use crate::openai::get_embedding;
+use crate::{
+    openai::get_embedding,
+    queryable::{Event, NextEvents, NextEventsContext, Queryable, SearchItem, MAX_RELATED_EVENTS},
+};
 
 #[derive(Debug)]
 pub struct PostgresOpenAIQueryable {
@@ -17,53 +20,53 @@ pub struct PostgresOpenAIQueryable {
     pool: Pool<Postgres>,
 }
 
-#[derive(Debug, Clone)]
-pub struct SearchItem {
-    pub event: Event,
-    pub distance: f64,
-    pub related: Option<Vec<SearchItem>>,
-}
+// #[derive(Debug, Clone)]
+// pub struct SearchItem {
+//     pub event: Event,
+//     pub distance: f64,
+//     pub related: Option<Vec<SearchItem>>,
+// }
 
-#[derive(Debug, Clone)]
-pub struct Event {
-    pub id: u32,
-    pub date: NaiveDate,
-    pub start: NaiveTime,
-    pub duration: u32,
-    pub room: String,
-    pub track: String,
-    pub title: String,
-    pub slug: String,
-    pub url: Url,
-    pub r#abstract: String,
-}
+// #[derive(Debug, Clone)]
+// pub struct Event {
+//     pub id: u32,
+//     pub date: NaiveDate,
+//     pub start: NaiveTime,
+//     pub duration: u32,
+//     pub room: String,
+//     pub track: String,
+//     pub title: String,
+//     pub slug: String,
+//     pub url: Url,
+//     pub r#abstract: String,
+// }
 
-impl Event {
-    fn starting_time(&self) -> NaiveDateTime {
-        self.date.and_time(self.start)
-    }
+// impl Event {
+//     fn starting_time(&self) -> NaiveDateTime {
+//         self.date.and_time(self.start)
+//     }
 
-    fn ending_time(&self) -> NaiveDateTime {
-        self.starting_time() + Duration::minutes(self.duration.into())
-    }
-}
+//     fn ending_time(&self) -> NaiveDateTime {
+//         self.starting_time() + Duration::minutes(self.duration.into())
+//     }
+// }
 
-#[derive(Debug, Clone)]
-pub struct NextEvents {
-    pub now: NaiveDateTime,
-    pub current: Vec<Event>,
-    pub selected: Event,
-    pub next: Vec<Event>,
-}
+// #[derive(Debug, Clone)]
+// pub struct NextEvents {
+//     pub now: NaiveDateTime,
+//     pub current: Vec<Event>,
+//     pub selected: Event,
+//     pub next: Vec<Event>,
+// }
 
-#[derive(Debug)]
-pub enum NextEventsContext {
-    Now,
-    EventId(u32),
-}
+// #[derive(Debug)]
+// pub enum NextEventsContext {
+//     Now,
+//     EventId(u32),
+// }
 
 const MAX_POOL_CONNECTIONS: u32 = 10;
-const MAX_RELATED_EVENTS: u8 = 5;
+// const MAX_RELATED_EVENTS: u8 = 5;
 
 impl PostgresOpenAIQueryable {
     pub async fn connect(
@@ -85,9 +88,11 @@ impl PostgresOpenAIQueryable {
             pool,
         })
     }
+}
 
+impl Queryable for PostgresOpenAIQueryable {
     #[tracing::instrument(skip(self))]
-    pub async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+    async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Running Query to find all events");
         let rows = sqlx::query(
             "SELECT id, start, date, duration, room, track, title, slug, url, abstract FROM events_8",
@@ -102,7 +107,7 @@ impl PostgresOpenAIQueryable {
     }
 
     #[tracing::instrument(skip(self))]
-    pub async fn find_related_events(
+    async fn find_related_events(
         &self,
         title: &String,
         limit: u8,
@@ -138,7 +143,7 @@ impl PostgresOpenAIQueryable {
     }
 
     #[tracing::instrument(skip(self))]
-    pub async fn search(
+    async fn search(
         &self,
         query: &str,
         limit: u8,
@@ -195,7 +200,7 @@ impl PostgresOpenAIQueryable {
     }
 
     #[tracing::instrument(skip(self))]
-    pub async fn find_next_events(
+    async fn find_next_events(
         &self,
         context: NextEventsContext,
     ) -> Result<NextEvents, Box<dyn std::error::Error>> {
@@ -223,7 +228,9 @@ impl PostgresOpenAIQueryable {
             next,
         })
     }
+}
 
+impl PostgresOpenAIQueryable {
     fn get_event_context(
         &self,
         context: NextEventsContext,
