@@ -66,6 +66,7 @@
     - (/) remove DB impl
     - (/) regenerate related items
 - (x) simple bookmarks
+  - (x) add link to open item in sojourner
   - (x) ...
 - (x) add author names
 - (x) stable / usable clustering

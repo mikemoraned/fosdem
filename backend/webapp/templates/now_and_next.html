@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {%- import "components/event.html" as event -%}
+{%- import "components/external.html" as external -%}
 
 {% macro card(event) %}
 <div class="card">
@@ -10,14 +11,7 @@
                 <span>Select</span>
             </span>
         </a>
-        <a href="{{ event.url }}" class="card-footer-item">
-            <span class="icon-text">
-                <span>FOSDEM</span>
-                <span class="icon">
-                    <i class="fa-light fa-arrow-up-right-from-square"></i>
-                </span>
-            </span>
-        </a>
+        {% call external::fosdem_event(event) %}
     </footer>
 </div>
 {% endmacro %}
@@ -36,14 +30,7 @@
             <div class="card">
                 {% call event::expandable_card_details(next.selected) %}
                 <footer class="card-footer">
-                    <a href="{{ next.selected.url }}" class="card-footer-item">
-                        <span class="icon-text">
-                            <span>Open on FOSDEM site</span>
-                            <span class="icon">
-                                <i class="fa-light fa-arrow-up-right-from-square"></i>
-                            </span>
-                        </span>
-                    </a>
+                    {% call external::fosdem_event(next.selected) %}
                 </footer>
             </div>
         </div>
