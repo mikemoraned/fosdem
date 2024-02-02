@@ -12,6 +12,7 @@ use axum_valid::Valid;
 
 use serde::Deserialize;
 use shared::{
+    inmemory_openai::InMemoryOpenAIQueryable,
     postgres_openai::PostgresOpenAIQueryable,
     queryable::{NextEvents, NextEventsContext, SearchItem},
 };
@@ -122,15 +123,17 @@ async fn next_after_event(
     }
 }
 
-pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {
-    let state = AppState {
+pub async fn app_state(openai_api_key: &str, csv_data_dir: &std::path::Path) -> AppState {
+    AppState {
         queryable: Arc::new(
-            PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key)
+            InMemoryOpenAIQueryable::connect(csv_data_dir, &openai_api_key)
                 .await
                 .unwrap(),
         ),
-    };
+    }
+}
 
+pub async fn router(state: AppState) -> Router {
     let cors = CorsLayer::new()
         .allow_methods([Method::GET])
         // allow requests from any origin
