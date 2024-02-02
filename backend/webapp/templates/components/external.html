@@ -1,0 +1,25 @@
+{% macro fosdem_event(event) %}
+
+<a href="{{ event.url }}" class="card-footer-item" target=”_blank”>
+    <span class="icon-text">
+        <span>FOSDEM</span>
+        <span class="icon">
+            <i class="fa-light fa-arrow-up-right-from-square"></i>
+        </span>
+    </span>
+</a>
+
+{% endmacro %}
+
+{% macro sojourner_event(event) %}
+
+<a href="https://fosdem.sojourner.rocks/2024/event/{{ event.id }}" class="card-footer-item" target=”_blank”>
+    <span class="icon-text">
+        <span>Sojourner</span>
+        <span class="icon">
+            <i class="fa-light fa-arrow-up-right-from-square"></i>
+        </span>
+    </span>
+</a>
+
+{% endmacro %}

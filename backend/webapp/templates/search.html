@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {%- import "components/search.html" as search -%}
 {%- import "components/event.html" as event -%}
+{%- import "components/external.html" as external -%}
 
 {% block content %}
     <section class="section">
@@ -48,14 +49,8 @@
                 <div class="card">
                     {% call event::expandable_card_details(item.event) %}
                     <footer class="card-footer">
-                        <a href="{{ item.event.url }}" class="card-footer-item">
-                            <span class="icon-text">
-                                <span>Open on FOSDEM site</span>
-                                <span class="icon">
-                                    <i class="fa-light fa-arrow-up-right-from-square"></i>
-                                </span>
-                            </span>
-                        </a>
+                        {% call external::sojourner_event(item.event) %}
+                        {% call external::fosdem_event(item.event) %}
                     </footer>
                 </div>
             </div>
@@ -73,9 +68,9 @@
                     {% for item in items %}
 
                     <li>
-                        <a href="{{ item.event.url }}">
+                        <a href="/next/?id={{ item.event.id }}">
                             <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                            <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
+                            <span>"{{ item.event.title }}"
                         </a>
                     </li>
                     {% endfor %}
