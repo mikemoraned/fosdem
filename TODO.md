@@ -65,6 +65,8 @@
     - (/) update Docker setup and test by deploying to staging
     - (/) remove DB impl
     - (/) regenerate related items
+- (x) simple bookmarks
+  - (x) ...
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
