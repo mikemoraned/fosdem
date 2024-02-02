@@ -13,7 +13,7 @@
 
 {% macro sojourner_event(event) %}
 
-<a href="https://fosdem.sojourner.rocks/2024/event/{{ event.id }}" class="card-footer-item" target=”_blank”>
+<a href="{{ event.sojourner_url() }}" class="card-footer-item" target=”_blank”>
     <span class="icon-text">
         <span>Sojourner</span>
         <span class="icon">

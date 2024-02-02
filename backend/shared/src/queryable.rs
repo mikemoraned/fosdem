@@ -30,6 +30,11 @@ impl Event {
     pub fn ending_time(&self) -> NaiveDateTime {
         self.starting_time() + Duration::minutes(self.duration.into())
     }
+
+    pub fn sojourner_url(&self) -> Url {
+        let base_url = Url::parse("https://fosdem.sojourner.rocks/2024/event/").unwrap();
+        base_url.join(&self.id.to_string()).unwrap()
+    }
 }
 
 #[derive(Debug, Clone)]
