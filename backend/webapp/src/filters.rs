@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use shared::queryable::SearchItem;
+use shared::queryable::{Event, SearchItem};
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {
@@ -45,6 +45,18 @@ pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
         opacity
     )
     .into())
+}
+
+pub fn order_event_by_time_then_place(events: &Vec<Event>) -> ::askama::Result<Vec<Event>> {
+    let mut ordered = events.clone();
+    ordered.sort_by(|a, b| {
+        if a.starting_time() == b.starting_time() {
+            a.room.cmp(&b.room)
+        } else {
+            a.starting_time().cmp(&b.starting_time())
+        }
+    });
+    Ok(ordered)
 }
 
 pub struct GroupedSearchItems {
