@@ -13,7 +13,6 @@ use axum_valid::Valid;
 use serde::Deserialize;
 use shared::{
     inmemory_openai::InMemoryOpenAIQueryable,
-    postgres_openai::PostgresOpenAIQueryable,
     queryable::{NextEvents, NextEventsContext, SearchItem},
 };
 use tower_http::{

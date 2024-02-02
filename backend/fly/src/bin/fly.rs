@@ -36,9 +36,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
-    // let db_host = load_secret("DB_HOST");
-    // let db_key = load_secret("DB_KEY");
-    // let app_state = app_state(&openai_api_key, &db_host, &db_key).await;
     let app_state = app_state(&openai_api_key, &args.csv_data_dir).await;
 
     let router = router(app_state).await;
