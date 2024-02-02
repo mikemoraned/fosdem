@@ -4,7 +4,7 @@ use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 use dotenvy;
 
-use shared::{cli::progress_bar, env::load_secret, queryable::Queryable};
+use shared::{cli::progress_bar, env::load_secret, postgres_openai::PostgresOpenAIQueryable};
 use tracing::info;
 use webapp::related::{D3Force, Link, Node};
 
@@ -33,7 +33,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db_key = load_secret("DB_KEY");
 
     info!("Loading all Events and converting to Nodes");
-    let queryable = Queryable::connect(&db_host, &db_key, &openai_api_key).await?;
+    let queryable = PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key).await?;
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
     let mut nodes: Vec<Node> = vec![];

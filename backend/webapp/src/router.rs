@@ -11,7 +11,7 @@ use axum::{
 use axum_valid::Valid;
 
 use serde::Deserialize;
-use shared::queryable::{NextEvents, NextEventsContext, Queryable, SearchItem};
+use shared::postgres_openai::{NextEvents, NextEventsContext, PostgresOpenAIQueryable, SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -121,7 +121,7 @@ async fn next_after_event(
 pub async fn router(openai_api_key: &str, db_host: &str, db_key: &str) -> Router {
     let state = AppState {
         queryable: Arc::new(
-            Queryable::connect(&db_host, &db_key, &openai_api_key)
+            PostgresOpenAIQueryable::connect(&db_host, &db_key, &openai_api_key)
                 .await
                 .unwrap(),
         ),

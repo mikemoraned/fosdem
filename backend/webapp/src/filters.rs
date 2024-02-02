@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use shared::queryable::SearchItem;
+use shared::postgres_openai::SearchItem;
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {

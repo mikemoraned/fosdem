@@ -12,7 +12,7 @@ use url::Url;
 use crate::openai::get_embedding;
 
 #[derive(Debug)]
-pub struct Queryable {
+pub struct PostgresOpenAIQueryable {
     openai_client: Client,
     pool: Pool<Postgres>,
 }
@@ -65,12 +65,12 @@ pub enum NextEventsContext {
 const MAX_POOL_CONNECTIONS: u32 = 10;
 const MAX_RELATED_EVENTS: u8 = 5;
 
-impl Queryable {
+impl PostgresOpenAIQueryable {
     pub async fn connect(
         db_host: &str,
         db_password: &str,
         openai_api_key: &str,
-    ) -> Result<Queryable, Box<dyn std::error::Error>> {
+    ) -> Result<PostgresOpenAIQueryable, Box<dyn std::error::Error>> {
         debug!("Creating OpenAI Client");
         let openai_client = Client::new(openai_api_key.into());
 
@@ -80,7 +80,7 @@ impl Queryable {
             .max_connections(MAX_POOL_CONNECTIONS)
             .connect(&db_url)
             .await?;
-        Ok(Queryable {
+        Ok(PostgresOpenAIQueryable {
             openai_client,
             pool,
         })

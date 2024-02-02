@@ -1,7 +1,7 @@
-use shared::queryable::Queryable;
+use shared::postgres_openai::PostgresOpenAIQueryable;
 use std::sync::Arc;
 
 #[derive(Clone, Debug)]
 pub struct AppState {
-    pub queryable: Arc<Queryable>,
+    pub queryable: Arc<PostgresOpenAIQueryable>,
 }
