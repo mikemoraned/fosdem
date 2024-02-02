@@ -1,10 +1,13 @@
-use std::{collections::HashMap, fs::File, io::Write};
+use std::{collections::HashMap, fs::File, io::Write, path::PathBuf};
 
 use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 use dotenvy;
 
-use shared::{cli::progress_bar, env::load_secret, queryable::Queryable};
+use shared::{
+    cli::progress_bar, env::load_secret, inmemory_openai::InMemoryOpenAIQueryable,
+    queryable::Queryable,
+};
 use tracing::info;
 use webapp::related::{D3Force, Link, Node};
 
@@ -12,6 +15,10 @@ use webapp::related::{D3Force, Link, Node};
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
+    /// path to directory where CSV files are kept
+    #[arg(short, long)]
+    csv_data_dir: PathBuf,
+
     /// maximum number of related items to include per event
     #[arg(short, long)]
     limit: u8,
@@ -29,11 +36,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
-    let db_host = load_secret("DB_HOST");
-    let db_key = load_secret("DB_KEY");
 
     info!("Loading all Events and converting to Nodes");
-    let queryable = Queryable::connect(&db_host, &db_key, &openai_api_key).await?;
+    let queryable = InMemoryOpenAIQueryable::connect(&args.csv_data_dir, &openai_api_key).await?;
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
     let mut nodes: Vec<Node> = vec![];

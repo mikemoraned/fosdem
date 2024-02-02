@@ -59,6 +59,12 @@
   - (/) add track
   - (/) re-index in openai (fetch new embeddings based on new info)
   - (/) re-fetch connection distances
+  - (/) remove (external) DB dependency
+    - (/) convert `Queryable` into a trait
+    - (/) re-implement Queryable using a "DB" which can just take the CSV files as input, and which uses nalgebra for vector distance
+    - (/) update Docker setup and test by deploying to staging
+    - (/) remove DB impl
+    - (/) regenerate related items
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
