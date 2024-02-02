@@ -1,3 +1,4 @@
+pub mod inmemory_openai;
 pub mod cli;
 pub mod env;
 pub mod openai;
