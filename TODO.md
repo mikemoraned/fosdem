@@ -65,9 +65,9 @@
     - (/) update Docker setup and test by deploying to staging
     - (/) remove DB impl
     - (/) regenerate related items
-- (x) simple bookmarks
+- (x) simple bookmarks / improve discovery
   - (/) add link to open item in sojourner
-  - (x) ...
+  - (/) make "related" link to now-and-next instead of fosdem site (allows it to then more easily bookmarked in sojourner)
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side

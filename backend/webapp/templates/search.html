@@ -68,9 +68,9 @@
                     {% for item in items %}
 
                     <li>
-                        <a href="{{ item.event.url }}">
+                        <a href="/next/?id={{ item.event.id }}">
                             <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                            <span>"{{ item.event.title }}"&nbsp;<i class="fa-light fa-arrow-up-right-from-square"></i></span>
+                            <span>"{{ item.event.title }}"
                         </a>
                     </li>
                     {% endfor %}
