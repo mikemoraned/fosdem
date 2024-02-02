@@ -49,6 +49,7 @@
                 <div class="card">
                     {% call event::expandable_card_details(item.event) %}
                     <footer class="card-footer">
+                        {% call external::sojourner_event(item.event) %}
                         {% call external::fosdem_event(item.event) %}
                     </footer>
                 </div>

@@ -10,3 +10,16 @@
 </a>
 
 {% endmacro %}
+
+{% macro sojourner_event(event) %}
+
+<a href="https://fosdem.sojourner.rocks/2024/event/{{ event.id }}" class="card-footer-item">
+    <span class="icon-text">
+        <span>Sojourner</span>
+        <span class="icon">
+            <i class="fa-light fa-arrow-up-right-from-square"></i>
+        </span>
+    </span>
+</a>
+
+{% endmacro %}
