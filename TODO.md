@@ -59,6 +59,10 @@
   - (/) add track
   - (/) re-index in openai (fetch new embeddings based on new info)
   - (/) re-fetch connection distances
+    (x) remove (external) DB dependency
+  - (/) convert `Queryable` into a trait
+  - (x) re-implement Queryable using a "DB" which can just take the CSV files as input, and which uses nalgebra for vector distance
+  - (x) deploy to staginga
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
