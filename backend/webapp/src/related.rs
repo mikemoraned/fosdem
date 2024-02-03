@@ -15,6 +15,7 @@ pub struct Node {
     pub index: usize,
     pub title: String,
     pub url: Url,
+    pub sojourner_url: Url,
     pub time_slot: usize,
     pub day: String,
     pub start: String,

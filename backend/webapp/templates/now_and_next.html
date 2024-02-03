@@ -67,7 +67,7 @@
         
     </div>
     <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
-    {% for event in next.next %}
+    {% for event in next.next|order_event_by_time_then_place %}
     <div class="columns">
         <div class="column">
         {% call card(event) %}
