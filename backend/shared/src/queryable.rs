@@ -36,16 +36,29 @@ impl Event {
         base_url.join(&self.id.to_string()).unwrap()
     }
 
-    pub fn nav_url(&self) -> Url {
-        let location_base_url = Url::parse("https://nav.fosdem.org/l/").unwrap();
-        let nav_room = if self.room.contains(" ") {
+    pub fn nav_url(&self, current_event: &Option<Event>) -> Url {
+        match current_event {
+            Some(event) => Url::parse(&format!(
+                "https://nav.fosdem.org/r/{}/{}",
+                event.nav_room(),
+                self.nav_room()
+            ))
+            .unwrap(),
+            None => {
+                let location_base_url = Url::parse("https://nav.fosdem.org/l/").unwrap();
+                location_base_url.join(&self.nav_room()).unwrap()
+            }
+        }
+    }
+
+    pub fn nav_room(&self) -> String {
+        if self.room.contains(" ") {
             let parts: Vec<_> = self.room.split(" ").collect();
             let start = parts[0];
             start.to_lowercase().replace(".", "")
         } else {
             self.room.to_lowercase().replace(".", "")
-        };
-        location_base_url.join(&nav_room).unwrap()
+        }
     }
 }
 

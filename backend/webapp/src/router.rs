@@ -13,7 +13,7 @@ use axum_valid::Valid;
 use serde::Deserialize;
 use shared::{
     inmemory_openai::InMemoryOpenAIQueryable,
-    queryable::{NextEvents, NextEventsContext, SearchItem},
+    queryable::{Event, NextEvents, NextEventsContext, SearchItem},
 };
 use tower_http::{
     cors::{Any, CorsLayer},
@@ -40,6 +40,7 @@ struct SearchParams {
 struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
+    current_event: Option<Event>,
 }
 
 #[derive(Template)]
@@ -64,6 +65,7 @@ async fn search(
             let page = SearchTemplate {
                 query: params.q,
                 items,
+                current_event: None,
             };
             let html = page.render().unwrap();
             Ok(Html(html))
@@ -82,6 +84,7 @@ struct NextParams {
 #[template(path = "now_and_next.html")]
 struct NowAndNextTemplate {
     next: NextEvents,
+    current_event: Option<Event>,
 }
 
 #[tracing::instrument(skip(state))]
@@ -95,7 +98,10 @@ async fn next(
     };
     match state.queryable.find_next_events(context).await {
         Ok(next) => {
-            let page = NowAndNextTemplate { next };
+            let page = NowAndNextTemplate {
+                next: next.clone(),
+                current_event: Some(next.selected.clone()),
+            };
             let html = page.render().unwrap();
             Ok(Html(html))
         }
@@ -114,7 +120,10 @@ async fn next_after_event(
         .await
     {
         Ok(next) => {
-            let page = NowAndNextTemplate { next };
+            let page = NowAndNextTemplate {
+                next: next.clone(),
+                current_event: Some(next.selected.clone()),
+            };
             let html = page.render().unwrap();
             Ok(Html(html))
         }
