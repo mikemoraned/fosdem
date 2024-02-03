@@ -35,6 +35,18 @@ impl Event {
         let base_url = Url::parse("https://fosdem.sojourner.rocks/2024/event/").unwrap();
         base_url.join(&self.id.to_string()).unwrap()
     }
+
+    pub fn nav_url(&self) -> Url {
+        let location_base_url = Url::parse("https://nav.fosdem.org/l/").unwrap();
+        let nav_room = if self.room.contains(" ") {
+            let parts: Vec<_> = self.room.split(" ").collect();
+            let start = parts[0];
+            start.to_lowercase().replace(".", "")
+        } else {
+            self.room.to_lowercase().replace(".", "")
+        };
+        location_base_url.join(&nav_room).unwrap()
+    }
 }
 
 #[derive(Debug, Clone)]
