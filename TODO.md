@@ -68,7 +68,12 @@
 - (/) simple bookmarks / improve discovery
   - (/) add link to open item in sojourner
   - (/) make "related" link to now-and-next instead of fosdem site (allows it to then more easily bookmarked in sojourner)
-- (x) video-search
+- (x) pdf search
+  - (x) process latest version of schedule
+  - (x) update schedule to include slide links
+  - (x) when generating embeddings, fetch slide content and index that as well
+  - (x) ...
+- (x) video search
   - (x) update schedule to include video links
   - (x) ...
 - (x) add author names
