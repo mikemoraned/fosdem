@@ -4,7 +4,7 @@ use clap::Parser;
 use dotenvy;
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
-use reqwest::StatusCode;
+
 use serde::Deserialize;
 use shared::cli::progress_bar;
 
@@ -59,6 +59,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!("done ");
 
+    let events = events.into_iter().take(10).collect();
+
     let input = fetch_input(&events, args.include_slides).await?;
 
     println!(
@@ -87,14 +89,32 @@ async fn fetch_input(
     let progress = progress_bar(events.len() as u64);
     let mut pdfs = 0;
     let mut pdfs_fetched = 0;
+    let mut pdfs_extracted = 0;
     for event in events {
         let mut slide_content = None;
         if include_slides && event.slides.ends_with(".pdf") {
             pdfs += 1;
-            let result = reqwest::get("http://httpbin.org/get").await?;
+            let result = reqwest::get(&event.slides).await?;
             if result.status().is_success() {
                 let body = result.text().await?;
+                let sample = 10;
+                println!(
+                    "content: {} ... {}",
+                    &body[0..sample],
+                    &body[body.len() - sample..body.len()]
+                );
                 pdfs_fetched += 1;
+                let bytes = &body.as_bytes();
+                println!("{}", bytes.len());
+                match pdf_extract::extract_text_from_mem(bytes) {
+                    Ok(s) => {
+                        slide_content = Some(s);
+                        pdfs_extracted += 1;
+                    }
+                    Err(e) => {
+                        println!("error: {}", e)
+                    }
+                }
             }
         }
         inputs.push(EmbeddingInput {
@@ -106,10 +126,11 @@ async fn fetch_input(
         progress.inc(1);
     }
     println!(
-        "Events: {}, PDFs: {}, fetched: {}",
+        "Events: {}, PDFs: {}, fetched: {}, extracted: {}",
         events.len(),
         pdfs,
-        pdfs_fetched
+        pdfs_fetched,
+        pdfs_extracted
     );
     Ok(inputs)
 }

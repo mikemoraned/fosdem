@@ -11,6 +11,7 @@ xmlserde = "0.5.5"
 xmlserde_derives = "0.5.5"
 env_logger = "0.10.1"
 reqwest = "0.11.24"
+pdf-extract = "0.7.4"
 csv = { workspace = true }
 futures = { workspace = true }
 clap = { workspace = true }
