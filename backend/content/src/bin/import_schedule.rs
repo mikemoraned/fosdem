@@ -2,7 +2,7 @@ use std::fs::File;
 
 use chrono::{NaiveTime, Timelike};
 use clap::{arg, Parser};
-use content::pentabarf::Schedule;
+use content::pentabarf::{Attachment, Schedule};
 use xmlserde::xml_deserialize_from_str;
 
 /// Convert all content from a Pentabarf file into a CSV
@@ -26,6 +26,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let schedule: Schedule = xml_deserialize_from_str(&xml)?;
     csv.write_record(&[
         "id", "date", "start", "duration", "room", "track", "title", "slug", "url", "abstract",
+        "slides",
     ])?;
     for day in schedule.days {
         for room in day.rooms {
@@ -41,12 +42,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     event.slug.value,
                     event.url.value,
                     event.r#abstract.value,
+                    slides(&event.attachments),
                 ])?;
             }
         }
     }
 
     Ok(())
+}
+
+fn slides(event: &content::pentabarf::Attachments) -> String {
+    let slides: Vec<&Attachment> = event
+        .attachments
+        .iter()
+        .filter(|a| a.r#type == "slides")
+        .collect();
+    if slides.len() >= 1 {
+        slides[0].href.clone()
+    } else {
+        "".into()
+    }
 }
 
 fn parse_into_minutes(value: &str) -> Result<u32, Box<dyn std::error::Error>> {
