@@ -15,6 +15,10 @@ struct Args {
     #[arg(long)]
     event_csv: String,
 
+    /// parse and include slide content
+    #[arg(long, action)]
+    include_slides: bool,
+
     /// output csv path
     #[arg(long)]
     embedding_csv: String,
@@ -25,6 +29,14 @@ struct EventRecord {
     title: String,
     track: String,
     r#abstract: String,
+    slides: String,
+}
+
+struct EmbeddingInput {
+    title: String,
+    track: String,
+    r#abstract: String,
+    slide_content: Option<String>,
 }
 
 #[tokio::main]
@@ -46,14 +58,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!("done ");
 
+    let input = fetch_input(&events)?;
+
     println!(
         "Looking up and writing embeddings to {} ... ",
         args.embedding_csv
     );
     let mut embedding_writer = csv::Writer::from_writer(File::create(args.embedding_csv)?);
     embedding_writer.write_record(&["title", "embedding"])?;
-    let progress = progress_bar(events.len() as u64);
-    for event in events.iter() {
+    let progress = progress_bar(input.len() as u64);
+    for event in input.iter() {
         let response = get_embedding(&client, &event).await?;
         let embedding = &response.data[0];
         embedding_writer.write_record(&[&event.title, &embedding_as_string(embedding)])?;
@@ -63,11 +77,26 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
+fn fetch_input(
+    events: &Vec<EventRecord>,
+) -> Result<Vec<EmbeddingInput>, Box<dyn std::error::Error>> {
+    let mut inputs = vec![];
+    for event in events {
+        inputs.push(EmbeddingInput {
+            title: event.title.clone(),
+            track: event.track.clone(),
+            r#abstract: event.r#abstract.clone(),
+            slide_content: None,
+        });
+    }
+    Ok(inputs)
+}
+
 async fn get_embedding(
     client: &Client,
-    event: &EventRecord,
+    input: &EmbeddingInput,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
-    let input = format_input(event);
+    let input = format_input(input);
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
@@ -81,11 +110,21 @@ async fn get_embedding(
     Ok(response)
 }
 
-fn format_input(event: &EventRecord) -> String {
-    format!(
-        "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}",
-        event.title, event.track, event.r#abstract
-    )
+fn format_input(input: &EmbeddingInput) -> String {
+    match input.slide_content.clone() {
+        None => {
+            format!(
+                "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}",
+                input.title, input.track, input.r#abstract
+            )
+        }
+        Some(content) => {
+            format!(
+                "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}\nSlide Content:{}",
+                input.title, input.track, input.r#abstract, content
+            )
+        }
+    }
 }
 
 fn embedding_as_string(embedding: &Embedding) -> String {
