@@ -20,6 +20,7 @@ pub struct Event {
     pub slug: String,
     pub url: Url,
     pub r#abstract: String,
+    pub slides: String,
 }
 
 impl Event {
