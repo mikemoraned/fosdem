@@ -4,6 +4,7 @@ use clap::Parser;
 use dotenvy;
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
+use reqwest::StatusCode;
 use serde::Deserialize;
 use shared::cli::progress_bar;
 
@@ -58,7 +59,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!("done ");
 
-    let input = fetch_input(&events)?;
+    let input = fetch_input(&events, args.include_slides).await?;
 
     println!(
         "Looking up and writing embeddings to {} ... ",
@@ -77,18 +78,39 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn fetch_input(
+async fn fetch_input(
     events: &Vec<EventRecord>,
+    include_slides: bool,
 ) -> Result<Vec<EmbeddingInput>, Box<dyn std::error::Error>> {
+    println!("Getting inputs for embedding ...");
     let mut inputs = vec![];
+    let progress = progress_bar(events.len() as u64);
+    let mut pdfs = 0;
+    let mut pdfs_fetched = 0;
     for event in events {
+        let mut slide_content = None;
+        if include_slides && event.slides.ends_with(".pdf") {
+            pdfs += 1;
+            let result = reqwest::get("http://httpbin.org/get").await?;
+            if result.status().is_success() {
+                let body = result.text().await?;
+                pdfs_fetched += 1;
+            }
+        }
         inputs.push(EmbeddingInput {
             title: event.title.clone(),
             track: event.track.clone(),
             r#abstract: event.r#abstract.clone(),
-            slide_content: None,
+            slide_content,
         });
+        progress.inc(1);
     }
+    println!(
+        "Events: {}, PDFs: {}, fetched: {}",
+        events.len(),
+        pdfs,
+        pdfs_fetched
+    );
     Ok(inputs)
 }
 
