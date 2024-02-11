@@ -68,11 +68,12 @@
 - (/) simple bookmarks / improve discovery
   - (/) add link to open item in sojourner
   - (/) make "related" link to now-and-next instead of fosdem site (allows it to then more easily bookmarked in sojourner)
-- (x) pdf search
+- (x) slide search
   - (/) process latest version of schedule
   - (/) update schedule to include slide links
-  - (x) when generating embeddings, fetch slide content and index that as well
-  - (x) ...
+  - (x) setup tika on fly.io for usage in slide content extraction
+  - (x) iterate over all slides, fetch content, and save to a local dir
+  - (x) when generating embeddings, use slide text content and index that as well
 - (x) video search
   - (x) update schedule to include video links
   - (x) ...
