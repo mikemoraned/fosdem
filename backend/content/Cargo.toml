@@ -10,6 +10,7 @@ quick-xml = { version = "0.29", features = ["serialize"] }
 xmlserde = "0.5.5"
 xmlserde_derives = "0.5.5"
 env_logger = "0.10.1"
+reqwest = "0.11.24"
 csv = { workspace = true }
 futures = { workspace = true }
 clap = { workspace = true }
@@ -20,4 +21,6 @@ openai_dive = { workspace = true }
 log = { workspace = true }
 serde = { workspace = true }
 chrono = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
 shared = { path = "../shared" }
