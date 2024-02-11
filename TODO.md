@@ -71,7 +71,7 @@
 - (x) slide search
   - (/) process latest version of schedule
   - (/) update schedule to include slide links
-  - (x) setup tika on fly.io for usage in slide content extraction
+  - (/) setup tika on fly.io for usage in slide content extraction
   - (x) iterate over all slides, fetch content, and save to a local dir
   - (x) when generating embeddings, use slide text content and index that as well
 - (x) video search
