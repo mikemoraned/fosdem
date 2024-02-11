@@ -1,16 +1,13 @@
+use std::fs::File;
 use std::io::Write;
 use std::path::Path;
-
-use std::sync::Arc;
-use std::{collections::VecDeque, fs::File};
 
 use bytes::Bytes;
 use clap::Parser;
 
 use serde::Deserialize;
 use shared::cli::progress_bar;
-use tokio::sync::Semaphore;
-use tracing::{debug, info, warn};
+use tracing::{info, warn};
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
@@ -25,7 +22,7 @@ struct Args {
     slides: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Deserialize)]
 struct Event {
     id: u32,
     slides: String,
@@ -58,8 +55,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     info!("{}", summarise_status(&phase1));
 
-    // let phase1: Vec<_> = phase1.into_iter().take(10).collect();
-
     info!("Fetching slide content");
     let mut phase2 = vec![];
     let phase1_progress = progress_bar(phase1.len() as u64);
@@ -87,20 +82,25 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Parsing slide content");
     let mut phase3 = vec![];
-    debug!("Dispatching tasks");
-    let max_concurrent = Arc::new(tokio::sync::Semaphore::new(4));
-    let mut pending_tasks = VecDeque::new();
+    let phase2_progress = progress_bar(phase2.len() as u64);
     for work in phase2.into_iter() {
-        pending_tasks.push_back(tokio::spawn(parse_content_task(
-            max_concurrent.clone(),
-            work,
-        )));
-    }
-    let phase2_progress = progress_bar(pending_tasks.len() as u64);
-    debug!("Fetching task results");
-    while pending_tasks.len() > 0 {
-        let pending_task = pending_tasks.pop_front().unwrap();
-        phase3.push(pending_task.await.unwrap());
+        if let Some(raw_content) = &work.raw_content {
+            phase3.push(match parse_content(&raw_content).await {
+                Ok(text) => SlideWork {
+                    text_content: Some(text),
+                    ..work
+                },
+                Err(e) => {
+                    warn!(
+                        "[{}]: got error parsing content for \'{}\': {}",
+                        work.event.id, work.event.slides, e
+                    );
+                    work
+                }
+            });
+        } else {
+            phase3.push(work);
+        }
         phase2_progress.inc(1);
     }
     info!("{}", summarise_status(&phase3));
@@ -120,29 +120,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
-}
-
-async fn parse_content_task(limit: Arc<Semaphore>, work: SlideWork) -> SlideWork {
-    if let Some(raw_content) = &work.raw_content {
-        let permit = limit.acquire().await.unwrap();
-        let result = parse_content(&raw_content);
-        drop(permit);
-        match result.await {
-            Ok(text) => SlideWork {
-                text_content: Some(text),
-                ..work
-            },
-            Err(e) => {
-                warn!(
-                    "[{}]: got error parsing content for \'{}\': {}",
-                    work.event.id, work.event.slides, e
-                );
-                work
-            }
-        }
-    } else {
-        work
-    }
 }
 
 fn summarise_status(works: &Vec<SlideWork>) -> String {
