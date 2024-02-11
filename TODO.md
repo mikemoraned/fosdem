@@ -68,7 +68,7 @@
 - (/) simple bookmarks / improve discovery
   - (/) add link to open item in sojourner
   - (/) make "related" link to now-and-next instead of fosdem site (allows it to then more easily bookmarked in sojourner)
-- (x) slide search
+- (/) use slide content
   - (/) process latest version of schedule
   - (/) update schedule to include slide links
   - (/) setup tika on fly.io for usage in slide content extraction
