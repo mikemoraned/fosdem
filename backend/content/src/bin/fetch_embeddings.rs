@@ -1,4 +1,7 @@
+use std::collections::HashMap;
 use std::fs::File;
+use std::io::Read;
+use std::path::Path;
 
 use clap::Parser;
 use dotenvy;
@@ -15,6 +18,10 @@ struct Args {
     #[arg(long)]
     event_csv: String,
 
+    /// include slide content at path
+    #[arg(long)]
+    include_slide_content: Option<String>,
+
     /// output csv path
     #[arg(long)]
     embedding_csv: String,
@@ -22,6 +29,7 @@ struct Args {
 
 #[derive(Debug, Deserialize)]
 struct EventRecord {
+    id: u32,
     title: String,
     track: String,
     r#abstract: String,
@@ -46,6 +54,24 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!("done ");
 
+    let mut slide_content_for_event: HashMap<u32, String> = HashMap::new();
+    if let Some(slides_content_path) = args.include_slide_content {
+        println!("Fetching slide content from {} ... ", slides_content_path);
+        let base_path = Path::new(&slides_content_path);
+        let mut slide_content_count = 0;
+        for event in events.iter() {
+            let slide_content_path = base_path.join(event.id.to_string()).with_extension("txt");
+            if slide_content_path.exists() {
+                let mut file = File::open(slide_content_path)?;
+                let mut slide_content = String::new();
+                file.read_to_string(&mut slide_content)?;
+                slide_content_for_event.insert(event.id, slide_content);
+                slide_content_count += 1;
+            }
+        }
+        println!("Read {} events with slide content ", slide_content_count);
+    }
+
     println!(
         "Looking up and writing embeddings to {} ... ",
         args.embedding_csv
@@ -54,7 +80,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     embedding_writer.write_record(&["title", "embedding"])?;
     let progress = progress_bar(events.len() as u64);
     for event in events.iter() {
-        let response = get_embedding(&client, &event).await?;
+        let response = get_embedding(&client, &event, &slide_content_for_event).await?;
         let embedding = &response.data[0];
         embedding_writer.write_record(&[&event.title, &embedding_as_string(embedding)])?;
         progress.inc(1);
@@ -66,8 +92,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 async fn get_embedding(
     client: &Client,
     event: &EventRecord,
+    slide_content_for_event: &HashMap<u32, String>,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
-    let input = format_input(event);
+    let max_tokens = 8192;
+    let input = if let Some(slide_content) = slide_content_for_event.get(&event.id) {
+        append_slide_content(&format_basic_input(event), slide_content, max_tokens, 3)
+    } else {
+        format_basic_input(event)
+    };
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
@@ -76,16 +108,49 @@ async fn get_embedding(
         user: None,
     };
 
-    let response = client.embeddings().create(parameters).await.unwrap();
-
-    Ok(response)
+    match client.embeddings().create(parameters).await {
+        Ok(response) => Ok(response),
+        Err(e) => Err(format!("[{}] error: \'{}\'", event.id, e).into()),
+    }
 }
 
-fn format_input(event: &EventRecord) -> String {
+fn format_basic_input(event: &EventRecord) -> String {
     format!(
         "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}",
         event.title, event.track, event.r#abstract
     )
+}
+
+fn append_slide_content(
+    existing_content: &String,
+    slide_content: &String,
+    max_tokens: usize,
+    tokens_per_word_estimate: usize,
+) -> String {
+    let existing_content_split: Vec<_> = existing_content.split(" ").collect();
+    let slide_content_split: Vec<_> = slide_content.split(" ").collect();
+
+    let existing_content_estimate = existing_content_split.len() * tokens_per_word_estimate;
+    let slide_content_estimate = slide_content_split.len() * tokens_per_word_estimate;
+
+    if existing_content_estimate + slide_content_estimate <= max_tokens {
+        return format!("{}\n{}", existing_content.clone(), slide_content.clone());
+    } else {
+        let max_additional = max_tokens - existing_content_estimate;
+        if max_additional > 0 {
+            let minimized_slide_content_tokens: Vec<_> = slide_content_split
+                .into_iter()
+                .take(max_additional / tokens_per_word_estimate)
+                .collect();
+            return format!(
+                "{}\n{}",
+                existing_content.clone(),
+                minimized_slide_content_tokens.join(" ")
+            );
+        } else {
+            return existing_content.clone();
+        }
+    }
 }
 
 fn embedding_as_string(embedding: &Embedding) -> String {
@@ -98,4 +163,36 @@ fn embedding_as_string(embedding: &Embedding) -> String {
             .collect::<Vec<String>>()
             .join(",")
     )
+}
+
+#[cfg(test)]
+mod test {
+    use crate::append_slide_content;
+
+    #[test]
+    fn test_append_slide_content_under_limit() {
+        let existing = "aa bb cc".to_string();
+        let extra = "xx yy".to_string();
+        let max_tokens = 6;
+        let actual = append_slide_content(&existing, &extra, max_tokens, 1);
+        assert_eq!("aa bb cc\nxx yy", actual);
+    }
+
+    #[test]
+    fn test_append_slide_content_needs_truncated() {
+        let existing = "aa bb cc".to_string();
+        let extra = "xx yy".to_string();
+        let max_tokens = 4;
+        let actual = append_slide_content(&existing, &extra, max_tokens, 1);
+        assert_eq!("aa bb cc\nxx", actual);
+    }
+
+    #[test]
+    fn test_append_slide_content_cannot_add_anymore() {
+        let existing = "aa bb cc".to_string();
+        let extra = "xx yy".to_string();
+        let max_tokens = 3;
+        let actual = append_slide_content(&existing, &extra, max_tokens, 1);
+        assert_eq!(existing, actual);
+    }
 }
