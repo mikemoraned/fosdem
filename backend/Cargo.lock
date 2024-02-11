@@ -390,6 +390,7 @@ dependencies = [
 name = "content"
 version = "0.0.0"
 dependencies = [
+ "bytes",
  "chrono",
  "clap",
  "csv",

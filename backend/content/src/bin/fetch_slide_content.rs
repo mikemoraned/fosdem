@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::Write;
 use std::path::Path;
 
+use bytes::Bytes;
 use clap::Parser;
 
 use serde::Deserialize;
@@ -22,10 +23,15 @@ struct Args {
 }
 
 #[derive(Debug, Deserialize)]
-struct SlideWork {
+struct Event {
     id: u32,
     slides: String,
-    raw_content: Option<String>,
+}
+
+#[derive(Debug)]
+struct SlideWork {
+    event: Event,
+    raw_content: Option<Bytes>,
     text_content: Option<String>,
 }
 
@@ -40,19 +46,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut phase1 = vec![];
     for result in event_reader.deserialize() {
-        let work: SlideWork = result?;
-        phase1.push(work);
+        let event: Event = result?;
+        phase1.push(SlideWork {
+            event,
+            raw_content: None,
+            text_content: None,
+        });
     }
     info!("{}", summarise_status(&phase1));
-
-    let phase1: Vec<_> = phase1.into_iter().take(10).collect();
 
     info!("Fetching slide content");
     let mut phase2 = vec![];
     let phase1_progress = progress_bar(phase1.len() as u64);
     for work in phase1.into_iter() {
-        if work.slides.len() > 0 {
-            phase2.push(match fetch_content(&work.slides).await {
+        if work.event.slides.len() > 0 {
+            phase2.push(match fetch_content(&work.event.slides).await {
                 Ok(content) => SlideWork {
                     raw_content: Some(content),
                     ..work
@@ -60,7 +68,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 Err(e) => {
                     warn!(
                         "[{}]: got error fetching \'{}\': {}",
-                        work.id, work.slides, e
+                        work.event.id, work.event.slides, e
                     );
                     work
                 }
@@ -85,7 +93,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 Err(e) => {
                     warn!(
                         "[{}]: got error parsing content for \'{}\': {}",
-                        work.id, work.slides, e
+                        work.event.id, work.event.slides, e
                     );
                     work
                 }
@@ -102,7 +110,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let base_path = Path::new(&args.slides);
     for work in phase3.into_iter() {
         if let Some(text) = &work.text_content {
-            let file_path = base_path.join(work.id.to_string()).with_extension("txt");
+            let file_path = base_path
+                .join(work.event.id.to_string())
+                .with_extension("txt");
             let mut file = File::create(file_path)?;
             file.write_all(text.as_bytes())?;
         }
@@ -113,7 +123,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn summarise_status(works: &Vec<SlideWork>) -> String {
-    let with_slides: Vec<_> = works.iter().filter(|w| w.slides.len() > 0).collect();
+    let with_slides: Vec<_> = works.iter().filter(|w| w.event.slides.len() > 0).collect();
     let with_raw_content: Vec<_> = works.iter().filter(|w| w.raw_content.is_some()).collect();
     let with_text_content: Vec<_> = works.iter().filter(|w| w.text_content.is_some()).collect();
     format!(
@@ -125,16 +135,16 @@ fn summarise_status(works: &Vec<SlideWork>) -> String {
     )
 }
 
-async fn fetch_content(slide_url: &str) -> Result<String, Box<dyn std::error::Error>> {
+async fn fetch_content(slide_url: &str) -> Result<Bytes, Box<dyn std::error::Error>> {
     let result = reqwest::get(slide_url).await?;
     if result.status().is_success() {
-        Ok(result.text().await?)
+        Ok(result.bytes().await?)
     } else {
         Err(format!("non-success: {}", result.status()).into())
     }
 }
 
-async fn parse_content(raw_content: &String) -> Result<String, Box<dyn std::error::Error>> {
+async fn parse_content(raw_content: &Bytes) -> Result<String, Box<dyn std::error::Error>> {
     let client = reqwest::Client::new();
     let result = client
         .put("https://fosdem2024-tika.fly.dev/tika")
