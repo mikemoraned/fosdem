@@ -252,7 +252,7 @@ mod parsing {
     pub fn parse_embedded_events(
         csv_data_dir: &Path,
     ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
-        let events_path = csv_data_dir.join("2024_events_9.csv");
+        let events_path = csv_data_dir.join("events.csv");
         let events = parse_all_events(&events_path)?;
         let embeddings_path = csv_data_dir.join("embedding.csv");
         let embeddings: Vec<Embedding> = parse_all_embeddings(&embeddings_path)?;

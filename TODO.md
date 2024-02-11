@@ -65,9 +65,19 @@
     - (/) update Docker setup and test by deploying to staging
     - (/) remove DB impl
     - (/) regenerate related items
-- (x) simple bookmarks / improve discovery
+- (/) simple bookmarks / improve discovery
   - (/) add link to open item in sojourner
   - (/) make "related" link to now-and-next instead of fosdem site (allows it to then more easily bookmarked in sojourner)
+- (/) use slide content
+  - (/) process latest version of schedule
+  - (/) update schedule to include slide links
+  - (/) setup tika on fly.io for usage in slide content extraction
+  - (/) iterate over all slides, fetch content, and save to a local dir
+  - (/) when generating embeddings, use slide text content and index that as well
+  - (/) update related
+- (x) video search
+  - (x) update schedule to include video links
+  - (x) ...
 - (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side

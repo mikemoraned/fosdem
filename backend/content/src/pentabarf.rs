@@ -43,6 +43,8 @@ pub struct Event {
     pub url: Text,
     #[xmlserde(name = b"abstract", ty = "child")]
     pub r#abstract: Text,
+    #[xmlserde(name = b"attachments", ty = "child")]
+    pub attachments: Attachments,
 }
 
 #[derive(XmlDeserialize, Default, Debug)]
@@ -63,4 +65,18 @@ pub struct Person {
     pub id: u32,
     #[xmlserde(ty = "text")]
     pub name: String,
+}
+
+#[derive(XmlDeserialize, Default, Debug)]
+pub struct Attachments {
+    #[xmlserde(name = b"attachment", ty = "child")]
+    pub attachments: Vec<Attachment>,
+}
+
+#[derive(XmlDeserialize, Default, Debug)]
+pub struct Attachment {
+    #[xmlserde(name = b"type", ty = "attr")]
+    pub r#type: String,
+    #[xmlserde(name = b"href", ty = "attr")]
+    pub href: String,
 }

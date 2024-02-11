@@ -1,8 +1,7 @@
-supabase/**/.branches
-supabase/**/.temp
-supabase/**/.env
 fly*.toml
 
 target/*
 
 Dockerfile*
+
+content/data/slides/*
