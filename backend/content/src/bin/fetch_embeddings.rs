@@ -94,16 +94,16 @@ async fn get_embedding(
     event: &EventRecord,
     slide_content_for_event: &HashMap<u32, String>,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
-    let max_tokens = 8192;
-    let input = if let Some(slide_content) = slide_content_for_event.get(&event.id) {
-        append_slide_content(&format_basic_input(event), slide_content, max_tokens, 3)
+    let preferred_input = if let Some(slide_content) = slide_content_for_event.get(&event.id) {
+        format!("{}\nSlides:{}", format_basic_input(event), slide_content)
     } else {
         format_basic_input(event)
     };
+    let trimmed_input = trim_input(&preferred_input);
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
-        input: input.to_string(),
+        input: trimmed_input,
         encoding_format: None,
         user: None,
     };
@@ -121,36 +121,14 @@ fn format_basic_input(event: &EventRecord) -> String {
     )
 }
 
-fn append_slide_content(
-    existing_content: &String,
-    slide_content: &String,
-    max_tokens: usize,
-    tokens_per_word_estimate: usize,
-) -> String {
-    let existing_content_split: Vec<_> = existing_content.split(" ").collect();
-    let slide_content_split: Vec<_> = slide_content.split(" ").collect();
+fn trim_input(input: &String) -> String {
+    use tiktoken_rs::cl100k_base;
+    let max_tokens = 8192 - 100;
+    let token_estimator = cl100k_base().unwrap();
 
-    let existing_content_estimate = existing_content_split.len() * tokens_per_word_estimate;
-    let slide_content_estimate = slide_content_split.len() * tokens_per_word_estimate;
-
-    if existing_content_estimate + slide_content_estimate <= max_tokens {
-        return format!("{}\n{}", existing_content.clone(), slide_content.clone());
-    } else {
-        let max_additional = max_tokens - existing_content_estimate;
-        if max_additional > 0 {
-            let minimized_slide_content_tokens: Vec<_> = slide_content_split
-                .into_iter()
-                .take(max_additional / tokens_per_word_estimate)
-                .collect();
-            return format!(
-                "{}\n{}",
-                existing_content.clone(),
-                minimized_slide_content_tokens.join(" ")
-            );
-        } else {
-            return existing_content.clone();
-        }
-    }
+    let tokens = token_estimator.split_by_token(&input, false).unwrap();
+    let trimmed: Vec<_> = tokens.into_iter().take(max_tokens).collect();
+    trimmed.join("")
 }
 
 fn embedding_as_string(embedding: &Embedding) -> String {
@@ -163,36 +141,4 @@ fn embedding_as_string(embedding: &Embedding) -> String {
             .collect::<Vec<String>>()
             .join(",")
     )
-}
-
-#[cfg(test)]
-mod test {
-    use crate::append_slide_content;
-
-    #[test]
-    fn test_append_slide_content_under_limit() {
-        let existing = "aa bb cc".to_string();
-        let extra = "xx yy".to_string();
-        let max_tokens = 6;
-        let actual = append_slide_content(&existing, &extra, max_tokens, 1);
-        assert_eq!("aa bb cc\nxx yy", actual);
-    }
-
-    #[test]
-    fn test_append_slide_content_needs_truncated() {
-        let existing = "aa bb cc".to_string();
-        let extra = "xx yy".to_string();
-        let max_tokens = 4;
-        let actual = append_slide_content(&existing, &extra, max_tokens, 1);
-        assert_eq!("aa bb cc\nxx", actual);
-    }
-
-    #[test]
-    fn test_append_slide_content_cannot_add_anymore() {
-        let existing = "aa bb cc".to_string();
-        let extra = "xx yy".to_string();
-        let max_tokens = 3;
-        let actual = append_slide_content(&existing, &extra, max_tokens, 1);
-        assert_eq!(existing, actual);
-    }
 }

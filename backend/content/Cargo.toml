@@ -12,6 +12,7 @@ xmlserde_derives = "0.5.5"
 env_logger = "0.10.1"
 reqwest = "0.11.24"
 bytes = "1.5.0"
+tiktoken-rs = "0.5.8"
 csv = { workspace = true }
 futures = { workspace = true }
 clap = { workspace = true }
