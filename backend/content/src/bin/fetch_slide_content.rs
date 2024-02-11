@@ -150,6 +150,8 @@ async fn parse_content(raw_content: &Bytes) -> Result<String, Box<dyn std::error
         .put("https://fosdem2024-tika.fly.dev/tika")
         .body(raw_content.clone())
         .header("Accept", "text/plain")
+        .header("X-Tika-OCRskipOcr", "true")
+        .header("X-Tika-Skip-Embedded", "true")
         .send()
         .await?;
     if result.status().is_success() {
