@@ -75,6 +75,11 @@
   - (/) iterate over all slides, fetch content, and save to a local dir
   - (/) when generating embeddings, use slide text content and index that as well
   - (/) update related
+- (x) refactor / cleanup
+  - (x) switch to writing/reading events and embeddings as json files
+  - (x) represent as directly as possible e.g. Option instead of empty string for slide url, record list of slide urls
+  - (x) clippy pass
+  - (x) update README.md to capture current impl
 - (x) video search
   - (x) update schedule to include video links
   - (x) ...
