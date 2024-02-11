@@ -1,4 +1,6 @@
 use std::fs::File;
+use std::io::Write;
+use std::path::Path;
 
 use clap::Parser;
 use dotenvy;
@@ -16,6 +18,10 @@ struct Args {
     /// input csv path
     #[arg(long)]
     event_csv: String,
+
+    /// where to to put slide text content
+    #[arg(long)]
+    slides: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -93,6 +99,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         phase2_progress.inc(1);
     }
     info!("{}", summarise_status(&phase3));
+
+    info!("Saving slide content");
+    let phase3_progress = progress_bar(phase3.len() as u64);
+    let base_path = Path::new(&args.slides);
+    for work in phase3.into_iter() {
+        if let Some(text) = &work.text_content {
+            let file_path = base_path.join(work.id.to_string()).with_extension("txt");
+            let mut file = File::create(file_path)?;
+            file.write_all(text.as_bytes())?;
+        }
+        phase3_progress.inc(1);
+    }
 
     Ok(())
 }
