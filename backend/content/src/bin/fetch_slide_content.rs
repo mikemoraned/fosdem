@@ -3,10 +3,7 @@ use std::io::Write;
 use std::path::Path;
 
 use clap::Parser;
-use dotenvy;
-use futures::future::join_all;
-use openai_dive::v1::api::Client;
-use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
+
 use serde::Deserialize;
 use shared::cli::progress_bar;
 use tracing::{info, warn};
@@ -142,6 +139,7 @@ async fn parse_content(raw_content: &String) -> Result<String, Box<dyn std::erro
     let result = client
         .put("https://fosdem2024-tika.fly.dev/tika")
         .body(raw_content.clone())
+        .header("Accept", "text/plain")
         .send()
         .await?;
     if result.status().is_success() {
