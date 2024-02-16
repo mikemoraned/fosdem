@@ -78,7 +78,7 @@
 - (x) refactor / cleanup
   - (/) switch to writing/reading events as json files via serde
     - (/) update Dockerfile
-  - (x) represent as directly and completely as possible e.g.
+  - (/) represent as directly and completely as possible e.g.
     - (/) record list of slide urls rather than single slide url
     - (/) add presenter names
       - this was previously hard, as it was a list, with occasionally embedded quotes, and so hard to represent in CSV
