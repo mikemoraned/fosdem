@@ -80,8 +80,11 @@
     - (/) update Dockerfile
   - (x) represent as directly and completely as possible e.g.
     - (/) record list of slide urls rather than single slide url
-    - (x) add author names
-      - this was previously hard, as it was a list
+    - (x) add presenter names
+      - this was previously hard, as it was a list, with occasionally embedded quotes, and so hard to represent in CSV
+      - (/) import persons as presenters
+      - (/) show presenter names
+      - (x) use presenter name in the embedding input
   - (x) switch to writing/reading embeddings as json files via serde
   - (x) clippy pass
   - (x) update README.md to capture current impl
