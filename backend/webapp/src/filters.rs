@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use shared::queryable::{Event, SearchItem};
+use shared::model::{Event, SearchItem};
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {

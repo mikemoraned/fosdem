@@ -13,7 +13,7 @@ use axum_valid::Valid;
 use serde::Deserialize;
 use shared::{
     inmemory_openai::InMemoryOpenAIQueryable,
-    queryable::{Event, NextEvents, NextEventsContext, SearchItem},
+    model::{Event, NextEvents, NextEventsContext, SearchItem},
 };
 use tower_http::{
     cors::{Any, CorsLayer},

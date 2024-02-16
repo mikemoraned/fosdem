@@ -7,10 +7,9 @@ use openai_dive::v1::api::Client;
 
 use tracing::debug;
 
-use crate::{
-    openai::get_embedding,
-    queryable::{Event, NextEvents, NextEventsContext, Queryable, SearchItem, MAX_RELATED_EVENTS},
-};
+use crate::model::{Event, NextEvents, NextEventsContext, SearchItem};
+use crate::queryable::Queryable;
+use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
 
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
@@ -245,7 +244,7 @@ mod parsing {
 
     use tracing::debug;
 
-    use crate::queryable::Event;
+    use crate::model::Event;
 
     use super::{EmbeddedEvent, OpenAIVector};
 
