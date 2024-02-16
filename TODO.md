@@ -79,8 +79,7 @@
   - (/) switch to writing/reading events as json files via serde
   - (x) switch to writing/reading embeddings as json files via serde
   - (x) represent as directly and completely as possible e.g.
-    - (x) Option instead of empty string for slide url
-    - (x) record list of slide urls rather than single slide url
+    - (/) record list of slide urls rather than single slide url
   - (x) clippy pass
   - (x) update README.md to capture current impl
 - (x) video search

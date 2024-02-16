@@ -44,7 +44,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     slug: event.slug.value,
                     url: Url::parse(&event.url.value)?,
                     r#abstract: event.r#abstract.value,
-                    slides: slides(&event.attachments),
+                    slides: slides(&event.attachments)?,
                 };
                 model_events.push(model_event);
             }
@@ -60,17 +60,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn slides(event: &content::pentabarf::Attachments) -> String {
-    let slides: Vec<&Attachment> = event
+fn slides(event: &content::pentabarf::Attachments) -> Result<Vec<Url>, Box<dyn std::error::Error>> {
+    let slide_attachments: Vec<&Attachment> = event
         .attachments
         .iter()
         .filter(|a| a.r#type == "slides")
         .collect();
-    if slides.len() >= 1 {
-        slides[0].href.clone()
-    } else {
-        "".into()
+    let mut slides = vec![];
+    for slide_attachment in slide_attachments {
+        slides.push(Url::parse(&slide_attachment.href)?);
     }
+    Ok(slides)
 }
 
 fn parse_into_minutes(value: &str) -> Result<u32, Box<dyn std::error::Error>> {

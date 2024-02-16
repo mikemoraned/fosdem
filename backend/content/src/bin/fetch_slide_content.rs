@@ -8,6 +8,7 @@ use clap::Parser;
 use shared::cli::progress_bar;
 use shared::model::Event;
 use tracing::{info, warn};
+use url::Url;
 
 /// Fetch Slide Content
 #[derive(Parser, Debug)]
@@ -25,6 +26,7 @@ struct Args {
 #[derive(Debug)]
 struct SlideWork {
     event: Event,
+    url: Option<url::Url>,
     raw_content: Option<Bytes>,
     text_content: Option<String>,
 }
@@ -44,8 +46,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut phase1 = vec![];
     for event in events {
+        let url = event.slides.first().cloned();
         phase1.push(SlideWork {
             event,
+            url,
             raw_content: None,
             text_content: None,
         });
@@ -56,17 +60,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut phase2 = vec![];
     let phase1_progress = progress_bar(phase1.len() as u64);
     for work in phase1.into_iter() {
-        if work.event.slides.len() > 0 {
-            phase2.push(match fetch_content(&work.event.slides).await {
+        if let Some(url) = &work.url {
+            phase2.push(match fetch_content(url).await {
                 Ok(content) => SlideWork {
                     raw_content: Some(content),
                     ..work
                 },
                 Err(e) => {
-                    warn!(
-                        "[{}]: got error fetching \'{}\': {}",
-                        work.event.id, work.event.slides, e
-                    );
+                    warn!("[{}]: got error fetching \'{}\': {}", work.event.id, url, e);
                     work
                 }
             });
@@ -89,8 +90,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 },
                 Err(e) => {
                     warn!(
-                        "[{}]: got error parsing content for \'{}\': {}",
-                        work.event.id, work.event.slides, e
+                        "[{}]: got error parsing content for \'{:?}\': {}",
+                        work.event.id, work.url, e
                     );
                     work
                 }
@@ -132,8 +133,8 @@ fn summarise_status(works: &Vec<SlideWork>) -> String {
     )
 }
 
-async fn fetch_content(slide_url: &str) -> Result<Bytes, Box<dyn std::error::Error>> {
-    let result = reqwest::get(slide_url).await?;
+async fn fetch_content(slide_url: &Url) -> Result<Bytes, Box<dyn std::error::Error>> {
+    let result = reqwest::get(slide_url.to_string()).await?;
     if result.status().is_success() {
         Ok(result.bytes().await?)
     } else {

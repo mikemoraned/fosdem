@@ -21,7 +21,7 @@ pub struct Event {
     pub slug: String,
     pub url: Url,
     pub r#abstract: String,
-    pub slides: String,
+    pub slides: Vec<Url>,
 }
 
 impl Event {

@@ -9,8 +9,8 @@
         <span><i class="fa-solid fa-clock"></i> {{ event.date.format("%A") }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes</span>,
         <a href="{{ event.nav_url(current_event) }}"><span><i class="fa-solid fa-location-dot"></i> {{ event.room }}</span></a>,
         <span><i class="fa-regular fa-train-track"></i> {{ event.track }}</span>
-        {% if event.slides != "" %}
-            , <a href="{{ event.slides }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
+        {% if event.slides.len() > 0 %}
+            , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
         {% endif %}
     </p>
 </div>
