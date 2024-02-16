@@ -13,7 +13,7 @@ RUN cargo build --release
 FROM fedora:34 AS runner
 COPY --from=builder /prod/target/release/fly /bin
 COPY --from=builder /prod/assets/ /assets/
-COPY --from=builder /prod/content/data /csv/
+COPY --from=builder /prod/shared/data/model/ /model/
 RUN ls -R .
 
-CMD ./bin/fly --csv-data-dir ./csv
+CMD ./bin/fly --model-dir ./model
