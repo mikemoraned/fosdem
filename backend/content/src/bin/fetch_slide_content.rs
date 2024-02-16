@@ -1,30 +1,24 @@
-use std::fs::File;
-use std::io::Write;
+use std::io::{BufReader, Write};
 use std::path::Path;
+use std::{fs::File, path::PathBuf};
 
 use bytes::Bytes;
 use clap::Parser;
 
-use serde::Deserialize;
 use shared::cli::progress_bar;
+use shared::model::Event;
 use tracing::{info, warn};
 
-/// Fetch Embeddings
+/// Fetch Slide Content
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// input csv path
     #[arg(long)]
-    event_csv: String,
+    model_dir: PathBuf,
 
     /// where to to put slide text content
     #[arg(long)]
-    slides: String,
-}
-
-#[derive(Debug, Deserialize)]
-struct Event {
-    id: u32,
     slides: String,
 }
 
@@ -41,12 +35,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let args = Args::parse();
 
-    let mut event_reader = csv::Reader::from_reader(File::open(&args.event_csv)?);
-    info!("Reading events from {} ... ", args.event_csv);
+    let events_path = args.model_dir.join("events").with_extension("json");
+
+    info!("Reading events from {} ... ", events_path.to_str().unwrap());
+    let reader = BufReader::new(File::open(events_path)?);
+    let events: Vec<Event> = serde_json::from_reader(reader)?;
+    println!("done ");
 
     let mut phase1 = vec![];
-    for result in event_reader.deserialize() {
-        let event: Event = result?;
+    for event in events {
         phase1.push(SlideWork {
             event,
             raw_content: None,
