@@ -80,7 +80,7 @@
     - (/) update Dockerfile
   - (x) represent as directly and completely as possible e.g.
     - (/) record list of slide urls rather than single slide url
-    - (x) add presenter names
+    - (/) add presenter names
       - this was previously hard, as it was a list, with occasionally embedded quotes, and so hard to represent in CSV
       - (/) import persons as presenters
       - (/) show presenter names
