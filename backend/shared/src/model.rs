@@ -1,5 +1,5 @@
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use url::Url;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -9,7 +9,7 @@ pub struct SearchItem {
     pub related: Option<Vec<SearchItem>>,
 }
 
-#[derive(Debug, Clone, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Event {
     pub id: u32,
     pub date: NaiveDate,
