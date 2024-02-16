@@ -77,15 +77,16 @@
   - (/) update related
 - (x) refactor / cleanup
   - (/) switch to writing/reading events as json files via serde
-  - (x) switch to writing/reading embeddings as json files via serde
   - (x) represent as directly and completely as possible e.g.
     - (/) record list of slide urls rather than single slide url
+    - (x) add author names
+      - this was previously hard, as it was a list
+  - (x) switch to writing/reading embeddings as json files via serde
   - (x) clippy pass
   - (x) update README.md to capture current impl
 - (x) video search
   - (x) update schedule to include video links
   - (x) ...
-- (x) add author names
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
