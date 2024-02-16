@@ -1,22 +1,22 @@
 use std::collections::HashMap;
 use std::fs::File;
-use std::io::Read;
-use std::path::Path;
+use std::io::{BufReader, Read};
+use std::path::{Path, PathBuf};
 
 use clap::Parser;
 use dotenvy;
 use openai_dive::v1::api::Client;
 use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
-use serde::Deserialize;
 use shared::cli::progress_bar;
+use shared::model::Event;
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// input csv path
+    /// input model data, where input events are
     #[arg(long)]
-    event_csv: String,
+    model_dir: PathBuf,
 
     /// include slide content at path
     #[arg(long)]
@@ -25,14 +25,6 @@ struct Args {
     /// output csv path
     #[arg(long)]
     embedding_csv: String,
-}
-
-#[derive(Debug, Deserialize)]
-struct EventRecord {
-    id: u32,
-    title: String,
-    track: String,
-    r#abstract: String,
 }
 
 #[tokio::main]
@@ -45,13 +37,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let client = Client::new(api_key);
 
-    let mut event_reader = csv::Reader::from_reader(File::open(&args.event_csv)?);
-    print!("Reading events from {} ... ", args.event_csv);
-    let mut events = vec![];
-    for result in event_reader.deserialize() {
-        let event: EventRecord = result?;
-        events.push(event);
-    }
+    let events_path = args.model_dir.join("events").with_extension("json");
+
+    print!("Reading events from {} ... ", events_path.to_str().unwrap());
+    let reader = BufReader::new(File::open(events_path)?);
+    let events: Vec<Event> = serde_json::from_reader(reader)?;
     println!("done ");
 
     let mut slide_content_for_event: HashMap<u32, String> = HashMap::new();
@@ -91,7 +81,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 async fn get_embedding(
     client: &Client,
-    event: &EventRecord,
+    event: &Event,
     slide_content_for_event: &HashMap<u32, String>,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
     let preferred_input = if let Some(slide_content) = slide_content_for_event.get(&event.id) {
@@ -114,7 +104,7 @@ async fn get_embedding(
     }
 }
 
-fn format_basic_input(event: &EventRecord) -> String {
+fn format_basic_input(event: &Event) -> String {
     format!(
         "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}",
         event.title, event.track, event.r#abstract
