@@ -286,28 +286,8 @@ mod parsing {
         embedding: String,
     }
 
-    // fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
-    //     debug!("Loading events data from {:?}", events_path);
-
-    //     let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
-    //     let mut events = vec![];
-    //     for result in rdr.deserialize() {
-    //         let event: Event = result?;
-    //         events.push(event);
-    //     }
-    //     events.sort_by(|a, b| a.id.cmp(&b.id));
-    //     Ok(events)
-    // }
-
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
-
-        // let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
-        // let mut events = vec![];
-        // for result in rdr.deserialize() {
-        //     let event: Event = result?;
-        //     events.push(event);
-        // }
 
         let reader = BufReader::new(File::open(events_path)?);
         let mut events: Vec<Event> = serde_json::from_reader(reader)?;
