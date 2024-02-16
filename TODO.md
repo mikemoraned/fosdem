@@ -84,7 +84,7 @@
       - this was previously hard, as it was a list, with occasionally embedded quotes, and so hard to represent in CSV
       - (/) import persons as presenters
       - (/) show presenter names
-      - (x) use presenter name in the embedding input
+      - (/) use presenter name in the embedding input
   - (x) switch to writing/reading embeddings as json files via serde
   - (x) clippy pass
   - (x) update README.md to capture current impl

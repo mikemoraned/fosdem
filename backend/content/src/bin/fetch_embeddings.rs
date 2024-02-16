@@ -105,10 +105,22 @@ async fn get_embedding(
 }
 
 fn format_basic_input(event: &Event) -> String {
-    format!(
-        "FOSDEM Conference Event 2024\nTitle: {}\nTrack: {}\nAbstract: {}",
-        event.title, event.track, event.r#abstract
-    )
+    let lines: Vec<String> = vec![
+        "FOSDEM Conference Event 2024".into(),
+        format!("Title: {}", event.title),
+        format!("Track: {}", event.track),
+        format!("Abstract: {}", event.r#abstract),
+        format!(
+            "Presenter: {}",
+            event
+                .presenters
+                .iter()
+                .map(|p| p.name.clone())
+                .collect::<Vec<_>>()
+                .join(", ")
+        ),
+    ];
+    lines.join("\n")
 }
 
 fn trim_input(input: &String) -> String {
