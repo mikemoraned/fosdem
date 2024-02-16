@@ -140,16 +140,16 @@ impl Queryable for InMemoryOpenAIQueryable {
 
 impl InMemoryOpenAIQueryable {
     pub async fn connect(
-        csv_data_dir: &Path,
+        model_dir: &Path,
         openai_api_key: &str,
     ) -> Result<InMemoryOpenAIQueryable, Box<dyn std::error::Error>> {
         debug!("Creating OpenAI Client");
         let openai_client = Client::new(openai_api_key.into());
 
-        debug!("Loading data from {:?}", csv_data_dir);
+        debug!("Loading data from {:?}", model_dir);
         Ok(InMemoryOpenAIQueryable {
             openai_client,
-            events: parsing::parse_embedded_events(csv_data_dir)?,
+            events: parsing::parse_embedded_events(model_dir)?,
         })
     }
 }
@@ -240,7 +240,7 @@ impl InMemoryOpenAIQueryable {
 }
 
 mod parsing {
-    use std::{fs::File, path::Path};
+    use std::{fs::File, io::BufReader, path::Path};
 
     use tracing::debug;
 
@@ -249,11 +249,11 @@ mod parsing {
     use super::{EmbeddedEvent, OpenAIVector};
 
     pub fn parse_embedded_events(
-        csv_data_dir: &Path,
+        model_dir: &Path,
     ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
-        let events_path = csv_data_dir.join("events.csv");
+        let events_path = model_dir.join("events").with_extension("json");
         let events = parse_all_events(&events_path)?;
-        let embeddings_path = csv_data_dir.join("embedding.csv");
+        let embeddings_path = model_dir.join("embedding").with_extension("csv");
         let embeddings: Vec<Embedding> = parse_all_embeddings(&embeddings_path)?;
 
         let mut embedded_events = vec![];
@@ -286,15 +286,32 @@ mod parsing {
         embedding: String,
     }
 
+    // fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+    //     debug!("Loading events data from {:?}", events_path);
+
+    //     let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
+    //     let mut events = vec![];
+    //     for result in rdr.deserialize() {
+    //         let event: Event = result?;
+    //         events.push(event);
+    //     }
+    //     events.sort_by(|a, b| a.id.cmp(&b.id));
+    //     Ok(events)
+    // }
+
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
 
-        let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
-        let mut events = vec![];
-        for result in rdr.deserialize() {
-            let event: Event = result?;
-            events.push(event);
-        }
+        // let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
+        // let mut events = vec![];
+        // for result in rdr.deserialize() {
+        //     let event: Event = result?;
+        //     events.push(event);
+        // }
+
+        let reader = BufReader::new(File::open(events_path)?);
+        let mut events: Vec<Event> = serde_json::from_reader(reader)?;
+
         events.sort_by(|a, b| a.id.cmp(&b.id));
         Ok(events)
     }

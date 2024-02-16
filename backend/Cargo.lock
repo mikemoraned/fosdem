@@ -1729,6 +1729,7 @@ dependencies = [
  "nalgebra",
  "openai_dive",
  "serde",
+ "serde_json",
  "tracing",
  "tracing-subscriber",
  "url",
