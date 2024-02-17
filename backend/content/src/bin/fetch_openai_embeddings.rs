@@ -6,8 +6,8 @@ use std::path::{Path, PathBuf};
 use clap::Parser;
 use dotenvy;
 use openai_dive::v1::api::Client;
-use openai_dive::v1::endpoints::embeddings;
-use openai_dive::v1::resources::embedding::{Embedding, EmbeddingParameters, EmbeddingResponse};
+
+use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
 
@@ -65,14 +65,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "Looking up and writing embeddings to {} ... ",
         embedding_path.to_str().unwrap()
     );
-    // let mut embedding_writer = csv::Writer::from_writer(File::create(args.embedding_csv)?);
-    // embedding_writer.write_record(&["title", "embedding"])?;
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
         let response = get_embedding(&client, &event, &slide_content_for_event).await?;
-        // let embedding = &response.data[0];
-        // embedding_writer.write_record(&[&event.title, &embedding_as_string(embedding)])?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response),
@@ -141,16 +137,4 @@ fn trim_input(input: &String) -> String {
     let tokens = token_estimator.split_by_token(&input, false).unwrap();
     let trimmed: Vec<_> = tokens.into_iter().take(max_tokens).collect();
     trimmed.join("")
-}
-
-fn embedding_as_string(embedding: &Embedding) -> String {
-    format!(
-        "[{}]",
-        embedding
-            .embedding
-            .iter()
-            .map(|f| f.to_string())
-            .collect::<Vec<String>>()
-            .join(",")
-    )
 }

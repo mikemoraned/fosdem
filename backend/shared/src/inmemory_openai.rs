@@ -2,12 +2,12 @@ use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use futures::future::join_all;
-use nalgebra::DVector;
+
 use openai_dive::v1::api::Client;
 
 use tracing::debug;
 
-use crate::model::{Event, NextEvents, NextEventsContext, SearchItem};
+use crate::model::{Event, NextEvents, NextEventsContext, OpenAIVector, SearchItem};
 use crate::queryable::Queryable;
 use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
 
@@ -16,8 +16,6 @@ pub struct InMemoryOpenAIQueryable {
     openai_client: Client,
     events: Vec<EmbeddedEvent>,
 }
-
-type OpenAIVector = DVector<f64>;
 
 fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
     lhs.metric_distance(rhs)
@@ -274,18 +272,6 @@ mod parsing {
         Ok(embedded_events)
     }
 
-    // #[derive(Debug)]
-    // struct Embedding {
-    //     title: String,
-    //     openai_embedding: OpenAIVector,
-    // }
-
-    // #[derive(Debug, serde::Deserialize)]
-    // struct EmbeddingRecord {
-    //     title: String,
-    //     embedding: String,
-    // }
-
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
 
@@ -301,55 +287,9 @@ mod parsing {
     ) -> Result<Vec<OpenAIEmbedding>, Box<dyn std::error::Error>> {
         debug!("Loading embeddings data from {:?}", embeddings_path);
 
-        // let mut rdr = csv::Reader::from_reader(File::open(embeddings_path)?);
-        // let mut embeddings = vec![];
-        // for result in rdr.deserialize() {
-        //     let record: EmbeddingRecord = result?;
-        //     let embedding = Embedding {
-        //         title: record.title,
-        //         openai_embedding: parse_openai_embedding_vector(record.embedding)?,
-        //     };
-        //     embeddings.push(embedding);
-        // }
-
         let reader = BufReader::new(File::open(embeddings_path)?);
         let embeddings: Vec<OpenAIEmbedding> = serde_json::from_reader(reader)?;
 
         Ok(embeddings)
     }
-
-    // fn parse_all_embeddings(
-    //     embeddings_path: &Path,
-    // ) -> Result<Vec<Embedding>, Box<dyn std::error::Error>> {
-    //     debug!("Loading embeddings data from {:?}", embeddings_path);
-
-    //     let mut rdr = csv::Reader::from_reader(File::open(embeddings_path)?);
-    //     let mut embeddings = vec![];
-    //     for result in rdr.deserialize() {
-    //         let record: EmbeddingRecord = result?;
-    //         let embedding = Embedding {
-    //             title: record.title,
-    //             openai_embedding: parse_openai_embedding_vector(record.embedding)?,
-    //         };
-    //         embeddings.push(embedding);
-    //     }
-    //     Ok(embeddings)
-    // }
-
-    // fn parse_openai_embedding_vector(
-    //     embedding: String,
-    // ) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
-    //     if embedding.starts_with("[") && embedding.ends_with("]") {
-    //         let within = &embedding[1..&embedding.len() - 1];
-    //         let parts: Vec<f64> = within
-    //             .split(",")
-    //             .into_iter()
-    //             .map(|p| p.parse::<f64>().unwrap())
-    //             .collect();
-    //         let openaivector = OpenAIVector::from(parts);
-    //         Ok(openaivector)
-    //     } else {
-    //         Err("not enclosed by []".into())
-    //     }
-    // }
 }

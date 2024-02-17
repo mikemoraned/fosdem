@@ -1,6 +1,6 @@
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use nalgebra::DVector;
-use openai_dive::v1::resources::embedding::{self, EmbeddingResponse};
+use openai_dive::v1::resources::embedding::EmbeddingResponse;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
