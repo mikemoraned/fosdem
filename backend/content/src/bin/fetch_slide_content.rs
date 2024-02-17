@@ -83,7 +83,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let phase2_progress = progress_bar(phase2.len() as u64);
     for work in phase2.into_iter() {
         if let Some(raw_content) = &work.raw_content {
-            phase3.push(match parse_content(&raw_content).await {
+            phase3.push(match parse_content(raw_content).await {
                 Ok(text) => SlideWork {
                     text_content: Some(text),
                     ..work
@@ -121,7 +121,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn summarise_status(works: &Vec<SlideWork>) -> String {
-    let with_slides: Vec<_> = works.iter().filter(|w| w.event.slides.len() > 0).collect();
+    let with_slides: Vec<_> = works.iter().filter(|w| !w.event.slides.is_empty()).collect();
     let with_raw_content: Vec<_> = works.iter().filter(|w| w.raw_content.is_some()).collect();
     let with_text_content: Vec<_> = works.iter().filter(|w| w.text_content.is_some()).collect();
     format!(

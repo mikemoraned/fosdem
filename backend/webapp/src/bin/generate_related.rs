@@ -106,7 +106,7 @@ fn build_time_slot_ids(
     sorted.dedup();
     let mut time_slot_ids = HashMap::new();
     for (id, time_slot) in sorted.into_iter().enumerate() {
-        time_slot_ids.insert(time_slot.clone(), id);
+        time_slot_ids.insert(*time_slot, id);
     }
     time_slot_ids
 }

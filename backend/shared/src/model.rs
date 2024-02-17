@@ -63,12 +63,12 @@ impl Event {
     }
 
     pub fn nav_room(&self) -> String {
-        if self.room.contains(" ") {
-            let parts: Vec<_> = self.room.split(" ").collect();
+        if self.room.contains(' ') {
+            let parts: Vec<_> = self.room.split(' ').collect();
             let start = parts[0];
-            start.to_lowercase().replace(".", "")
+            start.to_lowercase().replace('.', "")
         } else {
-            self.room.to_lowercase().replace(".", "")
+            self.room.to_lowercase().replace('.', "")
         }
     }
 }

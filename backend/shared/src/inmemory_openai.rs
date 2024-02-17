@@ -68,7 +68,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
-        let response = get_embedding(&self.openai_client, &query).await?;
+        let response = get_embedding(&self.openai_client, query).await?;
         let embedding = OpenAIVector::from(response.data[0].embedding.clone());
 
         debug!("Finding all distances from embedding");
@@ -90,7 +90,7 @@ impl Queryable for InMemoryOpenAIQueryable {
                 entry.related = Some(
                     self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
                         .await
-                        .expect(&format!("find related items for {}", &entry.event.title)),
+                        .unwrap_or_else(|_| panic!("find related items for {}", &entry.event.title)),
                 );
                 entry
             });
@@ -159,7 +159,7 @@ impl InMemoryOpenAIQueryable {
         all_events: &Vec<Event>,
     ) -> Result<(NaiveDateTime, Event, Vec<Event>), Box<dyn std::error::Error>> {
         let now_utc = Utc::now();
-        let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
+        let central_european_time = FixedOffset::east_opt(3600).unwrap();
         let now_belgium = now_utc.with_timezone(&central_european_time);
         let now = now_belgium.naive_local();
 

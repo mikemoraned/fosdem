@@ -113,7 +113,7 @@ mod tests {
 
     #[test]
     fn test_parse_into_minutes_invalid_values() {
-        for example in vec!["foop", "24:00"] {
+        for example in ["foop", "24:00"] {
             assert!(parse_into_minutes(example).is_err());
         }
     }

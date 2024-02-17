@@ -134,7 +134,7 @@ async fn next_after_event(
 pub async fn app_state(openai_api_key: &str, model_dir: &std::path::Path) -> AppState {
     AppState {
         queryable: Arc::new(
-            InMemoryOpenAIQueryable::connect(model_dir, &openai_api_key)
+            InMemoryOpenAIQueryable::connect(model_dir, openai_api_key)
                 .await
                 .unwrap(),
         ),
@@ -147,14 +147,14 @@ pub async fn router(state: AppState) -> Router {
         // allow requests from any origin
         .allow_origin(Any);
 
-    let router = Router::new()
+    
+
+    Router::new()
         .route("/", get(index))
         .route("/search", get(search))
         .route("/connections/", get(related))
         .route("/next/", get(next))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
-        .with_state(state);
-
-    router
+        .with_state(state)
 }

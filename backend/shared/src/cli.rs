@@ -11,7 +11,7 @@ pub fn progress_bar(total_size: u64) -> ProgressBar {
         )
         .unwrap()
         .with_key("eta", |state: &ProgressState, w: &mut dyn Write| {
-            write!(w, "{}", HumanDuration(state.eta()).to_string()).unwrap()
+            write!(w, "{}", HumanDuration(state.eta())).unwrap()
         }),
     );
     bar
