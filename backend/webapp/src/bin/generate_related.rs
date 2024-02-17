@@ -2,7 +2,6 @@ use std::{collections::HashMap, fs::File, io::Write, path::PathBuf};
 
 use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
-use dotenvy;
 
 use shared::{
     cli::progress_bar, env::load_secret, inmemory_openai::InMemoryOpenAIQueryable,
@@ -15,9 +14,9 @@ use webapp::related::{D3Force, Link, Node};
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// path to directory where CSV files are kept
+    /// path to directory where model data is kept
     #[arg(short, long)]
-    csv_data_dir: PathBuf,
+    model_dir: PathBuf,
 
     /// maximum number of related items to include per event
     #[arg(short, long)]
@@ -38,7 +37,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let openai_api_key = load_secret("OPENAI_API_KEY");
 
     info!("Loading all Events and converting to Nodes");
-    let queryable = InMemoryOpenAIQueryable::connect(&args.csv_data_dir, &openai_api_key).await?;
+    let queryable = InMemoryOpenAIQueryable::connect(&args.model_dir, &openai_api_key).await?;
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
     let mut nodes: Vec<Node> = vec![];
@@ -107,7 +106,7 @@ fn build_time_slot_ids(
     sorted.dedup();
     let mut time_slot_ids = HashMap::new();
     for (id, time_slot) in sorted.into_iter().enumerate() {
-        time_slot_ids.insert(time_slot.clone(), id);
+        time_slot_ids.insert(*time_slot, id);
     }
     time_slot_ids
 }

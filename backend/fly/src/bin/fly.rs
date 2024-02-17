@@ -2,11 +2,9 @@ use std::path::PathBuf;
 
 use axum::{http::StatusCode, routing::get};
 use clap::Parser;
-use dotenvy;
 use shared::env::load_secret;
 use tokio::net::TcpListener;
 use tracing::{info, warn};
-use tracing_subscriber;
 use webapp::router::{app_state, router};
 
 async fn health() -> StatusCode {
@@ -19,7 +17,7 @@ async fn health() -> StatusCode {
 struct Args {
     /// path to directory where CSV files are kept
     #[arg(short, long)]
-    csv_data_dir: PathBuf,
+    model_dir: PathBuf,
 }
 
 #[tokio::main]
@@ -36,7 +34,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
-    let app_state = app_state(&openai_api_key, &args.csv_data_dir).await;
+    let app_state = app_state(&openai_api_key, &args.model_dir).await;
 
     let router = router(app_state).await;
     let app = router.route("/health", get(health));

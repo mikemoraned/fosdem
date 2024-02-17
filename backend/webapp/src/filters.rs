@@ -1,14 +1,14 @@
 use std::collections::HashMap;
 
-use shared::queryable::{Event, SearchItem};
+use shared::model::{Event, SearchItem};
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {
-    UnicodeSegmentation::graphemes(s, true).into_iter().count()
+    UnicodeSegmentation::graphemes(s, true).count()
 }
 
 pub fn truncate_title(title: &String, max_size: usize) -> ::askama::Result<String> {
-    if count_graphemes(&title) <= max_size {
+    if count_graphemes(title) <= max_size {
         return Ok(title.clone());
     }
 
@@ -33,7 +33,7 @@ pub fn truncate_title(title: &String, max_size: usize) -> ::askama::Result<Strin
 
 pub fn distance_similarity(distance: &f64) -> ::askama::Result<String> {
     let similarity = 1.0 - distance;
-    Ok(format!("{:.2}", similarity).into())
+    Ok(format!("{:.2}", similarity))
 }
 
 pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
@@ -43,12 +43,11 @@ pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
     Ok(format!(
         "<i class=\"fa-solid fa-circle\" style=\"opacity: {}\"></i>",
         opacity
-    )
-    .into())
+    ))
 }
 
-pub fn order_event_by_time_then_place(events: &Vec<Event>) -> ::askama::Result<Vec<Event>> {
-    let mut ordered = events.clone();
+pub fn order_event_by_time_then_place(events: &[Event]) -> ::askama::Result<Vec<Event>> {
+    let mut ordered = Vec::from(events);
     ordered.sort_by(|a, b| {
         if a.starting_time() == b.starting_time() {
             a.room.cmp(&b.room)
@@ -74,8 +73,8 @@ pub fn group_by_distance(items: &Vec<SearchItem>) -> ::askama::Result<Vec<Groupe
             .or_insert(vec![item.clone()]);
     }
     let mut grouped: Vec<GroupedSearchItems> = group_map
-        .into_iter()
-        .map(|(_, items)| GroupedSearchItems {
+        .into_values()
+        .map(|items| GroupedSearchItems {
             distance: items[0].distance,
             items,
         })

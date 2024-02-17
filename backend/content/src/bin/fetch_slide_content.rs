@@ -1,36 +1,32 @@
-use std::fs::File;
-use std::io::Write;
+use std::io::{BufReader, Write};
 use std::path::Path;
+use std::{fs::File, path::PathBuf};
 
 use bytes::Bytes;
 use clap::Parser;
 
-use serde::Deserialize;
 use shared::cli::progress_bar;
+use shared::model::Event;
 use tracing::{info, warn};
+use url::Url;
 
-/// Fetch Embeddings
+/// Fetch Slide Content
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// input csv path
     #[arg(long)]
-    event_csv: String,
+    model_dir: PathBuf,
 
     /// where to to put slide text content
     #[arg(long)]
     slides: String,
 }
 
-#[derive(Debug, Deserialize)]
-struct Event {
-    id: u32,
-    slides: String,
-}
-
 #[derive(Debug)]
 struct SlideWork {
     event: Event,
+    url: Option<url::Url>,
     raw_content: Option<Bytes>,
     text_content: Option<String>,
 }
@@ -41,14 +37,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let args = Args::parse();
 
-    let mut event_reader = csv::Reader::from_reader(File::open(&args.event_csv)?);
-    info!("Reading events from {} ... ", args.event_csv);
+    let events_path = args.model_dir.join("events").with_extension("json");
+
+    info!("Reading events from {} ... ", events_path.to_str().unwrap());
+    let reader = BufReader::new(File::open(events_path)?);
+    let events: Vec<Event> = serde_json::from_reader(reader)?;
+    println!("done ");
 
     let mut phase1 = vec![];
-    for result in event_reader.deserialize() {
-        let event: Event = result?;
+    for event in events {
+        let url = event.slides.first().cloned();
         phase1.push(SlideWork {
             event,
+            url,
             raw_content: None,
             text_content: None,
         });
@@ -59,17 +60,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut phase2 = vec![];
     let phase1_progress = progress_bar(phase1.len() as u64);
     for work in phase1.into_iter() {
-        if work.event.slides.len() > 0 {
-            phase2.push(match fetch_content(&work.event.slides).await {
+        if let Some(url) = &work.url {
+            phase2.push(match fetch_content(url).await {
                 Ok(content) => SlideWork {
                     raw_content: Some(content),
                     ..work
                 },
                 Err(e) => {
-                    warn!(
-                        "[{}]: got error fetching \'{}\': {}",
-                        work.event.id, work.event.slides, e
-                    );
+                    warn!("[{}]: got error fetching \'{}\': {}", work.event.id, url, e);
                     work
                 }
             });
@@ -85,15 +83,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let phase2_progress = progress_bar(phase2.len() as u64);
     for work in phase2.into_iter() {
         if let Some(raw_content) = &work.raw_content {
-            phase3.push(match parse_content(&raw_content).await {
+            phase3.push(match parse_content(raw_content).await {
                 Ok(text) => SlideWork {
                     text_content: Some(text),
                     ..work
                 },
                 Err(e) => {
                     warn!(
-                        "[{}]: got error parsing content for \'{}\': {}",
-                        work.event.id, work.event.slides, e
+                        "[{}]: got error parsing content for \'{:?}\': {}",
+                        work.event.id, work.url, e
                     );
                     work
                 }
@@ -123,7 +121,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn summarise_status(works: &Vec<SlideWork>) -> String {
-    let with_slides: Vec<_> = works.iter().filter(|w| w.event.slides.len() > 0).collect();
+    let with_slides: Vec<_> = works.iter().filter(|w| !w.event.slides.is_empty()).collect();
     let with_raw_content: Vec<_> = works.iter().filter(|w| w.raw_content.is_some()).collect();
     let with_text_content: Vec<_> = works.iter().filter(|w| w.text_content.is_some()).collect();
     format!(
@@ -135,8 +133,8 @@ fn summarise_status(works: &Vec<SlideWork>) -> String {
     )
 }
 
-async fn fetch_content(slide_url: &str) -> Result<Bytes, Box<dyn std::error::Error>> {
-    let result = reqwest::get(slide_url).await?;
+async fn fetch_content(slide_url: &Url) -> Result<Bytes, Box<dyn std::error::Error>> {
+    let result = reqwest::get(slide_url.to_string()).await?;
     if result.status().is_success() {
         Ok(result.bytes().await?)
     } else {

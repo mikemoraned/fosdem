@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-nalgebra = "0.32.3"
+nalgebra = { workspace = true }
 openai_dive = { workspace = true }
 log = { workspace = true }
 url = { workspace = true }
@@ -17,4 +17,4 @@ tracing-subscriber = { workspace = true }
 indicatif = { workspace = true }
 dotenvy = { workspace = true }
 chrono = { workspace = true }
-csv = { workspace = true }
+serde_json = { workspace = true }

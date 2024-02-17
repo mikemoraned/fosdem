@@ -14,11 +14,16 @@ The [main website](https://fosdem.org/2024/) does have search, so, _to be totall
 Indexing:
 
 - Event Content is extracted from the Pentabarf version of the Schedule
-- The OpenAI Embeddings are looked-up for the title, abstract, and any other relevant content in the Event
-- Events and Embeddings info uploaded to Supabase, with Embeddings stored in a `pgvector` column
+- The OpenAI Embeddings are looked-up for the title, abstract, and any other relevant content in the Event info we can derive from the Schedule. Additionally:
+
+  - if slides are available, these are downloaded, text is extracted using Apache Tika Server, and these are added to the input to the embedding
+
+- Events and Embeddings info are saved in JSON files; these are the `index`
 
 Lookup:
 
 - fly.io service used to host website and handle queries
-- Search query is converted live to OpenAI Embedding
-- Nearest match found via `pgvector` vector distance search
+- JSON index files are loaded into memory on startup
+- For each query:
+  - Search query is converted live to an OpenAI Embedding
+  - Nearest match found via vector distance search, using `nalgebra` for distance calculation

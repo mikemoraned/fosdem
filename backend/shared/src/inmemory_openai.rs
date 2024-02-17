@@ -2,23 +2,20 @@ use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use futures::future::join_all;
-use nalgebra::DVector;
+
 use openai_dive::v1::api::Client;
 
 use tracing::debug;
 
-use crate::{
-    openai::get_embedding,
-    queryable::{Event, NextEvents, NextEventsContext, Queryable, SearchItem, MAX_RELATED_EVENTS},
-};
+use crate::model::{Event, NextEvents, NextEventsContext, OpenAIVector, SearchItem};
+use crate::queryable::Queryable;
+use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
 
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
     openai_client: Client,
     events: Vec<EmbeddedEvent>,
 }
-
-type OpenAIVector = DVector<f64>;
 
 fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
     lhs.metric_distance(rhs)
@@ -37,7 +34,7 @@ impl Queryable for InMemoryOpenAIQueryable {
 
     async fn find_related_events(
         &self,
-        title: &String,
+        title: &str,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Finding embedding for title");
@@ -71,7 +68,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
-        let response = get_embedding(&self.openai_client, &query).await?;
+        let response = get_embedding(&self.openai_client, query).await?;
         let embedding = OpenAIVector::from(response.data[0].embedding.clone());
 
         debug!("Finding all distances from embedding");
@@ -93,7 +90,9 @@ impl Queryable for InMemoryOpenAIQueryable {
                 entry.related = Some(
                     self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
                         .await
-                        .expect(&format!("find related items for {}", &entry.event.title)),
+                        .unwrap_or_else(|_| {
+                            panic!("find related items for {}", &entry.event.title)
+                        }),
                 );
                 entry
             });
@@ -141,16 +140,16 @@ impl Queryable for InMemoryOpenAIQueryable {
 
 impl InMemoryOpenAIQueryable {
     pub async fn connect(
-        csv_data_dir: &Path,
+        model_dir: &Path,
         openai_api_key: &str,
     ) -> Result<InMemoryOpenAIQueryable, Box<dyn std::error::Error>> {
         debug!("Creating OpenAI Client");
         let openai_client = Client::new(openai_api_key.into());
 
-        debug!("Loading data from {:?}", csv_data_dir);
+        debug!("Loading data from {:?}", model_dir);
         Ok(InMemoryOpenAIQueryable {
             openai_client,
-            events: parsing::parse_embedded_events(csv_data_dir)?,
+            events: parsing::parse_embedded_events(model_dir)?,
         })
     }
 }
@@ -159,10 +158,10 @@ impl InMemoryOpenAIQueryable {
     fn get_event_context(
         &self,
         context: NextEventsContext,
-        all_events: &Vec<Event>,
+        all_events: &[Event],
     ) -> Result<(NaiveDateTime, Event, Vec<Event>), Box<dyn std::error::Error>> {
         let now_utc = Utc::now();
-        let central_european_time = FixedOffset::east_opt(1 * 3600).unwrap();
+        let central_european_time = FixedOffset::east_opt(3600).unwrap();
         let now_belgium = now_utc.with_timezone(&central_european_time);
         let now = now_belgium.naive_local();
 
@@ -225,7 +224,7 @@ impl InMemoryOpenAIQueryable {
         &self,
         begin: NaiveDateTime,
         end: NaiveDateTime,
-        all_events: &Vec<Event>,
+        all_events: &[Event],
     ) -> Vec<Event> {
         let mut overlapping = vec![];
         for event in all_events.iter() {
@@ -241,21 +240,21 @@ impl InMemoryOpenAIQueryable {
 }
 
 mod parsing {
-    use std::{fs::File, path::Path};
+    use std::{fs::File, io::BufReader, path::Path};
 
     use tracing::debug;
 
-    use crate::queryable::Event;
+    use crate::model::{Event, OpenAIEmbedding};
 
-    use super::{EmbeddedEvent, OpenAIVector};
+    use super::EmbeddedEvent;
 
     pub fn parse_embedded_events(
-        csv_data_dir: &Path,
+        model_dir: &Path,
     ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
-        let events_path = csv_data_dir.join("events.csv");
+        let events_path = model_dir.join("events").with_extension("json");
         let events = parse_all_events(&events_path)?;
-        let embeddings_path = csv_data_dir.join("embedding.csv");
-        let embeddings: Vec<Embedding> = parse_all_embeddings(&embeddings_path)?;
+        let embeddings_path = model_dir.join("embeddings").with_extension("json");
+        let embeddings: Vec<OpenAIEmbedding> = parse_all_embeddings(&embeddings_path)?;
 
         let mut embedded_events = vec![];
         for event in events {
@@ -263,7 +262,7 @@ mod parsing {
             match result {
                 Some(embedding) => embedded_events.push(EmbeddedEvent {
                     event,
-                    openai_embedding: embedding.openai_embedding.clone(),
+                    openai_embedding: embedding.embedding.clone(),
                 }),
                 None => {
                     return Err(
@@ -275,63 +274,24 @@ mod parsing {
         Ok(embedded_events)
     }
 
-    #[derive(Debug)]
-    struct Embedding {
-        title: String,
-        openai_embedding: OpenAIVector,
-    }
-
-    #[derive(Debug, serde::Deserialize)]
-    struct EmbeddingRecord {
-        title: String,
-        embedding: String,
-    }
-
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
 
-        let mut rdr = csv::Reader::from_reader(File::open(events_path)?);
-        let mut events = vec![];
-        for result in rdr.deserialize() {
-            let event: Event = result?;
-            events.push(event);
-        }
+        let reader = BufReader::new(File::open(events_path)?);
+        let mut events: Vec<Event> = serde_json::from_reader(reader)?;
+
         events.sort_by(|a, b| a.id.cmp(&b.id));
         Ok(events)
     }
 
     fn parse_all_embeddings(
         embeddings_path: &Path,
-    ) -> Result<Vec<Embedding>, Box<dyn std::error::Error>> {
+    ) -> Result<Vec<OpenAIEmbedding>, Box<dyn std::error::Error>> {
         debug!("Loading embeddings data from {:?}", embeddings_path);
 
-        let mut rdr = csv::Reader::from_reader(File::open(embeddings_path)?);
-        let mut embeddings = vec![];
-        for result in rdr.deserialize() {
-            let record: EmbeddingRecord = result?;
-            let embedding = Embedding {
-                title: record.title,
-                openai_embedding: parse_openai_embedding_vector(record.embedding)?,
-            };
-            embeddings.push(embedding);
-        }
-        Ok(embeddings)
-    }
+        let reader = BufReader::new(File::open(embeddings_path)?);
+        let embeddings: Vec<OpenAIEmbedding> = serde_json::from_reader(reader)?;
 
-    fn parse_openai_embedding_vector(
-        embedding: String,
-    ) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
-        if embedding.starts_with("[") && embedding.ends_with("]") {
-            let within = &embedding[1..&embedding.len() - 1];
-            let parts: Vec<f64> = within
-                .split(",")
-                .into_iter()
-                .map(|p| p.parse::<f64>().unwrap())
-                .collect();
-            let openaivector = OpenAIVector::from(parts);
-            Ok(openaivector)
-        } else {
-            Err("not enclosed by []".into())
-        }
+        Ok(embeddings)
     }
 }
