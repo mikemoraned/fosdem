@@ -1,4 +1,6 @@
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
+use nalgebra::DVector;
+use openai_dive::v1::resources::embedding::{self, EmbeddingResponse};
 use serde::{Deserialize, Serialize};
 use url::Url;
 
@@ -68,6 +70,21 @@ impl Event {
         } else {
             self.room.to_lowercase().replace(".", "")
         }
+    }
+}
+
+pub type OpenAIVector = DVector<f64>;
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct OpenAIEmbedding {
+    pub title: String,
+    pub embedding: OpenAIVector,
+}
+
+impl OpenAIEmbedding {
+    pub fn embedding_from_response(response: &EmbeddingResponse) -> OpenAIVector {
+        let parts = response.data[0].embedding.clone();
+        OpenAIVector::from(parts)
     }
 }
 
