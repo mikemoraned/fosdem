@@ -2,11 +2,9 @@ use std::path::PathBuf;
 
 use axum::{http::StatusCode, routing::get};
 use clap::Parser;
-use dotenvy;
 use shared::env::load_secret;
 use tokio::net::TcpListener;
 use tracing::{info, warn};
-use tracing_subscriber;
 use webapp::router::{app_state, router};
 
 async fn health() -> StatusCode {

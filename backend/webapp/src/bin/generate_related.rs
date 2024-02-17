@@ -2,7 +2,6 @@ use std::{collections::HashMap, fs::File, io::Write, path::PathBuf};
 
 use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
-use dotenvy;
 
 use shared::{
     cli::progress_bar, env::load_secret, inmemory_openai::InMemoryOpenAIQueryable,
