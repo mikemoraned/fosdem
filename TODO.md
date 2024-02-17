@@ -86,7 +86,7 @@
       - (/) show presenter names
       - (/) use presenter name in the embedding input
   - (/) switch to writing/reading embeddings as json files via serde
-  - (x) warnings / clippy pass
+  - (/) warnings / clippy pass
   - (x) update README.md to capture current impl
 - (x) video search
   - (x) update schedule to include video links
