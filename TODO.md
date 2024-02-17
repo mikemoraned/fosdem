@@ -75,7 +75,7 @@
   - (/) iterate over all slides, fetch content, and save to a local dir
   - (/) when generating embeddings, use slide text content and index that as well
   - (/) update related
-- (x) refactor / cleanup
+- (/) refactor / cleanup
   - (/) switch to writing/reading events as json files via serde
     - (/) update Dockerfile
   - (/) represent as directly and completely as possible e.g.
@@ -87,7 +87,7 @@
       - (/) use presenter name in the embedding input
   - (/) switch to writing/reading embeddings as json files via serde
   - (/) warnings / clippy pass
-  - (x) update README.md to capture current impl
+  - (/) update README.md to capture current impl
 - (x) video search
   - (x) update schedule to include video links
   - (x) ...
