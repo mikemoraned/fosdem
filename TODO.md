@@ -85,7 +85,7 @@
       - (/) import persons as presenters
       - (/) show presenter names
       - (/) use presenter name in the embedding input
-  - (x) switch to writing/reading embeddings as json files via serde
+  - (/) switch to writing/reading embeddings as json files via serde
   - (x) clippy pass
   - (x) update README.md to capture current impl
 - (x) video search
