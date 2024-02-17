@@ -46,8 +46,8 @@ pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
     ))
 }
 
-pub fn order_event_by_time_then_place(events: &Vec<Event>) -> ::askama::Result<Vec<Event>> {
-    let mut ordered = events.clone();
+pub fn order_event_by_time_then_place(events: &[Event]) -> ::askama::Result<Vec<Event>> {
+    let mut ordered = Vec::from(events);
     ordered.sort_by(|a, b| {
         if a.starting_time() == b.starting_time() {
             a.room.cmp(&b.room)
@@ -72,7 +72,9 @@ pub fn group_by_distance(items: &Vec<SearchItem>) -> ::askama::Result<Vec<Groupe
             .and_modify(|e| e.push(item.clone()))
             .or_insert(vec![item.clone()]);
     }
-    let mut grouped: Vec<GroupedSearchItems> = group_map.into_values().map(|items| GroupedSearchItems {
+    let mut grouped: Vec<GroupedSearchItems> = group_map
+        .into_values()
+        .map(|items| GroupedSearchItems {
             distance: items[0].distance,
             items,
         })

@@ -29,7 +29,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let api_key_name = "OPENAI_API_KEY";
-    let api_key = dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
+    let api_key =
+        dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
 
     let client = Client::new(api_key);
 
@@ -128,7 +129,7 @@ fn format_basic_input(event: &Event) -> String {
     lines.join("\n")
 }
 
-fn trim_input(input: &String) -> String {
+fn trim_input(input: &str) -> String {
     use tiktoken_rs::cl100k_base;
     let max_tokens = 8192 - 100;
     let token_estimator = cl100k_base().unwrap();

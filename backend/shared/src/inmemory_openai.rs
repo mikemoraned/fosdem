@@ -34,7 +34,7 @@ impl Queryable for InMemoryOpenAIQueryable {
 
     async fn find_related_events(
         &self,
-        title: &String,
+        title: &str,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Finding embedding for title");
@@ -90,7 +90,9 @@ impl Queryable for InMemoryOpenAIQueryable {
                 entry.related = Some(
                     self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
                         .await
-                        .unwrap_or_else(|_| panic!("find related items for {}", &entry.event.title)),
+                        .unwrap_or_else(|_| {
+                            panic!("find related items for {}", &entry.event.title)
+                        }),
                 );
                 entry
             });
@@ -156,7 +158,7 @@ impl InMemoryOpenAIQueryable {
     fn get_event_context(
         &self,
         context: NextEventsContext,
-        all_events: &Vec<Event>,
+        all_events: &[Event],
     ) -> Result<(NaiveDateTime, Event, Vec<Event>), Box<dyn std::error::Error>> {
         let now_utc = Utc::now();
         let central_european_time = FixedOffset::east_opt(3600).unwrap();
@@ -222,7 +224,7 @@ impl InMemoryOpenAIQueryable {
         &self,
         begin: NaiveDateTime,
         end: NaiveDateTime,
-        all_events: &Vec<Event>,
+        all_events: &[Event],
     ) -> Vec<Event> {
         let mut overlapping = vec![];
         for event in all_events.iter() {

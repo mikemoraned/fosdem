@@ -8,7 +8,7 @@ pub trait Queryable {
 
     async fn find_related_events(
         &self,
-        title: &String,
+        title: &str,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 
