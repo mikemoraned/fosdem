@@ -78,6 +78,16 @@ impl Event {
             self.room.to_lowercase().replace('.', "")
         }
     }
+
+    pub fn mp4_video_link(&self) -> Option<Url> {
+        let video_links: Vec<Url> = self
+            .links
+            .iter()
+            .filter(|l| l.name == "Video recording (mp4)" && l.url.to_string().ends_with(".mp4"))
+            .map(|l| l.url.clone())
+            .collect();
+        video_links.first().cloned()
+    }
 }
 
 pub type OpenAIVector = DVector<f64>;
