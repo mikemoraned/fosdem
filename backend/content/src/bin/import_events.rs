@@ -45,7 +45,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     url: Url::parse(&event.url.value)?,
                     r#abstract: event.r#abstract.value,
                     slides: slides(&event.attachments)?,
-                    presenters: presenters(event.persons)?,
+                    presenters: presenters(event.persons),
+                    links: links(event.links)?,
                 };
                 model_events.push(model_event);
             }
@@ -61,17 +62,30 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn presenters(
-    persons: content::pentabarf::Persons,
-) -> Result<Vec<shared::model::Person>, Box<dyn std::error::Error>> {
-    Ok(persons
+fn links(
+    links: content::pentabarf::Links,
+) -> Result<Vec<shared::model::Link>, Box<dyn std::error::Error>> {
+    links
+        .links
+        .into_iter()
+        .map(|l| {
+            Ok(shared::model::Link {
+                url: Url::parse(&l.href)?,
+                name: l.name,
+            })
+        })
+        .collect()
+}
+
+fn presenters(persons: content::pentabarf::Persons) -> Vec<shared::model::Person> {
+    persons
         .persons
         .into_iter()
         .map(|p| shared::model::Person {
             id: p.id,
             name: p.name,
         })
-        .collect())
+        .collect()
 }
 
 fn slides(event: &content::pentabarf::Attachments) -> Result<Vec<Url>, Box<dyn std::error::Error>> {

@@ -25,11 +25,18 @@ pub struct Event {
     pub r#abstract: String,
     pub slides: Vec<Url>,
     pub presenters: Vec<Person>,
+    pub links: Vec<Link>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Person {
     pub id: u32,
+    pub name: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub struct Link {
+    pub url: Url,
     pub name: String,
 }
 
