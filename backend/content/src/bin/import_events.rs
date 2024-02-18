@@ -55,7 +55,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let event_path = args.model_dir.join("events").with_extension("json");
     let event_file = File::create(event_path)?;
     let mut writer = BufWriter::new(event_file);
-    serde_json::to_writer(&mut writer, &model_events)?;
+    serde_json::to_writer_pretty(&mut writer, &model_events)?;
     writer.flush()?;
 
     Ok(())
