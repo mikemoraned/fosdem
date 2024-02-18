@@ -29,6 +29,10 @@ struct Args {
     /// where to to put video text content in webvtt format
     #[arg(long)]
     webvtt_dir: PathBuf,
+
+    /// optionally restrict to first N videos
+    #[arg(long)]
+    first_n: Option<usize>,
 }
 
 #[tokio::main]
@@ -48,7 +52,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .filter(|e| e.mp4_video_link().is_some())
         .collect();
 
-    let events_with_videos: Vec<Event> = events_with_videos.into_iter().take(1).collect();
+    let events_with_videos: Vec<Event> = if let Some(n) = args.first_n {
+        events_with_videos.into_iter().take(n).collect()
+    } else {
+        events_with_videos
+    };
 
     info!(
         "Fetching {} events with video content, saving in {}",
