@@ -89,8 +89,12 @@
   - (/) warnings / clippy pass
   - (/) update README.md to capture current impl
 - (x) video search
-  - (x) update schedule to include video links
-  - (x) ...
+  - (/) update schedule to include video links
+  - (x) write driver cli that:
+    - (x) downloads mp4 to a `video` dir
+    - (x) uses ffmpeg to extract the audio from the video and convert it to wav, saved in `audio` dir
+    - (x) runs whisper across it, to get a WebVTT file
+  - (x) take all WebVTT file and extract text from them; add this to the content to what we use for embedding
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
