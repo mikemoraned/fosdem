@@ -4,9 +4,8 @@ use std::{fs::File, path::PathBuf};
 
 use clap::Parser;
 
-use shared::cli::progress_bar;
 use shared::model::Event;
-use tokio::sync::mpsc;
+use tokio::sync::mpsc::{self, Receiver, Sender};
 use tokio::task::JoinSet;
 use tracing::{debug, info};
 
@@ -70,9 +69,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let total_pending_downloads = pending_downloads.len();
 
     let mut join_set = JoinSet::new();
-    let (video_download_tx, mut video_download_rx) =
+    let (video_download_tx, video_download_rx) =
         mpsc::channel::<VideoDownload>(total_pending_downloads);
-    let (audio_extraction_tx, mut audio_extraction_rx) =
+    let (audio_extraction_tx, audio_extraction_rx) =
         mpsc::channel::<AudioExtraction>(total_pending_downloads);
 
     info!(
@@ -83,31 +82,46 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     for pending_download in pending_downloads {
         video_download_tx.send(pending_download).await?;
     }
-    join_set.spawn(async move {
-        while let Some(pending_download) = video_download_rx.recv().await {
-            let VideoDownload(url, path) = pending_download;
-            debug!("downloading {}", url);
-            audio_extraction_tx
-                .send(AudioExtraction(path.clone(), path.clone()))
-                .await;
-        }
-    });
+    join_set.spawn(download_stage(video_download_rx, audio_extraction_tx));
 
     info!(
         "Extracting audio from videos, saving in {}",
         args.audio_dir.to_str().unwrap()
     );
-    join_set.spawn(async move {
-        while let Some(audio_extraction) = audio_extraction_rx.recv().await {
-            debug!("extracting {:?}", audio_extraction);
-        }
-    });
+    join_set.spawn(extraction_stage(audio_extraction_rx));
 
     while let Some(result) = join_set.join_next().await {
-        result?;
+        let stage_result = result?;
+        println!("{}", stage_result?);
     }
 
     Ok(())
+}
+
+async fn download_stage(
+    mut video_download_rx: Receiver<VideoDownload>,
+    audio_extraction_tx: Sender<AudioExtraction>,
+) -> Result<String, String> {
+    while let Some(pending_download) = video_download_rx.recv().await {
+        let VideoDownload(url, path) = pending_download;
+        debug!("downloading {}", url);
+        audio_extraction_tx
+            .send(AudioExtraction(path.clone(), path.clone()))
+            .await
+            .map_err(|e| format!("error sending: {}", e))?;
+    }
+
+    Ok("download stage completed".into())
+}
+
+async fn extraction_stage(
+    mut audio_extraction_rx: Receiver<AudioExtraction>,
+) -> Result<String, String> {
+    while let Some(audio_extraction) = audio_extraction_rx.recv().await {
+        debug!("extracting {:?}", audio_extraction);
+    }
+
+    Ok("extraction stage completed".into())
 }
 
 fn subset<T>(events: Vec<T>, offset: Option<usize>, limit: Option<usize>) -> Vec<T> {
