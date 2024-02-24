@@ -133,22 +133,33 @@ async fn download_video_stage(
         match pending_download {
             Command(url, video_path) => {
                 debug!("downloading {}", url);
-                match download_video(&url, &video_path).await {
-                    Ok(_) => {
-                        audio_extraction_tx
-                            .send(AudioExtraction::Command(
-                                video_path.clone(),
-                                audio_path(&audio_dir, &video_path),
-                            ))
-                            .await
-                            .map_err(|e| format!("error sending: {}", e))?;
-                    }
-                    Err(e) => {
-                        warn!("download of {} failed, {}", url, e);
-                        audio_extraction_tx
-                            .send(AudioExtraction::Aborted)
-                            .await
-                            .map_err(|e| format!("error sending: {}", e))?;
+                if video_path.exists() {
+                    debug!("{:?} already downloaded, skipping", video_path);
+                    audio_extraction_tx
+                        .send(AudioExtraction::Command(
+                            video_path.clone(),
+                            audio_path(&audio_dir, &video_path),
+                        ))
+                        .await
+                        .map_err(|e| format!("error sending: {}", e))?;
+                } else {
+                    match download_video(&url, &video_path).await {
+                        Ok(_) => {
+                            audio_extraction_tx
+                                .send(AudioExtraction::Command(
+                                    video_path.clone(),
+                                    audio_path(&audio_dir, &video_path),
+                                ))
+                                .await
+                                .map_err(|e| format!("error sending: {}", e))?;
+                        }
+                        Err(e) => {
+                            warn!("download of {} failed, {}", url, e);
+                            audio_extraction_tx
+                                .send(AudioExtraction::Aborted)
+                                .await
+                                .map_err(|e| format!("error sending: {}", e))?;
+                        }
                     }
                 }
 
@@ -181,30 +192,75 @@ fn audio_path(audio_dir: &PathBuf, video_path: &PathBuf) -> PathBuf {
 }
 
 async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
-    use std::fs;
     debug!("fetching {} -> {:?}", url, video_path);
+
     let tmp_video_path = video_path.with_extension("tmp");
-    debug!("using {:?} as tmp file", tmp_video_path);
-    if tmp_video_path.exists() {
-        debug!("removing existing tmp file");
-        fs::remove_file(tmp_video_path.clone()).map_err(|e| format!("{}", e))?;
-    }
-    if video_path.exists() {
-        debug!("removing existing video file");
-        fs::remove_file(video_path.clone()).map_err(|e| format!("{}", e))?;
-    }
+    let tmp_file = TempFile::create(video_path.clone(), tmp_video_path.clone())
+        .map_err(|e| format!("{}", e))?;
     debug!("starting download");
     let command = download_video_command(url, &tmp_video_path);
     let output = command.await.map_err(|e| format!("{}", e))?;
     if output.status.success() {
-        debug!(
-            "download succeeded, renaming {:?} to {:?}",
-            tmp_video_path, video_path
-        );
-        fs::rename(tmp_video_path, video_path).map_err(|e| format!("{}", e))?;
+        tmp_file.commit().map_err(|e| format!("{}", e))?;
         Ok(())
     } else {
+        tmp_file.abort().map_err(|e| format!("{}", e))?;
         Err(format!("download command failed: {}", output.status).into())
+    }
+}
+
+struct TempFile {
+    real_path: PathBuf,
+    tmp_path: PathBuf,
+}
+
+impl TempFile {
+    pub fn create(
+        real_path: PathBuf,
+        tmp_path: PathBuf,
+    ) -> Result<TempFile, Box<dyn std::error::Error>> {
+        debug!("using {:?} as tmp file", tmp_path);
+
+        let temp_file = TempFile {
+            real_path,
+            tmp_path,
+        };
+
+        temp_file.cleanup_tmp_file()?;
+        temp_file.cleanup_real_file()?;
+
+        Ok(temp_file)
+    }
+
+    pub fn commit(self) -> Result<(), Box<dyn std::error::Error>> {
+        debug!(
+            "committing, renaming {:?} to {:?}",
+            self.tmp_path, self.real_path
+        );
+        std::fs::rename(self.tmp_path, self.real_path)?;
+        Ok(())
+    }
+
+    pub fn abort(self) -> Result<(), Box<dyn std::error::Error>> {
+        self.cleanup_tmp_file()?;
+
+        Ok(())
+    }
+
+    fn cleanup_tmp_file(&self) -> Result<(), Box<dyn std::error::Error>> {
+        if self.tmp_path.exists() {
+            debug!("removing tmp file");
+            std::fs::remove_file(self.tmp_path.clone())?;
+        }
+        Ok(())
+    }
+
+    fn cleanup_real_file(&self) -> Result<(), Box<dyn std::error::Error>> {
+        if self.real_path.exists() {
+            debug!("removing real file");
+            std::fs::remove_file(self.real_path.clone())?;
+        }
+        Ok(())
     }
 }
 
