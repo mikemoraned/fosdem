@@ -15,6 +15,7 @@ bytes = "1.5.0"
 tiktoken-rs = "0.5.8"
 async-process = "2.1.0"
 regex = "1.10.3"
+webvtt = "0.2.0"
 futures = { workspace = true }
 clap = { workspace = true }
 indicatif = { workspace = true }

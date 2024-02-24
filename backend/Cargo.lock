@@ -568,6 +568,7 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "url",
+ "webvtt",
  "xmlserde",
  "xmlserde_derives",
 ]
@@ -2543,6 +2544,15 @@ dependencies = [
  "unicode-segmentation",
  "url",
  "validator",
+]
+
+[[package]]
+name = "webvtt"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd95c477b2f3ea4a8e0a9325f22c809e75ddf72bb4e64779923603fd921093f9"
+dependencies = [
+ "thiserror",
 ]
 
 [[package]]
