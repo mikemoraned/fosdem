@@ -30,9 +30,13 @@ struct Args {
     #[arg(long)]
     webvtt_dir: PathBuf,
 
-    /// optionally restrict to first N videos
+    /// optionally skip first N videos
     #[arg(long)]
-    first_n: Option<usize>,
+    offset: Option<usize>,
+
+    /// optionally restrict to only N videos
+    #[arg(long)]
+    limit: Option<usize>,
 }
 
 #[tokio::main]
@@ -52,7 +56,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .filter(|e| e.mp4_video_link().is_some())
         .collect();
 
-    let events_with_videos: Vec<Event> = if let Some(n) = args.first_n {
+    let events_with_videos: Vec<Event> = if let Some(n) = args.offset {
+        events_with_videos.into_iter().skip(n).collect()
+    } else {
+        events_with_videos
+    };
+    let events_with_videos: Vec<Event> = if let Some(n) = args.limit {
         events_with_videos.into_iter().take(n).collect()
     } else {
         events_with_videos
