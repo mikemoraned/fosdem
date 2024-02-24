@@ -226,9 +226,17 @@ async fn extraction_stage(
         use AudioExtraction::*;
 
         match audio_extraction {
-            Command(from, to) => {
-                debug!("extracting {:?} -> {:?}", from, to);
-                tokio::time::sleep(Duration::from_secs(1)).await;
+            Command(video_path, audio_path) => {
+                if audio_path.exists() {
+                    debug!("{:?} already extracted, skipping", audio_path);
+                } else {
+                    match extract_audio(&video_path, &audio_path).await {
+                        Ok(_) => (),
+                        Err(e) => {
+                            warn!("extract of audio from {:?} failed, {}", video_path, e);
+                        }
+                    }
+                };
                 progress.inc(1);
             }
             Aborted => {
@@ -242,6 +250,44 @@ async fn extraction_stage(
     }
 
     Ok("extraction stage completed".into())
+}
+
+async fn extract_audio(video_path: &PathBuf, audio_path: &PathBuf) -> Result<(), String> {
+    debug!("extracting {:?} -> {:?}", video_path, audio_path);
+    let tmp_audio_path = audio_path.with_extension("tmp.mp4");
+    let tmp_file = TempFile::create(audio_path.clone(), tmp_audio_path.clone())
+        .map_err(|e| format!("{}", e))?;
+    let command = extract_audio_command(&video_path, &tmp_audio_path);
+    let output = command.await.map_err(|e| format!("{}", e))?;
+    if output.status.success() {
+        tmp_file.commit().map_err(|e| format!("{}", e))?;
+        Ok(())
+    } else {
+        tmp_file.abort().map_err(|e| format!("{}", e))?;
+        Err(format!(
+            "extract command failed: {}, stdout: {}, stderr: {}",
+            output.status,
+            String::from_utf8(output.stdout).map_err(|e| format!("{}", e))?,
+            String::from_utf8(output.stderr).map_err(|e| format!("{}", e))?
+        )
+        .into())
+    }
+}
+
+fn extract_audio_command(
+    video_path: &PathBuf,
+    audio_path: &PathBuf,
+) -> impl futures::Future<Output = futures::io::Result<async_process::Output>> {
+    let mut command = async_process::Command::new("/opt/homebrew/bin/ffmpeg");
+    command
+        .arg("-i")
+        .arg(video_path.to_str().unwrap())
+        .arg("-map")
+        .arg("0:a")
+        .arg("-acodec")
+        .arg("copy")
+        .arg(audio_path.to_str().unwrap())
+        .output()
 }
 
 fn subset<T>(events: Vec<T>, offset: Option<usize>, limit: Option<usize>) -> Vec<T> {
