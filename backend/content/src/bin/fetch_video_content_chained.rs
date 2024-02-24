@@ -126,6 +126,7 @@ async fn download_video_stage(
     audio_dir: PathBuf,
 ) -> Result<String, String> {
     debug!("download stage starting");
+    progress.enable_steady_tick(Duration::from_secs(1));
     while let Some(pending_download) = video_download_rx.recv().await {
         use VideoDownload::*;
 
@@ -218,6 +219,7 @@ async fn extraction_stage(
     progress: ProgressBar,
 ) -> Result<String, String> {
     debug!("extraction stage starting");
+    progress.enable_steady_tick(Duration::from_secs(1));
     while let Some(audio_extraction) = audio_extraction_rx.recv().await {
         use AudioExtraction::*;
 
