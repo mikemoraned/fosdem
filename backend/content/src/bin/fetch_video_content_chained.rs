@@ -194,13 +194,7 @@ async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
         fs::remove_file(video_path.clone()).map_err(|e| format!("{}", e))?;
     }
     debug!("starting download");
-    let command = async_process::Command::new("wget")
-        .arg(format!(
-            "--output-document={}",
-            tmp_video_path.to_str().unwrap()
-        ))
-        .arg(url.to_string())
-        .output();
+    let command = download_video_command(url, &tmp_video_path);
     let output = command.await.map_err(|e| format!("{}", e))?;
     if output.status.success() {
         debug!(
@@ -212,6 +206,19 @@ async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
     } else {
         Err(format!("download command failed: {}", output.status).into())
     }
+}
+
+fn download_video_command(
+    url: &Url,
+    video_path: &PathBuf,
+) -> impl futures::Future<Output = futures::io::Result<async_process::Output>> {
+    async_process::Command::new("wget")
+        .arg(format!(
+            "--output-document={}",
+            video_path.to_str().unwrap()
+        ))
+        .arg(url.to_string())
+        .output()
 }
 
 async fn extraction_stage(
