@@ -35,6 +35,10 @@ struct Args {
     #[arg(long)]
     webvtt_dir: PathBuf,
 
+    /// a progress bar will show by default; use this if you want to hide it
+    #[arg(long)]
+    hide_progress: bool,
+
     /// optionally skip first N videos
     #[arg(long)]
     offset: Option<usize>,
@@ -59,6 +63,13 @@ enum AudioExtraction {
 
 #[derive(Debug)]
 enum WAVExtraction {
+    Command(PathBuf, PathBuf),
+    Aborted,
+    End,
+}
+
+#[derive(Debug)]
+enum WebVTTExtraction {
     Command(PathBuf, PathBuf),
     Aborted,
     End,
@@ -93,6 +104,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         mpsc::channel::<AudioExtraction>(total_pending_downloads + 1);
     let (wav_extraction_tx, wav_extraction_rx) =
         mpsc::channel::<WAVExtraction>(total_pending_downloads + 1);
+    let (webvtt_extraction_tx, webvtt_extraction_rx) =
+        mpsc::channel::<WebVTTExtraction>(total_pending_downloads + 1);
 
     let multi_progress = MultiProgress::new();
 
@@ -105,10 +118,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         video_download_tx.send(pending_download).await?;
     }
     video_download_tx.send(VideoDownload::End).await?;
+    let download_progress = if args.hide_progress {
+        ProgressBar::hidden()
+    } else {
+        multi_progress.add(progress_bar(total_pending_downloads as u64))
+    };
     join_set.spawn(download_video_stage(
         video_download_rx,
         audio_extraction_tx,
-        multi_progress.add(progress_bar(total_pending_downloads as u64)),
+        download_progress,
         args.audio_dir.clone(),
     ));
 
@@ -116,19 +134,45 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "Extracting audio from videos, saving in {}",
         args.audio_dir.to_str().unwrap()
     );
+    let audio_extraction_progress = if args.hide_progress {
+        ProgressBar::hidden()
+    } else {
+        multi_progress.add(progress_bar(total_pending_downloads as u64))
+    };
     join_set.spawn(audio_extraction_stage(
         audio_extraction_rx,
         wav_extraction_tx,
-        multi_progress.add(progress_bar(total_pending_downloads as u64)),
+        audio_extraction_progress,
     ));
 
     info!(
         "Extracting WAV from audio files, saving in {}",
         args.audio_dir.to_str().unwrap()
     );
+    let wav_extraction_progress = if args.hide_progress {
+        ProgressBar::hidden()
+    } else {
+        multi_progress.add(progress_bar(total_pending_downloads as u64))
+    };
     join_set.spawn(wav_extraction_stage(
         wav_extraction_rx,
-        multi_progress.add(progress_bar(total_pending_downloads as u64)),
+        webvtt_extraction_tx,
+        args.webvtt_dir.clone(),
+        wav_extraction_progress,
+    ));
+
+    info!(
+        "Extracting text from WAV files, saving in {}",
+        args.webvtt_dir.to_str().unwrap()
+    );
+    let webvtt_extraction_progress = if args.hide_progress {
+        ProgressBar::hidden()
+    } else {
+        multi_progress.add(progress_bar(total_pending_downloads as u64))
+    };
+    join_set.spawn(webvtt_extraction_stage(
+        webvtt_extraction_rx,
+        webvtt_extraction_progress,
     ));
 
     while let Some(result) = join_set.join_next().await {
@@ -153,6 +197,13 @@ fn audio_path(audio_dir: &PathBuf, video_path: &PathBuf) -> PathBuf {
 
 fn wav_path(audio_path: &PathBuf) -> PathBuf {
     audio_path.with_extension("wav")
+}
+
+fn webvtt_path(webvtt_dir: &PathBuf, wav_path: &PathBuf) -> PathBuf {
+    let file_stem = wav_path.file_stem().unwrap();
+    webvtt_dir
+        .join(file_stem.to_str().unwrap())
+        .with_extension("vtt")
 }
 
 async fn download_video_stage(
@@ -332,6 +383,8 @@ fn extract_audio_command(
 
 async fn wav_extraction_stage(
     mut wav_extraction_rx: Receiver<WAVExtraction>,
+    webvtt_extraction_tx: Sender<WebVTTExtraction>,
+    webvtt_dir: PathBuf,
     progress: ProgressBar,
 ) -> Result<String, String> {
     debug!("wav extraction stage starting");
@@ -341,23 +394,41 @@ async fn wav_extraction_stage(
 
         match wav_extraction {
             Command(audio_path, wav_path) => {
-                if wav_path.exists() {
+                let output = if wav_path.exists() {
                     debug!("{:?} wav already extracted, skipping", wav_path);
+                    WebVTTExtraction::Command(wav_path.clone(), webvtt_path(&webvtt_dir, &wav_path))
                 } else {
                     match extract_wav(&audio_path, &wav_path).await {
-                        Ok(_) => (),
+                        Ok(_) => WebVTTExtraction::Command(
+                            wav_path.clone(),
+                            webvtt_path(&webvtt_dir, &wav_path),
+                        ),
                         Err(e) => {
                             warn!("extract of wav from {:?} failed, {}", wav_path, e);
+                            WebVTTExtraction::Aborted
                         }
                     }
                 };
 
+                webvtt_extraction_tx
+                    .send(output)
+                    .await
+                    .map_err(|e| format!("error sending: {}", e))?;
+
                 progress.inc(1);
             }
             Aborted => {
+                webvtt_extraction_tx
+                    .send(WebVTTExtraction::Aborted)
+                    .await
+                    .map_err(|e| format!("error sending: {}", e))?;
                 progress.inc(1);
             }
             End => {
+                webvtt_extraction_tx
+                    .send(WebVTTExtraction::End)
+                    .await
+                    .map_err(|e| format!("error sending: {}", e))?;
                 debug!("finished wav extraction");
                 break;
             }
@@ -408,6 +479,85 @@ fn extract_wav_command(
         .arg("pcm_s16le")
         .arg(wav_path.to_str().unwrap())
         .output()
+}
+
+async fn webvtt_extraction_stage(
+    mut webvtt_extraction_rx: Receiver<WebVTTExtraction>,
+    progress: ProgressBar,
+) -> Result<String, String> {
+    debug!("webvtt extraction stage starting");
+    progress.enable_steady_tick(Duration::from_secs(1));
+    while let Some(webvtt_extraction) = webvtt_extraction_rx.recv().await {
+        use WebVTTExtraction::*;
+
+        match webvtt_extraction {
+            Command(wav_path, webvtt_path) => {
+                if webvtt_path.exists() {
+                    debug!("{:?} webvtt already extracted, skipping", webvtt_path);
+                } else {
+                    match extract_webvtt(&wav_path, &webvtt_path).await {
+                        Ok(_) => (),
+                        Err(e) => {
+                            warn!("extract of text from {:?} failed, {}", wav_path, e);
+                        }
+                    }
+                };
+
+                progress.inc(1);
+            }
+            Aborted => {
+                progress.inc(1);
+            }
+            End => {
+                debug!("finished webvtt extraction");
+                break;
+            }
+        }
+    }
+
+    Ok("webvtt extraction stage completed".into())
+}
+
+async fn extract_webvtt(
+    wav_path: &PathBuf,
+    webvtt_path: &PathBuf,
+) -> Result<(), Box<dyn std::error::Error>> {
+    use std::fs;
+    debug!("extracting {:?} -> {:?}", wav_path, webvtt_path);
+    let tmp_webvtt_path = wav_path.with_extension("wav.vtt");
+    debug!("using {:?} as tmp file", tmp_webvtt_path);
+    if tmp_webvtt_path.exists() {
+        debug!("removing existing tmp file");
+        fs::remove_file(tmp_webvtt_path.clone())?;
+    }
+    if webvtt_path.exists() {
+        debug!("removing existing webvtt file");
+        fs::remove_file(webvtt_path.clone())?;
+    }
+    let mut command = async_process::Command::new("/Users/mxm/Code/github/whisper.cpp/main");
+    let command = command
+        .arg("-m")
+        .arg("/Users/mxm/Code/github/whisper.cpp/models/ggml-large-v3.bin")
+        .arg("--output-vtt")
+        .arg(wav_path.to_str().unwrap());
+    debug!("starting webvtt extract using command: \'{:?}\'", command);
+    let output = command.output().await?;
+    if output.status.success() {
+        debug!(
+            "extract succeeded, copying {:?} to {:?}",
+            tmp_webvtt_path, webvtt_path
+        );
+        fs::copy(tmp_webvtt_path, webvtt_path)?;
+        Ok(())
+    } else {
+        Err(format!(
+            "extract command failed: {}, stdout: {}, stderr: {}",
+            output.status,
+            String::from_utf8(output.stdout)?,
+            String::from_utf8(output.stderr)?
+        )
+        .into())
+    }
 }
 
 fn subset<T>(events: Vec<T>, offset: Option<usize>, limit: Option<usize>) -> Vec<T> {
