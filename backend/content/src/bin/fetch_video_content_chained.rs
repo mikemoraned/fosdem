@@ -371,20 +371,33 @@ async fn extract_wav(
     audio_path: &PathBuf,
     wav_path: &PathBuf,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    use std::fs;
-    debug!("extracting {:?} -> {:?}", audio_path, wav_path);
+    debug!("extracting wav {:?} -> {:?}", audio_path, wav_path);
     let tmp_wav_path = audio_path.with_extension("tmp.wav");
-    debug!("using {:?} as tmp file", tmp_wav_path);
-    if tmp_wav_path.exists() {
-        debug!("removing existing tmp file");
-        fs::remove_file(tmp_wav_path.clone())?;
+    let tmp_file =
+        TempFile::create(audio_path.clone(), tmp_wav_path.clone()).map_err(|e| format!("{}", e))?;
+    let command = extract_wav_command(&audio_path, &tmp_wav_path);
+    let output = command.await.map_err(|e| format!("{}", e))?;
+    if output.status.success() {
+        tmp_file.commit().map_err(|e| format!("{}", e))?;
+        Ok(())
+    } else {
+        tmp_file.abort().map_err(|e| format!("{}", e))?;
+        Err(format!(
+            "extract command failed: {}, stdout: {}, stderr: {}",
+            output.status,
+            String::from_utf8(output.stdout).map_err(|e| format!("{}", e))?,
+            String::from_utf8(output.stderr).map_err(|e| format!("{}", e))?
+        )
+        .into())
     }
-    if wav_path.exists() {
-        debug!("removing existing wav file");
-        fs::remove_file(wav_path.clone())?;
-    }
+}
+
+fn extract_wav_command(
+    audio_path: &PathBuf,
+    wav_path: &PathBuf,
+) -> impl futures::Future<Output = futures::io::Result<async_process::Output>> {
     let mut command = async_process::Command::new("/opt/homebrew/bin/ffmpeg");
-    let command = command
+    command
         .arg("-i")
         .arg(audio_path.to_str().unwrap())
         .arg("-ar")
@@ -393,25 +406,8 @@ async fn extract_wav(
         .arg("1")
         .arg("-c:a")
         .arg("pcm_s16le")
-        .arg(tmp_wav_path.to_str().unwrap());
-    debug!("starting extract using command: \'{:?}\'", command);
-    let output = command.output().await?;
-    if output.status.success() {
-        debug!(
-            "extract succeeded, renaming {:?} to {:?}",
-            tmp_wav_path, wav_path
-        );
-        fs::rename(tmp_wav_path, wav_path)?;
-        Ok(())
-    } else {
-        Err(format!(
-            "extract command failed: {}, stdout: {}, stderr: {}",
-            output.status,
-            String::from_utf8(output.stdout)?,
-            String::from_utf8(output.stderr)?
-        )
-        .into())
-    }
+        .arg(wav_path.to_str().unwrap())
+        .output()
 }
 
 fn subset<T>(events: Vec<T>, offset: Option<usize>, limit: Option<usize>) -> Vec<T> {
