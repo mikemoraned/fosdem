@@ -5,6 +5,7 @@ use std::{fs::File, path::PathBuf};
 
 use clap::Parser;
 
+use content::temp_file::TempFile;
 use indicatif::{MultiProgress, ProgressBar};
 use shared::cli::progress_bar;
 use shared::model::Event;
@@ -119,6 +120,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
+fn video_path(video_dir: &PathBuf, url: &Url) -> PathBuf {
+    let url_path = PathBuf::from(url.path());
+    video_dir.join(url_path.file_name().unwrap())
+}
+
+fn audio_path(audio_dir: &PathBuf, video_path: &PathBuf) -> PathBuf {
+    let file_stem = video_path.file_stem().unwrap();
+    audio_dir
+        .join(format!("{}_audioonly", file_stem.to_str().unwrap()))
+        .with_extension("mp4")
+}
+
 async fn download_video_stage(
     mut video_download_rx: Receiver<VideoDownload>,
     audio_extraction_tx: Sender<AudioExtraction>,
@@ -172,18 +185,6 @@ async fn download_video_stage(
     Ok("download stage completed".into())
 }
 
-fn video_path(video_dir: &PathBuf, url: &Url) -> PathBuf {
-    let url_path = PathBuf::from(url.path());
-    video_dir.join(url_path.file_name().unwrap())
-}
-
-fn audio_path(audio_dir: &PathBuf, video_path: &PathBuf) -> PathBuf {
-    let file_stem = video_path.file_stem().unwrap();
-    audio_dir
-        .join(format!("{}_audioonly", file_stem.to_str().unwrap()))
-        .with_extension("mp4")
-}
-
 async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
     debug!("fetching {} -> {:?}", url, video_path);
 
@@ -199,61 +200,6 @@ async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
     } else {
         tmp_file.abort().map_err(|e| format!("{}", e))?;
         Err(format!("download command failed: {}", output.status).into())
-    }
-}
-
-struct TempFile {
-    real_path: PathBuf,
-    tmp_path: PathBuf,
-}
-
-impl TempFile {
-    pub fn create(
-        real_path: PathBuf,
-        tmp_path: PathBuf,
-    ) -> Result<TempFile, Box<dyn std::error::Error>> {
-        debug!("using {:?} as tmp file", tmp_path);
-
-        let temp_file = TempFile {
-            real_path,
-            tmp_path,
-        };
-
-        temp_file.cleanup_tmp_file()?;
-        temp_file.cleanup_real_file()?;
-
-        Ok(temp_file)
-    }
-
-    pub fn commit(self) -> Result<(), Box<dyn std::error::Error>> {
-        debug!(
-            "committing, renaming {:?} to {:?}",
-            self.tmp_path, self.real_path
-        );
-        std::fs::rename(self.tmp_path, self.real_path)?;
-        Ok(())
-    }
-
-    pub fn abort(self) -> Result<(), Box<dyn std::error::Error>> {
-        self.cleanup_tmp_file()?;
-
-        Ok(())
-    }
-
-    fn cleanup_tmp_file(&self) -> Result<(), Box<dyn std::error::Error>> {
-        if self.tmp_path.exists() {
-            debug!("removing tmp file");
-            std::fs::remove_file(self.tmp_path.clone())?;
-        }
-        Ok(())
-    }
-
-    fn cleanup_real_file(&self) -> Result<(), Box<dyn std::error::Error>> {
-        if self.real_path.exists() {
-            debug!("removing real file");
-            std::fs::remove_file(self.real_path.clone())?;
-        }
-        Ok(())
     }
 }
 
