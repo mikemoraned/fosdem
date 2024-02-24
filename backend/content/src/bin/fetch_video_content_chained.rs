@@ -133,35 +133,28 @@ async fn download_video_stage(
         match pending_download {
             Command(url, video_path) => {
                 debug!("downloading {}", url);
-                if video_path.exists() {
+                let output = if video_path.exists() {
                     debug!("{:?} already downloaded, skipping", video_path);
-                    audio_extraction_tx
-                        .send(AudioExtraction::Command(
-                            video_path.clone(),
-                            audio_path(&audio_dir, &video_path),
-                        ))
-                        .await
-                        .map_err(|e| format!("error sending: {}", e))?;
+                    AudioExtraction::Command(
+                        video_path.clone(),
+                        audio_path(&audio_dir, &video_path),
+                    )
                 } else {
                     match download_video(&url, &video_path).await {
-                        Ok(_) => {
-                            audio_extraction_tx
-                                .send(AudioExtraction::Command(
-                                    video_path.clone(),
-                                    audio_path(&audio_dir, &video_path),
-                                ))
-                                .await
-                                .map_err(|e| format!("error sending: {}", e))?;
-                        }
+                        Ok(_) => AudioExtraction::Command(
+                            video_path.clone(),
+                            audio_path(&audio_dir, &video_path),
+                        ),
                         Err(e) => {
                             warn!("download of {} failed, {}", url, e);
-                            audio_extraction_tx
-                                .send(AudioExtraction::Aborted)
-                                .await
-                                .map_err(|e| format!("error sending: {}", e))?;
+                            AudioExtraction::Aborted
                         }
                     }
-                }
+                };
+                audio_extraction_tx
+                    .send(output)
+                    .await
+                    .map_err(|e| format!("error sending: {}", e))?;
 
                 progress.inc(1);
             }
