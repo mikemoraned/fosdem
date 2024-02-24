@@ -10,7 +10,7 @@ use shared::cli::progress_bar;
 use shared::model::Event;
 use tokio::sync::mpsc::{self, Receiver, Sender};
 use tokio::task::JoinSet;
-use tracing::{debug, info};
+use tracing::{debug, info, warn};
 
 use url::Url;
 
@@ -52,6 +52,7 @@ enum VideoDownload {
 #[derive(Debug)]
 enum AudioExtraction {
     Command(PathBuf, PathBuf),
+    Aborted,
     End,
 }
 
@@ -71,7 +72,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .into_iter()
         .map(|e| e.mp4_video_link())
         .flatten()
-        .map(|url| VideoDownload::Command(url, args.video_dir.clone()))
+        .map(|url| VideoDownload::Command(url.clone(), video_path(&args.video_dir, &url)))
         .collect();
 
     let pending_downloads = subset(pending_downloads, args.offset, args.limit);
@@ -94,10 +95,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         video_download_tx.send(pending_download).await?;
     }
     video_download_tx.send(VideoDownload::End).await?;
-    join_set.spawn(download_stage(
+    join_set.spawn(download_video_stage(
         video_download_rx,
         audio_extraction_tx,
         multi_progress.add(progress_bar(total_pending_downloads as u64)),
+        args.audio_dir.clone(),
     ));
 
     info!(
@@ -117,23 +119,38 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-async fn download_stage(
+async fn download_video_stage(
     mut video_download_rx: Receiver<VideoDownload>,
     audio_extraction_tx: Sender<AudioExtraction>,
     progress: ProgressBar,
+    audio_dir: PathBuf,
 ) -> Result<String, String> {
     debug!("download stage starting");
     while let Some(pending_download) = video_download_rx.recv().await {
         use VideoDownload::*;
 
         match pending_download {
-            Command(url, path) => {
+            Command(url, video_path) => {
                 debug!("downloading {}", url);
-                tokio::time::sleep(Duration::from_secs(1)).await;
-                audio_extraction_tx
-                    .send(AudioExtraction::Command(path.clone(), path.clone()))
-                    .await
-                    .map_err(|e| format!("error sending: {}", e))?;
+                match download_video(&url, &video_path).await {
+                    Ok(_) => {
+                        audio_extraction_tx
+                            .send(AudioExtraction::Command(
+                                video_path.clone(),
+                                audio_path(&audio_dir, &video_path),
+                            ))
+                            .await
+                            .map_err(|e| format!("error sending: {}", e))?;
+                    }
+                    Err(e) => {
+                        warn!("download of {} failed, {}", url, e);
+                        audio_extraction_tx
+                            .send(AudioExtraction::Aborted)
+                            .await
+                            .map_err(|e| format!("error sending: {}", e))?;
+                    }
+                }
+
                 progress.inc(1);
             }
             End => {
@@ -150,6 +167,52 @@ async fn download_stage(
     Ok("download stage completed".into())
 }
 
+fn video_path(video_dir: &PathBuf, url: &Url) -> PathBuf {
+    let url_path = PathBuf::from(url.path());
+    video_dir.join(url_path.file_name().unwrap())
+}
+
+fn audio_path(audio_dir: &PathBuf, video_path: &PathBuf) -> PathBuf {
+    let file_stem = video_path.file_stem().unwrap();
+    audio_dir
+        .join(format!("{}_audioonly", file_stem.to_str().unwrap()))
+        .with_extension("mp4")
+}
+
+async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
+    use std::fs;
+    debug!("fetching {} -> {:?}", url, video_path);
+    let tmp_video_path = video_path.with_extension("tmp");
+    debug!("using {:?} as tmp file", tmp_video_path);
+    if tmp_video_path.exists() {
+        debug!("removing existing tmp file");
+        fs::remove_file(tmp_video_path.clone()).map_err(|e| format!("{}", e))?;
+    }
+    if video_path.exists() {
+        debug!("removing existing video file");
+        fs::remove_file(video_path.clone()).map_err(|e| format!("{}", e))?;
+    }
+    debug!("starting download");
+    let command = async_process::Command::new("wget")
+        .arg(format!(
+            "--output-document={}",
+            tmp_video_path.to_str().unwrap()
+        ))
+        .arg(url.to_string())
+        .output();
+    let output = command.await.map_err(|e| format!("{}", e))?;
+    if output.status.success() {
+        debug!(
+            "download succeeded, renaming {:?} to {:?}",
+            tmp_video_path, video_path
+        );
+        fs::rename(tmp_video_path, video_path).map_err(|e| format!("{}", e))?;
+        Ok(())
+    } else {
+        Err(format!("download command failed: {}", output.status).into())
+    }
+}
+
 async fn extraction_stage(
     mut audio_extraction_rx: Receiver<AudioExtraction>,
     progress: ProgressBar,
@@ -162,6 +225,9 @@ async fn extraction_stage(
             Command(from, to) => {
                 debug!("extracting {:?} -> {:?}", from, to);
                 tokio::time::sleep(Duration::from_secs(1)).await;
+                progress.inc(1);
+            }
+            Aborted => {
                 progress.inc(1);
             }
             End => {
