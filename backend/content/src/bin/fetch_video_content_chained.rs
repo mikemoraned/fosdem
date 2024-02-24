@@ -1,9 +1,12 @@
 use std::io::BufReader;
 
+use std::time::Duration;
 use std::{fs::File, path::PathBuf};
 
 use clap::Parser;
 
+use indicatif::{MultiProgress, ProgressBar};
+use shared::cli::progress_bar;
 use shared::model::Event;
 use tokio::sync::mpsc::{self, Receiver, Sender};
 use tokio::task::JoinSet;
@@ -80,6 +83,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (audio_extraction_tx, audio_extraction_rx) =
         mpsc::channel::<AudioExtraction>(total_pending_downloads + 1);
 
+    let multi_progress = MultiProgress::new();
+
     info!(
         "Fetching {} events with video content, saving in {}",
         pending_downloads.len(),
@@ -89,13 +94,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         video_download_tx.send(pending_download).await?;
     }
     video_download_tx.send(VideoDownload::End).await?;
-    join_set.spawn(download_stage(video_download_rx, audio_extraction_tx));
+    join_set.spawn(download_stage(
+        video_download_rx,
+        audio_extraction_tx,
+        multi_progress.add(progress_bar(total_pending_downloads as u64)),
+    ));
 
     info!(
         "Extracting audio from videos, saving in {}",
         args.audio_dir.to_str().unwrap()
     );
-    join_set.spawn(extraction_stage(audio_extraction_rx));
+    join_set.spawn(extraction_stage(
+        audio_extraction_rx,
+        multi_progress.add(progress_bar(total_pending_downloads as u64)),
+    ));
 
     while let Some(result) = join_set.join_next().await {
         let stage_result = result?;
@@ -108,6 +120,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 async fn download_stage(
     mut video_download_rx: Receiver<VideoDownload>,
     audio_extraction_tx: Sender<AudioExtraction>,
+    progress: ProgressBar,
 ) -> Result<String, String> {
     debug!("download stage starting");
     while let Some(pending_download) = video_download_rx.recv().await {
@@ -116,10 +129,12 @@ async fn download_stage(
         match pending_download {
             Command(url, path) => {
                 debug!("downloading {}", url);
+                tokio::time::sleep(Duration::from_secs(1)).await;
                 audio_extraction_tx
                     .send(AudioExtraction::Command(path.clone(), path.clone()))
                     .await
                     .map_err(|e| format!("error sending: {}", e))?;
+                progress.inc(1);
             }
             End => {
                 debug!("finished downloads");
@@ -137,13 +152,17 @@ async fn download_stage(
 
 async fn extraction_stage(
     mut audio_extraction_rx: Receiver<AudioExtraction>,
+    progress: ProgressBar,
 ) -> Result<String, String> {
+    debug!("extraction stage starting");
     while let Some(audio_extraction) = audio_extraction_rx.recv().await {
         use AudioExtraction::*;
 
         match audio_extraction {
             Command(from, to) => {
                 debug!("extracting {:?} -> {:?}", from, to);
+                tokio::time::sleep(Duration::from_secs(1)).await;
+                progress.inc(1);
             }
             End => {
                 debug!("finished extraction");
