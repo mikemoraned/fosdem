@@ -131,6 +131,10 @@
         "name": "Video recording (mp4)"
       },
       {
+        "url": "https://www.outreachy.org/",
+        "name": "Website"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-janson:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -664,6 +668,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/j1106/fosdem-2024-1634-microblocks.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/j1106/fosdem-2024-1634-microblocks.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-j.1.106:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -978,6 +990,10 @@
         "name": "Video recording (mp4)"
       },
       {
+        "url": "https://reproducible-builds.org/_lfs/presentations/2024-02-03-R-B-the-first-10-years/#/",
+        "name": "Slides"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.1.105_la_fontaine_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -1203,6 +1219,14 @@
         "name": "VMX, Plan 9's integrated hypervisor"
       },
       {
+        "url": "https://video.fosdem.org/2024/k1105/fosdem-2024-3095-one-way-forward-finding-a-path-to-what-comes-after-unix.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k1105/fosdem-2024-3095-one-way-forward-finding-a-path-to-what-comes-after-unix.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.1.105_la_fontaine_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -1416,6 +1440,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-2045-data-security-and-storage-hardening-in-rook-and-ceph.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-2045-data-security-and-storage-hardening-in-rook-and-ceph.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.3.201:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -1504,6 +1536,14 @@
         "name": "Slides"
       },
       {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-3235-cern-s-open-source-storage-systems.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-3235-cern-s-open-source-storage-systems.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.3.201:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -1539,6 +1579,14 @@
       {
         "url": "https://cernbox.cern.ch/s/x211uCkypfA8PSz",
         "name": "Slides"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-3298-cephfs-at-cern-in-view-of-disaster-recovery.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-3298-cephfs-at-cern-in-view-of-disaster-recovery.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.3.201:fosdem.org",
@@ -1847,7 +1895,9 @@
     "slug": "fosdem-2024-3006-container-storage-interface-addons-extending-csi-specification-to-provide-advanced-storage-operations",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3006-container-storage-interface-addons-extending-csi-specification-to-provide-advanced-storage-operations/",
     "abstract": "<p>The aim of this session is to discuss about Container Storage Interface , its specification and\ndetails on additional advanced operations provided by CSI-Addons.\n<a href=\"https://github.com/container-storage-interface/spec\">CSI specification</a> defines an interface along with the minimum operational and packaging recommendations for a storage provider (SP) to implement a CSI compatible plugin.\nThe CSI-Addons project hosts extensions to the CSI specification to provide advanced storage operations. By adding new procedures to the <a href=\"https://github.com/csi-addons/spec\">CSI-Addons Specification</a>, additional operations for storage systems can be provided. The reference implementation is done on Kubernetes, and maintained in the <a href=\"https://github.com/csi-addons/kubernetes-csi-addons\">Kubernetes CSI-Addons</a> repository. Some of the advanced storage operations that are currently supported are reclaim space, network fence and volume replication.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-3006-container-storage-interface-addons-extending-csi-specification-to-provide-advanced-storage-operations/slides/22496/FOSDEM24_CSI-Addons_qz4Of8Q.pdf"
+    ],
     "presenters": [
       {
         "id": 2632,
@@ -2030,6 +2080,10 @@
       {
         "url": "https://video.fosdem.org/2024/k3401/fosdem-2024-2395-the-cpan-security-working-group.mp4",
         "name": "Video recording (mp4)"
+      },
+      {
+        "url": "https://security.metacpan.org/presentations/fosdem2024-cpan-sec-talk/",
+        "name": "Slides"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.3.401:fosdem.org",
@@ -2545,6 +2599,14 @@
         "name": "Project web-site"
       },
       {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2107-cologne-chip-gatemate-fpga-filling-a-gap-between-hardware-and-software-with-a-presentation-of-the-gmm-7550-module-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2107-cologne-chip-gatemate-fpga-filling-a-gap-between-hardware-and-software-with-a-presentation-of-the-gmm-7550-module-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -2586,6 +2648,14 @@
       {
         "url": "https://git.libre-soc.org/?p=soc.git;a=tree;f=src/soc/experiment/formal;hb=HEAD",
         "name": "LibreSOC soc formal verification source code"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2215-an-introduction-to-formal-verification-of-digital-circuits.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2215-an-introduction-to-formal-verification-of-digital-circuits.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
@@ -2637,6 +2707,14 @@
       {
         "url": "https://nlnet.nl/project/Gnucap-MixedSignals/",
         "name": "Roadmap"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-3560-verilog-ams-in-gnucap.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-3560-verilog-ams-in-gnucap.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
@@ -2727,6 +2805,14 @@
       {
         "url": "https://git.libre-soc.org/?p=gram.git;a=summary",
         "name": "gram the DRAM library"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2060-using-the-ecp5-for-libre-soc-prototyping.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2060-using-the-ecp5-for-libre-soc-prototyping.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
@@ -3725,6 +3811,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-2602-closing-railways-and-open-transport-devroom.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-2602-closing-railways-and-open-transport-devroom.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -3926,7 +4020,8 @@
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2796-gdb-on-windows-status-plans/",
     "abstract": "<p>This presentation will give an overview of the status of the Windows port [1] of GDB, and plans for it.  We'll talk about:</p>\n<ul>\n<li>Windows debug API particularities.</li>\n<li>Non-stop mode, and how we're planning on implementing it on Windows.</li>\n<li>Ctrl-C handling and what is different on Windows.</li>\n<li>The GDB testsuite, why nobody is running it on native Windows, and what can we do about it.</li>\n<li>PDB (Program Database), Microsoft's debug info format.</li>\n<li>More.</li>\n</ul>\n<p>[1] There's actually both GDB as a Cygwin program, and GDB as native Windows program, with MinGW, which could/should be considered two ports, though for some of the topics discussed, they're essentially the same.</p>",
     "slides": [
-      "https://fosdem.org/2024/events/attachments/fosdem-2024-2796-gdb-on-windows-status-plans/slides/22389/FOSDEM-2024-gdb-on-windows_IWzsEfL.pdf"
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2796-gdb-on-windows-status-plans/slides/22389/FOSDEM-2024-gdb-on-windows_IWzsEfL.pdf",
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2796-gdb-on-windows-status-plans/slides/22389/README_wXHERNr.txt"
     ],
     "presenters": [
       {
@@ -4269,6 +4364,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2064-gleam-in-the-machine-phantom-types-and-the-builder-pattern-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2064-gleam-in-the-machine-phantom-types-and-the-builder-pattern-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -4293,7 +4396,9 @@
     "slug": "fosdem-2024-2130-genstatem-unveiled-a-theoretical-exploration-of-state-machines",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2130-genstatem-unveiled-a-theoretical-exploration-of-state-machines/",
     "abstract": "<p>Come with me on a journey through the realms of state machines, with the practical brilliance of Erlang’s gen_statem behaviour as our light beam. Building on state machines as a model to reimplement technical debt, we will traverse the intersection of gen_statem practical implementation and the theoretical foundations of state machines. Using real-world application examples, we will go over from the industry beast to the theoretical abyss, revealing the mathematical elegance inherent in state machines and its more powerful automata siblings. Bridging this gap, we will empower Erlang developers to architect solutions that go beyond conventional patterns, with concrete examples and plenty of code to read, providing the attendees with a comprehensive vision to harness the full potential of gen_statem.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2130-genstatem-unveiled-a-theoretical-exploration-of-state-machines/slides/22176/gen_statem_Unveiled_A_Theoretical_Exploration_o_51UG3pq.pdf"
+    ],
     "presenters": [
       {
         "id": 1931,
@@ -4304,10 +4409,6 @@
       {
         "url": "https://github.com/esl/MongooseIM/blob/03421398ef75183d014b353e1cde9dab8b974f24/src/c2s/mongoose_c2s.erl",
         "name": "MongooseIM's latest gen_statem code"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1pL2jR_Kj2dnTNGjX3g0I7z6KwCaKClKZqakg8wZxYj8/edit?usp=sharing",
-        "name": "Slides"
       },
       {
         "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2130-genstatem-unveiled-a-theoretical-exploration-of-state-machines.av1.webm",
@@ -4498,6 +4599,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2044-type-safe-queries-with-gleam-graphql.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2044-type-safe-queries-with-gleam-graphql.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -4588,6 +4697,14 @@
       {
         "url": "https://grafana.com/docs/writers-toolkit/",
         "name": "Grafana Writers' Toolkit"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2471-style-as-code-using-open-source-tooling-to-codify-technical-documentation-style.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-2471-style-as-code-using-open-source-tooling-to-codify-technical-documentation-style.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
@@ -4905,6 +5022,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2038-how-tansu-a-reactive-agnostic-library-simplifies-widget-creation-for-agnosui.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2038-how-tansu-a-reactive-agnostic-library-simplifies-widget-creation-for-agnosui.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1301_cornil_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -5024,6 +5149,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-3289-recycle-reuse-rebuild-transformative-tactics-for-turning-your-brownfields-green.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-3289-recycle-reuse-rebuild-transformative-tactics-for-turning-your-brownfields-green.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1301_cornil_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -5116,6 +5249,14 @@
         "name": "Slide deck (pdf)"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2563-the-biome-toolchain.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2563-the-biome-toolchain.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1301_cornil_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -5150,6 +5291,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2779-staying-ahead-of-the-game-javascript-security.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2779-staying-ahead-of-the-game-javascript-security.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1301_cornil_:fosdem.org",
         "name": "Chat room(web)"
@@ -5479,6 +5628,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2186-better-bee-be-better-spot-more-bugs-than-ts-with-less-than-js.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1301/fosdem-2024-2186-better-bee-be-better-spot-more-bugs-than-ts-with-less-than-js.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1301_cornil_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -5520,6 +5677,10 @@
       {
         "url": "https://stryker-mutator.io/",
         "name": "Stryker website"
+      },
+      {
+        "url": "https://stryker-mutator.io/robo-coasters-example/",
+        "name": "Demo app used in the talk (missing in the video)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1301_cornil_:fosdem.org",
@@ -5872,6 +6033,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3609-building-open-source-telephone-agents-using-llms.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3609-building-open-source-telephone-agents-using-llms.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -5905,6 +6074,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3591-skynet-introducing-local-ai-summaries-in-jitsi-meet.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3591-skynet-introducing-local-ai-summaries-in-jitsi-meet.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -5937,6 +6114,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-1806-moving-real-time-ai-inference-to-the-edge-with-infernos.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-1806-moving-real-time-ai-inference-to-the-edge-with-infernos.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
@@ -6071,6 +6256,14 @@
       {
         "url": "https://docs.google.com/presentation/d/1A4uOsS1k8lJTDtIvxykc1nYiC8JONFXlzrAHknLR920/edit#slide=id.g15755eea16_0_63",
         "name": "Presentation Slides"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3614-provide-volte-vonr-using-opensips-3-5.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3614-provide-volte-vonr-using-opensips-3-5.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
@@ -6688,6 +6881,14 @@
         "name": "GitHub repos"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2603-fighting-cancer-with-rust.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2603-fighting-cancer-with-rust.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1308_rolin_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -7213,6 +7414,10 @@
         "name": "Video recording (mp4)"
       },
       {
+        "url": "https://genode.org/files/mobile_sculpt_fosdem_2024.mp4",
+        "name": "Video re-recording of full talk (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -7442,6 +7647,14 @@
         "name": "slides (source)"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2508-daily-blogging-embedded-gecko-development.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2508-daily-blogging-embedded-gecko-development.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -7481,6 +7694,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-3319-pinetime-a-programmer-s-toy-and-beyond.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-3319-pinetime-a-programmer-s-toy-and-beyond.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
@@ -9361,6 +9582,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-2783-problems-and-solutions-for-running-a-distributed-virtual-world.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-2783-problems-and-solutions-for-running-a-distributed-virtual-world.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2215_ferrer_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -9599,6 +9828,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-2181-passbolt-open-source-password-manager-for-teams.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-2181-passbolt-open-source-password-manager-for-teams.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2215_ferrer_:fosdem.org",
         "name": "Chat room(web)"
@@ -10321,6 +10558,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-2641-the-orthanc-ecosystem-for-medical-imaging.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-2641-the-orthanc-ecosystem-for-medical-imaging.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -10933,6 +11178,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-2052-open-source-railway-designer-osrd-why-sncf-rseau-start-an-open-source-project-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-2052-open-source-railway-designer-osrd-why-sncf-rseau-start-an-open-source-project-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -11258,6 +11511,14 @@
         "name": "Presentation Slides"
       },
       {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2352-stopping-all-the-attacks-before-they-start-building-a-security-first-api.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2352-stopping-all-the-attacks-before-they-start-building-a-security-first-api.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -11290,6 +11551,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2866-making-api-terms-of-service-trustworthy-presenting-fact-the-fair-api-commitment-terms.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2866-making-api-terms-of-service-trustworthy-presenting-fact-the-fair-api-commitment-terms.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
@@ -11477,6 +11746,14 @@
       {
         "url": "https://hg.mozilla.org/comm-central/",
         "name": "Repository"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2728-thunderbird-why-visual-change-is-good.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2728-thunderbird-why-visual-change-is-good.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
@@ -11673,6 +11950,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3326-web-accessibility-for-open-source-privacy-security-tools.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3326-web-accessibility-for-open-source-privacy-security-tools.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -11723,43 +12008,6 @@
       },
       {
         "url": "https://pretalx.fosdem.org/fosdem-2024/talk/9MM8M9/feedback/",
-        "name": "Submit Feedback"
-      }
-    ]
-  },
-  {
-    "id": 3501,
-    "date": "2024-02-03",
-    "start": "15:00:00",
-    "duration": 10,
-    "room": "UA2.114 (Baudoux)",
-    "track": "Community devroom",
-    "title": "Community DevRoom Welcoming Remarks Day 1",
-    "slug": "fosdem-2024-3501-community-devroom-welcoming-remarks-day-1",
-    "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3501-community-devroom-welcoming-remarks-day-1/",
-    "abstract": "<p>The Community DevRoom co-organizers, Laura Czajkowski and Shirley Bailes, will welcome attendees and introduce the program for the 2024 Community DevRoom.</p>",
-    "slides": [],
-    "presenters": [
-      {
-        "id": 1459,
-        "name": "Laura Czajkowski"
-      },
-      {
-        "id": 2476,
-        "name": "Shirley Bailes"
-      }
-    ],
-    "links": [
-      {
-        "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
-        "name": "Chat room(web)"
-      },
-      {
-        "url": "https://matrix.to/#/#2024-ua2.114_baudoux_:fosdem.org?web-instance[element.io]=chat.fosdem.org",
-        "name": "Chat room(app)"
-      },
-      {
-        "url": "https://pretalx.fosdem.org/fosdem-2024/talk/AZUZSD/feedback/",
         "name": "Submit Feedback"
       }
     ]
@@ -12014,43 +12262,6 @@
     ]
   },
   {
-    "id": 3534,
-    "date": "2024-02-03",
-    "start": "18:00:00",
-    "duration": 5,
-    "room": "UA2.114 (Baudoux)",
-    "track": "Community devroom",
-    "title": "Community DevRoom  Concluding Remarks Day 1",
-    "slug": "fosdem-2024-3534-community-devroom-concluding-remarks-day-1",
-    "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3534-community-devroom-concluding-remarks-day-1/",
-    "abstract": "<p>The Community DevRoom co-organizers, Laura Czajkowski and Shirley Bailes, will conclude the first day of the DevRoom.</p>",
-    "slides": [],
-    "presenters": [
-      {
-        "id": 1459,
-        "name": "Laura Czajkowski"
-      },
-      {
-        "id": 2476,
-        "name": "Shirley Bailes"
-      }
-    ],
-    "links": [
-      {
-        "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
-        "name": "Chat room(web)"
-      },
-      {
-        "url": "https://matrix.to/#/#2024-ua2.114_baudoux_:fosdem.org?web-instance[element.io]=chat.fosdem.org",
-        "name": "Chat room(app)"
-      },
-      {
-        "url": "https://pretalx.fosdem.org/fosdem-2024/talk/XGJRCE/feedback/",
-        "name": "Submit Feedback"
-      }
-    ]
-  },
-  {
     "id": 2651,
     "date": "2024-02-03",
     "start": "10:30:00",
@@ -12166,6 +12377,14 @@
         "name": "CATS Webpage"
       },
       {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2567-cats-the-climate-aware-task-scheduler.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2567-cats-the-climate-aware-task-scheduler.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.118_henriot_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -12276,6 +12495,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2117-extracting-mini-apps-from-hpc-software-for-total-cost-of-ownership-optimized-systems-procurement.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2117-extracting-mini-apps-from-hpc-software-for-total-cost-of-ownership-optimized-systems-procurement.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.118_henriot_:fosdem.org",
         "name": "Chat room(web)"
@@ -12477,6 +12704,14 @@
         "name": "Tutorial foreseen during deRSE'24 in Würzburg (March 5-7th)"
       },
       {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2554-hpc-oriented-large-scale-code-restructurings-with-coccinelle.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2554-hpc-oriented-large-scale-code-restructurings-with-coccinelle.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.118_henriot_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -12653,6 +12888,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2719-rdf-dataset-canonicalization-scalable-security-for-linked-data.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2719-rdf-dataset-canonicalization-scalable-security-for-linked-data.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.118_henriot_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -12823,6 +13066,14 @@
       {
         "url": "https://github.com/kubernetes-sigs/node-feature-discovery",
         "name": "Open Source Project"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-1980-nfd-simplifying-cluster-administration-through-automated-node-labels-taints-and-annotations.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-1980-nfd-simplifying-cluster-administration-through-automated-node-labels-taints-and-annotations.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.118_henriot_:fosdem.org",
@@ -13172,6 +13423,14 @@
         "name": "Issue on Neo4j's GitHub repository discussing their further restrction"
       },
       {
+        "url": "https://video.fosdem.org/2024/ua2220/fosdem-2024-3704-fireside-chat-on-further-restrictions-imposed-downstream-on-copyleft-wreaking-havoc.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2220/fosdem-2024-3704-fireside-chat-on-further-restrictions-imposed-downstream-on-copyleft-wreaking-havoc.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.220_guillissen_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -13268,6 +13527,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ua2220/fosdem-2024-3668-hot-topics-organizers-of-the-legal-policy-devroom-discuss-the-issues-of-the-day.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2220/fosdem-2024-3668-hot-topics-organizers-of-the-legal-policy-devroom-discuss-the-issues-of-the-day.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.220_guillissen_:fosdem.org",
         "name": "Chat room(web)"
@@ -13531,6 +13798,14 @@
       {
         "url": "https://salsa.debian.org/openstack-team/debian/openstack-cluster-installer",
         "name": "Project URL"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2147/fosdem-2024-1747-openstack-cluster-installer-aka-oci-the-debian-way-to-manage-your-openstack-deployments.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2147/fosdem-2024-1747-openstack-cluster-installer-aka-oci-the-debian-way-to-manage-your-openstack-deployments.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.147:fosdem.org",
@@ -14245,6 +14520,14 @@
         "name": "Composefs"
       },
       {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3250-composefs-and-containers.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3250-composefs-and-containers.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -14286,6 +14569,14 @@
       {
         "url": "https://github.com/Netflix/libamicontained",
         "name": "code"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3033-libamicontained-a-low-level-library-for-reasoning-about-resource-restriction.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3033-libamicontained-a-low-level-library-for-reasoning-about-resource-restriction.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
@@ -14525,6 +14816,14 @@
         "name": "bpfman documentation"
       },
       {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-1745-orchestrating-ebpf-applications-in-kubernetes-and-fedora.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-1745-orchestrating-ebpf-applications-in-kubernetes-and-fedora.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -14712,6 +15011,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3398-modern-build-systems-for-containers.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3398-modern-build-systems-for-containers.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
@@ -14984,6 +15291,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub4132/fosdem-2024-3496-ub-app-using-design-justice-to-involve-marginalised-communities-and-urban-planners-in-co-designing-a-new-photovoice-tool-for-citizen-engagement.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub4132/fosdem-2024-3496-ub-app-using-design-justice-to-involve-marginalised-communities-and-urban-planners-in-co-designing-a-new-photovoice-tool-for-citizen-engagement.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub4.132:fosdem.org",
         "name": "Chat room(web)"
@@ -15703,6 +16018,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub4132/fosdem-2024-3152-node-reduction-through-artificial-intelligence-inferences-using-graphology-and-sigmajs-a-case-study-on-hypertextual-conversations-in-freight-train-graffiti-in-the-north-american-region-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub4132/fosdem-2024-3152-node-reduction-through-artificial-intelligence-inferences-using-graphology-and-sigmajs-a-case-study-on-hypertextual-conversations-in-freight-train-graffiti-in-the-north-american-region-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub4.132:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -16321,6 +16644,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-3255-virtual-thread-s-next-steps.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-3255-virtual-thread-s-next-steps.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.132:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -16505,6 +16836,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-2329-bespoke-containers-with-jlink-and-openshift.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-2329-bespoke-containers-with-jlink-and-openshift.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.132:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -16623,6 +16962,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-2769-the-jvm-vs-webassembly-an-in-depth-comparative-analysis.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-2769-the-jvm-vs-webassembly-an-in-depth-comparative-analysis.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.132:fosdem.org",
         "name": "Chat room(web)"
@@ -16849,6 +17196,14 @@
         "name": "curl"
       },
       {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-1909-broom-not-included-curling-the-modern-way.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-1909-broom-not-included-curling-the-modern-way.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -16883,6 +17238,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-1798-improving-ipv6-only-experience-on-linux.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-1798-improving-ipv6-only-experience-on-linux.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
         "name": "Chat room(web)"
@@ -16921,6 +17284,14 @@
       {
         "url": "https://gitlab.com/argoware/xdp-load-balancer",
         "name": "XDP load balancer source code"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-3101-load-balancing-using-xdp.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-3101-load-balancing-using-xdp.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
@@ -16966,6 +17337,14 @@
       {
         "url": "https://docs.google.com/presentation/d/1d9agQiAqN1c8IF8BHRFWa-rbbOsI6KlZ/edit?usp=sharing&amp;ouid=108252211404563013994&amp;rtpof=true&amp;sd=true",
         "name": "Slides"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-3170-nephio-a-new-approach-for-automating-telco-workloads.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-3170-nephio-a-new-approach-for-automating-telco-workloads.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
@@ -17107,6 +17486,14 @@
       {
         "url": "https://github.com/projectcalico/vpp-dataplane",
         "name": "Calico-VPP Repository"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-3331-network-function-abstraction-a-delicate-question-of-cpu-affinity-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-3331-network-function-abstraction-a-delicate-question-of-cpu-affinity-.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
@@ -17783,6 +18170,14 @@
         "name": "Kubernetes"
       },
       {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-2359-navigating-the-networking-maze-of-kubernetes-a-journey-of-discovery-confusion-and-hopefully-enlightenment.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-2359-navigating-the-networking-maze-of-kubernetes-a-journey-of-discovery-confusion-and-hopefully-enlightenment.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -18138,6 +18533,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3090-v4l2-stateless-video-encoding-hardware-support-and-uapi.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3090-v4l2-stateless-video-encoding-hardware-support-and-uapi.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.120_chavanne_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -18311,6 +18714,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-2213-brewing-free-beer-with-esphome-and-home-assistant.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-2213-brewing-free-beer-with-esphome-and-home-assistant.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.120_chavanne_:fosdem.org",
         "name": "Chat room(web)"
@@ -18583,6 +18994,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-2864-linux-can-upstreaming-on-mmu-less-systems.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-2864-linux-can-upstreaming-on-mmu-less-systems.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.120_chavanne_:fosdem.org",
         "name": "Chat room(web)"
@@ -19574,6 +19993,10 @@
         "name": "Video recording (mp4)"
       },
       {
+        "url": "https://genezio.com/",
+        "name": "Genezio"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.208_decroly_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -19599,7 +20022,7 @@
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3227-using-the-nova-microhypervisor-for-trusted-computing-at-scale/",
     "abstract": "<p>NOVA is a modern open-source ARMv8-A and x86_64 microhypervisor that can host and harden unmodified guest operating systems. In this talk I will give an overview of the new features that have been added to NOVA in 2023 to enable it to scale from small embedded devices (e.g., Raspberry Pi) to big-iron servers (e.g., AWS cloud instances). In the second half of the talk, I will present the implementation of Intel Trusted Execution Technology in NOVA and how NOVA leverages the TPM to establish a Dynamic Root of Trust for Measurement (DRTM) that extends all the way into a user-mode component-based OS.</p>\n<p>Links:</p>\n<ul>\n<li><a href=\"https://archive.fosdem.org/2023/schedule/event/nova\">FOSDEM 2023 Talk</a> - focused on Advanced Features</li>\n<li><a href=\"https://archive.fosdem.org/2020/schedule/event/uk_nova\">FOSDEM 2020 Talk</a> - focused on ARM-v8</li>\n<li><a href=\"https://github.com/udosteinberg/NOVA\">NOVA Source Code</a></li>\n<li><a href=\"https://hypervisor.org\">Additional Information</a></li>\n</ul>",
     "slides": [
-      "https://fosdem.org/2024/events/attachments/fosdem-2024-3227-using-the-nova-microhypervisor-for-trusted-computing-at-scale/slides/22362/slides_7mD7jQX.pdf"
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-3227-using-the-nova-microhypervisor-for-trusted-computing-at-scale/slides/22362/NOVA-FOSDEM-2024_vqfNnvw.pdf"
     ],
     "presenters": [
       {
@@ -19823,6 +20246,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ud2208/fosdem-2024-3386-linux-binary-compatible-unikernels-with-unikraft.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2208/fosdem-2024-3386-linux-binary-compatible-unikernels-with-unikraft.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.208_decroly_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -19980,6 +20411,18 @@
       {
         "url": "https://gist.github.com/bogomil/281e17a66268e0ded20f16b59558ac31",
         "name": "Videos and songs used in my talk."
+      },
+      {
+        "url": "https://video.fosdem.org/2024/janson/fosdem-2024-1899-where-did-all-the-fun-go-and-how-to-bring-it-back-with-foss-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/janson/fosdem-2024-1899-where-did-all-the-fun-go-and-how-to-bring-it-back-with-foss-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
+        "url": "http://fosdemtalk.s3-website-eu-west-1.amazonaws.com/s3/",
+        "name": "Slides"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-janson:fosdem.org",
@@ -20161,6 +20604,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/janson/fosdem-2024-1779-private-clouds-do-not-need-to-be-legacy-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/janson/fosdem-2024-1779-private-clouds-do-not-need-to-be-legacy-.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-janson:fosdem.org",
         "name": "Chat room(web)"
@@ -21020,6 +21471,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k1105/fosdem-2024-3423-version-control-post-git.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k1105/fosdem-2024-3423-version-control-post-git.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.1.105_la_fontaine_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -21097,6 +21556,14 @@
         "name": "DCF Article"
       },
       {
+        "url": "https://video.fosdem.org/2024/k1105/fosdem-2024-3037-building-a-community-owned-data-confidence-fabric-with-distributed-ledgers-and-smart-contracts.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k1105/fosdem-2024-3037-building-a-community-owned-data-confidence-fabric-with-distributed-ledgers-and-smart-contracts.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.1.105_la_fontaine_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -21170,6 +21637,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-2624-localization-of-open-source-tools-into-swahili.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k3201/fosdem-2024-2624-localization-of-open-source-tools-into-swahili.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.3.201:fosdem.org",
         "name": "Chat room(web)"
@@ -22635,7 +23110,9 @@
     "slug": "fosdem-2024-2569-gcc-for-new-contributors",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2569-gcc-for-new-contributors/",
     "abstract": "<p>This talk will be a fast-paced overview of GCC's internals, aimed at plugin authors and at people wanting to get involved in GCC.</p>\n<p>I'll give a tour of the various parts of GCC, showing what each stage of the compiler does to your source code, places that warnings can be added, and show ways of debugging the compiler.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2569-gcc-for-new-contributors/slides/22527/002_-_GCC_for_new_contributors_mAcA7eg.pdf"
+    ],
     "presenters": [
       {
         "id": 1501,
@@ -22643,6 +23120,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2569-gcc-for-new-contributors.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2569-gcc-for-new-contributors.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
         "name": "Chat room(web)"
@@ -22730,6 +23215,14 @@
         "name": "Report of my work"
       },
       {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2216-my-experience-as-a-first-time-contributor-to-gcc-s-lto.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2216-my-experience-as-a-first-time-contributor-to-gcc-s-lto.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -22771,6 +23264,14 @@
       {
         "url": "https://hackmd.io/@tamaron/ryqNQUvj2",
         "name": "GSoC Final Report"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2370-unicode-support-for-gcc-rust.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2370-unicode-support-for-gcc-rust.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
@@ -22853,6 +23354,14 @@
       {
         "url": "https://gitlab.inria.fr/pphilipp/gcc-plugin-ct",
         "name": "Project repository"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2635-unlocking-secret-analysis-in-gcc-static-analyzer.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2635-unlocking-secret-analysis-in-gcc-static-analyzer.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
@@ -23226,6 +23735,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2609-the-llvm-security-group-history-progress-remaining-challenges-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2609-the-llvm-security-group-history-progress-remaining-challenges-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -23273,6 +23790,14 @@
         "name": "Project Mastodon"
       },
       {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2555-building-a-linux-distro-with-llvm.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2555-building-a-linux-distro-with-llvm.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -23305,6 +23830,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2706-build-your-first-clang-compilation-database-plugin.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4201/fosdem-2024-2706-build-your-first-clang-compilation-database-plugin.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.201:fosdem.org",
         "name": "Chat room(web)"
@@ -23377,7 +23910,9 @@
     "slug": "fosdem-2024-2254-elfconv-aot-compiler-that-translates-linux-aarch64-elf-binary-to-llvm-bitcode-targeting-webassembly",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2254-elfconv-aot-compiler-that-translates-linux-aarch64-elf-binary-to-llvm-bitcode-targeting-webassembly/",
     "abstract": "<p>WebAssembly (WASM) enables us to use sandbox environments on edge devices and servers as well as browsers so that we can distribute platform-independent and secure applications. Previously, we could compile from several programming languages to WASM binary, but cannot generate them if we cannot use original source codes.\n  In this talk, Masashi will introduce \"elfconv\",  an AOT compiler that translates Linux/AArch64 ELF binary into LLVM bitcode targeting WASM. This compiler generates an LLVM bitcode that translates every instruction of the original ELF binary based on remill (library for lifting machine code to LLVM IR) and uses emscripten to generate the WASM binary. we can execute the generated WASM binary using Wasm Runtime (e.g. Wasmedge, Wasmtime). This talk will describe the technical details (methods to translate to LLVM bitcode and emulate Linux syscall targeting WASM) of elfconv and the performance of translating and future perspectives.\nRepository URL : https://github.com/yomaytk/elfconv</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2254-elfconv-aot-compiler-that-translates-linux-aarch64-elf-binary-to-llvm-bitcode-targeting-webassembly/slides/22894/fosdem2024-elfconv_2_8cClxDY.pdf"
+    ],
     "presenters": [
       {
         "id": 2083,
@@ -23574,6 +24109,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-3096-overview-of-spdx-tooling-and-how-spdx3-gets-adopted.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-3096-overview-of-spdx-tooling-and-how-spdx3-gets-adopted.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -23729,14 +24272,6 @@
     ],
     "presenters": [
       {
-        "id": 2590,
-        "name": "Gerald Morrison"
-      },
-      {
-        "id": 2595,
-        "name": "Piaras Hoban"
-      },
-      {
         "id": 3220,
         "name": "Vasu Chandrasekhara"
       }
@@ -23749,6 +24284,14 @@
       {
         "url": "https://ocm.software/",
         "name": "OCM project web page"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-2939-sbom-what-s-next-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-2939-sbom-what-s-next-.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
@@ -23939,6 +24482,10 @@
         "name": "Video recording (mp4)"
       },
       {
+        "url": "https://security.metacpan.org/presentations/fosdem2024-sbom-in-open-source-ecosystems-talk/",
+        "name": "Slides"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -24074,6 +24621,14 @@
         "name": "Requirements Repository Zephyr"
       },
       {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-3211-application-of-the-spdx-safety-profile-in-the-safety-scope-of-the-zephyr-project.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-3211-application-of-the-spdx-safety-profile-in-the-safety-scope-of-the-zephyr-project.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -24098,7 +24653,9 @@
     "slug": "fosdem-2024-2889-sboms-that-you-can-trust-the-good-the-bad-and-the-ugly",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2889-sboms-that-you-can-trust-the-good-the-bad-and-the-ugly/",
     "abstract": "<p>You might be on the journey of adopting Software Bill of Materials (SBOMs) in your organization. What if I tell you that your SBOMs might be useless and even harmful?</p>\n<p>During this talk, we'll discuss the overlooked aspect of ensuring the trustworthiness of the SBOM during its lifecycle, from generation to storage, distribution, and processing.</p>\n<p>We'll shed some light on the questions you should ask about your SBOMs, who, and how you can achieve trust at each step of their lifecycle. </p>\n<p>We'll dip our toes into the why now, and how we can leverage OpenSource tools and specifications like in-toto attestations, Content Addressable Store, Supply-chain Levels for Software Artifacts (\"salsa\"), or Sigstore to have SBOMs that are uniquely identifiable, unforgeable, complete, and available.</p>\n<p>After this talk, you'll know how to implement SBOM end-to-end (or other metadata such as VEX, vuln scan, etc.) that meets the highest levels of trust required in the Software Supply Chains of the future.</p>\n<p>For reference, we'll touch on the following Open Source projects during this talk.</p>\n<ul>\n<li>https://github.com/slsa-framework/slsa</li>\n<li>https://github.com/sigstore/cosign</li>\n<li>https://github.com/opencontainers/distribution-spec</li>\n<li>https://github.com/chainloop-dev/chainloop</li>\n</ul>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2889-sboms-that-you-can-trust-the-good-the-bad-and-the-ugly/slides/22734/fosdem_2024_sboms_that_you_can_trust_2_jBYtq7v.pdf"
+    ],
     "presenters": [
       {
         "id": 1735,
@@ -24110,6 +24667,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-2889-sboms-that-you-can-trust-the-good-the-bad-and-the-ugly.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-2889-sboms-that-you-can-trust-the-good-the-bad-and-the-ugly.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
         "name": "Chat room(web)"
@@ -24273,6 +24838,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-3230-getting-lulled-into-a-false-sense-of-security-by-sbom-and-vex.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4401/fosdem-2024-3230-getting-lulled-into-a-false-sense-of-security-by-sbom-and-vex.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.401:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -24430,6 +25003,14 @@
     "presenters": [],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3652-opening-and-welcome-introducing-the-open-website-alliance-and-today-s-program.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3652-opening-and-welcome-introducing-the-open-website-alliance-and-today-s-program.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -24466,6 +25047,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3544-defend-foss-from-innovation-to-world-wide-positive-change.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3544-defend-foss-from-innovation-to-world-wide-positive-change.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
         "name": "Chat room(web)"
@@ -24698,6 +25287,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3730-collaborative-government-websites-standardization-for-digital-sovereignty-using-open-source-the-model-of-rwanda-and-the-govstack-global-initiative.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3730-collaborative-government-websites-standardization-for-digital-sovereignty-using-open-source-the-model-of-rwanda-and-the-govstack-global-initiative.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -24822,6 +25419,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3639-roundtable-round-off-on-foss-cms-collaboration.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/k4601/fosdem-2024-3639-roundtable-round-off-on-foss-cms-collaboration.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-k.4.601:fosdem.org",
         "name": "Chat room(web)"
@@ -25214,6 +25819,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3107-units-of-composition-recipes-overlays-and-packages.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3107-units-of-composition-recipes-overlays-and-packages.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -25248,6 +25861,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-2204-fortifying-the-foundations-elevating-security-in-nix-and-nixos.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-2204-fortifying-the-foundations-elevating-security-in-nix-and-nixos.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
@@ -25658,6 +26279,14 @@
         "name": "Slides"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3044-clevis-tang-unattended-boot-of-an-encrypted-nixos-system.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3044-clevis-tang-unattended-boot-of-an-encrypted-nixos-system.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -25701,6 +26330,18 @@
       {
         "url": "https://github.com/mozilla/kitsune",
         "name": "Kitsune repo"
+      },
+      {
+        "url": "https://docs.google.com/presentation/d/1-am2qsKZ_zW7zqAGXrY-jBimChpOqGt_ytOSJmGrpCs/edit?usp=sharing",
+        "name": "Slides"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-2419-17-year-journey-of-the-mozilla-support-platform-its-community.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-2419-17-year-journey-of-the-mozilla-support-platform-its-community.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
@@ -25825,6 +26466,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-1801-community-driven-data-collection-and-consent-in-ai.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-1801-community-driven-data-collection-and-consent-in-ai.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
@@ -26013,6 +26662,14 @@
         "name": "Code samples repository"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-2412-firefox-android-and-cross-browser-webextensions-in-2024.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-2412-firefox-android-and-cross-browser-webextensions-in-2024.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -26048,6 +26705,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3650-integrating-llms-intelligence-is-tricky.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1302/fosdem-2024-3650-integrating-llms-intelligence-is-tricky.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1302_depage_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -26080,6 +26745,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2886-welcome-to-the-open-hardware-devroom.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2886-welcome-to-the-open-hardware-devroom.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1308_rolin_:fosdem.org",
         "name": "Chat room(web)"
@@ -26115,6 +26788,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-3072-multi-disciplinary-geometry-libraries-in-bim-and-the-ifcopenshell-software-library.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-3072-multi-disciplinary-geometry-libraries-in-bim-and-the-ifcopenshell-software-library.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1308_rolin_:fosdem.org",
         "name": "Chat room(web)"
@@ -26499,6 +27180,14 @@
         "name": "The Basic Economics behind Open Source Funding in 2024"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-3160-the-basic-economics-behind-open-source-funding-in-2024.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-3160-the-basic-economics-behind-open-source-funding-in-2024.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1308_rolin_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -26609,6 +27298,14 @@
         "name": "PICOBUS achieving orbit in video"
       },
       {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2018-a-satellite-s-final-safehouse-the-deployer.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2018-a-satellite-s-final-safehouse-the-deployer.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1308_rolin_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -26641,6 +27338,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2104-electronic-boards-production-automation-with-kicad-scripts.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1308/fosdem-2024-2104-electronic-boards-production-automation-with-kicad-scripts.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1308_rolin_:fosdem.org",
         "name": "Chat room(web)"
@@ -26975,6 +27680,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2696-the-old-remains-new.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2696-the-old-remains-new.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -27048,6 +27761,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2747-for-want-of-anneal-examining-the-unseen-changes-concerning-changes-to-vcs-assets-and-the-need-for-more-graph-centric-approaches.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2747-for-want-of-anneal-examining-the-unseen-changes-concerning-changes-to-vcs-assets-and-the-need-for-more-graph-centric-approaches.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
@@ -27180,6 +27901,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2339-scheme-in-the-browser-with-guile-hoot-and-webassembly.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2339-scheme-in-the-browser-with-guile-hoot-and-webassembly.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -27311,6 +28040,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2331-spritely-guile-guix-a-unified-vision-for-user-security.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2331-spritely-guile-guix-a-unified-vision-for-user-security.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -27346,6 +28083,14 @@
       {
         "url": "https://github.com/teal-language/tl/",
         "name": "Teal language"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2564-five-years-of-teal-minimalism-versus-growth-in-language-design.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2564-five-years-of-teal-minimalism-versus-growth-in-language-design.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
@@ -27528,6 +28273,10 @@
       {
         "url": "https://video.fosdem.org/2024/h1309/fosdem-2024-2824-embracing-matrix-for-enhanced-communication-migrating-the-wordpress-community-from-slack-to-matrix.mp4",
         "name": "Video recording (mp4)"
+      },
+      {
+        "url": "https://github.com/Automattic/chatrix",
+        "name": "Chatrix"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.1309_van_rijn_:fosdem.org",
@@ -27723,6 +28472,14 @@
     "presenters": [],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2383-welcome-to-the-modern-email-devroom-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2383-welcome-to-the-modern-email-devroom-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2213:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -27876,7 +28633,9 @@
     "slug": "fosdem-2024-2135--jmap-jmap-getting-started",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2135--jmap-jmap-getting-started/",
     "abstract": "<p>JMAP (RFC 8620, 8261, &amp;c.) is a new protocol meant to replace IMAP, CalDAV, CardDAV, and to handle more kinds of data in the future.  It keeps the most important technical properties of those protocols, but ditches many things that hold back improvements and hamper developers.  It's built on commonly understood and implemented standards, which makes it easy to get up and running and easy to benefit from modern systems like push notifications.  It's built as a syncing protocol, providing easy sync features in a data agnostic way.</p>\n<p>JMAP is still young, but there are multiple implementations of both client and server.  The most notable install of JMAP is at Fastmail, where it's the primary interface to all customer data.</p>\n<p>This talk will cover what JMAP looks like, the principles under which it operates, and how to get started working with it.  We will discuss the likely next steps in JMAP's rollout and how Fastmail uses JMAP internally for its own datatypes.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-2135--jmap-jmap-getting-started/slides/22593/JMAP_Absolute_Minimum_E3tk2tn.pdf"
+    ],
     "presenters": [
       {
         "id": 2000,
@@ -28064,6 +28823,14 @@
       {
         "url": "https://github.com/grommunio/",
         "name": "Code repos"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2731--servers-exchanging-microsoft-implementing-27-ms-exchange-protocols-apis-in-oss-with-grommunio.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2731--servers-exchanging-microsoft-implementing-27-ms-exchange-protocols-apis-in-oss-with-grommunio.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2213:fosdem.org",
@@ -28479,6 +29246,14 @@
         "name": "Sildes (backup site)"
       },
       {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2292--clients-aerc-an-email-client-for-the-discerning-hacker.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2292--clients-aerc-an-email-client-for-the-discerning-hacker.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2213:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -28563,12 +29338,16 @@
     ],
     "links": [
       {
-        "url": "https://drive.proton.me/urls/7KWPVVKK4M#8MoeKVcoLOjb",
-        "name": "Video Recording"
-      },
-      {
         "url": "https://proton.me/blog/openpgp-crypto-refresh",
         "name": "Blog post: \"Modernizing and improving PGP security\""
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2669--security-modernizing-email-encryption-the-crypto-refresh-of-openpgp.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-2669--security-modernizing-email-encryption-the-crypto-refresh-of-openpgp.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2213:fosdem.org",
@@ -28798,7 +29577,9 @@
     "slug": "fosdem-2024-1711--ending-it-s-all-about-the-email-ugh-what-",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-1711--ending-it-s-all-about-the-email-ugh-what-/",
     "abstract": "<p>The session's goal is to enlarge the horizons of the people building the open-source way of email. It might contain traces of heavy metal because I use this music to inspire people.</p>\n<p>I will ignore our current technical limitations and build you a picture of a reality that could happen in the not-so-far feature with the email as the main protagonist.</p>\n<p>Let me provoke you with some crazy and not-so-crazy ideas on how I, as an everyday consumer, see the future of email.</p>\n<ul>\n<li>I imagine a world where my email is my identity, and I can connect with my wallet to manage my digital world.</li>\n<li>I wish my email could automate things for me, such as auto-replying to usual requests without me setting it up.</li>\n<li>I need my email to be secure, encrypted, and in my pocket device. </li>\n<li>I want to communicate by email with my (AI) overlord.</li>\n<li>I want to receive only positive emails when I am sad.</li>\n<li>I want my email to be intelligent and to propose a TLDR of a long e-mail.</li>\n<li>I want ...</li>\n</ul>\n<p>Thinking about the future has <strong>no limitations</strong>. It depends on us to build it.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-1711--ending-it-s-all-about-the-email-ugh-what-/slides/22936/future_of_the_e-mail_flp1v9M.odp"
+    ],
     "presenters": [
       {
         "id": 1618,
@@ -28806,6 +29587,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-1711--ending-it-s-all-about-the-email-ugh-what-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2213/fosdem-2024-1711--ending-it-s-all-about-the-email-ugh-what-.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2213:fosdem.org",
         "name": "Chat room(web)"
@@ -29302,6 +30091,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h2214/fosdem-2024-1648-confidential-computing-devroom-welcome.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2214/fosdem-2024-1648-confidential-computing-devroom-welcome.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2214:fosdem.org",
         "name": "Chat room(web)"
@@ -29958,6 +30755,14 @@
         "name": "Slides"
       },
       {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-2277-georchestra-spatial-data-infrastructure.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-2277-georchestra-spatial-data-infrastructure.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2215_ferrer_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -30142,6 +30947,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-1702-attempt-at-building-a-transit-app-in-africa.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/h2215/fosdem-2024-1702-attempt-at-building-a-transit-app-in-africa.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-h.2215_ferrer_:fosdem.org",
         "name": "Chat room(web)"
@@ -31183,6 +31996,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3691-foss-policy-engagement-begin-workshop-oss-exchange-with-policy-makers-and-policy-support-of-oss-developers-two-faces-of-the-same-coin-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3691-foss-policy-engagement-begin-workshop-oss-exchange-with-policy-makers-and-policy-support-of-oss-developers-two-faces-of-the-same-coin-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -31308,6 +32129,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3330-foss-policy-engagement-eu-foss-act.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3330-foss-policy-engagement-eu-foss-act.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -31357,6 +32186,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3717-foss-policy-engagement-panel.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3717-foss-policy-engagement-panel.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -31394,6 +32231,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3718-foss-policy-engagement-fishbowl-conversation-share-your-experience.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3718-foss-policy-engagement-fishbowl-conversation-share-your-experience.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -31426,6 +32271,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3716-foss-policy-engagement-rapporteur-playback.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3716-foss-policy-engagement-rapporteur-playback.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
@@ -31844,6 +32697,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3707-digital-services-interoperability-panel-discussion-the-technical-challenges-of-interoperability-requirements-in-eu-law.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1120/fosdem-2024-3707-digital-services-interoperability-panel-discussion-the-technical-challenges-of-interoperability-requirements-in-eu-law.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.120:fosdem.org",
         "name": "Chat room(web)"
@@ -32326,6 +33187,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2643-lessons-from-porting-software-to-risc-v-rise.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-2643-lessons-from-porting-software-to-risc-v-rise.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -32444,6 +33313,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3585-open-source-firmware-bmc-and-bootloader-devroom-intro.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3585-open-source-firmware-bmc-and-bootloader-devroom-intro.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
@@ -32592,6 +33469,14 @@
         "name": "U-Boot Documentation - Binman"
       },
       {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3067-standardizing-the-generation-and-signing-of-boot-images.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3067-standardizing-the-generation-and-signing-of-boot-images.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -32669,6 +33554,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3099-grub-project-status-update.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3099-grub-project-status-update.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
@@ -32753,6 +33646,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3724-trenchboot-project-status-update.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3724-trenchboot-project-status-update.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -32786,6 +33687,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3586-open-source-firmware-bmc-and-bootloader-devroom-outro.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/aw1126/fosdem-2024-3586-open-source-firmware-bmc-and-bootloader-devroom-outro.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-aw1.126:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -32795,43 +33704,6 @@
       },
       {
         "url": "https://pretalx.fosdem.org/fosdem-2024/talk/GLDD3F/feedback/",
-        "name": "Submit Feedback"
-      }
-    ]
-  },
-  {
-    "id": 3535,
-    "date": "2024-02-04",
-    "start": "09:00:00",
-    "duration": 10,
-    "room": "UA2.114 (Baudoux)",
-    "track": "Community devroom",
-    "title": "Community DevRoom Welcoming Remarks Day 2",
-    "slug": "fosdem-2024-3535-community-devroom-welcoming-remarks-day-2",
-    "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3535-community-devroom-welcoming-remarks-day-2/",
-    "abstract": "<p>The Community DevRoom co-organizers, Laura Czajkowski and Shirley Bailes, will welcome attendees and introduce the program for the 2024 Community DevRoom's second day.</p>",
-    "slides": [],
-    "presenters": [
-      {
-        "id": 1459,
-        "name": "Laura Czajkowski"
-      },
-      {
-        "id": 2476,
-        "name": "Shirley Bailes"
-      }
-    ],
-    "links": [
-      {
-        "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
-        "name": "Chat room(web)"
-      },
-      {
-        "url": "https://matrix.to/#/#2024-ua2.114_baudoux_:fosdem.org?web-instance[element.io]=chat.fosdem.org",
-        "name": "Chat room(app)"
-      },
-      {
-        "url": "https://pretalx.fosdem.org/fosdem-2024/talk/VPDQFP/feedback/",
         "name": "Submit Feedback"
       }
     ]
@@ -32896,6 +33768,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ua2114/fosdem-2024-1823-ai-devrels-risks-of-neglecting-open-source-talent-in-ai-critical-infrastructure.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2114/fosdem-2024-1823-ai-devrels-risks-of-neglecting-open-source-talent-in-ai-critical-infrastructure.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
         "name": "Chat room(web)"
@@ -32974,6 +33854,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ua2114/fosdem-2024-1690-where-are-the-limits-of-open-communities-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2114/fosdem-2024-1690-where-are-the-limits-of-open-communities-.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
         "name": "Chat room(web)"
@@ -33252,6 +34140,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ua2114/fosdem-2024-2776-building-an-open-source-community-one-friend-at-a-time.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2114/fosdem-2024-2776-building-an-open-source-community-one-friend-at-a-time.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -33351,43 +34247,6 @@
       },
       {
         "url": "https://pretalx.fosdem.org/fosdem-2024/talk/L3K8DJ/feedback/",
-        "name": "Submit Feedback"
-      }
-    ]
-  },
-  {
-    "id": 3536,
-    "date": "2024-02-04",
-    "start": "16:45:00",
-    "duration": 5,
-    "room": "UA2.114 (Baudoux)",
-    "track": "Community devroom",
-    "title": "Community DevRoom Concluding Remarks Day 2",
-    "slug": "fosdem-2024-3536-community-devroom-concluding-remarks-day-2",
-    "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3536-community-devroom-concluding-remarks-day-2/",
-    "abstract": "<p>The Community DevRoom co-organizers, Laura Czajkowski and Shirley Bailes, will make concluding remarks and close the 2024 edition of the Community DevRoom.</p>",
-    "slides": [],
-    "presenters": [
-      {
-        "id": 1459,
-        "name": "Laura Czajkowski"
-      },
-      {
-        "id": 2476,
-        "name": "Shirley Bailes"
-      }
-    ],
-    "links": [
-      {
-        "url": "https://chat.fosdem.org/#/room/#2024-ua2.114_baudoux_:fosdem.org",
-        "name": "Chat room(web)"
-      },
-      {
-        "url": "https://matrix.to/#/#2024-ua2.114_baudoux_:fosdem.org?web-instance[element.io]=chat.fosdem.org",
-        "name": "Chat room(app)"
-      },
-      {
-        "url": "https://pretalx.fosdem.org/fosdem-2024/talk/3EGUQC/feedback/",
         "name": "Submit Feedback"
       }
     ]
@@ -33946,6 +34805,14 @@
       {
         "url": "https://floss.social/@chimera_linux",
         "name": "Project Mastodon"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2524-2023-in-chimera-linux.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ua2118/fosdem-2024-2524-2023-in-chimera-linux.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ua2.118_henriot_:fosdem.org",
@@ -35238,15 +36105,15 @@
     "duration": 25,
     "room": "UB2.147",
     "track": "Software-Defined Radio and Amateur Radio devroom",
-    "title": "TETRA and open-source: like oil and water?",
-    "slug": "fosdem-2024-2058-tetra-and-open-source-like-oil-and-water-",
-    "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2058-tetra-and-open-source-like-oil-and-water-/",
+    "title": "SatDump, A generic satellite data processing software",
+    "slug": "fosdem-2024-2058-satdump-a-generic-satellite-data-processing-software",
+    "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-2058-satdump-a-generic-satellite-data-processing-software/",
     "abstract": "<p>TETRA is an \"open\" digital radio standard, used worldwide by emergency services and private companies. In recent years, there has been some efforts to implement part of this standard on SDR hardware, using open-source software.</p>",
     "slides": [],
     "presenters": [
       {
-        "id": 1355,
-        "name": "Manoel Casquilho"
+        "id": 2292,
+        "name": "Alan"
       }
     ],
     "links": [
@@ -35373,6 +36240,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2485-an-introduction-to-open-source-ai.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2485-an-introduction-to-open-source-ai.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
@@ -35636,6 +36511,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2820-practical-introduction-to-safe-reinforcement-learning.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2820-practical-introduction-to-safe-reinforcement-learning.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -35663,6 +36546,14 @@
     "slides": [],
     "presenters": [],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3750-open-discussion-on-ai-and-machine-learning.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-3750-open-discussion-on-ai-and-machine-learning.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
@@ -35698,6 +36589,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-1821-introducing-refiners-a-micro-framework-for-seamless-integration-of-adapters-in-neural-networks.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-1821-introducing-refiners-a-micro-framework-for-seamless-integration-of-adapters-in-neural-networks.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
@@ -36004,6 +36903,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2909-a-principled-component-analysis-of-open-source-artificial-intelligence.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2909-a-principled-component-analysis-of-open-source-artificial-intelligence.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -36039,6 +36946,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2750-codes-bound-by-ethics-the-rising-tide-of-non-free-software-licenses-in-ai-ecosystems.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2750-codes-bound-by-ethics-the-rising-tide-of-non-free-software-licenses-in-ai-ecosystems.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -36073,6 +36988,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2805-moving-a-step-closer-to-defining-open-source-ai.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub2252a/fosdem-2024-2805-moving-a-step-closer-to-defining-open-source-ai.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub2.252a_lameere_:fosdem.org",
         "name": "Chat room(web)"
@@ -36329,7 +37252,9 @@
     "slug": "fosdem-2024-3573-livepeer-catalyst-and-the-conspiracy-to-solve-video-for-everybody-forever",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3573-livepeer-catalyst-and-the-conspiracy-to-solve-video-for-everybody-forever/",
     "abstract": "<p>We will start by giving an overview of Livepeer Catalyst, an MIT-licensed self-hostable media server powered by MistServer and the Livepeer Network. Users will be able to boot this up for themselves and configure their Catalyst nodes to facilitate livestreaming, VOD, and other rich media features.</p>\n<p>We'll then move out to a survey of the open media landscape, discussing everything from the Coalition for Content Providence and Authenticity to Twitch's exit from Korea to livestreamed torrents to NFTs. We'll identify some common threads between all of this work and end with some principles that we can all follow to join the Conspiracy to Solve Video for Everybody Forever.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-3573-livepeer-catalyst-and-the-conspiracy-to-solve-video-for-everybody-forever/slides/22707/Livepeer_Catalyst_and_the_Conspiracy_to_Solve_3ZTDLZa.pptx"
+    ],
     "presenters": [
       {
         "id": 3054,
@@ -36601,6 +37526,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub4132/fosdem-2024-2931-innovations-in-h-264-avc-software-decoding-architecture-and-optimization-of-a-block-based-video-decoder-to-reach-10-faster-speed-and-3x-code-reduction-over-the-state-of-the-art-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub4132/fosdem-2024-2931-innovations-in-h-264-avc-software-decoding-architecture-and-optimization-of-a-block-based-video-decoder-to-reach-10-faster-speed-and-3x-code-reduction-over-the-state-of-the-art-.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub4.132:fosdem.org",
         "name": "Chat room(web)"
@@ -37137,6 +38070,14 @@
         "name": "TPM2 Interoperability specification (from above repo) as implemented by the Linux Kernel"
       },
       {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-3141-linux-kernel-tpm-security-and-trusted-key-updates.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-3141-linux-kernel-tpm-security-and-trusted-key-updates.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.132:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -37358,6 +38299,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-3034-linux-receivefdreplace-semantics-confusing.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5132/fosdem-2024-3034-linux-receivefdreplace-semantics-confusing.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.132:fosdem.org",
         "name": "Chat room(web)"
@@ -37674,6 +38623,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-2247-confedss-concolic-execution-and-the-puzzling-practice-of-peripheral-emulation.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ub5230/fosdem-2024-2247-confedss-concolic-execution-and-the-puzzling-practice-of-peripheral-emulation.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -37829,9 +38786,9 @@
     "title": "Gameboy Advance hacking for retrogamers",
     "slug": "fosdem-2024-1771-gameboy-advance-hacking-for-retrogamers",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-1771-gameboy-advance-hacking-for-retrogamers/",
-    "abstract": "<p>Discover the opportunity in retrogaming with the Gameboy Advance, from homebrew to how to do a game in pure Lua (yes I am not joking) or to make a trainer to a Lua script in the emulator.</p>\n<p>The GBA is a particular device, compared to the Gameboy Color, which allows many more things for the world of homebrew and retrogaming by exploiting current technologies.</p>\n<p>We will see the technical peculiarities, the most famous decompilations, how to manipulate RAM with an emulator, how to make a ROM in Lua, how to make a trainer, the most common hardware mods, how to make a Lua script for Mgba with Lua and much more.</p>\n<p>In short, everything you need to know about the GBA even if you don't understand anything about Assembly!</p>\n<p>(Some) Projects mentioned:</p>\n<ul>\n<li>https://github.com/Mte90/LinuxDay-Rieti-2022-GBA-Demo</li>\n<li>https://github.com/evanbowman/BPCore-Engine</li>\n<li>https://github.com/Mte90/GBAATM-Rebirth</li>\n</ul>",
+    "abstract": "<p>Discover the opportunity in retrogaming with the Gameboy Advance, from homebrew to how to do a game in pure Lua (yes I am not joking) or to make a trainer to a Lua script in the emulator.</p>\n<p>The GBA is a particular device, compared to the Gameboy Color, which allows many more things for the world of homebrew and retrogaming by exploiting current technologies.</p>\n<p>We will see the technical peculiarities, the most famous decompilations, how to manipulate RAM with an emulator, how to make a ROM in Lua, how to make a trainer, the most common hardware mods, how to make a Lua script for Mgba with Lua and much more.</p>\n<p>In short, everything you need to know about the GBA even if you don't understand anything about Assembly!</p>\n<p>(Some) Projects mentioned:</p>\n<ul>\n<li>https://github.com/Mte90/LinuxDay-Rieti-2022-GBA-Demo</li>\n<li>https://github.com/evanbowman/BPCore-Engine</li>\n<li>https://github.com/Mte90/GBAATM-Rebirth</li>\n</ul>\n<p>GBA art by https://twitter.com/Shamaboy11</p>",
     "slides": [
-      "https://fosdem.org/2024/events/attachments/fosdem-2024-1771-gameboy-advance-hacking-for-retrogamers/slides/22806/slide-with-video_i5Kvhn9.zip"
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-1771-gameboy-advance-hacking-for-retrogamers/slides/22806/slides-with-video-updated_2xrn61p.zip"
     ],
     "presenters": [
       {
@@ -38139,6 +39096,10 @@
         "name": "Video recording (mp4)"
       },
       {
+        "url": "https://www.youtube.com/watch?v=qNiFW2S1ZGs",
+        "name": "Interview at LGW (Portuguese)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ub5.230:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -38351,6 +39312,14 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3603-for-your-eyes-only-roles-privileges-and-security-in-postgresql.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3603-for-your-eyes-only-roles-privileges-and-security-in-postgresql.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.120_chavanne_:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -38416,7 +39385,9 @@
     "slug": "fosdem-2024-3605-postgres-vs-linux-filesystems",
     "url": "https://fosdem.org/2024/schedule/event/fosdem-2024-3605-postgres-vs-linux-filesystems/",
     "abstract": "<p>Postgres heavily relies on various parts of the operating system - filesystem and buffered i/O are good examples of such fundamental dependencies. But there are many commonly used filesystems supported by Linux, from traditional ones (ext4,xfs) to modern ones (zfs, btrfs) and various exotic ones. The question is - are there significant performance differences between these filesystems for Postgres? Are there clear winners or filesystems you definitely should not use? I did a similar comparison a couple years back, but both the Postgres and kernel are continuously improving and adopting to new hardware, so let's look at fresh data.</p>",
-    "slides": [],
+    "slides": [
+      "https://fosdem.org/2024/events/attachments/fosdem-2024-3605-postgres-vs-linux-filesystems/slides/22850/postgres-vs-filesystems-fosdem-2024_QQG6Ha7.pdf"
+    ],
     "presenters": [
       {
         "id": 3074,
@@ -38424,6 +39395,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3605-postgres-vs-linux-filesystems.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3605-postgres-vs-linux-filesystems.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.120_chavanne_:fosdem.org",
         "name": "Chat room(web)"
@@ -38460,6 +39439,14 @@
       {
         "url": "https://speakerdeck.com/stoker/fosdem-2024-build-your-own-postgresql-dba-out-of-available-mysql-dbas",
         "name": "slides for presentation"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3606-build-your-own-postgresql-dba-out-of-available-mysql-dbas.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2120/fosdem-2024-3606-build-your-own-postgresql-dba-out-of-available-mysql-dbas.mp4",
+        "name": "Video recording (mp4)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.120_chavanne_:fosdem.org",
@@ -38601,6 +39588,14 @@
         "name": "Presentation"
       },
       {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-1652--new-workflow-orchestrator-in-town-apache-airflow-2-x-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-1652--new-workflow-orchestrator-in-town-apache-airflow-2-x-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.218a:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -38635,6 +39630,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-1651-data-workflows-translating-dbt-to-apache-airflow.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-1651-data-workflows-translating-dbt-to-apache-airflow.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.218a:fosdem.org",
         "name": "Chat room(web)"
@@ -38799,6 +39802,14 @@
         "name": "SLIDES of conference"
       },
       {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2056-powerflexible-cryptography-with-python-and-flightbox-.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2056-powerflexible-cryptography-with-python-and-flightbox-.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.218a:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -38874,6 +39885,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2311-making-python-safer-than-ever.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2311-making-python-safer-than-ever.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.218a:fosdem.org",
         "name": "Chat room(web)"
@@ -39000,6 +40019,14 @@
         "name": "Slides"
       },
       {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2735-profiling-python-with-ebpf-a-new-frontier-in-performance-analysis.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2735-profiling-python-with-ebpf-a-new-frontier-in-performance-analysis.mp4",
+        "name": "Video recording (mp4)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.218a:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -39085,6 +40112,14 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2771-deploy-your-next-python-app-with-webassembly-wasm-smaller-safer-faster.av1.webm",
+        "name": "Video recording (AV1/opus)"
+      },
+      {
+        "url": "https://video.fosdem.org/2024/ud2218a/fosdem-2024-2771-deploy-your-next-python-app-with-webassembly-wasm-smaller-safer-faster.mp4",
+        "name": "Video recording (mp4)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2024-ud2.218a:fosdem.org",
         "name": "Chat room(web)"
