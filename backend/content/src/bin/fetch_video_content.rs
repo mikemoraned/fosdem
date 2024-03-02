@@ -38,6 +38,10 @@ struct Args {
     #[arg(long)]
     limit: Option<usize>,
 
+    /// don't add already-download videos to the backlog of those to fetch
+    #[arg(long)]
+    skip_downloaded: bool,
+
     /// only verify whether the files exist
     #[arg(long)]
     verify_only: bool,
@@ -71,6 +75,25 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
     let events_with_videos: Vec<Event> = if let Some(n) = args.limit {
         events_with_videos.into_iter().take(n).collect()
+    } else {
+        events_with_videos
+    };
+    let events_with_videos: Vec<Event> = if args.skip_downloaded {
+        info!(
+            "Checking {} events with video content, to see if they are already downloaded",
+            events_with_videos.len()
+        );
+        events_with_videos
+            .into_iter()
+            .filter(|e| {
+                if let Some(url) = e.mp4_video_link() {
+                    let video_path = video_path(&args.video_dir, &url);
+                    !video_path.exists()
+                } else {
+                    false
+                }
+            })
+            .collect()
     } else {
         events_with_videos
     };
