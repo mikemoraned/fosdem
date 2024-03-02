@@ -4,9 +4,10 @@ use std::{fs::File, path::PathBuf};
 
 use clap::Parser;
 
+use reqwest::StatusCode;
 use shared::cli::progress_bar;
 use shared::model::Event;
-use tracing::{debug, info};
+use tracing::{debug, info, warn};
 
 use url::Url;
 
@@ -118,8 +119,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     debug!("{:?} verify only, skipping", video_path);
                     video_paths_missing += 1;
                 } else {
-                    fetch_video(&url, &video_path).await?;
-                    progress.inc(1);
+                    if url_reachable(&url).await? {
+                        fetch_video(&url, &video_path).await?;
+                        progress.inc(1);
+                    }
                 }
             }
             video_paths.push(video_path);
@@ -224,6 +227,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
+}
+
+async fn url_reachable(url: &Url) -> Result<bool, Box<dyn std::error::Error>> {
+    let status = reqwest::get(url.to_string()).await?.status();
+    if status == StatusCode::OK {
+        Ok(true)
+    } else {
+        warn!("failed to get {}, status: {:?}", url, status);
+        Ok(false)
+    }
 }
 
 async fn extract_webvtt(
