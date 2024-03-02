@@ -37,6 +37,10 @@ struct Args {
     /// optionally restrict to only N videos
     #[arg(long)]
     limit: Option<usize>,
+
+    /// only verify whether the files exist
+    #[arg(long)]
+    verify_only: bool,
 }
 
 #[tokio::main]
@@ -50,6 +54,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Reading events from {} ... ", events_path.to_str().unwrap());
     let reader = BufReader::new(File::open(events_path)?);
     let events: Vec<Event> = serde_json::from_reader(reader)?;
+
+    if args.verify_only {
+        info!("Shall verify only");
+    }
 
     let events_with_videos: Vec<Event> = events
         .into_iter()
@@ -66,6 +74,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     } else {
         events_with_videos
     };
+    let events_with_videos_total = events_with_videos.len();
 
     info!(
         "Fetching {} events with video content, saving in {}",
@@ -74,17 +83,30 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     let progress = progress_bar(events_with_videos.len() as u64);
     let mut video_paths = vec![];
+    let mut video_paths_missing = 0;
     for event in events_with_videos {
         if let Some(url) = event.mp4_video_link() {
             let video_path = video_path(&args.video_dir, &url);
             if video_path.exists() {
                 debug!("{:?} already downloaded, skipping", video_path);
+                progress.inc(1);
             } else {
-                fetch_video(&url, &video_path).await?;
+                if args.verify_only {
+                    debug!("{:?} verify only, skipping", video_path);
+                    video_paths_missing += 1;
+                } else {
+                    fetch_video(&url, &video_path).await?;
+                    progress.inc(1);
+                }
             }
             video_paths.push(video_path);
         }
-        progress.inc(1);
+    }
+    if args.verify_only {
+        info!(
+            "Video paths missing: {}/{}",
+            video_paths_missing, events_with_videos_total
+        );
     }
 
     info!(
@@ -94,16 +116,28 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     let progress = progress_bar(video_paths.len() as u64);
     let mut audio_paths = vec![];
+    let mut audio_paths_missing = 0;
     for video_path in video_paths {
         let audio_path = audio_path(&args.audio_dir, &video_path);
         if audio_path.exists() {
             debug!("{:?} already extracted, skipping", audio_path);
+            progress.inc(1);
         } else {
-            extract_audio(&video_path, &audio_path).await?;
+            if args.verify_only {
+                debug!("{:?} verify only, skipping", audio_path);
+                audio_paths_missing += 1;
+            } else {
+                extract_audio(&video_path, &audio_path).await?;
+                progress.inc(1);
+            }
         }
         audio_paths.push(audio_path);
-
-        progress.inc(1);
+    }
+    if args.verify_only {
+        info!(
+            "Audio paths missing: {}/{}",
+            audio_paths_missing, events_with_videos_total
+        );
     }
 
     info!(
@@ -113,16 +147,28 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     let progress = progress_bar(audio_paths.len() as u64);
     let mut wav_paths = vec![];
+    let mut wav_paths_missing = 0;
     for audio_path in audio_paths {
         let wav_path = wav_path(&audio_path);
         if wav_path.exists() {
             debug!("{:?} already extracted, skipping", wav_path);
+            progress.inc(1);
         } else {
-            extract_wav(&audio_path, &wav_path).await?;
+            if args.verify_only {
+                debug!("{:?} verify only, skipping", wav_path);
+                wav_paths_missing += 1;
+            } else {
+                extract_wav(&audio_path, &wav_path).await?;
+                progress.inc(1);
+            }
         }
         wav_paths.push(wav_path);
-
-        progress.inc(1);
+    }
+    if args.verify_only {
+        info!(
+            "WAV paths missing: {}/{}",
+            wav_paths_missing, events_with_videos_total
+        );
     }
 
     info!(
@@ -131,15 +177,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         args.webvtt_dir.to_str().unwrap()
     );
     let progress = progress_bar(wav_paths.len() as u64);
+    let mut webvtt_paths_missing = 0;
     for wav_path in wav_paths {
         let webvtt_path = webvtt_path(&args.webvtt_dir, &wav_path);
         if webvtt_path.exists() {
             debug!("{:?} already extracted, skipping", webvtt_path);
+            progress.inc(1);
         } else {
-            extract_webvtt(&wav_path, &webvtt_path).await?;
+            if args.verify_only {
+                debug!("{:?} verify only, skipping", webvtt_path);
+                webvtt_paths_missing += 1;
+            } else {
+                extract_webvtt(&wav_path, &webvtt_path).await?;
+                progress.inc(1);
+            }
         }
-
-        progress.inc(1);
+    }
+    if args.verify_only {
+        info!(
+            "WEBVTT paths missing: {}/{}",
+            webvtt_paths_missing, events_with_videos_total
+        );
     }
 
     Ok(())
