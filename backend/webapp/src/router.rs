@@ -142,10 +142,13 @@ struct EventVideoParams {
 #[template(path = "event_video.html")]
 struct EventVideoTemplate {}
 
+#[derive(Deserialize, Debug)]
+struct EventIdParam(u32);
+
 #[tracing::instrument(skip(state))]
 async fn event_video(
     State(state): State<AppState>,
-    Valid(Query(params)): Valid<Query<EventVideoParams>>,
+    Path(param): Path<EventIdParam>,
 ) -> axum::response::Result<Html<String>> {
     let page = EventVideoTemplate {};
     let html = page.render().unwrap();
@@ -182,7 +185,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/search", get(search))
         .route("/connections/", get(related))
         .route("/next/", get(next))
-        .route("/video/", get(event_video))
+        .route("/video/:event_id", get(event_video))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state)
