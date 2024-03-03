@@ -6,6 +6,11 @@ pub const MAX_RELATED_EVENTS: u8 = 5;
 pub trait Queryable {
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>>;
 
+    async fn find_event_by_id(
+        &self,
+        event_id: u32,
+    ) -> Result<Option<Event>, Box<dyn std::error::Error>>;
+
     async fn find_related_events(
         &self,
         title: &str,

@@ -95,7 +95,7 @@
     - (/) uses ffmpeg to extract the audio from the video and convert it to wav, saved in `audio` dir
     - (/) runs whisper across it, to get a WebVTT file
   - (x) take all WebVTT file and extract text from them; add this to the content to what we use for embedding
-  - (x) add an endpoint for showing content of videos with associated WebVTT captions
+  - (/) add an endpoint for showing content of videos with associated WebVTT captions
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time

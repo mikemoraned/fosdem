@@ -140,7 +140,9 @@ struct EventVideoParams {
 
 #[derive(Template, Debug)]
 #[template(path = "event_video.html")]
-struct EventVideoTemplate {}
+struct EventVideoTemplate {
+    event: Event,
+}
 
 #[derive(Deserialize, Debug)]
 struct EventIdParam(u32);
@@ -148,11 +150,16 @@ struct EventIdParam(u32);
 #[tracing::instrument(skip(state))]
 async fn event_video(
     State(state): State<AppState>,
-    Path(param): Path<EventIdParam>,
+    Path(EventIdParam(event_id)): Path<EventIdParam>,
 ) -> axum::response::Result<Html<String>> {
-    let page = EventVideoTemplate {};
-    let html = page.render().unwrap();
-    Ok(Html(html))
+    match state.queryable.find_event_by_id(event_id).await {
+        Ok(Some(event)) => {
+            let page = EventVideoTemplate { event };
+            let html = page.render().unwrap();
+            Ok(Html(html))
+        }
+        _ => Err("failed".into()),
+    }
 }
 
 #[tracing::instrument(skip(state))]
@@ -204,7 +211,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/search", get(search))
         .route("/connections/", get(related))
         .route("/next/", get(next))
-        .route("/video/:event_id", get(event_video))
+        .route("/video/:event_id/", get(event_video))
         .route("/video/:event_id/captions.vtt", get(event_video_webvtt))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
