@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::{path::PathBuf, sync::Arc};
 
 use askama::Template;
 use axum::{
@@ -10,6 +10,7 @@ use axum::{
 };
 use axum_valid::Valid;
 
+use content::video_index::VideoIndex;
 use serde::Deserialize;
 use shared::{
     inmemory_openai::InMemoryOpenAIQueryable,
@@ -131,13 +132,22 @@ async fn next_after_event(
     }
 }
 
-pub async fn app_state(openai_api_key: &str, model_dir: &std::path::Path) -> AppState {
+pub async fn app_state(
+    openai_api_key: &str,
+    model_dir: &std::path::Path,
+    video_content_dir: &Option<PathBuf>,
+) -> AppState {
     AppState {
         queryable: Arc::new(
             InMemoryOpenAIQueryable::connect(model_dir, openai_api_key)
                 .await
                 .unwrap(),
         ),
+        video_index: Arc::new(if let Some(base_path) = video_content_dir {
+            VideoIndex::from_content_area(base_path).unwrap()
+        } else {
+            VideoIndex::empty_index()
+        }),
     }
 }
 
@@ -146,8 +156,6 @@ pub async fn router(state: AppState) -> Router {
         .allow_methods([Method::GET])
         // allow requests from any origin
         .allow_origin(Any);
-
-    
 
     Router::new()
         .route("/", get(index))

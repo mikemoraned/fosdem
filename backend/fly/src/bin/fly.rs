@@ -18,6 +18,10 @@ struct Args {
     /// path to directory where CSV files are kept
     #[arg(short, long)]
     model_dir: PathBuf,
+
+    /// include video content at path
+    #[arg(long)]
+    include_video_content: Option<PathBuf>,
 }
 
 #[tokio::main]
@@ -34,7 +38,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
-    let app_state = app_state(&openai_api_key, &args.model_dir).await;
+    let app_state = app_state(
+        &openai_api_key,
+        &args.model_dir,
+        &args.include_video_content,
+    )
+    .await;
 
     let router = router(app_state).await;
     let app = router.route("/health", get(health));

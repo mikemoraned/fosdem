@@ -2532,6 +2532,7 @@ dependencies = [
  "axum-valid",
  "chrono",
  "clap",
+ "content",
  "dotenvy",
  "indicatif",
  "serde",

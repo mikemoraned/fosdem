@@ -8,10 +8,12 @@ use std::{
 use regex::Regex;
 use tracing::info;
 
+#[derive(Debug)]
 pub struct VideoIndex {
     entries: HashMap<u32, VideoIndexEntry>,
 }
 
+#[derive(Debug)]
 pub struct VideoIndexEntry {
     webvtt: webvtt::File,
 }
