@@ -132,6 +132,26 @@ async fn next_after_event(
     }
 }
 
+#[derive(Deserialize, Validate, Debug)]
+struct EventVideoParams {
+    #[validate(range(min = 1, max = 20000))]
+    id: Option<u32>,
+}
+
+#[derive(Template, Debug)]
+#[template(path = "event_video.html")]
+struct EventVideoTemplate {}
+
+#[tracing::instrument(skip(state))]
+async fn event_video(
+    State(state): State<AppState>,
+    Valid(Query(params)): Valid<Query<EventVideoParams>>,
+) -> axum::response::Result<Html<String>> {
+    let page = EventVideoTemplate {};
+    let html = page.render().unwrap();
+    Ok(Html(html))
+}
+
 pub async fn app_state(
     openai_api_key: &str,
     model_dir: &std::path::Path,
@@ -162,6 +182,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/search", get(search))
         .route("/connections/", get(related))
         .route("/next/", get(next))
+        .route("/video/", get(event_video))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state)
