@@ -15,7 +15,7 @@ pub struct VideoIndex {
 
 #[derive(Debug)]
 pub struct VideoIndexEntry {
-    webvtt: webvtt::File,
+    webvtt: subtp::vtt::WebVtt,
 }
 
 impl VideoIndex {
@@ -41,7 +41,7 @@ impl VideoIndex {
                     let mut file = File::open(entry.path())?;
                     let mut content = String::new();
                     file.read_to_string(&mut content)?;
-                    let webvtt = webvtt::parse_file(&content)?;
+                    let webvtt = subtp::vtt::WebVtt::parse(&content)?;
                     entries.insert(event_id, VideoIndexEntry { webvtt });
                     video_content_count += 1;
                 }
@@ -51,7 +51,7 @@ impl VideoIndex {
         Ok(VideoIndex { entries })
     }
 
-    pub fn webvtt_for_event_id(&self, event_id: u32) -> Option<webvtt::File> {
+    pub fn webvtt_for_event_id(&self, event_id: u32) -> Option<subtp::vtt::WebVtt> {
         if let Some(entry) = self.entries.get(&event_id) {
             Some(entry.webvtt.clone())
         } else {

@@ -3,8 +3,8 @@ use std::{path::PathBuf, sync::Arc};
 use askama::Template;
 use axum::{
     extract::{Path, Query, State},
-    http::Method,
-    response::Html,
+    http::{header, Method, StatusCode},
+    response::{Html, IntoResponse},
     routing::get,
     Router,
 };
@@ -155,6 +155,25 @@ async fn event_video(
     Ok(Html(html))
 }
 
+#[tracing::instrument(skip(state))]
+async fn event_video_webvtt(
+    State(state): State<AppState>,
+    Path(EventIdParam(event_id)): Path<EventIdParam>,
+) -> impl IntoResponse {
+    match state.video_index.webvtt_for_event_id(event_id) {
+        Some(webvtt) => (
+            StatusCode::OK,
+            [(header::CONTENT_TYPE, "text/vtt")],
+            webvtt.render(),
+        ),
+        None => (
+            StatusCode::NOT_FOUND,
+            [(header::CONTENT_TYPE, "text/plain")],
+            "missing".into(),
+        ),
+    }
+}
+
 pub async fn app_state(
     openai_api_key: &str,
     model_dir: &std::path::Path,
@@ -186,6 +205,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/connections/", get(related))
         .route("/next/", get(next))
         .route("/video/:event_id", get(event_video))
+        .route("/video/:event_id/captions.vtt", get(event_video_webvtt))
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state)

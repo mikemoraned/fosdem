@@ -563,12 +563,12 @@ dependencies = [
  "serde",
  "serde_json",
  "shared",
+ "subtp",
  "tiktoken-rs",
  "tokio",
  "tracing",
  "tracing-subscriber",
  "url",
- "webvtt",
  "xmlserde",
  "xmlserde_derives",
 ]
@@ -1543,6 +1543,33 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c"
 
 [[package]]
+name = "peg"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "400bcab7d219c38abf8bd7cc2054eb9bbbd4312d66f6a5557d572a203f646f61"
+dependencies = [
+ "peg-macros",
+ "peg-runtime",
+]
+
+[[package]]
+name = "peg-macros"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "46e61cce859b76d19090f62da50a9fe92bab7c2a5f09e183763559a2ac392c90"
+dependencies = [
+ "peg-runtime",
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
+name = "peg-runtime"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "36bae92c60fa2398ce4678b98b2c4b5a7c61099961ca1fa305aec04a9ad28922"
+
+[[package]]
 name = "percent-encoding"
 version = "2.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1992,6 +2019,16 @@ name = "strsim"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
+
+[[package]]
+name = "subtp"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0047fd0d9ecdd63a24dfa175437888045dafaecfb3487c7c84f52ef7483d08a6"
+dependencies = [
+ "peg",
+ "thiserror",
+]
 
 [[package]]
 name = "syn"
@@ -2545,15 +2582,6 @@ dependencies = [
  "unicode-segmentation",
  "url",
  "validator",
-]
-
-[[package]]
-name = "webvtt"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd95c477b2f3ea4a8e0a9325f22c809e75ddf72bb4e64779923603fd921093f9"
-dependencies = [
- "thiserror",
 ]
 
 [[package]]

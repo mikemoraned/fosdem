@@ -12,6 +12,7 @@ use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingRespon
 
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
+use subtp::vtt::VttBlock;
 use tracing::{debug, info};
 
 /// Fetch Embeddings
@@ -118,7 +119,8 @@ async fn get_embedding(
             .blocks
             .iter()
             .map(|b| match b {
-                webvtt::Block::Cue(cue) => cue.text.clone(),
+                VttBlock::Que(cue) => cue.payload.join("\n"),
+                _ => "".into(),
             })
             .collect();
         block_content.dedup();
