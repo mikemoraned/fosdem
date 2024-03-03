@@ -39,9 +39,9 @@ struct Args {
     #[arg(long)]
     limit: Option<usize>,
 
-    /// don't add already-download videos to the backlog of those to fetch
+    /// skip checking those where no work is required
     #[arg(long)]
-    skip_downloaded: bool,
+    skip_completed: bool,
 
     /// only verify whether the files exist
     #[arg(long)]
@@ -79,9 +79,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     } else {
         events_with_videos
     };
-    let events_with_videos: Vec<Event> = if args.skip_downloaded {
+    let events_with_videos: Vec<Event> = if args.skip_completed {
         info!(
-            "Checking {} events with video content, to see if they are already downloaded",
+            "Checking {} events with video content, to see if any work is required",
             events_with_videos.len()
         );
         events_with_videos
@@ -89,7 +89,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .filter(|e| {
                 if let Some(url) = e.mp4_video_link() {
                     let video_path = video_path(&args.video_dir, &url);
-                    !video_path.exists()
+                    let audio_path = audio_path(&args.audio_dir, &video_path);
+                    let wav_path = wav_path(&audio_path);
+                    let webvtt_path = webvtt_path(&args.webvtt_dir, &wav_path);
+                    let all_completed = video_path.exists()
+                        && audio_path.exists()
+                        && wav_path.exists()
+                        && webvtt_path.exists();
+                    !all_completed
                 } else {
                     false
                 }
@@ -114,18 +121,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             if video_path.exists() {
                 debug!("{:?} already downloaded, skipping", video_path);
                 progress.inc(1);
+                video_paths.push(video_path);
             } else {
                 if args.verify_only {
                     debug!("{:?} verify only, skipping", video_path);
                     video_paths_missing += 1;
+                    video_paths.push(video_path);
                 } else {
                     if url_reachable(&url).await? {
                         fetch_video(&url, &video_path).await?;
                         progress.inc(1);
+                        video_paths.push(video_path);
                     }
                 }
             }
-            video_paths.push(video_path);
         }
     }
     if args.verify_only {
