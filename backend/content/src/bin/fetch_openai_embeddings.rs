@@ -1,14 +1,15 @@
 use std::collections::HashMap;
-use std::fs::{DirEntry, File};
+use std::fs::File;
 use std::io::{BufReader, BufWriter, Read, Write};
 use std::path::PathBuf;
 
 use clap::Parser;
 
+use content::video_index::VideoIndex;
 use openai_dive::v1::api::Client;
 
 use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
-use regex::Regex;
+
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
 use tracing::{debug, info};
@@ -66,28 +67,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         info!("Read {} events with slide content ", slide_content_count);
     }
 
-    let mut video_content_for_event: HashMap<u32, webvtt::File> = HashMap::new();
-    if let Some(base_path) = args.include_video_content {
-        info!("Fetching video content from {:?} ... ", base_path);
-        let mut video_content_count = 0;
-        let dir_entries: Result<Vec<DirEntry>, _> = std::fs::read_dir(base_path)?.collect();
-        let file_regex = Regex::new(r"fosdem-2024-(?<event_id>\d+)-")?;
-        for entry in dir_entries? {
-            let file_name = entry.file_name();
-            if let Some(c) = file_regex.captures(file_name.to_str().unwrap()) {
-                if let Some(m) = c.name("event_id") {
-                    let event_id: u32 = m.as_str().parse().unwrap();
-                    let mut file = File::open(entry.path())?;
-                    let mut content = String::new();
-                    file.read_to_string(&mut content)?;
-                    let webvtt = webvtt::parse_file(&content)?;
-                    video_content_for_event.insert(event_id, webvtt);
-                    video_content_count += 1;
-                }
-            }
-        }
-        info!("Read {} events with video content ", video_content_count);
-    }
+    let video_index = if let Some(base_path) = args.include_video_content {
+        VideoIndex::from_content_area(&base_path)?
+    } else {
+        VideoIndex::empty_index()
+    };
 
     let embedding_path = args.model_dir.join("embeddings").with_extension("json");
 
@@ -98,13 +82,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
-        let response = get_embedding(
-            &client,
-            &event,
-            &slide_content_for_event,
-            &video_content_for_event,
-        )
-        .await?;
+        let response =
+            get_embedding(&client, &event, &slide_content_for_event, &video_index).await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response),
@@ -125,7 +104,7 @@ async fn get_embedding(
     client: &Client,
     event: &Event,
     slide_content_for_event: &HashMap<u32, String>,
-    video_content_for_event: &HashMap<u32, webvtt::File>,
+    video_index: &VideoIndex,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
     let mut preferred_input = String::new();
     use std::fmt::Write;
@@ -134,7 +113,7 @@ async fn get_embedding(
     if let Some(slide_content) = slide_content_for_event.get(&event.id) {
         writeln!(preferred_input, "Slides:{}", slide_content)?;
     }
-    if let Some(video_content) = video_content_for_event.get(&event.id) {
+    if let Some(video_content) = video_index.webvtt_for_event_id(event.id) {
         let mut block_content: Vec<_> = video_content
             .blocks
             .iter()
