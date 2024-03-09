@@ -88,13 +88,13 @@
   - (/) switch to writing/reading embeddings as json files via serde
   - (/) warnings / clippy pass
   - (/) update README.md to capture current impl
-- (x) video search
+- (/) video search
   - (/) update schedule to include video links
   - (/) write driver cli that:
     - (/) downloads mp4 to a `video` dir
     - (/) uses ffmpeg to extract the audio from the video and convert it to wav, saved in `audio` dir
     - (/) runs whisper across it, to get a WebVTT file
-  - (x) take all WebVTT file and extract text from them; add this to the content to what we use for embedding
+  - (/) take all WebVTT file and extract text from them; add this to the content to what we use for embedding
   - (/) add an endpoint for showing content of videos with associated WebVTT captions
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
