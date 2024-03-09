@@ -96,6 +96,10 @@
     - (/) runs whisper across it, to get a WebVTT file
   - (/) take all WebVTT file and extract text from them; add this to the content to what we use for embedding
   - (/) add an endpoint for showing content of videos with associated WebVTT captions
+- (x) investigate higher latency in asia regions
+  - context:
+    - as of 9th Mar, I have 5 machine instances in fly.io, spread across 5 regions: LHR, LAX, NRT, SYD and SIN
+    - however, looking in https://updown.io/vrp1, which is the URL https://fosdem.houseofmoran.io/search?q=Ceph&limit=20, the latency for Asian regions seems to be 1.1s or more, whereas other regions are 723ms or less; see investigations/latency_Mar_2024/fosdem-search.png
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
