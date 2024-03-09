@@ -5,3 +5,4 @@ target/*
 Dockerfile*
 
 content/data/slides/*
+content/data/webvtt/*

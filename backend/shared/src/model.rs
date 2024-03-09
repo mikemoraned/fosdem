@@ -25,11 +25,18 @@ pub struct Event {
     pub r#abstract: String,
     pub slides: Vec<Url>,
     pub presenters: Vec<Person>,
+    pub links: Vec<Link>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Person {
     pub id: u32,
+    pub name: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub struct Link {
+    pub url: Url,
     pub name: String,
 }
 
@@ -70,6 +77,16 @@ impl Event {
         } else {
             self.room.to_lowercase().replace('.', "")
         }
+    }
+
+    pub fn mp4_video_link(&self) -> Option<Url> {
+        let video_links: Vec<Url> = self
+            .links
+            .iter()
+            .filter(|l| l.name == "Video recording (mp4)" && l.url.to_string().ends_with(".mp4"))
+            .map(|l| l.url.clone())
+            .collect();
+        video_links.first().cloned()
     }
 }
 

@@ -32,6 +32,16 @@ impl Queryable for InMemoryOpenAIQueryable {
         Ok(self.events.iter().map(|e| e.event.clone()).collect())
     }
 
+    async fn find_event_by_id(
+        &self,
+        event_id: u32,
+    ) -> Result<Option<Event>, Box<dyn std::error::Error>> {
+        Ok(match self.events.iter().find(|e| e.event.id == event_id) {
+            Some(e) => Some(e.event.clone()),
+            None => None,
+        })
+    }
+
     async fn find_related_events(
         &self,
         title: &str,

@@ -15,6 +15,9 @@
         {% if event.slides.len() > 0 %}
             , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
         {% endif %}
+        {% if let Some(url) = event.mp4_video_link() %}
+        , <a href="{{ url }}"><span><i class="fa-solid fa-video"></i> video</span></a>
+        {% endif %}
     </p>
 </div>
 {% endmacro %}

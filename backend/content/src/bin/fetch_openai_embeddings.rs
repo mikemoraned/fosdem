@@ -1,14 +1,19 @@
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Read, Write};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use clap::Parser;
+
+use content::video_index::VideoIndex;
 use openai_dive::v1::api::Client;
 
 use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
+
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
+use subtp::vtt::VttBlock;
+use tracing::{debug, info};
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
@@ -20,11 +25,17 @@ struct Args {
 
     /// include slide content at path
     #[arg(long)]
-    include_slide_content: Option<String>,
+    include_slide_content: Option<PathBuf>,
+
+    /// include video content at path
+    #[arg(long)]
+    include_video_content: Option<PathBuf>,
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    tracing_subscriber::fmt::init();
+
     dotenvy::dotenv()?;
     let args = Args::parse();
 
@@ -36,15 +47,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let events_path = args.model_dir.join("events").with_extension("json");
 
-    print!("Reading events from {} ... ", events_path.to_str().unwrap());
+    info!("Reading events from {} ... ", events_path.to_str().unwrap());
     let reader = BufReader::new(File::open(events_path)?);
     let events: Vec<Event> = serde_json::from_reader(reader)?;
-    println!("done ");
 
     let mut slide_content_for_event: HashMap<u32, String> = HashMap::new();
-    if let Some(slides_content_path) = args.include_slide_content {
-        println!("Fetching slide content from {} ... ", slides_content_path);
-        let base_path = Path::new(&slides_content_path);
+    if let Some(base_path) = args.include_slide_content {
+        info!("Fetching slide content from {:?} ... ", base_path);
         let mut slide_content_count = 0;
         for event in events.iter() {
             let slide_content_path = base_path.join(event.id.to_string()).with_extension("txt");
@@ -56,19 +65,26 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 slide_content_count += 1;
             }
         }
-        println!("Read {} events with slide content ", slide_content_count);
+        info!("Read {} events with slide content ", slide_content_count);
     }
+
+    let video_index = if let Some(base_path) = args.include_video_content {
+        VideoIndex::from_content_area(&base_path)?
+    } else {
+        VideoIndex::empty_index()
+    };
 
     let embedding_path = args.model_dir.join("embeddings").with_extension("json");
 
-    println!(
+    info!(
         "Looking up and writing embeddings to {} ... ",
         embedding_path.to_str().unwrap()
     );
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
-        let response = get_embedding(&client, &event, &slide_content_for_event).await?;
+        let response =
+            get_embedding(&client, &event, &slide_content_for_event, &video_index).await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response),
@@ -89,12 +105,29 @@ async fn get_embedding(
     client: &Client,
     event: &Event,
     slide_content_for_event: &HashMap<u32, String>,
+    video_index: &VideoIndex,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
-    let preferred_input = if let Some(slide_content) = slide_content_for_event.get(&event.id) {
-        format!("{}\nSlides:{}", format_basic_input(event), slide_content)
-    } else {
-        format_basic_input(event)
-    };
+    let mut preferred_input = String::new();
+    use std::fmt::Write;
+
+    writeln!(preferred_input, "{}", format_basic_input(event))?;
+    if let Some(slide_content) = slide_content_for_event.get(&event.id) {
+        writeln!(preferred_input, "Slides:{}", slide_content)?;
+    }
+    if let Some(video_content) = video_index.webvtt_for_event_id(event.id) {
+        let mut block_content: Vec<_> = video_content
+            .blocks
+            .iter()
+            .map(|b| match b {
+                VttBlock::Que(cue) => cue.payload.join("\n"),
+                _ => "".into(),
+            })
+            .collect();
+        block_content.dedup();
+        debug!("[{}] blocks: {:?}", event.id, block_content);
+        writeln!(preferred_input, "Subtitles:{}", block_content.join("\n"))?;
+    }
+
     let trimmed_input = trim_input(&preferred_input);
 
     let parameters = EmbeddingParameters {

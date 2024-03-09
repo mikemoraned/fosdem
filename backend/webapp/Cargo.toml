@@ -21,3 +21,4 @@ serde_json = { workspace = true }
 url = { workspace = true }
 chrono = { workspace = true }
 shared = { path = "../shared" }
+content = { path = "../content" }
