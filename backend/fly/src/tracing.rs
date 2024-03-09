@@ -40,12 +40,10 @@ pub fn init_from_environment() -> Result<(), Box<dyn std::error::Error>> {
 
     let subscriber = Registry::default().with(telemetry);
 
-    tracing::subscriber::with_default(subscriber, || {
-        let root = span!(tracing::Level::TRACE, "init_from_environment");
-        let _enter = root.enter();
-
-        info!("tracing initialised");
-    });
+    tracing::subscriber::set_global_default(subscriber)?;
+    let root = span!(tracing::Level::TRACE, "init_from_environment");
+    let _enter = root.enter();
+    info!("tracing initialised globally");
 
     Ok(())
 }
