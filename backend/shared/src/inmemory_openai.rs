@@ -28,10 +28,12 @@ struct EmbeddedEvent {
 }
 
 impl Queryable for InMemoryOpenAIQueryable {
+    #[tracing::instrument(skip(self))]
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         Ok(self.events.iter().map(|e| e.event.clone()).collect())
     }
 
+    #[tracing::instrument(skip(self))]
     async fn find_event_by_id(
         &self,
         event_id: u32,
@@ -42,6 +44,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         })
     }
 
+    #[tracing::instrument(skip(self))]
     async fn find_related_events(
         &self,
         title: &str,
@@ -71,6 +74,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         Ok(entries)
     }
 
+    #[tracing::instrument(skip(self))]
     async fn search(
         &self,
         query: &str,
@@ -165,6 +169,7 @@ impl InMemoryOpenAIQueryable {
 }
 
 impl InMemoryOpenAIQueryable {
+    #[tracing::instrument(skip(self))]
     fn get_event_context(
         &self,
         context: NextEventsContext,
@@ -213,6 +218,7 @@ impl InMemoryOpenAIQueryable {
         }
     }
 
+    #[tracing::instrument(skip(self))]
     fn find_nearest_event(&self, now: &NaiveDateTime, all_events: &[Event]) -> Option<Event> {
         let mut nearest = None;
         for event in all_events {
@@ -230,6 +236,7 @@ impl InMemoryOpenAIQueryable {
         nearest
     }
 
+    #[tracing::instrument(skip(self))]
     fn find_overlapping_events(
         &self,
         begin: NaiveDateTime,
