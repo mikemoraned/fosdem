@@ -2,6 +2,7 @@ use std::path::PathBuf;
 
 use axum::{http::StatusCode, routing::get};
 use clap::Parser;
+use fly::tracing::init_from_environment;
 use shared::env::load_secret;
 use tokio::net::TcpListener;
 use tracing::{info, warn};
@@ -22,20 +23,29 @@ struct Args {
     /// include video content at path
     #[arg(long)]
     include_video_content: Option<PathBuf>,
+
+    /// enable opentelemetry
+    #[arg(long)]
+    opentelemetry: bool,
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::fmt::init();
-
     match dotenvy::dotenv() {
-        Ok(path) => info!("Loaded env file at {:?}", path),
-        Err(e) => warn!(
+        Ok(path) => println!("Loaded env file at {:?}", path),
+        Err(e) => println!(
             "Failed to load env file, will use external env; error: {:?}",
             e
         ),
     }
+
     let args = Args::parse();
+
+    if args.opentelemetry {
+        init_from_environment()?;
+    } else {
+        tracing_subscriber::fmt::init();
+    }
 
     let openai_api_key = load_secret("OPENAI_API_KEY");
     let app_state = app_state(
