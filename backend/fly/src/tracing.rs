@@ -9,7 +9,7 @@ use opentelemetry_semantic_conventions as semcov;
 use shared::env::load_secret;
 use tracing::{debug, info, span};
 use tracing_subscriber::layer::SubscriberExt;
-use tracing_subscriber::Registry;
+use tracing_subscriber::{fmt, EnvFilter, Registry};
 
 pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::Error>> {
     let honeycomb_api_key = load_secret("HONEYCOMB_API_KEY")?;
@@ -52,9 +52,17 @@ pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::E
         )
         .install_batch(runtime::Tokio)?;
 
-    let telemetry = tracing_opentelemetry::layer().with_tracer(tracer);
+    let telemetry_layer = tracing_opentelemetry::layer().with_tracer(tracer);
 
-    let subscriber = Registry::default().with(telemetry);
+    let fmt_layer = fmt::layer().with_target(false);
+    let filter_layer = EnvFilter::try_from_default_env()
+        .or_else(|_| EnvFilter::try_new("info"))
+        .unwrap();
+
+    let subscriber = Registry::default()
+        .with(telemetry_layer)
+        .with(filter_layer)
+        .with(fmt_layer);
 
     tracing::subscriber::set_global_default(subscriber)?;
     let root = span!(tracing::Level::TRACE, "init_from_environment");
