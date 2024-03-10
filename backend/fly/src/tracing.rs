@@ -6,14 +6,14 @@ use opentelemetry_otlp::WithExportConfig;
 use opentelemetry_sdk::propagation::TraceContextPropagator;
 use opentelemetry_sdk::{runtime, trace as sdktrace, Resource};
 use opentelemetry_semantic_conventions as semcov;
-use shared::env::load_secret;
+use shared::env::{load_public, load_secret};
 use tracing::{debug, info, span};
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::{fmt, EnvFilter, Registry};
 
 pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::Error>> {
     let honeycomb_api_key = load_secret("HONEYCOMB_API_KEY")?;
-    let tracing_exporter_http_endpoint = dotenvy::var("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")?;
+    let tracing_exporter_http_endpoint = load_public("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")?;
     debug!("using '{}' as endpoint", tracing_exporter_http_endpoint);
 
     let headers = HashMap::from([("x-honeycomb-team".into(), honeycomb_api_key.into())]);
