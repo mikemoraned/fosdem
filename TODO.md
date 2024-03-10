@@ -102,10 +102,13 @@
     - however, looking in https://updown.io/vrp1, which is the URL https://fosdem.houseofmoran.io/search?q=Ceph&limit=20, the latency for Asian regions seems to be 1.1s or more, whereas other regions are 723ms or less; see investigations/latency_Mar_2024/fosdem-search.png
   - (/) change update frequency to once every 15s (from once a minute) to get more data
   - (x) setup opentelemetry to send to honeycomb.io from fly.io
-    - (x) ensure it automatically runs in different regions
+    - (/) ensure it automatically runs in different regions
       - honeycomb may require different endpoints (US vs EU) to be contacted when in different fly.io regions
-    - (x) register local/staging/prod as environment attribute
-    - (x) add region as an attribute
+      - seems to work fine when run in `fra` so will just continue to use the US instance
+    - (/) register local/staging/prod as environment attribute
+    - (/) add region as an attribute
+    - (x) ensure we log to console _and_ to opentelemetry
+    - (x) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
