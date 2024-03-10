@@ -109,7 +109,7 @@
     - (/) add region as an attribute
     - (/) ensure we log to console _and_ to opentelemetry
     - (/) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
-  - (x) deploy to prod and monitor for a few days
+  - (/) deploy to prod and monitor for a few days
   - (x) try some (safe) experiments:
     - (x) switch all machines to be in US, on assumption it is the hop to OpenAI which is the slow part
     - apply some speedups on top of OpenAI call:
