@@ -18,6 +18,22 @@ pub fn init_from_environment() -> Result<(), Box<dyn std::error::Error>> {
 
     let headers = HashMap::from([("x-honeycomb-team".into(), honeycomb_api_key.into())]);
     let resource = Resource::new([KeyValue::new(semcov::resource::SERVICE_NAME, "fosdem2024")]);
+    let resource = if let Ok(region) = dotenvy::var("FLY_REGION") {
+        resource.merge(&Resource::new([KeyValue::new(
+            semcov::resource::CLOUD_REGION,
+            region,
+        )]))
+    } else {
+        resource
+    };
+    let resource = if let Ok(env) = dotenvy::var("OTEL_DEPLOYMENT_ENVIRONMENT") {
+        resource.merge(&Resource::new([KeyValue::new(
+            semcov::resource::DEPLOYMENT_ENVIRONMENT,
+            env,
+        )]))
+    } else {
+        resource
+    };
 
     global::set_text_map_propagator(TraceContextPropagator::new());
 

@@ -5,7 +5,7 @@ use clap::Parser;
 use fly::tracing::init_from_environment;
 use shared::env::load_secret;
 use tokio::net::TcpListener;
-use tracing::{info, warn};
+use tracing::info;
 use webapp::router::{app_state, router};
 
 async fn health() -> StatusCode {
