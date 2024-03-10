@@ -34,7 +34,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     dotenvy::dotenv()?;
     let args = Args::parse();
 
-    let openai_api_key = load_secret("OPENAI_API_KEY");
+    let openai_api_key = load_secret("OPENAI_API_KEY")?;
 
     info!("Loading all Events and converting to Nodes");
     let queryable = InMemoryOpenAIQueryable::connect(&args.model_dir, &openai_api_key).await?;

@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use axum::{http::StatusCode, routing::get};
 use clap::Parser;
-use fly::tracing::init_from_environment;
+use fly::tracing::{init_opentelemetry_from_environment, init_safe_default_from_environment};
 use shared::env::load_secret;
 use tokio::net::TcpListener;
 use tracing::info;
@@ -42,12 +42,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
     if args.opentelemetry {
-        init_from_environment()?;
+        match init_opentelemetry_from_environment() {
+            Ok(_) => {
+                info!("Opentelemetry initialised")
+            }
+            Err(e) => {
+                println!(
+                    "Failed to initialise Opentelemetry ('{:?}'), falling back to default",
+                    e
+                );
+                init_safe_default_from_environment()?;
+            }
+        }
     } else {
-        tracing_subscriber::fmt::init();
+        init_safe_default_from_environment()?;
     }
 
-    let openai_api_key = load_secret("OPENAI_API_KEY");
+    let openai_api_key = load_secret("OPENAI_API_KEY")?;
     let app_state = app_state(
         &openai_api_key,
         &args.model_dir,

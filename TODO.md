@@ -108,7 +108,7 @@
     - (/) register local/staging/prod as environment attribute
     - (/) add region as an attribute
     - (x) ensure we log to console _and_ to opentelemetry
-    - (x) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
+    - (/) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time

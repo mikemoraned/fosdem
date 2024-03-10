@@ -11,8 +11,8 @@ use tracing::{debug, info, span};
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::Registry;
 
-pub fn init_from_environment() -> Result<(), Box<dyn std::error::Error>> {
-    let honeycomb_api_key = load_secret("HONEYCOMB_API_KEY");
+pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::Error>> {
+    let honeycomb_api_key = load_secret("HONEYCOMB_API_KEY")?;
     let tracing_exporter_http_endpoint = dotenvy::var("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")?;
     debug!("using '{}' as endpoint", tracing_exporter_http_endpoint);
 
@@ -60,6 +60,12 @@ pub fn init_from_environment() -> Result<(), Box<dyn std::error::Error>> {
     let root = span!(tracing::Level::TRACE, "init_from_environment");
     let _enter = root.enter();
     info!("tracing initialised globally");
+
+    Ok(())
+}
+
+pub fn init_safe_default_from_environment() -> Result<(), Box<dyn std::error::Error>> {
+    tracing_subscriber::fmt::init();
 
     Ok(())
 }
