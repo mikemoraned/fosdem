@@ -1,8 +1,6 @@
 use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
-use futures::future::join_all;
-
 use openai_dive::v1::api::Client;
 
 use tracing::debug;
@@ -100,17 +98,14 @@ impl Queryable for InMemoryOpenAIQueryable {
 
         if find_related {
             debug!("Running query to find related events");
-            let jobs = entries.into_iter().map(|mut entry| async {
+            let mut entries_with_related = vec![];
+            for mut entry in entries.into_iter() {
                 entry.related = Some(
                     self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
-                        .await
-                        .unwrap_or_else(|_| {
-                            panic!("find related items for {}", &entry.event.title)
-                        }),
+                        .await?,
                 );
-                entry
-            });
-            let entries_with_related = join_all(jobs).await;
+                entries_with_related.push(entry);
+            }
             debug!(
                 "Found {} Events, with related Events",
                 entries_with_related.len()
