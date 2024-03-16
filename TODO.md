@@ -99,7 +99,7 @@
 - (x) investigate higher latency in asia regions
   - context:
     - as of 9th Mar, I have 5 machine instances in fly.io, spread across 5 regions: LHR, LAX, NRT, SYD and SIN
-    - however, looking in https://updown.io/vrp1, which is the URL https://fosdem.houseofmoran.io/search?q=Ceph&limit=20, the latency for Asian regions seems to be 1.1s or more, whereas other regions are 723ms or less; see investigations/latency_Mar_2024/fosdem-search.png
+    - however, looking in https://updown.io/vrp1, which is the URL https://fosdem.houseofmoran.io/search?q=Ceph&limit=20, the latency for Asian regions seems to be 1.1s or more, whereas other regions are 723ms or less; see investigations/latency_Mar_2024/fosdem-search-20240309.png
   - (/) change update frequency of updown.io check to once every 15s (from once a minute) to get more data
   - (/) setup opentelemetry to send to honeycomb.io from fly.io
     - (/) ensure it automatically runs in different regions
@@ -111,7 +111,9 @@
     - (/) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
   - (/) deploy to prod and monitor for a few days
   - (x) try some (safe) experiments:
-    - (x) switch all machines to be in US, on assumption it is the hop to OpenAI which is the slow part
+    - (/) switch all machines to be in US (lax), on assumption it is the hop to OpenAI which is the slow part
+      - I tried this and it made latencies worse; see investigations/latency_Mar_2024/fosdem-search-20240316.png
+        - (/) reverted to having a single machine in each of sin,syd,nrt,lhr,lax
     - apply some speedups on top of OpenAI call:
       - (x) from traces, it looks like dispatching `find_related_events` async on separate threads doesn't have much benefit as traces still look like a waterfall. So, switch to just doing in serial on single thread to save dispatch/sync overhead
   - (x) revert updown.io check to once a minute (to save on credits)
