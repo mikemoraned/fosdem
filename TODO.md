@@ -114,6 +114,7 @@
     - (/) switch all machines to be in US (lax), on assumption it is the hop to OpenAI which is the slow part
       - I tried this and it made latencies worse; see investigations/latency_Mar_2024/fosdem-search-20240316.png
         - (/) reverted to having a single machine in each of sin,syd,nrt,lhr,lax
+          - it's not exactly the same as before, but now closer: investigations/latency_Mar_2024/fosdem-search-20240318.png
     - apply some speedups on top of OpenAI call:
       - (x) from traces, it looks like dispatching `find_related_events` async on separate threads doesn't have much benefit as traces still look like a waterfall. So, switch to just doing in serial on single thread to save dispatch/sync overhead
   - (x) revert updown.io check to once a minute (to save on credits)
