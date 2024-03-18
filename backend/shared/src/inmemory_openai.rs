@@ -3,7 +3,7 @@ use std::path::Path;
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use openai_dive::v1::api::Client;
 
-use tracing::debug;
+use tracing::{debug, span};
 
 use crate::model::{Event, NextEvents, NextEventsContext, OpenAIVector, SearchItem};
 use crate::queryable::Queryable;
@@ -97,6 +97,9 @@ impl Queryable for InMemoryOpenAIQueryable {
         entries.truncate(limit as usize);
 
         if find_related {
+            let span = span!(tracing::Level::TRACE, "find_related");
+            let _enter = span.enter();
+
             debug!("Running query to find related events");
             let mut entries_with_related = vec![];
             for mut entry in entries.into_iter() {
