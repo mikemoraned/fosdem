@@ -18,22 +18,13 @@ pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::E
 
     let headers = HashMap::from([("x-honeycomb-team".into(), honeycomb_api_key.into())]);
     let resource = Resource::new([KeyValue::new(semcov::resource::SERVICE_NAME, "fosdem2024")]);
-    let resource = if let Ok(region) = dotenvy::var("FLY_REGION") {
-        resource.merge(&Resource::new([KeyValue::new(
-            semcov::resource::CLOUD_REGION,
-            region,
-        )]))
-    } else {
-        resource
-    };
-    let resource = if let Ok(env) = dotenvy::var("OTEL_DEPLOYMENT_ENVIRONMENT") {
-        resource.merge(&Resource::new([KeyValue::new(
-            semcov::resource::DEPLOYMENT_ENVIRONMENT,
-            env,
-        )]))
-    } else {
-        resource
-    };
+    let resource =
+        add_optional_resource_from_env(resource, "FLY_REGION", semcov::resource::CLOUD_REGION);
+    let resource = add_optional_resource_from_env(
+        resource,
+        "OTEL_DEPLOYMENT_ENVIRONMENT",
+        semcov::resource::DEPLOYMENT_ENVIRONMENT,
+    );
 
     global::set_text_map_propagator(TraceContextPropagator::new());
 
@@ -70,6 +61,18 @@ pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::E
     info!("tracing initialised globally");
 
     Ok(())
+}
+
+fn add_optional_resource_from_env(
+    resource: Resource,
+    env_variable_name: &'static str,
+    semantic_name: &'static str,
+) -> Resource {
+    if let Ok(value) = dotenvy::var(env_variable_name) {
+        resource.merge(&Resource::new([KeyValue::new(semantic_name, value)]))
+    } else {
+        resource
+    }
 }
 
 pub fn init_safe_default_from_environment() -> Result<(), Box<dyn std::error::Error>> {
