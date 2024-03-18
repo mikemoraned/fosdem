@@ -110,7 +110,7 @@
     - (/) ensure we log to console _and_ to opentelemetry
     - (/) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
   - (/) deploy to prod and monitor for a few days
-  - (x) try some (safe) experiments:
+  - (/) try some (safe) experiments:
     - (/) switch all machines to be in US (lax), on assumption it is the hop to OpenAI which is the slow part
       - I tried this and it made latencies worse; see investigations/latency_Mar_2024/fosdem-search-20240316.png
         - (/) reverted to having a single machine in each of sin,syd,nrt,lhr,lax
