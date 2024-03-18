@@ -25,6 +25,11 @@ pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::E
         "OTEL_DEPLOYMENT_ENVIRONMENT",
         semcov::resource::DEPLOYMENT_ENVIRONMENT,
     );
+    let resource = add_optional_resource_from_env(
+        resource,
+        "FLY_MACHINE_VERSION",
+        semcov::resource::HOST_IMAGE_ID,
+    );
 
     global::set_text_map_propagator(TraceContextPropagator::new());
 
