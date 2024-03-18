@@ -97,7 +97,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         entries.truncate(limit as usize);
 
         if find_related {
-            span!(tracing::Level::DEBUG, "find_related")
+            span!(tracing::Level::INFO, "find_related")
                 .in_scope(|| async {
                     debug!("Running query to find related events");
                     let mut entries_with_related = vec![];
