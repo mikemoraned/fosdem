@@ -3,6 +3,7 @@ use openai_dive::v1::{
     resources::embedding::{EmbeddingParameters, EmbeddingResponse},
 };
 
+#[tracing::instrument(skip(client))]
 pub async fn get_embedding(
     client: &Client,
     input: &str,

@@ -2,9 +2,10 @@ use std::path::PathBuf;
 
 use axum::{http::StatusCode, routing::get};
 use clap::Parser;
+use fly::tracing::{init_opentelemetry_from_environment, init_safe_default_from_environment};
 use shared::env::load_secret;
 use tokio::net::TcpListener;
-use tracing::{info, warn};
+use tracing::info;
 use webapp::router::{app_state, router};
 
 async fn health() -> StatusCode {
@@ -22,22 +23,42 @@ struct Args {
     /// include video content at path
     #[arg(long)]
     include_video_content: Option<PathBuf>,
+
+    /// enable opentelemetry
+    #[arg(long)]
+    opentelemetry: bool,
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::fmt::init();
-
     match dotenvy::dotenv() {
-        Ok(path) => info!("Loaded env file at {:?}", path),
-        Err(e) => warn!(
+        Ok(path) => println!("Loaded env file at {:?}", path),
+        Err(e) => println!(
             "Failed to load env file, will use external env; error: {:?}",
             e
         ),
     }
+
     let args = Args::parse();
 
-    let openai_api_key = load_secret("OPENAI_API_KEY");
+    if args.opentelemetry {
+        match init_opentelemetry_from_environment() {
+            Ok(_) => {
+                info!("Opentelemetry initialised")
+            }
+            Err(e) => {
+                println!(
+                    "Failed to initialise Opentelemetry ('{:?}'), falling back to default",
+                    e
+                );
+                init_safe_default_from_environment()?;
+            }
+        }
+    } else {
+        init_safe_default_from_environment()?;
+    }
+
+    let openai_api_key = load_secret("OPENAI_API_KEY")?;
     let app_state = app_state(
         &openai_api_key,
         &args.model_dir,

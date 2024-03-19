@@ -96,6 +96,31 @@
     - (/) runs whisper across it, to get a WebVTT file
   - (/) take all WebVTT file and extract text from them; add this to the content to what we use for embedding
   - (/) add an endpoint for showing content of videos with associated WebVTT captions
+- (x) investigate higher latency in asia regions
+  - context:
+    - as of 9th Mar, I have 5 machine instances in fly.io, spread across 5 regions: LHR, LAX, NRT, SYD and SIN
+    - however, looking in https://updown.io/vrp1, which is the URL https://fosdem.houseofmoran.io/search?q=Ceph&limit=20, the latency for Asian regions seems to be 1.1s or more, whereas other regions are 723ms or less; see investigations/latency_Mar_2024/fosdem-search-20240309.png
+  - (/) change update frequency of updown.io check to once every 15s (from once a minute) to get more data
+  - (/) setup opentelemetry to send to honeycomb.io from fly.io
+    - (/) ensure it automatically runs in different regions
+      - honeycomb may require different endpoints (US vs EU) to be contacted when in different fly.io regions
+      - seems to work fine when run in `fra` so will just continue to use the US instance
+    - (/) register local/staging/prod as environment attribute
+    - (/) add region as an attribute
+    - (/) ensure we log to console _and_ to opentelemetry
+    - (/) ensure a failure to initialise opentelemetry doesn't kill the app on startup, and it just falls back to default
+  - (/) deploy to prod and monitor for a few days
+  - (/) try some (safe) experiments:
+    - (/) switch all machines to be in US (lax), on assumption it is the hop to OpenAI which is the slow part
+      - I tried this and it made latencies worse; see investigations/latency_Mar_2024/fosdem-search-20240316.png
+        - (/) reverted to having a single machine in each of sin,syd,nrt,lhr,lax
+          - it's not exactly the same as before, but now closer: investigations/latency_Mar_2024/fosdem-search-20240318.png
+    - apply some speedups on top of OpenAI call:
+      - (/) from traces, it looks like dispatching `find_related_events` async on separate threads doesn't have much benefit as traces still look like a waterfall. So, switch to just doing in serial on single thread to save dispatch/sync overhead
+        - did not see any major benefit in this, but it's simpler, so keeping it.
+        - note that I am not convinced I was definitely dispatching in parallel properly at all before, so may revisit again in the future
+  - note: I dunno why, but overall latencies seem to be < 1s now, see: investigations/latency_Mar_2024/fosdem-search-20240319.png
+  - (/) revert updown.io check to once a minute (to save on credits)
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time

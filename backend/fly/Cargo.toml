@@ -4,6 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+opentelemetry = { version = "0.22", features = ["trace", "metrics"] }
+opentelemetry_sdk = { version = "0.22", features = ["rt-tokio"] }
+opentelemetry-otlp = { version = "0.15", features = [
+    "http-proto",
+    "reqwest-client",
+    "reqwest-rustls",
+] }
+opentelemetry-http = { version = "0.11" }
+opentelemetry-semantic-conventions = { version = "0.14" }
+tracing-opentelemetry = "0.23"
 axum = { workspace = true }
 tokio = { workspace = true }
 dotenvy = { workspace = true }

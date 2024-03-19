@@ -1,11 +1,9 @@
 use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
-use futures::future::join_all;
-
 use openai_dive::v1::api::Client;
 
-use tracing::debug;
+use tracing::{debug, span};
 
 use crate::model::{Event, NextEvents, NextEventsContext, OpenAIVector, SearchItem};
 use crate::queryable::Queryable;
@@ -28,10 +26,12 @@ struct EmbeddedEvent {
 }
 
 impl Queryable for InMemoryOpenAIQueryable {
+    #[tracing::instrument(skip(self))]
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         Ok(self.events.iter().map(|e| e.event.clone()).collect())
     }
 
+    #[tracing::instrument(skip(self))]
     async fn find_event_by_id(
         &self,
         event_id: u32,
@@ -42,6 +42,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         })
     }
 
+    #[tracing::instrument(skip(self))]
     async fn find_related_events(
         &self,
         title: &str,
@@ -71,6 +72,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         Ok(entries)
     }
 
+    #[tracing::instrument(skip(self))]
     async fn search(
         &self,
         query: &str,
@@ -95,23 +97,24 @@ impl Queryable for InMemoryOpenAIQueryable {
         entries.truncate(limit as usize);
 
         if find_related {
-            debug!("Running query to find related events");
-            let jobs = entries.into_iter().map(|mut entry| async {
-                entry.related = Some(
-                    self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
-                        .await
-                        .unwrap_or_else(|_| {
-                            panic!("find related items for {}", &entry.event.title)
-                        }),
-                );
-                entry
-            });
-            let entries_with_related = join_all(jobs).await;
-            debug!(
-                "Found {} Events, with related Events",
-                entries_with_related.len()
-            );
-            Ok(entries_with_related)
+            span!(tracing::Level::INFO, "find_related")
+                .in_scope(|| async {
+                    debug!("Running query to find related events");
+                    let mut entries_with_related = vec![];
+                    for mut entry in entries.into_iter() {
+                        entry.related = Some(
+                            self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
+                                .await?,
+                        );
+                        entries_with_related.push(entry);
+                    }
+                    debug!(
+                        "Found {} Events, with related Events",
+                        entries_with_related.len()
+                    );
+                    Ok(entries_with_related)
+                })
+                .await
         } else {
             Ok(entries)
         }
@@ -165,6 +168,7 @@ impl InMemoryOpenAIQueryable {
 }
 
 impl InMemoryOpenAIQueryable {
+    #[tracing::instrument(skip(self))]
     fn get_event_context(
         &self,
         context: NextEventsContext,
@@ -213,6 +217,7 @@ impl InMemoryOpenAIQueryable {
         }
     }
 
+    #[tracing::instrument(skip(self))]
     fn find_nearest_event(&self, now: &NaiveDateTime, all_events: &[Event]) -> Option<Event> {
         let mut nearest = None;
         for event in all_events {
@@ -230,6 +235,7 @@ impl InMemoryOpenAIQueryable {
         nearest
     }
 
+    #[tracing::instrument(skip(self))]
     fn find_overlapping_events(
         &self,
         begin: NaiveDateTime,
