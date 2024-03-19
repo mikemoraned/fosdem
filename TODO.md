@@ -1,3 +1,5 @@
+# Pre 2024 Fosdem
+
 - (/) minimal thing which get some semantic content and allows finding similar content
   - (/) get FOSDEM content (pentabarf)
   - (/) look up and store vectors based on title and abstract of event
@@ -65,9 +67,15 @@
     - (/) update Docker setup and test by deploying to staging
     - (/) remove DB impl
     - (/) regenerate related items
+
+# During 2024 Fosdem
+
 - (/) simple bookmarks / improve discovery
   - (/) add link to open item in sojourner
   - (/) make "related" link to now-and-next instead of fosdem site (allows it to then more easily bookmarked in sojourner)
+
+# Post 2024 Fosdem
+
 - (/) use slide content
   - (/) process latest version of schedule
   - (/) update schedule to include slide links
