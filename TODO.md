@@ -120,7 +120,7 @@
         - did not see any major benefit in this, but it's simpler, so keeping it.
         - note that I am not convinced I was definitely dispatching in parallel properly at all before, so may revisit again in the future
   - note: I dunno why, but overall latencies seem to be < 1s now, see: investigations/latency_Mar_2024/fosdem-search-20240319.png
-  - (x) revert updown.io check to once a minute (to save on credits)
+  - (/) revert updown.io check to once a minute (to save on credits)
 - (x) stable / usable clustering
   - (x) pre-cluster on Rust side
   - (x) don't re-start sim each time
