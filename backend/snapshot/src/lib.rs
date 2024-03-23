@@ -28,12 +28,16 @@ mod tests {
 
     use super::*;
 
+    static PHRASES: [&str; 1] = ["controversial"];
+
     #[tokio::test]
     async fn test_phrase_search() {
         let openai_api_key = load_secret("OPENAI_API_KEY").unwrap();
         let model_dir = PathBuf::from_str("../shared/data/model").unwrap();
         let snapshotter = Snapshotter::new(&openai_api_key, &model_dir).await.unwrap();
-        let similar = snapshotter.search("controversial").await.unwrap();
-        insta::assert_yaml_snapshot!(similar);
+        for phrase in PHRASES {
+            let similar = snapshotter.search(phrase).await.unwrap();
+            insta::assert_yaml_snapshot!(similar);
+        }
     }
 }
