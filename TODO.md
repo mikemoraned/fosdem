@@ -130,8 +130,9 @@
   - note: I dunno why, but overall latencies seem to be < 1s now, see: investigations/latency_Mar_2024/fosdem-search-20240319.png
   - (/) revert updown.io check to once a minute (to save on credits)
 - (x) index video segments
-  - (/) setup snapshot testing for some example searches
+  - (x) setup snapshot testing for some example searches
   - (x) split embedding lookup to extract different embedding sources (description/slides-only/video-only/all)
+    - (x) refactor out enum for source
     - (x) verify snapshots for "all" source unchanged
     - (x) add ability to search only in video content
   - (x) add ability to search video segments (e.g. 5 min periods)
