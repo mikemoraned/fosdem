@@ -16,8 +16,7 @@ impl Snapshotter {
     }
 
     pub async fn search(&self, title: &str) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
-        self.queryable.search(title, 20, true).await.unwrap();
-        Ok(vec![])
+        Ok(self.queryable.search(title, 20, true).await.unwrap())
     }
 }
 
