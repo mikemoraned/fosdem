@@ -4,7 +4,7 @@ use openai_dive::v1::resources::embedding::EmbeddingResponse;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct SearchItem {
     pub event: Event,
     pub distance: f64,
