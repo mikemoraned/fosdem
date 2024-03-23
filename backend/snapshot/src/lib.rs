@@ -35,15 +35,6 @@ impl Snapshotter {
         Ok(Snapshotter { queryable })
     }
 
-    pub async fn search(
-        &self,
-        title: &str,
-    ) -> Result<Vec<DistanceSummary>, Box<dyn std::error::Error>> {
-        Ok(Snapshotter::summarise(
-            &self.queryable.search(title, 20, true).await.unwrap(),
-        ))
-    }
-
     pub async fn find_related_events(
         &self,
         title: &str,
@@ -69,25 +60,7 @@ mod tests {
 
     use super::*;
 
-    static PHRASES: [&str; 2] = ["controversial", "foop"];
     static TITLES: [&str; 1] = ["Best practices for research in open source ecosystems"];
-
-    #[tokio::test]
-    async fn test_phrase_search() {
-        let openai_api_key = load_secret("OPENAI_API_KEY").unwrap();
-        let model_dir = PathBuf::from_str("../shared/data/model").unwrap();
-        let snapshotter = Snapshotter::new(&openai_api_key, &model_dir).await.unwrap();
-        for phrase in PHRASES {
-            let similar = snapshotter.search(phrase).await.unwrap();
-            insta::with_settings!({
-                info => &model_dir,
-                description => phrase,
-                omit_expression => true
-            }, {
-                insta::assert_yaml_snapshot!(similar);
-            });
-        }
-    }
 
     #[tokio::test]
     async fn test_find_related_events() {
