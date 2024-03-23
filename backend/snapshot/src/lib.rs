@@ -60,7 +60,11 @@ mod tests {
 
     use super::*;
 
-    static TITLES: [&str; 1] = ["Best practices for research in open source ecosystems"];
+    static TITLES: [&str; 3] = [
+        "Best practices for research in open source ecosystems",
+        "Where Did All the Fun Go?  And How to Bring it Back with FOSS!",
+        "Staying Ahead of the Game: JavaScript Security",
+    ];
 
     #[tokio::test]
     async fn test_find_related_events() {
