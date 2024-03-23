@@ -60,7 +60,7 @@ mod tests {
 
     use super::*;
 
-    static PHRASES: [&str; 1] = ["controversial"];
+    static PHRASES: [&str; 2] = ["controversial", "foop"];
 
     #[tokio::test]
     async fn test_phrase_search() {
@@ -69,7 +69,13 @@ mod tests {
         let snapshotter = Snapshotter::new(&openai_api_key, &model_dir).await.unwrap();
         for phrase in PHRASES {
             let similar = snapshotter.search(phrase).await.unwrap();
-            insta::assert_yaml_snapshot!(similar);
+            insta::with_settings!({
+                info => &phrase, // the template context
+                description => phrase, // the template source code
+                omit_expression => true // do not include the default expression
+            }, {
+                insta::assert_yaml_snapshot!(similar);
+            });
         }
     }
 }
