@@ -8,6 +8,16 @@ pub struct DistanceSummary {
     event_title: String,
 }
 
+impl DistanceSummary {
+    fn from_search_item(item: &SearchItem) -> DistanceSummary {
+        DistanceSummary {
+            distance: item.distance,
+            event_id: item.event.id,
+            event_title: item.event.title.clone(),
+        }
+    }
+}
+
 pub struct Snapshotter {
     queryable: InMemoryOpenAIQueryable,
 }
@@ -35,11 +45,7 @@ impl Snapshotter {
     fn summarise(items: &[SearchItem]) -> Vec<DistanceSummary> {
         items
             .iter()
-            .map(|i| DistanceSummary {
-                distance: i.distance,
-                event_id: i.event.id,
-                event_title: i.event.title.clone(),
-            })
+            .map(DistanceSummary::from_search_item)
             .collect()
     }
 }
