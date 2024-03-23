@@ -29,7 +29,7 @@ mod tests {
     use super::*;
 
     #[tokio::test]
-    async fn test_phrase() {
+    async fn test_phrase_search() {
         let openai_api_key = load_secret("OPENAI_API_KEY").unwrap();
         let model_dir = PathBuf::from_str("../shared/data/model").unwrap();
         let snapshotter = Snapshotter::new(&openai_api_key, &model_dir).await.unwrap();
