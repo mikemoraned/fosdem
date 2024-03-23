@@ -1,4 +1,12 @@
+use serde::Serialize;
 use shared::{inmemory_openai::InMemoryOpenAIQueryable, model::SearchItem, queryable::Queryable};
+
+#[derive(Debug, PartialEq, Serialize)]
+pub struct DistanceSummary {
+    distance: f64,
+    event_id: u32,
+    event_title: String,
+}
 
 pub struct Snapshotter {
     queryable: InMemoryOpenAIQueryable,
@@ -15,8 +23,24 @@ impl Snapshotter {
         Ok(Snapshotter { queryable })
     }
 
-    pub async fn search(&self, title: &str) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
-        Ok(self.queryable.search(title, 20, true).await.unwrap())
+    pub async fn search(
+        &self,
+        title: &str,
+    ) -> Result<Vec<DistanceSummary>, Box<dyn std::error::Error>> {
+        Ok(Snapshotter::summarise(
+            &self.queryable.search(title, 20, true).await.unwrap(),
+        ))
+    }
+
+    fn summarise(items: &[SearchItem]) -> Vec<DistanceSummary> {
+        items
+            .iter()
+            .map(|i| DistanceSummary {
+                distance: i.distance,
+                event_id: i.event.id,
+                event_title: i.event.title.clone(),
+            })
+            .collect()
     }
 }
 

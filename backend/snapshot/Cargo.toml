@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 tokio = { workspace = true }
 dotenvy = { workspace = true }
+serde = { workspace = true }
 shared = { path = "../shared" }
 
 [dev-dependencies]
