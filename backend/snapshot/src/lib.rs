@@ -4,6 +4,7 @@ use shared::{inmemory_openai::InMemoryOpenAIQueryable, model::SearchItem, querya
 #[derive(Debug, PartialEq, Serialize)]
 pub struct DistanceSummary {
     distance: f64,
+    rounded_distance: f64,
     event_id: u32,
     event_title: String,
 }
@@ -12,6 +13,7 @@ impl DistanceSummary {
     fn from_search_item(item: &SearchItem) -> DistanceSummary {
         DistanceSummary {
             distance: item.distance,
+            rounded_distance: (item.distance * 100.0).round() / 100.0,
             event_id: item.event.id,
             event_title: item.event.title.clone(),
         }
