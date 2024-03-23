@@ -70,9 +70,9 @@ mod tests {
         for phrase in PHRASES {
             let similar = snapshotter.search(phrase).await.unwrap();
             insta::with_settings!({
-                info => &phrase, // the template context
-                description => phrase, // the template source code
-                omit_expression => true // do not include the default expression
+                info => &model_dir,
+                description => phrase,
+                omit_expression => true
             }, {
                 insta::assert_yaml_snapshot!(similar);
             });

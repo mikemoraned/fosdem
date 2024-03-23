@@ -1,85 +1,85 @@
 ---
 source: snapshot/src/lib.rs
 description: foop
-info: foop
+info: "../shared/data/model"
 ---
-- distance: 0.6639845239550328
+- distance: 0.6639398573654124
   rounded_distance: 0.66
   event_id: 1899
   event_title: Where Did All the Fun Go?  And How to Bring it Back with FOSS!
-- distance: 0.671867047669143
+- distance: 0.6717973817408275
   rounded_distance: 0.67
   event_id: 2779
   event_title: "Staying Ahead of the Game: JavaScript Security"
-- distance: 0.6739626007271412
+- distance: 0.6738930924467299
   rounded_distance: 0.67
   event_id: 1930
   event_title: OpenPrinting - We make printing just work!
-- distance: 0.6771016698765493
+- distance: 0.6770741712690936
   rounded_distance: 0.68
   event_id: 2405
   event_title: Best practices for research in open source ecosystems
-- distance: 0.6821974945743746
+- distance: 0.6821181110897118
   rounded_distance: 0.68
   event_id: 2043
   event_title: FOSS for DOCS
-- distance: 0.6828925412645218
+- distance: 0.6827500872324608
   rounded_distance: 0.68
   event_id: 2332
   event_title: Magic and Software
-- distance: 0.6867387498462252
+- distance: 0.6866980916823608
   rounded_distance: 0.69
   event_id: 3743
   event_title: "Open Food Facts: Learning and using Perl in 2024 to transform the food system !"
-- distance: 0.6879276547942765
-  rounded_distance: 0.69
-  event_id: 3586
-  event_title: "Open Source Firmware, BMC and Bootloader devroom - outro"
-- distance: 0.6880205964559687
+- distance: 0.6879421113904078
   rounded_distance: 0.69
   event_id: 1711
   event_title: "[Ending] It's all about the email. Ugh, what?"
-- distance: 0.6881019474933325
+- distance: 0.6879766292049437
+  rounded_distance: 0.69
+  event_id: 3586
+  event_title: "Open Source Firmware, BMC and Bootloader devroom - outro"
+- distance: 0.6880333623801517
   rounded_distance: 0.69
   event_id: 3566
   event_title: Weblate BoF
-- distance: 0.6884143904978042
+- distance: 0.688376080670937
   rounded_distance: 0.69
   event_id: 3610
   event_title: "Unpack Phabricator, Welcome Phorge - Forking the Opinionated Open Source Project Manager"
-- distance: 0.6899237723278819
+- distance: 0.6898578907766514
   rounded_distance: 0.69
   event_id: 3337
   event_title: "Flying higher: hardware offloading with BIRD"
-- distance: 0.6901245454382247
+- distance: 0.6900057859444387
   rounded_distance: 0.69
   event_id: 2316
   event_title: "Let's make people love domain names again"
-- distance: 0.6926340779499008
+- distance: 0.6925364957765668
   rounded_distance: 0.69
   event_id: 3595
   event_title: "Open Food Facts : Acting on the health and environnemental impacts of the food system"
-- distance: 0.6950618928535357
-  rounded_distance: 0.7
+- distance: 0.6949942299325144
+  rounded_distance: 0.69
   event_id: 3715
   event_title: Flathub / Flatpak BOF
-- distance: 0.6956402292113999
+- distance: 0.6955271590994065
   rounded_distance: 0.7
   event_id: 3023
   event_title: Welcome to FOSDEM 2024
-- distance: 0.6965647305323082
+- distance: 0.6964908783362015
   rounded_distance: 0.7
   event_id: 3716
   event_title: "FOSS policy engagement: rapporteur playback"
-- distance: 0.6974908334606121
+- distance: 0.6974582650230863
   rounded_distance: 0.7
   event_id: 3611
   event_title: So you think you know Git
-- distance: 0.6975253539711139
+- distance: 0.6975277432924224
   rounded_distance: 0.7
   event_id: 3657
   event_title: "Modern Email BoF, creating email-compat-data & more"
-- distance: 0.6977452447701744
+- distance: 0.6976534548518852
   rounded_distance: 0.7
   event_id: 2125
   event_title: Embeddable code playgrounds for fun and profit
