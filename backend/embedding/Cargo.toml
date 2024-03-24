@@ -6,6 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+tiktoken-rs = "0.5.8"
+subtp = "0.2.0"
+
 clap = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
@@ -13,4 +16,8 @@ tokio = { workspace = true }
 serde_json = { workspace = true }
 serde = { workspace = true }
 nalgebra = { workspace = true }
+openai_dive = { workspace = true }
+dotenvy = { workspace = true }
+
 shared = { path = "../shared" }
+content = { path = "../content" }
