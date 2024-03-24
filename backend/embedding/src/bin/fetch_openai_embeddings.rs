@@ -46,11 +46,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let client = Client::new(api_key);
 
-    let events_path = args.model_dir.join("events").with_extension("json");
-
-    info!("Reading events from {} ... ", events_path.to_str().unwrap());
-    let reader = BufReader::new(File::open(events_path)?);
-    let events: Vec<Event> = serde_json::from_reader(reader)?;
+    info!("Reading events ...");
+    let events = Event::from_model_area(&args.model_dir)?;
 
     let mut slide_content_for_event: HashMap<u32, String> = HashMap::new();
     if let Some(base_path) = args.include_slide_content {

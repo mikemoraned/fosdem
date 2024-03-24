@@ -1,5 +1,8 @@
+use std::{fs::File, io::BufReader, path::Path};
+
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use serde::{Deserialize, Serialize};
+use tracing::trace;
 use url::Url;
 
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -44,6 +47,16 @@ pub struct Person {
 pub struct Link {
     pub url: Url,
     pub name: String,
+}
+
+impl Event {
+    pub fn from_model_area(model_dir: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+        let events_path = model_dir.join("events").with_extension("json");
+
+        trace!("Reading events from {} ... ", events_path.to_str().unwrap());
+        let reader = BufReader::new(File::open(events_path)?);
+        Ok(serde_json::from_reader(reader)?)
+    }
 }
 
 impl Event {
