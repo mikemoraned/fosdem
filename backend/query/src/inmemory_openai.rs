@@ -261,10 +261,10 @@ impl InMemoryOpenAIQueryable {
 }
 
 mod parsing {
-    use std::{collections::HashMap, fs::File, io::BufReader, path::Path, vec};
+    use std::{fs::File, io::BufReader, path::Path, vec};
 
-    use embedding::model::{Embedding, EventArtefact, EventId, SubjectEmbedding};
-    use shared::model::{Event, OpenAIVector};
+    use embedding::{model::EventId, parsing::parse_all_embeddings_into_index};
+    use shared::model::Event;
     use tracing::debug;
 
     use super::EmbeddedEvent;
@@ -277,7 +277,7 @@ mod parsing {
         let embeddings_path = model_dir
             .join("openai_combined_embeddings")
             .with_extension("json");
-        let embeddings = parse_all_embeddings(&embeddings_path)?;
+        let embeddings = parse_all_embeddings_into_index(&embeddings_path)?;
 
         let mut embedded_events = vec![];
         for event in events {
@@ -307,25 +307,5 @@ mod parsing {
 
         events.sort_by(|a, b| a.id.cmp(&b.id));
         Ok(events)
-    }
-
-    fn parse_all_embeddings(
-        embeddings_path: &Path,
-    ) -> Result<HashMap<EventId, OpenAIVector>, Box<dyn std::error::Error>> {
-        debug!("Loading embeddings data from {:?}", embeddings_path);
-
-        let mut index: HashMap<EventId, OpenAIVector> = HashMap::new();
-
-        let reader = BufReader::new(File::open(embeddings_path)?);
-        let embeddings: Vec<SubjectEmbedding> = serde_json::from_reader(reader)?;
-
-        for embedding in embeddings {
-            let EventArtefact::Combined { event_id } = embedding.subject;
-            let Embedding::OpenAIAda2 { vector } = embedding.embedding;
-
-            index.insert(event_id, vector);
-        }
-
-        Ok(index)
     }
 }
