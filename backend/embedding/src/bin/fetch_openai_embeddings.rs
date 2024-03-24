@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io::{BufWriter, Write};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use clap::Parser;
 
@@ -31,6 +31,10 @@ struct Args {
     /// include video content at path
     #[arg(long)]
     include_video_content: Option<PathBuf>,
+
+    /// whether to write out combined embeddings
+    #[arg(long)]
+    write_combined_embeddings: bool,
 }
 
 #[tokio::main]
@@ -70,6 +74,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .join("openai_combined_embeddings")
         .with_extension("json");
 
+    if args.write_combined_embeddings {
+        write_combined_embeddings(
+            &embedding_path,
+            &events,
+            &client,
+            &slide_index,
+            &video_index,
+        )
+        .await?;
+    }
+
+    Ok(())
+}
+
+async fn write_combined_embeddings(
+    embedding_path: &Path,
+    events: &[Event],
+    client: &Client,
+    slide_index: &SlideIndex,
+    video_index: &VideoIndex,
+) -> Result<(), Box<dyn std::error::Error>> {
     info!(
         "Looking up and writing embeddings to {} ... ",
         embedding_path.to_str().unwrap()
