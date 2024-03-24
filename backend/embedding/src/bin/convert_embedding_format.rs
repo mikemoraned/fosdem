@@ -1,9 +1,10 @@
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write};
 use std::path::PathBuf;
 
 use clap::Parser;
-use embedding::model::SubjectEmbedding;
+use embedding::model::{EventArtefact, EventId, SubjectEmbedding};
 use shared::model::{Event, OpenAIEmbedding};
 use tracing::info;
 
@@ -40,17 +41,37 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let events: Vec<Event> = serde_json::from_reader(reader)?;
 
     info!("Converting {} embeddings", embeddings.len());
-    let subject_embeddings: Vec<SubjectEmbedding> = convert(&events, &embeddings);
+    let subject_embeddings: Vec<SubjectEmbedding> = convert(&events, &embeddings)?;
 
     info!("Writing embeddings to {:?} ... ", args.embeddings_out);
     let embedding_file = File::create(args.embeddings_out)?;
     let mut writer = BufWriter::new(embedding_file);
-    serde_json::to_writer(&mut writer, &subject_embeddings)?;
+    serde_json::to_writer_pretty(&mut writer, &subject_embeddings)?;
     writer.flush()?;
 
     Ok(())
 }
 
-fn convert(_events: &[Event], _embeddings: &[OpenAIEmbedding]) -> Vec<SubjectEmbedding> {
-    vec![]
+fn convert(
+    events: &[Event],
+    embeddings: &[OpenAIEmbedding],
+) -> Result<Vec<SubjectEmbedding>, Box<dyn std::error::Error>> {
+    let mut title_index = HashMap::new();
+    for event in events {
+        title_index.insert(event.title.clone(), event);
+    }
+
+    let mut converted = Vec::new();
+    for embedding in embeddings {
+        let title = &embedding.title;
+        if let Some(event) = title_index.get(title) {
+            converted.push(SubjectEmbedding::new(EventArtefact::Combined {
+                event_id: EventId(event.id),
+            }))
+        } else {
+            return Err(format!("Could not find event with title {}", title).into());
+        }
+    }
+
+    Ok(converted)
 }

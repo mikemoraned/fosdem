@@ -17,4 +17,4 @@ pub enum EventArtefact {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
-pub struct EventId(u32);
+pub struct EventId(pub u32);
