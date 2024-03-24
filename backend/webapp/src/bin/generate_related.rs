@@ -84,7 +84,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Converting to JSON");
     let forces = D3Force { nodes, links };
-    let json = serde_json::to_string(&forces)?;
+    let json = serde_json::to_string_pretty(&forces)?;
 
     let json_file_path = args.json;
     info!("Saving to {}", json_file_path);
