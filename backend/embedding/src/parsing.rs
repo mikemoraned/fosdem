@@ -19,6 +19,10 @@ pub fn parse_all_embeddings_into_index(
         let EventArtefact::Combined { event_id } = embedding.subject;
         let Embedding::OpenAIAda2 { vector } = embedding.embedding;
 
+        if let Some(_) = index.get(&event_id) {
+            return Err(format!("event_id is not unique: {:?}", event_id).into());
+        }
+
         index.insert(event_id, vector);
     }
 
