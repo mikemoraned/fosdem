@@ -3,13 +3,13 @@ use std::path::Path;
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use embedding::model::distance;
 use embedding::model::OpenAIVector;
+use embedding::openai_ada2::get_phrase_embedding;
 use openai_dive::v1::api::Client;
 
 use shared::model::Event;
 use shared::model::NextEvents;
 use shared::model::NextEventsContext;
 use shared::model::SearchItem;
-use shared::openai::get_embedding;
 use tracing::{debug, span};
 
 use crate::queryable::Queryable;
@@ -82,7 +82,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
-        let response = get_embedding(&self.openai_client, query).await?;
+        let response = get_phrase_embedding(&self.openai_client, query).await?;
         let embedding = OpenAIVector::from(response.data[0].embedding.clone());
 
         debug!("Finding all distances from embedding");

@@ -1,5 +1,8 @@
 use content::{slide_index::SlideIndex, video_index::VideoIndex};
-use openai_dive::v1::{api::Client, resources::embedding::EmbeddingParameters};
+use openai_dive::v1::{
+    api::Client,
+    resources::embedding::{EmbeddingParameters, EmbeddingResponse},
+};
 use shared::model::Event;
 use subtp::vtt::VttBlock;
 use tracing::debug;
@@ -8,6 +11,23 @@ use crate::{
     input::{format_basic_input, trim_input},
     model::{Embedding, OpenAIVector},
 };
+
+#[tracing::instrument(skip(client))]
+pub async fn get_phrase_embedding(
+    client: &Client,
+    input: &str,
+) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
+    let parameters = EmbeddingParameters {
+        model: "text-embedding-ada-002".to_string(),
+        input: input.to_string(),
+        encoding_format: None,
+        user: None,
+    };
+
+    let response = client.embeddings().create(parameters).await.unwrap();
+
+    Ok(response)
+}
 
 pub async fn get_event_embedding(
     client: &Client,
