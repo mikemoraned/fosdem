@@ -1,10 +1,10 @@
-use std::collections::HashMap;
 use std::fs::File;
-use std::io::{BufReader, BufWriter, Read, Write};
+use std::io::{BufWriter, Write};
 use std::path::PathBuf;
 
 use clap::Parser;
 
+use content::slide_index::SlideIndex;
 use content::video_index::VideoIndex;
 use embedding::model::{Embedding, OpenAIVector, SubjectEmbedding};
 use openai_dive::v1::api::Client;
@@ -49,25 +49,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Reading events ...");
     let events = Event::from_model_area(&args.model_dir)?;
 
-    let mut slide_content_for_event: HashMap<u32, String> = HashMap::new();
-    if let Some(base_path) = args.include_slide_content {
-        info!("Fetching slide content from {:?} ... ", base_path);
-        let mut slide_content_count = 0;
-        for event in events.iter() {
-            let slide_content_path = base_path.join(event.id.to_string()).with_extension("txt");
-            if slide_content_path.exists() {
-                let mut file = File::open(slide_content_path)?;
-                let mut slide_content = String::new();
-                file.read_to_string(&mut slide_content)?;
-                slide_content_for_event.insert(event.id, slide_content);
-                slide_content_count += 1;
-            }
-        }
-        info!("Read {} events with slide content ", slide_content_count);
-    }
+    let slide_index = if let Some(base_path) = args.include_slide_content {
+        let index = SlideIndex::from_content_area(&base_path, &events)?;
+        info!("Read {} events with slide content ", index.entries.len());
+        index
+    } else {
+        SlideIndex::empty_index()
+    };
 
     let video_index = if let Some(base_path) = args.include_video_content {
-        VideoIndex::from_content_area(&base_path)?
+        let index = VideoIndex::from_content_area(&base_path)?;
+        info!("Read {} events with video content ", index.entries.len());
+        index
     } else {
         VideoIndex::empty_index()
     };
@@ -84,8 +77,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
-        let response =
-            get_embedding(&client, &event, &slide_content_for_event, &video_index).await?;
+        let response = get_embedding(&client, &event, &slide_index, &video_index).await?;
         let subject = EventArtefact::Combined {
             event_id: EventId(event.id),
         };
@@ -108,14 +100,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 async fn get_embedding(
     client: &Client,
     event: &Event,
-    slide_content_for_event: &HashMap<u32, String>,
+    slide_index: &SlideIndex,
     video_index: &VideoIndex,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
     let mut preferred_input = String::new();
     use std::fmt::Write;
 
     writeln!(preferred_input, "{}", format_basic_input(event))?;
-    if let Some(slide_content) = slide_content_for_event.get(&event.id) {
+    if let Some(slide_content) = slide_index.entries.get(&event.id) {
         writeln!(preferred_input, "Slides:{}", slide_content)?;
     }
     if let Some(video_content) = video_index.webvtt_for_event_id(event.id) {

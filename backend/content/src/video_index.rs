@@ -6,11 +6,11 @@ use std::{
 };
 
 use regex::Regex;
-use tracing::info;
+use tracing::trace;
 
 #[derive(Debug)]
 pub struct VideoIndex {
-    entries: HashMap<u32, VideoIndexEntry>,
+    pub entries: HashMap<u32, VideoIndexEntry>,
 }
 
 #[derive(Debug)]
@@ -21,14 +21,14 @@ pub struct VideoIndexEntry {
 impl VideoIndex {
     pub fn empty_index() -> VideoIndex {
         VideoIndex {
-            entries: HashMap::new(),
+            entries: HashMap::default(),
         }
     }
 
     pub fn from_content_area(
         base_path: &PathBuf,
     ) -> Result<VideoIndex, Box<dyn std::error::Error>> {
-        info!("Building index of video content in {:?} ... ", base_path);
+        trace!("Building index of video content in {:?} ... ", base_path);
         let mut entries: HashMap<u32, VideoIndexEntry> = HashMap::new();
         let mut video_content_count = 0;
         let dir_entries: Result<Vec<DirEntry>, _> = std::fs::read_dir(base_path)?.collect();
@@ -47,7 +47,7 @@ impl VideoIndex {
                 }
             }
         }
-        info!("Read {} events with video content ", video_content_count);
+        trace!("Read {} events with video content ", video_content_count);
         Ok(VideoIndex { entries })
     }
 
