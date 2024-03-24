@@ -22,3 +22,4 @@ url = { workspace = true }
 chrono = { workspace = true }
 shared = { path = "../shared" }
 content = { path = "../content" }
+query = { path = "../query" }

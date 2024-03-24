@@ -1,4 +1,4 @@
-use crate::model::{Event, NextEvents, NextEventsContext, SearchItem};
+use shared::model::{Event, NextEvents, NextEventsContext, SearchItem};
 
 pub const MAX_RELATED_EVENTS: u8 = 5;
 

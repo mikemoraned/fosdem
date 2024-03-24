@@ -10,6 +10,7 @@ tokio = { workspace = true }
 dotenvy = { workspace = true }
 serde = { workspace = true }
 shared = { path = "../shared" }
+query = { path = "../query" }
 
 [dev-dependencies]
 insta = { version = "1.36", features = ["yaml"] }

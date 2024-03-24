@@ -1,5 +1,6 @@
+use query::{inmemory_openai::InMemoryOpenAIQueryable, queryable::Queryable};
 use serde::Serialize;
-use shared::{inmemory_openai::InMemoryOpenAIQueryable, model::SearchItem, queryable::Queryable};
+use shared::model::SearchItem;
 
 #[derive(Debug, PartialEq, Serialize)]
 pub struct DistanceSummary {

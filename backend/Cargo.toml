@@ -1,5 +1,5 @@
 [workspace]
-members = ["content", "shared", "fly", "webapp", "snapshot", "embedding"]
+members = ["content", "shared", "fly", "webapp", "snapshot", "embedding", "query"]
 resolver = "2"
 
 [workspace.dependencies]

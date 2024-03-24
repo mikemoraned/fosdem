@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use content::video_index::VideoIndex;
-use shared::inmemory_openai::InMemoryOpenAIQueryable;
+use query::inmemory_openai::InMemoryOpenAIQueryable;
 
 #[derive(Clone, Debug)]
 pub struct AppState {

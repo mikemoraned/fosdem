@@ -3,11 +3,16 @@ use std::path::Path;
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use openai_dive::v1::api::Client;
 
+use shared::model::Event;
+use shared::model::NextEvents;
+use shared::model::NextEventsContext;
+use shared::model::OpenAIVector;
+use shared::model::SearchItem;
+use shared::openai::get_embedding;
 use tracing::{debug, span};
 
-use crate::model::{Event, NextEvents, NextEventsContext, OpenAIVector, SearchItem};
 use crate::queryable::Queryable;
-use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
+use crate::queryable::MAX_RELATED_EVENTS;
 
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
@@ -258,9 +263,8 @@ impl InMemoryOpenAIQueryable {
 mod parsing {
     use std::{fs::File, io::BufReader, path::Path};
 
+    use shared::model::{Event, OpenAIEmbedding};
     use tracing::debug;
-
-    use crate::model::{Event, OpenAIEmbedding};
 
     use super::EmbeddedEvent;
 

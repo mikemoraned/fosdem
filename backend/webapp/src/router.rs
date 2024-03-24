@@ -11,11 +11,10 @@ use axum::{
 use axum_valid::Valid;
 
 use content::video_index::VideoIndex;
+use query::inmemory_openai::InMemoryOpenAIQueryable;
+use query::queryable::Queryable;
 use serde::Deserialize;
-use shared::{
-    inmemory_openai::InMemoryOpenAIQueryable,
-    model::{Event, NextEvents, NextEventsContext, SearchItem},
-};
+use shared::model::{Event, NextEvents, NextEventsContext, SearchItem};
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -26,7 +25,6 @@ use validator::Validate;
 use crate::filters;
 use crate::related::related;
 use crate::state::AppState;
-use shared::queryable::Queryable;
 
 #[derive(Deserialize, Validate, Debug)]
 struct SearchParams {
