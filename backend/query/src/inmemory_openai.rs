@@ -1,12 +1,13 @@
 use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
+use embedding::model::distance;
+use embedding::model::OpenAIVector;
 use openai_dive::v1::api::Client;
 
 use shared::model::Event;
 use shared::model::NextEvents;
 use shared::model::NextEventsContext;
-use shared::model::OpenAIVector;
 use shared::model::SearchItem;
 use shared::openai::get_embedding;
 use tracing::{debug, span};
@@ -18,10 +19,6 @@ use crate::queryable::MAX_RELATED_EVENTS;
 pub struct InMemoryOpenAIQueryable {
     openai_client: Client,
     events: Vec<EmbeddedEvent>,
-}
-
-fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
-    lhs.metric_distance(rhs)
 }
 
 #[derive(Debug)]

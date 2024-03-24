@@ -619,6 +619,7 @@ dependencies = [
  "chrono",
  "clap",
  "dotenvy",
+ "embedding",
  "env_logger",
  "futures",
  "indicatif",

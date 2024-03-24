@@ -6,12 +6,13 @@ use std::path::PathBuf;
 use clap::Parser;
 
 use content::video_index::VideoIndex;
+use embedding::model::{Embedding, EventArtefact, EventId, OpenAIVector, SubjectEmbedding};
 use openai_dive::v1::api::Client;
 
 use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
 
 use shared::cli::progress_bar;
-use shared::model::{Event, OpenAIEmbedding};
+use shared::model::Event;
 use subtp::vtt::VttBlock;
 use tracing::{debug, info};
 
@@ -74,7 +75,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         VideoIndex::empty_index()
     };
 
-    let embedding_path = args.model_dir.join("embeddings").with_extension("json");
+    let embedding_path = args
+        .model_dir
+        .join("openai_combined_embeddings")
+        .with_extension("json");
 
     info!(
         "Looking up and writing embeddings to {} ... ",
@@ -85,17 +89,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     for event in events.into_iter() {
         let response =
             get_embedding(&client, &event, &slide_content_for_event, &video_index).await?;
-        let embedding = OpenAIEmbedding {
-            title: event.title,
-            embedding: OpenAIEmbedding::embedding_from_response(&response),
+        let subject = EventArtefact::Combined {
+            event_id: EventId(event.id),
         };
-        embeddings.push(embedding);
+        let embedding = Embedding::OpenAIAda2 {
+            vector: OpenAIVector::from(response.data[0].embedding.clone()),
+        };
+        let subject_embedding = SubjectEmbedding::new(subject, embedding);
+        embeddings.push(subject_embedding);
         progress.inc(1);
     }
 
     let embedding_file = File::create(embedding_path)?;
     let mut writer = BufWriter::new(embedding_file);
-    serde_json::to_writer(&mut writer, &embeddings)?;
+    serde_json::to_writer_pretty(&mut writer, &embeddings)?;
     writer.flush()?;
 
     Ok(())

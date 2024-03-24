@@ -13,9 +13,14 @@ impl SubjectEmbedding {
     }
 }
 
+pub type OpenAIVector = DVector<f64>;
+pub fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
+    lhs.metric_distance(rhs)
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub enum Embedding {
-    OpenAIAda2 { vector: DVector<f64> },
+    OpenAIAda2 { vector: OpenAIVector },
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]

@@ -1,6 +1,4 @@
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
-use nalgebra::DVector;
-use openai_dive::v1::resources::embedding::EmbeddingResponse;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
@@ -87,21 +85,6 @@ impl Event {
             .map(|l| l.url.clone())
             .collect();
         video_links.first().cloned()
-    }
-}
-
-pub type OpenAIVector = DVector<f64>;
-
-#[derive(Debug, Clone, Deserialize, Serialize)]
-pub struct OpenAIEmbedding {
-    pub title: String,
-    pub embedding: OpenAIVector,
-}
-
-impl OpenAIEmbedding {
-    pub fn embedding_from_response(response: &EmbeddingResponse) -> OpenAIVector {
-        let parts = response.data[0].embedding.clone();
-        OpenAIVector::from(parts)
     }
 }
 

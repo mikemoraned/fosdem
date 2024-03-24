@@ -47,7 +47,7 @@ info: "../shared/data/model"
   rounded_distance: 0.58
   event_id: 1931
   event_title: You too could have made curl!
-- distance: 0.5819286531285424
+- distance: 0.5820796335843229
   rounded_distance: 0.58
   event_id: 2328
   event_title: "Cracking the Code to Executive Support: Open Source Edition"
@@ -71,7 +71,7 @@ info: "../shared/data/model"
   rounded_distance: 0.59
   event_id: 3013
   event_title: A fully open source stack for MIPI cameras
-- distance: 0.5865713442753449
+- distance: 0.5866779080588146
   rounded_distance: 0.59
   event_id: 2310
   event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
