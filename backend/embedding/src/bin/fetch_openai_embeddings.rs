@@ -6,6 +6,7 @@ use clap::Parser;
 
 use content::slide_index::SlideIndex;
 use content::video_index::VideoIndex;
+use embedding::input::{format_basic_input, trim_input};
 use embedding::model::{Embedding, OpenAIVector, SubjectEmbedding};
 use openai_dive::v1::api::Client;
 
@@ -137,33 +138,4 @@ async fn get_embedding(
         Ok(response) => Ok(response),
         Err(e) => Err(format!("[{}] error: \'{}\'", event.id, e).into()),
     }
-}
-
-fn format_basic_input(event: &Event) -> String {
-    let lines: Vec<String> = vec![
-        "FOSDEM Conference Event 2024".into(),
-        format!("Title: {}", event.title),
-        format!("Track: {}", event.track),
-        format!("Abstract: {}", event.r#abstract),
-        format!(
-            "Presenter: {}",
-            event
-                .presenters
-                .iter()
-                .map(|p| p.name.clone())
-                .collect::<Vec<_>>()
-                .join(", ")
-        ),
-    ];
-    lines.join("\n")
-}
-
-fn trim_input(input: &str) -> String {
-    use tiktoken_rs::cl100k_base;
-    let max_tokens = 8192 - 100;
-    let token_estimator = cl100k_base().unwrap();
-
-    let tokens = token_estimator.split_by_token(input, false).unwrap();
-    let trimmed: Vec<_> = tokens.into_iter().take(max_tokens).collect();
-    trimmed.join("")
 }
