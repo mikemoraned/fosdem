@@ -6,16 +6,15 @@ use clap::Parser;
 
 use content::slide_index::SlideIndex;
 use content::video_index::VideoIndex;
-use embedding::input::{format_basic_input, trim_input};
-use embedding::model::{Embedding, OpenAIVector, SubjectEmbedding};
-use openai_dive::v1::api::Client;
 
-use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
+use embedding::model::SubjectEmbedding;
+use embedding::openai_ada2::get_event_embedding;
+use openai_dive::v1::api::Client;
 
 use shared::cli::progress_bar;
 use shared::model::{Event, EventArtefact, EventId};
-use subtp::vtt::VttBlock;
-use tracing::{debug, info};
+
+use tracing::info;
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
@@ -78,13 +77,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
-        let response = get_embedding(&client, &event, &slide_index, &video_index).await?;
         let subject = EventArtefact::Combined {
             event_id: EventId(event.id),
         };
-        let embedding = Embedding::OpenAIAda2 {
-            vector: OpenAIVector::from(response.data[0].embedding.clone()),
-        };
+        let embedding = get_event_embedding(&client, &event, &slide_index, &video_index).await?;
         let subject_embedding = SubjectEmbedding::new(subject, embedding);
         embeddings.push(subject_embedding);
         progress.inc(1);
@@ -96,46 +92,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     writer.flush()?;
 
     Ok(())
-}
-
-async fn get_embedding(
-    client: &Client,
-    event: &Event,
-    slide_index: &SlideIndex,
-    video_index: &VideoIndex,
-) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
-    let mut preferred_input = String::new();
-    use std::fmt::Write;
-
-    writeln!(preferred_input, "{}", format_basic_input(event))?;
-    if let Some(slide_content) = slide_index.entries.get(&event.id) {
-        writeln!(preferred_input, "Slides:{}", slide_content)?;
-    }
-    if let Some(video_content) = video_index.webvtt_for_event_id(event.id) {
-        let mut block_content: Vec<_> = video_content
-            .blocks
-            .iter()
-            .map(|b| match b {
-                VttBlock::Que(cue) => cue.payload.join("\n"),
-                _ => "".into(),
-            })
-            .collect();
-        block_content.dedup();
-        debug!("[{}] blocks: {:?}", event.id, block_content);
-        writeln!(preferred_input, "Subtitles:{}", block_content.join("\n"))?;
-    }
-
-    let trimmed_input = trim_input(&preferred_input);
-
-    let parameters = EmbeddingParameters {
-        model: "text-embedding-ada-002".to_string(),
-        input: trimmed_input,
-        encoding_format: None,
-        user: None,
-    };
-
-    match client.embeddings().create(parameters).await {
-        Ok(response) => Ok(response),
-        Err(e) => Err(format!("[{}] error: \'{}\'", event.id, e).into()),
-    }
 }
