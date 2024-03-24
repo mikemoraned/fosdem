@@ -135,9 +135,9 @@
     - (x) refactor out enum for source
       - (x) switch to using ids, instead of titles, for embeddings
       - (x) convert to an enum as key
-      - (x) find and load all `_embedding` files
       - (x) verify snapshots for "all" source unchanged
     - (x) add ability to search only in video content
+      - (x) find and load all `_embedding` files, for any type of embedding
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches
     - (x) ...
