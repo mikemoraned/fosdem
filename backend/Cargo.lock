@@ -697,6 +697,7 @@ name = "embedding"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "nalgebra",
  "serde",
  "serde_json",
  "shared",

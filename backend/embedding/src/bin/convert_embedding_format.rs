@@ -4,7 +4,7 @@ use std::io::{BufReader, BufWriter, Write};
 use std::path::PathBuf;
 
 use clap::Parser;
-use embedding::model::{EventArtefact, EventId, SubjectEmbedding};
+use embedding::model::{Embedding, EventArtefact, EventId, SubjectEmbedding};
 use shared::model::{Event, OpenAIEmbedding};
 use tracing::info;
 
@@ -65,9 +65,13 @@ fn convert(
     for embedding in embeddings {
         let title = &embedding.title;
         if let Some(event) = title_index.get(title) {
-            converted.push(SubjectEmbedding::new(EventArtefact::Combined {
+            let subject = EventArtefact::Combined {
                 event_id: EventId(event.id),
-            }))
+            };
+            let converted_embedding = Embedding::OpenAIAda2 {
+                vector: embedding.embedding.clone(),
+            };
+            converted.push(SubjectEmbedding::new(subject, converted_embedding));
         } else {
             return Err(format!("Could not find event with title {}", title).into());
         }
