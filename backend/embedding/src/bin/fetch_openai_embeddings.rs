@@ -6,13 +6,13 @@ use std::path::PathBuf;
 use clap::Parser;
 
 use content::video_index::VideoIndex;
-use embedding::model::{Embedding, EventArtefact, EventId, OpenAIVector, SubjectEmbedding};
+use embedding::model::{Embedding, OpenAIVector, SubjectEmbedding};
 use openai_dive::v1::api::Client;
 
 use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
 
 use shared::cli::progress_bar;
-use shared::model::Event;
+use shared::model::{Event, EventArtefact, EventId};
 use subtp::vtt::VttBlock;
 use tracing::{debug, info};
 

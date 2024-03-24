@@ -260,8 +260,8 @@ impl InMemoryOpenAIQueryable {
 mod parsing {
     use std::{fs::File, io::BufReader, path::Path, vec};
 
-    use embedding::{model::EventId, parsing::parse_all_embeddings_into_index};
-    use shared::model::Event;
+    use embedding::parsing::parse_all_embeddings_into_index;
+    use shared::model::{Event, EventId};
     use tracing::debug;
 
     use super::EmbeddedEvent;

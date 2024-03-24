@@ -3,83 +3,83 @@ source: snapshot/src/lib.rs
 description: "Staying Ahead of the Game: JavaScript Security"
 info: "../shared/data/model"
 ---
-- distance: 0.5040421765617329
+- distance: 0.5036265836990947
   rounded_distance: 0.5
   event_id: 2405
   event_title: Best practices for research in open source ecosystems
-- distance: 0.5102409721477628
+- distance: 0.5098289794353641
   rounded_distance: 0.51
   event_id: 2311
   event_title: Making Python safer than ever
-- distance: 0.5105168723880881
+- distance: 0.5102134868955253
   rounded_distance: 0.51
   event_id: 2352
   event_title: "Stopping all the attacks before they start: Building a security-first API"
-- distance: 0.513963739813195
+- distance: 0.513668775548635
   rounded_distance: 0.51
   event_id: 2395
   event_title: The CPAN Security Working Group
-- distance: 0.5214523224661882
+- distance: 0.5213589412935491
   rounded_distance: 0.52
   event_id: 1822
   event_title: "The MDN Curriculum: Better web developers for a better web"
-- distance: 0.5217270896959229
+- distance: 0.5219368239313965
   rounded_distance: 0.52
   event_id: 2722
   event_title: "Your web app is taking up too much RAM. Let's fix it!"
-- distance: 0.5245149924753237
+- distance: 0.5244849652323653
   rounded_distance: 0.52
   event_id: 2638
   event_title: "Breaking Barriers: Content Management Systems and Accessibility"
-- distance: 0.527587883994819
+- distance: 0.5277140172293227
   rounded_distance: 0.53
   event_id: 2273
   event_title: A front-end journey back to Rails
-- distance: 0.5320460999219825
+- distance: 0.5320786716547011
   rounded_distance: 0.53
   event_id: 2003
   event_title: Better than loading fast… is loading instantly!
-- distance: 0.5335219235213987
+- distance: 0.5332111021526404
   rounded_distance: 0.53
   event_id: 3326
   event_title: Web-accessibility for open-source privacy & security tools
-- distance: 0.5345199188148951
+- distance: 0.534674996656861
   rounded_distance: 0.53
   event_id: 2288
   event_title: "Cryptography against AI: Deepfake resistant WebRTC videocalls"
-- distance: 0.5353103358287021
+- distance: 0.5350813784951168
   rounded_distance: 0.54
   event_id: 3544
   event_title: "Defend FOSS: From innovation to world-wide positive change"
-- distance: 0.5362983716958191
+- distance: 0.5363154948791184
   rounded_distance: 0.54
   event_id: 2231
   event_title: A Lazy Developer’s Approach to Building Real-Time Web Applications
-- distance: 0.53645241813894
+- distance: 0.5363375652030699
   rounded_distance: 0.54
   event_id: 2186
   event_title: "Better Bee Be Better: spot more bugs than TS with less than JS"
-- distance: 0.5386954153925472
+- distance: 0.5385814729086961
   rounded_distance: 0.54
   event_id: 2125
   event_title: Embeddable code playgrounds for fun and profit
-- distance: 0.5395346615800662
+- distance: 0.5395488718568766
   rounded_distance: 0.54
   event_id: 2326
   event_title: A slow migration from Django templates to Vue+GraphQL
-- distance: 0.5400975869168702
+- distance: 0.54003039713711
   rounded_distance: 0.54
   event_id: 2832
   event_title: "MessageFormat: The future of i18n on the web"
-- distance: 0.5404978367216984
+- distance: 0.5402718177577869
   rounded_distance: 0.54
   event_id: 2540
   event_title: "Codebase Conquest: How Nx Turbocharged Our React Workflow"
-- distance: 0.5414377674678963
+- distance: 0.5413005484983548
   rounded_distance: 0.54
   event_id: 2456
   event_title: "Empowering FreeIPA: a dive into the modern WebUI"
-- distance: 0.5420832146380007
+- distance: 0.5418201760311651
   rounded_distance: 0.54
   event_id: 1983
   event_title: Remediating thousands of untracked security vulnerabilities in nixpkgs

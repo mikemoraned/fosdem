@@ -10,6 +10,14 @@ pub struct SearchItem {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub enum EventArtefact {
+    Combined { event_id: EventId },
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Hash, Eq)]
+pub struct EventId(pub u32);
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Event {
     pub id: u32,
     pub date: NaiveDate,

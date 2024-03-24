@@ -1,8 +1,9 @@
 use std::{collections::HashMap, fs::File, io::BufReader, path::Path};
 
+use shared::model::{EventArtefact, EventId};
 use tracing::debug;
 
-use crate::model::{Embedding, EventArtefact, EventId, OpenAIVector, SubjectEmbedding};
+use crate::model::{Embedding, OpenAIVector, SubjectEmbedding};
 
 pub fn parse_all_embeddings_into_index(
     embeddings_path: &Path,
