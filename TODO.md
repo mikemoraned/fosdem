@@ -131,13 +131,15 @@
   - (/) revert updown.io check to once a minute (to save on credits)
 - (x) index video segments
   - (/) setup snapshot testing for some example searches
-  - (x) split embedding lookup to extract different embedding sources (description/slides-only/video-only/all)
-    - (x) refactor out enum for source
-      - (x) switch to using ids, instead of titles, for embeddings
-      - (x) convert to an enum as key
-      - (x) verify snapshots for "all" source unchanged
+  - (x) split embedding lookup to extract different embedding sources (description/slides-only/video-only/combined)
+    - (/) refactor out enum for source
+      - (/) switch to using ids, instead of titles, for embeddings
+      - (/) convert to an enum as key
+      - (/) verify snapshots for "combined" source unchanged
     - (x) add ability to search only in video content
-      - (x) find and load all `_embedding` files, for any type of embedding
+      - (x) index video content separately
+      - (x) allow search over different types embeddings, depending on type of event artefact
+      - (x) expose on UI as an option to only search in video content
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches
     - (x) ...
