@@ -3,8 +3,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct SubjectEmbedding {
-    subject: EventArtefact,
-    embedding: Embedding,
+    pub subject: EventArtefact,
+    pub embedding: Embedding,
 }
 
 impl SubjectEmbedding {
@@ -23,5 +23,5 @@ pub enum EventArtefact {
     Combined { event_id: EventId },
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Hash, Eq)]
 pub struct EventId(pub u32);

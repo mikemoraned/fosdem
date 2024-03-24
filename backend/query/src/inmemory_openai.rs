@@ -261,9 +261,10 @@ impl InMemoryOpenAIQueryable {
 }
 
 mod parsing {
-    use std::{fs::File, io::BufReader, path::Path};
+    use std::{collections::HashMap, fs::File, io::BufReader, path::Path, vec};
 
-    use shared::model::{Event, OpenAIEmbedding};
+    use embedding::model::{Embedding, EventArtefact, EventId, SubjectEmbedding};
+    use shared::model::{Event, OpenAIVector};
     use tracing::debug;
 
     use super::EmbeddedEvent;
@@ -273,21 +274,25 @@ mod parsing {
     ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
         let events_path = model_dir.join("events").with_extension("json");
         let events = parse_all_events(&events_path)?;
-        let embeddings_path = model_dir.join("embeddings").with_extension("json");
-        let embeddings: Vec<OpenAIEmbedding> = parse_all_embeddings(&embeddings_path)?;
+        let embeddings_path = model_dir
+            .join("openai_combined_embeddings")
+            .with_extension("json");
+        let embeddings = parse_all_embeddings(&embeddings_path)?;
 
         let mut embedded_events = vec![];
         for event in events {
-            let result = embeddings.iter().find(|e| e.title == event.title);
+            let result = embeddings.get(&EventId(event.id));
             match result {
-                Some(embedding) => embedded_events.push(EmbeddedEvent {
+                Some(vector) => embedded_events.push(EmbeddedEvent {
                     event,
-                    openai_embedding: embedding.embedding.clone(),
+                    openai_embedding: vector.clone(),
                 }),
                 None => {
-                    return Err(
-                        format!("failed to find embedding for title \'{}\'", event.title).into(),
-                    );
+                    return Err(format!(
+                        "failed to find embedding for title \'{}\' with id {}",
+                        event.title, event.id
+                    )
+                    .into());
                 }
             }
         }
@@ -306,12 +311,21 @@ mod parsing {
 
     fn parse_all_embeddings(
         embeddings_path: &Path,
-    ) -> Result<Vec<OpenAIEmbedding>, Box<dyn std::error::Error>> {
+    ) -> Result<HashMap<EventId, OpenAIVector>, Box<dyn std::error::Error>> {
         debug!("Loading embeddings data from {:?}", embeddings_path);
 
-        let reader = BufReader::new(File::open(embeddings_path)?);
-        let embeddings: Vec<OpenAIEmbedding> = serde_json::from_reader(reader)?;
+        let mut index: HashMap<EventId, OpenAIVector> = HashMap::new();
 
-        Ok(embeddings)
+        let reader = BufReader::new(File::open(embeddings_path)?);
+        let embeddings: Vec<SubjectEmbedding> = serde_json::from_reader(reader)?;
+
+        for embedding in embeddings {
+            let EventArtefact::Combined { event_id } = embedding.subject;
+            let Embedding::OpenAIAda2 { vector } = embedding.embedding;
+
+            index.insert(event_id, vector);
+        }
+
+        Ok(index)
     }
 }

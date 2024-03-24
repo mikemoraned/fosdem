@@ -11,3 +11,4 @@ openai_dive = { workspace = true }
 tracing = { workspace = true }
 serde_json = { workspace = true }
 shared = { path = "../shared" }
+embedding = { path = "../embedding" }
