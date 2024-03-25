@@ -127,10 +127,19 @@ async fn write_combined_embeddings(
 }
 
 async fn write_video_embeddings(
-    _model_dir: &Path,
+    model_dir: &Path,
     _events: &[Event],
     _client: &Client,
     _video_index: &VideoIndex,
 ) -> Result<(), Box<dyn std::error::Error>> {
+    let embedding_path = model_dir
+        .join("openai_video_embeddings")
+        .with_extension("json");
+
+    info!(
+        "Looking up and writing embeddings to {} ... ",
+        embedding_path.to_str().unwrap()
+    );
+    info!("TODO");
     Ok(())
 }
