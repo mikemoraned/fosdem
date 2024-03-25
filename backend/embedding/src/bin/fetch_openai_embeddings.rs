@@ -35,6 +35,10 @@ struct Args {
     /// whether to write out combined embeddings
     #[arg(long)]
     write_combined_embeddings: bool,
+
+    /// whether to write out video-only embeddings
+    #[arg(long)]
+    write_video_embeddings: bool,
 }
 
 #[tokio::main]
@@ -69,14 +73,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         VideoIndex::empty_index()
     };
 
-    let embedding_path = args
-        .model_dir
-        .join("openai_combined_embeddings")
-        .with_extension("json");
-
     if args.write_combined_embeddings {
         write_combined_embeddings(
-            &embedding_path,
+            &args.model_dir,
             &events,
             &client,
             &slide_index,
@@ -85,16 +84,24 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
     }
 
+    if args.write_video_embeddings {
+        write_video_embeddings(&args.model_dir, &events, &client, &video_index).await?;
+    }
+
     Ok(())
 }
 
 async fn write_combined_embeddings(
-    embedding_path: &Path,
+    model_dir: &Path,
     events: &[Event],
     client: &Client,
     slide_index: &SlideIndex,
     video_index: &VideoIndex,
 ) -> Result<(), Box<dyn std::error::Error>> {
+    let embedding_path = model_dir
+        .join("openai_combined_embeddings")
+        .with_extension("json");
+
     info!(
         "Looking up and writing embeddings to {} ... ",
         embedding_path.to_str().unwrap()
@@ -116,5 +123,14 @@ async fn write_combined_embeddings(
     serde_json::to_writer_pretty(&mut writer, &embeddings)?;
     writer.flush()?;
 
+    Ok(())
+}
+
+async fn write_video_embeddings(
+    _model_dir: &Path,
+    _events: &[Event],
+    _client: &Client,
+    _video_index: &VideoIndex,
+) -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
