@@ -35,7 +35,7 @@ info: "../shared/data/model"
   rounded_distance: 0.57
   event_id: 3160
   event_title: The Basic Economics behind Open Source Funding in 2024
-- distance: 0.5742888996196884
+- distance: 0.5743380165052974
   rounded_distance: 0.57
   event_id: 1899
   event_title: Where Did All the Fun Go?  And How to Bring it Back with FOSS!
@@ -51,19 +51,19 @@ info: "../shared/data/model"
   rounded_distance: 0.58
   event_id: 2328
   event_title: "Cracking the Code to Executive Support: Open Source Edition"
-- distance: 0.5838208083675511
-  rounded_distance: 0.58
-  event_id: 2043
-  event_title: FOSS for DOCS
 - distance: 0.5840130811048755
   rounded_distance: 0.58
   event_id: 2305
   event_title: "Open source leadership at scale, how 1300+ people improved Drupal’s multilingual features"
-- distance: 0.5853889352879346
+- distance: 0.584126379595707
+  rounded_distance: 0.58
+  event_id: 2043
+  event_title: FOSS for DOCS
+- distance: 0.5853813750667322
   rounded_distance: 0.59
   event_id: 2851
   event_title: The Journey to Ubuntu Touch 20.04 on PINE64
-- distance: 0.5853973536842011
+- distance: 0.5853871375183167
   rounded_distance: 0.59
   event_id: 3507
   event_title: Reducing the risks of open source AI models and optimizing upsides
@@ -71,7 +71,7 @@ info: "../shared/data/model"
   rounded_distance: 0.59
   event_id: 3013
   event_title: A fully open source stack for MIPI cameras
-- distance: 0.5866779080588146
+- distance: 0.5865713442753449
   rounded_distance: 0.59
   event_id: 2310
   event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
