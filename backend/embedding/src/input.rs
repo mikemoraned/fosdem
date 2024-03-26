@@ -1,10 +1,12 @@
-use content::slide_index::SlideIndex;
+use content::{slide_index::SlideIndex, video_index::VideoIndex};
 use shared::model::{Event, EventId};
+use subtp::vtt::{VttBlock, WebVtt};
 
 pub struct InputBuilder {
     event_id: EventId,
     event: Option<Event>,
     slide_content: Option<String>,
+    video_content: Option<WebVtt>,
 }
 
 impl InputBuilder {
@@ -13,6 +15,7 @@ impl InputBuilder {
             event_id,
             event: None,
             slide_content: None,
+            video_content: None,
         }
     }
 
@@ -30,6 +33,13 @@ impl InputBuilder {
         }
     }
 
+    pub fn with_video_source(self, video_index: &VideoIndex) -> Self {
+        InputBuilder {
+            video_content: video_index.webvtt_for_event_id(self.event_id.0),
+            ..self
+        }
+    }
+
     pub fn format(&self, max_tokens: usize) -> Result<String, Box<dyn std::error::Error>> {
         let mut preferred_input = String::new();
         use std::fmt::Write;
@@ -42,6 +52,19 @@ impl InputBuilder {
             writeln!(preferred_input, "Slides: {}", s)?;
         }
 
+        if let Some(video_content) = &self.video_content {
+            let mut block_content: Vec<_> = video_content
+                .blocks
+                .iter()
+                .map(|b| match b {
+                    VttBlock::Que(cue) => cue.payload.join("\n"),
+                    _ => "".into(),
+                })
+                .collect();
+            block_content.dedup();
+            writeln!(preferred_input, "Subtitles: {}", block_content.join("\n"))?;
+        }
+
         Ok(trim_input(&preferred_input, max_tokens))
     }
 }
@@ -51,8 +74,12 @@ mod test {
     use std::collections::HashMap;
 
     use chrono::{NaiveDate, NaiveTime};
-    use content::slide_index::SlideIndex;
-    use shared::model::{Event, EventId, Person};
+    use content::{
+        slide_index::SlideIndex,
+        video_index::{VideoIndex, VideoIndexEntry},
+    };
+    use shared::model::{Event, EventId, Person, VideoFile};
+    use subtp::vtt::{VttBlock, VttCue, VttHeader, VttTimestamp, VttTimings, WebVtt};
     use url::Url;
 
     use crate::input::InputBuilder;
@@ -84,6 +111,40 @@ mod test {
         SlideIndex { entries }
     }
 
+    fn example_video_index() -> VideoIndex {
+        let mut entries: HashMap<u32, VideoIndexEntry> = HashMap::new();
+        let webvtt = WebVtt {
+            header: VttHeader { description: None },
+            blocks: vec![VttBlock::Que(VttCue {
+                identifier: None,
+                timings: VttTimings {
+                    start: VttTimestamp {
+                        hours: 0,
+                        minutes: 0,
+                        seconds: 0,
+                        milliseconds: 0,
+                    },
+                    end: VttTimestamp {
+                        hours: 1,
+                        minutes: 0,
+                        seconds: 0,
+                        milliseconds: 0,
+                    },
+                },
+                settings: None,
+                payload: vec!["Some Speech 1".into()],
+            })],
+        };
+        let entry = VideoIndexEntry {
+            webvtt,
+            file: VideoFile {
+                name: "video1".into(),
+            },
+        };
+        entries.insert(1u32, entry);
+        VideoIndex { entries }
+    }
+
     #[test]
     fn test_basic_input() {
         let builder = InputBuilder::new(EventId(1)).with_event_source(&example_event());
@@ -107,10 +168,20 @@ mod test {
     }
 
     #[test]
+    fn test_video_input() {
+        let builder = InputBuilder::new(EventId(1)).with_video_source(&example_video_index());
+        let max_tokens = 10000;
+        let actual = builder.format(max_tokens).unwrap();
+        let expected = "Subtitles: Some Speech 1\n";
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
     fn test_combined_input() {
         let builder = InputBuilder::new(EventId(1))
             .with_event_source(&example_event())
-            .with_slide_source(&example_slide_index());
+            .with_slide_source(&example_slide_index())
+            .with_video_source(&example_video_index());
         let max_tokens = 10000;
         let actual = builder.format(max_tokens).unwrap();
         let expected = "FOSDEM Conference Event 2024\n\
@@ -118,7 +189,8 @@ mod test {
                               Track: Track 1\n\
                               Abstract: Abstract 1\n\
                               Presenter: Person 1\n\
-                              Slides: Slide Content 1\n";
+                              Slides: Slide Content 1\n\
+                              Subtitles: Some Speech 1\n";
         assert_eq!(expected, actual);
     }
 

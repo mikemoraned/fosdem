@@ -16,8 +16,8 @@ pub struct VideoIndex {
 
 #[derive(Debug)]
 pub struct VideoIndexEntry {
-    webvtt: subtp::vtt::WebVtt,
-    file: VideoFile,
+    pub webvtt: subtp::vtt::WebVtt,
+    pub file: VideoFile,
 }
 
 impl VideoIndex {
