@@ -694,6 +694,7 @@ checksum = "11157ac094ffbdde99aa67b23417ebdd801842852b500e395a45a9c0aac03e4a"
 name = "embedding"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "clap",
  "content",
  "dotenvy",
@@ -707,6 +708,7 @@ dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",
+ "url",
 ]
 
 [[package]]

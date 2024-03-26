@@ -18,6 +18,8 @@ serde = { workspace = true }
 nalgebra = { workspace = true }
 openai_dive = { workspace = true }
 dotenvy = { workspace = true }
+chrono = { workspace = true }
+url = { workspace = true }
 
 shared = { path = "../shared" }
 content = { path = "../content" }
