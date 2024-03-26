@@ -138,7 +138,9 @@
       - (/) verify snapshots for "combined" source unchanged
     - (x) add ability to search only in video content
       - (x) index video content separately
-      - (x) allow search over different types embeddings, depending on type of event artefact
+        - (/) extend cli to write out separate file for video embeddings
+        - (x) ensure we are only indexing video content, and not other frontmatter like title and description
+      - (x) allow search over different types of embeddings, depending on type of event artefact
       - (x) expose on UI as an option to only search in video content
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches

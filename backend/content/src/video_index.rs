@@ -6,6 +6,7 @@ use std::{
 };
 
 use regex::Regex;
+use shared::model::VideoFile;
 use tracing::trace;
 
 #[derive(Debug)]
@@ -16,6 +17,7 @@ pub struct VideoIndex {
 #[derive(Debug)]
 pub struct VideoIndexEntry {
     webvtt: subtp::vtt::WebVtt,
+    file: VideoFile,
 }
 
 impl VideoIndex {
@@ -42,7 +44,15 @@ impl VideoIndex {
                     let mut content = String::new();
                     file.read_to_string(&mut content)?;
                     let webvtt = subtp::vtt::WebVtt::parse(&content)?;
-                    entries.insert(event_id, VideoIndexEntry { webvtt });
+                    entries.insert(
+                        event_id,
+                        VideoIndexEntry {
+                            webvtt,
+                            file: VideoFile {
+                                name: file_name.to_str().unwrap().into(),
+                            },
+                        },
+                    );
                     video_content_count += 1;
                 }
             }
@@ -54,6 +64,14 @@ impl VideoIndex {
     pub fn webvtt_for_event_id(&self, event_id: u32) -> Option<subtp::vtt::WebVtt> {
         if let Some(entry) = self.entries.get(&event_id) {
             Some(entry.webvtt.clone())
+        } else {
+            None
+        }
+    }
+
+    pub fn video_file_for_event_id(&self, event_id: u32) -> Option<VideoFile> {
+        if let Some(entry) = self.entries.get(&event_id) {
+            Some(entry.file.clone())
         } else {
             None
         }

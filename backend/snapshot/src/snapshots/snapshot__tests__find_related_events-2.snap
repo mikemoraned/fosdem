@@ -3,83 +3,83 @@ source: snapshot/src/lib.rs
 description: Where Did All the Fun Go?  And How to Bring it Back with FOSS!
 info: "../shared/data/model"
 ---
-- distance: 0.4494871781196415
+- distance: 0.4495083900677729
   rounded_distance: 0.45
   event_id: 3544
   event_title: "Defend FOSS: From innovation to world-wide positive change"
-- distance: 0.48217470499561393
+- distance: 0.48221958840393225
   rounded_distance: 0.48
   event_id: 1711
   event_title: "[Ending] It's all about the email. Ugh, what?"
-- distance: 0.4887099171840136
+- distance: 0.48877053529811504
   rounded_distance: 0.49
   event_id: 1808
   event_title: How to Chart your own Career Path in Open Source - Panel Discussion
-- distance: 0.4909267756144979
+- distance: 0.49097455702620396
   rounded_distance: 0.49
   event_id: 1776
   event_title: Journey to an open source contribution
-- distance: 0.4937316521613323
+- distance: 0.49375959512147327
   rounded_distance: 0.49
   event_id: 2029
   event_title: "Open Source in 2024: boundaries, burnout, business"
-- distance: 0.49400792531471377
+- distance: 0.4940296900438893
   rounded_distance: 0.49
   event_id: 2328
   event_title: "Cracking the Code to Executive Support: Open Source Edition"
-- distance: 0.4944519713992443
+- distance: 0.49448339181608547
   rounded_distance: 0.49
   event_id: 3163
   event_title: "Copyleft and the GPL: Finding the Path Forward to Defend our Software Right to Repair"
-- distance: 0.49635720692226815
+- distance: 0.49638431897917956
   rounded_distance: 0.5
   event_id: 3723
   event_title: FOSDEM 2024 Highlights
-- distance: 0.49653589645906304
+- distance: 0.4965768973012943
   rounded_distance: 0.5
   event_id: 3610
   event_title: "Unpack Phabricator, Welcome Phorge - Forking the Opinionated Open Source Project Manager"
-- distance: 0.4970014510905315
+- distance: 0.4970442644850461
   rounded_distance: 0.5
   event_id: 3639
   event_title: Roundtable Round-Off on FOSS CMS Collaboration
-- distance: 0.5008464358649711
+- distance: 0.5008476311771684
   rounded_distance: 0.5
   event_id: 2305
   event_title: "Open source leadership at scale, how 1300+ people improved Drupal’s multilingual features"
-- distance: 0.5081976571060498
+- distance: 0.5082379688013926
   rounded_distance: 0.51
   event_id: 3254
   event_title: The State of OpenJDK
-- distance: 0.5083534464613015
+- distance: 0.5084048590261812
   rounded_distance: 0.51
   event_id: 2741
   event_title: Take Your FOSS Project From Surviving To Thriving
-- distance: 0.5087044450602259
+- distance: 0.5087443151249164
   rounded_distance: 0.51
   event_id: 1830
   event_title: 20 Years of Open Source building XWiki and CryptPad
-- distance: 0.5091007047212959
+- distance: 0.5091064756547574
   rounded_distance: 0.51
   event_id: 3537
   event_title: Open Source Community Updates
-- distance: 0.5108151877611423
+- distance: 0.5108520673177275
   rounded_distance: 0.51
   event_id: 3717
   event_title: "FOSS policy engagement: panel"
-- distance: 0.5113863069388185
+- distance: 0.5114131254740779
   rounded_distance: 0.51
   event_id: 3113
   event_title: RHEL and CentOS and the growth of openwashing in FOSS
-- distance: 0.5118286271389167
+- distance: 0.5118915148387819
   rounded_distance: 0.51
   event_id: 2310
   event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
-- distance: 0.5130769174786405
-  rounded_distance: 0.51
-  event_id: 3671
-  event_title: "Compliance as a Community Effort: Engaging Contributors and Users"
-- distance: 0.5131128322347968
+- distance: 0.5131469431827756
   rounded_distance: 0.51
   event_id: 3023
   event_title: Welcome to FOSDEM 2024
+- distance: 0.5132049499742372
+  rounded_distance: 0.51
+  event_id: 3671
+  event_title: "Compliance as a Community Effort: Engaging Contributors and Users"

@@ -103,7 +103,7 @@ async fn write_combined_embeddings(
         .with_extension("json");
 
     info!(
-        "Looking up and writing embeddings to {} ... ",
+        "Looking up and writing combined embeddings to {} ... ",
         embedding_path.to_str().unwrap()
     );
     let mut embeddings = vec![];
@@ -128,18 +128,39 @@ async fn write_combined_embeddings(
 
 async fn write_video_embeddings(
     model_dir: &Path,
-    _events: &[Event],
-    _client: &Client,
-    _video_index: &VideoIndex,
+    events: &[Event],
+    client: &Client,
+    video_index: &VideoIndex,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let embedding_path = model_dir
         .join("openai_video_embeddings")
         .with_extension("json");
 
     info!(
-        "Looking up and writing embeddings to {} ... ",
+        "Looking up and writing video embeddings to {} ... ",
         embedding_path.to_str().unwrap()
     );
-    info!("TODO");
+    let mut embeddings = vec![];
+    let progress = progress_bar(events.len() as u64);
+    for event in events.into_iter() {
+        if let Some(video_file) = video_index.video_file_for_event_id(event.id) {
+            let subject = EventArtefact::Video {
+                event_id: EventId(event.id),
+                file: video_file,
+            };
+            let embedding =
+                get_event_embedding(&client, &event, &SlideIndex::empty_index(), &video_index)
+                    .await?;
+            let subject_embedding = SubjectEmbedding::new(subject, embedding);
+            embeddings.push(subject_embedding);
+        }
+        progress.inc(1);
+    }
+
+    let embedding_file = File::create(embedding_path)?;
+    let mut writer = BufWriter::new(embedding_file);
+    serde_json::to_writer_pretty(&mut writer, &embeddings)?;
+    writer.flush()?;
+
     Ok(())
 }

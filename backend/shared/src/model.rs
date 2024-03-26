@@ -15,6 +15,12 @@ pub struct SearchItem {
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub enum EventArtefact {
     Combined { event_id: EventId },
+    Video { event_id: EventId, file: VideoFile },
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub struct VideoFile {
+    pub name: String,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Hash, Eq)]
