@@ -56,7 +56,8 @@ pub async fn get_event_embedding(
         writeln!(preferred_input, "Subtitles:{}", block_content.join("\n"))?;
     }
 
-    let trimmed_input = trim_input(&preferred_input);
+    let max_tokens = 8192 - 100;
+    let trimmed_input = trim_input(&preferred_input, max_tokens);
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),

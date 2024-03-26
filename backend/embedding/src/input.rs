@@ -13,18 +13,18 @@ impl InputBuilder {
         }
     }
 
-    pub fn format(&self, _max_tokens: u32) -> String {
-        if let Some(e) = &self.event {
-            format_basic_input(e)
-        } else {
-            "".into()
-        }
-    }
-
     pub fn with_event_source(self, event: &Event) -> Self {
         InputBuilder {
             event: Some(event.clone()),
             ..self
+        }
+    }
+
+    pub fn format(&self, max_tokens: usize) -> String {
+        if let Some(e) = &self.event {
+            trim_input(&format_basic_input(e), max_tokens)
+        } else {
+            "".into()
         }
     }
 }
@@ -37,9 +37,8 @@ mod test {
 
     use crate::input::InputBuilder;
 
-    #[test]
-    fn test_basic_input() {
-        let event = Event {
+    fn example_event() -> Event {
+        Event {
             id: 1,
             date: NaiveDate::from_ymd_opt(2024, 1, 1).unwrap(),
             start: NaiveTime::from_hms_opt(0, 0, 0).unwrap(),
@@ -56,8 +55,12 @@ mod test {
                 name: "Person 1".into(),
             }],
             links: vec![],
-        };
-        let builder = InputBuilder::new(EventId(1)).with_event_source(&event);
+        }
+    }
+
+    #[test]
+    fn test_basic_input() {
+        let builder = InputBuilder::new(EventId(1)).with_event_source(&example_event());
         let max_tokens = 10000;
         let actual = builder.format(max_tokens);
         let expected = "FOSDEM Conference Event 2024\n\
@@ -65,6 +68,15 @@ mod test {
                               Track: Track 1\n\
                               Abstract: Abstract 1\n\
                               Presenter: Person 1";
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_token_limits() {
+        let builder = InputBuilder::new(EventId(1)).with_event_source(&example_event());
+        let max_tokens = 8;
+        let actual = builder.format(max_tokens);
+        let expected = "FOSDEM Conference Event 2024";
         assert_eq!(expected, actual);
     }
 }
@@ -88,9 +100,8 @@ pub fn format_basic_input(event: &Event) -> String {
     lines.join("\n")
 }
 
-pub fn trim_input(input: &str) -> String {
+pub fn trim_input(input: &str, max_tokens: usize) -> String {
     use tiktoken_rs::cl100k_base;
-    let max_tokens = 8192 - 100;
     let token_estimator = cl100k_base().unwrap();
 
     let tokens = token_estimator.split_by_token(input, false).unwrap();
