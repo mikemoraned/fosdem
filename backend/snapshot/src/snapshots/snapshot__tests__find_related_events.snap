@@ -3,83 +3,83 @@ source: snapshot/src/lib.rs
 description: Best practices for research in open source ecosystems
 info: "../shared/data/model"
 ---
-- distance: 0.49061078920871304
+- distance: 0.4866127334122634
   rounded_distance: 0.49
   event_id: 1930
   event_title: OpenPrinting - We make printing just work!
-- distance: 0.5036265836990947
+- distance: 0.5024926642702939
   rounded_distance: 0.5
   event_id: 2779
   event_title: "Staying Ahead of the Game: JavaScript Security"
-- distance: 0.522693077096869
+- distance: 0.5214545450660443
   rounded_distance: 0.52
   event_id: 3337
   event_title: "Flying higher: hardware offloading with BIRD"
-- distance: 0.554557630991651
-  rounded_distance: 0.55
+- distance: 0.5557211873641492
+  rounded_distance: 0.56
   event_id: 2824
   event_title: "Embracing Matrix for Enhanced Communication: Migrating the WordPress Community from Slack to Matrix"
-- distance: 0.5567368243001284
+- distance: 0.5575052865324901
   rounded_distance: 0.56
   event_id: 3190
   event_title: "From the lab to Jupyter : a brief history of computational notebooks from a STS perspective"
-- distance: 0.565759527951707
+- distance: 0.5638904562535817
+  rounded_distance: 0.56
+  event_id: 3544
+  event_title: "Defend FOSS: From innovation to world-wide positive change"
+- distance: 0.5651881493885138
   rounded_distance: 0.57
   event_id: 3364
   event_title: Why not run OpenCL-accelerated LLM on your phone?
-- distance: 0.5661309468546241
-  rounded_distance: 0.57
-  event_id: 3544
-  event_title: "Defend FOSS: From innovation to world-wide positive change"
-- distance: 0.5699060076324416
+- distance: 0.5700536274868967
   rounded_distance: 0.57
   event_id: 3160
   event_title: The Basic Economics behind Open Source Funding in 2024
-- distance: 0.5743380165052974
-  rounded_distance: 0.57
-  event_id: 1899
-  event_title: Where Did All the Fun Go?  And How to Bring it Back with FOSS!
-- distance: 0.5782620615501469
+- distance: 0.5757037623678276
   rounded_distance: 0.58
   event_id: 2781
   event_title: "How to get rid of Confluence: Comparing Open Source Knowledgemanagent Systems"
-- distance: 0.5817873105600656
+- distance: 0.5771770442622962
   rounded_distance: 0.58
-  event_id: 1931
-  event_title: You too could have made curl!
-- distance: 0.5820796335843229
+  event_id: 1899
+  event_title: Where Did All the Fun Go?  And How to Bring it Back with FOSS!
+- distance: 0.5813857061839898
   rounded_distance: 0.58
   event_id: 2328
   event_title: "Cracking the Code to Executive Support: Open Source Edition"
-- distance: 0.5840130811048755
-  rounded_distance: 0.58
-  event_id: 2305
-  event_title: "Open source leadership at scale, how 1300+ people improved Drupal’s multilingual features"
-- distance: 0.584126379595707
+- distance: 0.5822978812308179
   rounded_distance: 0.58
   event_id: 2043
   event_title: FOSS for DOCS
-- distance: 0.5853813750667322
+- distance: 0.5830725764839533
+  rounded_distance: 0.58
+  event_id: 1931
+  event_title: You too could have made curl!
+- distance: 0.5836791106372715
+  rounded_distance: 0.58
+  event_id: 3507
+  event_title: Reducing the risks of open source AI models and optimizing upsides
+- distance: 0.5845256127297301
+  rounded_distance: 0.58
+  event_id: 2305
+  event_title: "Open source leadership at scale, how 1300+ people improved Drupal’s multilingual features"
+- distance: 0.5851598047446043
   rounded_distance: 0.59
   event_id: 2851
   event_title: The Journey to Ubuntu Touch 20.04 on PINE64
-- distance: 0.5853871375183167
-  rounded_distance: 0.59
-  event_id: 3507
-  event_title: Reducing the risks of open source AI models and optimizing upsides
-- distance: 0.5863952467216008
-  rounded_distance: 0.59
-  event_id: 3013
-  event_title: A fully open source stack for MIPI cameras
-- distance: 0.5865713442753449
+- distance: 0.5858625793702845
   rounded_distance: 0.59
   event_id: 2310
   event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
-- distance: 0.5869568661311172
+- distance: 0.5863112814132957
   rounded_distance: 0.59
   event_id: 3234
   event_title: A journey accross the environmental materiality of digital services
-- distance: 0.5880884488946969
+- distance: 0.5865624330212287
   rounded_distance: 0.59
-  event_id: 3113
-  event_title: RHEL and CentOS and the growth of openwashing in FOSS
+  event_id: 2029
+  event_title: "Open Source in 2024: boundaries, burnout, business"
+- distance: 0.5865885680890965
+  rounded_distance: 0.59
+  event_id: 2599
+  event_title: Building Communities with Science!
