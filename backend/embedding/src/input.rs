@@ -204,7 +204,7 @@ mod test {
     }
 }
 
-pub fn format_basic_input(event: &Event) -> String {
+fn format_basic_input(event: &Event) -> String {
     let lines: Vec<String> = vec![
         "FOSDEM Conference Event 2024".into(),
         format!("Title: {}", event.title),
@@ -223,7 +223,7 @@ pub fn format_basic_input(event: &Event) -> String {
     lines.join("\n")
 }
 
-pub fn trim_input(input: &str, max_tokens: usize) -> String {
+fn trim_input(input: &str, max_tokens: usize) -> String {
     use tiktoken_rs::cl100k_base;
     let token_estimator = cl100k_base().unwrap();
 
