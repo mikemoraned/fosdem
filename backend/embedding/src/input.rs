@@ -1,8 +1,10 @@
+use content::slide_index::SlideIndex;
 use shared::model::{Event, EventId};
 
 pub struct InputBuilder {
     event_id: EventId,
     event: Option<Event>,
+    slide_content: Option<String>,
 }
 
 impl InputBuilder {
@@ -10,6 +12,7 @@ impl InputBuilder {
         InputBuilder {
             event_id,
             event: None,
+            slide_content: None,
         }
     }
 
@@ -20,18 +23,35 @@ impl InputBuilder {
         }
     }
 
-    pub fn format(&self, max_tokens: usize) -> String {
-        if let Some(e) = &self.event {
-            trim_input(&format_basic_input(e), max_tokens)
-        } else {
-            "".into()
+    pub fn with_slide_source(self, slide_index: &SlideIndex) -> Self {
+        InputBuilder {
+            slide_content: slide_index.entries.get(&self.event_id.0).cloned(),
+            ..self
         }
+    }
+
+    pub fn format(&self, max_tokens: usize) -> Result<String, Box<dyn std::error::Error>> {
+        let mut preferred_input = String::new();
+        use std::fmt::Write;
+
+        if let Some(e) = &self.event {
+            writeln!(preferred_input, "{}", format_basic_input(e))?;
+        }
+
+        if let Some(s) = &self.slide_content {
+            writeln!(preferred_input, "Slides: {}", s)?;
+        }
+
+        Ok(trim_input(&preferred_input, max_tokens))
     }
 }
 
 #[cfg(test)]
 mod test {
+    use std::collections::HashMap;
+
     use chrono::{NaiveDate, NaiveTime};
+    use content::slide_index::SlideIndex;
     use shared::model::{Event, EventId, Person};
     use url::Url;
 
@@ -58,16 +78,47 @@ mod test {
         }
     }
 
+    fn example_slide_index() -> SlideIndex {
+        let mut entries: HashMap<u32, String> = HashMap::new();
+        entries.insert(1u32, "Slide Content 1".into());
+        SlideIndex { entries }
+    }
+
     #[test]
     fn test_basic_input() {
         let builder = InputBuilder::new(EventId(1)).with_event_source(&example_event());
         let max_tokens = 10000;
-        let actual = builder.format(max_tokens);
+        let actual = builder.format(max_tokens).unwrap();
         let expected = "FOSDEM Conference Event 2024\n\
                               Title: Title 1\n\
                               Track: Track 1\n\
                               Abstract: Abstract 1\n\
-                              Presenter: Person 1";
+                              Presenter: Person 1\n";
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_slide_input() {
+        let builder = InputBuilder::new(EventId(1)).with_slide_source(&example_slide_index());
+        let max_tokens = 10000;
+        let actual = builder.format(max_tokens).unwrap();
+        let expected = "Slides: Slide Content 1\n";
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_combined_input() {
+        let builder = InputBuilder::new(EventId(1))
+            .with_event_source(&example_event())
+            .with_slide_source(&example_slide_index());
+        let max_tokens = 10000;
+        let actual = builder.format(max_tokens).unwrap();
+        let expected = "FOSDEM Conference Event 2024\n\
+                              Title: Title 1\n\
+                              Track: Track 1\n\
+                              Abstract: Abstract 1\n\
+                              Presenter: Person 1\n\
+                              Slides: Slide Content 1\n";
         assert_eq!(expected, actual);
     }
 
@@ -75,7 +126,7 @@ mod test {
     fn test_token_limits() {
         let builder = InputBuilder::new(EventId(1)).with_event_source(&example_event());
         let max_tokens = 8;
-        let actual = builder.format(max_tokens);
+        let actual = builder.format(max_tokens).unwrap();
         let expected = "FOSDEM Conference Event 2024";
         assert_eq!(expected, actual);
     }
