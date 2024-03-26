@@ -3,12 +3,10 @@ use openai_dive::v1::{
     api::Client,
     resources::embedding::{EmbeddingParameters, EmbeddingResponse},
 };
-use shared::model::Event;
-use subtp::vtt::VttBlock;
-use tracing::debug;
+use shared::model::{Event, EventId};
 
 use crate::{
-    input::{format_basic_input, trim_input},
+    input::InputBuilder,
     model::{Embedding, OpenAIVector},
 };
 
@@ -35,33 +33,17 @@ pub async fn get_event_embedding(
     slide_index: &SlideIndex,
     video_index: &VideoIndex,
 ) -> Result<Embedding, Box<dyn std::error::Error>> {
-    let mut preferred_input = String::new();
-    use std::fmt::Write;
-
-    writeln!(preferred_input, "{}", format_basic_input(event))?;
-    if let Some(slide_content) = slide_index.entries.get(&event.id) {
-        writeln!(preferred_input, "Slides:{}", slide_content)?;
-    }
-    if let Some(video_content) = video_index.webvtt_for_event_id(event.id) {
-        let mut block_content: Vec<_> = video_content
-            .blocks
-            .iter()
-            .map(|b| match b {
-                VttBlock::Que(cue) => cue.payload.join("\n"),
-                _ => "".into(),
-            })
-            .collect();
-        block_content.dedup();
-        debug!("[{}] blocks: {:?}", event.id, block_content);
-        writeln!(preferred_input, "Subtitles:{}", block_content.join("\n"))?;
-    }
+    let builder = InputBuilder::new(EventId(event.id))
+        .with_event_source(&event)
+        .with_slide_source(&slide_index)
+        .with_video_source(&video_index);
 
     let max_tokens = 8192 - 100;
-    let trimmed_input = trim_input(&preferred_input, max_tokens);
+    let input = builder.format(max_tokens)?;
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
-        input: trimmed_input,
+        input,
         encoding_format: None,
         user: None,
     };
@@ -74,5 +56,33 @@ pub async fn get_event_embedding(
             Ok(embedding)
         }
         Err(e) => Err(format!("[{}] error: \'{}\'", event.id, e).into()),
+    }
+}
+
+pub async fn get_video_embedding(
+    client: &Client,
+    event_id: &EventId,
+    video_index: &VideoIndex,
+) -> Result<Embedding, Box<dyn std::error::Error>> {
+    let builder = InputBuilder::new(event_id.clone()).with_video_source(&video_index);
+
+    let max_tokens = 8192 - 100;
+    let input = builder.format(max_tokens)?;
+
+    let parameters = EmbeddingParameters {
+        model: "text-embedding-ada-002".to_string(),
+        input,
+        encoding_format: None,
+        user: None,
+    };
+
+    match client.embeddings().create(parameters).await {
+        Ok(response) => {
+            let embedding = Embedding::OpenAIAda2 {
+                vector: OpenAIVector::from(response.data[0].embedding.clone()),
+            };
+            Ok(embedding)
+        }
+        Err(e) => Err(format!("[{:?}] error: \'{}\'", event_id, e).into()),
     }
 }

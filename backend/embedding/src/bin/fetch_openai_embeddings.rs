@@ -8,7 +8,7 @@ use content::slide_index::SlideIndex;
 use content::video_index::VideoIndex;
 
 use embedding::model::SubjectEmbedding;
-use embedding::openai_ada2::get_event_embedding;
+use embedding::openai_ada2::{get_event_embedding, get_video_embedding};
 use openai_dive::v1::api::Client;
 
 use shared::cli::progress_bar;
@@ -144,13 +144,12 @@ async fn write_video_embeddings(
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
         if let Some(video_file) = video_index.video_file_for_event_id(event.id) {
+            let event_id = EventId(event.id);
+            let embedding = get_video_embedding(&client, &event_id, &video_index).await?;
             let subject = EventArtefact::Video {
-                event_id: EventId(event.id),
+                event_id,
                 file: video_file,
             };
-            let embedding =
-                get_event_embedding(&client, &event, &SlideIndex::empty_index(), &video_index)
-                    .await?;
             let subject_embedding = SubjectEmbedding::new(subject, embedding);
             embeddings.push(subject_embedding);
         }
