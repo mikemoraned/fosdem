@@ -15,7 +15,7 @@ use openai_dive::v1::api::Client;
 use shared::cli::progress_bar;
 use shared::model::{Event, EventArtefact, EventId};
 
-use tracing::info;
+use tracing::{debug, info};
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
@@ -116,6 +116,7 @@ async fn write_combined_embeddings(
         };
         let (embedding, statistics) =
             get_event_embedding(&client, &event, &slide_index, &video_index).await?;
+        debug!("[{}] statistics: {:?}", event.id, statistics);
         overall_format_statistics.accumulate(statistics);
         let subject_embedding = SubjectEmbedding::new(subject, embedding);
         embeddings.push(subject_embedding);
@@ -156,6 +157,7 @@ async fn write_video_embeddings(
             let event_id = EventId(event.id);
             let (embedding, statistics) =
                 get_video_embedding(&client, &event_id, &video_index).await?;
+            debug!("[{}] statistics: {:?}", event.id, statistics);
             overall_format_statistics.accumulate(statistics);
             let subject = EventArtefact::Video {
                 event_id,
