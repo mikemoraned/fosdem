@@ -6,7 +6,7 @@ use openai_dive::v1::{
 use shared::model::{Event, EventId};
 
 use crate::{
-    input::InputBuilder,
+    input::{FormatStatistics, InputBuilder},
     model::{Embedding, OpenAIVector},
 };
 
@@ -32,14 +32,14 @@ pub async fn get_event_embedding(
     event: &Event,
     slide_index: &SlideIndex,
     video_index: &VideoIndex,
-) -> Result<Embedding, Box<dyn std::error::Error>> {
+) -> Result<(Embedding, FormatStatistics), Box<dyn std::error::Error>> {
     let builder = InputBuilder::new(EventId(event.id))
         .with_event_source(&event)
         .with_slide_source(&slide_index)
         .with_video_source(&video_index);
 
     let max_tokens = 8192 - 100;
-    let input = builder.format(max_tokens)?;
+    let (input, statistics) = builder.format_with_statistics(max_tokens)?;
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
@@ -53,7 +53,7 @@ pub async fn get_event_embedding(
             let embedding = Embedding::OpenAIAda2 {
                 vector: OpenAIVector::from(response.data[0].embedding.clone()),
             };
-            Ok(embedding)
+            Ok((embedding, statistics))
         }
         Err(e) => Err(format!("[{}] error: \'{}\'", event.id, e).into()),
     }
@@ -63,11 +63,11 @@ pub async fn get_video_embedding(
     client: &Client,
     event_id: &EventId,
     video_index: &VideoIndex,
-) -> Result<Embedding, Box<dyn std::error::Error>> {
+) -> Result<(Embedding, FormatStatistics), Box<dyn std::error::Error>> {
     let builder = InputBuilder::new(event_id.clone()).with_video_source(&video_index);
 
     let max_tokens = 8192 - 100;
-    let input = builder.format(max_tokens)?;
+    let (input, statistics) = builder.format_with_statistics(max_tokens)?;
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
@@ -81,7 +81,7 @@ pub async fn get_video_embedding(
             let embedding = Embedding::OpenAIAda2 {
                 vector: OpenAIVector::from(response.data[0].embedding.clone()),
             };
-            Ok(embedding)
+            Ok((embedding, statistics))
         }
         Err(e) => Err(format!("[{:?}] error: \'{}\'", event_id, e).into()),
     }

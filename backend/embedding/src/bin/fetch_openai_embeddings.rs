@@ -7,6 +7,7 @@ use clap::Parser;
 use content::slide_index::SlideIndex;
 use content::video_index::VideoIndex;
 
+use embedding::input::FormatStatistics;
 use embedding::model::SubjectEmbedding;
 use embedding::openai_ada2::{get_event_embedding, get_video_embedding};
 use openai_dive::v1::api::Client;
@@ -108,15 +109,22 @@ async fn write_combined_embeddings(
     );
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
+    let mut overall_format_statistics = FormatStatistics::default();
     for event in events.into_iter() {
         let subject = EventArtefact::Combined {
             event_id: EventId(event.id),
         };
-        let embedding = get_event_embedding(&client, &event, &slide_index, &video_index).await?;
+        let (embedding, statistics) =
+            get_event_embedding(&client, &event, &slide_index, &video_index).await?;
+        overall_format_statistics.accumulate(statistics);
         let subject_embedding = SubjectEmbedding::new(subject, embedding);
         embeddings.push(subject_embedding);
         progress.inc(1);
     }
+    info!(
+        "combined embeddings statistics: {:?}",
+        overall_format_statistics
+    );
 
     let embedding_file = File::create(embedding_path)?;
     let mut writer = BufWriter::new(embedding_file);
@@ -142,10 +150,13 @@ async fn write_video_embeddings(
     );
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
+    let mut overall_format_statistics = FormatStatistics::default();
     for event in events.into_iter() {
         if let Some(video_file) = video_index.video_file_for_event_id(event.id) {
             let event_id = EventId(event.id);
-            let embedding = get_video_embedding(&client, &event_id, &video_index).await?;
+            let (embedding, statistics) =
+                get_video_embedding(&client, &event_id, &video_index).await?;
+            overall_format_statistics.accumulate(statistics);
             let subject = EventArtefact::Video {
                 event_id,
                 file: video_file,
@@ -155,6 +166,10 @@ async fn write_video_embeddings(
         }
         progress.inc(1);
     }
+    info!(
+        "video embeddings statistics: {:?}",
+        overall_format_statistics
+    );
 
     let embedding_file = File::create(embedding_path)?;
     let mut writer = BufWriter::new(embedding_file);

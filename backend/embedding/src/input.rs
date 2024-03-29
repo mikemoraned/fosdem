@@ -9,6 +9,27 @@ pub struct InputBuilder {
     video_content: Option<WebVtt>,
 }
 
+#[derive(Debug, PartialEq)]
+pub struct FormatStatistics {
+    used_character_count: usize,
+    discarded_character_count: usize,
+}
+impl FormatStatistics {
+    pub fn accumulate(&mut self, statistics: FormatStatistics) {
+        self.used_character_count += statistics.used_character_count;
+        self.discarded_character_count += statistics.discarded_character_count;
+    }
+}
+
+impl Default for FormatStatistics {
+    fn default() -> Self {
+        Self {
+            used_character_count: 0,
+            discarded_character_count: 0,
+        }
+    }
+}
+
 impl InputBuilder {
     pub fn new(event_id: EventId) -> InputBuilder {
         InputBuilder {
@@ -40,7 +61,10 @@ impl InputBuilder {
         }
     }
 
-    pub fn format(&self, max_tokens: usize) -> Result<String, Box<dyn std::error::Error>> {
+    pub fn format_with_statistics(
+        &self,
+        max_tokens: usize,
+    ) -> Result<(String, FormatStatistics), Box<dyn std::error::Error>> {
         let mut preferred_input = String::new();
         use std::fmt::Write;
 
@@ -65,8 +89,30 @@ impl InputBuilder {
             writeln!(preferred_input, "Subtitles: {}", block_content.join("\n"))?;
         }
 
-        Ok(trim_input(&preferred_input, max_tokens))
+        let (used, discarded) = split_input(&preferred_input, max_tokens);
+        let statistics = FormatStatistics {
+            used_character_count: used.len(),
+            discarded_character_count: discarded.len(),
+        };
+
+        Ok((used, statistics))
     }
+
+    pub fn format(&self, max_tokens: usize) -> Result<String, Box<dyn std::error::Error>> {
+        let (formatted, _) = self.format_with_statistics(max_tokens)?;
+        Ok(formatted)
+    }
+}
+
+fn split_input(input: &str, max_tokens: usize) -> (String, String) {
+    use tiktoken_rs::cl100k_base;
+    let token_estimator = cl100k_base().unwrap();
+
+    let tokens = token_estimator.split_by_token(input, false).unwrap();
+    let head: Vec<String> = tokens.iter().take(max_tokens).map(|s| s.clone()).collect();
+    let tail: Vec<String> = tokens.iter().skip(max_tokens).map(|s| s.clone()).collect();
+
+    (head.join(""), tail.join(""))
 }
 
 #[cfg(test)]
@@ -82,7 +128,9 @@ mod test {
     use subtp::vtt::{VttBlock, VttCue, VttHeader, VttTimestamp, VttTimings, WebVtt};
     use url::Url;
 
-    use crate::input::InputBuilder;
+    use crate::input::{FormatStatistics, InputBuilder};
+
+    use super::split_input;
 
     fn example_event() -> Event {
         Event {
@@ -202,6 +250,29 @@ mod test {
         let expected = "FOSDEM Conference Event 2024";
         assert_eq!(expected, actual);
     }
+
+    #[test]
+    fn test_format_with_statistics() {
+        let builder = InputBuilder::new(EventId(1)).with_event_source(&example_event());
+        let max_tokens = 8;
+        let (actual_used, actual_statistics) = builder.format_with_statistics(max_tokens).unwrap();
+        let expected_used = "FOSDEM Conference Event 2024";
+        let expected_statistics = FormatStatistics {
+            used_character_count: 28,
+            discarded_character_count: 72,
+        };
+        assert_eq!(expected_used, actual_used);
+        assert_eq!(expected_statistics, actual_statistics);
+    }
+
+    #[test]
+    fn test_split_input() {
+        let input = "some multiple amount of tokens";
+        let max_tokens = 2;
+        let (head, tail) = split_input(input, max_tokens);
+        assert_eq!("some multiple", head);
+        assert_eq!(" amount of tokens", tail);
+    }
 }
 
 fn format_basic_input(event: &Event) -> String {
@@ -221,13 +292,4 @@ fn format_basic_input(event: &Event) -> String {
         ),
     ];
     lines.join("\n")
-}
-
-fn trim_input(input: &str, max_tokens: usize) -> String {
-    use tiktoken_rs::cl100k_base;
-    let token_estimator = cl100k_base().unwrap();
-
-    let tokens = token_estimator.split_by_token(input, false).unwrap();
-    let trimmed: Vec<_> = tokens.into_iter().take(max_tokens).collect();
-    trimmed.join("")
 }
