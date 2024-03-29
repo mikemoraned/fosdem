@@ -140,8 +140,8 @@
       - (/) index video content separately
         - (/) extend cli to write out separate file for video embeddings
         - (/) ensure we are only indexing video content, and not other frontmatter like title and description
-      - (x) make normalised snapshot capture the rank explicitly as a property as opposed to implicitly via order, as then diffs will bounce around less when rank changes, so making it easier to see
       - (x) add report at end of indexing which shows how much content was discarded due to tokenisation limits
+      - (x) make normalised snapshot capture the rank explicitly as a property as opposed to implicitly via order, as then diffs will bounce around less when rank changes, so making it easier to see
       - (x) allow search over different types of embeddings, depending on type of event artefact
       - (x) expose on UI as an option to only search in video content
   - (x) add ability to search video segments (e.g. 5 min periods)
