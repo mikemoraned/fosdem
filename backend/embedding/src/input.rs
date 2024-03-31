@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use content::{slide_index::SlideIndex, video_index::VideoIndex};
 use shared::model::{Event, EventId};
 use subtp::vtt::{VttBlock, WebVtt};
@@ -27,6 +29,19 @@ impl Default for FormatStatistics {
             used_character_count: 0,
             discarded_character_count: 0,
         }
+    }
+}
+
+impl Display for FormatStatistics {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let total = (self.used_character_count + self.discarded_character_count) as f32;
+        let used_pct = 100.0 * (self.used_character_count as f32) / total;
+        let discarded_pct = 100.0 * (self.discarded_character_count as f32) / total;
+        write!(
+            f,
+            "used: {} ({:.0}%), discarded: {} ({:.0}%)",
+            self.used_character_count, used_pct, self.discarded_character_count, discarded_pct
+        )
     }
 }
 
