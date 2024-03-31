@@ -3,18 +3,21 @@ use serde::Serialize;
 use shared::model::SearchItem;
 
 #[derive(Debug, PartialEq, Serialize)]
-pub struct DistanceSummary {
+pub struct RankSummary {
     distance: f64,
     rounded_distance: f64,
+    rank_in_search: usize,
     event_id: u32,
     event_title: String,
 }
 
-impl DistanceSummary {
-    fn from_search_item(item: &SearchItem) -> DistanceSummary {
-        DistanceSummary {
+impl RankSummary {
+    fn from_ranked_search_item(ranked_item: (usize, &SearchItem)) -> RankSummary {
+        let (rank, item) = ranked_item;
+        RankSummary {
             distance: item.distance,
             rounded_distance: (item.distance * 100.0).round() / 100.0,
+            rank_in_search: rank,
             event_id: item.event.id,
             event_title: item.event.title.clone(),
         }
@@ -39,17 +42,22 @@ impl Snapshotter {
     pub async fn find_related_events(
         &self,
         title: &str,
-    ) -> Result<Vec<DistanceSummary>, Box<dyn std::error::Error>> {
+    ) -> Result<Vec<RankSummary>, Box<dyn std::error::Error>> {
         Ok(Snapshotter::summarise(
             &self.queryable.find_related_events(title, 20).await?,
         ))
     }
 
-    fn summarise(items: &[SearchItem]) -> Vec<DistanceSummary> {
-        items
+    fn summarise(items: &[SearchItem]) -> Vec<RankSummary> {
+        let mut summaries: Vec<RankSummary> = items
             .iter()
-            .map(DistanceSummary::from_search_item)
-            .collect()
+            .enumerate()
+            .map(RankSummary::from_ranked_search_item)
+            .collect();
+
+        summaries.sort_by(|a, b| a.event_id.cmp(&b.event_id));
+
+        summaries
     }
 }
 
