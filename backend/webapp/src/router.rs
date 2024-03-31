@@ -11,8 +11,8 @@ use axum::{
 use axum_valid::Valid;
 
 use content::video_index::VideoIndex;
-use query::inmemory_openai::InMemoryOpenAIQueryable;
 use query::queryable::Queryable;
+use query::{inmemory_openai::InMemoryOpenAIQueryable, queryable::SearchKind};
 use serde::Deserialize;
 use shared::model::{Event, NextEvents, NextEventsContext, SearchItem};
 use tower_http::{
@@ -32,6 +32,8 @@ struct SearchParams {
     q: String,
     #[validate(range(min = 1, max = 20))]
     limit: u8,
+    #[serde(default)]
+    kind: SearchKind,
 }
 
 #[derive(Template, Debug)]
@@ -40,15 +42,20 @@ struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
     current_event: Option<Event>,
+    kind: SearchKind,
 }
 
 #[derive(Template)]
 #[template(path = "index.html")]
-struct IndexTemplate {}
+struct IndexTemplate {
+    kind: SearchKind,
+}
 
 #[tracing::instrument]
 async fn index() -> Html<String> {
-    let page = IndexTemplate {};
+    let page = IndexTemplate {
+        kind: SearchKind::default(),
+    };
     let html = page.render().unwrap();
     Html(html)
 }
@@ -59,12 +66,17 @@ async fn search(
     Valid(Query(params)): Valid<Query<SearchParams>>,
 ) -> axum::response::Result<Html<String>> {
     info!("search params: {:?}", params);
-    match state.queryable.search(&params.q, params.limit, true).await {
+    match state
+        .queryable
+        .search(&params.q, params.limit, &params.kind, true)
+        .await
+    {
         Ok(items) => {
             let page = SearchTemplate {
                 query: params.q,
                 items,
                 current_event: None,
+                kind: params.kind.clone(),
             };
             let html = page.render().unwrap();
             Ok(Html(html))

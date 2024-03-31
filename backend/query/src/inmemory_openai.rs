@@ -13,6 +13,7 @@ use shared::model::SearchItem;
 use tracing::{debug, span};
 
 use crate::queryable::Queryable;
+use crate::queryable::SearchKind;
 use crate::queryable::MAX_RELATED_EVENTS;
 
 #[derive(Debug)]
@@ -79,6 +80,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         &self,
         query: &str,
         limit: u8,
+        kind: &SearchKind,
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");

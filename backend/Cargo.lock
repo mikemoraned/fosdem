@@ -2015,6 +2015,7 @@ dependencies = [
  "chrono",
  "embedding",
  "openai_dive",
+ "serde",
  "serde_json",
  "shared",
  "tracing",

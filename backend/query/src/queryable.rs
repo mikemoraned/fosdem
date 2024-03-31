@@ -1,6 +1,26 @@
+use serde::Deserialize;
 use shared::model::{Event, NextEvents, NextEventsContext, SearchItem};
 
 pub const MAX_RELATED_EVENTS: u8 = 5;
+
+#[derive(Debug, Deserialize, Clone, Default)]
+pub enum SearchKind {
+    #[serde(rename = "combined")]
+    #[default]
+    Combined,
+    #[serde(rename = "video_only")]
+    VideoOnly,
+}
+
+impl SearchKind {
+    pub fn form_value(&self) -> String {
+        match self {
+            Self::Combined => "combined",
+            Self::VideoOnly => "video_only",
+        }
+        .into()
+    }
+}
 
 #[allow(async_fn_in_trait)]
 pub trait Queryable {
@@ -21,6 +41,7 @@ pub trait Queryable {
         &self,
         query: &str,
         limit: u8,
+        kind: &SearchKind,
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 

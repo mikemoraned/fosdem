@@ -9,6 +9,7 @@ edition = "2021"
 chrono = { workspace = true }
 openai_dive = { workspace = true }
 tracing = { workspace = true }
+serde = { workspace = true }
 serde_json = { workspace = true }
 shared = { path = "../shared" }
 embedding = { path = "../embedding" }
