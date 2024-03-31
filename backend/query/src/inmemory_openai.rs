@@ -2,6 +2,7 @@ use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use embedding::model::distance;
+use embedding::model::Embedding;
 use embedding::model::OpenAIVector;
 use embedding::openai_ada2::get_phrase_embedding;
 use openai_dive::v1::api::Client;
@@ -26,6 +27,13 @@ pub struct InMemoryOpenAIQueryable {
 struct EmbeddedEvent {
     event: Event,
     openai_embedding: OpenAIVector,
+}
+
+impl EmbeddedEvent {
+    pub fn distance(&self, embedding: &Embedding) -> f64 {
+        let Embedding::OpenAIAda2 { vector } = embedding;
+        distance(&self.openai_embedding, &vector)
+    }
 }
 
 impl Queryable for InMemoryOpenAIQueryable {
@@ -63,7 +71,9 @@ impl Queryable for InMemoryOpenAIQueryable {
             if embedded_event.event.id != event.event.id {
                 entries.push(SearchItem {
                     event: embedded_event.event.clone(),
-                    distance: distance(&event.openai_embedding, &embedded_event.openai_embedding),
+                    distance: embedded_event.distance(&Embedding::OpenAIAda2 {
+                        vector: event.openai_embedding.clone(),
+                    }),
                     related: None,
                 });
             }
@@ -84,15 +94,14 @@ impl Queryable for InMemoryOpenAIQueryable {
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
-        let response = get_phrase_embedding(&self.openai_client, query).await?;
-        let embedding = OpenAIVector::from(response.data[0].embedding.clone());
+        let embedding = get_phrase_embedding(&self.openai_client, query).await?;
 
         debug!("Finding all distances from embedding");
         let mut entries = vec![];
         for embedded_event in &self.events {
             entries.push(SearchItem {
                 event: embedded_event.event.clone(),
-                distance: distance(&embedding, &embedded_event.openai_embedding),
+                distance: embedded_event.distance(&embedding),
                 related: None,
             });
         }

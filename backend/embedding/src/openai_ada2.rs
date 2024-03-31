@@ -1,8 +1,5 @@
 use content::{slide_index::SlideIndex, video_index::VideoIndex};
-use openai_dive::v1::{
-    api::Client,
-    resources::embedding::{EmbeddingParameters, EmbeddingResponse},
-};
+use openai_dive::v1::{api::Client, resources::embedding::EmbeddingParameters};
 use shared::model::{Event, EventId};
 
 use crate::{
@@ -14,7 +11,7 @@ use crate::{
 pub async fn get_phrase_embedding(
     client: &Client,
     input: &str,
-) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
+) -> Result<Embedding, Box<dyn std::error::Error>> {
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
         input: input.to_string(),
@@ -22,9 +19,15 @@ pub async fn get_phrase_embedding(
         user: None,
     };
 
-    let response = client.embeddings().create(parameters).await.unwrap();
-
-    Ok(response)
+    match client.embeddings().create(parameters).await {
+        Ok(response) => {
+            let embedding = Embedding::OpenAIAda2 {
+                vector: OpenAIVector::from(response.data[0].embedding.clone()),
+            };
+            Ok(embedding)
+        }
+        Err(e) => Err(format!("for phrase \'{}\', error: \'{}\'", input, e).into()),
+    }
 }
 
 pub async fn get_event_embedding(
