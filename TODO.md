@@ -142,8 +142,9 @@
         - (/) ensure we are only indexing video content, and not other frontmatter like title and description
       - (/) add report at end of indexing which shows how much content was discarded due to tokenisation limits
       - (/) make normalised snapshot capture the rank explicitly as a property as opposed to implicitly via order, as then diffs will bounce around less when rank changes, so making it easier to see
-      - (x) allow search over different types of embeddings, depending on type of event artefact
-      - (x) expose on UI as an option to only search in video content
+      - (x) allow search over different types of embeddings, depending on type of event artefact, in this case VideoOnly
+      - (/) expose on UI an option to only search in video content
+    - (x) extend VideoOnly search into related items
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches
     - (x) ...
