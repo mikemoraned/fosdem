@@ -262,8 +262,9 @@ impl InMemoryOpenAIQueryable {
 mod parsing {
     use std::{fs::File, io::BufReader, path::Path, vec};
 
-    use embedding::parsing::parse_all_embeddings_into_index;
-    use shared::model::{Event, EventId};
+    use embedding::{model::Embedding, parsing::parse_all_subject_embeddings_into_index};
+
+    use shared::model::{Event, EventArtefact, EventId};
     use tracing::debug;
 
     use super::EmbeddedEvent;
@@ -273,22 +274,45 @@ mod parsing {
     ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
         let events_path = model_dir.join("events").with_extension("json");
         let events = parse_all_events(&events_path)?;
-        let embeddings_path = model_dir
-            .join("openai_combined_embeddings")
-            .with_extension("json");
-        let embeddings = parse_all_embeddings_into_index(&embeddings_path)?;
+        let embeddings_paths = vec![
+            model_dir
+                .join("openai_combined_embeddings")
+                .with_extension("json"),
+            model_dir
+                .join("openai_video_embeddings")
+                .with_extension("json"),
+        ];
+        let embeddings_index = parse_all_subject_embeddings_into_index(&embeddings_paths)?;
 
         let mut embedded_events = vec![];
         for event in events {
-            let result = embeddings.get(&EventId(event.id));
-            match result {
-                Some(vector) => embedded_events.push(EmbeddedEvent {
-                    event,
-                    openai_embedding: vector.clone(),
-                }),
+            match embeddings_index.get(&EventId(event.id)) {
+                Some(embeddings) => {
+                    let possible_embedding = embeddings.iter().find(|e| {
+                        EventArtefact::Combined {
+                            event_id: EventId(event.id),
+                        } == e.subject
+                    });
+                    match possible_embedding {
+                        Some(subject_embedding) => {
+                            let Embedding::OpenAIAda2 { vector } = &subject_embedding.embedding;
+                            embedded_events.push(EmbeddedEvent {
+                                event,
+                                openai_embedding: vector.clone(),
+                            });
+                        }
+                        None => {
+                            return Err(format!(
+                                "failed to find combined embedding for title \'{}\' with id {}",
+                                event.title, event.id
+                            )
+                            .into());
+                        }
+                    }
+                }
                 None => {
                     return Err(format!(
-                        "failed to find embedding for title \'{}\' with id {}",
+                        "failed to find any embedding for title \'{}\' with id {}",
                         event.title, event.id
                     )
                     .into());
