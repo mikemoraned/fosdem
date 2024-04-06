@@ -68,7 +68,7 @@ async fn search(
     info!("search params: {:?}", params);
     match state
         .queryable
-        .search(&params.q, params.limit, &params.kind, true)
+        .search(&params.q, &params.kind, params.limit, true)
         .await
     {
         Ok(items) => {

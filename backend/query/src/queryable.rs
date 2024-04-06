@@ -34,14 +34,15 @@ pub trait Queryable {
     async fn find_related_events(
         &self,
         title: &str,
+        kind: &SearchKind,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 
     async fn search(
         &self,
         query: &str,
-        limit: u8,
         kind: &SearchKind,
+        limit: u8,
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 

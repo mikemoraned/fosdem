@@ -3,8 +3,8 @@ use std::{collections::HashMap, fs::File, io::Write, path::PathBuf};
 use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 
-use query::inmemory_openai::InMemoryOpenAIQueryable;
 use query::queryable::Queryable;
+use query::{inmemory_openai::InMemoryOpenAIQueryable, queryable::SearchKind};
 use shared::{cli::progress_bar, env::load_secret};
 use tracing::info;
 use webapp::related::{D3Force, Link, Node};
@@ -67,7 +67,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
         let related = queryable
-            .find_related_events(&event.title, args.limit)
+            .find_related_events(&event.title, &SearchKind::Combined, args.limit)
             .await?;
         let source = *titles_covered.get(&event.title).unwrap();
         for item in related.iter() {

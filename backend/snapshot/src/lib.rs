@@ -1,4 +1,7 @@
-use query::{inmemory_openai::InMemoryOpenAIQueryable, queryable::Queryable};
+use query::{
+    inmemory_openai::InMemoryOpenAIQueryable,
+    queryable::{Queryable, SearchKind},
+};
 use serde::Serialize;
 use shared::model::SearchItem;
 
@@ -44,7 +47,10 @@ impl Snapshotter {
         title: &str,
     ) -> Result<Vec<RankSummary>, Box<dyn std::error::Error>> {
         Ok(Snapshotter::summarise(
-            &self.queryable.find_related_events(title, 20).await?,
+            &self
+                .queryable
+                .find_related_events(title, &SearchKind::Combined, 20)
+                .await?,
         ))
     }
 

@@ -4,7 +4,6 @@ use std::path::Path;
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
 use embedding::model::distance;
 use embedding::model::Embedding;
-use embedding::model::OpenAIVector;
 use embedding::openai_ada2::get_phrase_embedding;
 use openai_dive::v1::api::Client;
 
@@ -66,6 +65,7 @@ impl Queryable for InMemoryOpenAIQueryable {
     async fn find_related_events(
         &self,
         title: &str,
+        kind: &SearchKind,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Finding parent event for title");
@@ -111,8 +111,8 @@ impl Queryable for InMemoryOpenAIQueryable {
     async fn search(
         &self,
         query: &str,
-        limit: u8,
         kind: &SearchKind,
+        limit: u8,
         find_related: bool,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
@@ -143,7 +143,7 @@ impl Queryable for InMemoryOpenAIQueryable {
                     let mut entries_with_related = vec![];
                     for mut entry in entries.into_iter() {
                         entry.related = Some(
-                            self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
+                            self.find_related_events(&entry.event.title, kind, MAX_RELATED_EVENTS)
                                 .await?,
                         );
                         entries_with_related.push(entry);
