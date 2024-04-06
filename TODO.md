@@ -136,7 +136,7 @@
       - (/) switch to using ids, instead of titles, for embeddings
       - (/) convert to an enum as key
       - (/) verify snapshots for "combined" source unchanged
-    - (x) add ability to search only in video content
+    - (/) add ability to search only in video content
       - (/) index video content separately
         - (/) extend cli to write out separate file for video embeddings
         - (/) ensure we are only indexing video content, and not other frontmatter like title and description
@@ -149,8 +149,9 @@
           - (/) change internals to have an index from `SearchKind` to `Embedding` for that `EventId`
       - (/) expose on UI an option to only search in video content
     - (x) extend VideoOnly search into related items
-      - (x) extend snapshots to cover the search kind
+      - (/) extend snapshots to cover the search kind
       - (x) switch behaviour to change depending on search kind
+      - (x) extract shared function from `test_find_related_events_videoonly_searchkind` and `test_find_related_events_combined_searchkind`
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches
     - (x) ...
