@@ -150,7 +150,7 @@
       - (/) expose on UI an option to only search in video content
     - (x) extend VideoOnly search into related items
       - (/) extend snapshots to cover the search kind
-      - (x) switch behaviour to change depending on search kind
+      - (/) switch behaviour to change depending on search kind
       - (x) extract shared function from `test_find_related_events_videoonly_searchkind` and `test_find_related_events_combined_searchkind`
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches

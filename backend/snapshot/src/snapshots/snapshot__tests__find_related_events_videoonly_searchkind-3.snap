@@ -5,103 +5,103 @@ info:
   model_dir: "../shared/data/model"
   search_kind: video_only
 ---
-- distance: 0.5464849710478832
-  rounded_distance: 0.55
-  rank_in_search: 19
+- distance: 0.5125648775463548
+  rounded_distance: 0.51
+  rank_in_search: 15
   event_id: 1665
   event_title: Making Ansible playbooks to configure Single Sign On for popular open source applications
-- distance: 0.5274596318349868
-  rounded_distance: 0.53
-  rank_in_search: 4
+- distance: 0.5157724871363739
+  rounded_distance: 0.52
+  rank_in_search: 19
   event_id: 1822
   event_title: "The MDN Curriculum: Better web developers for a better web"
-- distance: 0.5408230546798967
-  rounded_distance: 0.54
-  rank_in_search: 13
-  event_id: 1930
-  event_title: OpenPrinting - We make printing just work!
-- distance: 0.5454363790107195
-  rounded_distance: 0.55
-  rank_in_search: 18
+- distance: 0.49843087074363773
+  rounded_distance: 0.5
+  rank_in_search: 6
   event_id: 1983
   event_title: Remediating thousands of untracked security vulnerabilities in nixpkgs
-- distance: 0.5364565341810448
-  rounded_distance: 0.54
-  rank_in_search: 8
-  event_id: 2003
-  event_title: Better than loading fast… is loading instantly!
-- distance: 0.5430913516084346
-  rounded_distance: 0.54
-  rank_in_search: 15
-  event_id: 2125
-  event_title: Embeddable code playgrounds for fun and profit
-- distance: 0.5377969867159964
-  rounded_distance: 0.54
-  rank_in_search: 10
-  event_id: 2186
-  event_title: "Better Bee Be Better: spot more bugs than TS with less than JS"
-- distance: 0.5390249770050562
-  rounded_distance: 0.54
-  rank_in_search: 11
-  event_id: 2231
-  event_title: A Lazy Developer’s Approach to Building Real-Time Web Applications
-- distance: 0.5315835838489918
-  rounded_distance: 0.53
-  rank_in_search: 7
-  event_id: 2273
-  event_title: A front-end journey back to Rails
-- distance: 0.5366995246757524
-  rounded_distance: 0.54
-  rank_in_search: 9
+- distance: 0.5136916307644763
+  rounded_distance: 0.51
+  rank_in_search: 17
+  event_id: 2182
+  event_title: "Besides Web: a Worker story."
+- distance: 0.5120312226281162
+  rounded_distance: 0.51
+  rank_in_search: 14
   event_id: 2288
   event_title: "Cryptography against AI: Deepfake resistant WebRTC videocalls"
-- distance: 0.5161573649369574
-  rounded_distance: 0.52
-  rank_in_search: 2
+- distance: 0.5133482207952511
+  rounded_distance: 0.51
+  rank_in_search: 16
+  event_id: 2310
+  event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
+- distance: 0.46833321910682674
+  rounded_distance: 0.47
+  rank_in_search: 0
   event_id: 2311
   event_title: Making Python safer than ever
-- distance: 0.5447307517118404
-  rounded_distance: 0.54
-  rank_in_search: 16
+- distance: 0.5091213316562794
+  rounded_distance: 0.51
+  rank_in_search: 13
   event_id: 2326
   event_title: A slow migration from Django templates to Vue+GraphQL
-- distance: 0.516023549435235
-  rounded_distance: 0.52
-  rank_in_search: 1
+- distance: 0.5057943515029535
+  rounded_distance: 0.51
+  rank_in_search: 9
   event_id: 2352
   event_title: "Stopping all the attacks before they start: Building a security-first API"
-- distance: 0.5202466239604397
-  rounded_distance: 0.52
-  rank_in_search: 3
+- distance: 0.48056914629326536
+  rounded_distance: 0.48
+  rank_in_search: 2
   event_id: 2395
   event_title: The CPAN Security Working Group
-- distance: 0.5027609799007372
-  rounded_distance: 0.5
-  rank_in_search: 0
+- distance: 0.49413828607951776
+  rounded_distance: 0.49
+  rank_in_search: 4
   event_id: 2405
   event_title: Best practices for research in open source ecosystems
-- distance: 0.5313373345124355
-  rounded_distance: 0.53
-  rank_in_search: 6
+- distance: 0.5031044368315055
+  rounded_distance: 0.5
+  rank_in_search: 8
+  event_id: 2443
+  event_title: How can we trust 3rd party code? Using Python to understand the trust relationships within the python ecosystem
+- distance: 0.5017128710128324
+  rounded_distance: 0.5
+  rank_in_search: 7
   event_id: 2638
   event_title: "Breaking Barriers: Content Management Systems and Accessibility"
-- distance: 0.5284637968670709
-  rounded_distance: 0.53
-  rank_in_search: 5
-  event_id: 2722
-  event_title: "Your web app is taking up too much RAM. Let's fix it!"
-- distance: 0.5449358851582151
-  rounded_distance: 0.54
-  rank_in_search: 17
+- distance: 0.5073923194263688
+  rounded_distance: 0.51
+  rank_in_search: 12
+  event_id: 2781
+  event_title: "How to get rid of Confluence: Comparing Open Source Knowledgemanagent Systems"
+- distance: 0.5060531745085842
+  rounded_distance: 0.51
+  rank_in_search: 10
   event_id: 2832
   event_title: "MessageFormat: The future of i18n on the web"
-- distance: 0.5418066130249758
-  rounded_distance: 0.54
-  rank_in_search: 14
-  event_id: 3326
-  event_title: Web-accessibility for open-source privacy & security tools
-- distance: 0.5392465379273195
-  rounded_distance: 0.54
-  rank_in_search: 12
-  event_id: 3544
-  event_title: "Defend FOSS: From innovation to world-wide positive change"
+- distance: 0.506852020556955
+  rounded_distance: 0.51
+  rank_in_search: 11
+  event_id: 2876
+  event_title: "MatrixRTC: The Future of Matrix Calls"
+- distance: 0.47854712490953155
+  rounded_distance: 0.48
+  rank_in_search: 1
+  event_id: 2920
+  event_title: "Know Your Ingredients: Security Starts With the SBOM"
+- distance: 0.4966125062509742
+  rounded_distance: 0.5
+  rank_in_search: 5
+  event_id: 3370
+  event_title: "An engineer's guide to Linux Kernel upgrades"
+- distance: 0.5139345809349409
+  rounded_distance: 0.51
+  rank_in_search: 18
+  event_id: 3622
+  event_title: "Panel discussion: Software Naming"
+- distance: 0.4928314458625478
+  rounded_distance: 0.49
+  rank_in_search: 3
+  event_id: 3723
+  event_title: FOSDEM 2024 Highlights

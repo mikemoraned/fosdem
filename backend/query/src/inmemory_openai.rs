@@ -75,8 +75,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         };
         let parent_event_id = EventId(parent_event.id);
 
-        let search_kind = SearchKind::Combined;
-        if let Some(embedding_index) = self.index.get(&search_kind) {
+        if let Some(embedding_index) = self.index.get(&kind) {
             debug!("Finding embedding for parent event");
             if let Some(parent_event_embedding) = embedding_index.get(&parent_event_id) {
                 debug!("Finding all distances from parent embedding");
@@ -98,12 +97,12 @@ impl Queryable for InMemoryOpenAIQueryable {
             } else {
                 Err(format!(
                     "no embedding for parent event {:?} in {:?}",
-                    parent_event_id, search_kind
+                    parent_event_id, kind
                 )
                 .into())
             }
         } else {
-            Err(format!("no index for {:?}", search_kind).into())
+            Err(format!("no index for {:?}", kind).into())
         }
     }
 
