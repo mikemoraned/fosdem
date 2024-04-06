@@ -1,9 +1,9 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use shared::model::{Event, NextEvents, NextEventsContext, SearchItem};
 
 pub const MAX_RELATED_EVENTS: u8 = 5;
 
-#[derive(Debug, Deserialize, Clone, Default, Eq, PartialEq, Hash)]
+#[derive(Debug, Serialize, Deserialize, Clone, Default, Eq, PartialEq, Hash)]
 pub enum SearchKind {
     #[serde(rename = "combined")]
     #[default]

@@ -1,7 +1,9 @@
 ---
 source: snapshot/src/lib.rs
 description: "Staying Ahead of the Game: JavaScript Security"
-info: "../shared/data/model"
+info:
+  model_dir: "../shared/data/model"
+  search_kind: combined
 ---
 - distance: 0.5464849710478832
   rounded_distance: 0.55

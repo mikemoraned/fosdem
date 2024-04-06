@@ -45,12 +45,10 @@ impl Snapshotter {
     pub async fn find_related_events(
         &self,
         title: &str,
+        kind: &SearchKind,
     ) -> Result<Vec<RankSummary>, Box<dyn std::error::Error>> {
         Ok(Snapshotter::summarise(
-            &self
-                .queryable
-                .find_related_events(title, &SearchKind::Combined, 20)
-                .await?,
+            &self.queryable.find_related_events(title, kind, 20).await?,
         ))
     }
 
@@ -81,15 +79,26 @@ mod tests {
         "Staying Ahead of the Game: JavaScript Security",
     ];
 
+    #[derive(Serialize)]
+    struct TestInfo {
+        model_dir: PathBuf,
+        search_kind: SearchKind,
+    }
+
     #[tokio::test]
     async fn test_find_related_events_combined_searchkind() {
+        let kind = &SearchKind::Combined;
+
         let openai_api_key = load_secret("OPENAI_API_KEY").unwrap();
         let model_dir = PathBuf::from_str("../shared/data/model").unwrap();
         let snapshotter = Snapshotter::new(&openai_api_key, &model_dir).await.unwrap();
         for title in TITLES {
-            let similar = snapshotter.find_related_events(title).await.unwrap();
+            let similar = snapshotter.find_related_events(title, kind).await.unwrap();
             insta::with_settings!({
-                info => &model_dir,
+                info => &TestInfo {
+                    model_dir: model_dir.clone(),
+                    search_kind: kind.clone(),
+                },
                 description => title,
                 omit_expression => true
             }, {
