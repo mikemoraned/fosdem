@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::path::Path;
 
 use chrono::{Duration, FixedOffset, NaiveDateTime, Utc};
@@ -8,6 +9,7 @@ use embedding::openai_ada2::get_phrase_embedding;
 use openai_dive::v1::api::Client;
 
 use shared::model::Event;
+use shared::model::EventId;
 use shared::model::NextEvents;
 use shared::model::NextEventsContext;
 use shared::model::SearchItem;
@@ -20,26 +22,33 @@ use crate::queryable::MAX_RELATED_EVENTS;
 #[derive(Debug)]
 pub struct InMemoryOpenAIQueryable {
     openai_client: Client,
-    events: Vec<EmbeddedEvent>,
+    events: Vec<Event>,
+    index: HashMap<SearchKind, HashMap<EventId, EventEmbedding>>,
 }
 
 #[derive(Debug)]
-struct EmbeddedEvent {
+struct EventEmbedding {
     event: Event,
-    openai_embedding: OpenAIVector,
+    embedding: Embedding,
 }
 
-impl EmbeddedEvent {
+impl EventEmbedding {
     pub fn distance(&self, embedding: &Embedding) -> f64 {
-        let Embedding::OpenAIAda2 { vector } = embedding;
-        distance(&self.openai_embedding, &vector)
+        match &self.embedding {
+            Embedding::OpenAIAda2 { vector } => {
+                let self_vector = vector;
+                match embedding {
+                    Embedding::OpenAIAda2 { vector } => distance(self_vector, &vector),
+                }
+            }
+        }
     }
 }
 
 impl Queryable for InMemoryOpenAIQueryable {
     #[tracing::instrument(skip(self))]
     async fn load_all_events(&self) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
-        Ok(self.events.iter().map(|e| e.event.clone()).collect())
+        Ok(self.events.clone())
     }
 
     #[tracing::instrument(skip(self))]
@@ -47,8 +56,8 @@ impl Queryable for InMemoryOpenAIQueryable {
         &self,
         event_id: u32,
     ) -> Result<Option<Event>, Box<dyn std::error::Error>> {
-        Ok(match self.events.iter().find(|e| e.event.id == event_id) {
-            Some(e) => Some(e.event.clone()),
+        Ok(match self.events.iter().find(|e| e.id == event_id) {
+            Some(e) => Some(e.clone()),
             None => None,
         })
     }
@@ -59,30 +68,43 @@ impl Queryable for InMemoryOpenAIQueryable {
         title: &str,
         limit: u8,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
-        debug!("Finding embedding for title");
-        let event = match self.events.iter().find(|e| e.event.title == *title) {
+        debug!("Finding parent event for title");
+        let parent_event = match self.events.iter().find(|e| e.title == *title) {
             Some(e) => e,
-            None => return Err(format!("no embedding for \'{}\'", title).into()),
+            None => return Err(format!("no event for \'{}\'", title).into()),
         };
+        let parent_event_id = EventId(parent_event.id);
 
-        debug!("Finding all distances from embedding");
-        let mut entries = vec![];
-        for embedded_event in &self.events {
-            if embedded_event.event.id != event.event.id {
-                entries.push(SearchItem {
-                    event: embedded_event.event.clone(),
-                    distance: embedded_event.distance(&Embedding::OpenAIAda2 {
-                        vector: event.openai_embedding.clone(),
-                    }),
-                    related: None,
-                });
+        let search_kind = SearchKind::Combined;
+        if let Some(embedding_index) = self.index.get(&search_kind) {
+            debug!("Finding embedding for parent event");
+            if let Some(parent_event_embedding) = embedding_index.get(&parent_event_id) {
+                debug!("Finding all distances from parent embedding");
+                let mut entries = vec![];
+                for (event_id, embedding) in embedding_index {
+                    if event_id != &parent_event_id {
+                        entries.push(SearchItem {
+                            event: embedding.event.clone(),
+                            distance: embedding.distance(&parent_event_embedding.embedding),
+                            related: None,
+                        });
+                    }
+                }
+                debug!("Limiting to the top {}", limit);
+                entries.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+                entries.truncate(limit as usize);
+
+                Ok(entries)
+            } else {
+                Err(format!(
+                    "no embedding for parent event {:?} in {:?}",
+                    parent_event_id, search_kind
+                )
+                .into())
             }
+        } else {
+            Err(format!("no index for {:?}", search_kind).into())
         }
-        debug!("Limiting to the top {}", limit);
-        entries.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
-        entries.truncate(limit as usize);
-
-        Ok(entries)
     }
 
     #[tracing::instrument(skip(self))]
@@ -96,12 +118,17 @@ impl Queryable for InMemoryOpenAIQueryable {
         debug!("Getting embedding for query");
         let embedding = get_phrase_embedding(&self.openai_client, query).await?;
 
+        let embedding_index = self
+            .index
+            .get(&kind)
+            .ok_or(format!("no index for {:?}", kind))?;
+
         debug!("Finding all distances from embedding");
         let mut entries = vec![];
-        for embedded_event in &self.events {
+        for event_embedding in embedding_index.values() {
             entries.push(SearchItem {
-                event: embedded_event.event.clone(),
-                distance: embedded_event.distance(&embedding),
+                event: event_embedding.event.clone(),
+                distance: event_embedding.distance(&embedding),
                 related: None,
             });
         }
@@ -173,9 +200,11 @@ impl InMemoryOpenAIQueryable {
         let openai_client = Client::new(openai_api_key.into());
 
         debug!("Loading data from {:?}", model_dir);
+        let (events, index) = parsing::parse_embedded_events(model_dir)?;
         Ok(InMemoryOpenAIQueryable {
             openai_client,
-            events: parsing::parse_embedded_events(model_dir)?,
+            events,
+            index,
         })
     }
 }
@@ -269,20 +298,29 @@ impl InMemoryOpenAIQueryable {
 }
 
 mod parsing {
-    use std::{fs::File, io::BufReader, path::Path, vec};
+    use std::{collections::HashMap, fs::File, io::BufReader, path::Path, vec};
 
-    use embedding::{model::Embedding, parsing::parse_all_subject_embeddings_into_index};
+    use embedding::parsing::parse_all_subject_embeddings;
 
     use shared::model::{Event, EventArtefact, EventId};
     use tracing::debug;
 
-    use super::EmbeddedEvent;
+    use crate::queryable::SearchKind;
+
+    use super::EventEmbedding;
 
     pub fn parse_embedded_events(
         model_dir: &Path,
-    ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
+    ) -> Result<
+        (
+            Vec<Event>,
+            HashMap<SearchKind, HashMap<EventId, EventEmbedding>>,
+        ),
+        Box<dyn std::error::Error>,
+    > {
         let events_path = model_dir.join("events").with_extension("json");
         let events = parse_all_events(&events_path)?;
+
         let embeddings_paths = vec![
             model_dir
                 .join("openai_combined_embeddings")
@@ -291,44 +329,44 @@ mod parsing {
                 .join("openai_video_embeddings")
                 .with_extension("json"),
         ];
-        let embeddings_index = parse_all_subject_embeddings_into_index(&embeddings_paths)?;
+        let subject_embeddings = parse_all_subject_embeddings(&embeddings_paths)?;
+        let mut index = HashMap::new();
+        for search_kind in vec![SearchKind::Combined, SearchKind::VideoOnly] {
+            index.insert(search_kind, HashMap::new());
+        }
+        for subject_embedding in subject_embeddings {
+            let (event_id, search_kind) = match subject_embedding.subject {
+                EventArtefact::Combined { event_id } => (event_id, SearchKind::Combined),
+                EventArtefact::Video { event_id, file: _ } => (event_id, SearchKind::VideoOnly),
+            };
+            let embedding_index = index
+                .get_mut(&search_kind)
+                .ok_or(format!("no index for {:?}", search_kind))?;
+            let event = events
+                .iter()
+                .find(|e| event_id == EventId(e.id))
+                .ok_or(format!("could not find event for {:?}", event_id))?;
+            let event_embedding = EventEmbedding {
+                event: event.clone(),
+                embedding: subject_embedding.embedding.clone(),
+            };
+            embedding_index.insert(event_id.clone(), event_embedding);
+        }
 
-        let mut embedded_events = vec![];
-        for event in events {
-            match embeddings_index.get(&EventId(event.id)) {
-                Some(embeddings) => {
-                    let possible_embedding = embeddings.iter().find(|e| {
-                        EventArtefact::Combined {
-                            event_id: EventId(event.id),
-                        } == e.subject
-                    });
-                    match possible_embedding {
-                        Some(subject_embedding) => {
-                            let Embedding::OpenAIAda2 { vector } = &subject_embedding.embedding;
-                            embedded_events.push(EmbeddedEvent {
-                                event,
-                                openai_embedding: vector.clone(),
-                            });
-                        }
-                        None => {
-                            return Err(format!(
-                                "failed to find combined embedding for title \'{}\' with id {}",
-                                event.title, event.id
-                            )
-                            .into());
-                        }
-                    }
-                }
-                None => {
+        for event in &events {
+            if let Some(embedding_index) = index.get(&SearchKind::Combined) {
+                let event_id = EventId(event.id);
+                if !embedding_index.contains_key(&event_id) {
                     return Err(format!(
-                        "failed to find any embedding for title \'{}\' with id {}",
+                        "failed to find combined embedding for title \'{}\' with id {}",
                         event.title, event.id
                     )
                     .into());
                 }
             }
         }
-        Ok(embedded_events)
+
+        Ok((events, index))
     }
 
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {

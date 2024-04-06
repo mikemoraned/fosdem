@@ -146,7 +146,7 @@
         - within `InMemoryOpenAIQueryable`:
           - (/) parse combined and video embeddings, even not using them
           - (/) change to use generic `Embedding`
-          - (x) change internals to have an index from `SearchKind` to `Embedding` for that `EventId`
+          - (/) change internals to have an index from `SearchKind` to `Embedding` for that `EventId`
       - (/) expose on UI an option to only search in video content
     - (x) extend VideoOnly search into related items
   - (x) add ability to search video segments (e.g. 5 min periods)
