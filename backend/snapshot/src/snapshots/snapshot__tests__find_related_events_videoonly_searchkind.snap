@@ -1,0 +1,107 @@
+---
+source: snapshot/src/lib.rs
+description: Best practices for research in open source ecosystems
+info:
+  model_dir: "../shared/data/model"
+  search_kind: video_only
+---
+- distance: 0.5771770442622962
+  rounded_distance: 0.58
+  rank_in_search: 9
+  event_id: 1899
+  event_title: Where Did All the Fun Go?  And How to Bring it Back with FOSS!
+- distance: 0.4866127334122634
+  rounded_distance: 0.49
+  rank_in_search: 0
+  event_id: 1930
+  event_title: OpenPrinting - We make printing just work!
+- distance: 0.5830725764839533
+  rounded_distance: 0.58
+  rank_in_search: 12
+  event_id: 1931
+  event_title: You too could have made curl!
+- distance: 0.5865624330212287
+  rounded_distance: 0.59
+  rank_in_search: 18
+  event_id: 2029
+  event_title: "Open Source in 2024: boundaries, burnout, business"
+- distance: 0.5822978812308179
+  rounded_distance: 0.58
+  rank_in_search: 11
+  event_id: 2043
+  event_title: FOSS for DOCS
+- distance: 0.5845256127297301
+  rounded_distance: 0.58
+  rank_in_search: 14
+  event_id: 2305
+  event_title: "Open source leadership at scale, how 1300+ people improved Drupal’s multilingual features"
+- distance: 0.5858937082653218
+  rounded_distance: 0.59
+  rank_in_search: 16
+  event_id: 2310
+  event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
+- distance: 0.5813857061839898
+  rounded_distance: 0.58
+  rank_in_search: 10
+  event_id: 2328
+  event_title: "Cracking the Code to Executive Support: Open Source Edition"
+- distance: 0.5865885680890965
+  rounded_distance: 0.59
+  rank_in_search: 19
+  event_id: 2599
+  event_title: Building Communities with Science!
+- distance: 0.5027609799007372
+  rounded_distance: 0.5
+  rank_in_search: 1
+  event_id: 2779
+  event_title: "Staying Ahead of the Game: JavaScript Security"
+- distance: 0.5756811170844157
+  rounded_distance: 0.58
+  rank_in_search: 8
+  event_id: 2781
+  event_title: "How to get rid of Confluence: Comparing Open Source Knowledgemanagent Systems"
+- distance: 0.5557211873641492
+  rounded_distance: 0.56
+  rank_in_search: 3
+  event_id: 2824
+  event_title: "Embracing Matrix for Enhanced Communication: Migrating the WordPress Community from Slack to Matrix"
+- distance: 0.5851598047446043
+  rounded_distance: 0.59
+  rank_in_search: 15
+  event_id: 2851
+  event_title: The Journey to Ubuntu Touch 20.04 on PINE64
+- distance: 0.5700536274868967
+  rounded_distance: 0.57
+  rank_in_search: 7
+  event_id: 3160
+  event_title: The Basic Economics behind Open Source Funding in 2024
+- distance: 0.5575052865324901
+  rounded_distance: 0.56
+  rank_in_search: 4
+  event_id: 3190
+  event_title: "From the lab to Jupyter : a brief history of computational notebooks from a STS perspective"
+- distance: 0.5863112814132957
+  rounded_distance: 0.59
+  rank_in_search: 17
+  event_id: 3234
+  event_title: A journey accross the environmental materiality of digital services
+- distance: 0.5214545450660443
+  rounded_distance: 0.52
+  rank_in_search: 2
+  event_id: 3337
+  event_title: "Flying higher: hardware offloading with BIRD"
+- distance: 0.5651881493885138
+  rounded_distance: 0.57
+  rank_in_search: 6
+  event_id: 3364
+  event_title: Why not run OpenCL-accelerated LLM on your phone?
+- distance: 0.5836791106372715
+  rounded_distance: 0.58
+  rank_in_search: 13
+  event_id: 3507
+  event_title: Reducing the risks of open source AI models and optimizing upsides
+- distance: 0.5638904562535817
+  rounded_distance: 0.56
+  rank_in_search: 5
+  event_id: 3544
+  event_title: "Defend FOSS: From innovation to world-wide positive change"

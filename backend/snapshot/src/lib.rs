@@ -86,6 +86,28 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn test_find_related_events_videoonly_searchkind() {
+        let kind = &SearchKind::VideoOnly;
+
+        let openai_api_key = load_secret("OPENAI_API_KEY").unwrap();
+        let model_dir = PathBuf::from_str("../shared/data/model").unwrap();
+        let snapshotter = Snapshotter::new(&openai_api_key, &model_dir).await.unwrap();
+        for title in TITLES {
+            let similar = snapshotter.find_related_events(title, kind).await.unwrap();
+            insta::with_settings!({
+                info => &TestInfo {
+                    model_dir: model_dir.clone(),
+                    search_kind: kind.clone(),
+                },
+                description => title,
+                omit_expression => true
+            }, {
+                insta::assert_yaml_snapshot!(similar);
+            });
+        }
+    }
+
+    #[tokio::test]
     async fn test_find_related_events_combined_searchkind() {
         let kind = &SearchKind::Combined;
 
