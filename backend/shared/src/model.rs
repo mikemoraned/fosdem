@@ -26,7 +26,7 @@ pub struct VideoFile {
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Hash, Eq, PartialOrd)]
 pub struct EventId(pub u32);
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub struct Event {
     pub id: u32,
     pub date: NaiveDate,
@@ -43,13 +43,13 @@ pub struct Event {
     pub links: Vec<Link>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub struct Person {
     pub id: u32,
     pub name: String,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub struct Link {
     pub url: Url,
     pub name: String,

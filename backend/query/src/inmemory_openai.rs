@@ -318,7 +318,7 @@ mod parsing {
         Box<dyn std::error::Error>,
     > {
         let events_path = model_dir.join("events").with_extension("json");
-        let events = parse_all_events(&events_path)?;
+        let events_index = parse_all_events(&events_path)?;
 
         let embeddings_paths = vec![
             model_dir
@@ -341,9 +341,8 @@ mod parsing {
             let embedding_index = index
                 .get_mut(&search_kind)
                 .ok_or(format!("no index for {:?}", search_kind))?;
-            let event = events
-                .iter()
-                .find(|e| event_id == EventId(e.id))
+            let event = events_index
+                .get(&event_id)
                 .ok_or(format!("could not find event for {:?}", event_id))?;
             let event_embedding = EventEmbedding {
                 event: event.clone(),
@@ -352,9 +351,8 @@ mod parsing {
             embedding_index.insert(event_id.clone(), event_embedding);
         }
 
-        for event in &events {
-            if let Some(embedding_index) = index.get(&SearchKind::Combined) {
-                let event_id = EventId(event.id);
+        if let Some(embedding_index) = index.get(&SearchKind::Combined) {
+            for (event_id, event) in &events_index {
                 if !embedding_index.contains_key(&event_id) {
                     return Err(format!(
                         "failed to find combined embedding for title \'{}\' with id {}",
@@ -365,16 +363,31 @@ mod parsing {
             }
         }
 
+        let mut events: Vec<Event> = events_index
+            .values()
+            .map(|e| e.clone())
+            .into_iter()
+            .collect();
+
+        events.sort_by(|a, b| a.partial_cmp(b).unwrap());
+
         Ok((events, index))
     }
 
-    fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
+    fn parse_all_events(
+        events_path: &Path,
+    ) -> Result<HashMap<EventId, Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
 
-        let reader = BufReader::new(File::open(events_path)?);
-        let mut events: Vec<Event> = serde_json::from_reader(reader)?;
+        let mut events_index = HashMap::new();
 
-        events.sort_by(|a, b| a.id.cmp(&b.id));
-        Ok(events)
+        let reader = BufReader::new(File::open(events_path)?);
+        let events: Vec<Event> = serde_json::from_reader(reader)?;
+
+        for event in events.into_iter() {
+            events_index.insert(EventId(event.id), event);
+        }
+
+        Ok(events_index)
     }
 }
