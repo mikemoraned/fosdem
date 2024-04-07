@@ -8,12 +8,12 @@ info:
 items:
   - event_id: 1665
     event_title: Making Ansible playbooks to configure Single Sign On for popular open source applications
+  - event_id: 1713
+    event_title: "Web Performance: Leveraging Qwik to Meet Google's Core Web Vitals"
   - event_id: 1822
     event_title: "The MDN Curriculum: Better web developers for a better web"
   - event_id: 1930
     event_title: OpenPrinting - We make printing just work!
-  - event_id: 1983
-    event_title: Remediating thousands of untracked security vulnerabilities in nixpkgs
   - event_id: 2003
     event_title: Better than loading fast… is loading instantly!
   - event_id: 2125
@@ -49,43 +49,43 @@ items:
 ranks:
   - event_id: 1665
     rounded_distance: 0.55
+    rank_in_search: 18
+  - event_id: 1713
+    rounded_distance: 0.55
     rank_in_search: 19
   - event_id: 1822
     rounded_distance: 0.53
     rank_in_search: 4
   - event_id: 1930
     rounded_distance: 0.54
-    rank_in_search: 13
-  - event_id: 1983
-    rounded_distance: 0.55
-    rank_in_search: 18
+    rank_in_search: 8
   - event_id: 2003
     rounded_distance: 0.54
-    rank_in_search: 8
+    rank_in_search: 9
   - event_id: 2125
     rounded_distance: 0.54
-    rank_in_search: 15
+    rank_in_search: 10
   - event_id: 2186
     rounded_distance: 0.54
-    rank_in_search: 10
+    rank_in_search: 11
   - event_id: 2231
     rounded_distance: 0.54
-    rank_in_search: 11
+    rank_in_search: 12
   - event_id: 2273
     rounded_distance: 0.53
-    rank_in_search: 7
+    rank_in_search: 5
   - event_id: 2288
     rounded_distance: 0.54
-    rank_in_search: 9
+    rank_in_search: 13
   - event_id: 2311
     rounded_distance: 0.52
-    rank_in_search: 2
+    rank_in_search: 1
   - event_id: 2326
     rounded_distance: 0.54
-    rank_in_search: 16
+    rank_in_search: 14
   - event_id: 2352
     rounded_distance: 0.52
-    rank_in_search: 1
+    rank_in_search: 2
   - event_id: 2395
     rounded_distance: 0.52
     rank_in_search: 3
@@ -97,13 +97,13 @@ ranks:
     rank_in_search: 6
   - event_id: 2722
     rounded_distance: 0.53
-    rank_in_search: 5
+    rank_in_search: 7
   - event_id: 2832
     rounded_distance: 0.54
-    rank_in_search: 17
+    rank_in_search: 15
   - event_id: 3326
     rounded_distance: 0.54
-    rank_in_search: 14
+    rank_in_search: 16
   - event_id: 3544
     rounded_distance: 0.54
-    rank_in_search: 12
+    rank_in_search: 17

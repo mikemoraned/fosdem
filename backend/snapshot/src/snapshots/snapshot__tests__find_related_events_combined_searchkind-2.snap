@@ -52,10 +52,10 @@ ranks:
     rank_in_search: 1
   - event_id: 1776
     rounded_distance: 0.49
-    rank_in_search: 3
+    rank_in_search: 2
   - event_id: 1808
     rounded_distance: 0.49
-    rank_in_search: 2
+    rank_in_search: 3
   - event_id: 1830
     rounded_distance: 0.51
     rank_in_search: 11
@@ -64,10 +64,10 @@ ranks:
     rank_in_search: 4
   - event_id: 2305
     rounded_distance: 0.5
-    rank_in_search: 10
+    rank_in_search: 6
   - event_id: 2310
     rounded_distance: 0.51
-    rank_in_search: 17
+    rank_in_search: 12
   - event_id: 2328
     rounded_distance: 0.49
     rank_in_search: 5
@@ -76,34 +76,34 @@ ranks:
     rank_in_search: 13
   - event_id: 3023
     rounded_distance: 0.51
-    rank_in_search: 19
+    rank_in_search: 14
   - event_id: 3113
     rounded_distance: 0.51
-    rank_in_search: 16
+    rank_in_search: 15
   - event_id: 3163
     rounded_distance: 0.5
-    rank_in_search: 6
+    rank_in_search: 7
   - event_id: 3254
     rounded_distance: 0.51
-    rank_in_search: 12
+    rank_in_search: 16
   - event_id: 3537
     rounded_distance: 0.51
-    rank_in_search: 14
+    rank_in_search: 17
   - event_id: 3544
     rounded_distance: 0.45
     rank_in_search: 0
   - event_id: 3610
     rounded_distance: 0.5
-    rank_in_search: 9
+    rank_in_search: 8
   - event_id: 3639
     rounded_distance: 0.5
-    rank_in_search: 8
+    rank_in_search: 9
   - event_id: 3671
     rounded_distance: 0.51
     rank_in_search: 18
   - event_id: 3717
     rounded_distance: 0.51
-    rank_in_search: 15
+    rank_in_search: 19
   - event_id: 3723
     rounded_distance: 0.5
-    rank_in_search: 7
+    rank_in_search: 10

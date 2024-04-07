@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use shared::model::{Event, SearchItem};
+use shared::model::{Event, RoundedDistance, SearchItem};
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {
@@ -31,15 +31,16 @@ pub fn truncate_title(title: &String, max_size: usize) -> ::askama::Result<Strin
     Ok(limited.join(""))
 }
 
-pub fn distance_similarity(distance: &f64) -> ::askama::Result<String> {
-    let similarity = 1.0 - distance;
-    Ok(format!("{:.2}", similarity))
+pub fn distance_similarity(distance: &RoundedDistance) -> ::askama::Result<String> {
+    let similarity = distance.to_similarity();
+    Ok(format!("{}", similarity))
 }
 
-pub fn distance_icon(distance: &f64) -> ::askama::Result<String> {
-    let similarity = 1.0 - distance;
+pub fn distance_icon(distance: &RoundedDistance) -> ::askama::Result<String> {
+    let similarity = distance.to_similarity();
     let assumed_max_typical_similarity = 0.60;
-    let opacity = (similarity / assumed_max_typical_similarity).min(1.0f64);
+    let similarity_f: f64 = similarity.into();
+    let opacity = (similarity_f / assumed_max_typical_similarity).min(1.0f64);
     Ok(format!(
         "<i class=\"fa-solid fa-circle\" style=\"opacity: {}\"></i>",
         opacity
@@ -59,7 +60,7 @@ pub fn order_event_by_time_then_place(events: &[Event]) -> ::askama::Result<Vec<
 }
 
 pub struct GroupedSearchItems {
-    pub distance: f64,
+    pub distance: RoundedDistance,
     pub items: Vec<SearchItem>,
 }
 
@@ -75,7 +76,7 @@ pub fn group_by_distance(items: &Vec<SearchItem>) -> ::askama::Result<Vec<Groupe
     let mut grouped: Vec<GroupedSearchItems> = group_map
         .into_values()
         .map(|items| GroupedSearchItems {
-            distance: items[0].distance,
+            distance: items[0].distance.clone(),
             items,
         })
         .collect();

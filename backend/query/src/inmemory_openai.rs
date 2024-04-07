@@ -11,6 +11,7 @@ use shared::model::Event;
 use shared::model::EventId;
 use shared::model::NextEvents;
 use shared::model::NextEventsContext;
+use shared::model::RoundedDistance;
 use shared::model::SearchItem;
 use tracing::{debug, span};
 
@@ -32,12 +33,12 @@ struct EventEmbedding {
 }
 
 impl EventEmbedding {
-    pub fn distance(&self, embedding: &Embedding) -> f64 {
+    pub fn distance(&self, embedding: &Embedding) -> RoundedDistance {
         match &self.embedding {
             Embedding::OpenAIAda2 { vector } => {
                 let self_vector = vector;
                 match embedding {
-                    Embedding::OpenAIAda2 { vector } => distance(self_vector, &vector),
+                    Embedding::OpenAIAda2 { vector } => distance(self_vector, &vector).into(),
                 }
             }
         }
@@ -90,7 +91,7 @@ impl Queryable for InMemoryOpenAIQueryable {
                     }
                 }
                 debug!("Limiting to the top {}", limit);
-                entries.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+                InMemoryOpenAIQueryable::normalised_sort(&mut entries);
                 entries.truncate(limit as usize);
 
                 Ok(entries)
@@ -132,7 +133,7 @@ impl Queryable for InMemoryOpenAIQueryable {
             });
         }
         debug!("Limiting to the top {}", limit);
-        entries.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+        InMemoryOpenAIQueryable::normalised_sort(&mut entries);
         entries.truncate(limit as usize);
 
         if find_related {
@@ -204,6 +205,16 @@ impl InMemoryOpenAIQueryable {
             openai_client,
             events,
             index,
+        })
+    }
+
+    fn normalised_sort(items: &mut Vec<SearchItem>) {
+        items.sort_by(|a, b| {
+            if a.distance == b.distance {
+                a.event.id.partial_cmp(&b.event.id).unwrap()
+            } else {
+                a.distance.partial_cmp(&b.distance).unwrap()
+            }
         })
     }
 }

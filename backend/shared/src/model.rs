@@ -1,4 +1,4 @@
-use std::{fs::File, io::BufReader, path::Path};
+use std::{fmt::Display, fs::File, io::BufReader, path::Path};
 
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use serde::{Deserialize, Serialize};
@@ -8,8 +8,122 @@ use url::Url;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct SearchItem {
     pub event: Event,
-    pub distance: f64,
+    pub distance: RoundedDistance,
     pub related: Option<Vec<SearchItem>>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, PartialOrd)]
+pub struct RoundedDistance {
+    units: u8,
+}
+
+impl RoundedDistance {
+    pub fn from_units(units: u8) -> RoundedDistance {
+        RoundedDistance { units }
+    }
+}
+
+impl From<f64> for RoundedDistance {
+    fn from(distance: f64) -> Self {
+        let units = (distance * 100.0).round() as u8;
+        RoundedDistance { units }
+    }
+}
+
+impl Into<f64> for RoundedDistance {
+    fn into(self) -> f64 {
+        (self.units as f64) / 100.0
+    }
+}
+
+impl RoundedDistance {
+    pub fn to_similarity(&self) -> RoundedSimilarity {
+        let units = 100 - self.units;
+        RoundedSimilarity { units }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, PartialOrd)]
+pub struct RoundedSimilarity {
+    units: u8,
+}
+
+impl RoundedSimilarity {
+    pub fn from_units(units: u8) -> RoundedSimilarity {
+        RoundedSimilarity { units }
+    }
+}
+
+impl Into<f64> for RoundedSimilarity {
+    fn into(self) -> f64 {
+        (self.units as f64) / 100.0
+    }
+}
+
+impl Into<f64> for &RoundedSimilarity {
+    fn into(self) -> f64 {
+        (self.units as f64) / 100.0
+    }
+}
+
+impl Display for RoundedSimilarity {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let converted: f64 = self.into();
+        write!(f, "{:.2}", converted)
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::{RoundedDistance, RoundedSimilarity};
+
+    #[test]
+    fn test_rounded_distance_from_f64() {
+        let inputs = vec![0.64, 0.28, 0.0, 1.0];
+        let expected_outputs = vec![
+            RoundedDistance::from_units(64u8),
+            RoundedDistance::from_units(28u8),
+            RoundedDistance::from_units(0u8),
+            RoundedDistance::from_units(100u8),
+        ];
+
+        for (input, expected) in inputs.into_iter().zip(expected_outputs.into_iter()) {
+            let actual: RoundedDistance = input.into();
+            assert_eq!(expected.units, actual.units);
+        }
+    }
+
+    #[test]
+    fn test_rounded_distance_into_f64() {
+        let inputs = vec![
+            RoundedDistance::from_units(64u8),
+            RoundedDistance::from_units(28u8),
+            RoundedDistance::from_units(0u8),
+            RoundedDistance::from_units(100u8),
+        ];
+        let expected_outputs = vec![0.64, 0.28, 0.0, 1.0];
+
+        for (input, expected) in inputs.into_iter().zip(expected_outputs.into_iter()) {
+            let actual: f64 = input.into();
+            assert_eq!(expected, actual);
+        }
+    }
+
+    #[test]
+    fn test_rounded_similarity_into_f64() {
+        let inputs = vec![
+            RoundedSimilarity::from_units(64u8),
+            RoundedSimilarity::from_units(28u8),
+            RoundedSimilarity::from_units(0u8),
+            RoundedSimilarity::from_units(100u8),
+        ];
+        let expected_outputs = vec![0.64, 0.28, 0.0, 1.0];
+
+        for (input, expected) in inputs.into_iter().zip(expected_outputs.into_iter()) {
+            let actual: f64 = input.into();
+            assert_eq!(expected, actual);
+        }
+    }
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]

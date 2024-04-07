@@ -72,11 +72,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let source = *titles_covered.get(&event.title).unwrap();
         for item in related.iter() {
             let target = *titles_covered.get(&item.event.title).unwrap();
-            let distance = item.distance;
+            let distance = item.distance.clone();
             links.push(Link {
                 source,
                 target,
-                distance,
+                distance: distance.into(),
             });
         }
         progress.inc(1);

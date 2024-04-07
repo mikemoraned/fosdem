@@ -12,6 +12,8 @@ items:
     event_title: Community Driven Data Collection and Consent in AI
   - event_id: 1930
     event_title: OpenPrinting - We make printing just work!
+  - event_id: 1981
+    event_title: "Netdata: Open Source, Distributed Observability Pipeline - Journey and Challenges."
   - event_id: 2029
     event_title: "Open Source in 2024: boundaries, burnout, business"
   - event_id: 2151
@@ -44,24 +46,25 @@ items:
     event_title: Why not run OpenCL-accelerated LLM on your phone?
   - event_id: 3452
     event_title: Unlocking Research Data Management with InvenioRDM
-  - event_id: 3544
-    event_title: "Defend FOSS: From innovation to world-wide positive change"
 ranks:
   - event_id: 1693
     rounded_distance: 0.55
-    rank_in_search: 14
+    rank_in_search: 12
   - event_id: 1801
     rounded_distance: 0.54
-    rank_in_search: 10
+    rank_in_search: 6
   - event_id: 1930
     rounded_distance: 0.48
     rank_in_search: 0
+  - event_id: 1981
+    rounded_distance: 0.55
+    rank_in_search: 13
   - event_id: 2029
     rounded_distance: 0.55
-    rank_in_search: 17
+    rank_in_search: 14
   - event_id: 2151
     rounded_distance: 0.54
-    rank_in_search: 9
+    rank_in_search: 7
   - event_id: 2310
     rounded_distance: 0.53
     rank_in_search: 4
@@ -79,19 +82,19 @@ ranks:
     rank_in_search: 5
   - event_id: 2824
     rounded_distance: 0.55
-    rank_in_search: 12
+    rank_in_search: 15
   - event_id: 2866
     rounded_distance: 0.55
-    rank_in_search: 13
+    rank_in_search: 16
   - event_id: 2876
     rounded_distance: 0.54
-    rank_in_search: 7
+    rank_in_search: 9
   - event_id: 2909
     rounded_distance: 0.54
-    rank_in_search: 6
+    rank_in_search: 10
   - event_id: 2928
     rounded_distance: 0.55
-    rank_in_search: 19
+    rank_in_search: 17
   - event_id: 3160
     rounded_distance: 0.54
     rank_in_search: 11
@@ -100,10 +103,7 @@ ranks:
     rank_in_search: 2
   - event_id: 3364
     rounded_distance: 0.55
-    rank_in_search: 16
+    rank_in_search: 18
   - event_id: 3452
     rounded_distance: 0.55
-    rank_in_search: 18
-  - event_id: 3544
-    rounded_distance: 0.55
-    rank_in_search: 15
+    rank_in_search: 19

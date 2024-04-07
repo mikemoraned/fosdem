@@ -37,7 +37,7 @@ impl RankSummary {
     fn from_ranked_search_item(ranked_item: (usize, &SearchItem)) -> RankSummary {
         let (rank, item) = ranked_item;
         RankSummary {
-            rounded_distance: (item.distance * 100.0).round() / 100.0,
+            rounded_distance: item.distance.clone().into(),
             rank_in_search: rank,
             event_id: item.event.id,
         }
