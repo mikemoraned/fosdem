@@ -5,103 +5,105 @@ info:
   model_dir: "../shared/data/model"
   search_kind: combined
 ---
-- distance: 0.5464849710478832
-  rounded_distance: 0.55
-  rank_in_search: 19
-  event_id: 1665
-  event_title: Making Ansible playbooks to configure Single Sign On for popular open source applications
-- distance: 0.5274596318349868
-  rounded_distance: 0.53
-  rank_in_search: 4
-  event_id: 1822
-  event_title: "The MDN Curriculum: Better web developers for a better web"
-- distance: 0.5408230546798967
-  rounded_distance: 0.54
-  rank_in_search: 13
-  event_id: 1930
-  event_title: OpenPrinting - We make printing just work!
-- distance: 0.5454363790107195
-  rounded_distance: 0.55
-  rank_in_search: 18
-  event_id: 1983
-  event_title: Remediating thousands of untracked security vulnerabilities in nixpkgs
-- distance: 0.5364565341810448
-  rounded_distance: 0.54
-  rank_in_search: 8
-  event_id: 2003
-  event_title: Better than loading fast… is loading instantly!
-- distance: 0.5430913516084346
-  rounded_distance: 0.54
-  rank_in_search: 15
-  event_id: 2125
-  event_title: Embeddable code playgrounds for fun and profit
-- distance: 0.5377969867159964
-  rounded_distance: 0.54
-  rank_in_search: 10
-  event_id: 2186
-  event_title: "Better Bee Be Better: spot more bugs than TS with less than JS"
-- distance: 0.5390249770050562
-  rounded_distance: 0.54
-  rank_in_search: 11
-  event_id: 2231
-  event_title: A Lazy Developer’s Approach to Building Real-Time Web Applications
-- distance: 0.5315835838489918
-  rounded_distance: 0.53
-  rank_in_search: 7
-  event_id: 2273
-  event_title: A front-end journey back to Rails
-- distance: 0.5366995246757524
-  rounded_distance: 0.54
-  rank_in_search: 9
-  event_id: 2288
-  event_title: "Cryptography against AI: Deepfake resistant WebRTC videocalls"
-- distance: 0.5161573649369574
-  rounded_distance: 0.52
-  rank_in_search: 2
-  event_id: 2311
-  event_title: Making Python safer than ever
-- distance: 0.5447307517118404
-  rounded_distance: 0.54
-  rank_in_search: 16
-  event_id: 2326
-  event_title: A slow migration from Django templates to Vue+GraphQL
-- distance: 0.516023549435235
-  rounded_distance: 0.52
-  rank_in_search: 1
-  event_id: 2352
-  event_title: "Stopping all the attacks before they start: Building a security-first API"
-- distance: 0.5202466239604397
-  rounded_distance: 0.52
-  rank_in_search: 3
-  event_id: 2395
-  event_title: The CPAN Security Working Group
-- distance: 0.5027609799007372
-  rounded_distance: 0.5
-  rank_in_search: 0
-  event_id: 2405
-  event_title: Best practices for research in open source ecosystems
-- distance: 0.5313373345124355
-  rounded_distance: 0.53
-  rank_in_search: 6
-  event_id: 2638
-  event_title: "Breaking Barriers: Content Management Systems and Accessibility"
-- distance: 0.5284637968670709
-  rounded_distance: 0.53
-  rank_in_search: 5
-  event_id: 2722
-  event_title: "Your web app is taking up too much RAM. Let's fix it!"
-- distance: 0.5449358851582151
-  rounded_distance: 0.54
-  rank_in_search: 17
-  event_id: 2832
-  event_title: "MessageFormat: The future of i18n on the web"
-- distance: 0.5418066130249758
-  rounded_distance: 0.54
-  rank_in_search: 14
-  event_id: 3326
-  event_title: Web-accessibility for open-source privacy & security tools
-- distance: 0.5392465379273195
-  rounded_distance: 0.54
-  rank_in_search: 12
-  event_id: 3544
-  event_title: "Defend FOSS: From innovation to world-wide positive change"
+items:
+  - event_id: 1665
+    event_title: Making Ansible playbooks to configure Single Sign On for popular open source applications
+  - event_id: 1822
+    event_title: "The MDN Curriculum: Better web developers for a better web"
+  - event_id: 1930
+    event_title: OpenPrinting - We make printing just work!
+  - event_id: 1983
+    event_title: Remediating thousands of untracked security vulnerabilities in nixpkgs
+  - event_id: 2003
+    event_title: Better than loading fast… is loading instantly!
+  - event_id: 2125
+    event_title: Embeddable code playgrounds for fun and profit
+  - event_id: 2186
+    event_title: "Better Bee Be Better: spot more bugs than TS with less than JS"
+  - event_id: 2231
+    event_title: A Lazy Developer’s Approach to Building Real-Time Web Applications
+  - event_id: 2273
+    event_title: A front-end journey back to Rails
+  - event_id: 2288
+    event_title: "Cryptography against AI: Deepfake resistant WebRTC videocalls"
+  - event_id: 2311
+    event_title: Making Python safer than ever
+  - event_id: 2326
+    event_title: A slow migration from Django templates to Vue+GraphQL
+  - event_id: 2352
+    event_title: "Stopping all the attacks before they start: Building a security-first API"
+  - event_id: 2395
+    event_title: The CPAN Security Working Group
+  - event_id: 2405
+    event_title: Best practices for research in open source ecosystems
+  - event_id: 2638
+    event_title: "Breaking Barriers: Content Management Systems and Accessibility"
+  - event_id: 2722
+    event_title: "Your web app is taking up too much RAM. Let's fix it!"
+  - event_id: 2832
+    event_title: "MessageFormat: The future of i18n on the web"
+  - event_id: 3326
+    event_title: Web-accessibility for open-source privacy & security tools
+  - event_id: 3544
+    event_title: "Defend FOSS: From innovation to world-wide positive change"
+ranks:
+  - event_id: 1665
+    rounded_distance: 0.55
+    rank_in_search: 19
+  - event_id: 1822
+    rounded_distance: 0.53
+    rank_in_search: 4
+  - event_id: 1930
+    rounded_distance: 0.54
+    rank_in_search: 13
+  - event_id: 1983
+    rounded_distance: 0.55
+    rank_in_search: 18
+  - event_id: 2003
+    rounded_distance: 0.54
+    rank_in_search: 8
+  - event_id: 2125
+    rounded_distance: 0.54
+    rank_in_search: 15
+  - event_id: 2186
+    rounded_distance: 0.54
+    rank_in_search: 10
+  - event_id: 2231
+    rounded_distance: 0.54
+    rank_in_search: 11
+  - event_id: 2273
+    rounded_distance: 0.53
+    rank_in_search: 7
+  - event_id: 2288
+    rounded_distance: 0.54
+    rank_in_search: 9
+  - event_id: 2311
+    rounded_distance: 0.52
+    rank_in_search: 2
+  - event_id: 2326
+    rounded_distance: 0.54
+    rank_in_search: 16
+  - event_id: 2352
+    rounded_distance: 0.52
+    rank_in_search: 1
+  - event_id: 2395
+    rounded_distance: 0.52
+    rank_in_search: 3
+  - event_id: 2405
+    rounded_distance: 0.5
+    rank_in_search: 0
+  - event_id: 2638
+    rounded_distance: 0.53
+    rank_in_search: 6
+  - event_id: 2722
+    rounded_distance: 0.53
+    rank_in_search: 5
+  - event_id: 2832
+    rounded_distance: 0.54
+    rank_in_search: 17
+  - event_id: 3326
+    rounded_distance: 0.54
+    rank_in_search: 14
+  - event_id: 3544
+    rounded_distance: 0.54
+    rank_in_search: 12

@@ -5,103 +5,105 @@ info:
   model_dir: "../shared/data/model"
   search_kind: video_only
 ---
-- distance: 0.5517555995877912
-  rounded_distance: 0.55
-  rank_in_search: 14
-  event_id: 1693
-  event_title: "Please Make It Make Sense: Product Management Methods to Make Your Project's Purpose Clear"
-- distance: 0.542924388231904
-  rounded_distance: 0.54
-  rank_in_search: 10
-  event_id: 1801
-  event_title: Community Driven Data Collection and Consent in AI
-- distance: 0.47756895002711625
-  rounded_distance: 0.48
-  rank_in_search: 0
-  event_id: 1930
-  event_title: OpenPrinting - We make printing just work!
-- distance: 0.5535241988263577
-  rounded_distance: 0.55
-  rank_in_search: 17
-  event_id: 2029
-  event_title: "Open Source in 2024: boundaries, burnout, business"
-- distance: 0.5398838985959723
-  rounded_distance: 0.54
-  rank_in_search: 9
-  event_id: 2151
-  event_title: "Alexandria3k: Researching the world's knowledge on your laptop"
-- distance: 0.5274165696210223
-  rounded_distance: 0.53
-  rank_in_search: 4
-  event_id: 2310
-  event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
-- distance: 0.5396638108995887
-  rounded_distance: 0.54
-  rank_in_search: 8
-  event_id: 2328
-  event_title: "Cracking the Code to Executive Support: Open Source Edition"
-- distance: 0.49413828607951776
-  rounded_distance: 0.49
-  rank_in_search: 1
-  event_id: 2779
-  event_title: "Staying Ahead of the Game: JavaScript Security"
-- distance: 0.5170555503630245
-  rounded_distance: 0.52
-  rank_in_search: 3
-  event_id: 2781
-  event_title: "How to get rid of Confluence: Comparing Open Source Knowledgemanagent Systems"
-- distance: 0.5279371711336492
-  rounded_distance: 0.53
-  rank_in_search: 5
-  event_id: 2805
-  event_title: Moving a step closer to defining Open Source AI
-- distance: 0.5453551778259357
-  rounded_distance: 0.55
-  rank_in_search: 12
-  event_id: 2824
-  event_title: "Embracing Matrix for Enhanced Communication: Migrating the WordPress Community from Slack to Matrix"
-- distance: 0.5492935856012405
-  rounded_distance: 0.55
-  rank_in_search: 13
-  event_id: 2866
-  event_title: "Making API Terms of Service Trustworthy? Presenting FACT : The Fair API Commitment Terms"
-- distance: 0.5378724165736483
-  rounded_distance: 0.54
-  rank_in_search: 7
-  event_id: 2876
-  event_title: "MatrixRTC: The Future of Matrix Calls"
-- distance: 0.5361570544372063
-  rounded_distance: 0.54
-  rank_in_search: 6
-  event_id: 2909
-  event_title: A Principled Component Analysis of Open Source Artificial Intelligence
-- distance: 0.5536567480364123
-  rounded_distance: 0.55
-  rank_in_search: 19
-  event_id: 2928
-  event_title: "Bridging contributor's knowledge and the technology of The Turing Way, an open guide for data science"
-- distance: 0.5441205481616307
-  rounded_distance: 0.54
-  rank_in_search: 11
-  event_id: 3160
-  event_title: The Basic Economics behind Open Source Funding in 2024
-- distance: 0.5005710644806725
-  rounded_distance: 0.5
-  rank_in_search: 2
-  event_id: 3337
-  event_title: "Flying higher: hardware offloading with BIRD"
-- distance: 0.5527546817528811
-  rounded_distance: 0.55
-  rank_in_search: 16
-  event_id: 3364
-  event_title: Why not run OpenCL-accelerated LLM on your phone?
-- distance: 0.5536356931838363
-  rounded_distance: 0.55
-  rank_in_search: 18
-  event_id: 3452
-  event_title: Unlocking Research Data Management with InvenioRDM
-- distance: 0.5519236855195124
-  rounded_distance: 0.55
-  rank_in_search: 15
-  event_id: 3544
-  event_title: "Defend FOSS: From innovation to world-wide positive change"
+items:
+  - event_id: 1693
+    event_title: "Please Make It Make Sense: Product Management Methods to Make Your Project's Purpose Clear"
+  - event_id: 1801
+    event_title: Community Driven Data Collection and Consent in AI
+  - event_id: 1930
+    event_title: OpenPrinting - We make printing just work!
+  - event_id: 2029
+    event_title: "Open Source in 2024: boundaries, burnout, business"
+  - event_id: 2151
+    event_title: "Alexandria3k: Researching the world's knowledge on your laptop"
+  - event_id: 2310
+    event_title: Meritocracy or Do-ocracy - why diversity is still hard and what can we do
+  - event_id: 2328
+    event_title: "Cracking the Code to Executive Support: Open Source Edition"
+  - event_id: 2779
+    event_title: "Staying Ahead of the Game: JavaScript Security"
+  - event_id: 2781
+    event_title: "How to get rid of Confluence: Comparing Open Source Knowledgemanagent Systems"
+  - event_id: 2805
+    event_title: Moving a step closer to defining Open Source AI
+  - event_id: 2824
+    event_title: "Embracing Matrix for Enhanced Communication: Migrating the WordPress Community from Slack to Matrix"
+  - event_id: 2866
+    event_title: "Making API Terms of Service Trustworthy? Presenting FACT : The Fair API Commitment Terms"
+  - event_id: 2876
+    event_title: "MatrixRTC: The Future of Matrix Calls"
+  - event_id: 2909
+    event_title: A Principled Component Analysis of Open Source Artificial Intelligence
+  - event_id: 2928
+    event_title: "Bridging contributor's knowledge and the technology of The Turing Way, an open guide for data science"
+  - event_id: 3160
+    event_title: The Basic Economics behind Open Source Funding in 2024
+  - event_id: 3337
+    event_title: "Flying higher: hardware offloading with BIRD"
+  - event_id: 3364
+    event_title: Why not run OpenCL-accelerated LLM on your phone?
+  - event_id: 3452
+    event_title: Unlocking Research Data Management with InvenioRDM
+  - event_id: 3544
+    event_title: "Defend FOSS: From innovation to world-wide positive change"
+ranks:
+  - event_id: 1693
+    rounded_distance: 0.55
+    rank_in_search: 14
+  - event_id: 1801
+    rounded_distance: 0.54
+    rank_in_search: 10
+  - event_id: 1930
+    rounded_distance: 0.48
+    rank_in_search: 0
+  - event_id: 2029
+    rounded_distance: 0.55
+    rank_in_search: 17
+  - event_id: 2151
+    rounded_distance: 0.54
+    rank_in_search: 9
+  - event_id: 2310
+    rounded_distance: 0.53
+    rank_in_search: 4
+  - event_id: 2328
+    rounded_distance: 0.54
+    rank_in_search: 8
+  - event_id: 2779
+    rounded_distance: 0.49
+    rank_in_search: 1
+  - event_id: 2781
+    rounded_distance: 0.52
+    rank_in_search: 3
+  - event_id: 2805
+    rounded_distance: 0.53
+    rank_in_search: 5
+  - event_id: 2824
+    rounded_distance: 0.55
+    rank_in_search: 12
+  - event_id: 2866
+    rounded_distance: 0.55
+    rank_in_search: 13
+  - event_id: 2876
+    rounded_distance: 0.54
+    rank_in_search: 7
+  - event_id: 2909
+    rounded_distance: 0.54
+    rank_in_search: 6
+  - event_id: 2928
+    rounded_distance: 0.55
+    rank_in_search: 19
+  - event_id: 3160
+    rounded_distance: 0.54
+    rank_in_search: 11
+  - event_id: 3337
+    rounded_distance: 0.5
+    rank_in_search: 2
+  - event_id: 3364
+    rounded_distance: 0.55
+    rank_in_search: 16
+  - event_id: 3452
+    rounded_distance: 0.55
+    rank_in_search: 18
+  - event_id: 3544
+    rounded_distance: 0.55
+    rank_in_search: 15

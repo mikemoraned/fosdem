@@ -6,23 +6,40 @@ use serde::Serialize;
 use shared::model::SearchItem;
 
 #[derive(Debug, PartialEq, Serialize)]
-pub struct RankSummary {
-    distance: f64,
-    rounded_distance: f64,
-    rank_in_search: usize,
+pub struct Summary {
+    items: Vec<ItemSummary>,
+    ranks: Vec<RankSummary>,
+}
+
+#[derive(Debug, PartialEq, Serialize)]
+pub struct ItemSummary {
     event_id: u32,
     event_title: String,
+}
+
+impl ItemSummary {
+    fn from_search_item(item: &SearchItem) -> ItemSummary {
+        ItemSummary {
+            event_id: item.event.id,
+            event_title: item.event.title.clone(),
+        }
+    }
+}
+
+#[derive(Debug, PartialEq, Serialize)]
+pub struct RankSummary {
+    event_id: u32,
+    rounded_distance: f64,
+    rank_in_search: usize,
 }
 
 impl RankSummary {
     fn from_ranked_search_item(ranked_item: (usize, &SearchItem)) -> RankSummary {
         let (rank, item) = ranked_item;
         RankSummary {
-            distance: item.distance,
             rounded_distance: (item.distance * 100.0).round() / 100.0,
             rank_in_search: rank,
             event_id: item.event.id,
-            event_title: item.event.title.clone(),
         }
     }
 }
@@ -46,22 +63,30 @@ impl Snapshotter {
         &self,
         title: &str,
         kind: &SearchKind,
-    ) -> Result<Vec<RankSummary>, Box<dyn std::error::Error>> {
+    ) -> Result<Summary, Box<dyn std::error::Error>> {
         Ok(Snapshotter::summarise(
             &self.queryable.find_related_events(title, kind, 20).await?,
         ))
     }
 
-    fn summarise(items: &[SearchItem]) -> Vec<RankSummary> {
-        let mut summaries: Vec<RankSummary> = items
+    fn summarise(items: &[SearchItem]) -> Summary {
+        let mut item_summaries: Vec<ItemSummary> =
+            items.iter().map(ItemSummary::from_search_item).collect();
+
+        item_summaries.sort_by(|a, b| a.event_id.cmp(&b.event_id));
+
+        let mut rank_sumamries: Vec<RankSummary> = items
             .iter()
             .enumerate()
             .map(RankSummary::from_ranked_search_item)
             .collect();
 
-        summaries.sort_by(|a, b| a.event_id.cmp(&b.event_id));
+        rank_sumamries.sort_by(|a, b| a.event_id.cmp(&b.event_id));
 
-        summaries
+        Summary {
+            items: item_summaries,
+            ranks: rank_sumamries,
+        }
     }
 }
 
