@@ -151,6 +151,7 @@
     - (x) extend VideoOnly search into related items
       - (/) extend snapshots to cover the search kind
       - (/) switch behaviour to change depending on search kind
+      - (x) reduce opportunities for non-deterministic or unstable sort orderings
       - (x) extract shared function from `test_find_related_events_videoonly_searchkind` and `test_find_related_events_combined_searchkind`
   - (x) add ability to search video segments (e.g. 5 min periods)
     - (x) show videos in searches

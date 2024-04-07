@@ -23,5 +23,7 @@ pub fn parse_all_subject_embeddings(
         all_embeddings.append(&mut embeddings);
     }
 
+    all_embeddings.sort_by(|a, b| a.partial_cmp(b).unwrap());
+
     Ok(all_embeddings)
 }

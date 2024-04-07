@@ -2,7 +2,7 @@ use nalgebra::DVector;
 use serde::{Deserialize, Serialize};
 use shared::model::EventArtefact;
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub struct SubjectEmbedding {
     pub subject: EventArtefact,
     pub embedding: Embedding,
@@ -19,7 +19,7 @@ pub fn distance(lhs: &OpenAIVector, rhs: &OpenAIVector) -> f64 {
     lhs.metric_distance(rhs)
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub enum Embedding {
     OpenAIAda2 { vector: OpenAIVector },
 }

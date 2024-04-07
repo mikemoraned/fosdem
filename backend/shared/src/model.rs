@@ -12,18 +12,18 @@ pub struct SearchItem {
     pub related: Option<Vec<SearchItem>>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub enum EventArtefact {
     Combined { event_id: EventId },
     Video { event_id: EventId, file: VideoFile },
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd)]
 pub struct VideoFile {
     pub name: String,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Hash, Eq)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Hash, Eq, PartialOrd)]
 pub struct EventId(pub u32);
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
