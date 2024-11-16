@@ -1,6 +1,18 @@
 model_dir := "./shared/data/model"
 schedule_file := "./content/schedule/2024.xml"
+assets_dir := "./assets"
 
 import_schedule:
     mkdir -p {{model_dir}}
     cargo run --bin import_events --release -- --pentabarf {{schedule_file}} --model-dir {{model_dir}}
+
+index_next: embeddings_next related_next
+    
+embeddings_next:
+   cargo run --bin fetch_openai_embeddings --release -- --model-dir {{model_dir}}
+
+related_next:
+    cargo run --bin generate_related --release -- --model-dir {{model_dir}} --limit 5 --json {{assets_dir}}/all.limit5.json
+
+api:
+    cargo run --bin fly --release -- --model-dir {{model_dir}}
