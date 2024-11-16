@@ -5,7 +5,7 @@ use openai_dive::v1::api::Client;
 
 use tracing::{debug, span};
 
-use crate::model::{Event, NextEvents, NextEventsContext, OpenAIVector, SearchItem};
+use crate::model::{Event, NextEvents, NextEventsContext, OpenAIEmbedding, OpenAIVector, SearchItem};
 use crate::queryable::Queryable;
 use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
 
@@ -81,7 +81,7 @@ impl Queryable for InMemoryOpenAIQueryable {
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
         let response = get_embedding(&self.openai_client, query).await?;
-        let embedding = OpenAIVector::from(response.data[0].embedding.clone());
+        let embedding = OpenAIEmbedding::embedding_from_response(&response)?;
 
         debug!("Finding all distances from embedding");
         let mut entries = vec![];

@@ -8,7 +8,7 @@ use clap::Parser;
 use content::video_index::VideoIndex;
 use openai_dive::v1::api::Client;
 
-use openai_dive::v1::resources::embedding::{EmbeddingParameters, EmbeddingResponse};
+use openai_dive::v1::resources::embedding::{EmbeddingInput, EmbeddingParameters, EmbeddingResponse};
 
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
@@ -87,7 +87,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             get_embedding(&client, &event, &slide_content_for_event, &video_index).await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
-            embedding: OpenAIEmbedding::embedding_from_response(&response),
+            embedding: OpenAIEmbedding::embedding_from_response(&response)?,
         };
         embeddings.push(embedding);
         progress.inc(1);
@@ -132,9 +132,10 @@ async fn get_embedding(
 
     let parameters = EmbeddingParameters {
         model: "text-embedding-ada-002".to_string(),
-        input: trimmed_input,
+        input: EmbeddingInput::String(trimmed_input),
         encoding_format: None,
         user: None,
+        dimensions: None,
     };
 
     match client.embeddings().create(parameters).await {
