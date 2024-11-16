@@ -15,7 +15,9 @@
     * (/) update all libraries to latest compatible minor version
       * (/) install https://github.com/killercup/cargo-edit to get `cargo upgrade`
       * (/) run `cargo upgrade --compatible`
-  * (x) create repeatable DEVELOPMENT.md / Justfile
+  * (/) create repeatable DEVELOPMENT.md / Justfile
+    - for at least schedule import, indexing, visualisation generation, and running api (locally)
+    - doesn't need to cover slide or video indexing
   * (x) (re)publish to fly.io staging
   * (x) (re)publish to fly.io main
 * (x) switch to be supporting fosdem 2025
