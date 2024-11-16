@@ -25,6 +25,14 @@ struct Args {
     #[arg(long)]
     model_dir: PathBuf,
 
+    /// timeout for embedding requests in seconds
+    #[arg(long, value_parser = parse_seconds_duration, default_value = "30")]
+    timeout: Duration,
+
+    /// maximum number of retries for embedding requests
+    #[arg(long, default_value = "5")]
+    retries: u32,
+    
     /// include slide content at path
     #[arg(long)]
     include_slide_content: Option<PathBuf>,
@@ -32,6 +40,11 @@ struct Args {
     /// include video content at path
     #[arg(long)]
     include_video_content: Option<PathBuf>,
+}
+
+fn parse_seconds_duration(arg: &str) -> Result<std::time::Duration, std::num::ParseIntError> {
+    let seconds = arg.parse()?;
+    Ok(std::time::Duration::from_secs(seconds))
 }
 
 #[tokio::main]
@@ -45,11 +58,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key =
         dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
 
-    let timeout = Duration::from_secs(30);
-    let max_retries = 5;
+    info!("args: {:?}", args);
 
     let reqwest_client = ClientBuilder::new()
-        .timeout(timeout)
+        .timeout(args.timeout)
         .build()?;
 
     let openai_client = Client {
@@ -97,7 +109,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
         let response =
-            get_embedding(&openai_client, max_retries, &event, &slide_content_for_event, &video_index).await?;
+            get_embedding(&openai_client, args.retries, &event, &slide_content_for_event, &video_index).await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response)?,
