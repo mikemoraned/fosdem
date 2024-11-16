@@ -1,3 +1,32 @@
+# Fosdem 2025
+
+* (/) bring up to date with latest rust / libraries and make repeatable
+  * (/) rust `1.75` to `1.82`
+  * update dependencies:
+    * for each of these, running following to confirm still working:
+      ```
+      cargo clean
+      cargo build
+      cargo test
+      ``` 
+    * (/) do `cargo update` on libraries
+    * (/) change dependencies to be specified as minor only
+      * needs to be done in all Cargo.toml files i.e. also those in sub-packages
+    * (/) update all libraries to latest compatible minor version
+      * (/) install https://github.com/killercup/cargo-edit to get `cargo upgrade`
+      * (/) run `cargo upgrade --compatible`
+  * (/) create repeatable DEVELOPMENT.md / Justfile
+    - for at least schedule import, indexing, visualisation generation, and running api (locally)
+    - doesn't need to cover slide or video indexing
+  * (/) (re)publish to fly.io staging
+    - using "fosdem-fly-staging" openai key
+  * (/) (re)publish to fly.io main
+    - using "fosdem-fly-prod" openai key
+* (x) switch staging to be supporting fosdem 2025 schedule
+  * (x) ...
+
+# Fosdem 2024 todos (archived)
+
 - (/) minimal thing which get some semantic content and allows finding similar content
   - (/) get FOSDEM content (pentabarf)
   - (/) look up and store vectors based on title and abstract of event

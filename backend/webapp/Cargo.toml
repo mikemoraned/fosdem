@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum-valid = "0.13.0"
-validator = { version = "0.16.1", features = ["derive"] }
-askama = "0.12.1"
-unicode-segmentation = "1.10.1"
+axum-valid = "0.13"
+validator = { version = "0.16", features = ["derive"] }
+askama = "0.12"
+unicode-segmentation = "1.12"
 axum = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }

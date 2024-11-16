@@ -7,15 +7,15 @@ edition = "2021"
 
 [dependencies]
 quick-xml = { version = "0.29", features = ["serialize"] }
-xmlserde = "0.5.5"
-xmlserde_derives = "0.5.5"
-env_logger = "0.10.1"
-reqwest = "0.11.24"
-bytes = "1.5.0"
-tiktoken-rs = "0.5.8"
-async-process = "2.1.0"
-regex = "1.10.3"
-subtp = "0.2.0"
+xmlserde = "0.5"
+xmlserde_derives = "0.5"
+env_logger = "0.10"
+bytes = "1.8"
+tiktoken-rs = "0.5"
+async-process = "2.3"
+regex = "1.11"
+subtp = "0.2"
+reqwest = { workspace = true }
 futures = { workspace = true }
 clap = { workspace = true }
 indicatif = { workspace = true }
