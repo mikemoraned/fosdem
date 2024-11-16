@@ -159,10 +159,10 @@ async fn get_embedding(
             Err(e) => {
                 retries += 1;
                 if retries > max_retries {
-                    return Err(format!("[{}] error: \'{}\'", event.id, e).into());
+                    return Err(format!("[{}] error: \'{}\', even after {} retries (max: {})", event.id, e, retries, max_retries).into());
                 }
                 else {
-                    warn!("[{}] retrying embedding request: {}", event.id, e);
+                    warn!("[{}] error: \'{}\', will retry (retry count = {})", event.id, e, retries);
                 }
             }
         }
