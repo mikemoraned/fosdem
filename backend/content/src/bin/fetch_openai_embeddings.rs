@@ -10,6 +10,7 @@ use openai_dive::v1::api::Client;
 
 use openai_dive::v1::resources::embedding::{EmbeddingInput, EmbeddingParameters, EmbeddingResponse};
 
+use reqwest::ClientBuilder;
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
 use subtp::vtt::VttBlock;
@@ -43,7 +44,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key =
         dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
 
-    let client = Client::new(api_key);
+    let reqwest_client = ClientBuilder::new().build()?;
+
+    let openai_client = Client {
+        api_key,
+        http_client: reqwest_client,
+        ..Default::default()
+    };
 
     let events_path = args.model_dir.join("events").with_extension("json");
 
@@ -84,7 +91,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
         let response =
-            get_embedding(&client, &event, &slide_content_for_event, &video_index).await?;
+            get_embedding(&openai_client, &event, &slide_content_for_event, &video_index).await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response)?,
