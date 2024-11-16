@@ -7,7 +7,7 @@ edition = "2021"
 axum-valid = "0.13"
 validator = { version = "0.16", features = ["derive"] }
 askama = "0.12"
-unicode-segmentation = "1.10"
+unicode-segmentation = "1.12"
 axum = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }

@@ -12,10 +12,11 @@
     * (/) do `cargo update` on libraries
     * (/) change dependencies to be specified as minor only
       * needs to be done in all Cargo.toml files i.e. also those in sub-packages
-    * (x) update all libraries to latest minor version
-      * (x) install https://github.com/killercup/cargo-edit to get `cargo upgrade`
-      * (x) run `cargo upgrade`
-  * (x) (re)publish to fly.io
+    * (/) update all libraries to latest compatible minor version
+      * (/) install https://github.com/killercup/cargo-edit to get `cargo upgrade`
+      * (/) run `cargo upgrade --compatible`
+  * (x) (re)publish to fly.io staging
+  * (x) (re)publish to fly.io main
 * (x) switch to be supporting fosdem 2025
   * (x) ...
 
