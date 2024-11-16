@@ -1,3 +1,14 @@
+# Fosdem 2025
+
+* (x) bring up to date with latest rust / libraries
+  * (/) rust `1.75` to `1.82`
+  * (x) upgrade libraries to latest minor version
+  * (x) (re)publish to fly.io
+* (x) switch to be supporting fosdem 2025
+  * (x) ...
+
+# Fosdem 2024 todos (archived)
+
 - (/) minimal thing which get some semantic content and allows finding similar content
   - (/) get FOSDEM content (pentabarf)
   - (/) look up and store vectors based on title and abstract of event
