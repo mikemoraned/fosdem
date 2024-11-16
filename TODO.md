@@ -4,7 +4,8 @@
   * (/) rust `1.75` to `1.82`
   * update dependencies:
     * (/) do `cargo update` on libraries
-    * (x) change dependencies to be specified as minor only and update all libraries micro version
+    * (/) change dependencies to be specified as minor only
+    * (x) update all libraries micro version
   * (x) (re)publish to fly.io
 * (x) switch to be supporting fosdem 2025
   * (x) ...
