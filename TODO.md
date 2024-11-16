@@ -1,6 +1,6 @@
 # Fosdem 2025
 
-* (x) bring up to date with latest rust / libraries
+* (/) bring up to date with latest rust / libraries and make repeatable
   * (/) rust `1.75` to `1.82`
   * update dependencies:
     * for each of these, running following to confirm still working:
@@ -22,7 +22,7 @@
     - using "fosdem-fly-staging" openai key
   * (/) (re)publish to fly.io main
     - using "fosdem-fly-prod" openai key
-* (x) switch staging to be supporting fosdem 2025 schedule, but in staging only
+* (x) switch staging to be supporting fosdem 2025 schedule
   * (x) ...
 
 # Fosdem 2024 todos (archived)
