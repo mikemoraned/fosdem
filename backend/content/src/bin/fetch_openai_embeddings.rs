@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Read, Write};
 use std::path::PathBuf;
+use std::time::Duration;
 
 use clap::Parser;
 
@@ -14,7 +15,7 @@ use reqwest::ClientBuilder;
 use shared::cli::progress_bar;
 use shared::model::{Event, OpenAIEmbedding};
 use subtp::vtt::VttBlock;
-use tracing::{debug, info};
+use tracing::{debug, info, warn};
 
 /// Fetch Embeddings
 #[derive(Parser, Debug)]
@@ -44,7 +45,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key =
         dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
 
-    let reqwest_client = ClientBuilder::new().build()?;
+    let timeout = Duration::from_secs(30);
+    let max_retries = 5;
+
+    let reqwest_client = ClientBuilder::new()
+        .timeout(timeout)
+        .build()?;
 
     let openai_client = Client {
         api_key,
@@ -91,7 +97,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
         let response =
-            get_embedding(&openai_client, &event, &slide_content_for_event, &video_index).await?;
+            get_embedding(&openai_client, max_retries, &event, &slide_content_for_event, &video_index).await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response)?,
@@ -110,6 +116,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 async fn get_embedding(
     client: &Client,
+    max_retries: u32,
     event: &Event,
     slide_content_for_event: &HashMap<u32, String>,
     video_index: &VideoIndex,
@@ -145,10 +152,21 @@ async fn get_embedding(
         dimensions: None,
     };
 
-    match client.embeddings().create(parameters).await {
-        Ok(response) => Ok(response),
-        Err(e) => Err(format!("[{}] error: \'{}\'", event.id, e).into()),
-    }
+    let mut retries = 0;
+    loop {
+        match client.embeddings().create(parameters.clone()).await {
+            Ok(response) => return Ok(response),
+            Err(e) => {
+                retries += 1;
+                if retries > max_retries {
+                    return Err(format!("[{}] error: \'{}\'", event.id, e).into());
+                }
+                else {
+                    warn!("[{}] retrying embedding request: {}", event.id, e);
+                }
+            }
+        }
+    };
 }
 
 fn format_basic_input(event: &Event) -> String {
