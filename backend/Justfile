@@ -24,3 +24,11 @@ deploy_staging_secrets:
 
 deploy_staging_app:
     fly deploy --config fly.staging.toml
+
+deploy_prod: deploy_prod_secrets deploy_prod_app
+
+deploy_prod_secrets:
+    fly secrets deploy --config fly.prod.toml
+
+deploy_prod_app:
+    fly deploy --config fly.prod.toml

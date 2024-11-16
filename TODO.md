@@ -20,8 +20,9 @@
     - doesn't need to cover slide or video indexing
   * (/) (re)publish to fly.io staging
     - using "fosdem-fly-staging" openai key
-  * (x) (re)publish to fly.io main
-* (x) switch to be supporting fosdem 2025
+  * (/) (re)publish to fly.io main
+    - using "fosdem-fly-prod" openai key
+* (x) switch staging to be supporting fosdem 2025 schedule, but in staging only
   * (x) ...
 
 # Fosdem 2024 todos (archived)
