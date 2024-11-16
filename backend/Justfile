@@ -14,5 +14,13 @@ embeddings_next:
 related_next:
     cargo run --bin generate_related --release -- --model-dir {{model_dir}} --limit 5 --json {{assets_dir}}/all.limit5.json
 
-api:
+webapp:
     cargo run --bin fly --release -- --model-dir {{model_dir}}
+
+deploy_staging: deploy_staging_secrets deploy_staging_app
+
+deploy_staging_secrets:
+    fly secrets deploy --config fly.staging.toml
+
+deploy_staging_app:
+    fly deploy --config fly.staging.toml

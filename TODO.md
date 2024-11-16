@@ -18,7 +18,8 @@
   * (/) create repeatable DEVELOPMENT.md / Justfile
     - for at least schedule import, indexing, visualisation generation, and running api (locally)
     - doesn't need to cover slide or video indexing
-  * (x) (re)publish to fly.io staging
+  * (/) (re)publish to fly.io staging
+    - using "fosdem-fly-staging" openai key
   * (x) (re)publish to fly.io main
 * (x) switch to be supporting fosdem 2025
   * (x) ...

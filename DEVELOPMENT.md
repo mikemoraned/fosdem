@@ -38,3 +38,25 @@ RUST_LOG=info just index_next
 
 TODO
 
+# Webapp
+
+## Locally
+
+```
+just webapp
+```
+
+## Deploying
+
+### Auth
+
+Before any `fly` commands work need to:
+```
+brew install flyctl
+fly auth login
+```
+
+Staging:
+```
+just deploy_staging
+```
