@@ -3,9 +3,18 @@
 * (x) bring up to date with latest rust / libraries
   * (/) rust `1.75` to `1.82`
   * update dependencies:
+    * for each of these, running following to confirm still working:
+      ```
+      cargo clean
+      cargo build
+      cargo test
+      ```
     * (/) do `cargo update` on libraries
     * (/) change dependencies to be specified as minor only
-    * (x) update all libraries micro version
+      * needs to be done in all Cargo.toml files i.e. also those in sub-packages
+    * (x) update all libraries to latest minor version
+      * (x) install https://github.com/killercup/cargo-edit to get `cargo upgrade`
+      * (x) run `cargo upgrade`
   * (x) (re)publish to fly.io
 * (x) switch to be supporting fosdem 2025
   * (x) ...
