@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schedule>
+  <version>latest</version>
+  <conference>
+    <acronym>fosdem-2025</acronym>
+    <title>FOSDEM 2025</title>
+    <subtitle></subtitle>
+    <venue>ULB (Université Libre de Bruxelles)</venue>
+    <city>Brussels</city>
+    <start>2025-02-01</start>
+    <end>2025-02-02</end>
+    <days>2</days>
+    <day_change>09:00:00</day_change>
+    <timeslot_duration>00:05:00</timeslot_duration>
+    <base_url>https://fosdem.org/2025/schedule/</base_url>
+    <time_zone_name>Europe/Brussels</time_zone_name>
+  </conference>
+  <tracks>
+    <track online_qa="false">Lightning Talks</track>
+    <track online_qa="false">Ada</track>
+    <track online_qa="false">Android Open Source Project</track>
+    <track online_qa="false">APIs: GraphQL, OpenAPI, AsyncAPI, and friends</track>
+    <track online_qa="false">Attestation</track>
+    <track online_qa="false">BSD</track>
+    <track online_qa="false">Cloud Native Databases</track>
+    <track online_qa="false">Collaboration and Content Management</track>
+    <track online_qa="false">Community</track>
+    <track online_qa="false">Confidential Computing</track>
+    <track online_qa="false">Containers</track>
+    <track online_qa="false">Data Analytics</track>
+    <track online_qa="false">Declarative and Minimalistic Computing</track>
+    <track online_qa="false">Digital Wallets and Verifiable Credentials</track>
+    <track online_qa="false">Distributions</track>
+    <track online_qa="false">DNS</track>
+    <track online_qa="false">eBPF</track>
+    <track online_qa="false">Educational</track>
+    <track online_qa="false">Embedded, Mobile and Automotive</track>
+    <track online_qa="false">Energy: Accelerating the Transition through Open Source</track>
+    <track online_qa="false">FOSDEM Junior</track>
+    <track online_qa="false">FOSS on Mobile Devices</track>
+    <track online_qa="false">Free Java</track>
+    <track online_qa="false">Funding the FOSS Ecosystem</track>
+    <track online_qa="false">GCC (GNU Toolchain)</track>
+    <track online_qa="false">Geospatial</track>
+    <track online_qa="false">Go</track>
+    <track online_qa="false">Government Collaboration</track>
+    <track online_qa="false">HPC, Big Data &amp; Data Science</track>
+    <track online_qa="false">Identity and Access Management</track>
+    <track online_qa="false">Image-Based Linux and Boot Integrity</track>
+    <track online_qa="false">Inclusive Web</track>
+    <track online_qa="false">JavaScript</track>
+    <track online_qa="false">Kernel</track>
+    <track online_qa="false">Legal and Policy</track>
+    <track online_qa="false">LibreOffice</track>
+    <track online_qa="false">LLVM</track>
+    <track online_qa="false">Low-level AI Engineering and Hacking</track>
+    <track online_qa="false">Matrix.org Foundation and Community</track>
+    <track online_qa="false">Microkernel and Component-Based OS</track>
+    <track online_qa="false">Modern Email</track>
+    <track online_qa="false">Monitoring and Observability</track>
+    <track online_qa="false">Mozilla</track>
+    <track online_qa="false">MySQL</track>
+    <track online_qa="false">Network</track>
+    <track online_qa="false">Nix and NixOS</track>
+    <track online_qa="false">Open Hardware and CAD/CAM</track>
+    <track online_qa="false">Open Media</track>
+    <track online_qa="false">Open Research</track>
+    <track online_qa="false">Open Source Design</track>
+    <track online_qa="false">Open Source In The European Legislative Landscape and Beyond</track>
+    <track online_qa="false">PostgreSQL</track>
+    <track online_qa="false">Python</track>
+    <track online_qa="false">Quantum Computing</track>
+    <track online_qa="false">Radio</track>
+    <track online_qa="false">Railways and Open Transport</track>
+    <track online_qa="false">Real Time Communications (RTC)</track>
+    <track online_qa="false">Retrocomputing</track>
+    <track online_qa="false">RISC-V</track>
+    <track online_qa="false">Robotics and Simulation</track>
+    <track online_qa="false">Rust</track>
+    <track online_qa="false">Security</track>
+    <track online_qa="false">Social Web</track>
+    <track online_qa="false">Software Bill of Materials (SBOM)</track>
+    <track online_qa="false">Software Defined Storage</track>
+    <track online_qa="false">Open Source Firmware, BMC and Bootloader</track>
+    <track online_qa="false">Swift</track>
+    <track online_qa="false">Testing and Continuous Delivery</track>
+    <track online_qa="false">Tool the Docs</track>
+    <track online_qa="false">Virtualization and Cloud Infrastructure</track>
+    <track online_qa="false">WebAssembly</track>
+    <track online_qa="false">Web Performance</track>
+    <track online_qa="false">BOF - Track A</track>
+    <track online_qa="false">Main</track>
+  </tracks>
+  <day index="1" date="2025-02-01" start="2025-02-01T09:00:00+01:00" end="2025-02-02T08:59:00+01:00">
+  </day>
+  <day index="2" date="2025-02-02" start="2025-02-02T09:00:00+01:00" end="2025-02-03T08:59:00+01:00">
+  </day>
+</schedule>
+

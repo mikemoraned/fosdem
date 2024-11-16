@@ -1,6 +1,10 @@
 model_dir := "./shared/data/model"
-schedule_file := "./content/schedule/2024.xml"
+year := "2025"
+schedule_file := "./content/schedule/" + year + ".xml"
 assets_dir := "./assets"
+
+fetch_schedule:
+    wget -O {{schedule_file}} https://fosdem.org/{{year}}/schedule/xml
 
 import_schedule:
     mkdir -p {{model_dir}}
