@@ -1,0 +1,6 @@
+model_dir := "./shared/data/model"
+schedule_file := "./content/schedule/2024.xml"
+
+import_schedule:
+    mkdir -p {{model_dir}}
+    cargo run --bin import_events --release -- --pentabarf {{schedule_file}} --model-dir {{model_dir}}

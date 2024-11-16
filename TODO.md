@@ -8,13 +8,14 @@
       cargo clean
       cargo build
       cargo test
-      ```
+      ``` 
     * (/) do `cargo update` on libraries
     * (/) change dependencies to be specified as minor only
       * needs to be done in all Cargo.toml files i.e. also those in sub-packages
     * (/) update all libraries to latest compatible minor version
       * (/) install https://github.com/killercup/cargo-edit to get `cargo upgrade`
       * (/) run `cargo upgrade --compatible`
+  * (x) create repeatable DEVELOPMENT.md / Justfile
   * (x) (re)publish to fly.io staging
   * (x) (re)publish to fly.io main
 * (x) switch to be supporting fosdem 2025
