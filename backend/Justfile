@@ -18,6 +18,8 @@ embeddings_next:
 related_next:
     cargo run --bin generate_related --release -- --model-dir {{model_dir}} --limit 5 --json {{assets_dir}}/all.limit5.json
 
+bring_up_to_date: fetch_schedule import_schedule index_next
+
 webapp:
     cargo run --bin fly --release -- --model-dir {{model_dir}}
 
