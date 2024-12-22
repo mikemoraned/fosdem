@@ -22,8 +22,7 @@
     - using "fosdem-fly-staging" openai key
   * (/) (re)publish to fly.io main
     - using "fosdem-fly-prod" openai key
-* (x) switch staging to be supporting fosdem 2025 schedule
-  * (x) ...
+* (/) start supporting fosdem 2025 schedule (currently empty as of 16th Nov)
 
 # Fosdem 2024 todos (archived)
 

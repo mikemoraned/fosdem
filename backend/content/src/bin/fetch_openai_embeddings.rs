@@ -183,7 +183,7 @@ async fn get_embedding(
 
 fn format_basic_input(event: &Event) -> String {
     let lines: Vec<String> = vec![
-        "FOSDEM Conference Event 2024".into(),
+        "FOSDEM Conference Event 2025".into(),
         format!("Title: {}", event.title),
         format!("Track: {}", event.track),
         format!("Abstract: {}", event.r#abstract),

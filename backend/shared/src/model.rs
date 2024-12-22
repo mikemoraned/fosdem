@@ -50,7 +50,7 @@ impl Event {
     }
 
     pub fn sojourner_url(&self) -> Url {
-        let base_url = Url::parse("https://fosdem.sojourner.rocks/2024/event/").unwrap();
+        let base_url = Url::parse("https://fosdem.sojourner.rocks/2025/event/").unwrap();
         base_url.join(&self.id.to_string()).unwrap()
     }
 
