@@ -4,3 +4,9 @@
 just bring_up_to_date
 ```
 
+# Run locally
+
+```
+just webapp
+```
+
