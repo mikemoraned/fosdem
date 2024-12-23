@@ -1,14 +1,40 @@
-// This approach requires the initializeWasm export not yet found in the stable 1.2.1 release.
 import * as AutomergeRepo from "https://esm.sh/@automerge/automerge-repo@2.0.0-alpha.14/slim?bundle-deps"
 import { IndexedDBStorageAdapter } from "https://esm.sh/@automerge/automerge-repo-storage-indexeddb@2.0.0-alpha.14?bundle-deps"
-import { BrowserWebSocketClientAdapter } from "https://esm.sh/@automerge/automerge-repo-network-websocket@2.0.0-alpha.14?bundle-deps"
-import { MessageChannelNetworkAdapter } from "https://esm.sh/@automerge/automerge-repo-network-messagechannel@2.0.0-alpha.14?bundle-deps"
 
 console.log("Initializing Automerge");
 await AutomergeRepo.initializeWasm(fetch("https://esm.sh/@automerge/automerge/dist/automerge.wasm"));
 console.log("Automerge initialized");
 
-export function bindBookmarks() {
+function createRepo() {
+    const repo = new AutomergeRepo.Repo({
+        storage: new IndexedDBStorageAdapter(),
+        network: [],
+    })
+    return repo;
+}
+
+function findOrCreateDoc(repo) {
+    const docId = "automerge:3QyBr3asz8M6LM7GcPcmYTyyXqzH"; // hard-coded for now
+    var docHandle = null;
+    if (docId != null) {
+        console.log("Finding doc with id", docId);
+        docHandle = repo.find(docId);
+    }
+    if (docHandle == null) {
+        console.log("Creating new doc as it does not exist");
+        docHandle = repo.create(docId, {
+            year: 2025,
+            bookmarks: []
+        });
+        console.log("Created new doc with id: ", docHandle.url);
+    }
+    else {
+        console.log("Found existing doc");
+    }
+    return docHandle;
+}
+
+function bindBookmarks() {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
     const $buttons = Array.prototype.slice.call(
@@ -29,4 +55,11 @@ export function bindBookmarks() {
         el.disabled = false;
     });
     console.log("Bookmarks bound");
+}
+
+export function init() {
+    console.log("Initialising bookmarks");
+    const repo = createRepo();
+    const docHandle = findOrCreateDoc(repo);
+    bindBookmarks();
 }
