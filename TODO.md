@@ -23,6 +23,10 @@
   * [x] (re)publish to fly.io main
     - using "fosdem-fly-prod" openai key
 * [x] start supporting fosdem 2025 schedule
+* [ ] upgrade to latest Bulma
+  - https://bulma.io/documentation/start/migrating-to-v1/
+  * [x] move from bulma 0.9.4 -> 1.0.2
+  * [ ] add content-integrity attributes
 * [ ] basic "bookmarks" system that works between tabs, and across my laptop and phone
   - I'd prefer to avoid something that relies on a fast network connection (wifi can be iffy on the day) or an accounts system (can't be arsed owning/securing/paying for that)
   - So, I'm gonna try to avoid any backend if possible
@@ -32,6 +36,9 @@
     * [ ] integrate automerge to support sharing between tabs
   * [ ] works between laptop/phone
     * [ ] ...
+* [ ] design tweaks (just a holding ground as I see things)
+  * [ ] make all `details` elements by default closed, and open via JS if on larger screen
+    - https://stackoverflow.com/questions/14286406/how-to-set-a-details-element-to-open-by-default-or-via-css
 
 # Fosdem 2024 todos (archived)
 
