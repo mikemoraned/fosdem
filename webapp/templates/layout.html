@@ -86,10 +86,14 @@
     </footer>
     <script src="/assets/nav.js"></script>
     <script type="module">
-        import { initBookmarks } from '/assets/bookmarks.js';
-        document.addEventListener("DOMContentLoaded", () => {
-            initBookmarks();
-        });
+        import { bindBookmarks } from '/assets/bookmarks.js';
+
+        if (document.readyState === "loading") {
+            console.log("deferring bind of Bookmarks");
+            document.addEventListener("DOMContentLoaded", bindBookmarks);
+        } else {
+            bindBookmarks();
+        }
     </script>
 </body>
 </html>
