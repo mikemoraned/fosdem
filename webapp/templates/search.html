@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {%- import "components/search.html" as search -%}
+{%- import "components/bookmarks.html" as bookmarks -%}
 {%- import "components/event.html" as event -%}
 {%- import "components/external.html" as external -%}
 
@@ -49,6 +50,7 @@
                 <div class="card">
                     {% call event::expandable_card_details(item.event) %}
                     <footer class="card-footer">
+                        {% call bookmarks::bookmark_footer_item(item.event) %}
                         {% call external::sojourner_event(item.event) %}
                         {% call external::fosdem_event(item.event) %}
                     </footer>
