@@ -1,0 +1,16 @@
+button.bookmark.is-filled i.fa-bookmark.filled {
+    display: span;
+}
+
+button.bookmark.is-filled i.fa-bookmark.empty {
+    display: none;
+}
+
+button.bookmark.is-empty i.fa-bookmark.filled {
+    display: none;
+}
+
+button.bookmark.is-empty i.fa-bookmark.empty {
+    display: span;
+}
+
