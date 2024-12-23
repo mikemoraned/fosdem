@@ -23,7 +23,7 @@
   * [x] (re)publish to fly.io main
     - using "fosdem-fly-prod" openai key
 * [x] start supporting fosdem 2025 schedule
-* [ ] upgrade to latest Bulma
+* [x] upgrade to latest Bulma
   - https://bulma.io/documentation/start/migrating-to-v1/
   * [x] move from bulma 0.9.4 -> 1.0.2
   * [x] add content-integrity attributes to bulma and fontawesome
