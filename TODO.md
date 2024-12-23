@@ -26,7 +26,8 @@
 * [ ] upgrade to latest Bulma
   - https://bulma.io/documentation/start/migrating-to-v1/
   * [x] move from bulma 0.9.4 -> 1.0.2
-  * [ ] add content-integrity attributes
+  * [x] add content-integrity attributes to bulma and fontawesome
+    - https://www.srihash.org
 * [ ] basic "bookmarks" system that works between tabs, and across my laptop and phone
   - I'd prefer to avoid something that relies on a fast network connection (wifi can be iffy on the day) or an accounts system (can't be arsed owning/securing/paying for that)
   - So, I'm gonna try to avoid any backend if possible
