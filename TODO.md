@@ -33,8 +33,9 @@
   - So, I'm gonna try to avoid any backend if possible
   - I also want to play with some localfirst stuff :-)
   * [ ] works between tabs
-    * [ ] add hooks to markup that allows a bookmark to be enabled/disabled by JS
-    * [ ] integrate automerge to support sharing between tabs
+    * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
+    * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence
+    * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
   * [ ] works between laptop/phone
     * [ ] ...
 * [ ] design tweaks (just a holding ground as I see things)
