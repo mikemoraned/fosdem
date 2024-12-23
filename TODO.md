@@ -23,6 +23,15 @@
   * [x] (re)publish to fly.io main
     - using "fosdem-fly-prod" openai key
 * [x] start supporting fosdem 2025 schedule
+* [ ] basic "bookmarks" system that works between tabs, and across my laptop and phone
+  - I'd prefer to avoid something that relies on a fast network connection (wifi can be iffy on the day) or an accounts system (can't be arsed owning/securing/paying for that)
+  - So, I'm gonna try to avoid any backend if possible
+  - I also want to play with some localfirst stuff :-)
+  * [ ] works between tabs
+    * [ ] add hooks to markup that allows a bookmark to be enabled/disabled by JS
+    * [ ] integrate automerge to support sharing between tabs
+  * [ ] works between laptop/phone
+    * [ ] ...
 
 # Fosdem 2024 todos (archived)
 
