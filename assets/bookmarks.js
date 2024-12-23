@@ -16,20 +16,17 @@ function createRepo() {
 function findOrCreateDoc(repo) {
     const docId = "automerge:3QyBr3asz8M6LM7GcPcmYTyyXqzH"; // hard-coded for now
     var docHandle = null;
-    if (docId != null) {
+    if (docId != null && AutomergeRepo.isValidAutomergeUrl(docId)) {
         console.log("Finding doc with id", docId);
         docHandle = repo.find(docId);
     }
-    if (docHandle == null) {
-        console.log("Creating new doc as it does not exist");
+    else {
+        console.log("Creating new doc");
         docHandle = repo.create(docId, {
             year: 2025,
             bookmarks: []
         });
         console.log("Created new doc with id: ", docHandle.url);
-    }
-    else {
-        console.log("Found existing doc");
     }
     return docHandle;
 }
