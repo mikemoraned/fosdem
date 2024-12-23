@@ -85,6 +85,11 @@
         </div>
     </footer>
     <script src="/assets/nav.js"></script>
-    <script src="/assets/bookmarks.js"></script>
+    <script type="module">
+        import { initBookmarks } from '/assets/bookmarks.js';
+        document.addEventListener("DOMContentLoaded", () => {
+            initBookmarks();
+        });
+    </script>
 </body>
 </html>
