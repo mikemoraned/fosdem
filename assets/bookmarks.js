@@ -1,37 +1,3 @@
-import * as AutomergeRepo from "https://esm.sh/@automerge/automerge-repo@2.0.0-alpha.14/slim?bundle-deps"
-import { next as Automerge } from "https://esm.sh/@automerge/automerge@2.2.8/slim?bundle-deps"
-import { IndexedDBStorageAdapter } from "https://esm.sh/@automerge/automerge-repo-storage-indexeddb@2.0.0-alpha.14?bundle-deps"
-
-console.log("Initializing Automerge");
-await AutomergeRepo.initializeWasm(fetch("https://esm.sh/@automerge/automerge/dist/automerge.wasm"));
-console.log("Automerge initialized");
-
-function createRepo() {
-    const repo = new AutomergeRepo.Repo({
-        storage: new IndexedDBStorageAdapter(),
-        network: [],
-    })
-    return repo;
-}
-
-function findOrCreateDoc(repo) {
-    const docUrl = null; // hard-coded for now
-    var docHandle = null;
-    if (docUrl != null && AutomergeRepo.isValidAutomergeUrl(docUrl)) {
-        console.log("Finding doc with url", docUrl);
-        docHandle = repo.find(docUrl);
-    }
-    else {
-        console.log("Creating new doc");
-        docHandle = repo.create({
-            year: 2025,
-            bookmarks: []
-        });
-        console.log("Created new doc with url: ", docHandle.url);
-    }
-    return docHandle;
-}
-
 function bindBookmarks() {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
@@ -61,27 +27,16 @@ function bindBookmarks() {
     console.log("Bookmarks bound");
 }
 
-class AutomergeModel {
-    constructor(doc) {
-        this.doc = doc;
+class Model {
+    constructor() {
     }
 
     setBookmarkStatus(eventId, status) {
         console.log(`Setting bookmark status for event ${eventId} to ${status}`);
-        const newDoc = Automerge.change(this.doc, (d) => {
-            const index = d.bookmarks.findIndex((b) => b.eventId === eventId);
-            if (index === -1) {
-                d.bookmarks.push({ eventId, status });
-            }
-            else {
-                d.bookmarks[index].status = status;
-            }
-        });
-        this.doc = newDoc;
     }
 }
 
-function bindAutomerge(model) {
+function bindModel(model) {
     // find all events with event-id and bookmark-status
     const stateElements = Array.prototype.slice.call(
         document.querySelectorAll("[data-event-id][data-bookmark-status]"),
@@ -114,8 +69,6 @@ export function init() {
     console.log("Initialising bookmarks");
     bindBookmarks();
 
-    const repo = createRepo();
-    const doc = findOrCreateDoc(repo);
-    const model = new AutomergeModel(doc);
-    bindAutomerge(model);
+    const model = new Model();
+    bindModel(model);
 }
