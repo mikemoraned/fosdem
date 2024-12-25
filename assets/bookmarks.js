@@ -42,16 +42,26 @@ function bindBookmarks(model) {
 
     // add toggle behavior to each bookmark
     buttons.forEach((el) => {
-        el.addEventListener("click", () => {
-            const isBookmarked = el.dataset.bookmarkStatus === "true";
-            const newStatus = !isBookmarked;
-            el.dataset.bookmarkStatus = newStatus.toString();
-        });
-    });
+        const parentEl = el.parentElement.closest("[data-bookmark-status]");
+        if (parentEl == null) {
+            console.warn("Bookmark button has no parent with data-bookmark-status");
+        }
+        else {
+            // set current status based on parent status
+            const isParentBookmarked = parentEl.dataset.bookmarkStatus === "true";
+            el.dataset.bookmarkStatus = isParentBookmarked.toString();
 
-    // enable each bookmark
-    buttons.forEach((el) => {
-        el.disabled = false;
+            el.addEventListener("click", () => {
+                const isBookmarked = el.dataset.bookmarkStatus === "true";
+                const newStatus = !isBookmarked;
+
+                // update parent status and current status
+                parentEl.dataset.bookmarkStatus = newStatus.toString();
+                el.dataset.bookmarkStatus = newStatus.toString();
+            });
+
+            el.disabled = false;
+        }
     });
     console.log("Bookmarks bound");
 }

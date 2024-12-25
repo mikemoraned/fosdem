@@ -37,7 +37,7 @@
     * [ ] represent the core page model for bookmarks as `data-` attributes on event card
       * [x] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
       * for each bookmark, find containing event card then:
-        * [ ] set initial bookmark value based on `data-bookmark-status`
+        * [x] set initial bookmark value based on `data-bookmark-status`
         * [x] toggle `data-bookmark-status` based on bookmark click
         * [ ] use `MutationObserver` on `data-bookmark-status` to update bookmark value based on changes
     * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence of `data-bookmark-status`
