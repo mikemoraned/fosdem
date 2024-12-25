@@ -34,7 +34,7 @@
   - I also want to play with some localfirst stuff :-)
   * [ ] works between tabs
     * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
-    * [ ] represent the core page model for bookmarks as `data-` attributes on event card
+    * [x] represent the core page model for bookmarks as `data-` attributes on event card
       * [x] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
       * [x] store state of bookmark in parent element with `data-bookmark-status`
       * [x] style bookmark based on status parent element with `data-bookmark-status` 
