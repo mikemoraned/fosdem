@@ -44,8 +44,8 @@
       * [x] create store
       * [ ] set `data-bookmark-status` based on tinybase store (persistence across reloads)
       * [x] use `MutationObserver` on `data-bookmark-status` to update tinybase store based on changes
-      * [ ] set `data-bookmark-status` based on changes in tinybase store
-      * [ ] sync between browser tabs
+      * [x] set `data-bookmark-status` based on changes in tinybase store
+      * [x] sync between browser tabs
     * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
   * [ ] works between laptop/phone
     * [ ] ...

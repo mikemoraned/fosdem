@@ -90,9 +90,11 @@
 
         if (document.readyState === "loading") {
             console.log("deferring init of Bookmarks");
-            document.addEventListener("DOMContentLoaded", init);
+            document.addEventListener("DOMContentLoaded", async () => {
+                await init();
+            });
         } else {
-            init();
+            await init();
         }
     </script>
 </body>

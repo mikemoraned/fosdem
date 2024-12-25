@@ -1,4 +1,4 @@
-import { Model } from "./model.js";
+import { createModel } from "./model.js";
 
 function bindBookmarks() {
     console.log("Binding Bookmarks");
@@ -56,12 +56,19 @@ function bindModel(model) {
     stateElements.forEach((el) => {
         observer.observe(el, observerOptions);
     });
+
+    // add a listener which is called whenever the model changes for this event
+    stateElements.forEach((el) => {
+        model.addEventListener(el.dataset.eventId, (status) => {
+            el.dataset.bookmarkStatus = status.toString();
+        });
+    });
 }
 
-export function init() {
+export async function init() {
     console.log("Initialising bookmarks");
     bindBookmarks();
 
-    const model = new Model();
+    const model = await createModel();
     bindModel(model);
 }
