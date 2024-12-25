@@ -35,10 +35,10 @@
   * [ ] works between tabs
     * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
     * [ ] represent the core page model for bookmarks as `data-` attributes on event card
-      * [ ] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
+      * [x] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
       * for each bookmark, find containing event card then:
         * [ ] set initial bookmark value based on `data-bookmark-status`
-        * [ ] toggle `data-bookmark-status` based on bookmark click
+        * [x] toggle `data-bookmark-status` based on bookmark click
         * [ ] use `MutationObserver` on `data-bookmark-status` to update bookmark value based on changes
     * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence of `data-bookmark-status`
       * [x] load or create `automerge` doc

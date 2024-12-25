@@ -32,31 +32,6 @@ function findOrCreateDoc(repo) {
     return docHandle;
 }
 
-function createModel(originalDoc) {
-    const model = (function() {
-        let currentDoc = originalDoc;
-
-        function toggleBookmark(eventId) {
-            console.log("Toggling bookmark for event", eventId, "in doc", currentDoc.url);
-            let updatedDoc = Automerge.change(currentDoc, "toggle-bookmark", d => {
-                var entry = d.bookmarks.find(e => e.event_id === eventId);
-                if (entry == null) {
-                    d.bookmarks.push({ event_id: eventId, bookmarked: true });
-                } else {
-                    entry.bookmarked = !entry.bookmarked;
-                }
-            });
-            currentDoc = updatedDoc; 
-        }
-
-        return {
-            toggleBookmark: toggleBookmark,
-        };
-    })();
-    return model;
-}
-
-
 function bindBookmarks(model) {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
@@ -67,12 +42,10 @@ function bindBookmarks(model) {
 
     // add toggle behavior to each bookmark
     buttons.forEach((el) => {
-        el.addEventListener("click", () => {  
-            el.classList.toggle("is-filled");
-            el.classList.toggle("is-empty");
-            if (el.dataset.eventId) {
-                model.toggleBookmark(el.dataset.eventId);
-            }
+        el.addEventListener("click", () => {
+            const isBookmarked = el.dataset.bookmarkStatus === "true";
+            const newStatus = !isBookmarked;
+            el.dataset.bookmarkStatus = newStatus.toString();
         });
     });
 
@@ -87,6 +60,5 @@ export function init() {
     console.log("Initialising bookmarks");
     const repo = createRepo();
     const doc = findOrCreateDoc(repo);
-    const model = createModel(doc);
-    bindBookmarks(model);
+    bindBookmarks();
 }

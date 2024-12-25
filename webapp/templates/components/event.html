@@ -23,7 +23,7 @@
 {% endmacro %}
 
 {% macro expandable_card_details(event) %}
-<details>
+<details data-event-id="{{ event.id }}" data-bookmark-status="false">
     <summary>{% call card_header(event) %}</summary>
     <div class="card-content">
         <div class="content">
