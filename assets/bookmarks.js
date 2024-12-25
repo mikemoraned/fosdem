@@ -52,6 +52,13 @@ function bindModel(model) {
         attributeFilter: ['data-bookmark-status'],
     };
 
+    // set initial state based on model
+    stateElements.forEach((el) => {
+        const eventId = el.dataset.eventId;
+        const isBookmarked = model.getBookmarkStatus(eventId);
+        el.dataset.bookmarkStatus = isBookmarked.toString();
+    });
+
     // bind the observer to all state elements
     stateElements.forEach((el) => {
         observer.observe(el, observerOptions);

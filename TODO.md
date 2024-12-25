@@ -32,7 +32,7 @@
   - I'd prefer to avoid something that relies on a fast network connection (wifi can be iffy on the day) or an accounts system (can't be arsed owning/securing/paying for that)
   - So, I'm gonna try to avoid any backend if possible
   - I also want to play with some localfirst stuff :-)
-  * [ ] works between tabs
+  * [x] works between tabs
     * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
     * [x] represent the core page model for bookmarks as `data-` attributes on event card
       * [x] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
@@ -40,9 +40,9 @@
       * [x] style bookmark based on status parent element with `data-bookmark-status` 
       * for each bookmark, find containing event card then:
         * [x] toggle `data-bookmark-status` based on bookmark click
-    * [ ] use [tinybase](https://tinybase.org) to support sharing between tabs and persistence of `data-bookmark-status`
+    * [x] use [tinybase](https://tinybase.org) to support sharing between tabs and persistence of `data-bookmark-status`
       * [x] create store
-      * [ ] set `data-bookmark-status` based on tinybase store (persistence across reloads)
+      * [x] set `data-bookmark-status` based on tinybase store (persistence across reloads)
       * [x] use `MutationObserver` on `data-bookmark-status` to update tinybase store based on changes
       * [x] set `data-bookmark-status` based on changes in tinybase store
       * [x] sync between browser tabs

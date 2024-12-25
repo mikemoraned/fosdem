@@ -1,9 +1,14 @@
 import { createMergeableStore } from 'https://cdn.jsdelivr.net/npm/tinybase@5.4.4/+esm';
 import { createBroadcastChannelSynchronizer } from 'https://cdn.jsdelivr.net/npm/tinybase@5.4.4/synchronizers/synchronizer-broadcast-channel/+esm';
-
+import { createLocalPersister } from 'https://cdn.jsdelivr.net/npm/tinybase@5.4.4/persisters/persister-browser/+esm';
 
 export async function createModel() {
     const store = createMergeableStore('fosdem2025');
+    
+    const persister = createLocalPersister(store, 'fosdem2025');
+    await persister.load();
+    await persister.startAutoSave()
+
     const synchronizer = createBroadcastChannelSynchronizer(
         store,
         'fosdem2025SyncChannel',
@@ -26,6 +31,10 @@ export async function createModel() {
 class Model {
     constructor(store) {
         this.store = store
+    }
+
+    getBookmarkStatus(eventId) {
+        return this.store.getValue(eventId) || false;
     }
 
     setBookmarkStatus(eventId, status) {
