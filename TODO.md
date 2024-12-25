@@ -40,11 +40,12 @@
       * [x] style bookmark based on status parent element with `data-bookmark-status` 
       * for each bookmark, find containing event card then:
         * [x] toggle `data-bookmark-status` based on bookmark click
-    * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence of `data-bookmark-status`
-      * [x] load or create `automerge` doc
-      * [ ] set `data-bookmark-status` based on `automerge` doc
-      * [ ] use `MutationObserver` on `data-bookmark-status` to update automerge model based on changes
-      * [ ] set `data-bookmark-status` changes from automerge doc
+    * [ ] use [tinybase](https://tinybase.org) to support sharing between tabs and persistence of `data-bookmark-status`
+      * [x] create store
+      * [ ] set `data-bookmark-status` based on tinybase store (persistence across reloads)
+      * [x] use `MutationObserver` on `data-bookmark-status` to update tinybase store based on changes
+      * [ ] set `data-bookmark-status` based on changes in tinybase store
+      * [ ] sync between browser tabs
     * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
   * [ ] works between laptop/phone
     * [ ] ...
