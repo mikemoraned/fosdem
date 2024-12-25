@@ -1,5 +1,5 @@
 import * as AutomergeRepo from "https://esm.sh/@automerge/automerge-repo@2.0.0-alpha.14/slim?bundle-deps"
-import * as Automerge from "https://esm.sh/@automerge/automerge@2.2.8/slim?bundle-deps"
+import { next as Automerge } from "https://esm.sh/@automerge/automerge@2.2.8/slim?bundle-deps"
 import { IndexedDBStorageAdapter } from "https://esm.sh/@automerge/automerge-repo-storage-indexeddb@2.0.0-alpha.14?bundle-deps"
 
 console.log("Initializing Automerge");
@@ -15,19 +15,19 @@ function createRepo() {
 }
 
 function findOrCreateDoc(repo) {
-    const docId = "automerge:3QyBr3asz8M6LM7GcPcmYTyyXqzH"; // hard-coded for now
+    const docUrl = null; // hard-coded for now
     var docHandle = null;
-    if (docId != null && AutomergeRepo.isValidAutomergeUrl(docId)) {
-        console.log("Finding doc with id", docId);
-        docHandle = repo.find(docId);
+    if (docUrl != null && AutomergeRepo.isValidAutomergeUrl(docUrl)) {
+        console.log("Finding doc with url", docUrl);
+        docHandle = repo.find(docUrl);
     }
     else {
         console.log("Creating new doc");
-        docHandle = repo.create(docId, {
+        docHandle = repo.create({
             year: 2025,
             bookmarks: []
         });
-        console.log("Created new doc with id: ", docHandle.url);
+        console.log("Created new doc with url: ", docHandle.url);
     }
     return docHandle;
 }
@@ -68,6 +68,16 @@ class AutomergeModel {
 
     setBookmarkStatus(eventId, status) {
         console.log(`Setting bookmark status for event ${eventId} to ${status}`);
+        const newDoc = Automerge.change(this.doc, (d) => {
+            const index = d.bookmarks.findIndex((b) => b.eventId === eventId);
+            if (index === -1) {
+                d.bookmarks.push({ eventId, status });
+            }
+            else {
+                d.bookmarks[index].status = status;
+            }
+        });
+        this.doc = newDoc;
     }
 }
 
