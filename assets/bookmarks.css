@@ -1,16 +1,16 @@
-button.bookmark[data-bookmark-status="true"] i.fa-bookmark.filled {
+[data-bookmark-status="true"] button.bookmark i.fa-bookmark.filled {
     display: span;
 }
 
-button.bookmark[data-bookmark-status="true"] i.fa-bookmark.empty {
+[data-bookmark-status="true"] button.bookmark i.fa-bookmark.empty {
     display: none;
 }
 
-button.bookmark[data-bookmark-status="false"] i.fa-bookmark.filled {
+[data-bookmark-status="false"] button.bookmark i.fa-bookmark.filled {
     display: none;
 }
 
-button.bookmark[data-bookmark-status="false"] i.fa-bookmark.empty {
+[data-bookmark-status="false"] button.bookmark i.fa-bookmark.empty {
     display: span;
 }
 

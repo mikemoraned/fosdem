@@ -47,19 +47,14 @@ function bindBookmarks(model) {
             console.warn("Bookmark button has no parent with data-bookmark-status");
         }
         else {
-            // set current status based on parent status
-            const isParentBookmarked = parentEl.dataset.bookmarkStatus === "true";
-            el.dataset.bookmarkStatus = isParentBookmarked.toString();
-
             el.addEventListener("click", () => {
-                const isBookmarked = el.dataset.bookmarkStatus === "true";
+                // update parent status
+                const isBookmarked = parentEl.dataset.bookmarkStatus === "true";
                 const newStatus = !isBookmarked;
-
-                // update parent status and current status
                 parentEl.dataset.bookmarkStatus = newStatus.toString();
-                el.dataset.bookmarkStatus = newStatus.toString();
             });
 
+            // button is ready to be used
             el.disabled = false;
         }
     });
