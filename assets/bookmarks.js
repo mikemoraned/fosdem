@@ -1,3 +1,5 @@
+import { Model } from "./model.js";
+
 function bindBookmarks() {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
@@ -25,15 +27,6 @@ function bindBookmarks() {
         }
     });
     console.log("Bookmarks bound");
-}
-
-class Model {
-    constructor() {
-    }
-
-    setBookmarkStatus(eventId, status) {
-        console.log(`Setting bookmark status for event ${eventId} to ${status}`);
-    }
 }
 
 function bindModel(model) {
