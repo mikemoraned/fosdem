@@ -34,11 +34,17 @@
   - I also want to play with some localfirst stuff :-)
   * [ ] works between tabs
     * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
-    * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence
+    * [ ] represent the core page model for bookmarks as `data-` attributes on event card
+      * [ ] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
+      * for each bookmark, find containing event card then:
+        * [ ] set initial bookmark value based on `data-bookmark-status`
+        * [ ] toggle `data-bookmark-status` based on bookmark click
+        * [ ] use `MutationObserver` on `data-bookmark-status` to update bookmark value based on changes
+    * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence of `data-bookmark-status`
       * [x] load or create `automerge` doc
-      * [ ] set bookmark button states based on `automerge` doc
-      * [ ] propagate changes from bookmark button state to automerge doc
-      * [ ] propagate changes from automerge doc to bookmark button state
+      * [ ] set `data-bookmark-status` based on `automerge` doc
+      * [ ] use `MutationObserver` on `data-bookmark-status` to update automerge doc based on changes
+      * [ ] set `data-bookmark-status` changes from automerge doc
     * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
   * [ ] works between laptop/phone
     * [ ] ...
