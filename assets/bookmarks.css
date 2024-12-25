@@ -1,3 +1,13 @@
+/* show bookmark status in card */
+[data-bookmark-status="true"] {
+    border: 1px solid gray;
+}
+
+[data-bookmark-status="false"] {
+    border: 1px solid transparent;
+}
+
+/* show bookmark status in button */
 [data-bookmark-status="true"] button.bookmark i.fa-bookmark.filled {
     display: span;
 }
