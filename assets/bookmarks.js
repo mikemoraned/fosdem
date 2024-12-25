@@ -1,4 +1,5 @@
 import * as AutomergeRepo from "https://esm.sh/@automerge/automerge-repo@2.0.0-alpha.14/slim?bundle-deps"
+import * as Automerge from "https://esm.sh/@automerge/automerge@2.2.8/slim?bundle-deps"
 import { IndexedDBStorageAdapter } from "https://esm.sh/@automerge/automerge-repo-storage-indexeddb@2.0.0-alpha.14?bundle-deps"
 
 console.log("Initializing Automerge");
@@ -31,24 +32,52 @@ function findOrCreateDoc(repo) {
     return docHandle;
 }
 
-function bindBookmarks() {
+function createModel(originalDoc) {
+    const model = (function() {
+        let currentDoc = originalDoc;
+
+        function toggleBookmark(eventId) {
+            console.log("Toggling bookmark for event", eventId, "in doc", currentDoc.url);
+            let updatedDoc = Automerge.change(currentDoc, "toggle-bookmark", d => {
+                var entry = d.bookmarks.find(e => e.event_id === eventId);
+                if (entry == null) {
+                    d.bookmarks.push({ event_id: eventId, bookmarked: true });
+                } else {
+                    entry.bookmarked = !entry.bookmarked;
+                }
+            });
+            currentDoc = updatedDoc; 
+        }
+
+        return {
+            toggleBookmark: toggleBookmark,
+        };
+    })();
+    return model;
+}
+
+
+function bindBookmarks(model) {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
-    const $buttons = Array.prototype.slice.call(
+    const buttons = Array.prototype.slice.call(
         document.querySelectorAll("button.bookmark"),
         0
     );
 
     // add toggle behavior to each bookmark
-    $buttons.forEach((el) => {
+    buttons.forEach((el) => {
         el.addEventListener("click", () => {  
             el.classList.toggle("is-filled");
             el.classList.toggle("is-empty");
+            if (el.dataset.eventId) {
+                model.toggleBookmark(el.dataset.eventId);
+            }
         });
     });
 
     // enable each bookmark
-    $buttons.forEach((el) => {
+    buttons.forEach((el) => {
         el.disabled = false;
     });
     console.log("Bookmarks bound");
@@ -57,6 +86,7 @@ function bindBookmarks() {
 export function init() {
     console.log("Initialising bookmarks");
     const repo = createRepo();
-    const docHandle = findOrCreateDoc(repo);
-    bindBookmarks();
+    const doc = findOrCreateDoc(repo);
+    const model = createModel(doc);
+    bindBookmarks(model);
 }

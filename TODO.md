@@ -35,6 +35,10 @@
   * [ ] works between tabs
     * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
     * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence
+      * [x] load or create `automerge` doc
+      * [ ] set bookmark button states based on `automerge` doc
+      * [ ] propagate changes from bookmark button state to automerge doc
+      * [ ] propagate changes from automerge doc to bookmark button state
     * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
   * [ ] works between laptop/phone
     * [ ] ...
