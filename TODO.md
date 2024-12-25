@@ -43,7 +43,7 @@
     * [ ] use [`automerge`](https://automerge.org/) to support sharing between tabs and persistence of `data-bookmark-status`
       * [x] load or create `automerge` doc
       * [ ] set `data-bookmark-status` based on `automerge` doc
-      * [ ] use `MutationObserver` on `data-bookmark-status` to update automerge doc based on changes
+      * [ ] use `MutationObserver` on `data-bookmark-status` to update automerge model based on changes
       * [ ] set `data-bookmark-status` changes from automerge doc
     * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
   * [ ] works between laptop/phone

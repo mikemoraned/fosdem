@@ -32,7 +32,7 @@ function findOrCreateDoc(repo) {
     return docHandle;
 }
 
-function bindBookmarks(model) {
+function bindBookmarks() {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
     const buttons = Array.prototype.slice.call(
@@ -61,9 +61,51 @@ function bindBookmarks(model) {
     console.log("Bookmarks bound");
 }
 
+class AutomergeModel {
+    constructor(doc) {
+        this.doc = doc;
+    }
+
+    setBookmarkStatus(eventId, status) {
+        console.log(`Setting bookmark status for event ${eventId} to ${status}`);
+    }
+}
+
+function bindAutomerge(model) {
+    // find all events with event-id and bookmark-status
+    const stateElements = Array.prototype.slice.call(
+        document.querySelectorAll("[data-event-id][data-bookmark-status]"),
+        0
+    );
+    console.log("Found", stateElements.length, "document states");
+
+    // set up an observer which will propagate changes to the model
+    const observer = new MutationObserver((mutationsList) => {
+        mutationsList.forEach((mutation) => {
+          // we assume that we only see changes on 'data-bookmark-status' and that the elemenet has a data-event-id
+          const isBookmarked = mutation.target.dataset.bookmarkStatus === "true";
+          const eventId = mutation.target.dataset.eventId;
+          model.setBookmarkStatus(eventId, isBookmarked);
+        });
+      });
+
+    const observerOptions = {
+        attributes: true, 
+        attributeFilter: ['data-bookmark-status'],
+    };
+
+    // bind the observer to all state elements
+    stateElements.forEach((el) => {
+        observer.observe(el, observerOptions);
+    });
+}
+
 export function init() {
     console.log("Initialising bookmarks");
+    bindBookmarks();
+
     const repo = createRepo();
     const doc = findOrCreateDoc(repo);
-    bindBookmarks();
+    const model = new AutomergeModel(doc);
+    bindAutomerge(model);
 }
