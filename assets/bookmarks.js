@@ -92,7 +92,7 @@ function enableBookmarksFeatures() {
 export function bindExportImport() {
     const exportShowButton = document.querySelector("button.bookmark#export");
     const exportDialog = document.querySelector("dialog#export-dialog");
-    const exportCloseButton = document.querySelector("dialog#export-dialog button.close");
+    const exportCloseButton = document.querySelector("dialog#export-dialog .close");
 
     exportShowButton.addEventListener("click", () => {
         exportDialog.showModal();
