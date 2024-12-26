@@ -2,19 +2,18 @@ use std::{path::PathBuf, sync::Arc};
 
 use askama::Template;
 use axum::{
-    extract::{Path, Query, State},
+    extract::{Path, State},
     http::{header, Method, StatusCode},
     response::{Html, IntoResponse},
     routing::get,
     Router,
 };
-use axum_valid::Valid;
 
 use content::video_index::VideoIndex;
 use serde::Deserialize;
 use shared::{
     inmemory_openai::InMemoryOpenAIQueryable,
-    model::{Event, NextEvents, NextEventsContext},
+    model::Event,
 };
 use tower_http::{
     cors::{Any, CorsLayer},
@@ -22,71 +21,13 @@ use tower_http::{
 };
 use validator::Validate;
 
-use crate::filters;
 use crate::related::related;
 use crate::state::AppState;
 use shared::queryable::Queryable;
 
 mod index;
 mod search;
-
-
-#[derive(Deserialize, Validate, Debug)]
-struct NextParams {
-    #[validate(range(min = 1, max = 20000))]
-    id: Option<u32>,
-}
-
-#[derive(Template, Debug)]
-#[template(path = "now_and_next.html")]
-struct NowAndNextTemplate {
-    next: NextEvents,
-    current_event: Option<Event>,
-}
-
-#[tracing::instrument(skip(state))]
-async fn next(
-    State(state): State<AppState>,
-    Valid(Query(params)): Valid<Query<NextParams>>,
-) -> axum::response::Result<Html<String>> {
-    let context = match params.id {
-        Some(event_id) => NextEventsContext::EventId(event_id),
-        None => NextEventsContext::Now,
-    };
-    match state.queryable.find_next_events(context).await {
-        Ok(next) => {
-            let page = NowAndNextTemplate {
-                next: next.clone(),
-                current_event: Some(next.selected.clone()),
-            };
-            let html = page.render().unwrap();
-            Ok(Html(html))
-        }
-        Err(_) => Err("failed".into()),
-    }
-}
-
-#[tracing::instrument(skip(state))]
-async fn next_after_event(
-    State(state): State<AppState>,
-    Path(event_id): Path<u32>,
-) -> axum::response::Result<Html<String>> {
-    match state
-        .queryable
-        .find_next_events(NextEventsContext::Now)
-        .await
-    {
-        Ok(next) => {
-            let page = NowAndNextTemplate {
-                next: next.clone(),
-                current_event: Some(next.selected.clone()),
-            };
-            let html = page.render().unwrap();
-            Ok(Html(html))
-        }
-        Err(_) => Err("failed".into()),
-    }
-}
+mod next;
 
 #[derive(Deserialize, Validate, Debug)]
 struct EventVideoParams {
@@ -166,7 +107,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/", get(index::index))
         .route("/search", get(search::search))
         .route("/connections/", get(related))
-        .route("/next/", get(next))
+        .route("/next/", get(next::next))
         .route("/video/:event_id/", get(event_video))
         .route("/video/:event_id/captions.vtt", get(event_video_webvtt))
         .layer(cors)
