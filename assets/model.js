@@ -63,4 +63,11 @@ class Model {
         });
         return eventIds.join(' ');
     }
+
+    importEventIdsFromText(text) {
+        const eventIds = text.split(' ');
+        eventIds.forEach((eventId) => {
+            this.store.setValue(eventId, true);
+        });
+    }
 }

@@ -47,12 +47,25 @@
         </footer>
     </div>
 </dialog>
+
+<dialog id="import-dialog">
+    <div class="card">
+        <div class="card-content">
+            <textarea class="textarea is-info text"></textarea>
+        </div>
+        <footer class="card-footer">
+            <a href="#" class="card-footer-item autofocus import">Import</a>
+            <a href="#" class="card-footer-item close">Close</a>
+        </footer>
+    </div>
+</dialog>
+
 {% endblock %}
 
 {% block bookmarks_callbacks %}
 <script type="module">
-    import { bindExportImport } from '/assets/bookmarks.js';
+    import { bindExport, bindImport } from '/assets/bookmarks.js';
 
-    document.bookmarksCallbacks = [ bindExportImport ];
+    document.bookmarksCallbacks = [ bindExport, bindImport ];
 </script>
 {% endblock %}
