@@ -53,4 +53,14 @@ class Model {
             }
         }, false);
     }
+
+    exportEventIdsAsText() {
+        const eventIds = [];
+        this.store.forEachValue((eventId, isBookmarked) => {
+            if (isBookmarked) {
+                eventIds.push(eventId);
+            }
+        });
+        return eventIds.join(' ');
+    }
 }

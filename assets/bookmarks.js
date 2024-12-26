@@ -89,26 +89,40 @@ function enableBookmarksFeatures() {
     });
 }
 
-export function bindExportImport() {
+export function bindExportImport(model) {
     const exportShowButton = document.querySelector("button.bookmark#export");
     const exportDialog = document.querySelector("dialog#export-dialog");
+    const exportDialogText = document.querySelector("dialog#export-dialog .text");
+    const exportCopyButton = document.querySelector("dialog#export-dialog .copy");
     const exportCloseButton = document.querySelector("dialog#export-dialog .close");
 
     exportShowButton.addEventListener("click", () => {
+        exportDialogText.value = model.exportEventIdsAsText();
         exportDialog.showModal();
     });
 
     exportCloseButton.addEventListener("click", () => {
         exportDialog.close();
     });
+
+    exportCopyButton.addEventListener("click", () => {
+        exportDialogText.select();
+        exportDialogText.setSelectionRange(0, 99999); // For mobile devices
+
+        navigator.clipboard.writeText(exportDialogText.value);
+    });
 }
 
-export async function init() {
+export async function init(callbacks) {
     console.log("Initialising bookmarks");
     bindBookmarks();
 
     const model = await createModel();
     bindModel(model);
+
+    callbacks.forEach((callback) => {
+        callback(model);
+    });
 
     enableBookmarksFeatures();
 }

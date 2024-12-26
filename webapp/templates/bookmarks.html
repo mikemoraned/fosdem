@@ -39,12 +39,7 @@
 <dialog id="export-dialog">
     <div class="card">
         <div class="card-content">
-            <div class="content">
-                Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec
-                id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus
-                et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis
-                consectetur purus sit amet fermentum.
-            </div>
+            <textarea class="textarea is-info text" disabled></textarea>
         </div>
         <footer class="card-footer">
             <a href="#" class="card-footer-item autofocus copy">Copy</a>
@@ -54,10 +49,10 @@
 </dialog>
 {% endblock %}
 
-{% block end_script %}
+{% block bookmarks_callbacks %}
 <script type="module">
     import { bindExportImport } from '/assets/bookmarks.js';
 
-    bindExportImport();
+    document.bookmarksCallbacks = [ bindExportImport ];
 </script>
 {% endblock %}

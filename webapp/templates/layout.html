@@ -94,18 +94,23 @@
         </div>
     </footer>
     <script src="/assets/nav.js"></script>
+    {% block bookmarks_callbacks %}
+    <script type="module">
+        document.bookmarksCallbacks = [];
+    </script>
+    {% endblock %}
     <script type="module">
         import { init } from '/assets/bookmarks.js';
 
         if (document.readyState === "loading") {
             console.log("deferring init of Bookmarks");
             document.addEventListener("DOMContentLoaded", async () => {
-                await init();
+                await init(document.bookmarksCallbacks);
             });
         } else {
-            await init();
+            await init(document.bookmarksCallbacks);
         }
     </script>
-     {% block end_script %}{% endblock %}
+     
 </body>
 </html>
