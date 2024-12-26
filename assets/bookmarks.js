@@ -4,7 +4,7 @@ function bindBookmarks() {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
     const buttons = Array.prototype.slice.call(
-        document.querySelectorAll("button.bookmark"),
+        document.querySelectorAll("button.bookmark.control"),
         0
     );
 

@@ -4,6 +4,24 @@
 
 {% block content %}
 <section class="section hide-non-bookmarked">
+    <div class="columns">
+        <div class="column">
+            <div class="buttons has-addons is-centered">
+                <button class="button is-large is-responsive bookmark export" disabled>
+                    <span class="icon is-small">
+                        <i class="fa-solid fa-upload"></i>
+                    </span>
+                    <span>Export</span>
+                </button>
+                <button class="button is-large is-responsive bookmark import" disabled>
+                    <span class="icon is-small">
+                        <i class="fa-solid fa-download"></i>
+                    </span>
+                    <span>Import</span>
+                </button>
+            </div>
+        </div>
+    </div>
     {% for event in events %}
     <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
         <div class="column">
@@ -17,4 +35,8 @@
     </div>
     {% endfor %}
 </section>
+{% endblock %}
+
+{% block end_script %}
+
 {% endblock %}
