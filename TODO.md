@@ -55,7 +55,7 @@
     - I'm not going to go for live-sync of all bookmarks and all CRDT state, including deletions. This is for a few reasons:
       - still requires some sort of backend (e.g. for websockets or webrtc or similar). This makes it more complicated and also means I still require a remote connection at some point.
       - it also means I need to have separate "users" if I want to avoid accidentally mixing my bookmarks with anyone else who happens to use the site
-    - Instead, I'll use a local transfer system that relies only 'exporting' and 'importing' bookmarks via a URL. This will be a merge i.e. this will only export bookmarks that are set and import same. So, it's not syncing two devices to be the same.
+    - Instead, I'll use a local transfer system that relies only 'exporting' and 'importing' bookmarks via copy/paste. This will be a merge i.e. this will only export bookmarks that are set and import same. So, it's not syncing two devices to be the same.
     * [x] export all set bookmarks as a text string (via copy)
     * [x] import all bookmarks from a text string (via paste)
 * [ ] design/other tweaks (just a holding ground as I see things)

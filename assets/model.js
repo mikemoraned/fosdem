@@ -65,9 +65,11 @@ class Model {
     }
 
     importEventIdsFromText(text) {
-        const eventIds = text.split(' ');
-        eventIds.forEach((eventId) => {
-            this.store.setValue(eventId, true);
+        const possibleEventIds = text.split(' ');
+        possibleEventIds.forEach((possibleEventId) => {
+            if (possibleEventId.match(/\d+/)) {
+                this.store.setValue(possibleEventId, true);
+            }
         });
     }
 }
