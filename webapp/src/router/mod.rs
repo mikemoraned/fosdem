@@ -14,13 +14,12 @@ use content::video_index::VideoIndex;
 use serde::Deserialize;
 use shared::{
     inmemory_openai::InMemoryOpenAIQueryable,
-    model::{Event, NextEvents, NextEventsContext, SearchItem},
+    model::{Event, NextEvents, NextEventsContext},
 };
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
-use tracing::info;
 use validator::Validate;
 
 use crate::filters;
@@ -29,42 +28,8 @@ use crate::state::AppState;
 use shared::queryable::Queryable;
 
 mod index;
+mod search;
 
-#[derive(Deserialize, Validate, Debug)]
-struct SearchParams {
-    #[validate(length(min = 2, max = 100))]
-    q: String,
-    #[validate(range(min = 1, max = 20))]
-    limit: u8,
-}
-
-#[derive(Template, Debug)]
-#[template(path = "search.html")]
-struct SearchTemplate {
-    query: String,
-    items: Vec<SearchItem>,
-    current_event: Option<Event>,
-}
-
-#[tracing::instrument(skip(state))]
-async fn search(
-    State(state): State<AppState>,
-    Valid(Query(params)): Valid<Query<SearchParams>>,
-) -> axum::response::Result<Html<String>> {
-    info!("search params: {:?}", params);
-    match state.queryable.search(&params.q, params.limit, true).await {
-        Ok(items) => {
-            let page = SearchTemplate {
-                query: params.q,
-                items,
-                current_event: None,
-            };
-            let html = page.render().unwrap();
-            Ok(Html(html))
-        }
-        Err(_) => Err("search failed".into()),
-    }
-}
 
 #[derive(Deserialize, Validate, Debug)]
 struct NextParams {
@@ -199,7 +164,7 @@ pub async fn router(state: AppState) -> Router {
 
     Router::new()
         .route("/", get(index::index))
-        .route("/search", get(search))
+        .route("/search", get(search::search))
         .route("/connections/", get(related))
         .route("/next/", get(next))
         .route("/video/:event_id/", get(event_video))

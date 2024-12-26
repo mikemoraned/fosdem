@@ -4,7 +4,7 @@ use axum::response::Html;
 
 #[derive(Template)]
 #[template(path = "index.html")]
-pub struct IndexTemplate {}
+struct IndexTemplate {}
 
 #[tracing::instrument]
 pub async fn index() -> Html<String> {
