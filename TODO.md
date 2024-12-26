@@ -50,6 +50,7 @@
     * [x] refactor router into separate module per route
     * [ ] add a new route which surfaces a summary (card header) of all events
     * [ ] hide/display based on whether it is bookmarked
+    * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
   * [ ] works between laptop/phone
     * [ ] ...
 * [ ] design tweaks (just a holding ground as I see things)

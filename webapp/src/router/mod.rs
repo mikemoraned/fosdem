@@ -18,6 +18,7 @@ mod index;
 mod search;
 mod next;
 mod video;
+mod bookmark;
 
 pub async fn app_state(
     openai_api_key: &str,
@@ -47,6 +48,7 @@ pub async fn router(state: AppState) -> Router {
     Router::new()
         .route("/", get(index::index))
         .route("/search", get(search::search))
+        .route("/bookmarks", get(bookmark::bookmarks))
         .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/video/:event_id/", get(video::event_video))

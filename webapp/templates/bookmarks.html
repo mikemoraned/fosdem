@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{%- import "components/bookmark.html" as bookmark -%}
+{%- import "components/event.html" as event -%}
+
+{% block content %}
+<section class="section">
+    {% for event in events %}
+    <div class="columns">
+        <div class="column">
+            <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
+                {% call event::expandable_card_details(event) %}
+                <footer class="card-footer">
+                    {% call bookmark::bookmark_footer_item(event) %}
+                </footer>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

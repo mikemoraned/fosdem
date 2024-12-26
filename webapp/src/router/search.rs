@@ -30,7 +30,7 @@ pub struct SearchParams {
 struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
-    current_event: Option<Event>,
+    current_event: Option<Event>, // TODO: remove this
 }
 
 #[tracing::instrument(skip(state))]
