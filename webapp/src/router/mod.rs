@@ -28,6 +28,8 @@ use crate::related::related;
 use crate::state::AppState;
 use shared::queryable::Queryable;
 
+mod index;
+
 #[derive(Deserialize, Validate, Debug)]
 struct SearchParams {
     #[validate(length(min = 2, max = 100))]
@@ -42,17 +44,6 @@ struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
     current_event: Option<Event>,
-}
-
-#[derive(Template)]
-#[template(path = "index.html")]
-struct IndexTemplate {}
-
-#[tracing::instrument]
-async fn index() -> Html<String> {
-    let page = IndexTemplate {};
-    let html = page.render().unwrap();
-    Html(html)
 }
 
 #[tracing::instrument(skip(state))]
@@ -207,7 +198,7 @@ pub async fn router(state: AppState) -> Router {
         .allow_origin(Any);
 
     Router::new()
-        .route("/", get(index))
+        .route("/", get(index::index))
         .route("/search", get(search))
         .route("/connections/", get(related))
         .route("/next/", get(next))
