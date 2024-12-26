@@ -93,7 +93,7 @@ export function bindExport(model) {
     const showButton = document.querySelector("button.bookmark#export");
     const dialog = document.querySelector("dialog#export-dialog");
     const dialogText = document.querySelector("dialog#export-dialog .text");
-    const copyButton = document.querySelector("dialog#export-dialog .copy");
+    const copyButtons = document.querySelectorAll("dialog#export-dialog .copy");
     const closeButton = document.querySelector("dialog#export-dialog .close");
 
     showButton.addEventListener("click", () => {
@@ -102,16 +102,19 @@ export function bindExport(model) {
     });
 
     closeButton.addEventListener("click", () => {
+        dialogText.value = "";
         dialog.close();
     });
 
-    copyButton.addEventListener("click", () => {
-        dialogText.select();
-        dialogText.setSelectionRange(0, 99999); // For mobile devices
+    copyButtons.forEach((copyButton) => {
+        copyButton.addEventListener("click", () => {
+            dialogText.select();
+            dialogText.setSelectionRange(0, 99999); // For mobile devices
 
-        navigator.clipboard.writeText(dialogText.value);
-        dialogText.value = "";
-        dialog.close();
+            navigator.clipboard.writeText(dialogText.value);
+            dialogText.value = "";
+            dialog.close();
+        });
     });
 }
 
@@ -119,7 +122,7 @@ export function bindImport(model) {
     const showButton = document.querySelector("button.bookmark#import");
     const dialog = document.querySelector("dialog#import-dialog");
     const dialogText = document.querySelector("dialog#import-dialog .text");
-    const importButton = document.querySelector("dialog#import-dialog .import");
+    const importButtons = document.querySelectorAll("dialog#import-dialog .import");
     const closeButton = document.querySelector("dialog#import-dialog .close");
 
     showButton.addEventListener("click", () => {
@@ -127,13 +130,16 @@ export function bindImport(model) {
     });
 
     closeButton.addEventListener("click", () => {
+        dialogText.value = "";
         dialog.close();
     });
 
-    importButton.addEventListener("click", () => {
-        model.importEventIdsFromText(dialogText.value);
-        dialogText.value = "";
-        dialog.close();
+    importButtons.forEach((importButton) => {
+        importButton.addEventListener("click", () => {
+            model.importEventIdsFromText(dialogText.value);
+            dialogText.value = "";
+            dialog.close();
+        });
     });
 }
 
