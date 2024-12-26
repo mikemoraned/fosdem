@@ -47,6 +47,9 @@
       * [x] set `data-bookmark-status` based on changes in tinybase store
       * [x] sync between browser tabs
   * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
+    * [ ] refactor router into separate file per route
+    * [ ] add a new route which surfaces a summary (card header) of all events
+    * [ ] hide/display based on whether it is bookmarked
   * [ ] works between laptop/phone
     * [ ] ...
 * [ ] design tweaks (just a holding ground as I see things)
