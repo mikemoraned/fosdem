@@ -48,9 +48,9 @@
       * [x] sync between browser tabs
   * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
     * [x] refactor router into separate module per route
-    * [ ] add a new route which surfaces a summary (card header) of all events
+    * [x] add a new route which surfaces all events
     * [ ] hide/display based on whether it is bookmarked
-    * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
+  * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
   * [ ] works between laptop/phone
     * [ ] ...
 * [ ] design tweaks (just a holding ground as I see things)

@@ -5,7 +5,7 @@ use axum::{
     response::Html,
 };
 
-use shared::model::Event;
+use shared::{model::Event, queryable::Queryable};
 
 use crate::state::AppState;
 
@@ -16,12 +16,12 @@ struct BookmarksTemplate {
     current_event: Option<Event>, // TODO: remove this
 }
 
-#[tracing::instrument(skip(_state))]
+#[tracing::instrument(skip(state))]
 pub async fn bookmarks(
-    State(_state): State<AppState>
+    State(state): State<AppState>
 ) -> axum::response::Result<Html<String>> {
     let page = BookmarksTemplate {
-        events: vec![],
+        events: state.queryable.load_all_events().await.unwrap(),
         current_event: None,
     };
     let html = page.render().unwrap();
