@@ -21,10 +21,10 @@ use tower_http::{
 };
 use validator::Validate;
 
-use crate::related::related;
 use crate::state::AppState;
 use shared::queryable::Queryable;
 
+pub mod related;
 mod index;
 mod search;
 mod next;
@@ -106,7 +106,7 @@ pub async fn router(state: AppState) -> Router {
     Router::new()
         .route("/", get(index::index))
         .route("/search", get(search::search))
-        .route("/connections/", get(related))
+        .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/video/:event_id/", get(event_video))
         .route("/video/:event_id/captions.vtt", get(event_video_webvtt))
