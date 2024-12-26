@@ -23,6 +23,45 @@
   * [x] (re)publish to fly.io main
     - using "fosdem-fly-prod" openai key
 * [x] start supporting fosdem 2025 schedule
+* [x] upgrade to latest Bulma
+  - https://bulma.io/documentation/start/migrating-to-v1/
+  * [x] move from bulma 0.9.4 -> 1.0.2
+  * [x] add content-integrity attributes to bulma and fontawesome
+    - https://www.srihash.org
+* [x] basic "bookmarks" system that works between tabs, and across my laptop and phone
+  - I'd prefer to avoid something that relies on a fast network connection (wifi can be iffy on the day) or an accounts system (can't be arsed owning/securing/paying for that)
+  - So, I'm gonna try to avoid any backend if possible
+  - I also want to play with some localfirst stuff :-)
+  * [x] works between tabs
+    * [x] add hooks to markup that allows a bookmark with a local viewmodel to be enabled/disabled by JS
+    * [x] represent the core page model for bookmarks as `data-` attributes on event card
+      * [x] set `data-event-id` and initial `data-bookmark-status` from backend (not bookmarked)
+      * [x] store state of bookmark in parent element with `data-bookmark-status`
+      * [x] style bookmark based on status parent element with `data-bookmark-status` 
+      * for each bookmark, find containing event card then:
+        * [x] toggle `data-bookmark-status` based on bookmark click
+    * [x] use [tinybase](https://tinybase.org) to support sharing between tabs and persistence of `data-bookmark-status`
+      * [x] create store
+      * [x] set `data-bookmark-status` based on tinybase store (persistence across reloads)
+      * [x] use `MutationObserver` on `data-bookmark-status` to update tinybase store based on changes
+      * [x] set `data-bookmark-status` based on changes in tinybase store
+      * [x] sync between browser tabs
+  * [x] add a '/bookmarks' endpoint which can show all items currently bookmarked
+    * [x] refactor router into separate module per route
+    * [x] add a new route which surfaces all events
+    * [x] hide/display based on whether it is bookmarked
+    * [x] link in to top nav, but only enable if bookmarks working
+  * [x] works between laptop/phone/ipad
+    - I'm not going to go for live-sync of all bookmarks and all CRDT state, including deletions. This is for a few reasons:
+      - still requires some sort of backend (e.g. for websockets or webrtc or similar). This makes it more complicated and also means I still require a remote connection at some point.
+      - it also means I need to have separate "users" if I want to avoid accidentally mixing my bookmarks with anyone else who happens to use the site
+    - Instead, I'll use a local transfer system that relies only 'exporting' and 'importing' bookmarks via copy/paste. This will be a merge i.e. this will only export bookmarks that are set and import same. So, it's not syncing two devices to be the same.
+    * [x] export all set bookmarks as a text string (via copy)
+    * [x] import all bookmarks from a text string (via paste)
+* [ ] design/other tweaks (just a holding ground as I see things)
+  * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
+  * [ ] make all `details` elements by default closed, and open via JS if on larger screen
+    - https://stackoverflow.com/questions/14286406/how-to-set-a-details-element-to-open-by-default-or-via-css
 
 # Fosdem 2024 todos (archived)
 

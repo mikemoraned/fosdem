@@ -8,7 +8,7 @@ use shared::{
     queryable::Queryable,
 };
 use tracing::info;
-use webapp::related::{D3Force, Link, Node};
+use webapp::router::related::{D3Force, Link, Node};
 
 /// generate related items
 #[derive(Parser, Debug)]

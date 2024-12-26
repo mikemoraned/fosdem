@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {%- import "components/search.html" as search -%}
+{%- import "components/bookmark.html" as bookmark -%}
 {%- import "components/event.html" as event -%}
 {%- import "components/external.html" as external -%}
 
@@ -44,11 +45,12 @@
         {% for item in group.items %}
 
         <a name="{{item.event.id}}"></a>
-        <div class="columns">
+        <div class="columns highlight-bookmarked">
             <div class="column is-offset-1">
-                <div class="card">
+                <div class="card" data-event-id="{{ item.event.id }}" data-bookmark-status="false">
                     {% call event::expandable_card_details(item.event) %}
                     <footer class="card-footer">
+                        {% call bookmark::bookmark_footer_item(item.event) %}
                         {% call external::sojourner_event(item.event) %}
                         {% call external::fosdem_event(item.event) %}
                     </footer>
