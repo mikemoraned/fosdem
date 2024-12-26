@@ -20,19 +20,19 @@
 }
 
 /* show bookmark status in button */
-[data-bookmark-status="true"] button.bookmark i.fa-bookmark.filled {
+[data-bookmark-status="true"] button.bookmark i.filled {
     display: span;
 }
 
-[data-bookmark-status="true"] button.bookmark i.fa-bookmark.empty {
+[data-bookmark-status="true"] button.bookmark i.empty {
     display: none;
 }
 
-[data-bookmark-status="false"] button.bookmark i.fa-bookmark.filled {
+[data-bookmark-status="false"] button.bookmark i.filled {
     display: none;
 }
 
-[data-bookmark-status="false"] button.bookmark i.fa-bookmark.empty {
+[data-bookmark-status="false"] button.bookmark i.empty {
     display: span;
 }
 

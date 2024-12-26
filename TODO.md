@@ -51,10 +51,10 @@
     * [x] add a new route which surfaces all events
     * [x] hide/display based on whether it is bookmarked
     * [x] link in to top nav, but only enable if bookmarks working
-  * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
   * [ ] works between laptop/phone
     * [ ] ...
-* [ ] design tweaks (just a holding ground as I see things)
+* [ ] design/other tweaks (just a holding ground as I see things)
+  * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
   * [ ] make all `details` elements by default closed, and open via JS if on larger screen
     - https://stackoverflow.com/questions/14286406/how-to-set-a-details-element-to-open-by-default-or-via-css
 
