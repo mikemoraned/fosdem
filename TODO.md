@@ -28,7 +28,7 @@
   * [x] move from bulma 0.9.4 -> 1.0.2
   * [x] add content-integrity attributes to bulma and fontawesome
     - https://www.srihash.org
-* [ ] basic "bookmarks" system that works between tabs, and across my laptop and phone
+* [x] basic "bookmarks" system that works between tabs, and across my laptop and phone
   - I'd prefer to avoid something that relies on a fast network connection (wifi can be iffy on the day) or an accounts system (can't be arsed owning/securing/paying for that)
   - So, I'm gonna try to avoid any backend if possible
   - I also want to play with some localfirst stuff :-)
@@ -51,7 +51,7 @@
     * [x] add a new route which surfaces all events
     * [x] hide/display based on whether it is bookmarked
     * [x] link in to top nav, but only enable if bookmarks working
-  * [ ] works between laptop/phone/ipad
+  * [x] works between laptop/phone/ipad
     - I'm not going to go for live-sync of all bookmarks and all CRDT state, including deletions. This is for a few reasons:
       - still requires some sort of backend (e.g. for websockets or webrtc or similar). This makes it more complicated and also means I still require a remote connection at some point.
       - it also means I need to have separate "users" if I want to avoid accidentally mixing my bookmarks with anyone else who happens to use the site
