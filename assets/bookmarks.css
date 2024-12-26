@@ -36,3 +36,7 @@
     display: span;
 }
 
+dialog#import-dialog, dialog#export-dialog {
+    border: none; 
+    background-color: transparent;
+}
