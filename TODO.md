@@ -49,7 +49,7 @@
   * [ ] add a '/bookmarks' endpoint which can show all items currently bookmarked
     * [x] refactor router into separate module per route
     * [x] add a new route which surfaces all events
-    * [ ] hide/display based on whether it is bookmarked
+    * [x] hide/display based on whether it is bookmarked
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
   * [ ] works between laptop/phone
     * [ ] ...

@@ -1,9 +1,14 @@
-/* show bookmark status in card */
-[data-bookmark-status="true"] {
+/* hide items which are not bookmarked */
+.hide-non-bookmarked [data-bookmark-status="false"] {
+    display: none;
+}
+
+/* highlight bookmark status in card */
+.highlight-bookmarked [data-bookmark-status="true"] {
     border: 1px solid gray;
 }
 
-[data-bookmark-status="false"] {
+.highlight-bookmarked [data-bookmark-status="false"] {
     border: 1px solid transparent;
 }
 

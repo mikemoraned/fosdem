@@ -3,11 +3,11 @@
 {%- import "components/event.html" as event -%}
 
 {% block content %}
-<section class="section">
+<section class="section hide-non-bookmarked">
     {% for event in events %}
-    <div class="columns">
+    <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
         <div class="column">
-            <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
+            <div class="card" >
                 {% call event::expandable_card_details(event) %}
                 <footer class="card-footer">
                     {% call bookmark::bookmark_footer_item(event) %}
