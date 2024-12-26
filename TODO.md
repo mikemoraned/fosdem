@@ -50,6 +50,7 @@
     * [x] refactor router into separate module per route
     * [x] add a new route which surfaces all events
     * [x] hide/display based on whether it is bookmarked
+    * [x] link in to top nav, but only enable if bookmarks working
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
   * [ ] works between laptop/phone
     * [ ] ...

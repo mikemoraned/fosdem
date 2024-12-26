@@ -21,9 +21,6 @@ function bindBookmarks() {
                 const newStatus = !isBookmarked;
                 parentEl.dataset.bookmarkStatus = newStatus.toString();
             });
-
-            // button is ready to be used
-            el.disabled = false;
         }
     });
     console.log("Bookmarks bound");
@@ -72,10 +69,32 @@ function bindModel(model) {
     });
 }
 
+function enableBookmarksFeatures() {
+    // find all elements related to bookmarks
+    const buttons = Array.prototype.slice.call(
+        document.querySelectorAll("button.bookmark"),
+        0
+    );
+    const navbarItems = Array.prototype.slice.call(
+        document.querySelectorAll("a.navbar-item.bookmark.is-disabled"),
+        0
+    );
+
+    // enable each element
+    buttons.forEach((el) => {
+        el.disabled = false;
+    });
+    navbarItems.forEach((el) => {
+        el.classList.remove("is-disabled");
+    });
+}
+
 export async function init() {
     console.log("Initialising bookmarks");
     bindBookmarks();
 
     const model = await createModel();
     bindModel(model);
+
+    enableBookmarksFeatures();
 }

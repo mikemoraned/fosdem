@@ -12,6 +12,13 @@
     border: 1px solid transparent;
 }
 
+/* indicate disabled items in navbar */
+.navbar-item.is-disabled {
+    pointer-events: none;
+    color: #7a7a7a; /* Adjust the color to indicate the item is disabled */
+    opacity: 0.65;
+}
+
 /* show bookmark status in button */
 [data-bookmark-status="true"] button.bookmark i.fa-bookmark.filled {
     display: span;
