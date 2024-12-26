@@ -7,13 +7,13 @@
     <div class="columns">
         <div class="column">
             <div class="buttons has-addons is-centered">
-                <button class="button is-large is-responsive bookmark export" disabled>
+                <button class="button is-large is-responsive bookmark" id="export" disabled>
                     <span class="icon is-small">
                         <i class="fa-solid fa-upload"></i>
                     </span>
                     <span>Export</span>
                 </button>
-                <button class="button is-large is-responsive bookmark import" disabled>
+                <button class="button is-large is-responsive bookmark" id="import" disabled>
                     <span class="icon is-small">
                         <i class="fa-solid fa-download"></i>
                     </span>
@@ -35,8 +35,16 @@
     </div>
     {% endfor %}
 </section>
+
+<dialog id="export-dialog">
+    <button class="button is-large is-responsive bookmark close" disabled>Close</button>
+</dialog>
 {% endblock %}
 
 {% block end_script %}
+<script type="module">
+    import { bindExportImport } from '/assets/bookmarks.js';
 
+    bindExportImport();
+</script>
 {% endblock %}

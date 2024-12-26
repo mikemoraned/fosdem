@@ -89,6 +89,20 @@ function enableBookmarksFeatures() {
     });
 }
 
+export function bindExportImport() {
+    const exportShowButton = document.querySelector("button.bookmark#export");
+    const exportDialog = document.querySelector("dialog#export-dialog");
+    const exportCloseButton = document.querySelector("dialog#export-dialog button.close");
+
+    exportShowButton.addEventListener("click", () => {
+        exportDialog.showModal();
+    });
+
+    exportCloseButton.addEventListener("click", () => {
+        exportDialog.close();
+    });
+}
+
 export async function init() {
     console.log("Initialising bookmarks");
     bindBookmarks();
