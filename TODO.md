@@ -58,10 +58,10 @@
     - Instead, I'll use a local transfer system that relies only 'exporting' and 'importing' bookmarks via copy/paste. This will be a merge i.e. this will only export bookmarks that are set and import same. So, it's not syncing two devices to be the same.
     * [x] export all set bookmarks as a text string (via copy)
     * [x] import all bookmarks from a text string (via paste)
-* [ ] make each event have its own detail page with associated related events
+* [x] make each event have its own detail page with associated related events
   * [x] extract simple detail page from search pages 
   * [x] make nav links in search go to detail pages
-  * [ ] make clicks from "connections" go to detail page
+  * [x] make clicks from "connections" go to detail page
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [ ] fix sojourner links (seems to be using `guid` instead of `id` now identifier in URL) 
   * [ ] add ability to find related events to `InMemoryOpenAIQueryable`
