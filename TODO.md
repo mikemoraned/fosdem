@@ -58,6 +58,7 @@
     - Instead, I'll use a local transfer system that relies only 'exporting' and 'importing' bookmarks via copy/paste. This will be a merge i.e. this will only export bookmarks that are set and import same. So, it's not syncing two devices to be the same.
     * [x] export all set bookmarks as a text string (via copy)
     * [x] import all bookmarks from a text string (via paste)
+* [ ] make each event have its own detail page with associated related events
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [ ] switch bookmarks css to use [nested css](https://web.dev/articles/5-css-snippets-every-front-end-developer-should-know-in-2024)
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
