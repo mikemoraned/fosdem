@@ -59,6 +59,9 @@
     * [x] export all set bookmarks as a text string (via copy)
     * [x] import all bookmarks from a text string (via paste)
 * [ ] make each event have its own detail page with associated related events
+  * [ ] extract simple detail page from search pages 
+  * [ ] make nav links in search go to detail pages
+  * [ ] make clicks from "connections" go to detail page
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [ ] switch bookmarks css to use [nested css](https://web.dev/articles/5-css-snippets-every-front-end-developer-should-know-in-2024)
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
