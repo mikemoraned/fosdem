@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {%- import "components/bookmark.html" as bookmark -%}
 {%- import "components/event.html" as event -%}
+{%- import "components/external.html" as external -%}
 
 {% block content %}
 <section class="section hide-non-bookmarked">
@@ -29,6 +30,8 @@
                 {% call event::expandable_card_details(event) %}
                 <footer class="card-footer">
                     {% call bookmark::bookmark_footer_item(event) %}
+                    {% call external::sojourner_event(event) %}
+                    {% call external::fosdem_event(event) %}
                 </footer>
             </div>
         </div>
