@@ -14,6 +14,7 @@ pub struct SearchItem {
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Event {
     pub id: u32,
+    pub guid: String,
     pub date: NaiveDate,
     pub start: NaiveTime,
     pub duration: u32,
@@ -51,7 +52,7 @@ impl Event {
 
     pub fn sojourner_url(&self) -> Url {
         let base_url = Url::parse("https://fosdem.sojourner.rocks/2025/event/").unwrap();
-        base_url.join(&self.id.to_string()).unwrap()
+        base_url.join(&self.guid.to_string()).unwrap()
     }
 
     pub fn nav_url(&self, current_event: &Option<Event>) -> Url {

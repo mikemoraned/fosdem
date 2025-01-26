@@ -11,7 +11,7 @@ use shared::model::Event;
 use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
-/// Convert all content from a Pentabarf file into a CSV
+/// Convert all content from a Pentabarf file into a JSON file
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
@@ -35,6 +35,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             for event in room.events {
                 let model_event = Event {
                     id: event.id,
+                    guid: event.guid,
                     date: NaiveDate::parse_from_str(&day.date, "%Y-%m-%d").unwrap(),
                     start: NaiveTime::parse_from_str(&event.start.value, "%H:%M").unwrap(),
                     duration: parse_into_minutes(&event.duration.value)?,
