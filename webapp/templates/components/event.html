@@ -1,3 +1,45 @@
+{%- import "bookmark.html" as bookmark -%}
+{%- import "external.html" as external -%}
+
+{% macro card(event, related) %}
+<div class="columns highlight-bookmarked">
+    <div class="column is-offset-1">
+        <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
+            {% call expandable_card_details(event) %}
+            <footer class="card-footer">
+                {% call bookmark::bookmark_footer_item(event) %}
+                {% call external::sojourner_event(event) %}
+                {% call external::fosdem_event(event) %}
+            </footer>
+        </div>
+    </div>
+    <div class="column is-3">
+        {% if related.is_some() %}
+        {% let items = related.as_ref().unwrap() %}
+        <div class="box">
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+                </span>
+                <span>Related</span>
+            </span>:
+            <ul>
+                {% for item in items %}
+                <li>
+                    <a href="/event/{{ item.event.id }}/">
+                        <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                        <span>"{{ item.event.title }}"</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endmacro %}
+
 {% macro card_header(event) %}
 <div class="card-content">
     <p class="title is-5">
@@ -23,7 +65,7 @@
 {% endmacro %}
 
 {% macro expandable_card_details(event) %}
-<details>
+<details class="event">
     <summary>{% call card_header(event) %}</summary>
     <div class="card-content">
         <div class="content">

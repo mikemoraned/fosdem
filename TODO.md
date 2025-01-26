@@ -58,10 +58,16 @@
     - Instead, I'll use a local transfer system that relies only 'exporting' and 'importing' bookmarks via copy/paste. This will be a merge i.e. this will only export bookmarks that are set and import same. So, it's not syncing two devices to be the same.
     * [x] export all set bookmarks as a text string (via copy)
     * [x] import all bookmarks from a text string (via paste)
+* [x] make each event have its own detail page with associated related events
+  * [x] extract simple detail page from search pages 
+  * [x] make nav links in search go to detail pages
+  * [x] make clicks from "connections" go to detail page
 * [ ] design/other tweaks (just a holding ground as I see things)
+  * [x] fix sojourner links (seems to be using `guid` instead of `id` now identifier in URL) 
+  * [ ] add ability to find related events to `InMemoryOpenAIQueryable`
   * [ ] switch bookmarks css to use [nested css](https://web.dev/articles/5-css-snippets-every-front-end-developer-should-know-in-2024)
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
-  * [ ] make all `details` elements by default closed, and open via JS if on larger screen
+  * [x] make all `details` elements by default closed, and open via JS if on larger screen
     - https://stackoverflow.com/questions/14286406/how-to-set-a-details-element-to-open-by-default-or-via-css
 
 # Fosdem 2024 todos (archived)

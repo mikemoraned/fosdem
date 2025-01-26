@@ -27,6 +27,8 @@ pub struct Room {
 pub struct Event {
     #[xmlserde(name = b"id", ty = "attr")]
     pub id: u32,
+    #[xmlserde(name = b"guid", ty = "attr")]
+    pub guid: String,
     #[xmlserde(name = b"start", ty = "child")]
     pub start: Text,
     #[xmlserde(name = b"duration", ty = "child")]

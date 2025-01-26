@@ -16,7 +16,7 @@ function createSimulation(nodes, links, distanceScale) {
 }
 
 function openLink(node) {
-  window.open(node.sojourner_url, "_blank");
+  window.open(node.local_path, "_blank");
 }
 
 function vis(data, initMinDistance, initMaxDistance) {

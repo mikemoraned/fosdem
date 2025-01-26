@@ -45,42 +45,7 @@
         {% for item in group.items %}
 
         <a name="{{item.event.id}}"></a>
-        <div class="columns highlight-bookmarked">
-            <div class="column is-offset-1">
-                <div class="card" data-event-id="{{ item.event.id }}" data-bookmark-status="false">
-                    {% call event::expandable_card_details(item.event) %}
-                    <footer class="card-footer">
-                        {% call bookmark::bookmark_footer_item(item.event) %}
-                        {% call external::sojourner_event(item.event) %}
-                        {% call external::fosdem_event(item.event) %}
-                    </footer>
-                </div>
-            </div>
-            <div class="column is-3">
-                {% if item.related.is_some() %}
-                {% let items = item.related.as_ref().unwrap() %}
-                <div class="box">
-                    <span class="icon-text">
-                        <span class="icon">
-                            <i class="fa-duotone fa-arrow-right-arrow-left"></i>
-                        </span>
-                        <span>Related</span>
-                    </span>:
-                    <ul>
-                    {% for item in items %}
-
-                    <li>
-                        <a href="/next/?id={{ item.event.id }}">
-                            <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                            <span>"{{ item.event.title }}"
-                        </a>
-                    </li>
-                    {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-            </div>
-        </div>
+        {% call event::card(item.event, item.related) %}
         {% endfor %}
         {% endfor %}
     </section>
