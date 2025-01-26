@@ -100,15 +100,18 @@
     </script>
     {% endblock %}
     <script type="module">
-        import { init } from '/assets/bookmarks.js';
+        import { init as bookmarkInit } from '/assets/bookmarks.js';
+        import { init as eventInit } from '/assets/event.js';
 
         if (document.readyState === "loading") {
-            console.log("deferring init of Bookmarks");
+            console.log("deferring inits");
             document.addEventListener("DOMContentLoaded", async () => {
-                await init(document.bookmarksCallbacks);
+                await bookmarkInit(document.bookmarksCallbacks);
+                eventInit();
             });
         } else {
-            await init(document.bookmarksCallbacks);
+            await bookmarkInit(document.bookmarksCallbacks);
+            eventInit();
         }
     </script>
      

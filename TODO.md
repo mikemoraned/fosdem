@@ -65,7 +65,7 @@
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [ ] switch bookmarks css to use [nested css](https://web.dev/articles/5-css-snippets-every-front-end-developer-should-know-in-2024)
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
-  * [ ] make all `details` elements by default closed, and open via JS if on larger screen
+  * [x] make all `details` elements by default closed, and open via JS if on larger screen
     - https://stackoverflow.com/questions/14286406/how-to-set-a-details-element-to-open-by-default-or-via-css
 
 # Fosdem 2024 todos (archived)
