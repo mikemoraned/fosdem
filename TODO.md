@@ -62,14 +62,18 @@
   * [x] extract simple detail page from search pages 
   * [x] make nav links in search go to detail pages
   * [x] make clicks from "connections" go to detail page
-* [x] Friday tweaks
+* [ ] Friday tweaks
   * [x] Make entries on Bookmarks page sorted by start time of event
   * [x] Add Bookmarks filter to "Next" i.e. can show only what is bookmarked
+  * [x] Add a breakdown of events by room (a "Room" page)
+  * [ ] Link to room page from events
+  * [ ] Add bookmarks filter to room page
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [x] fix sojourner links (seems to be using `guid` instead of `id` now identifier in URL) 
   * [ ] add ability to find related events to `InMemoryOpenAIQueryable`
   * [ ] switch bookmarks css to use [nested css](https://web.dev/articles/5-css-snippets-every-front-end-developer-should-know-in-2024)
   * [ ] remove / refactor `current_event` as seems to be hanging around where not needed
+  * [ ] use RoomId instead of String in Event
   * [x] make all `details` elements by default closed, and open via JS if on larger screen
     - https://stackoverflow.com/questions/14286406/how-to-set-a-details-element-to-open-by-default-or-via-css
 

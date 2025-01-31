@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{%- import "components/bookmark.html" as bookmark -%}
+{%- import "components/event.html" as event -%}
+{%- import "components/external.html" as external -%}
+
+{% block content %}
+<section class="section">
+   <div class="columns">
+       <div class="column">
+           <h1 class="title is-5">
+               Events in room
+               <a href="{{ room.nav_url() }}"><span><i class="fa-solid fa-location-dot"></i> {{ room }}</span></a>
+           </h1>
+       </div>
+   </div>
+
+   {% for event in events %}
+    <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
+        <div class="column">
+            <div class="card" >
+                {% call event::expandable_card_details(event) %}
+                <footer class="card-footer">
+                    {% call bookmark::bookmark_footer_item(event) %}
+                    {% call external::sojourner_event(event) %}
+                    {% call external::fosdem_event(event) %}
+                </footer>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}
+
+{% block bookmarks_callbacks %}
+<script type="module">
+    import { bindHide } from '/assets/bookmarks.js';
+
+    document.bookmarksCallbacks = [ bindHide ];
+</script>
+{% endblock %}

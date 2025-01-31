@@ -1,3 +1,4 @@
+use std::fmt::{Display, Formatter};
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use nalgebra::DVector;
 use openai_dive::v1::resources::embedding::{EmbeddingOutput, EmbeddingResponse};
@@ -39,6 +40,36 @@ pub struct Person {
 pub struct Link {
     pub url: Url,
     pub name: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub struct RoomId(String); // TODO: use RoomId instead of String in Event
+
+impl RoomId {
+    pub fn new(id: String) -> RoomId {
+        RoomId(id)
+    }
+
+    pub fn nav_url(&self) -> Url {
+        let location_base_url = Url::parse("https://nav.fosdem.org/l/").unwrap();
+        location_base_url.join(&self.nav_room()).unwrap()
+    }
+
+    pub fn nav_room(&self) -> String {
+        if self.0.contains(' ') {
+            let parts: Vec<_> = self.0.split(' ').collect();
+            let start = parts[0];
+            start.to_lowercase().replace('.', "")
+        } else {
+            self.0.to_lowercase().replace('.', "")
+        }
+    }
+}
+
+impl Display for RoomId {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
 }
 
 impl Event {
