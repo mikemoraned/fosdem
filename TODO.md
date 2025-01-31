@@ -62,9 +62,9 @@
   * [x] extract simple detail page from search pages 
   * [x] make nav links in search go to detail pages
   * [x] make clicks from "connections" go to detail page
-* [ ] Friday tweaks
+* [x] Friday tweaks
   * [x] Make entries on Bookmarks page sorted by start time of event
-  * [ ] Add Bookmarks filter to "Next" i.e. can show only what is bookmarked
+  * [x] Add Bookmarks filter to "Next" i.e. can show only what is bookmarked
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [x] fix sojourner links (seems to be using `guid` instead of `id` now identifier in URL) 
   * [ ] add ability to find related events to `InMemoryOpenAIQueryable`

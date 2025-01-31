@@ -37,7 +37,7 @@ function bindModel(model) {
     // set up an observer which will propagate changes to the model
     const observer = new MutationObserver((mutationsList) => {
         mutationsList.forEach((mutation) => {
-          // we assume that we only see changes on 'data-bookmark-status' and that the elemenet has a data-event-id
+          // we assume that we only see changes on 'data-bookmark-status' and that the element has a data-event-id
           const isBookmarked = mutation.target.dataset.bookmarkStatus === "true";
           const eventId = mutation.target.dataset.eventId;
           model.setBookmarkStatus(eventId, isBookmarked);
@@ -139,6 +139,17 @@ export function bindImport(model) {
             model.importEventIdsFromText(dialogText.value);
             dialogText.value = "";
             dialog.close();
+        });
+    });
+}
+
+export function bindHide() {
+    const hideButtons = document.querySelectorAll("button.hide-all-bookmarks");
+    const bookmarksParent = document.querySelector(".bookmarks");
+
+    hideButtons.forEach((hideButton) => {
+        hideButton.addEventListener("click", () => {
+            bookmarksParent.classList.toggle("hide-non-bookmarked");
         });
     });
 }

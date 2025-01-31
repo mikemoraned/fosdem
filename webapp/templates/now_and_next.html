@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {%- import "components/event.html" as event -%}
 {%- import "components/external.html" as external -%}
+{%- import "components/bookmark.html" as bookmark -%}
 
 {% macro card(event) %}
-<div class="card">
+<div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
     {% call event::expandable_card_details(event) %}
     <footer class="card-footer">
         <a href="/next/?id={{event.id}}" class="card-footer-item">
@@ -11,6 +12,7 @@
                 <span>Select</span>
             </span>
         </a>
+        {% call bookmark::bookmark_footer_item(event) %}
         {% call external::sojourner_event(event) %}
         {% call external::fosdem_event(event) %}
     </footer>
@@ -66,14 +68,33 @@
     <div class="columns">
         
     </div>
-    <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
-    {% for event in next.next|order_event_by_time_then_place %}
     <div class="columns">
         <div class="column">
-        {% call card(event) %}
+            <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
+        </div>
+        <div class="column">
+            <button class="button bookmark hide-all-bookmarks is-small" disabled>
+                Show only bookmarked
+            </button>
         </div>
     </div>
-    {% endfor %}
+
+    <div class="bookmarks">
+        {% for event in next.next|order_event_by_time_then_place %}
+        <div class="columns">
+            <div class="column">
+            {% call card(event) %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 {% endblock %}
 
+{% block bookmarks_callbacks %}
+<script type="module">
+    import { bindHide } from '/assets/bookmarks.js';
+
+    document.bookmarksCallbacks = [ bindHide ];
+</script>
+{% endblock %}
