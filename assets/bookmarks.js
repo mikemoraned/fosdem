@@ -144,13 +144,20 @@ export function bindImport(model) {
 }
 
 export function bindHide() {
-    const hideButtons = document.querySelectorAll("button.hide-all-bookmarks");
+    const showBookmarkedButtons = document.querySelectorAll("button.only-show-bookmarked");
+    const showAllButtons = document.querySelectorAll("button.show-all");
     const bookmarksParent = document.querySelector(".bookmarks");
 
-    hideButtons.forEach((hideButton) => {
-        hideButton.addEventListener("click", () => {
-            bookmarksParent.classList.toggle("hide-non-bookmarked");
-        });
+    function toggle() {
+        bookmarksParent.classList.toggle("hide-non-bookmarked");
+        bookmarksParent.classList.toggle("show-all");
+    }
+
+    showBookmarkedButtons.forEach((button) => {
+        button.addEventListener("click", toggle);
+    });
+    showAllButtons.forEach((button) => {
+        button.addEventListener("click", toggle);
     });
 }
 

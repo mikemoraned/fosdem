@@ -68,18 +68,21 @@
     <div class="columns">
         
     </div>
-    <div class="columns">
-        <div class="column">
-            <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
+    <div class="bookmarks highlight-bookmarked show-all">
+        <div class="columns">
+            <div class="column">
+                <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
+            </div>
+            <div class="column">
+                <button class="button bookmark only-show-bookmarked is-small" disabled>
+                    Only show Bookmarks
+                </button>
+                <button class="button bookmark show-all is-small" disabled>
+                    Show all
+                </button>
+            </div>
         </div>
-        <div class="column">
-            <button class="button bookmark hide-all-bookmarks is-small" disabled>
-                Show only bookmarked
-            </button>
-        </div>
-    </div>
 
-    <div class="bookmarks">
         {% for event in next.next|order_event_by_time_then_place %}
         <div class="columns">
             <div class="column">

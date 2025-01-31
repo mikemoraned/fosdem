@@ -3,6 +3,14 @@
     display: none;
 }
 
+.hide-non-bookmarked button.only-show-bookmarked {
+    display: none;
+}
+
+.show-all button.show-all {
+    display: none;
+}
+
 /* highlight bookmark status in card */
 .highlight-bookmarked [data-bookmark-status="true"] {
     border: 1px solid gray;
@@ -11,6 +19,7 @@
 .highlight-bookmarked [data-bookmark-status="false"] {
     border: 1px solid transparent;
 }
+
 
 /* indicate disabled items in navbar */
 .navbar-item.is-disabled {
