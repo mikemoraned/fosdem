@@ -66,7 +66,7 @@
   * [x] Make entries on Bookmarks page sorted by start time of event
   * [x] Add Bookmarks filter to "Next" i.e. can show only what is bookmarked
   * [x] Add a breakdown of events by room (a "Room" page)
-  * [ ] Link to room page from events
+  * [x] Link to room page from events
   * [ ] Add bookmarks filter to room page
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [x] fix sojourner links (seems to be using `guid` instead of `id` now identifier in URL) 
