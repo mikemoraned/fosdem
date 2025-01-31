@@ -20,7 +20,7 @@
 {% endmacro %}
 
 {% block content %}
-<section class="section">
+<section class="section highlight-bookmarked">
     <div class="columns">
         <div class="column is-two-thirds">
             <h1 class="title is-5">
@@ -30,9 +30,10 @@
             <h1 class="subtitle is-7">
                 (<i class="fa-solid fa-clock"></i> {{ next.now.format("%Y-%m-%d, %H:%M") }})
             </h1>
-            <div class="card">
+            <div class="card" data-event-id="{{ next.selected.id }}" data-bookmark-status="false">
                 {% call event::expandable_card_details(next.selected) %}
                 <footer class="card-footer">
+                    {% call bookmark::bookmark_footer_item(next.selected) %}
                     {% call external::sojourner_event(next.selected) %}
                     {% call external::fosdem_event(next.selected) %}
                 </footer>
@@ -68,7 +69,7 @@
     <div class="columns">
         
     </div>
-    <div class="bookmarks highlight-bookmarked show-all">
+    <div class="bookmarks show-all">
         <div class="columns">
             <div class="column">
                 <h1 class="title is-5"><i class="fa-duotone fa-person-running-fast"></i> Coming up: </h1>
