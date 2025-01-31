@@ -20,8 +20,10 @@ struct BookmarksTemplate {
 pub async fn bookmarks(
     State(state): State<AppState>
 ) -> axum::response::Result<Html<String>> {
+    let mut events = state.queryable.load_all_events().await.unwrap();
+    events.sort_by_key(|e| e.starting_time());
     let page = BookmarksTemplate {
-        events: state.queryable.load_all_events().await.unwrap(),
+        events,
         current_event: None,
     };
     let html = page.render().unwrap();
