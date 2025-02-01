@@ -20,6 +20,7 @@ mod next;
 mod video;
 mod bookmark;
 mod event;
+mod room;
 
 pub async fn app_state(
     openai_api_key: &str,
@@ -53,6 +54,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/event/:event_id/", get(event::event))
+        .route("/room/:room_id/", get(room::room))
         .route("/video/:event_id/", get(video::event_video))
         .route("/video/:event_id/captions.vtt", get(video::event_video_webvtt))
         .layer(cors)
