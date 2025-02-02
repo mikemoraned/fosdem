@@ -62,12 +62,13 @@
   * [x] extract simple detail page from search pages 
   * [x] make nav links in search go to detail pages
   * [x] make clicks from "connections" go to detail page
-* [x] Friday tweaks
+* [ ] Weekend tweaks
   * [x] Make entries on Bookmarks page sorted by start time of event
   * [x] Add Bookmarks filter to "Next" i.e. can show only what is bookmarked
   * [x] Add a breakdown of events by room (a "Room" page)
   * [x] Link to room page from events
   * [x] Add bookmarks filter to room page
+  * [x] Bring schedule up to date and reindex 
 * [ ] design/other tweaks (just a holding ground as I see things)
   * [x] fix sojourner links (seems to be using `guid` instead of `id` now identifier in URL) 
   * [ ] add ability to find related events to `InMemoryOpenAIQueryable`
