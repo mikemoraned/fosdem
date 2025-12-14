@@ -2,6 +2,10 @@ FROM rust:slim-buster AS builder
 
 WORKDIR /prod
 
+# Fix repository URLs for archived Buster
+RUN echo "deb http://archive.debian.org/debian/ buster main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://archive.debian.org/debian-security/ buster/updates main contrib non-free" >> /etc/apt/sources.list
+
 # following needed for `openssl-sys v0.9.98`:
 RUN apt-get update -y
 RUN apt-get install -y pkg-config
