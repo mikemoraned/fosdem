@@ -4,7 +4,9 @@ use chrono::{NaiveDate, NaiveTime};
 use clap::Parser;
 
 use shared::{
-    cli::progress_bar, env::load_secret, inmemory_openai::InMemoryOpenAIQueryable,
+    cli::progress_bar,
+    env::{load_dotenv, load_secret},
+    inmemory_openai::InMemoryOpenAIQueryable,
     queryable::Queryable,
 };
 use tracing::info;
@@ -31,7 +33,8 @@ struct Args {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     tracing_subscriber::fmt::init();
 
-    dotenvy::dotenv()?;
+    load_dotenv()?;
+
     let args = Args::parse();
 
     let openai_api_key = load_secret("OPENAI_API_KEY")?;

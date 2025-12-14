@@ -1,4 +1,17 @@
-use tracing::info;
+use tracing::{error, info};
+
+pub fn load_dotenv() -> Result<(), Box<dyn std::error::Error>> {
+    match dotenvy::dotenv() {
+        Ok(path) => {
+            info!("Loaded .env from {:?}", path);
+            Ok(())
+        }
+        Err(_) => {
+            error!(".env not found, continuing without it");
+            Err(".env not found".into())
+        }
+    }
+}
 
 pub fn load_secret(name: &str) -> Result<String, Box<dyn std::error::Error>> {
     let secret = dotenvy::var(name).map_err(|e| format!("{} is not set, e: {:?}", &name, e))?;

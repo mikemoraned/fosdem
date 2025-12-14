@@ -9,10 +9,13 @@ use clap::Parser;
 use content::video_index::VideoIndex;
 use openai_dive::v1::api::Client;
 
-use openai_dive::v1::resources::embedding::{EmbeddingInput, EmbeddingParameters, EmbeddingResponse};
+use openai_dive::v1::resources::embedding::{
+    EmbeddingInput, EmbeddingParameters, EmbeddingResponse,
+};
 
 use reqwest::ClientBuilder;
 use shared::cli::progress_bar;
+use shared::env::load_dotenv;
 use shared::model::{Event, OpenAIEmbedding};
 use subtp::vtt::VttBlock;
 use tracing::{debug, info, warn};
@@ -32,7 +35,7 @@ struct Args {
     /// maximum number of retries for embedding requests
     #[arg(long, default_value = "5")]
     retries: u32,
-    
+
     /// include slide content at path
     #[arg(long)]
     include_slide_content: Option<PathBuf>,
@@ -51,18 +54,16 @@ fn parse_seconds_duration(arg: &str) -> Result<std::time::Duration, std::num::Pa
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     tracing_subscriber::fmt::init();
 
-    dotenvy::dotenv()?;
     let args = Args::parse();
+    info!("args: {:?}", args);
+
+    load_dotenv()?;
 
     let api_key_name = "OPENAI_API_KEY";
     let api_key =
         dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
 
-    info!("args: {:?}", args);
-
-    let reqwest_client = ClientBuilder::new()
-        .timeout(args.timeout)
-        .build()?;
+    let reqwest_client = ClientBuilder::new().timeout(args.timeout).build()?;
 
     let openai_client = Client {
         api_key,
@@ -108,8 +109,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut embeddings = vec![];
     let progress = progress_bar(events.len() as u64);
     for event in events.into_iter() {
-        let response =
-            get_embedding(&openai_client, args.retries, &event, &slide_content_for_event, &video_index).await?;
+        let response = get_embedding(
+            &openai_client,
+            args.retries,
+            &event,
+            &slide_content_for_event,
+            &video_index,
+        )
+        .await?;
         let embedding = OpenAIEmbedding {
             title: event.title,
             embedding: OpenAIEmbedding::embedding_from_response(&response)?,
@@ -171,14 +178,20 @@ async fn get_embedding(
             Err(e) => {
                 retries += 1;
                 if retries > max_retries {
-                    return Err(format!("[{}] error: \'{}\', even after {} retries (max: {})", event.id, e, retries, max_retries).into());
-                }
-                else {
-                    warn!("[{}] error: \'{}\', will retry (retry count = {})", event.id, e, retries);
+                    return Err(format!(
+                        "[{}] error: \'{}\', even after {} retries (max: {})",
+                        event.id, e, retries, max_retries
+                    )
+                    .into());
+                } else {
+                    warn!(
+                        "[{}] error: \'{}\', will retry (retry count = {})",
+                        event.id, e, retries
+                    );
                 }
             }
         }
-    };
+    }
 }
 
 fn format_basic_input(event: &Event) -> String {
