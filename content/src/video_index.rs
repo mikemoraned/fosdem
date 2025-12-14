@@ -52,10 +52,6 @@ impl VideoIndex {
     }
 
     pub fn webvtt_for_event_id(&self, event_id: u32) -> Option<subtp::vtt::WebVtt> {
-        if let Some(entry) = self.entries.get(&event_id) {
-            Some(entry.webvtt.clone())
-        } else {
-            None
-        }
+        self.entries.get(&event_id).map(|entry| entry.webvtt.clone())
     }
 }

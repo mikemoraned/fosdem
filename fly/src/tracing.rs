@@ -16,7 +16,7 @@ pub fn init_opentelemetry_from_environment() -> Result<(), Box<dyn std::error::E
     let tracing_exporter_http_endpoint = load_public("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")?;
     debug!("using '{}' as endpoint", tracing_exporter_http_endpoint);
 
-    let headers = HashMap::from([("x-honeycomb-team".into(), honeycomb_api_key.into())]);
+    let headers = HashMap::from([("x-honeycomb-team".into(), honeycomb_api_key)]);
     let resource = Resource::new([KeyValue::new(semcov::resource::SERVICE_NAME, "fosdem2024")]);
     let resource =
         add_optional_resource_from_env(resource, "FLY_REGION", semcov::resource::CLOUD_REGION);

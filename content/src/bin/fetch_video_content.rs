@@ -122,18 +122,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 debug!("{:?} already downloaded, skipping", video_path);
                 progress.inc(1);
                 video_paths.push(video_path);
-            } else {
-                if args.verify_only {
-                    debug!("{:?} verify only, skipping", video_path);
-                    video_paths_missing += 1;
-                    video_paths.push(video_path);
-                } else {
-                    if url_reachable(&url).await? {
-                        fetch_video(&url, &video_path).await?;
-                        progress.inc(1);
-                        video_paths.push(video_path);
-                    }
-                }
+            } else if args.verify_only {
+                debug!("{:?} verify only, skipping", video_path);
+                video_paths_missing += 1;
+                video_paths.push(video_path);
+            } else if url_reachable(&url).await? {
+                fetch_video(&url, &video_path).await?;
+                progress.inc(1);
+                video_paths.push(video_path);
             }
         }
     }
@@ -157,14 +153,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         if audio_path.exists() {
             debug!("{:?} already extracted, skipping", audio_path);
             progress.inc(1);
+        } else if args.verify_only {
+            debug!("{:?} verify only, skipping", audio_path);
+            audio_paths_missing += 1;
         } else {
-            if args.verify_only {
-                debug!("{:?} verify only, skipping", audio_path);
-                audio_paths_missing += 1;
-            } else {
-                extract_audio(&video_path, &audio_path).await?;
-                progress.inc(1);
-            }
+            extract_audio(&video_path, &audio_path).await?;
+            progress.inc(1);
         }
         audio_paths.push(audio_path);
     }
@@ -188,14 +182,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         if wav_path.exists() {
             debug!("{:?} already extracted, skipping", wav_path);
             progress.inc(1);
+        } else if args.verify_only {
+            debug!("{:?} verify only, skipping", wav_path);
+            wav_paths_missing += 1;
         } else {
-            if args.verify_only {
-                debug!("{:?} verify only, skipping", wav_path);
-                wav_paths_missing += 1;
-            } else {
-                extract_wav(&audio_path, &wav_path).await?;
-                progress.inc(1);
-            }
+            extract_wav(&audio_path, &wav_path).await?;
+            progress.inc(1);
         }
         wav_paths.push(wav_path);
     }
@@ -218,14 +210,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         if webvtt_path.exists() {
             debug!("{:?} already extracted, skipping", webvtt_path);
             progress.inc(1);
+        } else if args.verify_only {
+            debug!("{:?} verify only, skipping", webvtt_path);
+            webvtt_paths_missing += 1;
         } else {
-            if args.verify_only {
-                debug!("{:?} verify only, skipping", webvtt_path);
-                webvtt_paths_missing += 1;
-            } else {
-                extract_webvtt(&wav_path, &webvtt_path).await?;
-                progress.inc(1);
-            }
+            extract_webvtt(&wav_path, &webvtt_path).await?;
+            progress.inc(1);
         }
     }
     if args.verify_only {

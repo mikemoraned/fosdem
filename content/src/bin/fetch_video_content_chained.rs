@@ -89,8 +89,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let pending_downloads: Vec<VideoDownload> = events
         .into_iter()
-        .map(|e| e.mp4_video_link())
-        .flatten()
+        .filter_map(|e| e.mp4_video_link())
         .map(|url| VideoDownload::Command(url.clone(), video_path(&args.video_dir, &url)))
         .collect();
 
@@ -273,7 +272,7 @@ async fn download_video(url: &Url, video_path: &PathBuf) -> Result<(), String> {
         Ok(())
     } else {
         tmp_file.abort().map_err(|e| format!("{}", e))?;
-        Err(format!("download command failed: {}", output.status).into())
+        Err(format!("download command failed: {}", output.status))
     }
 }
 
@@ -348,7 +347,7 @@ async fn extract_audio(video_path: &PathBuf, audio_path: &PathBuf) -> Result<(),
     let tmp_audio_path = audio_path.with_extension("tmp.mp4");
     let tmp_file = TempFile::create(audio_path.clone(), tmp_audio_path.clone())
         .map_err(|e| format!("{}", e))?;
-    let command = extract_audio_command(&video_path, &tmp_audio_path);
+    let command = extract_audio_command(video_path, &tmp_audio_path);
     let output = command.await.map_err(|e| format!("{}", e))?;
     if output.status.success() {
         tmp_file.commit().map_err(|e| format!("{}", e))?;
@@ -360,8 +359,7 @@ async fn extract_audio(video_path: &PathBuf, audio_path: &PathBuf) -> Result<(),
             output.status,
             String::from_utf8(output.stdout).map_err(|e| format!("{}", e))?,
             String::from_utf8(output.stderr).map_err(|e| format!("{}", e))?
-        )
-        .into())
+        ))
     }
 }
 
@@ -446,7 +444,7 @@ async fn extract_wav(
     let tmp_wav_path = audio_path.with_extension("tmp.wav");
     let tmp_file =
         TempFile::create(audio_path.clone(), tmp_wav_path.clone()).map_err(|e| format!("{}", e))?;
-    let command = extract_wav_command(&audio_path, &tmp_wav_path);
+    let command = extract_wav_command(audio_path, &tmp_wav_path);
     let output = command.await.map_err(|e| format!("{}", e))?;
     if output.status.success() {
         tmp_file.commit().map_err(|e| format!("{}", e))?;
