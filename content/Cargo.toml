@@ -6,12 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-quick-xml = { version = "0.29", features = ["serialize"] }
-xmlserde = "0.5"
-xmlserde_derives = "0.5"
-env_logger = "0.10"
+quick-xml = { version = "0.38", features = ["serialize"] }
+xmlserde = "0.12"
+xmlserde_derives = "0.12"
+env_logger = "0.11"
 bytes = "1.11"
-tiktoken-rs = "0.5"
+tiktoken-rs = "0.9"
 async-process = "2.5"
 regex = "1.12"
 subtp = "0.2"
