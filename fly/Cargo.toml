@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 opentelemetry = { version = "0.22", features = ["trace", "metrics"] }
 opentelemetry_sdk = { version = "0.22", features = ["rt-tokio"] }
-opentelemetry-otlp = { version = "0.15", features = [
+opentelemetry-otlp = { version = "0.15", default-features = false, features = [
     "http-proto",
     "reqwest-client",
     "reqwest-rustls",
