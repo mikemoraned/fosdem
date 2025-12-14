@@ -4,15 +4,16 @@ use axum::{
     response::Html,
 };
 
-use serde::Deserialize;
-use shared::model::{Event, SearchItem};
-use validator::Validate;
-use shared::inmemory_openai::InMemoryOpenAIQueryable;
 use crate::filters;
 use crate::state::AppState;
+use serde::Deserialize;
+use shared::inmemory_openai::InMemoryOpenAIQueryable;
+use shared::model::{Event, SearchItem};
 use shared::queryable::Queryable;
+use validator::Validate;
 
 #[derive(Deserialize, Validate, Debug)]
+#[allow(dead_code)]
 pub struct EventParams {
     #[validate(range(min = 1, max = 20000))]
     id: Option<u32>,
@@ -40,26 +41,31 @@ pub async fn event(
     // - When we are doing the two calls we can't have a nested await as `dyn StdError` isn't
     // `Send`, which Rust thinks it needs to be on the second call
     // Best thing is to move more of the responsibility into `InMemoryOpenAIQueryable` out of here
-    let possible_event : Option<Event> = match state.queryable.find_event_by_id(event_id).await {
+    let possible_event: Option<Event> = match state.queryable.find_event_by_id(event_id).await {
         Ok(event) => event,
-        _ => None
+        _ => None,
     };
     if let Some(event) = possible_event {
         let current_event = None;
         let related = find_related_events(&state.queryable, &event).await;
-        let page = EventTemplate { event, related, current_event };
+        let page = EventTemplate {
+            event,
+            related,
+            current_event,
+        };
         let html = page.render().unwrap();
         Ok(Html(html))
-    }
-    else {
+    } else {
         Err("failed".into())
     }
 }
 
-async fn find_related_events(queryable: &InMemoryOpenAIQueryable, event: &Event) -> Option<Vec<SearchItem>> {
+async fn find_related_events(
+    queryable: &InMemoryOpenAIQueryable,
+    event: &Event,
+) -> Option<Vec<SearchItem>> {
     match queryable.find_related_events(&event.title, 10).await {
         Ok(related) => Some(related),
         _ => None,
     }
 }
-

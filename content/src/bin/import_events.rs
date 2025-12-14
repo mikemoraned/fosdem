@@ -5,7 +5,7 @@ use std::{
 };
 
 use chrono::{NaiveDate, NaiveTime, Timelike};
-use clap::{arg, Parser};
+use clap::Parser;
 use content::pentabarf::{Attachment, Schedule};
 use shared::model::Event;
 use url::Url;
