@@ -41,10 +41,8 @@ pub async fn event(
     // - When we are doing the two calls we can't have a nested await as `dyn StdError` isn't
     // `Send`, which Rust thinks it needs to be on the second call
     // Best thing is to move more of the responsibility into `InMemoryOpenAIQueryable` out of here
-    let possible_event: Option<Event> = match state.queryable.find_event_by_id(event_id).await {
-        Ok(event) => event,
-        _ => None,
-    };
+    let possible_event: Option<Event> =
+        (state.queryable.find_event_by_id(event_id).await).unwrap_or_default();
     if let Some(event) = possible_event {
         let current_event = None;
         let related = find_related_events(&state.queryable, &event).await;

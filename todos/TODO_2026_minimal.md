@@ -15,8 +15,8 @@ These are todos related to bringing things up-to-date without making any major c
     * [x] update all libraries to latest compatible minor version
       * [x] run `cargo upgrade --compatible`
   * code tidy
-    * [ ] fix any compiler warnings
-    * [ ] apply `cargo clippy` lints
+    * [x] fix any compiler warnings
+    * [x] apply `cargo clippy` lints
 * [ ] update data for 2025 (fetch latest copy of schedule and re-run all indexing)
 * [ ] update to latest debian release
 * [ ] support 2025 alongside 2026
