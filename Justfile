@@ -3,6 +3,11 @@ year := "2025"
 schedule_file := "./content/schedule/" + year + ".xml"
 assets_dir := "./assets"
 
+fresh_test:
+    cargo clean
+    cargo build --release
+    cargo test --release
+
 fetch_schedule:
     wget -O {{schedule_file}} https://fosdem.org/{{year}}/schedule/xml
 
