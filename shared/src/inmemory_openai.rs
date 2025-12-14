@@ -36,10 +36,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         &self,
         event_id: u32,
     ) -> Result<Option<Event>, Box<dyn std::error::Error>> {
-        Ok(match self.events.iter().find(|e| e.event.id == event_id) {
-            Some(e) => Some(e.event.clone()),
-            None => None,
-        })
+        Ok(self.events.iter().find(|e| e.event.id == event_id).map(|e| e.event.clone()))
     }
 
     #[tracing::instrument(skip(self))]

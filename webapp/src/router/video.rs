@@ -1,5 +1,3 @@
-
-
 use askama::Template;
 use axum::{
     extract::{Path, State},
@@ -15,6 +13,7 @@ use crate::state::AppState;
 use shared::queryable::Queryable;
 
 #[derive(Deserialize, Validate, Debug)]
+#[allow(dead_code)]
 pub struct EventVideoParams {
     #[validate(range(min = 1, max = 20000))]
     id: Option<u32>,

@@ -19,33 +19,32 @@ For local dev key is stored in a `.env` file as `OPENAI_API_KEY` for access by t
 ## Auth
 
 Before any `fly` commands work need to:
-```
-brew install flyctl
-fly auth login
-```
+
+    brew install flyctl
+    fly auth login
+
 
 # Bring up to date
 
-```
-just bring_up_to_date
-```
+    just bring_up_to_date
 
 # Run locally
 
-```
-just webapp
-```
+    just webapp
+
+# Run locally in a docker container
+
+    docker build --tag fosdem --platform linux/amd64 --file Dockerfile .
+    docker run --platform linux/amd64 -p 8080:8080 -it fosdem
 
 # Deploy
 
 Note that all deployment is currently still done from local machine.
 
 To staging:
-```
-just deploy_staging
-```
+
+    just deploy_staging
 
 To prod:
-```
-just deploy_prod
-```
+
+    just deploy_prod

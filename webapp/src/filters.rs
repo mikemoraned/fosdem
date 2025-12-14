@@ -7,9 +7,9 @@ fn count_graphemes(s: &str) -> usize {
     UnicodeSegmentation::graphemes(s, true).count()
 }
 
-pub fn truncate_title(title: &String, max_size: usize) -> ::askama::Result<String> {
+pub fn truncate_title(title: &str, max_size: usize) -> ::askama::Result<String> {
     if count_graphemes(title) <= max_size {
-        return Ok(title.clone());
+        return Ok(title.to_string());
     }
 
     let suffix = " …";

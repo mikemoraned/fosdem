@@ -120,8 +120,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn summarise_status(works: &Vec<SlideWork>) -> String {
-    let with_slides: Vec<_> = works.iter().filter(|w| !w.event.slides.is_empty()).collect();
+fn summarise_status(works: &[SlideWork]) -> String {
+    let with_slides: Vec<_> = works
+        .iter()
+        .filter(|w| !w.event.slides.is_empty())
+        .collect();
     let with_raw_content: Vec<_> = works.iter().filter(|w| w.raw_content.is_some()).collect();
     let with_text_content: Vec<_> = works.iter().filter(|w| w.text_content.is_some()).collect();
     format!(
