@@ -18,10 +18,10 @@ import_schedule:
 index_next: embeddings_next related_next
     
 embeddings_next:
-   cargo run --bin fetch_openai_embeddings --release -- --model-dir {{model_dir}}
+    RUST_LOG=info cargo run --bin fetch_openai_embeddings --release -- --model-dir {{model_dir}}
 
 related_next:
-    cargo run --bin generate_related --release -- --model-dir {{model_dir}} --limit 5 --json {{assets_dir}}/all.limit5.json
+    RUST_LOG=info cargo run --bin generate_related --release -- --model-dir {{model_dir}} --limit 5 --json {{assets_dir}}/all.limit5.json
 
 bring_up_to_date: fetch_schedule import_schedule index_next
 
