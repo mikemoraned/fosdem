@@ -10,10 +10,10 @@ quick-xml = { version = "0.29", features = ["serialize"] }
 xmlserde = "0.5"
 xmlserde_derives = "0.5"
 env_logger = "0.10"
-bytes = "1.8"
+bytes = "1.11"
 tiktoken-rs = "0.5"
-async-process = "2.3"
-regex = "1.11"
+async-process = "2.5"
+regex = "1.12"
 subtp = "0.2"
 reqwest = { workspace = true }
 futures = { workspace = true }

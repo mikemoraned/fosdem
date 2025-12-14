@@ -12,8 +12,8 @@ These are todos related to bringing things up-to-date without making any major c
       cargo test
       ``` 
     * [x] do `cargo update` on libraries
-    * [ ] update all libraries to latest compatible minor version
-      * [ ] run `cargo upgrade --compatible`
+    * [x] update all libraries to latest compatible minor version
+      * [x] run `cargo upgrade --compatible`
   * code tidy
     * [ ] fix any compiler warnings
     * [ ] apply `cargo clippy` lints
