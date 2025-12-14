@@ -2,9 +2,9 @@
 
 These are todos related to bringing things up-to-date without making any major changes in architecture or how it functions.
 
-* [ ] bring up to date with latest rust / libraries
+* [x] bring up to date with latest rust / libraries
   * [x] rust `1.84` to `1.92`
-  * [ ] update dependencies:
+  * [x] update dependencies:
     * [x] for each of these, running following to confirm still working:
       ```
       cargo clean
