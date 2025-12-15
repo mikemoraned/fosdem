@@ -28,3 +28,5 @@ These are todos related to bringing things up-to-date without making any major c
   * [ ] search across years:
     * [ ] update indexing to consume data from all schedules for 2024->2026
     * [ ] add a filter that allows restriction by year
+  * [ ] add `sitemap.xml`
+    - https://crates.io/crates/sitemap_generator ?
