@@ -26,7 +26,7 @@ pub async fn room(
     let all_events = state.queryable.load_all_events().await.unwrap();
     let mut events: Vec<Event> = all_events
         .into_iter()
-        .filter(|e| e.room == room_id)
+        .filter(|e| e.room == room_id && e.year == state.current_fosdem.year)
         .collect();
     events.sort_by_key(|e| e.starting_time());
     let room = RoomId::new(room_id);
