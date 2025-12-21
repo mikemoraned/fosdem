@@ -7,7 +7,7 @@ use std::{
 use chrono::{NaiveDate, NaiveTime, Timelike};
 use clap::Parser;
 use content::pentabarf::{Attachment, Schedule};
-use shared::model::Event;
+use shared::model::{self, Event};
 use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
@@ -34,7 +34,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         for room in day.rooms {
             for event in room.events {
                 let model_event = Event {
-                    id: event.id,
+                    id: model::EventId::new(event.id),
                     guid: event.guid,
                     date: NaiveDate::parse_from_str(&day.date, "%Y-%m-%d").unwrap(),
                     start: NaiveTime::parse_from_str(&event.start.value, "%H:%M").unwrap(),

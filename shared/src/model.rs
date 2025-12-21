@@ -1,9 +1,11 @@
-use std::fmt::{Display, Formatter};
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use nalgebra::DVector;
 use openai_dive::v1::resources::embedding::{EmbeddingOutput, EmbeddingResponse};
 use serde::{Deserialize, Serialize};
+use std::fmt::{Display, Formatter};
 use url::Url;
+
+use crate::model;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct SearchItem {
@@ -12,9 +14,24 @@ pub struct SearchItem {
     pub related: Option<Vec<SearchItem>>,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd, Eq, Ord, Hash, Copy)]
+pub struct EventId(u32);
+
+impl EventId {
+    pub fn new(id: u32) -> EventId {
+        EventId(id)
+    }
+}
+
+impl Display for EventId {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Event {
-    pub id: u32,
+    pub id: EventId,
     pub guid: String,
     pub date: NaiveDate,
     pub start: NaiveTime,
@@ -131,7 +148,9 @@ pub struct OpenAIEmbedding {
 }
 
 impl OpenAIEmbedding {
-    pub fn embedding_from_response(response: &EmbeddingResponse) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
+    pub fn embedding_from_response(
+        response: &EmbeddingResponse,
+    ) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
         let output = response.data[0].embedding.clone();
         match output {
             EmbeddingOutput::Float(parts) => Ok(OpenAIVector::from(parts)),
@@ -153,5 +172,5 @@ pub struct NextEvents {
 #[derive(Debug)]
 pub enum NextEventsContext {
     Now,
-    EventId(u32),
+    EventId(model::EventId),
 }

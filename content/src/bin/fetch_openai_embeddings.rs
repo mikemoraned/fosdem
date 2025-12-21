@@ -16,7 +16,7 @@ use openai_dive::v1::resources::embedding::{
 use reqwest::ClientBuilder;
 use shared::cli::progress_bar;
 use shared::env::load_dotenv;
-use shared::model::{Event, OpenAIEmbedding};
+use shared::model::{self, Event, OpenAIEmbedding};
 use subtp::vtt::VttBlock;
 use tracing::{debug, info, warn};
 
@@ -77,7 +77,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let reader = BufReader::new(File::open(events_path)?);
     let events: Vec<Event> = serde_json::from_reader(reader)?;
 
-    let mut slide_content_for_event: HashMap<u32, String> = HashMap::new();
+    let mut slide_content_for_event: HashMap<model::EventId, String> = HashMap::new();
     if let Some(base_path) = args.include_slide_content {
         info!("Fetching slide content from {:?} ... ", base_path);
         let mut slide_content_count = 0;
@@ -137,7 +137,7 @@ async fn get_embedding(
     client: &Client,
     max_retries: u32,
     event: &Event,
-    slide_content_for_event: &HashMap<u32, String>,
+    slide_content_for_event: &HashMap<model::EventId, String>,
     video_index: &VideoIndex,
 ) -> Result<EmbeddingResponse, Box<dyn std::error::Error>> {
     let mut preferred_input = String::new();

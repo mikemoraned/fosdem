@@ -1,4 +1,3 @@
-
 use askama::Template;
 use axum::{
     extract::{Query, State},
@@ -7,9 +6,7 @@ use axum::{
 use axum_valid::Valid;
 
 use serde::Deserialize;
-use shared::
-    model::{Event, NextEvents, NextEventsContext}
-;
+use shared::model::{self, Event, NextEvents, NextEventsContext};
 use validator::Validate;
 
 use crate::filters;
@@ -35,7 +32,7 @@ pub async fn next(
     Valid(Query(params)): Valid<Query<NextParams>>,
 ) -> axum::response::Result<Html<String>> {
     let context = match params.id {
-        Some(event_id) => NextEventsContext::EventId(event_id),
+        Some(event_id) => NextEventsContext::EventId(model::EventId::new(event_id)),
         None => NextEventsContext::Now,
     };
     match state.queryable.find_next_events(context).await {
@@ -50,4 +47,3 @@ pub async fn next(
         Err(_) => Err("failed".into()),
     }
 }
-

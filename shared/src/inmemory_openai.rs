@@ -5,7 +5,9 @@ use openai_dive::v1::api::Client;
 
 use tracing::{debug, span};
 
-use crate::model::{Event, NextEvents, NextEventsContext, OpenAIEmbedding, OpenAIVector, SearchItem};
+use crate::model::{
+    Event, EventId, NextEvents, NextEventsContext, OpenAIEmbedding, OpenAIVector, SearchItem,
+};
 use crate::queryable::Queryable;
 use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
 
@@ -34,9 +36,13 @@ impl Queryable for InMemoryOpenAIQueryable {
     #[tracing::instrument(skip(self))]
     async fn find_event_by_id(
         &self,
-        event_id: u32,
+        event_id: EventId,
     ) -> Result<Option<Event>, Box<dyn std::error::Error>> {
-        Ok(self.events.iter().find(|e| e.event.id == event_id).map(|e| e.event.clone()))
+        Ok(self
+            .events
+            .iter()
+            .find(|e| e.event.id == event_id)
+            .map(|e| e.event.clone()))
     }
 
     #[tracing::instrument(skip(self))]

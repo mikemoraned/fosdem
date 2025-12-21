@@ -6,7 +6,7 @@ use axum::{
 };
 
 use serde::Deserialize;
-use shared::model::Event;
+use shared::model::{self, Event};
 use validator::Validate;
 
 use crate::state::AppState;
@@ -33,7 +33,11 @@ pub async fn event_video(
     State(state): State<AppState>,
     Path(EventIdParam(event_id)): Path<EventIdParam>,
 ) -> axum::response::Result<Html<String>> {
-    match state.queryable.find_event_by_id(event_id).await {
+    match state
+        .queryable
+        .find_event_by_id(model::EventId::new(event_id))
+        .await
+    {
         Ok(Some(event)) => {
             let page = EventVideoTemplate { event };
             let html = page.render().unwrap();
@@ -48,7 +52,10 @@ pub async fn event_video_webvtt(
     State(state): State<AppState>,
     Path(EventIdParam(event_id)): Path<EventIdParam>,
 ) -> impl IntoResponse {
-    match state.video_index.webvtt_for_event_id(event_id) {
+    match state
+        .video_index
+        .webvtt_for_event_id(model::EventId::new(event_id))
+    {
         Some(webvtt) => (
             StatusCode::OK,
             [(header::CONTENT_TYPE, "text/vtt")],
