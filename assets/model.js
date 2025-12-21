@@ -4,7 +4,7 @@ import { createLocalPersister } from 'https://cdn.jsdelivr.net/npm/tinybase@5.4.
 
 export async function createModel() {
     const store = createMergeableStore('fosdem2025');
-    
+
     const persister = createLocalPersister(store, 'fosdem2025');
     await persister.load();
     await persister.startAutoSave()
@@ -18,12 +18,12 @@ export async function createModel() {
         () => {
             console.log('received a message');
         }
-      );
+    );
     synchronizer.addStatusListener((synchronizer, status) => {
         console.log(
-          `${synchronizer.getChannelName()} channel status changed to ${status}`,
+            `${synchronizer.getChannelName()} channel status changed to ${status}`,
         );
-      });
+    });
     await synchronizer.startSync();
     return new Model(store);
 }
@@ -46,7 +46,7 @@ class Model {
 
     addEventListener(eventId, listenerFn) {
         this.store.addValuesListener((store, getValueChange) => {
-            const [hasChanged,_oldValue,newValue] = getValueChange(eventId);
+            const [hasChanged, _oldValue, newValue] = getValueChange(eventId);
             if (hasChanged) {
                 console.log(`Event ${eventId} changed to ${newValue}`);
                 listenerFn(newValue);
@@ -68,6 +68,9 @@ class Model {
         const possibleEventIds = text.split(' ');
         possibleEventIds.forEach((possibleEventId) => {
             if (possibleEventId.match(/\d+/)) {
+                this.store.setValue(`2025-${possibleEventId}`, true);
+            }
+            if (possibleEventId.match(/\d+-\d+/)) {
                 this.store.setValue(possibleEventId, true);
             }
         });

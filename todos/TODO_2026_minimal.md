@@ -34,6 +34,6 @@ These are todos related to bringing things up-to-date without making any major c
   * [ ] search across years:
     * [x] update indexing to consume data from all schedules for 2025 and 2026
     * [ ] add a filter that allows restriction by year
-  * [ ] when importing bookmarks, any ids that are just a single number get mapped to `2025-number`
+  * [x] when importing bookmarks, any ids that are just a single number get mapped to `2025-number`
 * [ ] add `sitemap.xml`
     - https://crates.io/crates/sitemap_generator ?
