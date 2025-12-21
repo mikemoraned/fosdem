@@ -1,5 +1,5 @@
 model_dir := "./shared/data/model"
-year := "2025"
+year := "2026"
 schedule_file := "./content/schedule/" + year + ".xml"
 assets_dir := "./assets"
 

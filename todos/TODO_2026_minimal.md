@@ -22,6 +22,7 @@ These are todos related to bringing things up-to-date without making any major c
 * [x] integrate with google search console by adding `google-site-verification`
 * [x] upgrade to major versions of core libraries
   - note, did not upgrade opentelemetry crates to `0.31` as didn't seem worth it right now given the hassle
+* [x] update to use 2026 data
 * [ ] support 2025 alongside 2026
   * [ ] change all links to be prefixed by year e.g. `/event/6197/` becomes `/2025/event/6197/`
   * [ ] redirect any previous links to go to the 2025 version e.g `/event/6197/` redirects to `/2025/event/6197/` (this should be a hard redirect)
