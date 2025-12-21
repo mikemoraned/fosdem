@@ -7,4 +7,5 @@ use shared::inmemory_openai::InMemoryOpenAIQueryable;
 pub struct AppState {
     pub queryable: Arc<InMemoryOpenAIQueryable>,
     pub video_index: Arc<VideoIndex>,
+    pub current_year: u32,
 }

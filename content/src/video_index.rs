@@ -38,7 +38,8 @@ impl VideoIndex {
             let file_name = entry.file_name();
             if let Some(c) = file_regex.captures(file_name.to_str().unwrap()) {
                 if let Some(m) = c.name("event_id") {
-                    let event_id: model::EventId = model::EventId::new(m.as_str().parse().unwrap());
+                    let event_id: model::EventId =
+                        model::EventId::new(2024, m.as_str().parse().unwrap());
                     let mut file = File::open(entry.path())?;
                     let mut content = String::new();
                     file.read_to_string(&mut content)?;

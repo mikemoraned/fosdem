@@ -44,7 +44,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             for room in day.rooms {
                 for event in room.events {
                     let model_event = Event {
-                        id: model::EventId::new(event.id),
+                        id: model::EventId::new(*year, event.id),
+                        year: *year,
                         guid: event.guid,
                         date: NaiveDate::parse_from_str(&day.date, "%Y-%m-%d").unwrap(),
                         start: NaiveTime::parse_from_str(&event.start.value, "%H:%M").unwrap(),
@@ -56,7 +57,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         url: Url::parse(&event.url.value)?,
                         r#abstract: event.r#abstract.value,
                         slides: slides(&event.attachments)?,
-                        presenters: presenters(event.persons),
+                        presenters: presenters(*year, event.persons),
                         links: links(event.links)?,
                     };
                     model_events.push(model_event);
@@ -89,12 +90,12 @@ fn links(
         .collect()
 }
 
-fn presenters(persons: content::pentabarf::Persons) -> Vec<shared::model::Person> {
+fn presenters(year: u32, persons: content::pentabarf::Persons) -> Vec<shared::model::Person> {
     persons
         .persons
         .into_iter()
         .map(|p| shared::model::Person {
-            id: shared::model::PersonId::new(p.id),
+            id: shared::model::PersonId::new(year, p.id),
             name: p.name,
         })
         .collect()

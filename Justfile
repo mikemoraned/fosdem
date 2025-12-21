@@ -29,7 +29,7 @@ related_next:
 bring_up_to_date: fetch_schedules import_schedules index_next
 
 webapp:
-    RUST_LOG=info cargo run --bin fly -- --model-dir {{model_dir}}
+    RUST_LOG=info cargo run --bin fly -- --model-dir {{model_dir}} --current-year {{current_year}}
 
 deploy_staging: deploy_staging_secrets deploy_staging_app
 

@@ -15,17 +15,20 @@ pub struct SearchItem {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd, Eq, Ord, Hash, Copy)]
-pub struct EventId(u32);
+pub struct EventId {
+    year: u32,
+    id: u32,
+}
 
 impl EventId {
-    pub fn new(id: u32) -> EventId {
-        EventId(id)
+    pub fn new(year: u32, id: u32) -> EventId {
+        EventId { year, id }
     }
 }
 
 impl Display for EventId {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.0)
+        write!(f, "{}-{}", self.year, self.id)
     }
 }
 
@@ -33,6 +36,7 @@ impl Display for EventId {
 pub struct Event {
     pub id: EventId,
     pub guid: String,
+    pub year: u32,
     pub date: NaiveDate,
     pub start: NaiveTime,
     pub duration: u32,
@@ -48,17 +52,20 @@ pub struct Event {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd, Eq, Ord, Hash, Copy)]
-pub struct PersonId(u32);
+pub struct PersonId {
+    year: u32,
+    id: u32,
+}
 
 impl PersonId {
-    pub fn new(id: u32) -> PersonId {
-        PersonId(id)
+    pub fn new(year: u32, id: u32) -> PersonId {
+        PersonId { year, id }
     }
 }
 
 impl Display for PersonId {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.0)
+        write!(f, "{}-{}", self.year, self.id)
     }
 }
 
@@ -114,7 +121,9 @@ impl Event {
     }
 
     pub fn sojourner_url(&self) -> Url {
-        let base_url = Url::parse("https://fosdem.sojourner.rocks/2025/event/").unwrap();
+        let base_url =
+            Url::parse(format!("https://fosdem.sojourner.rocks/{}/event/", self.year).as_str())
+                .unwrap();
         base_url.join(&self.guid.to_string()).unwrap()
     }
 

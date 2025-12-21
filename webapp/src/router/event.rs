@@ -43,7 +43,7 @@ pub async fn event(
     // Best thing is to move more of the responsibility into `InMemoryOpenAIQueryable` out of here
     let possible_event: Option<Event> = (state
         .queryable
-        .find_event_by_id(model::EventId::new(event_id))
+        .find_event_by_id(model::EventId::new(state.current_year, event_id))
         .await)
         .unwrap_or_default();
     if let Some(event) = possible_event {

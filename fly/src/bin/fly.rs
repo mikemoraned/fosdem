@@ -16,6 +16,10 @@ async fn health() -> StatusCode {
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
+    /// curreny year of the events
+    #[arg(short, long)]
+    current_year: u32,
+
     /// path to directory where CSV files are kept
     #[arg(short, long)]
     model_dir: PathBuf,
@@ -63,6 +67,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         &openai_api_key,
         &args.model_dir,
         &args.include_video_content,
+        args.current_year,
     )
     .await;
 

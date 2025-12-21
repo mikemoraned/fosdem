@@ -32,7 +32,9 @@ pub async fn next(
     Valid(Query(params)): Valid<Query<NextParams>>,
 ) -> axum::response::Result<Html<String>> {
     let context = match params.id {
-        Some(event_id) => NextEventsContext::EventId(model::EventId::new(event_id)),
+        Some(event_id) => {
+            NextEventsContext::EventId(model::EventId::new(state.current_year, event_id))
+        }
         None => NextEventsContext::Now,
     };
     match state.queryable.find_next_events(context).await {

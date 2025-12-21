@@ -1,11 +1,8 @@
 use std::{path::PathBuf, sync::Arc};
 
-
 use axum::{http::Method, routing::get, Router};
 use content::video_index::VideoIndex;
-use shared::
-    inmemory_openai::InMemoryOpenAIQueryable
-;
+use shared::inmemory_openai::InMemoryOpenAIQueryable;
 use tower_http::{
     cors::{Any, CorsLayer},
     services::ServeDir,
@@ -13,19 +10,20 @@ use tower_http::{
 
 use crate::state::AppState;
 
-pub mod related;
-mod index;
-mod search;
-mod next;
-mod video;
 mod bookmark;
 mod event;
+mod index;
+mod next;
+pub mod related;
 mod room;
+mod search;
+mod video;
 
 pub async fn app_state(
     openai_api_key: &str,
     model_dir: &std::path::Path,
     video_content_dir: &Option<PathBuf>,
+    current_year: u32,
 ) -> AppState {
     AppState {
         queryable: Arc::new(
@@ -38,6 +36,7 @@ pub async fn app_state(
         } else {
             VideoIndex::empty_index()
         }),
+        current_year,
     }
 }
 
@@ -56,7 +55,10 @@ pub async fn router(state: AppState) -> Router {
         .route("/event/{event_id}/", get(event::event))
         .route("/room/{room_id}/", get(room::room))
         .route("/video/{event_id}/", get(video::event_video))
-        .route("/video/{event_id}/captions.vtt", get(video::event_video_webvtt))
+        .route(
+            "/video/{event_id}/captions.vtt",
+            get(video::event_video_webvtt),
+        )
         .layer(cors)
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state)

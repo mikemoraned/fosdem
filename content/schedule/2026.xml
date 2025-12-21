@@ -5202,6 +5202,14 @@ Computer Scientist from HSNR.&lt;/p&gt;</biography>
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6590">
+      <name>Denise R. S. Almeida</name>
+      <slug>denise_r_s_almeida</slug>
+      <biography>&lt;p&gt;Denise is an information governance and compliance professional, currently working on the future of decentralised communications at Element, the company building the eponym open source, secure and interoperable collaboration tool built on Matrix. Element delivers Matrix solutions to millions of users, including the French Government, the German Armed Forces, and private companies like Mozilla or Red Hat. &lt;/p&gt;
+&lt;p&gt;In addition to her work at Element, Denise is the appointed Data Protection Officer for the Matrix.org Foundation. The Foundation is the custodian for the Matrix open standard, a unique initiative aiming to democratise secure online communication and solve the problem of fragmentation in current Chat, VoIP, VR and IoT technologies. Matrix makes open real-time-communication as universal and interoperable as email, and brings the power back to the user on choosing who they trust with their data and how they want to communicate.&lt;/p&gt;
+&lt;p&gt;Denise has also recently defended her PhD thesis at UCL, on the topic of technology worker's attitudes and behaviours towards privacy and change. Her main research interests are centred on privacy, change, interoperability, digital rights and open source govenrnace, particularly around how these areas interact with different social, demographic and contextual factors.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6593">
       <name>Karel Kočí</name>
       <slug>karel_koci</slug>
@@ -27022,6 +27030,33 @@ Key Takeaways:
           <link href="https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-source-eu-policy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/J3GNS8/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="1979aa12-6e38-5832-9f57-bcb40238cbd1" id="9139">
+        <date>2026-02-01T11:45:00+01:00</date>
+        <start>11:45</start>
+        <duration>00:15</duration>
+        <room>UA2.118 (Henriot)</room>
+        <slug>GM7FZW-digital_omnibus_is_the_eus_tech_simplification_a_risk_or_opportunity_for_open_so</slug>
+        <url>https://fosdem.org/2026/schedule/event/GM7FZW-digital_omnibus_is_the_eus_tech_simplification_a_risk_or_opportunity_for_open_so/</url>
+        <title>Digital Omnibus: is the EU's tech simplification a Risk or Opportunity for Open Source?</title>
+        <subtitle></subtitle>
+        <track slug="open-source-eu-policy">Open Source &amp; EU Policy</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The recently proposed Digital Omnibus aims to simplify a series of digital regulations, such as the GDPR, the Data Act and other laws, such as the ePrivacy directive. The goal of this legislative package is to reduce administrative burdens on organisations and boost innovation, although it can have significant impacts on open source communities, foundations and SMEs building open-source software. &lt;/p&gt;
+&lt;p&gt;Using Matrix as a case study, this talk will go through the areas of the Omnibus proposal which might have potential impacts on the wider FOSDEM community, namely proposals around redefinition of key concepts, changes to incident reporting requirements (and how they align with CRA requirements) and data sharings. It also aims to identify opportunities which might be brought on by the Omnibus, particularly around standardisation of approaches and improved collaboration.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/GM7FZW/feedback/</feedback_url>
+        <persons>
+          <person id="6590">Denise R. S. Almeida</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-open-source-eu-policy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GM7FZW/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="77040cf6-e2b7-5f86-a9d8-4f3c85602946" id="9821">

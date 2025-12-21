@@ -35,7 +35,7 @@ pub async fn event_video(
 ) -> axum::response::Result<Html<String>> {
     match state
         .queryable
-        .find_event_by_id(model::EventId::new(event_id))
+        .find_event_by_id(model::EventId::new(state.current_year, event_id))
         .await
     {
         Ok(Some(event)) => {
@@ -54,7 +54,7 @@ pub async fn event_video_webvtt(
 ) -> impl IntoResponse {
     match state
         .video_index
-        .webvtt_for_event_id(model::EventId::new(event_id))
+        .webvtt_for_event_id(model::EventId::new(state.current_year, event_id))
     {
         Some(webvtt) => (
             StatusCode::OK,
