@@ -3,15 +3,15 @@ import { createBroadcastChannelSynchronizer } from 'https://cdn.jsdelivr.net/npm
 import { createLocalPersister } from 'https://cdn.jsdelivr.net/npm/tinybase@5.4.4/persisters/persister-browser/+esm';
 
 export async function createModel() {
-    const store = createMergeableStore('fosdem2025');
+    const store = createMergeableStore('fosdem2026');
 
-    const persister = createLocalPersister(store, 'fosdem2025');
+    const persister = createLocalPersister(store, 'fosdem2026');
     await persister.load();
     await persister.startAutoSave()
 
     const synchronizer = createBroadcastChannelSynchronizer(
         store,
-        'fosdem2025SyncChannel',
+        'fosdem2026SyncChannel',
         () => {
             console.log('sent a message');
         },
