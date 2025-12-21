@@ -39,10 +39,9 @@ fn test_homepage_contains_expected_content() {
     ));
 }
 
-#[test]
-fn test_search_for_any_year() {
+fn assert_any_year_search(path_and_query: &str) {
     let response = client()
-        .get(format!("{}/search?q=gnome&limit=20", get_base_url()))
+        .get(format!("{}{}", get_base_url(), path_and_query))
         .send()
         .expect("Failed to send request");
 
@@ -51,6 +50,16 @@ fn test_search_for_any_year() {
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("<a name=\"2026-8816\"></a>"));
     assert!(body.contains("<a name=\"2025-5649\"></a>"));
+}
+
+#[test]
+fn test_search_for_any_year_no_year_param_specified() {
+    assert_any_year_search("/search?q=gnome&limit=20");
+}
+
+#[test]
+fn test_search_for_any_year_with_year_param_as_empty_string() {
+    assert_any_year_search("/search?q=gnome&limit=20&year=");
 }
 
 #[test]

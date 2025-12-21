@@ -1,3 +1,5 @@
+use std::{fmt, str::FromStr};
+
 use askama::Template;
 use axum::{
     extract::{Query, State},
@@ -5,7 +7,7 @@ use axum::{
 };
 use axum_valid::Valid;
 
-use serde::Deserialize;
+use serde::{de, Deserialize, Deserializer};
 use shared::model::{Event, SearchItem};
 use tracing::info;
 use validator::Validate;
@@ -21,7 +23,22 @@ pub struct SearchParams {
     #[validate(range(min = 1, max = 20))]
     limit: u8,
     #[validate(range(min = 2024, max = 2026))]
+    #[serde(default, deserialize_with = "empty_string_as_none")]
     year: Option<u32>,
+}
+
+/// Serde deserialization decorator to map empty Strings to None,
+fn empty_string_as_none<'de, D, T>(de: D) -> Result<Option<T>, D::Error>
+where
+    D: Deserializer<'de>,
+    T: FromStr,
+    T::Err: fmt::Display,
+{
+    let opt = Option::<String>::deserialize(de)?;
+    match opt.as_deref() {
+        None | Some("") => Ok(None),
+        Some(s) => FromStr::from_str(s).map_err(de::Error::custom).map(Some),
+    }
 }
 
 #[derive(Template, Debug)]
