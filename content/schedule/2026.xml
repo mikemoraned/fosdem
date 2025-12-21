@@ -3924,6 +3924,12 @@ She has a high interest in open source projects and has attended FOSDEM for mult
 Principle Engineer III&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6156">
+      <name>Crozet Sébastien</name>
+      <slug>crozet_sebastien</slug>
+      <biography>&lt;p&gt;Sébastien Crozet has been in love with the Rust programming language since its earliest days. He is the creator and maintainer of popular open-source libraries, including nalgebra and Rapier, for the Rust ecosystem that specialize in linear algebra, geometry, and physics. He is the founder of Dimforge where he focuses on contributing to the future of cross-platform scientific computing and AI.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6157">
       <name>Felix Wiegand</name>
       <slug>felix_wiegand</slug>
@@ -18577,6 +18583,32 @@ This strategy preserves a fully containerized Linux developer experience inside 
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/E7WQQX/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="bce5f74d-e062-5feb-b14c-546357a860af" id="8184">
+        <date>2026-01-31T13:05:00+01:00</date>
+        <start>13:05</start>
+        <duration>00:20</duration>
+        <room>UD2.120 (Chavanne)</room>
+        <slug>QU9UF3-slang-cross-platform-inference</slug>
+        <url>https://fosdem.org/2026/schedule/event/QU9UF3-slang-cross-platform-inference/</url>
+        <title>Single-source cross-platform GPU LLM inference with Slang and Rust</title>
+        <subtitle></subtitle>
+        <track slug="ai">AI Plumbers</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Leveraging Rust and Khronos' emerging Slang initiative, we introduce our efforts toward a cross-platform GPU LLM inference ecosystem. With a single-source approach we aim to minimize backend-specific code and foster community participation by writing inference kernels once and run them everywhere.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/QU9UF3/feedback/</feedback_url>
+        <persons>
+          <person id="6156">Crozet Sébastien</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-ai:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-ai:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QU9UF3/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="db8e5879-9939-5214-923c-2ece4117a933" id="8123">
         <date>2026-01-31T13:30:00+01:00</date>
         <start>13:30</start>
@@ -21296,6 +21328,7 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
         <attachments>
         </attachments>
         <links>
+          <link href="http://worm-blossom.org">Authors</link>
           <link href="https://willowprotocol.org">Willow Protocol homepage</link>
           <link href="https://codeberg.org/worm-blossom/willow_rs">Source code</link>
           <link href="https://chat.fosdem.org/#/room/#2026-local-first:fosdem.org">Chat room(web)</link>
