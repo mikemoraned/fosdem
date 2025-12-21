@@ -25,6 +25,7 @@ struct EventTemplate {
     pub event: Event,
     pub related: Option<Vec<SearchItem>>,
     pub current_event: Option<Event>, // TODO: remove this
+    pub current_fosdem: shared::model::CurrentFosdem,
 }
 
 #[tracing::instrument(skip(state))]
@@ -58,6 +59,7 @@ pub async fn event(
             event,
             related,
             current_event,
+            current_fosdem: state.current_fosdem.clone(),
         };
         let html = page.render().unwrap();
         Ok(Html(html))

@@ -36,7 +36,7 @@ pub async fn app_state(
         } else {
             VideoIndex::empty_index()
         }),
-        current_year,
+        current_fosdem: shared::model::CurrentFosdem { year: current_year },
     }
 }
 

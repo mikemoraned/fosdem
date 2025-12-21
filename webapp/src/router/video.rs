@@ -23,6 +23,7 @@ pub struct EventVideoParams {
 #[template(path = "event_video.html")]
 struct EventVideoTemplate {
     event: Event,
+    current_fosdem: shared::model::CurrentFosdem,
 }
 
 #[tracing::instrument(skip(state))]
@@ -36,7 +37,10 @@ pub async fn event_video(
         .await
     {
         Ok(Some(event)) => {
-            let page = EventVideoTemplate { event };
+            let page = EventVideoTemplate {
+                event,
+                current_fosdem: state.current_fosdem.clone(),
+            };
             let html = page.render().unwrap();
             Ok(Html(html))
         }

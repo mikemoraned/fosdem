@@ -7,6 +7,11 @@ use url::Url;
 
 use crate::model;
 
+#[derive(Debug, Clone)]
+pub struct CurrentFosdem {
+    pub year: u32,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub struct SearchItem {
     pub event: Event,

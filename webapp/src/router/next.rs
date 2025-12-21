@@ -24,6 +24,7 @@ pub struct NextParams {
 struct NowAndNextTemplate {
     next: NextEvents,
     current_event: Option<Event>,
+    current_fosdem: model::CurrentFosdem,
 }
 
 #[tracing::instrument(skip(state))]
@@ -33,7 +34,7 @@ pub async fn next(
 ) -> axum::response::Result<Html<String>> {
     let context = match params.id {
         Some(event_id) => {
-            NextEventsContext::EventId(model::EventId::new(state.current_year, event_id))
+            NextEventsContext::EventId(model::EventId::new(state.current_fosdem.year, event_id))
         }
         None => NextEventsContext::Now,
     };
@@ -42,6 +43,7 @@ pub async fn next(
             let page = NowAndNextTemplate {
                 next: next.clone(),
                 current_event: Some(next.selected.clone()),
+                current_fosdem: state.current_fosdem.clone(),
             };
             let html = page.render().unwrap();
             Ok(Html(html))

@@ -1,4 +1,3 @@
-
 use askama::Template;
 use axum::{
     extract::{Query, State},
@@ -7,9 +6,7 @@ use axum::{
 use axum_valid::Valid;
 
 use serde::Deserialize;
-use shared::
-    model::{Event, SearchItem}
-;
+use shared::model::{Event, SearchItem};
 use tracing::info;
 use validator::Validate;
 
@@ -31,6 +28,7 @@ struct SearchTemplate {
     query: String,
     items: Vec<SearchItem>,
     current_event: Option<Event>, // TODO: remove this
+    current_fosdem: shared::model::CurrentFosdem,
 }
 
 #[tracing::instrument(skip(state))]
@@ -45,6 +43,7 @@ pub async fn search(
                 query: params.q,
                 items,
                 current_event: None,
+                current_fosdem: state.current_fosdem.clone(),
             };
             let html = page.render().unwrap();
             Ok(Html(html))
