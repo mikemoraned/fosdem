@@ -25,17 +25,14 @@ struct EventVideoTemplate {
     event: Event,
 }
 
-#[derive(Deserialize, Debug)]
-pub struct EventIdParam(u32);
-
 #[tracing::instrument(skip(state))]
 pub async fn event_video(
     State(state): State<AppState>,
-    Path(EventIdParam(event_id)): Path<EventIdParam>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
 ) -> axum::response::Result<Html<String>> {
     match state
         .queryable
-        .find_event_by_id(model::EventId::new(state.current_year, event_id))
+        .find_event_by_id(model::EventId::new(year, event_in_year_id))
         .await
     {
         Ok(Some(event)) => {
@@ -50,11 +47,11 @@ pub async fn event_video(
 #[tracing::instrument(skip(state))]
 pub async fn event_video_webvtt(
     State(state): State<AppState>,
-    Path(EventIdParam(event_id)): Path<EventIdParam>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
 ) -> impl IntoResponse {
     match state
         .video_index
-        .webvtt_for_event_id(model::EventId::new(state.current_year, event_id))
+        .webvtt_for_event_id(model::EventId::new(year, event_in_year_id))
     {
         Some(webvtt) => (
             StatusCode::OK,

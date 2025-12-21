@@ -27,13 +27,10 @@ struct EventTemplate {
     pub current_event: Option<Event>, // TODO: remove this
 }
 
-#[derive(Deserialize, Debug)]
-pub struct EventIdParam(u32);
-
 #[tracing::instrument(skip(state))]
 pub async fn event(
     State(state): State<AppState>,
-    Path(EventIdParam(event_id)): Path<EventIdParam>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
 ) -> axum::response::Result<Html<String>> {
     // TODO: this is all a bit contorted, for a couple of reasons:
     // - InMemoryOpenAIQueryable should really natively support finding related events, as opposed to
@@ -43,7 +40,7 @@ pub async fn event(
     // Best thing is to move more of the responsibility into `InMemoryOpenAIQueryable` out of here
     let possible_event: Option<Event> = (state
         .queryable
-        .find_event_by_id(model::EventId::new(state.current_year, event_id))
+        .find_event_by_id(model::EventId::new(year, event_in_year_id))
         .await)
         .unwrap_or_default();
     if let Some(event) = possible_event {

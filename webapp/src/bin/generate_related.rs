@@ -66,7 +66,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         nodes.push(Node {
             index: new_index,
             title: event.title.clone(),
-            local_path: format!("/event/{}/", event.id),
+            local_path: format!("/{}/event/{}/", event.id.year(), event.id.event_in_year()),
             url: event.url.clone(),
             sojourner_url: event.sojourner_url(),
             time_slot: *time_slot_id,

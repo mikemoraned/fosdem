@@ -24,6 +24,14 @@ impl EventId {
     pub fn new(year: u32, id: u32) -> EventId {
         EventId { year, id }
     }
+
+    pub fn year(&self) -> u32 {
+        self.year
+    }
+
+    pub fn event_in_year(&self) -> u32 {
+        self.id
+    }
 }
 
 impl Display for EventId {

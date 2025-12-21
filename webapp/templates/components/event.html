@@ -26,7 +26,7 @@
             <ul>
                 {% for item in items %}
                 <li>
-                    <a href="/event/{{ item.event.id }}/">
+                    <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/">
                         <span
                             class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                         <span>"{{ item.event.title }} ({{ item.event.year }})"</span>
