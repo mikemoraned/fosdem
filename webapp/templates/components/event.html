@@ -29,7 +29,7 @@
                     <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/">
                         <span
                             class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                        <span>"{{ item.event.title }} ({{ item.event.year }})"</span>
+                        <span>"{{ item.event.title }}" ({{ item.event.year }})</span>
                     </a>
                 </li>
                 {% endfor %}
@@ -45,7 +45,7 @@
 <div class="card-content">
     <p class="title is-5">
         <span>
-            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }} ({{ event.year }})"
+            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}" ({{ event.year }})
         </span>
     </p>
     <p class="subtitle is-7">
