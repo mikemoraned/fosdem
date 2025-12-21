@@ -3636,10 +3636,10 @@ it a try themselves.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6056">
-      <name>gtucker</name>
-      <slug>gtucker</slug>
+      <name>Guillaume Tucker</name>
+      <slug>guillaume_tucker</slug>
       <biography>&lt;p&gt;After many years of open-source development at Collabora in system programming and a longstanding involvement with the &lt;a href="https://kernelci.org"&gt;KernelCI&lt;/a&gt; project in particular, I'm now in freelance and moving into the Energy sector.  My favourite projects right now are &lt;a href="https://lf-energy.atlassian.net/wiki/spaces/SEAP/overview"&gt;SEAPATH&lt;/a&gt; for electrical substations and &lt;a href="https://renelick-gtucker-7b1c5d7d50ce51f57b4ff6327302e38a0a8f8c72d652a5.gitlab.io/"&gt;Renelick&lt;/a&gt;, a general-purpose automation framework forked from the KernelCI stack.&lt;/p&gt;
-&lt;p&gt;See my &lt;a href="https://gtucker.io] blog to find out more.  I'm also on [LinkedIn](https://www.linkedin.com/in/guillaume-tucker/"&gt;gtucker.io&lt;/a&gt;.&lt;/p&gt;</biography>
+&lt;p&gt;Find out more on gtucker.io&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6057">
@@ -13124,7 +13124,7 @@ Of course the configuration files for all components as well as links to the rel
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/NTTTDX/feedback/</feedback_url>
         <persons>
-          <person id="6056">gtucker</person>
+          <person id="6056">Guillaume Tucker</person>
         </persons>
         <attachments>
         </attachments>
