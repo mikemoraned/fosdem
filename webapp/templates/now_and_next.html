@@ -7,7 +7,7 @@
 <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
     {% call event::expandable_card_details(event) %}
     <footer class="card-footer">
-        <a href="/next/?id={{event.id}}" class="card-footer-item">
+        <a href="/next/?id={{event.id.event_in_year()}}" class="card-footer-item">
             <span class="icon-text">
                 <span>Select</span>
             </span>
@@ -24,8 +24,8 @@
     <div class="columns">
         <div class="column is-two-thirds">
             <h1 class="title is-5">
-                <i class="fa-duotone fa-diagram-sankey"></i> 
-                Now attending 
+                <i class="fa-duotone fa-diagram-sankey"></i>
+                Now attending
             </h1>
             <h1 class="subtitle is-7">
                 (<i class="fa-solid fa-clock"></i> {{ next.now.format("%Y-%m-%d, %H:%M") }})
@@ -47,7 +47,8 @@
                         <div class="select is-small">
                             <select name="id" onchange="this.form.submit();">
                                 {% for event in next.current %}
-                                <option value="{{ event.id }}" {% if event.id==next.selected.id %} selected {% else %} {% endif %}>
+                                <option value="{{ event.id.event_in_year() }}" {% if event.id==next.selected.id %}
+                                    selected {% else %} {% endif %}>
                                     {{ event.start.format("%H:%M") }}, {{ event.title|truncate_title(35) }}
                                 </option>
                                 {% endfor %}
@@ -67,7 +68,7 @@
         </div>
     </div>
     <div class="columns">
-        
+
     </div>
     <div class="bookmarks show-all">
         <div class="columns">
@@ -93,7 +94,7 @@
         {% for event in next.next|order_event_by_time_then_place %}
         <div class="columns">
             <div class="column">
-            {% call card(event) %}
+                {% call card(event) %}
             </div>
         </div>
         {% endfor %}
@@ -105,6 +106,6 @@
 <script type="module">
     import { bindHide } from '/assets/bookmarks.js';
 
-    document.bookmarksCallbacks = [ bindHide ];
+    document.bookmarksCallbacks = [bindHide];
 </script>
 {% endblock %}
