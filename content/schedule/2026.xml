@@ -2904,6 +2904,12 @@ more broad interests: reverse engineering, networks, osdev and olde shite&lt;/p&
 &lt;p&gt;&lt;a href="https://famfo.xyz"&gt;https://famfo.xyz&lt;/a&gt;&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="5549">
+      <name>Shane Kerr</name>
+      <slug>shane_kerr</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="5550">
       <name>Alexander Sosna</name>
       <slug>alexander_sosna</slug>
@@ -4170,6 +4176,12 @@ Or LinkedIn: https://linkedin.com/in/benjdicken&lt;/p&gt;</biography>
       <biography>&lt;p&gt;Michael Riesch is a Consultant Senior Software Engineer at Collabora.
 His work focuses on hardware enablement (Rockchip SoCs in particular) and
 multimedia development in the Linux kernel.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6266">
+      <name>Sunil Mayya</name>
+      <slug>sunil_mayya</slug>
+      <biography>&lt;p&gt;Software Engineer working Firefox's networking team. Based out of Nuremberg, Germany&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6269">
@@ -10792,6 +10804,40 @@ far eBPF can take you beyond system programming.&lt;/p&gt;
           <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/7QNJXM/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="e9b5d535-fff7-5cd9-a9c1-ce48697fd0a5" id="8382">
+        <date>2026-01-31T16:30:00+01:00</date>
+        <start>16:30</start>
+        <duration>00:30</duration>
+        <room>H.1309 (Van Rijn)</room>
+        <slug>QCSKWL-firefox-local-network-access</slug>
+        <url>https://fosdem.org/2026/schedule/event/QCSKWL-firefox-local-network-access/</url>
+        <title>Cleaning Up Local Mess: Firefox's Implementation of Local Network Access</title>
+        <subtitle></subtitle>
+        <track slug="browser-and-web-platform">Browser and web platform</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In June 2025, researchers exposed a major tracking vulnerability - Local Mess, where Meta Pixel and Yandex Metrica scripts were exploiting localhost access to track millions of Android users across the web. This talk presents Local Network Access (LNA) standards and how it addresses similar threats and helps fix long standing security vulnerabilities with localhost and local network devices. The talk explains the LNA specification and how it categorizes network requests into public, local, and loopback address spaces, requiring explicit user permission when websites access more private network zones. The presentation covers Firefox's implementation, key differences from Chrome's approach, real-world deployment challenges and mitigations.&lt;/p&gt;
+&lt;p&gt;References:
+Local Mess - https://localmess.github.io/
+Local Network Access Standard - https://wicg.github.io/local-network-access/
+Local Network Standards Issues - https://github.com/WICG/local-network-access/issues/
+Firefox Implementation Bug - https://bugzilla.mozilla.org/show_bug.cgi?id=1481298
+List of long pending security vulnerabilities with localhost and local network - https://github.com/WICG/local-network-access/issues/21 &lt;/p&gt;
+&lt;p&gt;About the Speaker
+&lt;a href="https://bugzilla.mozilla.org/user_profile?user_id=711499"&gt;Sunil Mayya&lt;/a&gt; is a software engineer on Mozilla's Firefox Networking team, and a core contributor to Firefox's implementation of the Local Network Access standard.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/QCSKWL/feedback/</feedback_url>
+        <persons>
+          <person id="6266">Sunil Mayya</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QCSKWL/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="1da818b9-3518-505d-ae70-563f73e9d1df" id="8862">
@@ -20639,8 +20685,8 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
         <start>09:05</start>
         <duration>00:25</duration>
         <room>K.3.201</room>
-        <slug>87PQXJ-cryptographic-permissions-for-crdts</slug>
-        <url>https://fosdem.org/2026/schedule/event/87PQXJ-cryptographic-permissions-for-crdts/</url>
+        <slug>87PQXJ-jazz-crdts-cryptographic-permissions-e2ee</slug>
+        <url>https://fosdem.org/2026/schedule/event/87PQXJ-jazz-crdts-cryptographic-permissions-e2ee/</url>
         <title>CRDTs, E2EE, permissions and Jazz!</title>
         <subtitle></subtitle>
         <track slug="local-first">Local-First, sync engines, CRDTs</track>
@@ -21201,11 +21247,11 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
 &lt;p&gt;Our goal is to develop abstractions and methodologies for the systematic construction of applications requiring replicated state. In this talk, we particularly focus on two main aspects: (1) non-ad hoc approaches to efficient RDT implementations, and (2) simplifying the development of application-specific RDTs:&lt;/p&gt;
 &lt;p&gt;Many approaches use ad-hoc solutions to track causality and ensure eventual convergence, e.g. keeping meta-data in the implementation. In a lot of cases, their design does not translate well into efficient implementations and is not suitable for resource-constrained runtimes. We present Flec[1, 2, 3], a framework that guides developers in making informed decisions during the development process, by providing an API that gives developers a uniform and structured way to deal with functional system requirements. This can range from network constraints to security and authorization aspects.&lt;/p&gt;
 &lt;p&gt;To simplify the development of collaborative applications using RDTs, we investigate alternative approaches where RDTs can be automatically derived from their sequential implementation [4, 5]. By means of an analysis we can detect conflicting operations, and automatically derive functional CRDTs. In some datatypes, certain application invariants would be impossible to guarantee with CRDTs. For these cases, we support automatically detecting where an application would have to synchronise and output an RDT with mixed consistency.  &lt;/p&gt;
-&lt;p&gt;[1] Jim Bauwens, 2024. Flexible CRDTS for a demanding world. PhD Thesis. https://cris.vub.be/ws/portalfiles/portal/116156754/Jim_Bauwens_PhD_thesis.pdf
-[2] Jim Bauwens and Elisa Gonzalez Boix. 2020. Flec: a versatile programming framework for eventually consistent systems. Proceedings of the 7th Workshop on Principles and Practice of Consistency for Distributed Data. Association for Computing Machinery, New York, NY, USA, Article 12, 1–4. DOI:https://doi.org/10.1145/3380787.3393685
-[3] https://gitlab.soft.vub.ac.be/jimbauwens/flec
-[3] Kevin De Porre, Carla Ferreira, Nuno Preguiça, and Elisa Gonzalez Boix. 2021. ECROs: building global scale systems from sequential code. Proc. ACM Program. Lang. 5, OOPSLA, Article 107 (October 2021), 30 pages. DOI:https://doi.org/10.1145/3485484
-[4] https://github.com/verifx-prover/verifx/tree/main&lt;/p&gt;</abstract>
+&lt;p&gt;[1] &lt;a href="https://cris.vub.be/ws/portalfiles/portal/116156754/Jim_Bauwens_PhD_thesis.pdf"&gt;Jim Bauwens, 2024. Flexible CRDTS for a demanding world. PhD Thesis&lt;/a&gt;
+[2] Jim Bauwens and Elisa Gonzalez Boix. 2020. Flec: a versatile programming framework for eventually consistent systems. Proceedings of the 7th Workshop on Principles and Practice of Consistency for Distributed Data. Association for Computing Machinery, New York, NY, USA, Article 12, 1–4. &lt;a href="https://doi.org/10.1145/3380787.3393685"&gt;DOI&lt;/a&gt;
+[3] &lt;a href="https://gitlab.soft.vub.ac.be/jimbauwens/flec"&gt;https://gitlab.soft.vub.ac.be/jimbauwens/flec&lt;/a&gt;
+[3] Kevin De Porre, Carla Ferreira, Nuno Preguiça, and Elisa Gonzalez Boix. 2021. ECROs: building global scale systems from sequential code. Proc. ACM Program. Lang. 5, OOPSLA, Article 107 (October 2021), 30 pages. &lt;a href="https://doi.org/10.1145/3485484"&gt;DOI&lt;/a&gt;
+[4] &lt;a href="https://github.com/verifx-prover/verifx/tree/main"&gt;https://github.com/verifx-prover/verifx/tree/main&lt;/a&gt;&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/NFY8ND/feedback/</feedback_url>
         <persons>
@@ -21231,9 +21277,9 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
         <track slug="local-first">Local-First, sync engines, CRDTs</track>
         <type>devroom</type>
         <language>en</language>
-        <abstract>&lt;p&gt;Willow (https://willowprotocol.org) is a family of publicly-funded, open source peer-to-peer storage protocols.&lt;/p&gt;
+        <abstract>&lt;p&gt;&lt;a href="https://willowprotocol.org"&gt;Willow&lt;/a&gt; is a family of publicly-funded, open source peer-to-peer storage protocols.&lt;/p&gt;
 &lt;p&gt;These protocols are designed to let you run your own independent digital spaces where you can share and collaborate on data with groups big and small. These digital spaces are stored on your own hardware, cutting out unwanted third parties. Only devices which have been given explicit consent to store data can receive it. Any kind of data can be stored, organised in a manner similar to files and folders. And data can travel between devices in many different ways, so you can choose the appropriate avenue, whether that's the internet or a USB key.&lt;/p&gt;
-&lt;p&gt;In this talk we will introduce our protocols: Willow, Meadowcap, Drop Format, and Confidential Sync, and what makes them different to other systems in the local-first ecosystem. We will also talk about our Rust implementations of these specifications (https://codeberg.org/worm-blossom/willow_rs), and how we are bringing torrent-like payload transfer to Willow using Bab (https://worm-blossom.github.io/bab/).&lt;/p&gt;</abstract>
+&lt;p&gt;In this talk we will introduce our protocols: Willow, Meadowcap, Drop Format, and Confidential Sync, and what makes them different to other systems in the local-first ecosystem. We will also talk about our &lt;a href="https://codeberg.org/worm-blossom/willow_rs"&gt;Rust implementations of these specifications&lt;/a&gt;, and how we are bringing torrent-like payload transfer to Willow using &lt;a href="https://worm-blossom.github.io/bab/"&gt;Bab&lt;/a&gt;.&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/CVGZAV/feedback/</feedback_url>
         <persons>
@@ -21294,8 +21340,8 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
         <start>16:40</start>
         <duration>00:20</duration>
         <room>K.3.201</room>
-        <slug>EFHNGH-future-of-digital-sovereignty-local-first</slug>
-        <url>https://fosdem.org/2026/schedule/event/EFHNGH-future-of-digital-sovereignty-local-first/</url>
+        <slug>EFHNGH-seed-hypermedia-digital-sovereignty</slug>
+        <url>https://fosdem.org/2026/schedule/event/EFHNGH-seed-hypermedia-digital-sovereignty/</url>
         <title>Seed Hypermedia: The Future of Digital Sovereignty</title>
         <subtitle></subtitle>
         <track slug="local-first">Local-First, sync engines, CRDTs</track>
@@ -21413,6 +21459,36 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
           <link href="https://chat.fosdem.org/#/room/#2026-dns:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dns:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WWBVAT/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="8de93f06-9f8b-5472-a997-5a382062eb5d" id="7398">
+        <date>2026-02-01T12:30:00+01:00</date>
+        <start>12:30</start>
+        <duration>00:25</duration>
+        <room>K.3.401</room>
+        <slug>SSXDBS-dns_a_love_affair_with_lovecraftian_horrors</slug>
+        <url>https://fosdem.org/2026/schedule/event/SSXDBS-dns_a_love_affair_with_lovecraftian_horrors/</url>
+        <title>DNS: A Love Affair with Lovecraftian Horrors</title>
+        <subtitle></subtitle>
+        <track slug="dns">DNS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The DNS is a hoary protocol, with ancient secrets that man was not meant to know.&lt;/p&gt;
+&lt;p&gt;It is said that learning too much about the dark corners of this ancient knowledge might drive one mad.&lt;/p&gt;
+&lt;p&gt;Here is your chance to learn mostly useless things about DNS!&lt;/p&gt;
+&lt;p&gt;This presentation will cover quirks of the DNS protocol which are probably surprising, and hopefully interesting.&lt;/p&gt;
+&lt;p&gt;Warning: Due to constraints no entities from beyond time and space will be summoned during this talk.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/SSXDBS/feedback/</feedback_url>
+        <persons>
+          <person id="5549">Shane Kerr</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-dns:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-dns:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/SSXDBS/feedback/">Submit Feedback</link>
         </links>
       </event>
     </room>
@@ -31316,6 +31392,8 @@ This talk aims to share these observations to support developers and researchers
         <attachments>
         </attachments>
         <links>
+          <link href="https://github.com/CCC-Attestation/formal-spec-id-crisis">Artifacts: Formal Analysis of Attested TLS</link>
+          <link href="https://www.researchgate.net/publication/398839141_Identity_Crisis_in_Confidential_Computing_Formal_Analysis_of_Attested_TLS">Formal Analysis of Attested TLS</link>
           <link href="https://chat.fosdem.org/#/room/#2026-confidential-computing:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-confidential-computing:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GHGFBM/feedback/">Submit Feedback</link>

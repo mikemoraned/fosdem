@@ -1,6 +1,7 @@
 model_dir := "./shared/data/model"
-year := "2026"
-schedule_file := "./content/schedule/" + year + ".xml"
+years := "2025 2026"
+current_year := "2026"
+schedule_file := "./content/schedule/" + current_year + ".xml"
 assets_dir := "./assets"
 
 fresh_test:
@@ -8,8 +9,10 @@ fresh_test:
     cargo build --release
     cargo test --release
 
-fetch_schedule:
-    wget -O {{schedule_file}} https://fosdem.org/{{year}}/schedule/xml
+fetch_schedules:
+    for year in {{years}}; do \
+        wget -O ./content/schedule/$year.xml https://fosdem.org/$year/schedule/xml; \
+    done
 
 import_schedule:
     mkdir -p {{model_dir}}
@@ -23,7 +26,7 @@ embeddings_next:
 related_next:
     RUST_LOG=info cargo run --bin generate_related --release -- --model-dir {{model_dir}} --limit 5 --json {{assets_dir}}/all.limit5.json
 
-bring_up_to_date: fetch_schedule import_schedule index_next
+bring_up_to_date: fetch_schedules import_schedule index_next
 
 webapp:
     RUST_LOG=info cargo run --bin fly -- --model-dir {{model_dir}}
