@@ -8,6 +8,7 @@ axum-valid = "0.24"
 validator = { version = "0.20", features = ["derive"] }
 askama = "0.14"
 unicode-segmentation = "1.12"
+reqwest = { workspace = true }
 axum = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }

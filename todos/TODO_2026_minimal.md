@@ -27,7 +27,7 @@ These are todos related to bringing things up-to-date without making any major c
   * [ ] change all links to be prefixed by year e.g. `/event/6197/` becomes `/2025/event/6197/`
   * [ ] redirect any previous links to go to the 2025 version e.g `/event/6197/` redirects to `/2025/event/6197/` (this should be a hard redirect)
   * [ ] search across years:
-    * [ ] update indexing to consume data from all schedules for 2024->2026
+    * [ ] update indexing to consume data from all schedules for 2025 and 2026
     * [ ] add a filter that allows restriction by year
-  * [ ] add `sitemap.xml`
+* [ ] add `sitemap.xml`
     - https://crates.io/crates/sitemap_generator ?
