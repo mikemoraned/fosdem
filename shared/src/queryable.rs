@@ -15,6 +15,7 @@ pub trait Queryable {
         &self,
         title: &str,
         limit: u8,
+        year_filter: Option<u32>,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 
     async fn search(
@@ -22,6 +23,7 @@ pub trait Queryable {
         query: &str,
         limit: u8,
         find_related: bool,
+        year_filter: Option<u32>,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
 
     async fn find_next_events(

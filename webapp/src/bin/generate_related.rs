@@ -83,7 +83,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let progress = progress_bar(filtered_events.len() as u64);
     for event in filtered_events.into_iter() {
         let related = queryable
-            .find_related_events(&event.title, args.limit)
+            .find_related_events(&event.title, args.limit, None)
             .await?;
         let source = *titles_covered.get(&event.title).unwrap();
         for item in related.iter() {

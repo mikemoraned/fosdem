@@ -72,5 +72,5 @@ async fn find_related_events(
     queryable: &InMemoryOpenAIQueryable,
     event: &Event,
 ) -> Option<Vec<SearchItem>> {
-    (queryable.find_related_events(&event.title, 10).await).ok()
+    (queryable.find_related_events(&event.title, 10, None).await).ok()
 }

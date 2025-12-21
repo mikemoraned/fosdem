@@ -39,6 +39,37 @@ fn test_homepage_contains_expected_content() {
     ));
 }
 
+#[test]
+fn test_search_for_any_year() {
+    let response = client()
+        .get(format!("{}/search?q=gnome&limit=20", get_base_url()))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 200);
+
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains("<a name=\"2026-8816\"></a>"));
+    assert!(body.contains("<a name=\"2025-5649\"></a>"));
+}
+
+#[test]
+fn test_search_for_2025_only() {
+    let response = client()
+        .get(format!(
+            "{}/search?q=gnome&limit=20&year=2025",
+            get_base_url()
+        ))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 200);
+
+    let body = response.text().expect("Failed to read body");
+    assert!(!body.contains("<a name=\"2026-8816\"></a>"));
+    assert!(body.contains("<a name=\"2025-5649\"></a>"));
+}
+
 fn assert_2025_content(response: Response) {
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("Using composefs and fs-verity"));
