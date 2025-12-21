@@ -28,6 +28,7 @@ These are todos related to bringing things up-to-date without making any major c
   * [x] import 2025 and 2026 years event data
   * [x] find similarities across all years
   * [x] only generate connections for current year
+  * [x] show year of event in title
   * [ ] change all links to be prefixed by year e.g. `/event/6197/` becomes `/2025/event/6197/`
   * [ ] any previous links to go to the 2025 version e.g `/event/6197/` returns same content as `/2025/event/6197/`
   * [ ] search across years:
