@@ -52,6 +52,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/bookmarks", get(bookmark::bookmarks))
         .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
+        .route("/event/{event_in_year_id}/", get(event::event_2025))
         .route("/{year}/event/{event_in_year_id}/", get(event::event))
         .route("/room/{room_id}/", get(room::room))
         .route("/{year}/video/{event_in_year_id}/", get(video::event_video))

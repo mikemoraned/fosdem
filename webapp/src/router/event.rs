@@ -28,6 +28,14 @@ struct EventTemplate {
 }
 
 #[tracing::instrument(skip(state))]
+pub async fn event_2025(
+    State(state): State<AppState>,
+    Path(event_in_year_id): Path<u32>,
+) -> axum::response::Result<Html<String>> {
+    event(State(state), Path((2025, event_in_year_id))).await
+}
+
+#[tracing::instrument(skip(state))]
 pub async fn event(
     State(state): State<AppState>,
     Path((year, event_in_year_id)): Path<(u32, u32)>,
