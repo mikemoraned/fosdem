@@ -83,7 +83,7 @@ fn presenters(persons: content::pentabarf::Persons) -> Vec<shared::model::Person
         .persons
         .into_iter()
         .map(|p| shared::model::Person {
-            id: p.id,
+            id: shared::model::PersonId::new(p.id),
             name: p.name,
         })
         .collect()

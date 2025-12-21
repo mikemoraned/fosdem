@@ -47,9 +47,24 @@ pub struct Event {
     pub links: Vec<Link>,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd, Eq, Ord, Hash, Copy)]
+pub struct PersonId(u32);
+
+impl PersonId {
+    pub fn new(id: u32) -> PersonId {
+        PersonId(id)
+    }
+}
+
+impl Display for PersonId {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Person {
-    pub id: u32,
+    pub id: PersonId,
     pub name: String,
 }
 
