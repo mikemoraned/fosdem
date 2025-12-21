@@ -2,12 +2,14 @@ use std::{
     fs::File,
     io::{BufWriter, Write},
     path::PathBuf,
+    vec,
 };
 
 use chrono::{NaiveDate, NaiveTime, Timelike};
 use clap::Parser;
 use content::pentabarf::{Attachment, Schedule};
 use shared::model::{self, Event};
+use tracing::info;
 use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
@@ -15,9 +17,13 @@ use xmlserde::xml_deserialize_from_str;
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// input Pentabarf xml path
+    /// dir where Pentabarf xml files are located
     #[arg(short, long)]
-    pentabarf: String,
+    pentabarf_dir: String,
+
+    /// years to import
+    #[arg(short, long, value_delimiter = ' ')]
+    years: Vec<u32>,
 
     /// output model directory
     #[arg(short, long)]
@@ -25,31 +31,36 @@ struct Args {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let args = Args::parse();
+    tracing_subscriber::fmt::init();
 
-    let xml = std::fs::read_to_string(args.pentabarf)?;
-    let schedule: Schedule = xml_deserialize_from_str(&xml)?;
+    let args = Args::parse();
     let mut model_events = vec![];
-    for day in schedule.days {
-        for room in day.rooms {
-            for event in room.events {
-                let model_event = Event {
-                    id: model::EventId::new(event.id),
-                    guid: event.guid,
-                    date: NaiveDate::parse_from_str(&day.date, "%Y-%m-%d").unwrap(),
-                    start: NaiveTime::parse_from_str(&event.start.value, "%H:%M").unwrap(),
-                    duration: parse_into_minutes(&event.duration.value)?,
-                    room: room.name.clone(),
-                    track: event.track.value,
-                    title: event.title.value,
-                    slug: event.slug.value,
-                    url: Url::parse(&event.url.value)?,
-                    r#abstract: event.r#abstract.value,
-                    slides: slides(&event.attachments)?,
-                    presenters: presenters(event.persons),
-                    links: links(event.links)?,
-                };
-                model_events.push(model_event);
+    for year in args.years.iter() {
+        let pentabarf_path = PathBuf::from(&args.pentabarf_dir).join(format!("{}.xml", year));
+        info!("Importing Pentabarf file from {:?}", pentabarf_path);
+        let xml = std::fs::read_to_string(pentabarf_path)?;
+        let schedule: Schedule = xml_deserialize_from_str(&xml)?;
+        for day in schedule.days {
+            for room in day.rooms {
+                for event in room.events {
+                    let model_event = Event {
+                        id: model::EventId::new(event.id),
+                        guid: event.guid,
+                        date: NaiveDate::parse_from_str(&day.date, "%Y-%m-%d").unwrap(),
+                        start: NaiveTime::parse_from_str(&event.start.value, "%H:%M").unwrap(),
+                        duration: parse_into_minutes(&event.duration.value)?,
+                        room: room.name.clone(),
+                        track: event.track.value,
+                        title: event.title.value,
+                        slug: event.slug.value,
+                        url: Url::parse(&event.url.value)?,
+                        r#abstract: event.r#abstract.value,
+                        slides: slides(&event.attachments)?,
+                        presenters: presenters(event.persons),
+                        links: links(event.links)?,
+                    };
+                    model_events.push(model_event);
+                }
             }
         }
     }
