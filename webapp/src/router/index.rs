@@ -7,12 +7,14 @@ use crate::state::AppState;
 #[template(path = "index.html")]
 struct IndexTemplate {
     current_fosdem: shared::model::CurrentFosdem,
+    default_year: Option<u32>,
 }
 
 #[tracing::instrument]
 pub async fn index(State(state): State<AppState>) -> Html<String> {
     let page = IndexTemplate {
         current_fosdem: state.current_fosdem.clone(),
+        default_year: None,
     };
     let html = page.render().unwrap();
     Html(html)

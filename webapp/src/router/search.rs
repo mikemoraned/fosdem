@@ -45,6 +45,7 @@ where
 #[template(path = "search.html")]
 struct SearchTemplate {
     query: String,
+    year: Option<u32>,
     items: Vec<SearchItem>,
     current_event: Option<Event>, // TODO: remove this
     current_fosdem: shared::model::CurrentFosdem,
@@ -64,6 +65,7 @@ pub async fn search(
         Ok(items) => {
             let page = SearchTemplate {
                 query: params.q,
+                year: params.year,
                 items,
                 current_event: None,
                 current_fosdem: state.current_fosdem.clone(),

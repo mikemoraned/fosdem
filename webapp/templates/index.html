@@ -27,7 +27,7 @@
                     e.g. compare "controversial" on <a
                         href="https://fosdem.org/{{ current_fosdem.year }}/search/?q=controversial">main
                         site</a>
-                    vs <a href="/search?q=controversial&limit=20">here</a>.
+                    vs <a href="/search?q=controversial&limit=20&year={{ current_fosdem.year }}">here</a>.
                 </p>
                 <p>
                     See <a href="https://github.com/mikemoraned/fosdem">Github</a> for how this was built,
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="column is-one-third">
-            {% call search::form("") %}
+            {% call search::form("", default_year, current_fosdem.selectable_years) %}
         </div>
     </div>
 </section>

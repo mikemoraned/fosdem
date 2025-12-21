@@ -10,6 +10,7 @@ use crate::model;
 #[derive(Debug, Clone)]
 pub struct CurrentFosdem {
     pub year: u32,
+    pub selectable_years: Vec<u32>,
 }
 
 #[derive(Debug, Clone, PartialEq)]

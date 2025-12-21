@@ -16,9 +16,13 @@ async fn health() -> StatusCode {
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// curreny year of the events
+    /// current year of the events
     #[arg(short, long)]
     current_year: u32,
+
+    /// selectable years for filtering
+    #[arg(short, long, value_delimiter = ' ')]
+    selectable_years: Vec<u32>,
 
     /// path to directory where CSV files are kept
     #[arg(short, long)]
@@ -68,6 +72,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         &args.model_dir,
         &args.include_video_content,
         args.current_year,
+        args.selectable_years,
     )
     .await;
 

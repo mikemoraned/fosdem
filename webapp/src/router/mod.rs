@@ -24,6 +24,7 @@ pub async fn app_state(
     model_dir: &std::path::Path,
     video_content_dir: &Option<PathBuf>,
     current_year: u32,
+    selectable_years: Vec<u32>,
 ) -> AppState {
     AppState {
         queryable: Arc::new(
@@ -36,7 +37,10 @@ pub async fn app_state(
         } else {
             VideoIndex::empty_index()
         }),
-        current_fosdem: shared::model::CurrentFosdem { year: current_year },
+        current_fosdem: shared::model::CurrentFosdem {
+            year: current_year,
+            selectable_years,
+        },
     }
 }
 

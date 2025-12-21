@@ -1,17 +1,16 @@
-{% macro form(query) %}
+{% macro form(query, year, years) %}
 
 <form method="GET" action="/search">
     <div class="field has-addons">
         <div class="control">
             <span class="select is-primary">
                 <select name="year">
-                    <option>
-                        2025
+                    {% for possible_year in years %}
+                    <option value="{{ possible_year }}" {% if year==Some(**possible_year) %} selected {% endif %}>
+                        {{ possible_year }}
                     </option>
-                    <option>
-                        2026
-                    </option>
-                    <option selected>
+                    {% endfor %}
+                    <option value="" {% if year==None %} selected {% endif %}>
                         All Years
                     </option>
                 </select>
