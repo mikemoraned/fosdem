@@ -26,9 +26,10 @@
             <ul>
                 {% for item in items %}
                 <li>
-                    <a href="/event/{{ item.event.id }}/">
-                        <span class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                        <span>"{{ item.event.title }}"</span>
+                    <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/">
+                        <span
+                            class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                        <span>"{{ item.event.title }}" ({{ item.event.year }})</span>
                     </a>
                 </li>
                 {% endfor %}
@@ -44,19 +45,22 @@
 <div class="card-content">
     <p class="title is-5">
         <span>
-            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}"
+            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}" ({{ event.year }})
         </span>
     </p>
     <p class="subtitle is-7">
-        <span><i class="fa-solid fa-clock"></i> {{ event.date.format("%A") }} at {{ event.start.format("%H:%M") }}, {{ event.duration }} minutes</span>,
-        <a href="{{ event.nav_url(current_event) }}"><span><i class="fa-solid fa-location-dot"></i> {{ event.room }}</span></a>,
-        <a href="/room/{{ event.room }}/"><span><i class="fa-solid fa-presentation-screen"></i> {{ event.room }}</span></a>,
+        <span><i class="fa-solid fa-clock"></i> {{ event.date.format("%A") }} at {{ event.start.format("%H:%M") }}, {{
+            event.duration }} minutes</span>,
+        <a href="{{ event.nav_url(current_event) }}"><span><i class="fa-solid fa-location-dot"></i> {{ event.room
+                }}</span></a>,
+        <a href="/room/{{ event.room }}/"><span><i class="fa-solid fa-presentation-screen"></i> {{ event.room
+                }}</span></a>,
         <span><i class="fa-regular fa-train-track"></i> {{ event.track }}</span>
         {% for presenter in event.presenters %}
         <span><i class="fa-regular fa-person-chalkboard"></i> {{ presenter.name }}</span>
         {% endfor %}
         {% if event.slides.len() > 0 %}
-            , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
+        , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
         {% endif %}
         {% if let Some(url) = event.mp4_video_link() %}
         , <a href="{{ url }}"><span><i class="fa-solid fa-video"></i> video</span></a>

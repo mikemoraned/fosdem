@@ -1,9 +1,17 @@
-use std::fmt::{Display, Formatter};
 use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
 use nalgebra::DVector;
 use openai_dive::v1::resources::embedding::{EmbeddingOutput, EmbeddingResponse};
 use serde::{Deserialize, Serialize};
+use std::fmt::{Display, Formatter};
 use url::Url;
+
+use crate::model;
+
+#[derive(Debug, Clone)]
+pub struct CurrentFosdem {
+    pub year: u32,
+    pub selectable_years: Vec<u32>,
+}
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct SearchItem {
@@ -12,10 +20,37 @@ pub struct SearchItem {
     pub related: Option<Vec<SearchItem>>,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd, Eq, Ord, Hash, Copy)]
+pub struct EventId {
+    year: u32,
+    id: u32,
+}
+
+impl EventId {
+    pub fn new(year: u32, id: u32) -> EventId {
+        EventId { year, id }
+    }
+
+    pub fn year(&self) -> u32 {
+        self.year
+    }
+
+    pub fn event_in_year(&self) -> u32 {
+        self.id
+    }
+}
+
+impl Display for EventId {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}-{}", self.year, self.id)
+    }
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Event {
-    pub id: u32,
+    pub id: EventId,
     pub guid: String,
+    pub year: u32,
     pub date: NaiveDate,
     pub start: NaiveTime,
     pub duration: u32,
@@ -30,9 +65,27 @@ pub struct Event {
     pub links: Vec<Link>,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, PartialOrd, Eq, Ord, Hash, Copy)]
+pub struct PersonId {
+    year: u32,
+    id: u32,
+}
+
+impl PersonId {
+    pub fn new(year: u32, id: u32) -> PersonId {
+        PersonId { year, id }
+    }
+}
+
+impl Display for PersonId {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}-{}", self.year, self.id)
+    }
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct Person {
-    pub id: u32,
+    pub id: PersonId,
     pub name: String,
 }
 
@@ -82,7 +135,9 @@ impl Event {
     }
 
     pub fn sojourner_url(&self) -> Url {
-        let base_url = Url::parse("https://fosdem.sojourner.rocks/2025/event/").unwrap();
+        let base_url =
+            Url::parse(format!("https://fosdem.sojourner.rocks/{}/event/", self.year).as_str())
+                .unwrap();
         base_url.join(&self.guid.to_string()).unwrap()
     }
 
@@ -131,7 +186,9 @@ pub struct OpenAIEmbedding {
 }
 
 impl OpenAIEmbedding {
-    pub fn embedding_from_response(response: &EmbeddingResponse) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
+    pub fn embedding_from_response(
+        response: &EmbeddingResponse,
+    ) -> Result<OpenAIVector, Box<dyn std::error::Error>> {
         let output = response.data[0].embedding.clone();
         match output {
             EmbeddingOutput::Float(parts) => Ok(OpenAIVector::from(parts)),
@@ -153,5 +210,5 @@ pub struct NextEvents {
 #[derive(Debug)]
 pub enum NextEventsContext {
     Now,
-    EventId(u32),
+    EventId(model::EventId),
 }

@@ -4,10 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum-valid = "0.13"
-validator = { version = "0.16", features = ["derive"] }
-askama = "0.12"
+axum-valid = "0.24"
+validator = { version = "0.20", features = ["derive"] }
+askama = "0.14"
 unicode-segmentation = "1.12"
+reqwest = { workspace = true }
 axum = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }
@@ -22,3 +23,5 @@ url = { workspace = true }
 chrono = { workspace = true }
 shared = { path = "../shared" }
 content = { path = "../content" }
+sitemap-rs = "0.4.0"
+axum-extra = "0.12.3"

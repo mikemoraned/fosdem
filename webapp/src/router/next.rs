@@ -1,4 +1,3 @@
-
 use askama::Template;
 use axum::{
     extract::{Query, State},
@@ -7,9 +6,7 @@ use axum::{
 use axum_valid::Valid;
 
 use serde::Deserialize;
-use shared::
-    model::{Event, NextEvents, NextEventsContext}
-;
+use shared::model::{self, Event, NextEvents, NextEventsContext};
 use validator::Validate;
 
 use crate::filters;
@@ -27,6 +24,7 @@ pub struct NextParams {
 struct NowAndNextTemplate {
     next: NextEvents,
     current_event: Option<Event>,
+    current_fosdem: model::CurrentFosdem,
 }
 
 #[tracing::instrument(skip(state))]
@@ -35,7 +33,9 @@ pub async fn next(
     Valid(Query(params)): Valid<Query<NextParams>>,
 ) -> axum::response::Result<Html<String>> {
     let context = match params.id {
-        Some(event_id) => NextEventsContext::EventId(event_id),
+        Some(event_id) => {
+            NextEventsContext::EventId(model::EventId::new(state.current_fosdem.year, event_id))
+        }
         None => NextEventsContext::Now,
     };
     match state.queryable.find_next_events(context).await {
@@ -43,6 +43,7 @@ pub async fn next(
             let page = NowAndNextTemplate {
                 next: next.clone(),
                 current_event: Some(next.selected.clone()),
+                current_fosdem: state.current_fosdem.clone(),
             };
             let html = page.render().unwrap();
             Ok(Html(html))
@@ -50,4 +51,3 @@ pub async fn next(
         Err(_) => Err("failed".into()),
     }
 }
-

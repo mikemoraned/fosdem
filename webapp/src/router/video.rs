@@ -6,7 +6,7 @@ use axum::{
 };
 
 use serde::Deserialize;
-use shared::model::Event;
+use shared::model::{self, Event};
 use validator::Validate;
 
 use crate::state::AppState;
@@ -23,19 +23,24 @@ pub struct EventVideoParams {
 #[template(path = "event_video.html")]
 struct EventVideoTemplate {
     event: Event,
+    current_fosdem: shared::model::CurrentFosdem,
 }
-
-#[derive(Deserialize, Debug)]
-pub struct EventIdParam(u32);
 
 #[tracing::instrument(skip(state))]
 pub async fn event_video(
     State(state): State<AppState>,
-    Path(EventIdParam(event_id)): Path<EventIdParam>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
 ) -> axum::response::Result<Html<String>> {
-    match state.queryable.find_event_by_id(event_id).await {
+    match state
+        .queryable
+        .find_event_by_id(model::EventId::new(year, event_in_year_id))
+        .await
+    {
         Ok(Some(event)) => {
-            let page = EventVideoTemplate { event };
+            let page = EventVideoTemplate {
+                event,
+                current_fosdem: state.current_fosdem.clone(),
+            };
             let html = page.render().unwrap();
             Ok(Html(html))
         }
@@ -46,9 +51,12 @@ pub async fn event_video(
 #[tracing::instrument(skip(state))]
 pub async fn event_video_webvtt(
     State(state): State<AppState>,
-    Path(EventIdParam(event_id)): Path<EventIdParam>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
 ) -> impl IntoResponse {
-    match state.video_index.webvtt_for_event_id(event_id) {
+    match state
+        .video_index
+        .webvtt_for_event_id(model::EventId::new(year, event_in_year_id))
+    {
         Some(webvtt) => (
             StatusCode::OK,
             [(header::CONTENT_TYPE, "text/vtt")],

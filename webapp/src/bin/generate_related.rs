@@ -24,6 +24,10 @@ struct Args {
     #[arg(short, long)]
     limit: u8,
 
+    /// years to generate related items for
+    #[arg(short, long, value_delimiter = ' ')]
+    years: Vec<u32>,
+
     /// output json file
     #[arg(short, long)]
     json: String,
@@ -39,7 +43,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let openai_api_key = load_secret("OPENAI_API_KEY")?;
 
-    info!("Loading all Events and converting to Nodes");
+    info!(
+        "Loading all Events for years ({:?}) and converting to Nodes",
+        args.years
+    );
     let queryable = InMemoryOpenAIQueryable::connect(&args.model_dir, &openai_api_key).await?;
     let events = queryable.load_all_events().await?;
     let mut titles_covered: HashMap<String, usize> = HashMap::new();
@@ -47,7 +54,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let time_slots: Vec<(NaiveDate, NaiveTime)> =
         events.iter().map(|e| (e.date, e.start)).collect();
     let time_slot_ids = build_time_slot_ids(&time_slots);
-    for event in events.iter() {
+    let filtered_events: Vec<_> = events
+        .into_iter()
+        .filter(|e| args.years.contains(&e.year))
+        .collect();
+    for event in filtered_events.iter() {
         let new_index = nodes.len();
         titles_covered.insert(event.title.clone(), new_index);
         let time_slot = (event.date, event.start);
@@ -55,7 +66,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         nodes.push(Node {
             index: new_index,
             title: event.title.clone(),
-            local_path: format!("/event/{}/", event.id),
+            local_path: format!("/{}/event/{}/", event.id.year(), event.id.event_in_year()),
             url: event.url.clone(),
             sojourner_url: event.sojourner_url(),
             time_slot: *time_slot_id,
@@ -69,20 +80,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         args.limit
     );
     let mut links: Vec<Link> = vec![];
-    let progress = progress_bar(events.len() as u64);
-    for event in events.into_iter() {
+    let progress = progress_bar(filtered_events.len() as u64);
+    for event in filtered_events.into_iter() {
         let related = queryable
-            .find_related_events(&event.title, args.limit)
+            .find_related_events(&event.title, args.limit, None)
             .await?;
         let source = *titles_covered.get(&event.title).unwrap();
         for item in related.iter() {
-            let target = *titles_covered.get(&item.event.title).unwrap();
-            let distance = item.distance;
-            links.push(Link {
-                source,
-                target,
-                distance,
-            });
+            if args.years.contains(&item.event.year) {
+                let target = *titles_covered.get(&item.event.title).unwrap();
+                let distance = item.distance;
+                links.push(Link {
+                    source,
+                    target,
+                    distance,
+                });
+            }
         }
         progress.inc(1);
     }

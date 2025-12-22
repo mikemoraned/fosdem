@@ -5,7 +5,9 @@ use openai_dive::v1::api::Client;
 
 use tracing::{debug, span};
 
-use crate::model::{Event, NextEvents, NextEventsContext, OpenAIEmbedding, OpenAIVector, SearchItem};
+use crate::model::{
+    Event, EventId, NextEvents, NextEventsContext, OpenAIEmbedding, OpenAIVector, SearchItem,
+};
 use crate::queryable::Queryable;
 use crate::{openai::get_embedding, queryable::MAX_RELATED_EVENTS};
 
@@ -34,9 +36,13 @@ impl Queryable for InMemoryOpenAIQueryable {
     #[tracing::instrument(skip(self))]
     async fn find_event_by_id(
         &self,
-        event_id: u32,
+        event_id: EventId,
     ) -> Result<Option<Event>, Box<dyn std::error::Error>> {
-        Ok(self.events.iter().find(|e| e.event.id == event_id).map(|e| e.event.clone()))
+        Ok(self
+            .events
+            .iter()
+            .find(|e| e.event.id == event_id)
+            .map(|e| e.event.clone()))
     }
 
     #[tracing::instrument(skip(self))]
@@ -44,6 +50,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         &self,
         title: &str,
         limit: u8,
+        year_filter: Option<u32>,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Finding embedding for title");
         let event = match self.events.iter().find(|e| e.event.title == *title) {
@@ -54,6 +61,11 @@ impl Queryable for InMemoryOpenAIQueryable {
         debug!("Finding all distances from embedding");
         let mut entries = vec![];
         for embedded_event in &self.events {
+            if let Some(year) = year_filter {
+                if embedded_event.event.year != year {
+                    continue;
+                }
+            }
             if embedded_event.event.id != event.event.id {
                 entries.push(SearchItem {
                     event: embedded_event.event.clone(),
@@ -75,6 +87,7 @@ impl Queryable for InMemoryOpenAIQueryable {
         query: &str,
         limit: u8,
         find_related: bool,
+        year_filter: Option<u32>,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>> {
         debug!("Getting embedding for query");
         let response = get_embedding(&self.openai_client, query).await?;
@@ -83,6 +96,11 @@ impl Queryable for InMemoryOpenAIQueryable {
         debug!("Finding all distances from embedding");
         let mut entries = vec![];
         for embedded_event in &self.events {
+            if let Some(year) = year_filter {
+                if embedded_event.event.year != year {
+                    continue;
+                }
+            }
             entries.push(SearchItem {
                 event: embedded_event.event.clone(),
                 distance: distance(&embedding, &embedded_event.openai_embedding),
@@ -100,8 +118,12 @@ impl Queryable for InMemoryOpenAIQueryable {
                     let mut entries_with_related = vec![];
                     for mut entry in entries.into_iter() {
                         entry.related = Some(
-                            self.find_related_events(&entry.event.title, MAX_RELATED_EVENTS)
-                                .await?,
+                            self.find_related_events(
+                                &entry.event.title,
+                                MAX_RELATED_EVENTS,
+                                year_filter,
+                            )
+                            .await?,
                         );
                         entries_with_related.push(entry);
                     }
