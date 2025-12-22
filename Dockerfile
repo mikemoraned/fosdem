@@ -11,4 +11,4 @@ COPY --from=builder /prod/assets/ /assets/
 COPY --from=builder /prod/shared/data/model/ /model/
 RUN ls -R .
 
-CMD ./bin/fly --model-dir ./model --opentelemetry --current-year 2026 --selectable-years "2025 2026"
+CMD ./bin/fly --model-dir ./model --opentelemetry --current-year 2026 --selectable-years "2024 2025 2026"

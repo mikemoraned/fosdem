@@ -1,5 +1,5 @@
 model_dir := "./shared/data/model"
-years := "2025 2026"
+years := "2024 2025 2026"
 current_year := "2026"
 pentabarf_dir := "./content/schedule"
 assets_dir := "./assets"
