@@ -157,6 +157,12 @@
 &lt;p&gt;He's the chairman and co-founder of Meetecho, a company providing both consultancy services and communication platforms. He got is degree and Ph.D at the Computer Science Department at the University of Napoli Federico II, where he started working on multimedia conferencing and met the colleagues with whom he co-founded Meetecho as an academic spin-off. He is an active contributor to the Internet Engineering Task Force (IETF) standardization activities, especially in the framework of real-time multimedia applications. He is most known as the author of Janus, a general purpose and open source WebRTC server.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1393">
+      <name>Cornelius Schumacher</name>
+      <slug>cornelius_schumacher</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1402">
       <name>TELLIER Benoit</name>
       <slug>tellier_benoit</slug>
@@ -378,6 +384,16 @@ design.&lt;/p&gt;</biography>
 &lt;p&gt;N.B " Бого" Is in Bulgarian, and it's read as Bogo.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1623">
+      <name>Ludovic Dubost</name>
+      <slug>ludovic_dubost</slug>
+      <biography>&lt;p&gt;Creator of XWiki and CEO of XWiki SAS, Ludovic I'm the gentle organizer of the XWiki SAS company for now 21 years, and leads the business side of the CryptPad project.&lt;/p&gt;
+&lt;p&gt;XWiki SAS, a European company based in France and Romania, only building free &amp;amp; open-source software leads the development of the XWiki Software used by thousands of organizations and helps companies and organizations all over the world organize, share, and collaborate on content. XWiki also leads the development of CryptPad (https://cryptpad.org), the E2EE Real-time Collaborative Suite, including Simple pads, Office document Editors, Drive, Online Forms and more.&lt;/p&gt;
+&lt;p&gt;A graduate of Ecole Polytechnique (X90) and Telecom Paris (95), I started my career as a software architect for Netscape Communications Europe. After being a CTO of an Internet usage analysis startup during the Internet Bubble and understanding how it works, I joined the FOSS movement.&lt;/p&gt;
+&lt;p&gt;I've been a speaker at various events including Paris Open Source Experience, FOSDEM, OW2 Conference, JDLL, Capitole du Libre, speaking about Collaboration Software, Financing FLOSS software and Privacy Solutions.&lt;/p&gt;
+&lt;p&gt;I'm also member of the OpenFoodFacts board.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1626">
       <name>Neil Armstrong</name>
       <slug>neil_armstrong</slug>
@@ -521,6 +537,14 @@ Windows, becoming Vice President and CTO.  He joined Novell in 2008 as
 a Distinguished Engineer at Novell's SUSE Labs, Parallels (later Odin)
 in 2011 as CTO of Server Virtualization, IBM Research in 2016 and
 Microsoft in 2024.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="1804">
+      <name>Anthony Harrison</name>
+      <slug>anthony_harrison</slug>
+      <biography>&lt;p&gt;Anthony Harrison has been developing and delivering mission-critical applications for over 40 years working on various complex programs where he held various roles in software, systems and cyber engineering, as well as providing technical leadership for a number of programmes.&lt;/p&gt;
+&lt;p&gt;He is the Founder and Director of APH10, and co-founder of SBOM Europe, and is a leading source of expertise in Software Bill of Materials (SBOM). He has been developing open source software actively for a number of years; most recently, the applications have been related to supporting the software supply chain through utilities to generate and analyse software bills of materials (SBOMs).&lt;/p&gt;
+&lt;p&gt;He has been a mentor for the Google Summer of Code for the past four years via the Python Software Foundation and is a mentor for his local CoderDojo in Manchester teaching students Python.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="1808">
@@ -1145,6 +1169,12 @@ Before working at Open Climate Fix, Peter worked with Habitat Energy and helped 
       <name>Jos Poortvliet</name>
       <slug>jos_poortvliet</slug>
       <biography>&lt;p&gt;People person, technology enthusiast and all-things-open evangelist. Co-founder and Comms director at Nextcloud, previously community manager at SUSE. Active for over 2 decades in open source, starting in the KDE community. enjoys avoiding traffic and public transport on bike through Berlin, fan of cooking for family and friends.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="2746">
+      <name>Matija Šuklje</name>
+      <slug>matija_suklje</slug>
+      <biography>&lt;p&gt;FOSS lawyer by day, hacker by night. Involved with license compliance, but dabbling with hackerspaces and organizing.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="2750">
@@ -1973,6 +2003,12 @@ Vissarion also teaches MSc courses in computational geometry and
 algorithm engineering at the University of Athens.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="4262">
+      <name>Eloi Charpentier</name>
+      <slug>eloi_charpentier</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="4288">
       <name>Tobias Diekershoff</name>
       <slug>tobias_diekershoff</slug>
@@ -2407,6 +2443,12 @@ The SCS project received funding from the German goverment from 2021-24, technic
     <person id="5052">
       <name>Victor Le Pochat</name>
       <slug>victor_le_pochat</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="5054">
+      <name>Jonah Brüchert</name>
+      <slug>jonah_bruchert</slug>
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
@@ -3159,6 +3201,12 @@ Linux sysadmin by trade&lt;/p&gt;</biography>
 &lt;p&gt;Andy is originally from Chile but resides in the United States.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="5703">
+      <name>Adam Pioterek</name>
+      <slug>adam_pioterek</slug>
+      <biography>&lt;p&gt;One from the common folk. Finished studies at Poznań University of Technology and found employment as a sysadmin, then devops engineer. Passionate about free and open source software from very early age as a user, later trying to solve every problem with it, and finally settled as Bimba’s sole maintainer against all odds.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="5708">
       <name>Aleix Pol</name>
       <slug>aleix_pol</slug>
@@ -3867,6 +3915,13 @@ building custom BSP layers using Yocto for projects involving various frameworks
       <biography>&lt;p&gt;I am a Tech and Linux Enthusiast currently working at Red Hat Support as SME.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6130">
+      <name>Manuel Rego</name>
+      <slug>manuel_rego</slug>
+      <biography>&lt;p&gt;Web Engines Hacker (Chromium &amp;amp; WebKit reviewer, Servo TSC chair) - CSSWG member - Free Software/Open Source Developer - Igalia partner
+&lt;em&gt;he/him&lt;/em&gt;&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6131">
       <name>Ash Vardanian</name>
       <slug>ash_vardanian</slug>
@@ -3954,6 +4009,14 @@ Principle Engineer III&lt;/p&gt;</biography>
       <name>Bobby Nölte</name>
       <slug>bobby_nolte</slug>
       <biography>&lt;p&gt;Bobby Nölte, living near Munich. Open source addict since I am 20. Now more an open source grandpa. DIY energy change maker. Professional electronics and software background. Got "influenced" by Andreas Schmitz to contribute to EOS as a piece for the energy change.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6180">
+      <name>Steve Springett</name>
+      <slug>steve_springett</slug>
+      <biography>&lt;p&gt;Steve guides teams in both the strategy and execution of secure software development. He integrates security throughout the entire development lifecycle, leading efforts in threat modeling, secure architecture and design, static, dynamic, and component analysis, offensive research, and defensive programming.&lt;/p&gt;
+&lt;p&gt;Steve's passionate about helping organizations identify and reduce risk from the software supply chain. He is an open source advocate and leads the &lt;a href="https://dependencytrack.org/"&gt;OWASP Dependency-Track&lt;/a&gt; project, &lt;a href="https://scvs.owasp.org/"&gt;OWASP Software Component Verification Standard&lt;/a&gt; (SCVS), and Chairs the &lt;a href="https://cyclonedx.org/"&gt;OWASP CycloneDX&lt;/a&gt; Core Working Group and &lt;a href="https://ecma-international.org/technical-committees/tc54/"&gt;Ecma International TC54&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Steve serves as Vice Chair on the Board of Directors of the OWASP Foundation where he helps drive the continued growth of the foundation and the pursuit of its mission to make secure software a reality through open collaboration, education, and innovation.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6182">
@@ -4396,6 +4459,12 @@ private sectors. She has worked as Senior Legal Advisor to the UN Special Rappor
 &lt;/ul&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6331">
+      <name>Jonas Lindström</name>
+      <slug>jonas_lindstrom</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6332">
       <name>Benoît Ganne</name>
       <slug>benoit_ganne</slug>
@@ -4523,6 +4592,12 @@ Then, in 2023, I got a new position that I currently occupy in the Conservatoire
       <name>Michael Stahl</name>
       <slug>michael_stahl</slug>
       <biography>&lt;p&gt;Started working on OpenOffice.org Writer in 2007, currently employed by Collabora Productivity Germany GmbH.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6372">
+      <name>Julius Tens</name>
+      <slug>julius_tens</slug>
+      <biography>&lt;p&gt;Open data specialist, software and data architect at DB InfraGO AG (Personenbahnhöfe)&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6373">
@@ -5285,6 +5360,12 @@ After a stint covering breaking news across APAC, she discovered open source tec
       <biography>&lt;p&gt;Guillermo has been working in the data space as a Data Engineer and Architect for over 7 years. His experience with Big Data platforms like Snowflake and Databricks (and some others) convinced him that an alternative, simpler approach may be all we need to make good analytics work. That's why he decided to join DuckDB Labs to work in Product and Developer Relations.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6625">
+      <name>Clear Byte</name>
+      <slug>clear_byte</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6629">
       <name>Sina Karvandi</name>
       <slug>sina_karvandi</slug>
@@ -5529,9 +5610,21 @@ He is part of the Intelligent Robotics Lab, where he focuses on open-source solu
       <biography>&lt;p&gt;Torsten is a free software activist and developer. He started FSFE's "Free Your Android" campaign and has since specialized in privacy and software freedom of the Android ecosystem. Torsten maintains and contributes to many Android apps such as F-Droid, Briar, Seedvault, Onionshare, and others. He also works for CalyxOS an Android based operating system focused on privacy.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6725">
+      <name>Bastian Ehrenholz</name>
+      <slug>bastian_ehrenholz</slug>
+      <biography>&lt;p&gt;Bastian Ehrenholz is research assistant at the Institute of Public Transport Planning (IPTP) of the TU Braunschweig. His research is considering questions regarding strategic network development and the capacity of railway infrastructure.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6726">
       <name>Egor Dmitriev</name>
       <slug>egor_dmitriev</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6727">
+      <name>Paula von der Heide</name>
+      <slug>paula_von_der_heide</slug>
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
@@ -5646,6 +5739,14 @@ I'm passionate about making it quicker and easier to query data and draw insight
       <name>Dmitrii</name>
       <slug>dmitrii</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6777">
+      <name>Robin Durner</name>
+      <slug>robin_durner</slug>
+      <biography>&lt;p&gt;Analysing, visualizing, routing through public transport data&lt;/p&gt;
+&lt;p&gt;https://github.com/traines-source
+https://www.youtube.com/@Traines&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6782">
@@ -5865,6 +5966,12 @@ Leon has presented his work at various academic and industry conferences, includ
       <slug>vlastimil_babka</slug>
       <biography>&lt;p&gt;Linux Kernel developer at SUSE Labs, with focus on memory management.
 Maintainer of slab and page allocators.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6882">
+      <name>Stefan Jugelt</name>
+      <slug>stefan_jugelt</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6884">
@@ -7215,6 +7322,44 @@ This talk presents &lt;a href="https://smolBSD.org"&gt;smolBSD&lt;/a&gt;’s des
       </event>
     </room>
     <room name="K.3.401" slug="k3401">
+      <event guid="2e0f440d-f21f-546d-8a13-aed1cce88145" id="9516">
+        <date>2026-01-31T10:30:00+01:00</date>
+        <start>10:30</start>
+        <duration>00:25</duration>
+        <room>K.3.401</room>
+        <slug>3VB7H8-cryptpad_updates_latest_in_private_real-time_collaboration</slug>
+        <url>https://fosdem.org/2026/schedule/event/3VB7H8-cryptpad_updates_latest_in_private_real-time_collaboration/</url>
+        <title>CryptPad updates: latest in private real-time collaboration</title>
+        <subtitle></subtitle>
+        <track slug="collaboration-and-content-management">Collaboration and content management</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;CryptPad is a collaborative office-suite that is end-to-end encrypted and fully open-source. The project has been operating for over 10 years and is used to collaborate on millions of documents each month on the flagship instance cryptpad.fr. In this talk we will introduce the product and its suite of applications. We will highlight some recent achievements from the last year including&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;an updated look and feel;&lt;/li&gt;
+&lt;li&gt;a re-write of our server;&lt;/li&gt;
+&lt;li&gt;improvements to office applications;&lt;/li&gt;
+&lt;li&gt;and a new CryptPad embedding API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We will also recap the financial situation of the project, and our plans looking ahead towards sustainability.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/3VB7H8/feedback/</feedback_url>
+        <persons>
+          <person id="1623">Ludovic Dubost</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://cryptpad.org">CryptPad Project web site</link>
+          <link href="https://cryptpad.fr">CryptPad Flagship instance</link>
+          <link href="https://github.com/cryptpad/cryptpad/">CryptPad GitHub Repository</link>
+          <link href="https://github.com/cryptpad/cryptpad-api-examples">CryptPad API examples</link>
+          <link href="https://github.com/cryptpad/scalable-server">CryptPad Scalable Server</link>
+          <link href="https://chat.fosdem.org/#/room/#2026-collaboration-and-content-management:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-collaboration-and-content-management:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/3VB7H8/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="0c65cf75-55cf-5f2b-b1fd-af4f1cab5af0" id="9615">
         <date>2026-01-31T11:00:00+01:00</date>
         <start>11:00</start>
@@ -7490,6 +7635,34 @@ I will also present other features developed this year (integration of the Block
           <link href="https://chat.fosdem.org/#/room/#2026-collaboration-and-content-management:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-collaboration-and-content-management:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GTZSA8/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="e2d9b533-a757-5666-8bed-6eb85ab81ae2" id="8453">
+        <date>2026-01-31T15:15:00+01:00</date>
+        <start>15:15</start>
+        <duration>00:25</duration>
+        <room>K.3.401</room>
+        <slug>AZEMRW-coolcollab</slug>
+        <url>https://fosdem.org/2026/schedule/event/AZEMRW-coolcollab/</url>
+        <title>Collabora Office - off &amp; on collaboration</title>
+        <subtitle></subtitle>
+        <track slug="collaboration-and-content-management">Collaboration and content management</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The new Collabora Office brings a beautiful, ergonomic suite, based on LibreOffice to the desktop. Come hear why, in 2026 we're creating a native local application. Hear about the limitations of Web APIs, and checkout some of the metrics we have gathered around how people collaborate on-line, and the engineering decisions that flow from that.
+Hear about our new approaches to handle collaboration, off-line, conflicts, and forthcoming protocol to negotiate transitions between co-editing, sharing, on-line and off-line.
+Finally catch up with the latest in UX research, interoperabiltiy and feature improvements as well as seeing how to get involved with the project.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/AZEMRW/feedback/</feedback_url>
+        <persons>
+          <person id="2923">Michael Meeks</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-collaboration-and-content-management:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-collaboration-and-content-management:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/AZEMRW/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="a610c37e-f016-5023-a561-51b9f9231143" id="8408">
@@ -7867,6 +8040,424 @@ In this talk, we will present our approach, our current progress, issues we have
           <link href="https://chat.fosdem.org/#/room/#2026-libre-chip-fpga-and-vlsi-devroom:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-libre-chip-fpga-and-vlsi-devroom:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/SPZ7J8/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="b6540e9a-3092-508c-9f3a-5cc1977a1e8d" id="9766">
+        <date>2026-01-31T15:00:00+01:00</date>
+        <start>15:00</start>
+        <duration>00:05</duration>
+        <room>K.3.601</room>
+        <slug>TSZGCJ-welcome_to_the_railways_and_open_transport_devroom</slug>
+        <url>https://fosdem.org/2026/schedule/event/TSZGCJ-welcome_to_the_railways_and_open_transport_devroom/</url>
+        <title>Welcome to the Railways and Open Transport Devroom</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The organizing team of the Devroom welcomes you to the Railways and Open Transport room. Exciting content lies ahead.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/TSZGCJ/feedback/</feedback_url>
+        <persons>
+          <person id="1393">Cornelius Schumacher</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/TSZGCJ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="4e58fb34-e6c2-52c8-b0f9-bd5611bbeed1" id="9687">
+        <date>2026-01-31T15:05:00+01:00</date>
+        <start>15:05</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>WCY8YY-europes-new-mobility-architecture</slug>
+        <url>https://fosdem.org/2026/schedule/event/WCY8YY-europes-new-mobility-architecture/</url>
+        <title>Europe’s New Mobility Architecture: MMTIS, NAPCORE, and the Future of Multimodal &amp; Railway Standards</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;2025 marks a turning point for European mobility data. A significant update to the Multimodal Travel Information Services (MMTIS) regulation takes effect in March 2025. In parallel, ERA and DG MOVE have initiated a coordinated overhaul of all Transmodel-based standards, and a newly agreed TSI Telematics revision (November 2025) sets the direction for railway digitalisation from 2026 onward.&lt;/p&gt;
+&lt;p&gt;This talk brings together Yann Seimandi (DG MOVE) and Stefan Jugelt (ERA) to give developers and open-source contributors a clear picture of the new regulatory and technical landscape. We will cover:&lt;/p&gt;
+&lt;p&gt;What’s new in MMTIS 2.0
+- How NAPCORE supports harmonised, cross-border mobility data
+- Upgrading Transmodel-based standards to European Norms
+- Specification of EUDIT, the new Transmodel-based Booking API
+- Development of EFIP, a unified European NeTEx Fares Profile
+- Alignment of TSI Telematics with the broader multimodal ecosystem&lt;/p&gt;
+&lt;p&gt;Participants will gain insight into the impact on APIs and data models and how open-source communities can contribute to Europe’s mobility infrastructure.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/WCY8YY/feedback/</feedback_url>
+        <persons>
+          <person id="6882">Stefan Jugelt</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WCY8YY/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="9b41fcf8-237d-5fc9-a881-26515b707a13" id="9663">
+        <date>2026-01-31T15:50:00+01:00</date>
+        <start>15:50</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>R3EF8T-czech-transport-data</slug>
+        <url>https://fosdem.org/2026/schedule/event/R3EF8T-czech-transport-data/</url>
+        <title>The state of open data in Czech public transport</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Despite EU-level initiatives, the availability and quality of open data on public transport differs wildly between member states. I'll talk about the situation in the Czech Republic from the perspective of someone who's been fighting for data availability for the last 5 years.&lt;/p&gt;
+&lt;p&gt;We'll focus mostly on timetables, briefly covering the history of the Czech Republic's centralised system, the current state of affairs after multiple lawsuits, and the (hopefully) rosy future. I'll also talk about other datasets, like real-time positions and train composition, and also about my experience trying to fit Czech data into existing open standards and software.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/R3EF8T/feedback/</feedback_url>
+        <persons>
+          <person id="6549">David Koňařík</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/R3EF8T/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="0ce6ca5b-e1a7-5bbb-8029-c6964ef890d9" id="7646">
+        <date>2026-01-31T16:15:00+01:00</date>
+        <start>16:15</start>
+        <duration>00:05</duration>
+        <room>K.3.601</room>
+        <slug>YVHDF7-from-first-floss-poznan-pt-app</slug>
+        <url>https://fosdem.org/2026/schedule/event/YVHDF7-from-first-floss-poznan-pt-app/</url>
+        <title>From first FLOSS Poznań public transport app to global coverage with Transitous</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In this talk, I will present why and how I started writing Bimba, a public transport application for my city back in 2017. The talk will show major turning points in the journey: when the city started providing open data, when Bimba no longer worked in single place, when Transitous was integrated enabling not only global coverage but also global routing, and meeting people and ideas during last year's RaOT track at FOSDEM and the first Open Transport unconference. I will also present how—with crowdsourcing—Bimba is now also a part of the community and finally, I will hint to what may come in the future.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/YVHDF7/feedback/</feedback_url>
+        <persons>
+          <person id="5703">Adam Pioterek</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/YVHDF7/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="85cd3280-a164-5d63-a3fd-5417a1e4b91c" id="9681">
+        <date>2026-01-31T16:20:00+01:00</date>
+        <start>16:20</start>
+        <duration>00:05</duration>
+        <room>K.3.601</room>
+        <slug>Z9GDAF-crowdsourcing_delay_information</slug>
+        <url>https://fosdem.org/2026/schedule/event/Z9GDAF-crowdsourcing_delay_information/</url>
+        <title>Crowdsourcing Delay Information</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Not every public transport agency publishes real-time delay information, and some do not even have it.
+Some of the proprietary transit apps have used user-submitted data to bridge this gap for some time now.&lt;/p&gt;
+&lt;p&gt;This talk explores how we can do the same in open-source apps, based on &lt;a href="https://transitous.org/"&gt;Transitous&lt;/a&gt;.
+It covers the steps from collecting the vehicle positions from people's phones in an ethical way, to deriving the delay and to integrating the results with existing routing services and apps.&lt;/p&gt;
+&lt;p&gt;In addition to allowing for the independent collection of real-time information, the components written for this project (&lt;a href="https://codeberg.org/jbb/transitous-gps-collector/"&gt;gps-collector&lt;/a&gt; and &lt;a href="https://codeberg.org/jbb/gtfs-delay-tracker"&gt;gtfs-delay-tracker&lt;/a&gt;) could potentially be useful for community buses, heritage railways and smaller public transport agencies with limited budgets.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/Z9GDAF/feedback/</feedback_url>
+        <persons>
+          <person id="5054">Jonah Brüchert</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/Z9GDAF/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="dbf1123c-e62b-5c7b-bd01-ef62a93a2cc8" id="8583">
+        <date>2026-01-31T16:25:00+01:00</date>
+        <start>16:25</start>
+        <duration>00:10</duration>
+        <room>K.3.601</room>
+        <slug>WQS9YL-openstation</slug>
+        <url>https://fosdem.org/2026/schedule/event/WQS9YL-openstation/</url>
+        <title>DB InfraGO's OpenStation: NeTEx + SIRI for railway stations</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In late 2025, &lt;a href="https://dbinfrago.com"&gt;DB InfraGO&lt;/a&gt; - Germany's state owned operator of railway infrastructure - released its &lt;a href="https://github.com/dbinfrago/openstation-docs"&gt;“OpenStation“ API&lt;/a&gt;, the new single source of truth for train station data. The API (or as some users have put it: "glorified collection of XML files") is based on the european &lt;a href="https://netex-cen.eu"&gt;NeTEx&lt;/a&gt; and &lt;a href="https://siri-cen.eu"&gt;SIRI&lt;/a&gt; standards, and its contents are released as CC0 (public domain), a first for Deutsche Bahn.&lt;/p&gt;
+&lt;p&gt;In this talk, we want to share our experiences with NeTEx and SIRI from a data producer's perspective, highlight some benefits and challenges of our new API, explain its intended role within the transport data ecosystem, and discuss our future plans for OpenStation. Last but not least, we would like to hear your thoughts and feedback on our new API.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/WQS9YL/feedback/</feedback_url>
+        <persons>
+          <person id="6372">Julius Tens</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WQS9YL/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="97651775-3c51-584a-896a-7f8cb91990b0" id="8497">
+        <date>2026-01-31T16:35:00+01:00</date>
+        <start>16:35</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>D9RRZC-otp-finds-a-way</slug>
+        <url>https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/</url>
+        <title>OTP Finds a way</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;OpenTripPlanner is a mature, open-source engine for multimodal journey planning across public transport, walking, cycling, micromobility, and driving/park and ride.&lt;/p&gt;
+&lt;p&gt;It supports datasources on multiple different format (NeTEx, GTFS), consumes hundreds of realtime updates per second to timetable data while delivering fast response times.&lt;/p&gt;
+&lt;p&gt;With all these capabilities it is important to map real world as accurate as possible. &lt;/p&gt;
+&lt;p&gt;How do you manage time-traveling trains, ghost buses, levitating trains, and how long is a staircase?&lt;/p&gt;
+&lt;p&gt;Inconsistent data, outliers and quirky rules go head to head with configuration and algorithms in a battle to answer the questions, what is the best journey from A to B.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/D9RRZC/feedback/</feedback_url>
+        <persons>
+          <person id="6331">Jonas Lindström</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/D9RRZC/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="4fe5dff7-cab0-5982-96f8-fe33c6194168" id="9538">
+        <date>2026-01-31T16:55:00+01:00</date>
+        <start>16:55</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>TEW7YL-probabilistic_turn-by-turn_directions_for_public_transport</slug>
+        <url>https://fosdem.org/2026/schedule/event/TEW7YL-probabilistic_turn-by-turn_directions_for_public_transport/</url>
+        <title>Probabilistic Turn-By-Turn Directions for Public Transport</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;With a smartphone, users nowadays can plan public transport journeys spontaneously and react to incidents in real-time by changing itineraries on the fly, even proactively. Algorithms and UIs however are still clinging to the notion of an upfront query and journey plan that the user is blindly following as long as is physically possible.&lt;/p&gt;
+&lt;p&gt;Similar to turn-by-turn directions for car drivers, we propose to focus on showing the user only the next best step they should take according to the real-time situation in order to eventually get to their destination, and not an entire, fixed journey plan. Instead of just the destination arrival time, we compute the probability distribution of destination arrival of the user, taking into account reliability of transfers and alternative continuations. Simulations show that on average, a user will arrive earlier than when following a classical journey planner, not only in the case of delays.&lt;/p&gt;
+&lt;p&gt;A prototype can be used at https://tespace.traines.eu/ with source code available at https://github.com/traines-source/time-space-train-planner. 
+TeSpace relies on https://transitous.org/ and the https://github.com/motis-project/motis API for global public transport timetable coverage (where available). Let's also talk about how to advance these two beyond classical pareto-optimal journeys!&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/TEW7YL/feedback/</feedback_url>
+        <persons>
+          <person id="6777">Robin Durner</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/TEW7YL/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="f688f77b-20db-5f00-baed-ba35c8a1d50d" id="8624">
+        <date>2026-01-31T17:15:00+01:00</date>
+        <start>17:15</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>S88ZTJ-citybikes_scraping_the_world_for_bike_sharing_data_so_you_dont_have_to</slug>
+        <url>https://fosdem.org/2026/schedule/event/S88ZTJ-citybikes_scraping_the_world_for_bike_sharing_data_so_you_dont_have_to/</url>
+        <title>Citybikes: scraping the world for bike sharing data so you don't have to</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Long ago I wanted to build an app for the local bike sharing system in my city, only to realize open data was not publicly available. Out of frustration, I built a free and open API for others to create applications, visualizations and research using bike sharing data.&lt;/p&gt;
+&lt;p&gt;Fast forward today and thanks to the community, the &lt;a href="https://citybik.es"&gt;CityBikes project&lt;/a&gt; supports more than 800 cities all around the world and our API powers bike sharing transportation apps across all platforms.&lt;/p&gt;
+&lt;h3&gt;"open" data&lt;/h3&gt;
+&lt;p&gt;Even with the introduction of open data standards like GBFS (at this time, approx 60% of our feeds) there's a fair amount of systems that are not accessible outside of their apps. The reality of open data shatters once you look too close into it: cursed APIs, broken feeds and HTML tables.&lt;/p&gt;
+&lt;p&gt;Our mission is to change that by providing developers, researchers and organizations the tools and resources to bridge this gap.&lt;/p&gt;
+&lt;p&gt;In this talk, I’ll share the motivations behind the project, what it’s like to maintain it after more than a decade, and dive into the new tools and historical data systems we’re building.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/S88ZTJ/feedback/</feedback_url>
+        <persons>
+          <person id="3350">Lluis Esquerda</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/S88ZTJ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="ac4c2555-6a24-5761-8b0e-1944cf82eec9" id="8883">
+        <date>2026-01-31T17:35:00+01:00</date>
+        <start>17:35</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>DC9M73-sqlrooms-flowmap</slug>
+        <url>https://fosdem.org/2026/schedule/event/DC9M73-sqlrooms-flowmap/</url>
+        <title>Scaling Mobility Flow Visualization: Origin-Destination Data with DuckDB, Flowmap.gl, and SQLRooms</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Visualizing origin-destination (OD) mobility data—commuter flows, transit ridership, freight traffic—is essential for transport planning, but datasets can contain millions of flows that overwhelm traditional mapping approaches. In this talk, I'll present open-source tools for preparing and visualizing large-scale OD data interactively in the browser.&lt;/p&gt;
+&lt;p&gt;I'll introduce &lt;a href="https://flowmap.gl"&gt;flowmap.gl&lt;/a&gt;, a WebGL-based flow map layer for &lt;a href="https://deck.gl"&gt;deck.gl&lt;/a&gt; that renders geographic movements with adaptive clustering and filtering. To handle large datasets, I'll demonstrate &lt;a href="https://pypi.org/project/sqlrooms-flowmap/"&gt;sqlrooms-flowmap&lt;/a&gt;, a Python tool that uses &lt;a href="https://duckdb.org"&gt;DuckDB&lt;/a&gt; with spatial extensions to prepare OD data for tiled serving:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hierarchical clustering&lt;/strong&gt;: locations are grouped at each zoom level using pixel-radius clustering, creating a hierarchy where clusters merge as users zoom out&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nested Hilbert indexing&lt;/strong&gt;: OD pairs are indexed using a space-filling curve that preserves locality, enabling efficient range queries for tile-based serving&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spatio-temporal aggregation&lt;/strong&gt;: flows are aggregated to match zoom-based clustering, with optional temporal bucketing by hour/day/week&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The prepared data can be visualized using a demo app built with &lt;a href="https://sqlrooms.org"&gt;SQLRooms&lt;/a&gt;, a browser-based analytics framework powered by DuckDB, where users can query and explore flows using SQL alongside interactive maps.&lt;/p&gt;
+&lt;p&gt;I'll show a live demo using Switzerland's &lt;a href="https://www.are.admin.ch/are/en/home/transport-and-infrastructure/data/npvm.html"&gt;National Passenger Transport Model (NPVM)&lt;/a&gt;—an open dataset of passenger flows across the Swiss transport network—demonstrating the full pipeline from raw data to interactive visualization, all using open-source tools that can run locally without cloud dependencies.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/DC9M73/feedback/</feedback_url>
+        <persons>
+          <person id="6487">Ilya Boyandin</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/DC9M73/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="8e39eba9-c771-555f-af9e-bcbe6f24be56" id="9435">
+        <date>2026-01-31T17:55:00+01:00</date>
+        <start>17:55</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>RV3KS9-railway-analysis-workflow-osrd-sumo</slug>
+        <url>https://fosdem.org/2026/schedule/event/RV3KS9-railway-analysis-workflow-osrd-sumo/</url>
+        <title>Promoting a consistent open source workflow for railway analysis by connecting OSRD and SUMO</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In the past two years the Open Source Railway Designer (OSRD) has been presented at FOSDEM. The integrations shown there sparked our interest in testing OSRD ourselves in a practical context. In initial studies we used OSRD to evaluate capacity effects on highly congested corridors, including a scenario with a speed increase in rail freight transport. These studies show that OSRD provides a solid basis for open, reproducible capacity studies.&lt;/p&gt;
+&lt;p&gt;However, the next crucial step in the planning process is microscopic operational simulation, which can be used to evaluate the effect of timetables and operating procedures over time and during disrupted operations. This component is not yet part of the OSRD workflow. To address precisely this gap, we have investigated how the agent-based tool SUMO (Simulation of Urban MObility) can be applied for railway operational issues. SUMO enables a detailed representation of vehicle movements along an infrastructure under a given timetable and allows delays and different operating modes to be modelled.&lt;/p&gt;
+&lt;p&gt;In a case study on the Frankfurt underground, we used SUMO to analyse various operational concepts. This included simulations in fixed-block and moving-block operation as well as the modelling of a driverless shunting. The results show that SUMO delivers precise insights into the dynamic system behaviour and provides relevant key figures for operational evaluation - while also exposing the framework conditions and limitations of the current approach.&lt;/p&gt;
+&lt;p&gt;Finally, we discuss the potential of linking OSRD and SUMO: from open infrastructure modelling and timetable mapping to microscopic operational simulation. We would like to outline how a consistent open source workflow for railway and light rail systems could be created and invite the community to develop it further together.&lt;/p&gt;
+&lt;p&gt;Open Source Railway Designe (OSRD) https://osrd.fr/en/
+Simulation of Urban MObility (SUMO) https://eclipse.dev/sumo/&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/RV3KS9/feedback/</feedback_url>
+        <persons>
+          <person id="6725">Bastian Ehrenholz</person>
+          <person id="6727">Paula von der Heide</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/RV3KS9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="4ceb7a80-beb0-5dc5-a934-4d22770df52f" id="8354">
+        <date>2026-01-31T18:15:00+01:00</date>
+        <start>18:15</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>9JMFH9-automated_short-term_train_planning_in_osrd_from_poc_to_production</slug>
+        <url>https://fosdem.org/2026/schedule/event/9JMFH9-automated_short-term_train_planning_in_osrd_from_poc_to_production/</url>
+        <title>Automated short-term train planning in OSRD: from POC to production</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;You're a railway infrastructure manager. A train operator calls up, and would like to fit a new train in the existing schedule. It should leave at 10am, and it's 8am. How do you make sure this new train won't cause any traffic jams?&lt;/p&gt;
+&lt;p&gt;Three years ago, we made a proof of concept for this complex problem (&lt;a href="https://archive.fosdem.org/2023/schedule/event/rot_osrd/"&gt;I've already talked about it in this track&lt;/a&gt;). Since then, we've successfully made it production-ready, and we've had users for a year now.&lt;/p&gt;
+&lt;p&gt;We have faced new challenges, both expected and unexpected. We have made some mistakes and learned from them. We have stories to tell.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://osrd.fr/en/"&gt;OSRD website&lt;/a&gt;
+&lt;a href="https://github.com/OpenRailAssociation/osrd"&gt;GitHub&lt;/a&gt;&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/9JMFH9/feedback/</feedback_url>
+        <persons>
+          <person id="4262">Eloi Charpentier</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9JMFH9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="cf9c523c-dadf-5bc2-af96-9949842f426b" id="9505">
+        <date>2026-01-31T18:35:00+01:00</date>
+        <start>18:35</start>
+        <duration>00:20</duration>
+        <room>K.3.601</room>
+        <slug>PGZL8V-open_source_communty_-_digital_transformation</slug>
+        <url>https://fosdem.org/2026/schedule/event/PGZL8V-open_source_communty_-_digital_transformation/</url>
+        <title>Digital disruption in the public transport sector through open source community engagement</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The public transport sector is mostly a traditional sector with an oligopolistic market situation for system solutions for travel planning and ticketing. The lock-in and dependency to few system vendors in Europe stifles innovation and impedes initiatives to make public transport more attractive. But in the Nordic countries, public transport agencies (PTA) choose an alternative path to overcome system vendor dependency through open source and by engaging in community development. Our qualitative study interviewed 13 persons from 5 different PTAs in the Nordics entails an alternative pathway where they digitally disrupted the regional or national public transport market. They choose to utilise open source for central components and engage in community development to achieve political ambitions to make public transportation an attractive alternative to car travelling.&lt;/p&gt;
+&lt;p&gt;Our study presents a model on how organisations can co-evolve with the open source community through long-term engagement to access state-of-the-art digital technology and foster innovation. The model depicts a cumulative process that yields better opportunities the longer and deeper the engagement becomes. This enables digital transformation outcomes such as access to a global pool of knowledge, agile and adaptive value-creation, open innovations processes, partnership and synergy opportunities. The talk will present the findings from the study and how the model can be used as a tool to better understand and depicts the organisational alignment process, the inner mechanism and the possible transformative outcome of engaging in open source community development. Our findings demonstrate that also large traditional organisation within the transport sector can partially foster digital transformation capabilities through departmental engagement in community development which can radiate to other parts of the organisation. This entails alternative pathways for traditional organisation that are under demand to digitally transform. But this requires sustained resource investment and loyalty to community objectives to gain influence and trust, to access deeper collaboration and innovation opportunities. The talk will discuss both obstacles, possibilities and strategies that organisations can adopt when engaging in open source community development.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/PGZL8V/feedback/</feedback_url>
+        <persons>
+          <person id="6625">Clear Byte</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/PGZL8V/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="c54864b6-14cc-5b7c-bc29-31735989c6d1" id="9470">
+        <date>2026-01-31T18:55:00+01:00</date>
+        <start>18:55</start>
+        <duration>00:05</duration>
+        <room>K.3.601</room>
+        <slug>CHB7UJ-hackertrain-to-fosdem-2026</slug>
+        <url>https://fosdem.org/2026/schedule/event/CHB7UJ-hackertrain-to-fosdem-2026/</url>
+        <title>HackerTrain: the first real (and distributed) train trip from N places on M routes to Brussels</title>
+        <subtitle></subtitle>
+        <track slug="railways-and-open-transport">Railways and Open Transport</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;After a successful beta run, the HackerTrain to FOSDEM is back! This time we are going distributed.&lt;/p&gt;
+&lt;p&gt;In this talk we will present:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;how we organized a train trip for an unknown number of groups of unknown people that travel on different dates and on different routes to the same event&lt;/li&gt;
+&lt;li&gt;lessons learnt on how to manage such chaos on a zero budget&lt;/li&gt;
+&lt;li&gt;how the actual train rides went (hopefully with pictures!) – we expect several lines from all corners of Europe&lt;/li&gt;
+&lt;li&gt;lessons learnt on those routes&lt;/li&gt;
+&lt;li&gt;what are the next steps and the long-term goals for the HackerTrain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Through this beta run of the HackerTrain to FOSDEM we hope to uncover also the potential for (massive) group travel to (FOSS) events, as well as the hurdles that we still need to overcome to make affordable, easy, comfortable and engaging cross-border public travel possible.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/CHB7UJ/feedback/</feedback_url>
+        <persons>
+          <person id="2746">Matija Šuklje</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CHB7UJ/feedback/">Submit Feedback</link>
         </links>
       </event>
     </room>
@@ -8994,7 +9585,7 @@ General Website: https://datavzrd.github.io&lt;/p&gt;</abstract>
       <event guid="504a7a78-96af-548e-aa01-36447f28ed78" id="9769">
         <date>2026-01-31T18:40:00+01:00</date>
         <start>18:40</start>
-        <duration>00:30</duration>
+        <duration>00:20</duration>
         <room>K.4.601</room>
         <slug>9JQJ9M-bioinformatics_lighthning_talks</slug>
         <url>https://fosdem.org/2026/schedule/event/9JQJ9M-bioinformatics_lighthning_talks/</url>
@@ -9012,7 +9603,54 @@ Here's the list of the 3' presentations:&lt;/p&gt;
 &lt;li&gt;DNA storage and open-source projects by Babar Khan&lt;/li&gt;
 &lt;li&gt;From Binary to Granular: Automating Multi-Threshold Survival Analysis with OptSurvCutR by Payton Yau&lt;/li&gt;
 &lt;li&gt;Helping to Mend the Disconnect Between Biological Research and Medicine: A tale of two -- different -- kinds of graphs by Ben Busby&lt;/li&gt;
-&lt;/ul&gt;</abstract>
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Guixifying workflow management system: past, present, maybe future?&lt;/strong&gt;
+Bioinformatics and Computational Biology face a twofold challenge.  On one hand, the number of steps required to process the amounts of data is becoming larger and larger.  And each step implies software involving more and more dependencies.  On the other hand, Reproducible Research requires the ability to deeply verify and scrutinize all the processes. And Open Science asks about the ability to reuse, modify or extend.&lt;/p&gt;
+&lt;p&gt;Workflow might be transparent and reproducible if and only if it’s built on the top of package managers that allow, with the passing of time, to finely control both the set of dependencies and the ability to scrutinize or adapt.&lt;/p&gt;
+&lt;p&gt;The first story is &lt;a href="https://hpc.guix.info/"&gt;Guix&lt;/a&gt; Workflow Language (&lt;a href="https://guixwl.org/"&gt;GWL&lt;/a&gt;): a promise that has not reached its potential.  The second story is Concise Common Workflow Language (&lt;a href="https://ccwl.systemreboot.net/"&gt;CCWL&lt;/a&gt;): compiling Guile/Scheme workflow descriptions to CWL inputs.  The third story is &lt;a href="https://forge.systemreboot.net/ravanan/"&gt;Ravanan&lt;/a&gt;: a CWL implementation powered by &lt;a href="https://hpc.guix.info/"&gt;Guix&lt;/a&gt; – a transparent and reproducible package manager.&lt;/p&gt;
+&lt;p&gt;This talk is a threefold short story that makes one: long-term, transparent and reproducible workflow needs first package managers.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;VTX, High Performance Visualization of Molecular Structure and Trajectories&lt;/strong&gt;
+VTX is a molecular visualization software capable to handle most molecular structures and dynamics trajectories file formats. It features a real-time high-performance molecular graphics engine, based on modern OpenGL, optimized for the visualization of massive molecular systems and molecular dynamics trajectories. VTX includes multiple interactive camera and user interaction features, notably free-fly navigation and a fully modular graphical user interface designed for increased usability. It allows the production of high-resolution images for presentations and posters with custom background. VTX design is focused on performance and usability for research, teaching, and educative purposes.
+Please visit our website at https://vtx.drugdesign.fr/ and/or our github at https://github.com/VTX-Molecular-Visualization for more.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Multimodal Tumor Evolution Analysis: Interactive 4D CT and Time-Aligned Clinical Data in a Hospital Web Platform&lt;/strong&gt;
+Modern oncology practice relies on understanding how tumors evolve across multiple imaging studies and how these changes correlate with clinical events. This talk presents a hospital-oriented web platform for multimodal tumor evolution analysis, integrating interactive 4D CT visualization with time-aligned clinical data, including PDF clinical documents, lab results and treatment milestones.&lt;/p&gt;
+&lt;p&gt;The system combines a Node.js front end with a Flask-based visualization backend that handles CT preprocessing, metadata extraction, and generation of time-synchronized 4D volumes. Clinicians can navigate volumetric CT scans across multiple time points, compare tumor morphology longitudinally, and immediately access the corresponding clinical context within the same interface. The platform displays radiology reports, pathology documents, and other PDF-based data side-by-side with imaging, creating a unified temporal view of patient evolution.&lt;/p&gt;
+&lt;p&gt;We describe the architecture, including the ingestion pipeline for DICOM and document data, the design of the multimodal synchronization layer, rendering strategies for large 4D CT volumes, and the integration of document viewers and time-series dashboards.&lt;/p&gt;
+&lt;p&gt;Web platform: https://github.com/owtlaw6/Licenta
+Flask App (CT Scan related scripts): https://github.com/fabi200123/4D_CT_Scan&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;DNA storage and open-source projects&lt;/strong&gt;
+The magnetic recording field goes back to the pioneering work of Oberlin Smith, who conceptualized a magnetic recording apparatus in 1878. Fast forward, in 1947, engineers invented the first high-speed, cathode ray tube based fully electronic memory. In 1950, engineers developed magnetic drum memory. In 1951, the first tape storage device was invented. By 1953, engineers had developed magnetic core memory. The first hard disk drive RAMAC was developed in 1957. Since then, HDDs have dominated the storage for several decades and continue to do so because of its low cost-per-gigabyte and low bit-error-rate. Based on some estimates, in 2023, approximately 330 million terabytes of data were created each day. By 2024, HDDs dominated over half of the world’s data storage. As of 2025, approximately 0.4 zettabytes of new data are being generated each day, which equals about 402.74 million terabytes. What does it indicate? Data is growing and there is a need of solutions in term of longevity, low power consumption, and high capacity. Deoxyribonucleic acid (DNA) based storage is being considered as one of the solutions. This talk is about current status of DNA storage and open-source projects that exist in this domain so far.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;From Binary to Granular: Automating Multi-Threshold Survival Analysis with OptSurvCutR&lt;/strong&gt;
+In risk modelling, categorising continuous variables—such as biomarker levels or credit scores—is essential for creating distinct risk groups. While existing tools can optimize a single threshold (creating "High" vs "Low" groups), they lack a systematic framework for identifying multiple cut-points. This limitation forces analysts to rely on simple binary splits, which often mask the actual shape of the data. This approach fails to detect complex biological realities, such as U-shaped risk profiles or multi-step risk stratification involving 3, 4, or even 5+ distinct groups.&lt;/p&gt;
+&lt;p&gt;In this lightning talk, I will introduce OptSurvCutR, an R package designed to bridge this gap using a reproducible workflow. Currently under peer review at rOpenSci, the package automates the search for optimal thresholds in time-to-event data.&lt;/p&gt;
+&lt;p&gt;I will demonstrate how the package:
+- &lt;strong&gt;Goes Beyond Binary Splits&lt;/strong&gt;: Unlike standard tools restricted to a single cut-off, &lt;em&gt;OptSurvCutR&lt;/em&gt; uses systematic searches to identify multiple thresholds, automatically defining granular risk strata (e.g., Low, Moderate, High, Severe).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Prevents False Positives&lt;/strong&gt;: It integrates statistical corrections (MSRS) to ensure that the differences between these multiple curves are real, not just random chance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Quantifies Uncertainty&lt;/strong&gt;: It uses bootstrap validation to measure the stability of the thresholds, ensuring that your multi-level risk model is robust.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Project Links:
+- &lt;strong&gt;Source Code (GitHub)&lt;/strong&gt;: https://github.com/paytonyau/OptSurvCutR
+- &lt;strong&gt;rOpenSci Review Process&lt;/strong&gt;: https://github.com/ropensci/software-review/issues/731
+- &lt;strong&gt;Preprint&lt;/strong&gt;: https://doi.org/10.1101/2025.10.08.681246&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Helping to Mend the Disconnect Between Biological Research and Medicine: A tale of two -- different -- kinds of graphs&lt;/strong&gt;
+As our tools evolve from scripts and pipelines to intelligent, context-aware systems, the interfaces we use to interact with data are being reimagined.&lt;/p&gt;
+&lt;p&gt;This talk will explore how accelerated and integrated compute is reshaping the landscape of biobank-scale datasets, weaving together genomics, imaging, and phenotypic data with and feeding validatable models.  Expect a whirlwind tour through:
+·              Ultra-fast sequence alignment and real-time discretization
+·              Estimating cis/trans effects on variant penetrance via haploblock architecture
+·              Biobank scale data federation
+·              Knowledge graphs as dynamic memory systems (GNNs - LLM co-embedding)&lt;/p&gt;
+&lt;p&gt;We'll close by tackling the unglamorous but essential bits: validation, contextualization, and the digital hygiene required to keep model-generated data from becoming biomedical junk DNA. Think of it as a roadmap toward smarter, faster, and more trustworthy data-driven healthcare.&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/9JQJ9M/feedback/</feedback_url>
         <persons>
@@ -10759,6 +11397,33 @@ far eBPF can take you beyond system programming.&lt;/p&gt;
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/8ZL9BZ/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="299717d5-54ae-5413-9323-812b1fb51ec7" id="8326">
+        <date>2026-01-31T14:00:00+01:00</date>
+        <start>14:00</start>
+        <duration>00:30</duration>
+        <room>H.1309 (Van Rijn)</room>
+        <slug>LXFKS9-servo-project-impact</slug>
+        <url>https://fosdem.org/2026/schedule/event/LXFKS9-servo-project-impact/</url>
+        <title>The Servo project and its impact on the web platform ecosystem</title>
+        <subtitle></subtitle>
+        <track slug="browser-and-web-platform">Browser and web platform</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The Servo project, now hosted under Linux Foundation Europe, is a modern Rust-based rendering engine pushing forward safety, modularity and high-performance web rendering. After its early foundations at Mozilla and a couple of years of impasse, Servo entered a new chapter in 2023 when Igalia took over stewardship, ensuring long-term maintenance, open governance, and a clear technical direction for the project. The Servo community has continued to grow steadily since then.&lt;/p&gt;
+&lt;p&gt;In this talk we’ll review the recent evolution of the project together with the plans for the future. Apart from that, we’ll focus on the impact of this work in the whole web platform, by finding issues in specifications and improving them, reporting interop bugs, contributing new tests, etc.; showing that the development of new web engines benefits the whole ecosystem.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/LXFKS9/feedback/</feedback_url>
+        <persons>
+          <person id="6130">Manuel Rego</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LXFKS9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="d7002aa9-fe43-5ada-9005-74d9774b84e2" id="8253">
         <date>2026-01-31T15:30:00+01:00</date>
         <start>15:30</start>
@@ -10852,6 +11517,32 @@ List of long pending security vulnerabilities with localhost and local network -
           <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QCSKWL/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="b7cd1a69-1b4f-5c26-99db-e76cf2fb82f4" id="8110">
+        <date>2026-01-31T17:00:00+01:00</date>
+        <start>17:00</start>
+        <duration>00:30</duration>
+        <room>H.1309 (Van Rijn)</room>
+        <slug>G3FRDA-beyond_javascript_wasm_gc_present_and_future</slug>
+        <url>https://fosdem.org/2026/schedule/event/G3FRDA-beyond_javascript_wasm_gc_present_and_future/</url>
+        <title>Beyond JavaScript: Wasm GC present and future</title>
+        <subtitle></subtitle>
+        <track slug="browser-and-web-platform">Browser and web platform</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The WebAssembly (Wasm) 1.0 specification is a linear memory system suitable as a compiler target for static languages like C and Rust. However, the recently released Wasm 3.0 specification, which includes garbage collected reference type instructions, has opened the door to using all kinds of dynamic languages on the web. Wasm GC compilers already exist for languages such as Java, Scala, Kotlin, OCaml, and Scheme. However, the value of Wasm GC is often misunderstood! In this talk, I'll attempt to clear things up by examining the benefits and drawbacks of Wasm GC at present and how compiling to Wasm GC stacks up against compiling to JavaScript (or just using plain ol' Javascript). I'll conclude with a brief look at some proposals from the Wasm Community Group that could improve Wasm GC in the near future.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/G3FRDA/feedback/</feedback_url>
+        <persons>
+          <person id="2284">David Thompson</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/G3FRDA/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="1da818b9-3518-505d-ae70-563f73e9d1df" id="8862">
@@ -15228,11 +15919,8 @@ We will have 12 seats equipped with soldering irons and tools.&lt;/p&gt;
         <abstract>&lt;p&gt;Just1 is an open-source robotics platform built for learning and rapid experimentation. It supports manual and autonomous navigation, path following, and obstacle avoidance. With a bill of materials around $250, it offers an affordable way to explore robotics, ROS 2, and autonomous behaviors.&lt;/p&gt;
 &lt;p&gt;The hardware includes a Raspberry Pi 4, mecanum wheels, TT motors, a 2D LiDAR, Raspberry Pi camera, and an IMU. The software stack is based on ROS 2 Jazzy, with RTAB-Map for SLAM, Nav2, and Foxglove integration.&lt;/p&gt;
 &lt;p&gt;I created Just1 as a simple, low-cost platform to experiment and to share with the community. Upcoming work focuses on simulation support (Gazebo / NVIDIA Isaac).&lt;/p&gt;
-&lt;p&gt;Github Repo: 
-https://github.com/NRdrgz/Just1
-Blog articles:
-https://nrdrgz.github.io/2025/10/21/building-just1-autonomous-robot/
-https://nrdrgz.github.io/2025/10/22/foxglove-studio-robotics-visualization/&lt;/p&gt;</abstract>
+&lt;p&gt;&lt;a href="https://github.com/NRdrgz/Just1"&gt;Github Repo&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nrdrgz.github.io/2025/10/21/building-just1-autonomous-robot/"&gt;Blog Article&lt;/a&gt;&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KCPTX7/feedback/</feedback_url>
         <persons>
@@ -21470,6 +22158,33 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
           <link href="https://chat.fosdem.org/#/room/#2026-dns:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dns:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/BLLW9C/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="7f04fd4a-45ca-5cc2-a0dc-fe6da2c86ac4" id="8587">
+        <date>2026-02-01T11:00:00+01:00</date>
+        <start>11:00</start>
+        <duration>00:25</duration>
+        <room>K.3.401</room>
+        <slug>MYZAEX-stopping-the-ugly</slug>
+        <url>https://fosdem.org/2026/schedule/event/MYZAEX-stopping-the-ugly/</url>
+        <title>Breaking the bad, stopping the ugly by using Open Source</title>
+        <subtitle></subtitle>
+        <track slug="dns">DNS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Isn’t monitoring DNS queries a really bad idea? If the monitoring crosses the line to surveillance, we agree. Monitoring for bad actors is still needed and valuable for cybersecurity. Building such a platform in Open Source and running it as a non-profit is much better than letting commercial actors consume this data without making it an open data commons. For sure many won’t protect the user’s privacy the way we do.&lt;/p&gt;
+&lt;p&gt;This is the story about the DNS TAPIR Open Source project - the reason we started it, our core principles and the architecture .&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/MYZAEX/feedback/</feedback_url>
+        <persons>
+          <person id="6349">Ulrika Vincent</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-dns:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-dns:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/MYZAEX/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="10d37873-a67e-520d-a09a-b0e25530e9b3" id="7420">
@@ -30454,10 +31169,7 @@ Automotive
         <type>devroom</type>
         <language>en</language>
         <abstract>&lt;p&gt;In this talk we examine the GNU Name System (RFC 9498) a decentralized directory protocol with a reference implementation in GNUnet.
-We present its features, potential governance models and future developments including, in particular, the challenges a PQC transition of the cryptography poses.
-We also investigate two potential use cases of GNS:
-1. Use of GNS as an alias lookup component in digital, privacy-friendly payments using GNU Taler.
-2. Sharing personal information without the need for centralized identity provider services while still allowing asynchronous, secure access to the data for relying parties.&lt;/p&gt;
+We present its features, potential governance models and future developments including, in particular, the challenges a PQC transition of the cryptography poses.&lt;/p&gt;
 &lt;p&gt;https://www.rfc-editor.org/rfc/rfc9498.html
 https://www.gnunet.org/en/gns.html
 https://nlnet.nl/project/TALER-LookupService/ (See recording https://ngi.eu/ngi-forum25/#1752090697345-640b0769-3184 for a quick overview)
@@ -30782,6 +31494,33 @@ https://github.com/peergos/peergos&lt;/p&gt;</abstract>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/BJNVEY/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="43617507-eb8a-5e08-9148-0d68a6b6233f" id="8015">
+        <date>2026-02-01T09:10:00+01:00</date>
+        <start>09:10</start>
+        <duration>00:20</duration>
+        <room>UD2.208 (Decroly)</room>
+        <slug>DVPCJC-the_day_in_a_life_of_a_sbom</slug>
+        <url>https://fosdem.org/2026/schedule/event/DVPCJC-the_day_in_a_life_of_a_sbom/</url>
+        <title>The day in a life of a SBOM</title>
+        <subtitle></subtitle>
+        <track slug="sboms-and-supply-chains">SBOMS and supply chains</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The growing use of Software Bill of Materials (SBOMs) has introduced a new challenge with six different types exist (Design, Source, Build, Analysed, Deployed, and Runtime). As each type captures component information at a unique point in the development lifecycle, it is no longer sufficient to say that you want an SBOM' ypu mered the right one which meets your use case. So how do you determine which SBOM type is the right fit for your specific use case?&lt;/p&gt;
+&lt;p&gt;This session attempts to provide the answer through the use of the creation of a sample application moving through the entire development pipeline, demonstrating precisely how the SBOM's content evolves from an initial Design SBOM to a final Runtime SBOM captured within a runtime environment. It will demonstrate the critical information that can be gained at each stage, the specific use cases that each SBOM type enables, and the practical challenges that still need to be overcome to create reliable, high-quality SBOMs.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/DVPCJC/feedback/</feedback_url>
+        <persons>
+          <person id="1804">Anthony Harrison</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-sboms-and-supply-chains:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-sboms-and-supply-chains:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/DVPCJC/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="dadcf304-84be-57c8-bc7f-4abe1bb9a743" id="8933">
         <date>2026-02-01T09:30:00+01:00</date>
         <start>09:30</start>
@@ -31020,6 +31759,7 @@ In-toto: https://in-toto.io/&lt;/p&gt;</abstract>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/DRGX73/feedback/</feedback_url>
         <persons>
           <person id="5333">Philippe Ombredanne</person>
+          <person id="6180">Steve Springett</person>
         </persons>
         <attachments>
         </attachments>
