@@ -1,5 +1,6 @@
 use std::sync::Arc;
 
+use chrono::{DateTime, Utc};
 use content::video_index::VideoIndex;
 use shared::{inmemory_openai::InMemoryOpenAIQueryable, model::CurrentFosdem};
 
@@ -8,4 +9,5 @@ pub struct AppState {
     pub queryable: Arc<InMemoryOpenAIQueryable>,
     pub video_index: Arc<VideoIndex>,
     pub current_fosdem: CurrentFosdem,
+    pub started_at: DateTime<Utc>,
 }

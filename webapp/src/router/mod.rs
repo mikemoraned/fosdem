@@ -1,6 +1,7 @@
 use std::{path::PathBuf, sync::Arc};
 
 use axum::{http::Method, routing::get, Router};
+use chrono::{DateTime, Utc};
 use content::video_index::VideoIndex;
 use shared::inmemory_openai::InMemoryOpenAIQueryable;
 use tower_http::{
@@ -26,6 +27,7 @@ pub async fn app_state(
     video_content_dir: &Option<PathBuf>,
     current_year: u32,
     selectable_years: Vec<u32>,
+    started_at: DateTime<Utc>,
 ) -> AppState {
     AppState {
         queryable: Arc::new(
@@ -42,6 +44,7 @@ pub async fn app_state(
             year: current_year,
             selectable_years,
         },
+        started_at,
     }
 }
 

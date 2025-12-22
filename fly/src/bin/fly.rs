@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 use axum::{http::StatusCode, routing::get};
+use chrono::Utc;
 use clap::Parser;
 use fly::tracing::{init_opentelemetry_from_environment, init_safe_default_from_environment};
 use shared::env::load_secret;
@@ -73,6 +74,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         &args.include_video_content,
         args.current_year,
         args.selectable_years,
+        Utc::now(),
     )
     .await;
 
