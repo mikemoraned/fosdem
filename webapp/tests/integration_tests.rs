@@ -27,6 +27,11 @@ fn test_homepage_exists() {
 }
 
 #[test]
+fn test_sitemap_exists() {
+    exists_at_path("/sitemap.xml").expect("exists");
+}
+
+#[test]
 fn test_homepage_contains_expected_content() {
     let response = exists_at_path("/").expect("exists");
 

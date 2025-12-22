@@ -2551,6 +2551,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "sitemap-rs"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e79ce04e83d8fd0b20507cdee343806f3434d2450592cb7d5ad351a53b5b74f7"
+dependencies = [
+ "chrono",
+ "xml-builder",
+]
+
+[[package]]
 name = "slab"
 version = "0.4.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3229,6 +3239,7 @@ dependencies = [
  "serde",
  "serde_json",
  "shared",
+ "sitemap-rs",
  "tokio",
  "tower-http",
  "tracing",
@@ -3568,6 +3579,12 @@ name = "writeable"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9edde0db4769d2dc68579893f2306b26c6ecfbe0ef499b013d731b7b9247e0b9"
+
+[[package]]
+name = "xml-builder"
+version = "0.5.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1c023e38161c176b6ed516e2c398acd755cd19983661eff519b811c01646e10f"
 
 [[package]]
 name = "xmlserde"

@@ -17,6 +17,7 @@ mod next;
 pub mod related;
 mod room;
 mod search;
+mod sitemap;
 mod video;
 
 pub async fn app_state(
@@ -52,6 +53,7 @@ pub async fn router(state: AppState) -> Router {
 
     Router::new()
         .route("/", get(index::index))
+        .route("/sitemap.xml", get(sitemap::sitemap))
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
         .route("/connections/", get(related::related))
