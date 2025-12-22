@@ -27,7 +27,7 @@ pub async fn sitemap(Host(host): Host, State(state): State<AppState>) -> Respons
         .into_iter()
         .map(|event| {
             let mut builder = Url::builder(format!(
-                "{}/{}/event/{}",
+                "{}/{}/event/{}/",
                 base_url,
                 event.id.year(),
                 event.id.event_in_year()
