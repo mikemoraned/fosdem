@@ -9,7 +9,7 @@ use chrono::{NaiveDate, NaiveTime, Timelike};
 use clap::Parser;
 use content::pentabarf::{Attachment, Schedule};
 use shared::model::{self, Event};
-use tracing::info;
+use tracing::{info, warn};
 use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
@@ -43,7 +43,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         for day in schedule.days {
             for room in day.rooms {
                 for event in room.events {
-                    let model_event = Event {
+                    let mut model_event = Event {
                         id: model::EventId::new(*year, event.id),
                         year: *year,
                         guid: event.guid,
@@ -60,6 +60,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         presenters: presenters(*year, event.persons),
                         links: links(event.links)?,
                     };
+                    apply_fixups(&mut model_event, *year)?;
                     model_events.push(model_event);
                 }
             }
@@ -72,6 +73,32 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     serde_json::to_writer_pretty(&mut writer, &model_events)?;
     writer.flush()?;
 
+    Ok(())
+}
+
+fn apply_fixups(event: &mut Event, year: u32) -> Result<(), Box<dyn std::error::Error>> {
+    // Fixup URL year segment if needed
+    if let Some(segments) = event.url.path_segments() {
+        let segments: Vec<&str> = segments.collect();
+        if segments.len() >= 1 {
+            let expected_year_segment = format!("{}", year);
+            if segments[0] != expected_year_segment {
+                let mut new_segments = segments.clone();
+                new_segments[0] = &expected_year_segment;
+                let mut new_url = event.url.clone();
+                new_url
+                    .path_segments_mut()
+                    .map_err(|_| "Failed to get mutable path segments")?
+                    .clear()
+                    .extend(new_segments);
+                warn!(
+                    "Fixing up event URL year segment for event id {}, {} -> {}",
+                    event.id, event.url, new_url
+                );
+                event.url = new_url;
+            }
+        }
+    }
     Ok(())
 }
 
