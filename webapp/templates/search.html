@@ -12,11 +12,9 @@
         </div>
     </div>
 
-    {% for group in items|group_by_distance %}
-    {% for item in group.items %}
+    {% for item in items %}
     <a name="{{item.event.id}}"></a>
     {% call event::card(item.event, item.related) %}
-    {% endfor %}
     {% endfor %}
 </section>
 
