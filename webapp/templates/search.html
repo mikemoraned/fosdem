@@ -7,25 +7,9 @@
 {% block content %}
 <section class="section">
     <div class="columns">
-        <div class="column is-two-thirds is-hidden-mobile">
-            <h1 class="is-size-1 is-size-4-mobile">Search results for "{{ query }}"</h1>
-        </div>
         <div class="column">
             {% call search::form(query, year, current_fosdem.selectable_years) %}
         </div>
-    </div>
-
-    <div class="columns is-hidden-mobile">
-        <div class="column is-two-thirds">
-            {% for item in items %}
-            <a href="#{{item.event.id}}">
-                <span title="{{item.distance|distance_similarity}}">
-                    {{item.distance|distance_icon|safe}}
-                </span>
-            </a>
-            {% endfor %}
-        </div>
-        <div class="column"></div>
     </div>
 
     {% for group in items|group_by_distance %}
