@@ -3,8 +3,8 @@
 <form method="GET" action="/search">
     <div class="field has-addons">
         <div class="control is-expanded has-icons-left">
-            <input class="input is-primary" type="search" name="q" value="{{ query }}" required minlength="2"
-                maxlength="100" placeholder="Search Query (can be anything)">
+            <input class="input is-primary" type="search" name="q" id="search-query" value="{{ query }}" required
+                minlength="2" maxlength="100" placeholder="Search Query (can be anything)">
             <span class="icon is-small is-left">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </span>
@@ -16,7 +16,8 @@
     <div class="field">
         <div class="control has-icons-left">
             <span class="select is-primary is-small is-rounded">
-                <select name="year">
+                <select name="year"
+                    onchange="document.getElementById('search-query').checkValidity() && this.form.submit();">
                     {% for possible_year in years %}
                     <option value="{{ possible_year }}" {% if year==Some(**possible_year) %} selected {% endif %}>
                         {{ possible_year }}
