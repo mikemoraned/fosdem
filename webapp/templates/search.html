@@ -13,22 +13,7 @@
     </div>
 
     {% for group in items|group_by_distance %}
-
-    <div class="columns">
-        <div class="column">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fa-duotone fa-arrow-right-arrow-left"></i>
-                </span>
-            </span>
-            <span
-                class="tag is-info is-size-7-mobile">{{group.distance|distance_icon|safe}}&nbsp;{{group.distance|distance_similarity}}</span>
-            group:
-        </div>
-    </div>
-
     {% for item in group.items %}
-
     <a name="{{item.event.id}}"></a>
     {% call event::card(item.event, item.related) %}
     {% endfor %}

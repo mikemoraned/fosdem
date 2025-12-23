@@ -3,7 +3,7 @@
 
 {% macro card(event, related) %}
 <div class="columns highlight-bookmarked">
-    <div class="column is-offset-1">
+    <div class="column">
         <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
             {% call expandable_card_details(event) %}
             <footer class="card-footer">
