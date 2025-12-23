@@ -2,9 +2,22 @@
 
 <form method="GET" action="/search">
     <div class="field has-addons">
+        <div class="control is-expanded has-icons-left">
+            <input class="input is-primary" type="search" name="q" id="search-query" value="{{ query }}" required
+                minlength="2" maxlength="100" placeholder="Search Query (can be anything)">
+            <span class="icon is-small is-left">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
         <div class="control">
-            <span class="select is-primary">
-                <select name="year">
+            <input class="button is-primary" type="submit">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control has-icons-left">
+            <span class="select is-primary is-small is-rounded">
+                <select name="year"
+                    onchange="document.getElementById('search-query').checkValidity() && this.form.submit();">
                     {% for possible_year in years %}
                     <option value="{{ possible_year }}" {% if year==Some(**possible_year) %} selected {% endif %}>
                         {{ possible_year }}
@@ -15,16 +28,9 @@
                     </option>
                 </select>
             </span>
-        </div>
-        <div class="control has-icons-left">
-            <input class="input is-primary" type="search" name="q" value="{{ query }}" required minlength="2"
-                maxlength="100" placeholder="Search Query (can be anything)">
             <span class="icon is-small is-left">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-calendar"></i>
             </span>
-        </div>
-        <div class="control">
-            <input class="button is-primary" type="submit">
         </div>
     </div>
     <input type="text" name="limit" hidden value="20">

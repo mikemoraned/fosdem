@@ -233,6 +233,12 @@
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1459">
+      <name>Laura Czajkowski</name>
+      <slug>laura_czajkowski</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1460">
       <name>Martin Decky</name>
       <slug>martin_decky</slug>
@@ -456,6 +462,13 @@ design.&lt;/p&gt;</biography>
       <biography>&lt;p&gt;Bonnie Mehring has had an interest in Free Software for over 10 years. Through Free Software, she has not only acquired extensive knowledge about computers and technology but has also forged connections with others. She thoroughly enjoys participating in various Free Software conferences and events, where she relishes the opportunity to connect with individuals from the Free Software community. It is of utmost importance to Bonnie that inclusive and welcoming Free Software communities are established, allowing everyone to engage and learn. Currently employed as a project manager at the Free Software Foundation Europe, Bonnie actively contributes to organizing the annual “I Love Free Software Day” and "Youth Hacking 4 Freedom" competition.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1720">
+      <name>Ray Paik</name>
+      <slug>ray_paik</slug>
+      <biography>&lt;p&gt;Ray is a Community Manager for TiDB. Prior to TiDB, Ray managed open source communities at Cube Dev, GitLab and the Linux Foundation. Ray has been a speaker at open source conferences such as All Things Open, Community Leadership Summit, FOSDEM, GitLab Commit, Open Source Summit, and SCaLE.&lt;/p&gt;
+&lt;p&gt;Ray lives in Sunnyvale, CA with his wife and daughter and all three are loyal season ticket holders of the Bay FC women's soccer team.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1729">
       <name>Federico Paolinelli</name>
       <slug>federico_paolinelli</slug>
@@ -514,6 +527,13 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=autho
       <name>Adrian Reber</name>
       <slug>adrian_reber</slug>
       <biography>&lt;p&gt;Adrian is a Senior Principal Software Engineer at Red Hat and is migrating processes at least since 2010. He started to migrate processes in a high performance computing environment and at some point he migrated so many processes that he got a PhD for that. Most of the time he is now migrating containers but occasionally he still migrates single processes. Currently he serves as the OpenHPC project lead.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="1786">
+      <name>Ildiko Vancsa</name>
+      <slug>ildiko_vancsa</slug>
+      <biography>&lt;p&gt;Ildikó is working for the Open Infrastructure Foundation as Director of Community. As part of her role, she is the Community Manager for the StarlingX open source distributed cloud project and the Kata Containers secure container runtime project, and a co-leader of the OpenInfra Edge Computing Group. Ildikó has been a community manager since 2017, and a contributor to various open source projects since 2013. She is an evangelist of open collaboration and is using her experience to help individuals, companies and organizations to learn and get more involved and active in open source communities.&lt;/p&gt;
+&lt;p&gt;Furthermore, Ildikó is the creator and host of the My Open Source Experience podcast: https://www.youtube.com/@MyOpenSourceExperience&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="1790">
@@ -1007,6 +1027,12 @@ https://archive.fosdem.org/2025/schedule/event/fosdem-2025-6644-programming-is-f
       <biography>&lt;p&gt;Alfonso Carrillo Aspiazu has been involved in the telecom industry since the early 90s. In 2016, as Chief Architect of the OnLife Network Project, he started developing edge computing concepts at Telefónica I+D using open source software. In 2018 he was included in the list of the world’s first top 50 edge computing influencers, and since then he has been actively furthering the advance of edge computing, extending the cloud to the customer’s doorstep. Alfonso joined OpenNebula Systems in 2021 as Senior Edge Solutions Architect, playing a key role in helping European telecom operators adopt OpenNebula and other open source technologies for their new edge cloud deployments. He also coordinates one of the task forces of the “European Alliance for Industrial Data, Edge and Cloud”, an initiative launched by the European Commission in 2021.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="2476">
+      <name>Shirley Bailes</name>
+      <slug>shirley_bailes</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="2505">
       <name>Tobie Langel</name>
       <slug>tobie_langel</slug>
@@ -1034,6 +1060,12 @@ https://archive.fosdem.org/2025/schedule/event/fosdem-2025-6644-programming-is-f
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="2533">
+      <name>Oren Klopfer</name>
+      <slug>oren_klopfer</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="2550">
       <name>Timo Kandra</name>
       <slug>timo_kandra</slug>
@@ -1058,6 +1090,13 @@ I am interested in distributed systems and am excited to use matrix beyond chat.
       <slug>dmitriy_kostiuk</slug>
       <biography>&lt;p&gt;I'm a GNU/Linux &amp;amp; free/libre software activist, originally from Belarus. I co-organized several FLOSS conferences in Eastern Europe: &lt;a href="https://lvee.org/en/main"&gt;Linux Vacation / Eastern Europe&lt;/a&gt; in Belarus has been my main focus for 15 years (before 2022), and I have also been co-organizer of several other conferences (such as &lt;a href="https://conference.linux.lviv.ua/ru/main"&gt;FOSS Lviv&lt;/a&gt; and &lt;a href="https://osdn.org.ua/"&gt;OSDN|Conf&lt;/a&gt; in Ukraine). In addition, I continue to give FLOSS-related talks at FOSDEM and other events, and teach Linux-related courses at few Eastern European Universities.&lt;/p&gt;
 &lt;p&gt;My open-source activities are targeted at software development, writing and managing technical documentation, education, and the community. My main areas of interest are GNU/Linux architecture and software development and research, open-source databases, virtualization, desktop environments, history of the GUI, and UI/UX.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="2582">
+      <name>Jim Madge</name>
+      <slug>jim_madge</slug>
+      <biography>&lt;p&gt;I have been passionate about open source since being introduced to Linux at University (although, I did once use an Ubuntu live CD before that). I went on to complete his PhD in computational chemistry and currently work as a  Senior Research Software Engineer at The Alan Turing Institute. &lt;/p&gt;
+&lt;p&gt;I am a long-time contributor to &lt;a href="https://book.the-turing-way.org"&gt;The Turing Way&lt;/a&gt;, and currently sit on the The Turing Way Steering Council as Secretary Elect and Chair of the Infrastructure Working Group. I am a maintainer of &lt;a href="https://allcontributors.org"&gt;All Contributors&lt;/a&gt; and also a contributors to &lt;a href="https://mystmd.org"&gt;MyST Markdown&lt;/a&gt; and &lt;a href="https://jupyterbook.org"&gt;Jupyter Book&lt;/a&gt;.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="2584">
@@ -1724,6 +1763,12 @@ Yuning's career has taken him from the UK to Switzerland, then to South Korea, a
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="3765">
+      <name>A. Salt</name>
+      <slug>a_salt</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="3784">
       <name>Deborah Udoh</name>
       <slug>deborah_udoh</slug>
@@ -1763,6 +1808,12 @@ Yuning's career has taken him from the UK to Switzerland, then to South Korea, a
       <name>Rohit Nayak</name>
       <slug>rohit_nayak</slug>
       <biography>&lt;p&gt;Rohit Nayak is a software engineer with over three decades of experience in all aspects of software development especially with startups and in product development. He has been part of the core Vitess team at PlanetScale for the last six years and a Vitess Maintainer for five. Over the last year he has been working with PostgreSQL building replication tools at-scale.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="3893">
+      <name>Ilya Zverev</name>
+      <slug>ilya_zverev</slug>
+      <biography>&lt;p&gt;Has been doing OpenStreetMap for fifteen years, and open source for even longer than that. Loves to go outside and map. Written couple editors and much more stuff, including a long-running news blog on OSM. Live-tweeting this conference to Telegram.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="3905">
@@ -1837,6 +1888,12 @@ Yuning's career has taken him from the UK to Switzerland, then to South Korea, a
       <name>Gianluca Varisco</name>
       <slug>gianluca_varisco</slug>
       <biography>&lt;p&gt;Gianluca was the former CISO of Rocket Internet, where he oversaw IT infrastructure and cybersecurity for companies with over EUR 2B in revenue. He later led national security efforts for Italy’s Digital Transformation Team, served as CISO of Arduino, and most recently was Principal Security Architect and public spokesperson for Google Cloud. He recently started Netsec, a cybersecurity and managed IT services provider dedicated to protecting businesses from digital threats.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="4050">
+      <name>David Allen</name>
+      <slug>david_allen</slug>
+      <biography>&lt;p&gt;I'm a software engineer &amp;amp; architect that was very fortunate to get involved in open source community building, developer relations, and leadership. I am currently the Senior Director of Developer Relations at Grafana.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="4053">
@@ -2149,10 +2206,22 @@ Julien currently works as a Solution Architect at ZettaScale. With strong experi
       <biography>&lt;p&gt;Kevin Lumbard is an Assistant Professor of Computer Science at Creighton University. Kevin’s PhD is in Information Technology and Human Centered Computing.  His work focuses on the sociotechnical aspects of design, which assumes both social and technical factors influence the design, functionality, and usage of technology. He is a former web developer and a certified project manager. Kevin’s research explores open source software development, corporate engagement with open source communities, and the health of open source communities. He uses engaged field work and trace data analysis to research open source software communities and the changing nature of technology work. Kevin’s work has been published in ISJ, CSCW, CAIS, HICSS, IDETC, IEEE Computer, and SoHeal. Kevin is a charter member and board member of the Linux Foundation’s Community Health Analytics OSS Project (CHAOSS) https://chaoss.community/.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="4498">
+      <name>Andreea Daniela Andrisan</name>
+      <slug>andreea_daniela_andrisan</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="4575">
       <name>Jeremy Rand</name>
       <slug>jeremy_rand</slug>
       <biography>&lt;p&gt;I'm the Lead Application Engineer at Namecoin. I work on Namecoin's TLS and Tor interoperability, among other things.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="4576">
+      <name>Abigail Cabunoc Mayes</name>
+      <slug>abigail_cabunoc_mayes</slug>
+      <biography>&lt;p&gt;Abigail Cabunoc Mayes (@abbycabs) is a researcher and advocate focused on the sustainability of open source maintainers. Currently at GitHub, she works directly with maintainers to design initiatives that support the ecosystem's health. Previously at Mozilla, she founded Mozilla Open Leaders (training 600+ open projects) and led engagement for trustworthy AI. She is a founding editor of the Journal of Open Source Software (JOSS), a board member at the OpenJS Foundation, and an organizer for SustainOSS. Her work bridges the gap between community health, digital public goods, and the next generation of open leaders.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="4577">
@@ -2422,6 +2491,12 @@ The SCS project received funding from the German goverment from 2021-24, technic
 &lt;p&gt;I actively participate in the tech community, frequently attending conferences and meet-ups to share knowledge and stay abreast of industry trends.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="4941">
+      <name>Floor Drees</name>
+      <slug>floor_drees</slug>
+      <biography>&lt;p&gt;Floor is a Principal Program Manager at EDB and a PostgreSQL contributor through her work on the CoC Committee, Contributors Committee, and Diversity Committee. She's a co-organizer for the PGDay Lowlands conference, and a co-chair for the DevOpsDays organisation. A karaoke enthusiast, Floor loves to get the community together to sing.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="4980">
       <name>Agustin Alba Chicar</name>
       <slug>agustin_alba_chicar</slug>
@@ -2587,6 +2662,12 @@ The SCS project received funding from the German goverment from 2021-24, technic
 &lt;p&gt;As an international speaker at conferences like SymfonyLive and ForumPHP, Alexandre shares his deep insights on topics ranging from cybersecurity to object-oriented programming theory, all connected by a common thread: designing maintainable software for the decades to come.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="5267">
+      <name>Jos van Schouten</name>
+      <slug>jos_van_schouten</slug>
+      <biography>&lt;p&gt;Jos is a Tech Lead with extensive experience helping teams adopt cloud-native technologies and DevOps practices. For over a decade, he’s been active in organizing events like DevOpsDays and Kubernetes Community Days, focused on building inclusive, resilient communities where everyone can contribute and learn safely.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="5275">
       <name>Marco Bernasocchi</name>
       <slug>marco_bernasocchi</slug>
@@ -2706,6 +2787,16 @@ Benevolent dictator of &lt;a href="https://freesewing.eu/"&gt;FreeSewing&lt;/a&g
       <name>Omar Polo</name>
       <slug>omar_polo</slug>
       <biography>&lt;p&gt;OpenBSD developer since 2021, contributing to ports, OpenSMTPD, and Game of Trees. Interested in too many things—from sandboxing techniques to learning foreign languages. Freelance developer and consultant based in Pordenone, Italy.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="5403">
+      <name>Jon Ericson</name>
+      <slug>jon_ericson</slug>
+      <biography>&lt;p&gt;Jon Ericson is the OpenSSL Foundation Communities Manager. He started his career as a
+C programmer for the US National Weather Service and NASA’s Jet Propulsion
+Laboratory. When Stack Overflow launched in beta, Jon was an early contributor
+and later joined as a full-time community manager for the entire Stack Exchange
+network. Since then he's helped a variety of communities overcome their social and technical hurdles.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="5411">
@@ -2909,6 +3000,12 @@ He’s been hosting &lt;a href="https://www.lutopia.art/"&gt;Lutòpia Wearable T
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="5529">
+      <name>Justin Mclean</name>
+      <slug>justin_mclean</slug>
+      <biography>&lt;p&gt;Justin Mclean is a highly experienced professional with over 30 years in web application development, education, and community work, and is an active contributor to open source software. Justin is a renowned speaker at conferences worldwide and currently serves as the Community Manager at Datastrato. He mentors projects in the Apache Software Foundation and holds positions as VP of the ASF Incubator, and is an ASF board member.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="5531">
       <name>Giacomo Tenaglia</name>
       <slug>giacomo_tenaglia</slug>
@@ -2979,6 +3076,14 @@ Since 2021 his responsibility is GitLab.com's database infrastructure.&lt;/p&gt;
       <biography>&lt;p&gt;Engineering leader at IBM | Ceph Executive Council Member | Ceph Foundation Board Member&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="5562">
+      <name>Fatih Degirmenci</name>
+      <slug>fatih_degirmenci</slug>
+      <biography>&lt;p&gt;Fatih is a Senior Manager, Core Infrastructure QE at SUSE, specializing in automation, infrastructure, CI/CD, DevOps, and QE.&lt;/p&gt;
+&lt;p&gt;Before joining SUSE, Fatih served as the Executive Director of the Continuous Delivery Foundation (CDF) at the Linux Foundation, where he led initiatives to enhance cross-industry and cross-community collaboration in the CI/CD domain. Prior to that, he was a Principal Developer at Ericsson, where he played a key role in several large-scale CI/CD initiatives.&lt;/p&gt;
+&lt;p&gt;Fatih is an active contributor to the open-source community. He has served on the OPNFV TSC and the CDF TOC. He founded the OPNFV Cross Community CI (XCI) project, the CDF SIGs on Interoperability and Software Supply Chain, and co-founded the OpenCI Initiative.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="5568">
       <name>Benoit Aveline</name>
       <slug>benoit_aveline</slug>
@@ -2995,6 +3100,12 @@ Since 2021 his responsibility is GitLab.com's database infrastructure.&lt;/p&gt;
       <name>Ole Mathias Heggem</name>
       <slug>ole_mathias_heggem</slug>
       <biography>&lt;p&gt;Experienced DevOps Engineer. With a passion for exploring new technologies and taking on challenges. Not afraid to break things.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="5577">
+      <name>Oluwaseun Oladeji</name>
+      <slug>oluwaseun_oladeji</slug>
+      <biography>&lt;p&gt;Oladeji Oluwaseun is a community builder and digital strategist passionate about creating inclusive, sustainable tech ecosystems. She currently contributes to Mautic, an open-source marketing automation platform, and has led community initiatives that connect women and emerging tech talents across Africa. Her work focuses on authentic collaboration, contributor engagement, and community impact at scale. She’s particularly interested in bridging the gap between grassroots communities and open-source ecosystems.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="5580">
@@ -3615,6 +3726,14 @@ performance benchmarking, IETF and open-source.&lt;/p&gt;</biography>
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6017">
+      <name>Prithvi Raj</name>
+      <slug>prithvi_raj</slug>
+      <biography>&lt;p&gt;Prithvi Raj is a Community Manager &amp;amp; Developer Advocate at Mirantis working with the Open Source Program Office team. He is a CNCF Ambassador with 5+ years of experience who helped scale a CNCF incubating project in LitmusChaos and runs the Platform &amp;amp; Resilience Engineering Meetup group. He is an active member at SIG Project Reviews and is currently leading the community efforts for the k0s project, k0rdent, OpenSDN, and the other OSS initiatives Mirantis is contributing to.&lt;/p&gt;
+&lt;p&gt;He is a co-organizer to KCD Bengaluru, and previously did Chaos Carnival, LitmusChaosCon and KCD Chennai.
+He was previously at Harness, ChaosNative, and MayaData.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6024">
       <name>effie mouzeli</name>
       <slug>effie_mouzeli</slug>
@@ -3666,6 +3785,12 @@ Feel free to reach out:
       <slug>damien_ciabrini</slug>
       <biography>&lt;p&gt;Damien Ciabrini is an Open Source enthusiast and principal software engineer at Red Hat, where he works on high availability, Openstack and OpenShift. He's the maintainer of the galera resource agent for pacemaker, and the maintainer of other Kubernetes operators for Openstack.&lt;/p&gt;
 &lt;p&gt;He has a passion for retro hardware, reverse engineering and is an occasional contributor to many open source projects. He's the creator and maintainer of ngdevkit, an open source development kit for the Neo Geo hardware.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6050">
+      <name>Elisabeth Wenger-Stickel</name>
+      <slug>elisabeth_wenger-stickel</slug>
+      <biography>&lt;p&gt;Hello 💖 I'm Elisabeth, and I'm a 20 year old programmer and college student! I'm &lt;em&gt;super&lt;/em&gt; interested in programming and natural languages. I created and currently lead &lt;a href="https://pacstall.dev"&gt;pacstall&lt;/a&gt; and the &lt;a href="https://github.com/rhino-linux/rhino-pkg"&gt;RPK&lt;/a&gt; package manager manager for &lt;a href="https://rhinolinux.org"&gt;Rhino Linux&lt;/a&gt;, for which I'm a jack of all trades developer.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6055">
@@ -3997,6 +4122,12 @@ Principle Engineer III&lt;/p&gt;</biography>
       <biography>&lt;p&gt;Senior Software Engineer at Red Hat, working on RHEL and Fedora, specifically on Identity Management projects.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6173">
+      <name>Miranda Heath</name>
+      <slug>miranda_heath</slug>
+      <biography>&lt;p&gt;I'm a psychologist and philosopher studying for a PhD at the &lt;a href="https://edwebprofiles.ed.ac.uk/profile/miranda-heath"&gt;University of Edinburgh&lt;/a&gt;. I'm also an aspiring independent researcher, with a particular interest in investigating complex social structural issues that can help us better understand how to live well together, in caring relation to one another. In my free time, I like painting, playing piano and cello, making websites and being in the ocean.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6175">
       <name>Lucie Anglade</name>
       <slug>lucie_anglade</slug>
@@ -4009,6 +4140,15 @@ Principle Engineer III&lt;/p&gt;</biography>
       <name>Bobby Nölte</name>
       <slug>bobby_nolte</slug>
       <biography>&lt;p&gt;Bobby Nölte, living near Munich. Open source addict since I am 20. Now more an open source grandpa. DIY energy change maker. Professional electronics and software background. Got "influenced" by Andreas Schmitz to contribute to EOS as a piece for the energy change.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6179">
+      <name>Amanda Victoria Wagner</name>
+      <slug>amanda_victoria_wagner</slug>
+      <biography>&lt;p&gt;Amanda V. Wagner
+Amanda V. Wagner is Senior Manager of Developer Community at Grafana Labs, shaping community strategy, supporting community champions, and building programs that scale and energize Grafana’s open-source community.&lt;/p&gt;
+&lt;p&gt;David Allen
+I'm a software engineer &amp;amp; architect that was very fortunate to get involved in open source community building, developer relations, and leadership. I am currently the Director of Developer Relations at Grafana.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6180">
@@ -4138,6 +4278,12 @@ Principle Engineer III&lt;/p&gt;</biography>
       <name>Connor Aird</name>
       <slug>connor_aird</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6231">
+      <name>Kristoffer Dalby</name>
+      <slug>kristoffer_dalby</slug>
+      <biography>&lt;p&gt;Kristoffer works as a dev at Tailscale, he is splitting his time between working on Tailscale and maintaining the open source project Headscale. Previously he worked as an SRE, building, monitoring and testing trading systems.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6232">
@@ -4972,6 +5118,12 @@ His work has always focused on using standards and promoting both open data and 
 &lt;p&gt;Before founding the Foundation for Public Code, he was a Design Fellow at Samsung, leading a project on room-scale programmable environments. Previously, he helped design the massively multiplayer game that became Flickr [and also named it], founded the Experience Design Lab at Frogdesign, and was cofounder and CEO of Bloom Studios, whose data visualization iPad app Planetary was acquired by the Smithsonian Institution.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6486">
+      <name>Ruth Suehle</name>
+      <slug>ruth_suehle</slug>
+      <biography>&lt;p&gt;Ruth Suehle is Director of Open Source at SAS, where she is building a nearly 50-year-old analytics, data management, and AI software company’s first open source program office. She is also president of the Apache Software Foundation and a member of the Open Source Initiative (OSI) board of directors. Ruth has helped build open source communities for nearly two decades, much of which she spent in the OSPO at Red Hat. Co-author of Raspberry Pi Hacks (O’Reilly, December 2013) and former editor of Red Hat Magazine and opensource.com, she is a frequent writer, currently as core contributor at GeekMom.com(previously of WIRED), where she covers the adventures of motherhood and fandom.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6487">
       <name>Ilya Boyandin</name>
       <slug>ilya_boyandin</slug>
@@ -5102,6 +5254,20 @@ Lars currently calls Copenhagen his home, but has lived in HongKong, Scotland an
       <name>Marius Kleidl</name>
       <slug>marius_kleidl</slug>
       <biography>&lt;p&gt;Marius Kleidl is a software engineer working on an around the web. He's an open-source enthusiast, contributing to OSS projects for more than 12 years, and leading the &lt;a href="https://tus.io/"&gt;tus project&lt;/a&gt; since 2016. He's actively contributing to the development of new networking technologies in the IETF, where he also chairs the AVTCORE working group.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6525">
+      <name>Stef Dillo</name>
+      <slug>stef_dillo</slug>
+      <biography>&lt;p&gt;I'm a professional robotics consultant as a day-job and also "Roboticist in Residence" at Circuit Launch, Oakland, CA., mentoring people on Open Source, Open HW 3D-printed robots. 
+Willow Garage alum, 
+Contributor &amp;amp; Trainer in Open Wireless &amp;amp; Disaster Area Networking. 
+(Co-author "Wireless Networking for the Developing World") &lt;/p&gt;
+&lt;p&gt;My main robotics project over the past few years has been: "Tenacity", a 3D-printed, quarter-scale "Curiosity-alike" rover:
+https://www.youtube.com/watch?v=OadLnxf5cI4
+https://www.youtube.com/watch?v=CDfBmXMT3Q8 (Has Music) &lt;/p&gt;
+&lt;p&gt;Linked-In profile
+https://www.linkedin.com/in/stephen-okay-3494944/&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6527">
@@ -5553,6 +5719,12 @@ Outside of work, Prankur enjoys mentoring and pursuing his passions for gaming a
       <biography>&lt;p&gt;Software Engineer, Google Open Source Security Team&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6701">
+      <name>Eric Curtin</name>
+      <slug>eric_curtin</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6703">
       <name>Eli Mallon</name>
       <slug>eli_mallon</slug>
@@ -5638,6 +5810,12 @@ He is part of the Intelligent Robotics Lab, where he focuses on open-source solu
       <name>Shannon Wray</name>
       <slug>shannon_wray</slug>
       <biography>&lt;p&gt;Head of Operations @ Open Finance Consortium the non-profit stewarding the Open Collective platform. Kiwi living in Amsterdam.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6737">
+      <name>Dorin Geman</name>
+      <slug>dorin_geman</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6743">
@@ -5866,7 +6044,7 @@ Part-time postdoctoral researcher @ &lt;a href="https://soft.vub.ac.be/soft/inde
     <person id="6830">
       <name>Taye Adeyemi</name>
       <slug>taye_adeyemi</slug>
-      <biography></biography>
+      <biography>&lt;p&gt;&lt;a href="https://mastodon.social/@taye"&gt;Taye&lt;/a&gt; is a Web developer and occasional artist who's interested in interactive and human-centered software and has been contributing to open source projects since 2012. Currently working on media editing tools at &lt;a href="https://miru.media"&gt;Miru&lt;/a&gt;.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6835">
@@ -9671,6 +9849,34 @@ As our tools evolve from scripts and pipelines to intelligent, context-aware sys
       </event>
     </room>
     <room name="H.1301 (Cornil)" slug="h1301">
+      <event guid="7d14ffeb-11cb-5ea9-8075-ab77c4f0ff14" id="8967">
+        <date>2026-01-31T10:35:00+01:00</date>
+        <start>10:35</start>
+        <duration>00:35</duration>
+        <room>H.1301 (Cornil)</room>
+        <slug>BDSKNU-gis-plugins</slug>
+        <url>https://fosdem.org/2026/schedule/event/BDSKNU-gis-plugins/</url>
+        <title>GIS are in the plugins</title>
+        <subtitle></subtitle>
+        <track slug="geospatial">Geospatial</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;PyQGIS. A not so well guarded secret in the most popular open-source geospatial system. You struggle doing a thing, and then open this one panel... And turns out, every single thing that you can click on, is available for programmatic calls. Load data, style it and process, prepare layouts for exporting, add panels and interactive modes, even add games using the GIS user interface. Everything.&lt;/p&gt;
+&lt;p&gt;Geospatial is hard. Software is hard. Making a new software for a one-time or an obscure process would be prohibitively complex. So no wonder many people turn towards QGIS for its extensive plugin capabilities. But what if we need to make something for the mobile?&lt;/p&gt;
+&lt;p&gt;This talk is about Every Door plugins. Every Door is an OpenStreetMap editor for going outside and collecting data. It's been custom designed for the OSM schema. But turns out, we've got thousands other services and processes on top of OSM, and many people would like "just one more button" or a panel. Let's see what has changed in Every Door over the winter that enables you to do so.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/BDSKNU/feedback/</feedback_url>
+        <persons>
+          <person id="3893">Ilya Zverev</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-geospatial:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-geospatial:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/BDSKNU/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="503d3ce7-2bd8-5009-a63e-510c0034650d" id="8784">
         <date>2026-01-31T11:15:00+01:00</date>
         <start>11:15</start>
@@ -15821,6 +16027,41 @@ We will have 12 seats equipped with soldering irons and tools.&lt;/p&gt;
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/XL8MKK/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="33252818-bc7c-58ba-b66b-586aaa32f088" id="8981">
+        <date>2026-01-31T10:35:00+01:00</date>
+        <start>10:35</start>
+        <duration>00:25</duration>
+        <room>UB2.147</room>
+        <slug>PDWNCJ-map-hacking-a_cheap-robot-vac-with-open-source-sw</slug>
+        <url>https://fosdem.org/2026/schedule/event/PDWNCJ-map-hacking-a_cheap-robot-vac-with-open-source-sw/</url>
+        <title>"Turning a cheap commercial vacuum cleaner into a useful Open Source mapping tool"</title>
+        <subtitle></subtitle>
+        <track slug="robotics-and-simulation">Robotics and Simulation</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Robot Vacuums are a pretty common item in many households around the world. They've also become a fairly standard item for robot hobbyists to hack on and use as cheap, open platforms for experiments in mobile bases. The classic "Turtlebot" platform has seen many incarnations, as the iRobot Create series, the Kobuki base, the Neato BotVac and now lives on in the "Hackerbot" from HackerBot Industries(https://www.hackerbot.co/). It has an open command set, options for an arm, animated head and SDK to support the development of character-like human-robot interactions. It does autonomous mapping of whatever space it was in at the push of a button. Unfortunately, the map is stored in an internal proprietary format, accessible through an app you download onto your phone.&lt;/p&gt;
+&lt;p&gt;I have a number of robots at home and in my lab, all of which run ROS. Surely there must be some way to hack out the map and convert it into a ROS-compatible format that my other robots could use!
+My talk would be discussing the steps I took to make this happen, the FOSS packages I used and the resulting tool. &lt;/p&gt;
+&lt;p&gt;This is not my first excursion into hacking robot mapping and sensors, so I'll also present some tips and tricks I've learned over the years to make seemingly proprietary robot subsystems more open and generally usable.  &lt;/p&gt;
+&lt;p&gt;Mapping tool GitHub:
+https://github.com/jetdillo/hackerbot-maptools&lt;/p&gt;
+&lt;p&gt;Hackerbot Base: 
+https://www.hackerbot.co/&lt;/p&gt;
+&lt;p&gt;My robot consulting business:
+https://www.familiarrobotics.com&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/PDWNCJ/feedback/</feedback_url>
+        <persons>
+          <person id="6525">Stef Dillo</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-robotics-and-simulation:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-robotics-and-simulation:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/PDWNCJ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="ef49e987-7c03-508c-a25e-72e7efb87631" id="9072">
         <date>2026-01-31T11:05:00+01:00</date>
         <start>11:05</start>
@@ -19533,6 +19774,44 @@ The second part of the talk explores power consumption patterns in GPU kernels, 
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/TDB3WN/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="2ac97485-5f1e-53a0-8145-96dc2f37ee63" id="9394">
+        <date>2026-01-31T16:10:00+01:00</date>
+        <start>16:10</start>
+        <duration>00:20</duration>
+        <room>UD2.120 (Chavanne)</room>
+        <slug>VGXWNS-taming_the_llm_zoo_with_docker_model_runner_inference_with_oci_artifacts_llama_c</slug>
+        <url>https://fosdem.org/2026/schedule/event/VGXWNS-taming_the_llm_zoo_with_docker_model_runner_inference_with_oci_artifacts_llama_c/</url>
+        <title>Taming the LLM Zoo with Docker Model Runner: Inference with OCI Artifacts, llama.cpp, and vLLM</title>
+        <subtitle></subtitle>
+        <track slug="ai">AI Plumbers</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Running LLMs is currently fraught with friction: dependency hell and the ungoverned management of massive weight files (GGUF, safetensors).&lt;/p&gt;
+&lt;p&gt;In this talk, we introduce Docker Model Runner (DMR), an open initiative to bring the same standard of reproducibility to AI models that containers brought to code. We will explore how DMR streamlines the "pull, push, run, serve" lifecycle by treating AI models as first-class OCI (Open Container Initiative) artifacts, decoupling the model weights from the inference engine.&lt;/p&gt;
+&lt;p&gt;We will dive deep into the architecture of the Docker Model Runner, covering:&lt;/p&gt;
+&lt;p&gt;Models as Artifacts: How we package and distribute GGUF and safetensors formats using OCI-compliant registries, eliminating the need for arbitrary file downloads.&lt;/p&gt;
+&lt;p&gt;A Unified Interface: How DMR abstracts the complexity of underlying inference backends. We will discuss the integration of llama.cpp for broad hardware compatibility (CPU/GPU) and vLLM for high-performance production serving.&lt;/p&gt;
+&lt;p&gt;The Model Driver Pack: How the runner handles hardware acceleration automatically, managing the interface between the container runtime and host resources (NVIDIA CUDA, Vulkan, etc.).&lt;/p&gt;
+&lt;p&gt;Developer Experience: A look at the docker model CLI plugin and the local REST API that allows developers to swap models without changing their client code.&lt;/p&gt;
+&lt;p&gt;Join us to see how we are building a standardized, open ecosystem where docker model run ai/gemma3 is all you need to start building AI applications.&lt;/p&gt;
+&lt;p&gt;Key Takeaways for the Review Committee (Why this fits FOSDEM):
+Open Standards: The talk focuses on OCI compliance and open weights (GGUF/safetensors).&lt;/p&gt;
+&lt;p&gt;Open Source Integration: It highlights the usage and orchestration of popular open-source projects (llama.cpp and vLLM).&lt;/p&gt;
+&lt;p&gt;Technical Depth: It addresses infrastructure challenges (GPU passthrough, artifact management) rather than just high-level AI concepts.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/VGXWNS/feedback/</feedback_url>
+        <persons>
+          <person id="6701">Eric Curtin</person>
+          <person id="6737">Dorin Geman</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-ai:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-ai:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/VGXWNS/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="f710e0be-e49c-54af-aeb6-4c3ff819c805" id="8120">
         <date>2026-01-31T16:35:00+01:00</date>
         <start>16:35</start>
@@ -21728,7 +22007,7 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
         <track slug="local-first">Local-First, sync engines, CRDTs</track>
         <type>devroom</type>
         <language>en</language>
-        <abstract>&lt;p&gt;&lt;a href="https://miru.media/"&gt;Miru&lt;/a&gt; is a set of web-based tools for media editing. In this talk, I'll present the video editing features that we're developing, and our journey to intuitive collaboration with offline support using CRDTs. I'll outline some similarities and differences between a video editing timeline and a rich text document, the CRDT libraries we evaluated, and what approaches did and didn't work for our use editor.&lt;/p&gt;</abstract>
+        <abstract>&lt;p&gt;&lt;a href="https://miru.media/"&gt;Miru&lt;/a&gt; is a set of web-based tools for media editing. In this talk, I'll present the video editing features that we're developing, and our journey to intuitive collaboration with offline support using CRDTs. I'll outline some similarities and differences between a video editing timeline and a rich text document, the CRDT libraries we evaluated, and what approaches did and didn't work for our editor.&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/K73PG3/feedback/</feedback_url>
         <persons>
@@ -25037,6 +25316,33 @@ In this talk, I will discuss some of the pain points I have experienced or have 
           <link href="https://chat.fosdem.org/#/room/#2026-testing-and-continuous-delivery:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-testing-and-continuous-delivery:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LTG7XC/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="a8c69779-9ba0-5968-85ac-65ab1936abf6" id="8536">
+        <date>2026-02-01T10:00:00+01:00</date>
+        <start>10:00</start>
+        <duration>00:15</duration>
+        <room>H.2213</room>
+        <slug>9SZVST-testing-on-hardware-with-claude-ai</slug>
+        <url>https://fosdem.org/2026/schedule/event/9SZVST-testing-on-hardware-with-claude-ai/</url>
+        <title>Testing on hardware with Claude AI</title>
+        <subtitle></subtitle>
+        <track slug="testing-and-continuous-delivery">Testing and Continuous Delivery</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Lightning talk about a project that implements a hardware-in-the-loop testing framework for validating Linux distributions on specific development boards. The system uses a universal testing harness that automatically detects target hardware platforms and adapts generic testing scripts to board-specific configurations with Claude AI help. 
+ Platform adaptation is achieved through specific configuration files that define board-specific parameters, enabling the same testing codebase to validate different hardware capabilities. The GitHub Actions CI/CD integration provides automated testing across multiple platforms, with matrix-based execution that flashes appropriate images and runs comprehensive validation including hardware-specific feature testing.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/9SZVST/feedback/</feedback_url>
+        <persons>
+          <person id="4498">Andreea Daniela Andrisan</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-testing-and-continuous-delivery:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-testing-and-continuous-delivery:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9SZVST/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="c5dd1cbb-92d7-53e6-9da1-85dbc3c2f42c" id="8897">
@@ -29535,19 +29841,23 @@ Crystal’s runtime allows the programmer to write I/O operations as if they wer
         <language>en</language>
         <abstract>&lt;p&gt;Terminal UI libraries often rely on heavy dependencies (e.g., curses) or platform-specific hacks. Lua’s minimal standard library makes this even harder—how can we provide a portable, lightweight solution? In this talk we’ll explore terminal.lua (built on top of luasystem): a minimal, cross-platform terminal UI library for Lua designed to provide essential terminal primitives without external dependencies like curses. The work presented here includes developments made during its participation in GSoC 2025, as well as improvements made afterwards.&lt;/p&gt;
 &lt;p&gt;Lua intentionally keeps its standard library small, so handling terminals requires defining the true minimum set of capabilities needed for Unix, macOS, and Windows — while keeping the API simple, consistent, and predictable. The talk begins by outlining the problem: how to handle terminals portably and transparently in a lightweight language by creating a level playing field. We’ll then walk through the minimal core implemented in luasystem and how terminal.lua builds a higher-level layer on top.&lt;/p&gt;
-&lt;p&gt;We’ll discuss:
-Low-level:
-- Bridging differences between Unix/POSIX and Windows
-- UTF-8/Unicode handling (including double-width characters such as emojis)
-- Non-blocking async keyboard input in single-threaded Lua
-- Querying the terminal (e.g., retrieving cursor position)&lt;/p&gt;
-&lt;p&gt;Higher-level:
-- Representing terminal state (color, cursor position/shape/visibility)
-- Basic layouting and color handling&lt;/p&gt;
+&lt;p&gt;We’ll discuss:&lt;/p&gt;
+&lt;p&gt;Low-level:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bridging differences between Unix/POSIX and Windows&lt;/li&gt;
+&lt;li&gt;UTF-8/Unicode handling (including double-width characters such as emojis)&lt;/li&gt;
+&lt;li&gt;Non-blocking async keyboard input in single-threaded Lua&lt;/li&gt;
+&lt;li&gt;Querying the terminal (e.g., retrieving cursor position)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Higher-level:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Representing terminal state (color, cursor position/shape/visibility)&lt;/li&gt;
+&lt;li&gt;Basic layouting and color handling&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Projects:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;LuaSystem — a C library exposing the absolute bare minimum terminal and system primitives needed to let Lua build a UI layer on top: https://github.com/lunarmodules/luasystem&lt;/li&gt;
-&lt;li&gt;terminal.lua — the “proof of the pudding”: a pure-Lua UI library that demonstrates what can be built cleanly and portably when sticking to those minimal primitives: https://github.com/lunarmodules/terminal.lua&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/lunarmodules/luasystem"&gt;LuaSystem&lt;/a&gt; — a C library exposing the absolute bare minimum terminal and system primitives needed to let Lua build a UI layer on top: https://github.com/lunarmodules/luasystem&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/lunarmodules/terminal.lua"&gt;terminal.lua&lt;/a&gt; — the “proof of the pudding”: a pure-Lua UI library that demonstrates what can be built cleanly and portably when sticking to those minimal primitives: https://github.com/lunarmodules/terminal.lua&lt;/li&gt;
 &lt;/ul&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ZPFNKB/feedback/</feedback_url>
@@ -30453,6 +30763,532 @@ In other words, gomodjail provides a "container" engine for Go modules but in fi
       </event>
     </room>
     <room name="UB5.230" slug="ub5230">
+      <event guid="157a9729-1fac-5d56-b4c6-8234bef40943" id="9841">
+        <date>2026-02-01T09:00:00+01:00</date>
+        <start>09:00</start>
+        <duration>00:05</duration>
+        <room>UB5.230</room>
+        <slug>RT7V73-welcome</slug>
+        <url>https://fosdem.org/2026/schedule/event/RT7V73-welcome/</url>
+        <title>Welcome to the Community Devroom!</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The Community Devroom co-organizers will welcome attendees and give an overview of the day’s sessions.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/RT7V73/feedback/</feedback_url>
+        <persons>
+          <person id="1459">Laura Czajkowski</person>
+          <person id="2476">Shirley Bailes</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/RT7V73/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="7d77a14b-970b-5cc5-855a-55889f490f10" id="7967">
+        <date>2026-02-01T09:05:00+01:00</date>
+        <start>09:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>E8WAPT-there-are-no-adults-in-the-room</slug>
+        <url>https://fosdem.org/2026/schedule/event/E8WAPT-there-are-no-adults-in-the-room/</url>
+        <title>There are No Adults in the Room: Learning how to Grow Up as a Team</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;&lt;strong&gt;&lt;em&gt;What happens when your project grows up faster than you do?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The dynamics of the FOSS world allow for young and passionate developers to make real, lasting contributions; sometimes in places where they would otherwise never be taken seriously. As &lt;a href="https://www.theregister.com/2022/10/26/rolling_rhino_reboot"&gt;&lt;em&gt;The Register&lt;/em&gt; put it&lt;/a&gt;, Rhino Linux was started by a "&lt;em&gt;teen dream team&lt;/em&gt;". We had a bold, fast-paced start that threw us headfirst into the world of Linux maintainership. But while we shared the common goal of 'growing and improving' the distribution, our individual visions often diverged.&lt;/p&gt;
+&lt;p&gt;Being taken seriously has its burdens, too. It's easy to get in over your head - to lose direction, burn out, or stop communicating altogether - especially when there are no adults in the room to offer guidance. We banded together by chance, and had to discover our own limits through trial and error. Saying '&lt;em&gt;no&lt;/em&gt;' isn't easy, especially under the internal pressure to keep delivering at a steady pace, when everyone is deeply passionate about the project.&lt;/p&gt;
+&lt;p&gt;FOSS is no stranger to ever-shifting team dynamics, or to developers biting off more than they can chew; challenges that are only accentuated when all involved are still growing up. It's easy to lose sight of when to step back, and when to recognize the need to scale. As we have come to learn, if you want to be a systems maintainer, you need to maintain your own systems, too.&lt;/p&gt;
+&lt;p&gt;Join us as we retrace the human side of &lt;a href="https://rhinolinux.org"&gt;Rhino Linux&lt;/a&gt; - how we learned to build a team as young developers, what this project taught us about maturity, communication, and sustainability, and the lessons we hope others like us can take from our journey.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/E8WAPT/feedback/</feedback_url>
+        <persons>
+          <person id="2533">Oren Klopfer</person>
+          <person id="3765">A. Salt</person>
+          <person id="6050">Elisabeth Wenger-Stickel</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/E8WAPT/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="2b6e7b7e-3f61-5ba0-abfc-1ab364d0c0dd" id="7596">
+        <date>2026-02-01T09:35:00+01:00</date>
+        <start>09:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>ANGFQX-our_freedoms_depend_on_accessibility</slug>
+        <url>https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/</url>
+        <title>Accessible Sovereignty: Why the Four Freedoms Depend on Inclusion</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The four essential freedoms defined by the Free Software Foundation — freedom 0: the freedom to run the software; freedom 1: the freedom to study and change it; freedom 2: the freedom to redistribute; freedom 3: the freedom to distribute modified versions — are widely cited as the foundation of free software.  ￼https://www.gnu.org/philosophy/free-sw.en.html#four-freedoms&lt;/p&gt;
+&lt;p&gt;But what does “freedom” mean when people with disabilities cannot meaningfully use, extend, and share software? Digital sovereignty is hollow unless the tools and communities respect accessibility. If a user interface or workflow excludes a segment of users, then the right to “run” or “modify” the software is in practice restricted.&lt;/p&gt;
+&lt;p&gt;This talk argues that accessibility (in code, UI, documentation, communities) is not an optional add-on — it is essential for the exercise of the four freedoms, and thus for true digital sovereignty. We will explore how CMS projects can embed accessibility into their governance, workflows and contributions so that every user can exercise the freedoms of use, study, share and collaborate.&lt;/p&gt;
+&lt;p&gt;It is great to see GitHub making significant efforts to improve their accessibility, and that of the tools that they give to the community. https://accessibility.github.com/&lt;/p&gt;
+&lt;p&gt;https://github.blog/open-source/social-impact/our-pledge-to-help-improve-the-accessibility-of-open-source-software-at-scale/&lt;/p&gt;
+&lt;p&gt;We will cover:
+    •   How exclusion of users with disabilities limits freedom of software use and modification.
+    •   The link between accessibility and community inclusivity: if you cannot participate fully, you cannot help shape the software.
+    •   Practical steps for CMS ecosystems (Drupal, WordPress, etc) to make accessibility a governance norm rather than a compliance afterthought.
+    •   A call to action: build tools, policies and default workflows so that accessibility becomes part of the infrastructure of freedom.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ANGFQX/feedback/</feedback_url>
+        <persons>
+          <person id="2857">Mike Gifford</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ANGFQX/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="3f7b73e1-7146-57e8-8ebd-23a286d3b4c5" id="8839">
+        <date>2026-02-01T10:05:00+01:00</date>
+        <start>10:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>EMN7KW-welcome_every_mind_a_talk_on_neurodiversity</slug>
+        <url>https://fosdem.org/2026/schedule/event/EMN7KW-welcome_every_mind_a_talk_on_neurodiversity/</url>
+        <title>Neurodiversity in tech: how to build, mentor and motivate every mind</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Open source communities thrive when every contributors can participate fully and safely. Neurodivergent contributors bring unique strengths such as pattern detection, hyperfocus, creativity, and non-linear problem-solving. But they also face invisible barriers that can limit their access and growth.
+This talk explores practical scenarios for fostering neuroinclusive communities from onboarding and mentorship to culture-building and leadership. Attendees will leave with lessons they can apply in their teams, projects, and meetups and welcome every mind within their communities.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/EMN7KW/feedback/</feedback_url>
+        <persons>
+          <person id="6340">Diana Todea</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EMN7KW/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="ce62d3e6-41fc-5e06-9cb2-5c7ff1b1e0ea" id="7700">
+        <date>2026-02-01T10:35:00+01:00</date>
+        <start>10:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>TNAAGZ-companies_vs_foundations_who_should_steer_your_open_source_project</slug>
+        <url>https://fosdem.org/2026/schedule/event/TNAAGZ-companies_vs_foundations_who_should_steer_your_open_source_project/</url>
+        <title>Companies vs. Foundations: Who Should Steer Your Open Source Project?</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In the last several years, a number of open source companies have attracted significant attention after announcing license changes. Not surprisingly, these shifts sparked backlash from open source enthusiasts, prompting some to create community-driven forks under open source foundations.&lt;/p&gt;
+&lt;p&gt;Now there is growing skepticism toward (single) company backed open source projects, with many arguing that open source projects should be run by neutral foundations to prevent future bait-and-switch tactics. But is foundation backing really the answer?&lt;/p&gt;
+&lt;p&gt;Drawing on over a decade of experience in both open source foundations and companies, Fatih and Ray will compare foundation-backed and company-backed projects across key areas such as governance, roadmap planning, community, and funding. They’ll explore real-world examples of successful—and not-so-successful—projects in both models.&lt;/p&gt;
+&lt;p&gt;Finally, Fatih and Ray will discuss why funding models should be just one of several factors in assessing the long-term viability of open source projects. They’ll offer a holistic approach for evaluating open source projects, helping developers and decision-makers make informed choices about which projects to adopt, support, or contribute to.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/TNAAGZ/feedback/</feedback_url>
+        <persons>
+          <person id="1720">Ray Paik</person>
+          <person id="5562">Fatih Degirmenci</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/TNAAGZ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="dda2bbbe-cf53-5ec6-882f-9a3afef78a27" id="7372">
+        <date>2026-02-01T11:05:00+01:00</date>
+        <start>11:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>EKTCJP-a-decade-of-lessons-from-release-votes</slug>
+        <url>https://fosdem.org/2026/schedule/event/EKTCJP-a-decade-of-lessons-from-release-votes/</url>
+        <title>A decade of lessons from Apache Incubator release votes</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Ten years, 1,600 release votes, and a clear lesson: open collaboration works. Discover how Apache Incubator projects turned release reviews from rule-checking into mentoring, and what this decade of data reveals about building healthier open source communities.
+Description: What can we learn from a decade of release votes in open source communities? From 2015 to 2025, over 1,600 Apache Incubator release vote threads showed how project collaboration and growth have changed.
+In this talk, I’ll share practical lessons from analysing votes across more than 160 projects. You’ll see how better documentation, mentoring, and automation changed a stressful compliance process into a positive learning experience.
+You’ll learn about the changes: fewer rejections, quicker reviews, and a shift from a strict to a more collaborative tone. I’ll also discuss how release cadence reflects community health and what early warning signs to watch for before a project slows down.
+Whether you’re a maintainer, mentor, or contributor, you’ll come away with ideas to improve release workflows and help build stronger, more confident communities.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/EKTCJP/feedback/</feedback_url>
+        <persons>
+          <person id="5529">Justin Mclean</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EKTCJP/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="aeeef698-a950-5c8a-9415-4638b1f504e7" id="7925">
+        <date>2026-02-01T11:35:00+01:00</date>
+        <start>11:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>UTAMGU-downstream_mindset_vs_upstream_communities</slug>
+        <url>https://fosdem.org/2026/schedule/event/UTAMGU-downstream_mindset_vs_upstream_communities/</url>
+        <title>Downstream Mindset vs Upstream Communities</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;As open source became mainstream, companies started to allow or even encourage their employees to get involved upstream and even started to open source their projects. Having more people being paid to work on open source software sounds great at first. However, when people don’t get the education and support to integrate upstream work and mindset into their daily work the open source projects, and eventually the boarder ecosystem, suffer.&lt;/p&gt;
+&lt;p&gt;This phenomenon affects everyone from single-vendor projects to diverse communities, and from small projects to large communities, and eventually contributes to maintainer shortage and burnout. Addressing this is the responsibility of both individuals and corporations. So, where should they start?&lt;/p&gt;
+&lt;p&gt;This presentation will outline the different ways how corporate mindset and priorities harm open source projects today, including tasks and responsibilities in open source projects that fall short and obstacles that maintainers face on a daily basis. Attendees will learn what individuals can do to improve their own and their communities’ experience. Last, but not least, the talk will provide tools to educate employers about why and how maintaining key open source dependencies is strategic for a successful business strategy.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/UTAMGU/feedback/</feedback_url>
+        <persons>
+          <person id="1786">Ildiko Vancsa</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/UTAMGU/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="21e36889-4bb9-5297-b8e2-b6375fa1a0ab" id="9186">
+        <date>2026-02-01T12:05:00+01:00</date>
+        <start>12:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>DHKYX8-the-cra-isnt-coming-for-you</slug>
+        <url>https://fosdem.org/2026/schedule/event/DHKYX8-the-cra-isnt-coming-for-you/</url>
+        <title>The CRA isn't coming for your open source community</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Many open source contributors, maintainers, and communities are anxious about the Cyber Resilience Act (CRA) and its potential impact on open source. It’s easy to feel that these obligations aimed at commercial vendors will somehow end up falling on volunteer maintainers, community projects, and the broader open source ecosystem. But that's not the whole story.&lt;/p&gt;
+&lt;p&gt;Thanks to strong, coordinated advocacy from the community, the European Commission actually understands the open source ecosystem far better than many believe. The CRA not only clarifies where responsibility lies—squarely on the vendors who profit from open-source components, as it should—but also introduces meaningful tools to improve sustainability, including the new attestation program, which has real potential to channel support back into the ecosystem.&lt;/p&gt;
+&lt;p&gt;A well-designed law, however, doesn’t mean there will be no impact.&lt;/p&gt;
+&lt;p&gt;Drawing on direct involvement in the CRA implementation process through the ORC WG and the CRA Expert Group, Tobie will walk through how these changes will affect open source communities in practice, why the underlying structure of the CRA makes sense, and how the open source communities can position themselves to benefit from it if they so wish to deliver more secure software more sustainably.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/DHKYX8/feedback/</feedback_url>
+        <persons>
+          <person id="2505">Tobie Langel</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/DHKYX8/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="ef0bffdb-5366-5b51-b4a8-4c85f1148fea" id="8663">
+        <date>2026-02-01T12:35:00+01:00</date>
+        <start>12:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>AJGB73-the_synthetic_senior_rethinking_free_software_mentorship_in_the_ai_era</slug>
+        <url>https://fosdem.org/2026/schedule/event/AJGB73-the_synthetic_senior_rethinking_free_software_mentorship_in_the_ai_era/</url>
+        <title>The Synthetic Senior: Rethinking Free Software Mentorship in the AI Era</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;AI-assisted contributors can now produce patches that appear senior at first glance: fast, polished, and surprisingly complex. But many of these contributions arrive without the context, intent, or architectural understanding that maintainers rely on during review. This emerging pattern — the rise of the “Synthetic Senior” — is reshaping expectations around mentorship, review culture, and long-term project sustainability.&lt;/p&gt;
+&lt;p&gt;Maintainers face a growing dilemma: welcoming new contributors while navigating an influx of high-volume, low-context PRs that demand deep review time. Traditional mentorship doesn't scale to this volume, and without new guardrails, it’s a recipe for burnout. While platforms, including GitHub, iterate on systemic solutions to filter this noise, communities need immediate, practical strategies to protect their maintainers today.&lt;/p&gt;
+&lt;p&gt;Drawing on discussions with seasoned maintainers and data from AI tooling pilots across open source foundations, this talk offers community-centered strategies for adapting to the AI era without losing what makes FOSS resilient. We’ll explore:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Demonstrating comprehension:&lt;/strong&gt; Contribution workflows that encourage understanding rather than pure generation, helping contributors show they can maintain what they propose.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Helpful friction:&lt;/strong&gt; How small, intentional barriers can surface genuine contributors and reduce maintainer fatigue.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Self-serve onboarding:&lt;/strong&gt; Using automation and pre-flight checks to move the first-pass review back to contributors.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Healthy boundaries:&lt;/strong&gt; Re-establishing norms around closing contributions that lack necessary context, while keeping the door open for genuine contributors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This session isn’t about banning AI. It is about building the guardrails that protect human mentorship and keep free software communities healthy.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/AJGB73/feedback/</feedback_url>
+        <persons>
+          <person id="4576">Abigail Cabunoc Mayes</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/AJGB73/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="6aedce90-b902-5215-b146-ff07a2c6c168" id="7540">
+        <date>2026-02-01T13:05:00+01:00</date>
+        <start>13:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>UQ3UK3-partnerships-that-power-communities</slug>
+        <url>https://fosdem.org/2026/schedule/event/UQ3UK3-partnerships-that-power-communities/</url>
+        <title>Partnerships That Power Communities: How Collaborations Help Open Source Projects Grow and Thrive</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;No community grows in isolation. This talk explores how intentional partnerships can amplify the reach, visibility, and sustainability of open-source and developer communities. Drawing from experience building collaborations for community-driven tech initiatives and contributing to Mautic, I’ll share how to design partnership models that are mutually beneficial, helping communities gain resources, new contributors, and event support while offering partners authentic engagement aligned with FOSS principles. Attendees will walk away with a framework for identifying, pitching, and maintaining partnerships that strengthen both community and corporate allies without compromising values.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/UQ3UK3/feedback/</feedback_url>
+        <persons>
+          <person id="5577">Oluwaseun Oladeji</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://github.com/mautic/low-no-code">An open-source project by Mautic that simplifies automation workflows. I contributed via pull requests and documentation updates.</link>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/UQ3UK3/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="48d0342c-18f6-5158-8403-82152975bf26" id="7905">
+        <date>2026-02-01T13:35:00+01:00</date>
+        <start>13:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>8KPSMC-from_vibrant_to_silent_has_the_community_lost_its_voice</slug>
+        <url>https://fosdem.org/2026/schedule/event/8KPSMC-from_vibrant_to_silent_has_the_community_lost_its_voice/</url>
+        <title>From Vibrant to Silent: Has the Community Lost Its Voice?</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Has the once vibrant and much-loved cloud-native community lost its spark?
+What was once an ecosystem fueled by collaboration and curiosity now feels increasingly defined by Slack channels, swag drops, and conference booths.&lt;/p&gt;
+&lt;p&gt;Despite an explosion of meetups, and events, audiences are thinning. Community fatigue is real and vendor influence often overshadows genuine grassroots participation.&lt;/p&gt;
+&lt;p&gt;Contribution activity has slowed, and several once-thriving open-source projects are experiencing a contributor drought. End-user organizations and sponsors that once championed community contributions are now scaling back, leaving critical projects struggling to sustain.&lt;/p&gt;
+&lt;p&gt;This talk takes a candid look at the past, present, and possible future of the open source community. Through data and insights from a few popular OSS projects we’ll explore the patterns behind this shift and what it means for the sustainability of open collaboration in the years ahead.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/8KPSMC/feedback/</feedback_url>
+        <persons>
+          <person id="6017">Prithvi Raj</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/8KPSMC/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="3b531fb8-a6fb-5187-a67f-e621fcd40495" id="8804">
+        <date>2026-02-01T14:05:00+01:00</date>
+        <start>14:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>KYQ3LL-headscale-the-complementary-open-source-clone</slug>
+        <url>https://fosdem.org/2026/schedule/event/KYQ3LL-headscale-the-complementary-open-source-clone/</url>
+        <title>Headscale &amp; Tailscale: The complementary open source clone</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Headscale began as a learning project to work out “what was needed” to re-implement a Tailscale control server and unexpectedly exploded in popularity in the self-hosted and open source community as a home-labbers alternative to Tailscale. &lt;/p&gt;
+&lt;p&gt;Headscale has a vibrant community, about 6000 members in our Discord community and our Github repo has more stars than Tailscale’s open source client, but who's counting. &lt;/p&gt;
+&lt;p&gt;Three years ago I was hired as a member of technical staff at Tailscale, spending half of my time contributing and driving Headscale, ensuring the future of the project. &lt;/p&gt;
+&lt;p&gt;Headscale is a clone of Tailscale’s closed-source SaaS control plane, and it would be easy to consider it a competitor. Tailscale supporting Headscale this way is an unusual arrangement and sometimes raises eyebrows with "the internet". &lt;/p&gt;
+&lt;p&gt;It turns out that letting Headscale be autonomous and trusting it to run its own community complements Tailscale in a variety of ways. It helps people stay in the ecosystem. Homelabbers and self-hosted will use it at home, but bring Tailscale to work. Sometimes it even solves problems Tailscale can not.&lt;/p&gt;
+&lt;p&gt;Of course, it has not only been smooth sailing, and being a paid contributor has caused a lot of skepticism with some users fearing an “embrace, extend, extinguish” strategy, fueling conspiracy theories about our roadmap.&lt;/p&gt;
+&lt;p&gt;In this talk, I will share how the projects exist in symbiosis, the challenges of being a paid contributor, and how the stability of a corporate payroll has enabled Headscale to reach its current scale.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KYQ3LL/feedback/</feedback_url>
+        <persons>
+          <person id="6231">Kristoffer Dalby</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KYQ3LL/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="71533c7b-e552-50d2-8d75-9d51afd5ccaa" id="7687">
+        <date>2026-02-01T14:35:00+01:00</date>
+        <start>14:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>CLBXJC-openssl-community-heartbleed</slug>
+        <url>https://fosdem.org/2026/schedule/event/CLBXJC-openssl-community-heartbleed/</url>
+        <title>How the OpenSSL community was built on Heartbleed</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Before April 2014, &lt;a href="https://openssl-library.org/"&gt;OpenSSL&lt;/a&gt; was a backwater open source project with fewer than 10 regular contributors and 1 1/2 maintainers. Meanwhile its code had become a pillar of secure communication and data privacy in the industry. This was an unstable situation that was exposed when the &lt;a href="https://en.wikipedia.org/wiki/Heartbleed"&gt;Heartbleed bug&lt;/a&gt; became global news.&lt;/p&gt;
+&lt;p&gt;The way the OpenSSL project responded to this crisis was informed by the principles of open source. Jon Ericson, the Community Manager for the &lt;a href="https://openssl-foundation.org/"&gt;OpenSSL Foundation&lt;/a&gt;, explains how a security bug ignited community growth and how the open source community provides ongoing stability to the OpenSSL project.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/CLBXJC/feedback/</feedback_url>
+        <persons>
+          <person id="5403">Jon Ericson</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CLBXJC/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="6964fe98-c92a-54eb-8025-f67508fef031" id="7280">
+        <date>2026-02-01T15:05:00+01:00</date>
+        <start>15:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>NGEWWJ-what_happens_if_someone_breaks_the_rules</slug>
+        <url>https://fosdem.org/2026/schedule/event/NGEWWJ-what_happens_if_someone_breaks_the_rules/</url>
+        <title>What happens if someone breaks the rules?</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Nearly every tech event has a Code of Conduct these days, but too often it’s treated as boilerplate, or as a box to tick. But what happens when someone breaks it? Like incident response, success depends on rehearsal, not documentation.&lt;/p&gt;
+&lt;p&gt;In this talk we’ll share practical lessons from over a decade of experience running events like DevOpsDays, Cloud Native Days and PostgreSQL conferences. How to set the stage for a safe event, talk through potential incidents, and what conversations will need to be had with different stakeholders.&lt;/p&gt;
+&lt;p&gt;Most importantly, it’s hard to build trust, but easy to lose trust. We will cover how to openly and iteratively develop your community’s Code of Conduct.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/NGEWWJ/feedback/</feedback_url>
+        <persons>
+          <person id="4941">Floor Drees</person>
+          <person id="5267">Jos van Schouten</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NGEWWJ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="8b279904-de4c-5fe7-8f5d-78cd2f78f0d6" id="8223">
+        <date>2026-02-01T15:35:00+01:00</date>
+        <start>15:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>ZTBCQ9-self-raising_lazarus_all_contributors_and_how_open_source_can_rise_again</slug>
+        <url>https://fosdem.org/2026/schedule/event/ZTBCQ9-self-raising_lazarus_all_contributors_and_how_open_source_can_rise_again/</url>
+        <title>Self-Raising Lazarus: All Contributors and how Open Source can Rise Again</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;&lt;a href="https://allcontributors.org/"&gt;All Contributors&lt;/a&gt; is a project which helps us recognise all the types of contributions that build our open source communities and make them flourish. It defines a specification for acknowledging community members' work, whatever they contribute, as well as tools for easy management and presentation of this information. All Contributors is used by a wide range of communities, particularly those where key contributors are not well recognised by metrics more easily extracted from version control history.&lt;/p&gt;
+&lt;p&gt;Recently these communities noticed signs of poor health in All Contributors. When the website went offline, a group of users were &lt;a href="https://github.com/orgs/the-turing-way/discussions/4245"&gt;catalysed in to action&lt;/a&gt;. Coordinated by &lt;a href="https://www.leahwasser.com/"&gt;Leah Wasser&lt;/a&gt; (pyOpenSci Executive Director &amp;amp; Founder, PSF Fellow) they committed to adopting the project and forming a new, sustainable team of maintainers.&lt;/p&gt;
+&lt;p&gt;With the context of All Contributors, I will tell a story of the decline and rise of an open source project. There will be a scattering of challenges maintainers face such as, burnout, technical debt, and lottery factor. However, it is also a hopeful story about how open source software can play critical roles, cultivate deep affection from its users, and, with community support, rise again.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ZTBCQ9/feedback/</feedback_url>
+        <persons>
+          <person id="2582">Jim Madge</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZTBCQ9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="4be0b3c2-d9f9-5730-b9e0-213a1f8b8e07" id="8843">
+        <date>2026-02-01T16:05:00+01:00</date>
+        <start>16:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>NMLPUP-sustainability</slug>
+        <url>https://fosdem.org/2026/schedule/event/NMLPUP-sustainability/</url>
+        <title>Building on Success: Sustainability of Open Source</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Open source is suffering from its own success. Our community solved problems with minimal attention from the rest of the world for almost 30 years, slowly becoming the foundation of nearly every piece of software critical to everyday life. Now with increasing regulation around the world, evolving cybersecurity requirements, and changing corporate participation and funding, how do we ensure the ecosystem's continued success? The things that have worked for the first decades will not be the things that keep us going. We will look at sustainability not only as a funding problem, but also from the perspectives of global policy movement, security, and other intertwined issues that face open source in the coming years.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/NMLPUP/feedback/</feedback_url>
+        <persons>
+          <person id="6486">Ruth Suehle</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NMLPUP/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="e3227692-0c0a-5d8f-b5f6-6161229b1478" id="8213">
+        <date>2026-02-01T16:35:00+01:00</date>
+        <start>16:35</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>GNKEPR-burnout_in_open_source_a_structural_problem_we_can_fix_together</slug>
+        <url>https://fosdem.org/2026/schedule/event/GNKEPR-burnout_in_open_source_a_structural_problem_we_can_fix_together/</url>
+        <title>Burnout in Open Source: A Structural Problem We Can Fix Together</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;I'm a psychology researcher that has been moved by the extent of burnout in Open Source, and I've written what I believe to be the most comprehensive report to date on burnout among OSS developers. I reviewed the academic literature, conducted a qualitative analysis of online discussion in the OSS community, and interviewed OSS developers. I identified 6 factors that contribute to developer burnout: difficulty getting paid, workload and time commitment, maintenance work as unrewarding, toxic community behaviour, hyper-responsibility and pressure to prove oneself. I recommend 4 structural changes to address developer burnout: pay OSS developers, foster a culture of recognition and respect, grow the community and advocate for maintainers.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/GNKEPR/feedback/</feedback_url>
+        <persons>
+          <person id="6173">Miranda Heath</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GNKEPR/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="7ad9cc3f-7c3b-5ee0-a95a-b5a8e953677c" id="8230">
+        <date>2026-02-01T17:05:00+01:00</date>
+        <start>17:05</start>
+        <duration>00:25</duration>
+        <room>UB5.230</room>
+        <slug>KXPSTQ-the_ai_shockwave_in_open_source_communities_how_ai_is_reshaping_the_foundations_</slug>
+        <url>https://fosdem.org/2026/schedule/event/KXPSTQ-the_ai_shockwave_in_open_source_communities_how_ai_is_reshaping_the_foundations_/</url>
+        <title>The AI Shockwave in Open Source Communities: How AI Is Reshaping the Foundations of Open Source Communities</title>
+        <subtitle></subtitle>
+        <track slug="community">Community</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Open source communities depend on a steady influx of newcomers who ask questions, seek help, and build relationships. Future heroes have to start somewhere as newbies. But across the ecosystem, those early engagement signals are dropping—sometimes sharply. Generative AI is changing how people learn, troubleshoot, and participate.&lt;/p&gt;
+&lt;p&gt;This talk synthesizes new research and real-world data to explore how AI is reshaping contributor pipelines—and what open source projects can do to adapt before downstream participation suffers.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KXPSTQ/feedback/</feedback_url>
+        <persons>
+          <person id="4050">David Allen</person>
+          <person id="6179">Amanda Victoria Wagner</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KXPSTQ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
     </room>
     <room name="UD2.120 (Chavanne)" slug="ud2120">
       <event guid="7148b930-aa9b-5933-af09-6b3c4b2f0c1b" id="7319">

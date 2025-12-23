@@ -1,13 +1,15 @@
-use std::collections::HashMap;
-
-use shared::model::{Event, SearchItem};
+use shared::model::Event;
 use unicode_segmentation::UnicodeSegmentation;
 
 fn count_graphemes(s: &str) -> usize {
     UnicodeSegmentation::graphemes(s, true).count()
 }
 
-pub fn truncate_title(title: &str, _: &dyn askama::Values, max_size: usize) -> ::askama::Result<String> {
+pub fn truncate_title(
+    title: &str,
+    _: &dyn askama::Values,
+    max_size: usize,
+) -> ::askama::Result<String> {
     if count_graphemes(title) <= max_size {
         return Ok(title.to_string());
     }
@@ -46,7 +48,10 @@ pub fn distance_icon(distance: &f64, _: &dyn askama::Values) -> ::askama::Result
     ))
 }
 
-pub fn order_event_by_time_then_place(events: &[Event], _: &dyn askama::Values) -> ::askama::Result<Vec<Event>> {
+pub fn order_event_by_time_then_place(
+    events: &[Event],
+    _: &dyn askama::Values,
+) -> ::askama::Result<Vec<Event>> {
     let mut ordered = Vec::from(events);
     ordered.sort_by(|a, b| {
         if a.starting_time() == b.starting_time() {
@@ -56,29 +61,4 @@ pub fn order_event_by_time_then_place(events: &[Event], _: &dyn askama::Values) 
         }
     });
     Ok(ordered)
-}
-
-pub struct GroupedSearchItems {
-    pub distance: f64,
-    pub items: Vec<SearchItem>,
-}
-
-pub fn group_by_distance(items: &Vec<SearchItem>, _: &dyn askama::Values) -> ::askama::Result<Vec<GroupedSearchItems>> {
-    let mut group_map: HashMap<String, Vec<SearchItem>> = HashMap::new();
-    for item in items {
-        let group_name = distance_similarity(&item.distance, askama::NO_VALUES)?;
-        group_map
-            .entry(group_name)
-            .and_modify(|e| e.push(item.clone()))
-            .or_insert(vec![item.clone()]);
-    }
-    let mut grouped: Vec<GroupedSearchItems> = group_map
-        .into_values()
-        .map(|items| GroupedSearchItems {
-            distance: items[0].distance,
-            items,
-        })
-        .collect();
-    grouped.sort_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
-    Ok(grouped)
 }
