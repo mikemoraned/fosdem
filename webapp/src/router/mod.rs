@@ -43,8 +43,8 @@ pub async fn app_state(
         current_fosdem: shared::model::CurrentFosdem {
             year: current_year,
             selectable_years,
+            updated_at: started_at,
         },
-        started_at,
     }
 }
 
