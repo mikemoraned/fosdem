@@ -1,4 +1,4 @@
-use chrono::{Duration, NaiveDate, NaiveDateTime, NaiveTime};
+use chrono::{DateTime, Duration, NaiveDate, NaiveDateTime, NaiveTime, Utc};
 use nalgebra::DVector;
 use openai_dive::v1::resources::embedding::{EmbeddingOutput, EmbeddingResponse};
 use serde::{Deserialize, Serialize};
@@ -11,6 +11,7 @@ use crate::model;
 pub struct CurrentFosdem {
     pub year: u32,
     pub selectable_years: Vec<u32>,
+    pub updated_at: DateTime<Utc>,
 }
 
 #[derive(Debug, Clone, PartialEq)]

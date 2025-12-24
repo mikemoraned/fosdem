@@ -32,7 +32,7 @@ pub async fn sitemap(Host(host): Host, State(state): State<AppState>) -> Respons
                 event.id.year(),
                 event.id.event_in_year()
             ));
-            builder.last_modified(state.started_at.fixed_offset());
+            builder.last_modified(state.current_fosdem.updated_at.fixed_offset());
 
             if event.year == state.current_fosdem.year {
                 builder
