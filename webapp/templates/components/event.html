@@ -1,6 +1,15 @@
 {%- import "bookmark.html" as bookmark -%}
 {%- import "external.html" as external -%}
 
+{% macro event_year(year) %}
+<span class="icon-text">
+    <span class="icon">
+        <i class="fa-solid fa-calendar"></i>
+    </span>
+    <span>{{ year }}</span>
+</span>
+{% endmacro %}
+
 {% macro card(event, related) %}
 <div class="columns highlight-bookmarked">
     <div class="column">
@@ -17,23 +26,32 @@
         {% if related.is_some() %}
         {% let items = related.as_ref().unwrap() %}
         <div class="box">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+            <h6 class="title is-6">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-duotone fa-arrow-right-arrow-left"></i>
+                    </span>
+                    <span>Related:</span>
                 </span>
-                <span>Related</span>
-            </span>:
-            <ul>
-                {% for item in items %}
-                <li>
-                    <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/">
-                        <span
-                            class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
-                        <span>"{{ item.event.title }}" ({{ item.event.year }})</span>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+            </h6>
+            {% for year_group in items|group_items_by_year %}
+            <div class="box">
+                <div>
+                    {% call event_year(year_group.year) %}
+                </div>
+                <ul>
+                    {% for item in year_group.items %}
+                    <li>
+                        <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/">
+                            <span
+                                class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
+                            <span>"{{ item.event.title }}"</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
         </div>
         {% endif %}
     </div>
@@ -45,7 +63,7 @@
 <div class="card-content">
     <p class="title is-5">
         <span>
-            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}" ({{ event.year }})
+            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}" ({% call event_year(event.year) %})
         </span>
     </p>
     <p class="subtitle is-7">
