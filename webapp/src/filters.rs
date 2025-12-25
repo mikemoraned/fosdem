@@ -1,5 +1,11 @@
-use shared::model::Event;
+use shared::model::{Event, SearchItem};
+use std::collections::BTreeMap;
 use unicode_segmentation::UnicodeSegmentation;
+
+pub struct ItemsInYear {
+    pub year: u32,
+    pub items: Vec<SearchItem>,
+}
 
 fn count_graphemes(s: &str) -> usize {
     UnicodeSegmentation::graphemes(s, true).count()
@@ -61,4 +67,27 @@ pub fn order_event_by_time_then_place(
         }
     });
     Ok(ordered)
+}
+
+pub fn group_items_by_year(
+    items: &[SearchItem],
+    _: &dyn askama::Values,
+) -> ::askama::Result<Vec<ItemsInYear>> {
+    let mut grouped: BTreeMap<u32, Vec<SearchItem>> = BTreeMap::new();
+
+    for item in items {
+        grouped
+            .entry(item.event.year)
+            .or_insert_with(Vec::new)
+            .push(item.clone());
+    }
+
+    // Convert to Vec and sort by year (descending - most recent first)
+    let mut result: Vec<ItemsInYear> = grouped
+        .into_iter()
+        .map(|(year, items)| ItemsInYear { year, items })
+        .collect();
+    result.sort_by(|a, b| b.year.cmp(&a.year));
+
+    Ok(result)
 }
