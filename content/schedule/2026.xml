@@ -100,6 +100,12 @@
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1342">
+      <name>Kathy Giori</name>
+      <slug>kathy_giori</slug>
+      <biography>&lt;p&gt;Kathy Giori fills her desk with hardware that can be programmed using MicroBlocks, and enjoys teaching workshops. She has worked in Silicon Valley her whole career, and currently runs a small startup focused on providing affordable privacy solutions to consumers. At MicroBlocks, she supports global partnerships and outreach. She volunteers her time to support and evangelize MicroBlocks because she wants to bring better STEM opportunities to users around the world. She is a passionate advocate for open source software, hardware, and STEM learning that is accessible to all. She received her bachelor's degree in Electrical Engineering from the University of Minnesota, and her master’s degree in Electrical Engineering from Stanford.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1343">
       <name>Stephane Graber</name>
       <slug>stephane_graber</slug>
@@ -319,6 +325,14 @@
       <biography></biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1541">
+      <name>Bernat Romagosa</name>
+      <slug>bernat_romagosa</slug>
+      <biography>&lt;p&gt;Bernat Romagosa is a software engineer at SAP, where he contributes to the Snap&lt;em&gt;!&lt;/em&gt; and MicroBlocks programming languages. He's been mixing the physical and real worlds together since he started the Snap4Arduino project at the Citilab (Barcelona) in 2013.&lt;/p&gt;
+&lt;p&gt;His passion for computing revolves around live programming systems and pedagogy. One of his other passions is music, and when the sun sets he mixes the two by live coding synthesizers with MicroBlocks in Barcelona whenever he has the chance.&lt;/p&gt;
+&lt;p&gt;No matter what, Smalltalk will forever be his favorite language.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1550">
       <name>Steven Goodwin</name>
       <slug>steven_goodwin</slug>
@@ -529,6 +543,24 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=autho
       <biography>&lt;p&gt;Adrian is a Senior Principal Software Engineer at Red Hat and is migrating processes at least since 2010. He started to migrate processes in a high performance computing environment and at some point he migrated so many processes that he got a PhD for that. Most of the time he is now migrating containers but occasionally he still migrates single processes. Currently he serves as the OpenHPC project lead.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="1774">
+      <name>Pauline Maas</name>
+      <slug>pauline_maas</slug>
+      <biography>&lt;p&gt;Teacher Digital Literacy at Royal Visio; Queen of the micro:bit; Author of oa "The invent to Learn Guide to the microbit" ;  microbit101.nl; Stichting CodeKlas; codekinderen.nl &amp;amp; 4pip.nl&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="1776">
+      <name>Evan Patton</name>
+      <slug>evan_patton</slug>
+      <biography>&lt;p&gt;Evan is the lead developer for the MIT App Inventor project. He has been a developer of mobile apps since the first public iOS and Android frameworks became available. His mobile app development experience has been paired with block based programming environments for over a decade in contributions to projects like App Inventor and others.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="1783">
+      <name>Jens Mönig</name>
+      <slug>jens_monig</slug>
+      <biography>&lt;p&gt;Jens Mönig is a researcher at SAP. He is the architect and lead programmer of UC Berkeley’s SNAP! programming language for which he has been awarded the U.S. National Technology Leadership Symposium (NTLS) Educational Leadership Award 2020 together with Brian Harvey. Previously Jens has conducted research under Alan Kay, helped develop Scratch for the MIT Media Lab and written enterprise software. He is a fully qualified lawyer in Germany and has been an attorney, corporate counsel and lecturer for many years before rediscovering his love for programming. For leisure Jens loves riding his bicycle and fooling around with musical instruments.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="1786">
       <name>Ildiko Vancsa</name>
       <slug>ildiko_vancsa</slug>
@@ -705,6 +737,12 @@ Nicolas is an open source aficionado, also aside from running an open-source sof
       <name>Phil Estes</name>
       <slug>phil_estes</slug>
       <biography>&lt;p&gt;Phil Estes is a Principal Engineer at Amazon Web Services (AWS) focused on cloud native open source strategy and is a CNCF containerd project maintainer and OCI Technical Oversight Board member.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="2000">
+      <name>Ricardo Signes</name>
+      <slug>ricardo_signes</slug>
+      <biography>&lt;p&gt;Ricardo Signes is a chief engineer at Fastmail, a leader in email innovation. He has long been a prolific author of open source code, especially in the Perl email ecosystem. He is part of the "Toolchain Gang" that maintains the Perl library packaging and distribution infrastructure. He spent five years as "Pumpking," the Perl 5 project manager, followed by two more on the three-person Perl Steering Council that replaced the Pumpking role. In his free time, Rik likes to learn new programming languages and swear at his computer.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="2007">
@@ -1282,12 +1320,6 @@ Ahmad is a contributor to a number of open-source projects, including the Linux 
       <biography>&lt;h1&gt;LinuxMobile Enthusiast, starting with Motorola EZX and Openmoko, and back since 2020, contributing to &lt;a href="https://linmob.net/"&gt;linmob.net&lt;/a&gt;, &lt;a href="https://linuxphoneapps.org/"&gt;LinuxPhoneApps.org&lt;/a&gt; and &lt;a href="https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox"&gt;mobile-config-firefox&lt;/a&gt;.&lt;/h1&gt;</biography>
       <extended_biography></extended_biography>
     </person>
-    <person id="2856">
-      <name>Felix</name>
-      <slug>felix</slug>
-      <biography>&lt;p&gt;Felix is a researcher and Free Software supporter currently working on Verilog-AMS in Gnucap with funding from NLnet.&lt;/p&gt;</biography>
-      <extended_biography></extended_biography>
-    </person>
     <person id="2857">
       <name>Mike Gifford</name>
       <slug>mike_gifford</slug>
@@ -1452,6 +1484,12 @@ Amandine is also COO and co-founder for Element, the company building the eponym
       <biography>&lt;p&gt;Ronna is a Google Developer Expert for Go, a technologist, a Women Who Go organizer, and GoTime’s "Unpopular Opinion" hall of famer.
 After over 20 years in software development, Ronna knows that she is the sum of the opportunities that were given to her, which is why she helps others through mentorship.
 She has been crafting hands-on workshops in Go since 2017, and is looking forward to seeing you in Go meetups and conferences.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="3248">
+      <name>Bryan Honof</name>
+      <slug>bryan_honof</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
     <person id="3249">
@@ -1788,6 +1826,12 @@ Yuning's career has taken him from the UK to Switzerland, then to South Korea, a
       <name>Mateusz Charytoniuk</name>
       <slug>mateusz_charytoniuk</slug>
       <biography>&lt;p&gt;Mateusz Charytoniuk is a Technical Founder at Intentee, where he leads the development of innovative conversational applications builder. Mateusz is also involved in projects like Paddler, a llama.cpp-based load balancer. His expertise is further showcased through his active Open Source contributions.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="3818">
+      <name>Margaret Low</name>
+      <slug>margaret_low</slug>
+      <biography>&lt;p&gt;Margaret Low works with young people encouraging them to become creators as well as consumers of technology in her role as Director of Outreach and Widening Participation for WMG, University of Warwick. Margaret’s interactive workshops explore creative aspects of technology. She collaborates with organisations and communities to explore inclusive, creative learning experiences using technology. Margaret uses TurtleStitch as an approach to physical computing. It bridges the world of programming and textiles in a way that is accessible to young and old alike, bringing a very creative and practical dimension to computer programming.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="3844">
@@ -2260,6 +2304,14 @@ Julien currently works as a Solution Architect at ZettaScale. With strong experi
       <name>Josh Lee</name>
       <slug>josh_lee</slug>
       <biography>&lt;p&gt;Josh is a seasoned software developer with over a decade of experience, specializing in a broad range of topics including operations, observability, agile methodologies, and accessibility. His passion for technology is matched by his enthusiasm for sharing knowledge through public speaking. Currently, Josh serves as a Developer Advocate for Altinity, where he creates educational content on ClickHouse and OpenTelemetry.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="4661">
+      <name>Joek van Montfort</name>
+      <slug>joek_van_montfort</slug>
+      <biography>&lt;p&gt;Teacher Computer Science at Montessori Lyceum Amsterdam&lt;/p&gt;
+&lt;p&gt;Teaching with block based languages like snap.berkeley.edu and Turtlestitch.org&lt;/p&gt;
+&lt;p&gt;Organiser of community meetings like http://turtlestitch.org/ten&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="4662">
@@ -2783,6 +2835,12 @@ Benevolent dictator of &lt;a href="https://freesewing.eu/"&gt;FreeSewing&lt;/a&g
 &lt;p&gt;我也在学中文&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="5384">
+      <name>Sami Finkbeiner</name>
+      <slug>sami_finkbeiner</slug>
+      <biography>&lt;p&gt;lorem ipsum&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="5398">
       <name>Stefan Sperling</name>
       <slug>stefan_sperling</slug>
@@ -2927,7 +2985,8 @@ He’s been hosting &lt;a href="https://www.lutopia.art/"&gt;Lutòpia Wearable T
       <slug>maho_pacheco</slug>
       <biography>&lt;p&gt;&lt;strong&gt;Maho Pacheco&lt;/strong&gt;
 &lt;em&gt;Senior Software Engineer, Microsoft&lt;/em&gt;
-&lt;a href="https://www.linkedin.com/in/mahomedalid/"&gt;linkedin.com/in/mahomedalid&lt;/a&gt;&lt;/p&gt;
+&lt;a href="https://www.linkedin.com/in/mahomedalid/"&gt;linkedin.com&lt;/a&gt;
+&lt;a href="https://hachyderm.io/@mapache"&gt;mastodon&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;With 20+ years of code, open-source passion since 1999, and a commitment to community-powered tech, I build and mentor systems that scale and empower. Personally, I volunteer as CTO at SOMOS.tech, where I help bring technology to underserved communities.&lt;/p&gt;
 &lt;p&gt;I specialize in open-source engineering, architecture design and community-driven innovation. My background spans cloud/edge, data processing and systems thinking—but at heart I’m drawn to how technology can be owned, shared and driven by community, not just enterprise. I believe in inclusive community, collaborative code, and meaningful recognition (that doesn’t cost the earth).&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
@@ -3249,8 +3308,8 @@ Since 2021 his responsibility is GitLab.com's database infrastructure.&lt;/p&gt;
       <extended_biography></extended_biography>
     </person>
     <person id="5657">
-      <name>Taym</name>
-      <slug>taym</slug>
+      <name>Taym Haddadi</name>
+      <slug>taym_haddadi</slug>
       <biography>&lt;p&gt;Taym Haddadi, software engineer and open-source contributor focused on systems programming and web platform. In my free time, I work on Servo (ReadableStream, WritableStream, TransformStream, AbortSignal, AbortController) and build Rust backend and embedded systems.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
@@ -3322,6 +3381,12 @@ Linux sysadmin by trade&lt;/p&gt;</biography>
       <name>Adam Pioterek</name>
       <slug>adam_pioterek</slug>
       <biography>&lt;p&gt;One from the common folk. Finished studies at Poznań University of Technology and found employment as a sysadmin, then devops engineer. Passionate about free and open source software from very early age as a user, later trying to solve every problem with it, and finally settled as Bimba’s sole maintainer against all odds.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="5707">
+      <name>Gertjan Franken</name>
+      <slug>gertjan_franken</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
     <person id="5708">
@@ -3469,6 +3534,18 @@ control.&lt;/p&gt;</biography>
       <name>Aliaksei Makarau</name>
       <slug>aliaksei_makarau</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="5772">
+      <name>Felix</name>
+      <slug>felix</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="5773">
+      <name>Raphaël</name>
+      <slug>raphael</slug>
+      <biography>&lt;p&gt;&lt;a href="https://linktr.ee/sableraph"&gt;Raphaël de Courville&lt;/a&gt; (he/they) is a generative artist and designer from Paris. He currently serves as the Community Lead for the Processing project. Since 2012 Raphaël has been the co-host of &lt;a href="https://creativecode.berlin/"&gt;Creative Code Berlin&lt;/a&gt;, a community that promotes interdisciplinary practices in art and technology through monthly events. Raphaël also shares insights on Creative Coding through his &lt;a href="https://www.twitch.tv/sableraph"&gt;weekly livestreams&lt;/a&gt;. He lives and works in Berlin.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="5776">
@@ -3779,6 +3856,12 @@ Feel free to reach out:
 &lt;a href="https://nrdrgz.github.io/"&gt;Blog&lt;/a&gt;&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6044">
+      <name>lumi</name>
+      <slug>lumi</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6047">
       <name>Pablo Marcos</name>
       <slug>pablo_marcos</slug>
@@ -3797,6 +3880,12 @@ Feel free to reach out:
       <name>Elisabeth Wenger-Stickel</name>
       <slug>elisabeth_wenger-stickel</slug>
       <biography>&lt;p&gt;Hello 💖 I'm Elisabeth, and I'm a 20 year old programmer and college student! I'm &lt;em&gt;super&lt;/em&gt; interested in programming and natural languages. I created and currently lead &lt;a href="https://pacstall.dev"&gt;pacstall&lt;/a&gt; and the &lt;a href="https://github.com/rhino-linux/rhino-pkg"&gt;RPK&lt;/a&gt; package manager manager for &lt;a href="https://rhinolinux.org"&gt;Rhino Linux&lt;/a&gt;, for which I'm a jack of all trades developer.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6054">
+      <name>benedict</name>
+      <slug>benedict</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6055">
@@ -3911,6 +4000,13 @@ As a board member of Open Labs Albania, Elio has organised over 100 events acros
 I'm a UX researcher specialising in accessibility, usability testing, and secure tool design. By combining computer science and systems thinking, I identify structural and cognitive barriers and deliver WCAG-aligned insights to make complex platforms usable for diverse audiences.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6086">
+      <name>Femke Weijsenfeld</name>
+      <slug>femke_weijsenfeld</slug>
+      <biography>&lt;p&gt;Hello, my name is Femke. I am a Computer Science student and a teacher in training on the subject of Science Education.
+I am passionate about computer science education: making computer science accesible and fun for people (and discussing the importance of FOSS of course ;)).&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6087">
       <name>Manuel Raynaud</name>
       <slug>manuel_raynaud</slug>
@@ -3930,6 +4026,12 @@ Tinker from FPGA to web client : skills in nothing but playing with all.&lt;/p&g
       <name>Rao Lakkakula</name>
       <slug>rao_lakkakula</slug>
       <biography>&lt;p&gt;Rao Lakkakula is the Director at Microsoft leading Open Source Strategy &amp;amp; Ecosystems group. With over 25 years of expertise in security and software development, Rao has held various roles in Engineering, Security, Open Source and Risk management. His previous experience includes leadership positions at world largest companies such as JPMorgan Chase, Climate Corp, Amazon, and also several startups. Rao currently serves on the Linux Foundation Research Advisory Board and previously served as Founding Board Member of the Open-Source Security Foundation (OpenSSF) from 2020 to 2024.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6092">
+      <name>lola odelola</name>
+      <slug>lola_odelola</slug>
+      <biography>&lt;p&gt;Lola is a multidisciplinary artist and web standards technologist. As an elected co-chair of the W3C Technical Architecture Group and founder of Lola’s Lab, she leads strategic initiatives across, accessibility, interoperability, and developer education. Lola builds bridges between browsers, specs, and web development through leadership, writing, and engaging developer experiences.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6094">
@@ -3998,6 +4100,12 @@ Tinker from FPGA to web client : skills in nothing but playing with all.&lt;/p&g
 &lt;p&gt;He has a history of involvement in Open Source, having been a major contributor and board member of the openSUSE project, as well as organizing FOSDEM for 10 years.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6111">
+      <name>Amin</name>
+      <slug>amin</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6113">
       <name>Alex Snaps</name>
       <slug>alex_snaps</slug>
@@ -4051,12 +4159,6 @@ building custom BSP layers using Yocto for projects involving various frameworks
       <slug>manuel_rego</slug>
       <biography>&lt;p&gt;Web Engines Hacker (Chromium &amp;amp; WebKit reviewer, Servo TSC chair) - CSSWG member - Free Software/Open Source Developer - Igalia partner
 &lt;em&gt;he/him&lt;/em&gt;&lt;/p&gt;</biography>
-      <extended_biography></extended_biography>
-    </person>
-    <person id="6131">
-      <name>Ash Vardanian</name>
-      <slug>ash_vardanian</slug>
-      <biography>&lt;p&gt;Ash Vardanian is an engineer focused on high-performance computing and AI infrastructure. He maintains open-source libraries such as USearch, StringZilla, and SimSIMD, covering SIMD-optimized text processing, vector search, and mixed-precision math across x86 and Arm architectures. His work spans CPUs and GPUs, including low-level PTX, GPGPU kernels, and distributed systems using high-throughput networking and Linux kernel-bypass techniques. For the past decade he has built search and data-processing systems used in databases, scientific computing, and large-scale AI workloads.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6133">
@@ -4815,6 +4917,12 @@ Then, in 2023, I got a new position that I currently occupy in the Conservatoire
       <biography>&lt;p&gt;Trained as an engineer, Archita found herself drawn to the challenges that live at the intersection of technical depth and human experience. She moved into UX to focus on making complex, security-sensitive interfaces more understandable and dependable. Today, at Canonical, she designs patterns, flows, and frameworks that bring clarity and consistency to open-source products, helping both users and engineers navigate complexity with less friction.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6391">
+      <name>Ben Chisholm</name>
+      <slug>ben_chisholm</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6393">
       <name>Ev Cheng</name>
       <slug>ev_cheng</slug>
@@ -4837,6 +4945,14 @@ Then, in 2023, I got a new position that I currently occupy in the Conservatoire
       <name>Enzo Ghisoni</name>
       <slug>enzo_ghisoni</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6402">
+      <name>Benjamin Andre</name>
+      <slug>benjamin_andre</slug>
+      <biography>&lt;p&gt;As co-founder of Cozy Cloud, a startup dedicated to developing an open-source personal cloud, I was able to imagine innovative models for participation and value sharing within an open-source ecosystem.
+I also spent fourteen years exploring and experimenting with solutions for building services around a person's data stored in their personal cloud. Our experience has led us to propose a realistic standard for service orchestration.
+Today, implementing them is possible, the time has come!&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6403">
@@ -4865,8 +4981,8 @@ Over the past 15+ years, his work has centered on zero-copy data communication. 
       <extended_biography></extended_biography>
     </person>
     <person id="6411">
-      <name>ffex</name>
-      <slug>ffex</slug>
+      <name>Federico Bassini</name>
+      <slug>federico_bassini</slug>
       <biography>&lt;p&gt;Born in 1992, passionate about technology since childhood. I discovered programming in high school and immediately fell in love with it: today I am both IT teacher and developer, driven by an inexhaustible curiosity. In the last few years, I have approached the Rust world and TUIs, rediscovering a creative and almost "artistic" approach to programming.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
@@ -4960,6 +5076,12 @@ Over the past 15+ years, his work has centered on zero-copy data communication. 
       <name>Dylan Ayrey</name>
       <slug>dylan_ayrey</slug>
       <biography>&lt;p&gt;Dylan is the original author of the open source version of TruffleHog, which he built after recognizing just how commonly credentials and other secrets were exposed in Git. Coming most recently from the Netflix security team, Dylan has spoken at a number of popular information security conferences, including Defcon and Blackhat. The popularity of TruffleHog, and growing need for services like it, led him to co-found Truffle Security to deliver technology that works across all platforms where credentials can be exposed.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6445">
+      <name>Andreas Bertsatos</name>
+      <slug>andreas_bertsatos</slug>
+      <biography>&lt;p&gt;I am an Electronic Engineer by training with a PhD in Biological Anthropology, which is my active research field for the past decade. I have been using Octave throughout my academic  career both for research purposes but also for teaching various classes mostly related to population statistics and data analysis. Although a long time casual contributor, I have been actively and regularly engaged in the development of GNU Octave and Octave Packages over the past four years.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6446">
@@ -5137,6 +5259,13 @@ His work has always focused on using standards and promoting both open data and 
 Homepage: &lt;a href="https://ilya.boyandin.me/"&gt;ilya.boyandin.me&lt;/a&gt;.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6488">
+      <name>Jonas Jakštys</name>
+      <slug>jonas_jakstys</slug>
+      <biography>&lt;p&gt;I am a long time contributor to GCompris as a translator as well as a voice actor of the Lithuanian language. I am finishing high school this year. I am dipping into open source, but still see lots to learn.&lt;/p&gt;
+&lt;p&gt;Alongside I am singing (solo) and play the accordion (solo and in a band). I casually participate in orienteering competitions, and sometimes create maps for them. I also teach kids orienteering. Talk to me about performing or making music, GiS and outdoor sports!&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6489">
       <name>Desaintjan Arthur</name>
       <slug>desaintjan_arthur</slug>
@@ -5241,6 +5370,12 @@ Lars currently calls Copenhagen his home, but has lived in HongKong, Scotland an
       <name>Sergey</name>
       <slug>sergey</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6514">
+      <name>Célia Piquet</name>
+      <slug>celia_piquet</slug>
+      <biography>&lt;p&gt;I am a computer science teacher in France with a Master’s degree in Education from the University of Montreal. I am now beginning a PhD focused on programming learning and the development of effective tools and methodologies for teaching code.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6516">
@@ -5463,6 +5598,12 @@ Computer Scientist from HSNR.&lt;/p&gt;</biography>
 &lt;p&gt;Denise has also recently defended her PhD thesis at UCL, on the topic of technology worker's attitudes and behaviours towards privacy and change. Her main research interests are centred on privacy, change, interoperability, digital rights and open source govenrnace, particularly around how these areas interact with different social, demographic and contextual factors.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6592">
+      <name>Patrick Brosset</name>
+      <slug>patrick_brosset</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6593">
       <name>Karel Kočí</name>
       <slug>karel_koci</slug>
@@ -5493,6 +5634,12 @@ Computer Scientist from HSNR.&lt;/p&gt;</biography>
       <biography>&lt;p&gt;Pepijn Lemmens is chief community and product owner at PublicSpaces, a unique coalition of over 40 public institutions in The Netherlands fighting for an internet based on public values. Pepijn has over 25 years of experience in the cross section of culture and digital and previously worked with museums, archives, libraries and other cultural institutions to enhance their digital efforts.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6604">
+      <name>Jos</name>
+      <slug>jos</slug>
+      <biography>&lt;p&gt;Product and Engineering at the App Inventor Foundation&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6606">
       <name>Christian Simon</name>
       <slug>christian_simon</slug>
@@ -5503,6 +5650,12 @@ Computer Scientist from HSNR.&lt;/p&gt;</biography>
       <name>Björn Ruytenberg</name>
       <slug>bjorn_ruytenberg</slug>
       <biography>&lt;p&gt;Björn Ruytenberg is a hardware and firmware security researcher, specializing in OS internals, UEFI, hypervisors, and PCI Express. He is currently pursuing his Ph.D. at VUSec, Vrije Universiteit Amsterdam. Part of his work includes Thunderspy, a series of critical security vulnerabilities in Intel Thunderbolt technology. Björn also serves as a lead maintainer of HyperDbg, an open-source hypervisor-based debugger, where his work mostly focuses on hypervisor transparency and anti-anti-debugging techniques. For details on his research and talks, see https://bjornweb.nl/.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6612">
+      <name>Philip Homburg</name>
+      <slug>philip_homburg</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6614">
@@ -6083,6 +6236,12 @@ Part-time postdoctoral researcher @ &lt;a href="https://soft.vub.ac.be/soft/inde
       <biography>&lt;p&gt;Expert in applied cloud wizardry, upgrading Kubernetes for over a decade. While optimizing and architecting cluster fleets and application stacks for critical telecommunications workloads with Deutsche Telekom at daytime, I enjoy digging into the full stack during the night.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6848">
+      <name>Shane Pearman</name>
+      <slug>shane_pearman</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6850">
       <name>Josse Van Delm</name>
       <slug>josse_van_delm</slug>
@@ -6164,6 +6323,12 @@ Leon has presented his work at various academic and industry conferences, includ
 Maintainer of slab and page allocators.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6880">
+      <name>Gilles Pommereuil</name>
+      <slug>gilles_pommereuil</slug>
+      <biography>&lt;p&gt;Gilles Pommereuil is the co-founder of Arturia (musical instruments), Koffeeware (creative web services), and Neuronality (game studio), and the creator of microStudio, an open-source game engine designed for beginners. Gilles is now working on his dream game, Music Power Up, a retelling of the digital revolution of the 1980s, to be released in 2026.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6882">
       <name>Stefan Jugelt</name>
       <slug>stefan_jugelt</slug>
@@ -6236,6 +6401,24 @@ Maintainer of slab and page allocators.&lt;/p&gt;</biography>
       <name>Maksim Samoilov</name>
       <slug>maksim_samoilov</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6933">
+      <name>Florent Gallaire</name>
+      <slug>florent_gallaire</slug>
+      <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6936">
+      <name>Samuel Paccoud</name>
+      <slug>samuel_paccoud</slug>
+      <biography>&lt;p&gt;Leading La Suite numérique&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="6939">
+      <name>Rune Bobbaers</name>
+      <slug>rune_bobbaers</slug>
+      <biography>&lt;p&gt;I am a volunteer coach at CoderDojo Genk, where I regularly help young makers learn programming using Scratch. I enjoy making technology accessible, creative and fun, and I focus on learning by doing and experimenting. My goal is to inspire curiosity and confidence in children through playful coding experiences.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
   </persons>
@@ -8923,6 +9106,39 @@ Simulation of Urban MObility (SUMO) https://eclipse.dev/sumo/&lt;/p&gt;</abstrac
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/XGENQ8/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="200c6c55-5d3e-5420-b7f2-d6eafcc876bf" id="9315">
+        <date>2026-01-31T14:30:00+01:00</date>
+        <start>14:30</start>
+        <duration>00:30</duration>
+        <room>K.4.201</room>
+        <slug>GMKDKW-foss-vs-office-365</slug>
+        <url>https://fosdem.org/2026/schedule/event/GMKDKW-foss-vs-office-365/</url>
+        <title>Open Buro: Integrating applications to create a Smart Platform Experience</title>
+        <subtitle></subtitle>
+        <track slug="modern-email">Modern Email</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Email service is at the core of a collaborative suite. And, good news, FOSS solutions for all collaborative uses have an unprecedented maturity.
+But Europe still faces a critical dependence on Office 365, with strategic and financial costs that are now undeniable.&lt;/p&gt;
+&lt;p&gt;The challenge is no longer functional, &lt;strong&gt;FOSS solutions suffer from an architectural limitation : a simple SSO does not create a platform&lt;/strong&gt;.
+To offer a true Smart Platform Experience around the mail, we must go beyond silos solutions and build deep, consistent, cross-functional integration between independent services.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Based on the integration of DINUM's LaSuite into Twake.AI&lt;/strong&gt;, we will analyze what is missing to offer a “Smart Platform Experience”: a standardized cross-functional layer that brings together independent services.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Samuel Paccoud, director of lasuite.numerique.gouv.fr&lt;/strong&gt;, will comment this integration and the perspectives he identifies.&lt;/p&gt;
+&lt;p&gt;We will see how such a standard can enable a modular ecosystem, where each application remains independent but can interoperate deeply, forming a credible and sustainable sovereign workplace. This is the mission of the Open Buro consortium: to &lt;strong&gt;create an open foundation where architecture becomes a political act&lt;/strong&gt;.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/GMKDKW/feedback/</feedback_url>
+        <persons>
+          <person id="6402">Benjamin Andre</person>
+          <person id="6936">Samuel Paccoud</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-modern-email:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-modern-email:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GMKDKW/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="8ecf42e7-8fd8-5469-8f2d-1c6bb88ea4a7" id="7337">
         <date>2026-01-31T15:00:00+01:00</date>
         <start>15:00</start>
@@ -8949,6 +9165,33 @@ Simulation of Urban MObility (SUMO) https://eclipse.dev/sumo/&lt;/p&gt;</abstrac
           <link href="https://chat.fosdem.org/#/room/#2026-modern-email:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-modern-email:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CNMT8K/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="3dd5de8e-1b8c-5ed5-8d9f-4e5259474ff2" id="7754">
+        <date>2026-01-31T15:30:00+01:00</date>
+        <start>15:30</start>
+        <duration>00:30</duration>
+        <room>K.4.201</room>
+        <slug>3JQKHF-jmap-for-everything</slug>
+        <url>https://fosdem.org/2026/schedule/event/3JQKHF-jmap-for-everything/</url>
+        <title>JMAP for Everything (Destroy All Monsters): JMAP Calendar, Contacts, Files</title>
+        <subtitle></subtitle>
+        <track slug="modern-email">Modern Email</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;If you're following along with email standards, you know about JMAP:  it replaces both IMAP and SMTP-for-sending, eliminating a lot of weird and dated protocol design with HTTP and JSON.  It makes easy things easy, and also enables fast, efficient offline synchronization.  It's not a new email system, just a new access protocol.&lt;/p&gt;
+&lt;p&gt;But did you know that JMAP can also handle your calendars, your address book, your files, and plenty more things to come?  This talk will describe JMAP extensions for those systems: what they are, how they work, and why you should be excited.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/3JQKHF/feedback/</feedback_url>
+        <persons>
+          <person id="2000">Ricardo Signes</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-modern-email:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-modern-email:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/3JQKHF/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="f0256e47-e648-5b16-a673-38488da363e4" id="7818">
@@ -10851,13 +11094,15 @@ This talk explores the practical challenges and solutions involved in turning Go
         <language>en</language>
         <abstract>&lt;p&gt;Building site-to-site VPNs over LTE/5G or behind NAT and stateful firewalls has always been painful. You either need a central relay server with a public IP, or spend hours configuring port forwarding and STUN. STUNMESH-go takes a different approach. It helps WireGuard peers find each other and establish direct P2P connections without running your own infrastructure.&lt;/p&gt;
 &lt;p&gt;The key idea is simple. Reuse existing public services instead of running your own. STUNMESH-go uses STUN servers to discover NAT endpoints, encrypts peer information with Curve25519, and stores it using flexible plugins, whether that's Cloudflare DNS, a shell script, or any custom key-value storage backend. Peers fetch each other's information and WireGuard handles the rest.&lt;/p&gt;
-&lt;p&gt;This session will cover:
-- Cross-platform packet capture (Linux raw sockets vs BSD BPF)
-- The plugin system and bringing your own storage without running servers
-- Compatibility with WireGuard kernel module (no wireguard-go embedding needed)
-- Minimizing binary size for embedded systems
-- Real deployments (SD-WAN over LTE and site-to-site VPN mesh)
-- Dealing with stateful firewalls and carrier-grade NAT&lt;/p&gt;
+&lt;p&gt;This session will cover:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cross-platform packet capture (Linux raw sockets vs BSD BPF)&lt;/li&gt;
+&lt;li&gt;The plugin system and bringing your own storage without running servers&lt;/li&gt;
+&lt;li&gt;Compatibility with WireGuard kernel module (no wireguard-go embedding needed)&lt;/li&gt;
+&lt;li&gt;Minimizing binary size for embedded systems&lt;/li&gt;
+&lt;li&gt;Real deployments (SD-WAN over LTE and site-to-site VPN mesh)&lt;/li&gt;
+&lt;li&gt;Future IPv6 support for stateful firewall traversal&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;This talk shares experience from building P2P networking that works across Linux, FreeBSD, macOS, and embedded routers like VyOS, EdgeOS, and OpenWrt.&lt;/p&gt;
 &lt;p&gt;Github: https://github.com/tjjh89017/stunmesh-go/&lt;/p&gt;</abstract>
         <description></description>
@@ -11486,6 +11731,39 @@ far eBPF can take you beyond system programming.&lt;/p&gt;
       </event>
     </room>
     <room name="H.1309 (Van Rijn)" slug="h1309">
+      <event guid="a512935a-562c-54c6-9331-e56119ba25aa" id="9142">
+        <date>2026-01-31T10:30:00+01:00</date>
+        <start>10:30</start>
+        <duration>00:30</duration>
+        <room>H.1309 (Van Rijn)</room>
+        <slug>YWG7DK-improving_the_experience_of_developing_for_the_web_one_feature_at_a_time</slug>
+        <url>https://fosdem.org/2026/schedule/event/YWG7DK-improving_the_experience_of_developing_for_the_web_one_feature_at_a_time/</url>
+        <title>Improving the experience of developing for the web, one feature at a time</title>
+        <subtitle></subtitle>
+        <track slug="browser-and-web-platform">Browser and web platform</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Web developers use open-source data all the time to help guide their decisions.&lt;/p&gt;
+&lt;p&gt;In this talk, I'd like to tell you more about this data, and in particular about &lt;a href="https://github.com/web-platform-dx/web-features"&gt;web-features&lt;/a&gt;, an open-source project which aims at being a reference data point for the web platform.&lt;/p&gt;
+&lt;p&gt;The project contains the list of &lt;strong&gt;all&lt;/strong&gt; features of the web platform, at a level of granularity that's most useful to you, web developers. This project has gained a lot of traction over the past two years, in particular thanks to &lt;a href="https://web-platform-dx.github.io/web-features/"&gt;Baseline&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Baseline banners help web developers make quicker decisions based on the maturity of the web features they use, and are now visible on &lt;a href="https://developer.mozilla.org/"&gt;MDN&lt;/a&gt;, &lt;a href="https://caniuse.com"&gt;Can I use&lt;/a&gt;, and many other development tools.&lt;/p&gt;
+&lt;p&gt;Baseline isn't the only consumer of the web-features data though. The data is starting to get used in more and more web-platform-related data which you rely on every, sometimes without realizing it.
+The web-features project is making it easier to get access to information about the state of the web platform, in a practical way.&lt;/p&gt;
+&lt;p&gt;In this talk, I'll go over the resources that make use of open source web-related data sources to help you stay aware of changes, but also discover new features, and make decisions.&lt;/p&gt;
+&lt;p&gt;I'll also go over what web-features does not cover today, such as accessibility or progressive enhancements, and how these are areas that demand careful planning and implementation. I'll offer pointers showing how we're thinking about addressing these on the WebDX community group, and will invite contributions from those interested.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/YWG7DK/feedback/</feedback_url>
+        <persons>
+          <person id="6592">Patrick Brosset</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/YWG7DK/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="34cf257c-0b65-51fb-9e49-63077264d97a" id="7972">
         <date>2026-01-31T11:30:00+01:00</date>
         <start>11:30</start>
@@ -11653,6 +11931,33 @@ far eBPF can take you beyond system programming.&lt;/p&gt;
           <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LXFKS9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="1d8a1369-5aa4-50c6-8b14-a4cea8b9f5e6" id="8049">
+        <date>2026-01-31T15:00:00+01:00</date>
+        <start>15:00</start>
+        <duration>00:30</duration>
+        <room>H.1309 (Van Rijn)</room>
+        <slug>ZVYAPN-the_gaps_we_inherit</slug>
+        <url>https://fosdem.org/2026/schedule/event/ZVYAPN-the_gaps_we_inherit/</url>
+        <title>The Gaps we Inherit</title>
+        <subtitle></subtitle>
+        <track slug="browser-and-web-platform">Browser and web platform</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;What does accessibility interoperability look like? This talk explores the edges of support between browsers, assistive tech, and specs.&lt;/p&gt;
+&lt;p&gt;Accessibility Compat Data: https://github.com/lolaslab/accessibility-compat-data&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ZVYAPN/feedback/</feedback_url>
+        <persons>
+          <person id="6092">lola odelola</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZVYAPN/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="d7002aa9-fe43-5ada-9005-74d9774b84e2" id="8253">
@@ -11829,7 +12134,7 @@ https://github.com/servo/servo&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/3J8GUD/feedback/</feedback_url>
         <persons>
-          <person id="5657">Taym</person>
+          <person id="5657">Taym Haddadi</person>
         </persons>
         <attachments>
         </attachments>
@@ -11838,6 +12143,39 @@ https://github.com/servo/servo&lt;/p&gt;</abstract>
           <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/3J8GUD/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="8c2d8e83-4044-5a84-8d1d-563f021c7530" id="7650">
+        <date>2026-01-31T18:15:00+01:00</date>
+        <start>18:15</start>
+        <duration>00:15</duration>
+        <room>H.1309 (Van Rijn)</room>
+        <slug>FNVGUL-bughog</slug>
+        <url>https://fosdem.org/2026/schedule/event/FNVGUL-bughog/</url>
+        <title>BugHog: Automated Browser Bug Bisection On Steroids</title>
+        <subtitle></subtitle>
+        <track slug="browser-and-web-platform">Browser and web platform</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Identifying the exact commits where bugs are introduced or regressed in web browsers is often a tedious and time-consuming task. As a result, mapping the full lifecycle of a newly reported bug rarely becomes part of the standard bug-fixing process, even though doing so can reveal valuable insights and support more effective fixes. With &lt;a href="https://github.com/DistriNet/BugHog"&gt;BugHog&lt;/a&gt;, we developed an automated bisection tool on steriods, simplifying the hunt for buggy commits.&lt;/p&gt;
+&lt;p&gt;BugHog runs:
+- dynamic test cases against historical browser builds
+- in isolated Docker containers
+- guided by an adaptive binary search algorithm
+- across more than a decade of browser development history.&lt;/p&gt;
+&lt;p&gt;Originally developed for browser security research, BugHog has already demonstrated its value by reconstructing the lifecycle of publicly disclosed Content Security Policy bugs in Chromium and Firefox. This gave new perspectives on how security bugs evolve over time, exposed ineffective fixes, and even uncovered prematurely disclosed vulnerabilities.&lt;/p&gt;
+&lt;p&gt;In this talk, I will demonstrate how BugHog works, share lessons from large-scale browser analyses, and highlight how it can help both researchers and developers accelerate their bug investigations.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/FNVGUL/feedback/</feedback_url>
+        <persons>
+          <person id="5707">Gertjan Franken</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/FNVGUL/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="47b484e0-ce94-5e6a-9a66-5abc50fcb28d" id="7094">
@@ -15216,6 +15554,7 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/98MRH8/feedback/</feedback_url>
         <persons>
           <person id="3076">Paul Meyer</person>
+          <person id="3248">Bryan Honof</person>
           <person id="5347">Martin Schwaighofer</person>
         </persons>
         <attachments>
@@ -15226,9 +15565,39 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/98MRH8/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="79fcbd23-70e5-5317-b1c1-e22d3304e6ec" id="9219">
+      <event guid="80cd5ecd-ae7e-5c72-bcd7-a4ac3c2477b7" id="9340">
         <date>2026-01-31T15:05:00+01:00</date>
         <start>15:05</start>
+        <duration>00:20</duration>
+        <room>UA2.118 (Henriot)</room>
+        <slug>EBPDES-nixpkgs-clarity</slug>
+        <url>https://fosdem.org/2026/schedule/event/EBPDES-nixpkgs-clarity/</url>
+        <title>Nixpkgs Clarity: Correcting Nix package license metadata</title>
+        <subtitle></subtitle>
+        <track slug="nix-and-nixos">Nix and NixOS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Nixpkgs is massive with the largest, most up-to-date collection of Nix packages, powering reproducible systems and forming the backbone of many projects. But there's a problem: Nix packages' license metadata is a mess. &lt;/p&gt;
+&lt;p&gt;Nix's license tracking uses a custom license ID system that doesn't match the best practice of using SPDX license expressions standards, inconsistently referencing SPDX or ScanCode LicenseDB. The metadata often falls out of sync with the actual code or misrepresents what's really licensed, and packagers typically only check the top-level declared license and skip the file-level details where the real complexity hides. For an ecosystem built on correctness and reproducibility, this is a gap we need to close.&lt;/p&gt;
+&lt;p&gt;Nixpkgs Clarity fixes this with state-of-the-art automated license detection. We're correcting and standardizing license metadata across the entire Nixpkgs collection, aligning with SPDX best practices, and making sure what we declare actually matches what's in the code. This matters because accurate license data is critical for software supply chain security, CRA compliance, and anyone who needs to responsibly reuse Nixpkgs packages in production.&lt;/p&gt;
+&lt;p&gt;This talk shows how we're detecting and correcting license metadata across Nixpkgs, and what changes when you finally have accurate license data. We'll share how we are tackling the unique challenges of Nixpkgs at scale, with tens of thousands of packages, Nix's functional approach to package definitions, and automated detection in a way that maintainers can trust and verify. &lt;/p&gt;
+&lt;p&gt;If you care about making Nixpkgs even more reliable and supply chain ready, come see how we're bringing Nix's correctness principles to Nix packages' license metadata.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/EBPDES/feedback/</feedback_url>
+        <persons>
+          <person id="5333">Philippe Ombredanne</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EBPDES/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="79fcbd23-70e5-5317-b1c1-e22d3304e6ec" id="9219">
+        <date>2026-01-31T15:30:00+01:00</date>
+        <start>15:30</start>
         <duration>00:20</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>ZPLYXT-libresh-nix</slug>
@@ -15261,8 +15630,8 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
         </links>
       </event>
       <event guid="945e05e5-1a4b-58ab-aa50-927b1baa3658" id="9033">
-        <date>2026-01-31T15:25:00+01:00</date>
-        <start>15:25</start>
+        <date>2026-01-31T15:50:00+01:00</date>
+        <start>15:50</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>UERPXG-eilean</slug>
@@ -15288,8 +15657,8 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
         </links>
       </event>
       <event guid="6f500a34-c5d0-5d50-9362-5cf55907c9df" id="8887">
-        <date>2026-01-31T15:30:00+01:00</date>
-        <start>15:30</start>
+        <date>2026-01-31T15:55:00+01:00</date>
+        <start>15:55</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>EAPNQF-tappaas_a_resilient_trusted_automated_private_cloud_based_on_nixos</slug>
@@ -15315,9 +15684,88 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EAPNQF/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="f15cb53f-c8d1-5618-aa79-180d5822dd73" id="8990">
+        <date>2026-01-31T16:05:00+01:00</date>
+        <start>16:05</start>
+        <duration>00:20</duration>
+        <room>UA2.118 (Henriot)</room>
+        <slug>SUUAWL-nixos_for_deterministic_distributed-system_benchmarking</slug>
+        <url>https://fosdem.org/2026/schedule/event/SUUAWL-nixos_for_deterministic_distributed-system_benchmarking/</url>
+        <title>NixOS for Deterministic Distributed-System Benchmarking</title>
+        <subtitle></subtitle>
+        <track slug="nix-and-nixos">Nix and NixOS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Reproducibility remains one of the largest challenges in benchmarking distributed systems, especially when hardware, kernel settings, and dependency versions vary between tests. This talk presents a NixOS-based approach for constructing deterministic, portable benchmark environments for large-scale data infrastructure. We show how Nix’s declarative system configuration, content-addressed builds, and reproducible packaging model allow engineers to isolate performance variables and eliminate configuration drift entirely. Using Apache Cassandra as the primary case study, the talk demonstrates how NixOS can define and reproduce complete cluster environments—from OS images to JVM parameters and custom benchmarking tools—across both cloud and on-prem setups. Attendees will learn practical patterns for packaging workloads, pinning dependencies, and generating ephemeral benchmark nodes. The session concludes with a discussion of how Nix abstractions can support multi-architecture testing, including cross-compiling workloads for ARM and RISC targets, enabling more transparent and repeatable performance comparisons.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/SUUAWL/feedback/</feedback_url>
+        <persons>
+          <person id="4871">Bruce Gain</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/SUUAWL/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="dd7dd50b-5c1b-5121-a5cb-5776e1839fbe" id="8315">
+        <date>2026-01-31T16:25:00+01:00</date>
+        <start>16:25</start>
+        <duration>00:05</duration>
+        <room>UA2.118 (Henriot)</room>
+        <slug>HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem</slug>
+        <url>https://fosdem.org/2026/schedule/event/HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem/</url>
+        <title>LILA: decentralized reproducible-builds verification for the NixOS ecosystem</title>
+        <subtitle></subtitle>
+        <track slug="nix-and-nixos">Nix and NixOS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;NixOS reproducibility monitoring has historically been limited to the ISO images we ship, because they are a package set small enough to be rebuilt on a single machine. In this talk, we introduce &lt;a href="https://github.com/nix-community/lila"&gt;LILA&lt;/a&gt;, a decentralized reproducibility monitoring infrastructure for the NixOS community, aimed at removing this limit and allowing a collaborative monitoring of the entirety of nixpkgs!&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/HGC788/feedback/</feedback_url>
+        <persons>
+          <person id="1538">Julien Malka</person>
+          <person id="2887">Arnout Engelen</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/HGC788/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="5e9ca47c-20dc-5d35-9494-7a4681eb77b2" id="9047">
+        <date>2026-01-31T16:30:00+01:00</date>
+        <start>16:30</start>
+        <duration>00:05</duration>
+        <room>UA2.118 (Henriot)</room>
+        <slug>ERQ8FQ-opam-nix</slug>
+        <url>https://fosdem.org/2026/schedule/event/ERQ8FQ-opam-nix/</url>
+        <title>Opam's Nix system dependency mechanism</title>
+        <subtitle></subtitle>
+        <track slug="nix-and-nixos">Nix and NixOS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The OCaml language package manager, Opam, has support for interfacing with system package mangers to provide dependencies external to the language. Supporting Nix required re-thinking the abstractions used to interface with traditional package managers, but enables using Opam for development easy whilst benefitting from Nix's reproducible system dependencies. This provides one example of how Nix interfaces with other software development and deployment technologies.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ERQ8FQ/feedback/</feedback_url>
+        <persons>
+          <person id="6540">Ryan Gibb</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ERQ8FQ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="19190ae8-6b42-5846-9622-51161d890efc" id="9263">
-        <date>2026-01-31T15:40:00+01:00</date>
-        <start>15:40</start>
+        <date>2026-01-31T16:40:00+01:00</date>
+        <start>16:40</start>
         <duration>00:20</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>9QDZF8-look_ma_no_secrets_-_bootstrapping_cryptographic_trust_in_my_homelab_using_nixos</slug>
@@ -15345,89 +15793,9 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9QDZF8/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="dd7dd50b-5c1b-5121-a5cb-5776e1839fbe" id="8315">
-        <date>2026-01-31T16:00:00+01:00</date>
-        <start>16:00</start>
-        <duration>00:05</duration>
-        <room>UA2.118 (Henriot)</room>
-        <slug>HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem</slug>
-        <url>https://fosdem.org/2026/schedule/event/HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem/</url>
-        <title>LILA: decentralized reproducible-builds verification for the NixOS ecosystem</title>
-        <subtitle></subtitle>
-        <track slug="nix-and-nixos">Nix and NixOS</track>
-        <type>devroom</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;NixOS reproducibility monitoring has historically been limited to the ISO images we ship, because they are a package set small enough to be rebuilt on a single machine. In this talk, we introduce &lt;a href="https://github.com/nix-community/lila"&gt;LILA&lt;/a&gt;, a decentralized reproducibility monitoring infrastructure for the NixOS community, aimed at removing this limit and allowing a collaborative monitoring of the entirety of nixpkgs!&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/HGC788/feedback/</feedback_url>
-        <persons>
-          <person id="1538">Julien Malka</person>
-          <person id="2887">Arnout Engelen</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/HGC788/feedback/">Submit Feedback</link>
-        </links>
-      </event>
-      <event guid="67a7b332-7ff3-581d-b050-62542ae722e1" id="7857">
-        <date>2026-01-31T16:05:00+01:00</date>
-        <start>16:05</start>
-        <duration>00:05</duration>
-        <room>UA2.118 (Henriot)</room>
-        <slug>KHD9WF-building_a_digital_inventory_with_nixos_modules</slug>
-        <url>https://fosdem.org/2026/schedule/event/KHD9WF-building_a_digital_inventory_with_nixos_modules/</url>
-        <title>Building a digital inventory with NixOS modules</title>
-        <subtitle></subtitle>
-        <track slug="nix-and-nixos">Nix and NixOS</track>
-        <type>devroom</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;I'll present my story of building a machine-readable inventory of computing equipment of my employer. It collects information such as: “&lt;em&gt;This &lt;strong&gt;computer&lt;/strong&gt; is located in this &lt;strong&gt;room&lt;/strong&gt; with this &lt;strong&gt;network configuration&lt;/strong&gt;, these &lt;strong&gt;software requirements&lt;/strong&gt; and is connected to this &lt;strong&gt;port&lt;/strong&gt; of this &lt;strong&gt;switch&lt;/strong&gt;&lt;/em&gt;” so that I can easily develop scripts that configure the machine, the switch, monitoring of both and many other things including a physical map.&lt;/p&gt;
-&lt;p&gt;I went through many iterations of this project–codenamed &lt;em&gt;AR&lt;/em&gt;–and settled on NixOS modules for their balance between how easy it is to write new records and how easy it is to use them. Let me share the joy it brought to my job and present curated code snippets so you can build your own inventory with ease.&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KHD9WF/feedback/</feedback_url>
-        <persons>
-          <person id="5998">Vojtěch Káně</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KHD9WF/feedback/">Submit Feedback</link>
-        </links>
-      </event>
-      <event guid="f15cb53f-c8d1-5618-aa79-180d5822dd73" id="8990">
-        <date>2026-01-31T16:15:00+01:00</date>
-        <start>16:15</start>
-        <duration>00:20</duration>
-        <room>UA2.118 (Henriot)</room>
-        <slug>SUUAWL-nixos_for_deterministic_distributed-system_benchmarking</slug>
-        <url>https://fosdem.org/2026/schedule/event/SUUAWL-nixos_for_deterministic_distributed-system_benchmarking/</url>
-        <title>NixOS for Deterministic Distributed-System Benchmarking</title>
-        <subtitle></subtitle>
-        <track slug="nix-and-nixos">Nix and NixOS</track>
-        <type>devroom</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;Reproducibility remains one of the largest challenges in benchmarking distributed systems, especially when hardware, kernel settings, and dependency versions vary between tests. This talk presents a NixOS-based approach for constructing deterministic, portable benchmark environments for large-scale data infrastructure. We show how Nix’s declarative system configuration, content-addressed builds, and reproducible packaging model allow engineers to isolate performance variables and eliminate configuration drift entirely. Using Apache Cassandra as the primary case study, the talk demonstrates how NixOS can define and reproduce complete cluster environments—from OS images to JVM parameters and custom benchmarking tools—across both cloud and on-prem setups. Attendees will learn practical patterns for packaging workloads, pinning dependencies, and generating ephemeral benchmark nodes. The session concludes with a discussion of how Nix abstractions can support multi-architecture testing, including cross-compiling workloads for ARM and RISC targets, enabling more transparent and repeatable performance comparisons.&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/SUUAWL/feedback/</feedback_url>
-        <persons>
-          <person id="4871">Bruce Gain</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/SUUAWL/feedback/">Submit Feedback</link>
-        </links>
-      </event>
       <event guid="d529326f-41c4-59e5-842e-7cbdab57945e" id="8257">
-        <date>2026-01-31T16:35:00+01:00</date>
-        <start>16:35</start>
+        <date>2026-01-31T17:00:00+01:00</date>
+        <start>17:00</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>UXQHMM-declarative_vms_because_infrastructure_should_be_simple</slug>
@@ -15452,35 +15820,36 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/UXQHMM/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="5e9ca47c-20dc-5d35-9494-7a4681eb77b2" id="9047">
-        <date>2026-01-31T16:40:00+01:00</date>
-        <start>16:40</start>
+      <event guid="67a7b332-7ff3-581d-b050-62542ae722e1" id="7857">
+        <date>2026-01-31T17:05:00+01:00</date>
+        <start>17:05</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
-        <slug>ERQ8FQ-opam-nix</slug>
-        <url>https://fosdem.org/2026/schedule/event/ERQ8FQ-opam-nix/</url>
-        <title>Opam's Nix system dependency mechanism</title>
+        <slug>KHD9WF-building_a_digital_inventory_with_nixos_modules</slug>
+        <url>https://fosdem.org/2026/schedule/event/KHD9WF-building_a_digital_inventory_with_nixos_modules/</url>
+        <title>Building a digital inventory with NixOS modules</title>
         <subtitle></subtitle>
         <track slug="nix-and-nixos">Nix and NixOS</track>
         <type>devroom</type>
         <language>en</language>
-        <abstract>&lt;p&gt;The OCaml language package manager, Opam, has support for interfacing with system package mangers to provide dependencies external to the language. Supporting Nix required re-thinking the abstractions used to interface with traditional package managers, but enables using Opam for development easy whilst benefitting from Nix's reproducible system dependencies. This provides one example of how Nix interfaces with other software development and deployment technologies.&lt;/p&gt;</abstract>
+        <abstract>&lt;p&gt;I'll present my story of building a machine-readable inventory of computing equipment of my employer. It collects information such as: “&lt;em&gt;This &lt;strong&gt;computer&lt;/strong&gt; is located in this &lt;strong&gt;room&lt;/strong&gt; with this &lt;strong&gt;network configuration&lt;/strong&gt;, these &lt;strong&gt;software requirements&lt;/strong&gt; and is connected to this &lt;strong&gt;port&lt;/strong&gt; of this &lt;strong&gt;switch&lt;/strong&gt;&lt;/em&gt;” so that I can easily develop scripts that configure the machine, the switch, monitoring of both and many other things including a physical map.&lt;/p&gt;
+&lt;p&gt;I went through many iterations of this project–codenamed &lt;em&gt;AR&lt;/em&gt;–and settled on NixOS modules for their balance between how easy it is to write new records and how easy it is to use them. Let me share the joy it brought to my job and present curated code snippets so you can build your own inventory with ease.&lt;/p&gt;</abstract>
         <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ERQ8FQ/feedback/</feedback_url>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KHD9WF/feedback/</feedback_url>
         <persons>
-          <person id="6540">Ryan Gibb</person>
+          <person id="5998">Vojtěch Káně</person>
         </persons>
         <attachments>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ERQ8FQ/feedback/">Submit Feedback</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KHD9WF/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="afa3d76f-52b7-561a-aa76-e9c384ee087f" id="8113">
-        <date>2026-01-31T16:50:00+01:00</date>
-        <start>16:50</start>
+        <date>2026-01-31T17:15:00+01:00</date>
+        <start>17:15</start>
         <duration>00:20</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>8SNMXT-describing_nix_closures_using_sboms</slug>
@@ -15505,8 +15874,8 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
         </links>
       </event>
       <event guid="fc970968-a060-5df6-b977-6378ac326ad5" id="8622">
-        <date>2026-01-31T17:10:00+01:00</date>
-        <start>17:10</start>
+        <date>2026-01-31T17:35:00+01:00</date>
+        <start>17:35</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>CJYHE3-nixss</slug>
@@ -15531,8 +15900,8 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
         </links>
       </event>
       <event guid="62f5f0dd-c1f0-59aa-81a9-9a9b23008c70" id="9146">
-        <date>2026-01-31T17:15:00+01:00</date>
-        <start>17:15</start>
+        <date>2026-01-31T17:40:00+01:00</date>
+        <start>17:40</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>L3VFMN-nixos-routers</slug>
@@ -15559,8 +15928,8 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
         </links>
       </event>
       <event guid="a3f72911-ba60-56d5-9923-437779636b44" id="8153">
-        <date>2026-01-31T17:30:00+01:00</date>
-        <start>17:30</start>
+        <date>2026-01-31T17:55:00+01:00</date>
+        <start>17:55</start>
         <duration>00:20</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>RHPNQK-document_your_nix_code_with_sphinx</slug>
@@ -15594,8 +15963,8 @@ This talk is for Nix/NixOS users and operators who want to turn homelab ideas in
         </links>
       </event>
       <event guid="14722fd3-7215-5957-acfc-d4d93b2e630c" id="7508">
-        <date>2026-01-31T17:50:00+01:00</date>
-        <start>17:50</start>
+        <date>2026-01-31T18:15:00+01:00</date>
+        <start>18:15</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>RNLQJ3-nix-manipulator</slug>
@@ -15648,8 +16017,8 @@ Announcement: https://discourse.nixos.org/t/announcing-nix-manipulator-nima-stru
         </links>
       </event>
       <event guid="e2f43b13-c98a-5fa0-8a42-076ee8aef665" id="7668">
-        <date>2026-01-31T17:55:00+01:00</date>
-        <start>17:55</start>
+        <date>2026-01-31T18:20:00+01:00</date>
+        <start>18:20</start>
         <duration>00:05</duration>
         <room>UA2.118 (Henriot)</room>
         <slug>ANY73S-nix-forge</slug>
@@ -15691,36 +16060,6 @@ Web UI - https://imincik.github.io/nix-forge&lt;/p&gt;</abstract>
           <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ANY73S/feedback/">Submit Feedback</link>
-        </links>
-      </event>
-      <event guid="80cd5ecd-ae7e-5c72-bcd7-a4ac3c2477b7" id="9340">
-        <date>2026-01-31T18:05:00+01:00</date>
-        <start>18:05</start>
-        <duration>00:20</duration>
-        <room>UA2.118 (Henriot)</room>
-        <slug>EBPDES-nixpkgs-clarity</slug>
-        <url>https://fosdem.org/2026/schedule/event/EBPDES-nixpkgs-clarity/</url>
-        <title>Nixpkgs Clarity: Correcting Nix package license metadata</title>
-        <subtitle></subtitle>
-        <track slug="nix-and-nixos">Nix and NixOS</track>
-        <type>devroom</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;Nixpkgs is massive with the largest, most up-to-date collection of Nix packages, powering reproducible systems and forming the backbone of many projects. But there's a problem: Nix packages' license metadata is a mess. &lt;/p&gt;
-&lt;p&gt;Nix's license tracking uses a custom license ID system that doesn't match the best practice of using SPDX license expressions standards, inconsistently referencing SPDX or ScanCode LicenseDB. The metadata often falls out of sync with the actual code or misrepresents what's really licensed, and packagers typically only check the top-level declared license and skip the file-level details where the real complexity hides. For an ecosystem built on correctness and reproducibility, this is a gap we need to close.&lt;/p&gt;
-&lt;p&gt;Nixpkgs Clarity fixes this with state-of-the-art automated license detection. We're correcting and standardizing license metadata across the entire Nixpkgs collection, aligning with SPDX best practices, and making sure what we declare actually matches what's in the code. This matters because accurate license data is critical for software supply chain security, CRA compliance, and anyone who needs to responsibly reuse Nixpkgs packages in production.&lt;/p&gt;
-&lt;p&gt;This talk shows how we're detecting and correcting license metadata across Nixpkgs, and what changes when you finally have accurate license data. We'll share how we are tackling the unique challenges of Nixpkgs at scale, with tens of thousands of packages, Nix's functional approach to package definitions, and automated detection in a way that maintainers can trust and verify. &lt;/p&gt;
-&lt;p&gt;If you care about making Nixpkgs even more reliable and supply chain ready, come see how we're bringing Nix's correctness principles to Nix packages' license metadata.&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/EBPDES/feedback/</feedback_url>
-        <persons>
-          <person id="5333">Philippe Ombredanne</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-nix-and-nixos:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EBPDES/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="38f8d21f-a94b-503c-ae59-21cc830502a5" id="9201">
@@ -19650,38 +19989,9 @@ This strategy preserves a fully containerized Linux developer experience inside 
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QU9UF3/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="db8e5879-9939-5214-923c-2ece4117a933" id="8123">
-        <date>2026-01-31T13:30:00+01:00</date>
-        <start>13:30</start>
-        <duration>00:20</duration>
-        <room>UD2.120 (Chavanne)</room>
-        <slug>VTAAPJ-ten-years-of-simd</slug>
-        <url>https://fosdem.org/2026/schedule/event/VTAAPJ-ten-years-of-simd/</url>
-        <title>What a Decade of SIMD Taught Us: AVX-512, AMX, NEON, SVE, SME, and Beyond</title>
-        <subtitle></subtitle>
-        <track slug="ai">AI Plumbers</track>
-        <type>devroom</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;Over the past decade, CPU vector units have evolved faster than most software stacks have adapted. From AVX2 and AVX-512 to NEON, SVE/SVE2, AMX, and SME, each generation introduced wider registers, richer predication, new mixed-precision formats, and entirely new execution models. Yet extracting sustained throughput from these extensions requires understanding architectural asymmetries, compiler behaviour, portability constraints, and the practical limits of auto-vectorisation.&lt;/p&gt;
-&lt;p&gt;This session distills ten years of developing SIMD kernels deployed inside large-scale open-source systems, including USearch — a high-throughput vector search engine embedded today in many modern DBMS projects — as well as StringZilla, SimSIMD, and bioinformatics tools. We will examine how different CPU families behave on identical workloads, which instructions consistently deliver real speedups, which look promising but rarely pay off, and where compilers do (and do not) generate optimal vector code.&lt;/p&gt;
-&lt;p&gt;Case studies include: AVX-512 reductions exceeding 300 GB/s on current x86 machines; i8/u8 and bf16 pipelines on NEON and SVE2; practical limits of AMX tiles for dense math; and early insights into SME’s streaming execution model. Each example is shown through minimal, reproducible kernel fragments.&lt;/p&gt;
-&lt;p&gt;Beyond raw performance, the talk outlines when SIMD is the right tool: which classes of problems benefit most, when auto-vectorisation is sufficient, and when hand-written intrinsics or assembly are justified. We will also discuss hardware selection for SIMD-heavy workloads — both on-prem and in the cloud — and what upcoming extensions mean for open-source systems in the next decade.&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/VTAAPJ/feedback/</feedback_url>
-        <persons>
-          <person id="6131">Ash Vardanian</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://chat.fosdem.org/#/room/#2026-ai:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-ai:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/VTAAPJ/feedback/">Submit Feedback</link>
-        </links>
-      </event>
       <event guid="7e7d0327-a7b6-5cd6-8c7c-0d3dbfab3d59" id="9167">
-        <date>2026-01-31T14:10:00+01:00</date>
-        <start>14:10</start>
+        <date>2026-01-31T13:55:00+01:00</date>
+        <start>13:55</start>
         <duration>00:20</duration>
         <room>UD2.120 (Chavanne)</room>
         <slug>B39JSW-one-gpu-many-models</slug>
@@ -19717,8 +20027,8 @@ This strategy preserves a fully containerized Linux developer experience inside 
         </links>
       </event>
       <event guid="ef3f0fa7-2220-52c0-aecb-184b32e91f27" id="8472">
-        <date>2026-01-31T14:30:00+01:00</date>
-        <start>14:30</start>
+        <date>2026-01-31T14:20:00+01:00</date>
+        <start>14:20</start>
         <duration>00:20</duration>
         <room>UD2.120 (Chavanne)</room>
         <slug>QHBKKK-adventures-in-model-quantization</slug>
@@ -19750,8 +20060,8 @@ This strategy preserves a fully containerized Linux developer experience inside 
         </links>
       </event>
       <event guid="a04bee73-97c8-5e18-8def-72406e7fb20a" id="8393">
-        <date>2026-01-31T14:55:00+01:00</date>
-        <start>14:55</start>
+        <date>2026-01-31T14:45:00+01:00</date>
+        <start>14:45</start>
         <duration>00:20</duration>
         <room>UD2.120 (Chavanne)</room>
         <slug>CZSPSC-llama-cpp-vulkan</slug>
@@ -19779,8 +20089,8 @@ https://github.com/ggml-org/ggml&lt;/p&gt;</abstract>
         </links>
       </event>
       <event guid="05bf2c3c-21f3-552d-8d13-a3a714f9f31a" id="9691">
-        <date>2026-01-31T15:20:00+01:00</date>
-        <start>15:20</start>
+        <date>2026-01-31T15:10:00+01:00</date>
+        <start>15:10</start>
         <duration>00:05</duration>
         <room>UD2.120 (Chavanne)</room>
         <slug>VYEMQR-running_tinygrad_and_ggml_on_microcontroller_npus</slug>
@@ -19806,8 +20116,8 @@ https://github.com/ggml-org/ggml&lt;/p&gt;</abstract>
         </links>
       </event>
       <event guid="1a278f01-b019-57a5-8cca-4083058a8110" id="8510">
-        <date>2026-01-31T15:25:00+01:00</date>
-        <start>15:25</start>
+        <date>2026-01-31T15:20:00+01:00</date>
+        <start>15:20</start>
         <duration>00:05</duration>
         <room>UD2.120 (Chavanne)</room>
         <slug>LTAXEV-data_lakes_for_ai_open_table_formats_as_the_foundation</slug>
@@ -20160,7 +20470,12 @@ The focus is on how these problems are solved—microarchitecture decisions, dat
         <abstract>&lt;p&gt;This is a session combining the experience of several FOSS projects in their funding journey. Each will have 10 minutes to present, after which a Q&amp;amp;A session will happen. &lt;/p&gt;
 &lt;p&gt;The presenting FOSS projects will be:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Mockoon is a popular open-source API tools, built and maintained from Luxembourg. In this talk, its creator shares the journey of growing a developer tool used by thousands, without external funding. Learn what worked (and didn't) in the pursuit of sustainability through sponsorships, community, and a cloud SaaS offering.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mockoon is a popular open-source API tool, built and maintained from Luxembourg. In this talk, its creator shares the journey of growing a developer tool used by thousands, without external funding. Learn what worked (and didn't) in the pursuit of sustainability through sponsorships, community, and a cloud SaaS offering.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DuckDB is the fastest growing data management tool to date. Meanwhile, DuckDB is Free and Open Source Software under the permissive MIT license.  DuckDB's development began inside an academic instituted funded by grants. We then moved to a bootstrapped spin-off and have been running ever since.  In my short talk, I will describe the meandering route and mental processes that lead us to choose this funding model, the things we do and why we do them, the things to avoid and why to avoid them.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KQEWP9/feedback/</feedback_url>
@@ -20411,6 +20726,227 @@ The focus is on how these problems are solved—microarchitecture decisions, dat
       </event>
     </room>
     <room name="UD2.208 (Decroly)" slug="ud2208">
+    </room>
+    <room name="UD6.203" slug="ud6203">
+      <event guid="21d066cd-1af5-565b-9b32-6157e58ab9cb" id="8126">
+        <date>2026-01-31T10:30:00+01:00</date>
+        <start>10:30</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>MNYA9B-creative_coding_with_turtlestitch</slug>
+        <url>https://fosdem.org/2026/schedule/event/MNYA9B-creative_coding_with_turtlestitch/</url>
+        <title>Creative Coding with Turtlestitch</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Create your own drawing by using the online free turtlestitch. You can start off with an example or create your own drawing. When you're finished your drawing will be stitched on an embroidery machine and you can take it home. https://www.turtlestitch.org/&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/MNYA9B/feedback/</feedback_url>
+        <persons>
+          <person id="1774">Pauline Maas</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/MNYA9B/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="860704ff-3352-5d99-9732-68dd53b6e85c" id="8013">
+        <date>2026-01-31T12:15:00+01:00</date>
+        <start>12:15</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>3FN3NY-microblocks-smart-gadets</slug>
+        <url>https://fosdem.org/2026/schedule/event/3FN3NY-microblocks-smart-gadets/</url>
+        <title>Smart gadget making with MicroBlocks</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;How do small electronic devices with buttons, LEDs, sensors, sound, and robotic movements work? What programming languages and hardware are best for learning how to make your own electronically controlled gadgets starting at a young age? Our goal for the MicroBlocks project is to enable youth to be pioneers in STEM fields, working to make a brighter future based on open innovation. &lt;/p&gt;
+&lt;p&gt;This webinar introduces the concepts of smart devices and physical computing using MicroBlocks, a phenomenal open source software tool that has the power to revolutionize STEM learning opportunities globally. Older students can learn to turn their gadgets into IoT devices (“connected, or ‘smart’ devices”) using many built-in networking libraries. Younger students can simply make electronic things that fuel their imagination and curiosity.&lt;/p&gt;
+&lt;p&gt;Wanted for this workshop – the next generation of brilliant young minds!&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/3FN3NY/feedback/</feedback_url>
+        <persons>
+          <person id="1342">Kathy Giori</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/3FN3NY/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="b3750730-d5eb-54c9-99a7-b7708f463bde" id="8275">
+        <date>2026-01-31T14:00:00+01:00</date>
+        <start>14:00</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>YKTYNS-letsdrawtrees</slug>
+        <url>https://fosdem.org/2026/schedule/event/YKTYNS-letsdrawtrees/</url>
+        <title>Let's Code Trees</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Let’s Code Trees is an interactive workshop where designs created using code can be stitched onto fabric.  Suitable for aged 9 upwards.&lt;/p&gt;
+&lt;p&gt;Design and build your own tree, by writing a programme to create it. We'll explore several different ways of drawing trees using Turtlestitch, a block based programming language that turns designs into patterns that can be stitched by an embroidery machine. We'll begin by instructing the turtle to draw simple stems and branches to create a basic tree, then look at how to create more complex trees using blocks, loops and variables. &lt;/p&gt;
+&lt;p&gt;Turtlestitch: www.turtlestitch.org
+Resources: www.warwick.ac.uk/turtlestitch/patterntocode&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/YKTYNS/feedback/</feedback_url>
+        <persons>
+          <person id="3818">Margaret Low</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/YKTYNS/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="a9353020-c948-51b2-960a-81b7555238ae" id="8767">
+        <date>2026-01-31T15:45:00+01:00</date>
+        <start>15:45</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>LUVQNK-well-tempered-noise</slug>
+        <url>https://fosdem.org/2026/schedule/event/LUVQNK-well-tempered-noise/</url>
+        <title>The Well-Tempered Noise - Compute Music from Everyday Sounds in Snap!</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Let’s discover tonal sounds around us and embark on a sampling safari scavenging kitchen utensils (glasses, bottles, spoons, pots, kettles), office supplies (pencil sharpeners, papers ripping, bursting bags) and our bodies’ (in-)voluntary utterances (whistling, wheezing, sneezing, snipping, rasping, cracking, coughing, clapping) – and then turn them into beautiful melodies! We’ll explore various sampling rates to play back recordings at different pitches and learn how to use the algorithm of the Equal Temperament Chromatic Scale to synthesize them into musical tunes. Then we’ll figure out how to mathematically transform the waveform of our recordings into musical scales of semitones by stretching and compressing the sampled data and use this technique to compute personalized ringtones for our phones.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/LUVQNK/feedback/</feedback_url>
+        <persons>
+          <person id="1783">Jens Mönig</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LUVQNK/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+    </room>
+    <room name="UD6.205" slug="ud6205">
+      <event guid="c060d378-5e68-5012-9597-2992e69216fd" id="8928">
+        <date>2026-01-31T10:30:00+01:00</date>
+        <start>10:30</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>BH7QBJ-learn_to_build_your_own_mobile_app_with_mit_app_inventor</slug>
+        <url>https://fosdem.org/2026/schedule/event/BH7QBJ-learn_to_build_your_own_mobile_app_with_mit_app_inventor/</url>
+        <title>Learn to Build Your Own Mobile App with MIT App Inventor</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In this hands on workshop, you will use MIT App Inventor to build two applications for your Android or iOS device. Those new to MIT App Inventor can have a simple first app up and running in less than 30 minutes. And what's more, our blocks-based tool facilitates the creation of complex, high-impact apps in significantly less time than traditional programming environments. The first app you create will be a cat you can pet to make meow. The second app will allow you to draw your own pictures via touch. Participants must bring both a laptop and a mobile device (phones and tablets are both good, running Android 4.0+ or iOS 12+).&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/BH7QBJ/feedback/</feedback_url>
+        <persons>
+          <person id="1776">Evan Patton</person>
+          <person id="6604">Jos</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/BH7QBJ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="a4bc4551-1309-5d76-a398-2c67f059b433" id="9735">
+        <date>2026-01-31T12:15:00+01:00</date>
+        <start>12:15</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>7XCS38-create_games_with_microstudio</slug>
+        <url>https://fosdem.org/2026/schedule/event/7XCS38-create_games_with_microstudio/</url>
+        <title>Create games with microStudio</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;MicroStudio is a game engine aimed at beginners, based on code yet very accessible, forgiving, and providing immediate feedback on everything you do. MicroStudio includes a pixel-art sprite editor and a map editor. Accessible online with a simple web browser, it allows multiple users to work live on the same project. It also includes many interactive tutorials and documentation.&lt;/p&gt;
+&lt;p&gt;In this workshop, we will learn how to draw shapes and sprites on screen, how to create animations, and how to check for player input. Finally, we will all create a simple game that we can even run on our smartphones. Once back home, participants can continue working on their project. For this session and later use, participants can use a simple guest (anonymous) account and do not have to create a full microStudio account. They can later convert the guest account to a full account if they want.&lt;/p&gt;
+&lt;p&gt;microStudio is a free and open-source project (MIT license).
+Available at: https://microstudio.dev
+Get the source code and run your own instance: https://github.com/pmgl/microstudio
+Also available as a standalone, offline version for Linux, macOS, Windows and Raspberry PI: https://microstudio.itch.io/microstudio&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/7XCS38/feedback/</feedback_url>
+        <persons>
+          <person id="6880">Gilles Pommereuil</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/7XCS38/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="03387ced-8b60-50e2-b71d-5187054aca05" id="7748">
+        <date>2026-01-31T14:00:00+01:00</date>
+        <start>14:00</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>NPHJE9-luanti_mod_programming</slug>
+        <url>https://fosdem.org/2026/schedule/event/NPHJE9-luanti_mod_programming/</url>
+        <title>Luanti mod programming</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;The free open-world game Luanti offers a variety of possibilities to
+get creative and play together. Luanti is a framework that allows
+everyone to build their own voxel game – a world made out of blocks
+which can be placed and removed, items and tools that can be crafted
+and many more things to discover.&lt;/p&gt;
+&lt;p&gt;Get to know Luanti and learn to develop your own modification that adds
+a new block to the game. Additionally, you can create a custom crafting
+recipe and apply effects to your block like making it glow.&lt;/p&gt;
+&lt;p&gt;Depending on how much time we have, we can explore further topics like
+playing together in the same world or programming chat commands.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/NPHJE9/feedback/</feedback_url>
+        <persons>
+          <person id="5772">Felix</person>
+          <person id="6044">lumi</person>
+          <person id="6054">benedict</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NPHJE9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="023cb8af-3df8-5d1d-a401-78d9656a4740" id="9858">
+        <date>2026-01-31T15:45:00+01:00</date>
+        <start>15:45</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>BRHMRH-scratch_workshop</slug>
+        <url>https://fosdem.org/2026/schedule/event/BRHMRH-scratch_workshop/</url>
+        <title>Scratch Workshop</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In this hands-on Scratch workshop, participants will design and build their own interactive mini-game or story world. Using simple blocks, characters, sounds and animations, they will learn how to make things move, react and come alive on screen.&lt;/p&gt;
+&lt;p&gt;The workshop starts with a short guided introduction where everyone creates a basic interactive scene together. After that, participants are free to customize and expand their project: adding characters, inventing challenges, creating stories, or designing playful interactions. Creativity is central there is no “right” result.&lt;/p&gt;
+&lt;p&gt;The workshop is suitable for beginners as well as participants with some Scratch experience. Younger participants can focus on simple interactions and animations, while older or more experienced ones can experiment with variables, scoring systems or more complex logic.&lt;/p&gt;
+&lt;p&gt;By the end of the session, everyone will have a working Scratch project they can continue at home. The goal is to make coding feel fun, accessible and empowering, and to show that programming is a creative tool for everyone.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/BRHMRH/feedback/</feedback_url>
+        <persons>
+          <person id="6939">Rune Bobbaers</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/BRHMRH/feedback/">Submit Feedback</link>
+        </links>
+      </event>
     </room>
     <room name="UD6.215" slug="ud6215">
       <event guid="3cfc01f3-8e7a-5c67-8837-1f130a878502" id="9795">
@@ -22483,6 +23019,32 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
       </event>
     </room>
     <room name="K.3.401" slug="k3401">
+      <event guid="d226889c-f6df-5210-957d-094977507d15" id="9178">
+        <date>2026-02-01T09:00:00+01:00</date>
+        <start>09:00</start>
+        <duration>00:25</duration>
+        <room>K.3.401</room>
+        <slug>P8NRUB-domain-update</slug>
+        <url>https://fosdem.org/2026/schedule/event/P8NRUB-domain-update/</url>
+        <title>Domain crate update: developments, plans; what would you like to see?</title>
+        <subtitle></subtitle>
+        <track slug="dns">DNS</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Two years have passed since we presented Domain crate, our DNS library written in Rust (https://github.com/NLnetLabs/domain) here at FOSDEM. We added a lot of functionality (for example, DNS client and server support, DNSSEC validation, DNSSEC signing) and started writing our first applications. The most notable application is our new DNSSEC signer called Cascade (https://github.com/NLnetLabs/cascade). In this presentation, I go over the work we have, what our plans are for the coming year. And we would like to hear from you, what would you like to see in a DNS library.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/P8NRUB/feedback/</feedback_url>
+        <persons>
+          <person id="6612">Philip Homburg</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-dns:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-dns:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/P8NRUB/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="a090b4da-cbc4-55e5-961a-4b58828a6271" id="7392">
         <date>2026-02-01T09:30:00+01:00</date>
         <start>09:30</start>
@@ -22661,6 +23223,7 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
         <attachments>
         </attachments>
         <links>
+          <link href="http://jmfriedt.free.fr/fosdem2026_1intro.pdf">slides of the presentation</link>
           <link href="https://chat.fosdem.org/#/room/#2026-sdr-dsp:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-sdr-dsp:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/HGTYTH/feedback/">Submit Feedback</link>
@@ -22724,6 +23287,7 @@ Satellite simulator is here: https://github.com/OpenResearchInstitute/locus&lt;/
         </attachments>
         <links>
           <link href="https://github.com/jmfriedt/kiwisdr_timetransfer/">Github repository</link>
+          <link href="http://jmfriedt.free.fr/fosdem2026_4vlf.pdf">slides of the presentation</link>
           <link href="https://chat.fosdem.org/#/room/#2026-sdr-dsp:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-sdr-dsp:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ELCVLE/feedback/">Submit Feedback</link>
@@ -22871,6 +23435,7 @@ electronics.&lt;/p&gt;
         <links>
           <link href="https://github.com/oscimp/wr_acorn">Github repository</link>
           <link href="https://github.com/enjoy-digital/litex_m2sdr">Enjoy Digital's M2SDR repository, including WR support</link>
+          <link href="http://jmfriedt.free.fr/fosdem2026_3wr.pdf">slides of the presentation</link>
           <link href="https://chat.fosdem.org/#/room/#2026-sdr-dsp:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-sdr-dsp:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QF8G9W/feedback/">Submit Feedback</link>
@@ -22994,6 +23559,7 @@ In this presentation, we tackle the challenges of PLL setpoint drift leading to 
         </attachments>
         <links>
           <link href="https://github.com/jmfriedt/max2771_fx2lp/">project github</link>
+          <link href="http://jmfriedt.free.fr/fosdem2026_2max2771.pdf">slides of the presentation</link>
           <link href="https://chat.fosdem.org/#/room/#2026-sdr-dsp:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-sdr-dsp:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ARECWV/feedback/">Submit Feedback</link>
@@ -24060,6 +24626,7 @@ If possible we could set up a demo where the avatar on screen is tracked off of 
         <attachments>
         </attachments>
         <links>
+          <link href="https://github.com/MarquisdeGeek/Eliza-Origins">The initial 60th anniversary version!</link>
           <link href="https://chat.fosdem.org/#/room/#2026-retrocomputing:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-retrocomputing:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/B7BVVJ/feedback/">Submit Feedback</link>
@@ -24153,9 +24720,9 @@ If possible we could set up a demo where the avatar on screen is tracked off of 
         <start>14:50</start>
         <duration>00:20</duration>
         <room>H.1302 (Depage)</room>
-        <slug>ETLVUA-the_beauty_of_hardware_translation</slug>
-        <url>https://fosdem.org/2026/schedule/event/ETLVUA-the_beauty_of_hardware_translation/</url>
-        <title>The beauty of hardware translation</title>
+        <slug>ETLVUA-the_joys_and_horrors_of_nes_dynamic_recompilation</slug>
+        <url>https://fosdem.org/2026/schedule/event/ETLVUA-the_joys_and_horrors_of_nes_dynamic_recompilation/</url>
+        <title>The joys and horrors of NES dynamic recompilation</title>
         <subtitle></subtitle>
         <track slug="retrocomputing">Retrocomputing</track>
         <type>devroom</type>
@@ -24998,7 +25565,7 @@ The OpenMP name and the OpenMP logo are registered trademarks of the OpenMP Arch
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/NLEESQ/feedback/</feedback_url>
         <persons>
-          <person id="2856">Felix</person>
+          <person id="5772">Felix</person>
         </persons>
         <attachments>
         </attachments>
@@ -27811,10 +28378,11 @@ https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/commit/?h=for-next&amp;am
         <track slug="kernel">Kernel</track>
         <type>devroom</type>
         <language>en</language>
-        <abstract>&lt;p&gt;Usermode Linux (UML) has been developed and maintained in linus tree for decades and well used by kernel developers as an instant way of virtualization within a userspace process, without relying on hypervisor (i.e., qemu/kvm) or software partition (i.e., namespace).  Recently unit testing framework for kernel tree, KUnit, bases UML as a underlying infrastructure for the framework, which brings us more opportunities to use UML.  However, UML is known as low syscall performance, mainly derived from the overhead of context switches caused with ptrace(2) syscall hook implementation.  Additionally its dependency to the underlying environment (e.g., processor architecture, operating systems) makes it hard to refactor its implementation.&lt;/p&gt;
-&lt;p&gt;This talk introduces yet-another extension to UML, based on the architecture without MMU emulation.  The kernel is configured with the option &lt;code&gt;CONFIG_MMU=n&lt;/code&gt;, and we can apply alternate syscall hook mechanisms such as seccomp and zpoline in order to eliminate the bottlenecks of ptrace-based one.  As a bonus, we can exercise nommu subsystem with a plenty of testing framework implemented with KUnit.&lt;/p&gt;
+        <abstract>&lt;p&gt;Usermode Linux (UML) has been developed and maintained in linus tree for decades and well used by kernel developers as an instant way of virtualization within userspace processes, without relying on hypervisor (i.e., qemu/kvm) or software partition (i.e., namespace).  Recently unit testing framework for kernel tree, KUnit, bases UML as an underlying infrastructure for the framework, which brings us more opportunities to use UML.  However, this testing capability of KUnit+UML is currently limited to MMU-full codebase where there are certain portion of code with &lt;code&gt;ifndef CONFIG_MMU&lt;/code&gt; in the kernel tree.  As a result, nommu code lacks the chance of testability and often introduces regressions in the rapid development cycle of linux kernel.&lt;/p&gt;
+&lt;p&gt;This talk introduces yet-another extension to UML, based on the architecture without MMU emulation, in order to exercise nommu code with a plenty of testing framework implemented on KUnit+UML .  The kernel is configured with the option &lt;code&gt;CONFIG_MMU=n&lt;/code&gt;, and we've implemented a different syscall hook and handling mechanisms with the different interactions to the host processes.  With that, existing userspace programs (we've used Alpine Linux image with patched busybox/musl-libc) can run over this UML instance under nommu environment.
+As a bonus using different implementation to the host interactions, we got speedups in several workloads we've tested including &lt;code&gt;lmbench&lt;/code&gt; and &lt;code&gt;netperf&lt;/code&gt;/&lt;code&gt;iperf3&lt;/code&gt; benchmarks.&lt;/p&gt;
 &lt;p&gt;I will briefly overview its implementation, the comparison with the original UML architecture, and share several measurement results obtained during the development.  We will also share the upstreaming status which we have been proposed [*1].&lt;/p&gt;
-&lt;p&gt;*1: https://lore.kernel.org/all/cover.1762075876.git.thehajime@gmail.com/&lt;/p&gt;</abstract>
+&lt;p&gt;*1: https://lore.kernel.org/all/cover.1762588860.git.thehajime@gmail.com/&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/HWLQDV/feedback/</feedback_url>
         <persons>
@@ -28482,9 +29050,9 @@ Key Takeaways:
         </links>
       </event>
       <event guid="0144aff8-873f-51d3-a05e-4f8628aa6504" id="7877">
-        <date>2026-02-01T09:45:00+01:00</date>
-        <start>09:45</start>
-        <duration>00:30</duration>
+        <date>2026-02-01T09:40:00+01:00</date>
+        <start>09:40</start>
+        <duration>00:25</duration>
         <room>UA2.220 (Guillissen)</room>
         <slug>JVBXTL-f3d_fast_and_minimalist_3d_viewer</slug>
         <url>https://fosdem.org/2026/schedule/event/JVBXTL-f3d_fast_and_minimalist_3d_viewer/</url>
@@ -28521,9 +29089,9 @@ Anyone with a 3D model on their computer definitely wants to install and use F3D
         </links>
       </event>
       <event guid="8661ac9e-b89a-59c6-b9f9-d7f9ce9feed5" id="8389">
-        <date>2026-02-01T10:20:00+01:00</date>
-        <start>10:20</start>
-        <duration>00:30</duration>
+        <date>2026-02-01T10:10:00+01:00</date>
+        <start>10:10</start>
+        <duration>00:25</duration>
         <room>UA2.220 (Guillissen)</room>
         <slug>FWXQLF-graphite-2026</slug>
         <url>https://fosdem.org/2026/schedule/event/FWXQLF-graphite-2026/</url>
@@ -28548,9 +29116,9 @@ Anyone with a 3D model on their computer definitely wants to install and use F3D
         </links>
       </event>
       <event guid="26159fd3-56da-5e9a-b1c7-b9f994888335" id="9289">
-        <date>2026-02-01T10:55:00+01:00</date>
-        <start>10:55</start>
-        <duration>00:30</duration>
+        <date>2026-02-01T10:40:00+01:00</date>
+        <start>10:40</start>
+        <duration>00:25</duration>
         <room>UA2.220 (Guillissen)</room>
         <slug>BKTC3Z-wheres_gimp_going_after_3_2</slug>
         <url>https://fosdem.org/2026/schedule/event/BKTC3Z-wheres_gimp_going_after_3_2/</url>
@@ -28577,9 +29145,9 @@ Anyone with a 3D model on their computer definitely wants to install and use F3D
         </links>
       </event>
       <event guid="f9418298-a6e1-516e-aa7f-80cd86475f6f" id="9452">
-        <date>2026-02-01T11:30:00+01:00</date>
-        <start>11:30</start>
-        <duration>00:30</duration>
+        <date>2026-02-01T11:10:00+01:00</date>
+        <start>11:10</start>
+        <duration>00:25</duration>
         <room>UA2.220 (Guillissen)</room>
         <slug>SVKGDR-gstreamer_1_28_and_beyond</slug>
         <url>https://fosdem.org/2026/schedule/event/SVKGDR-gstreamer_1_28_and_beyond/</url>
@@ -28604,9 +29172,9 @@ Anyone with a 3D model on their computer definitely wants to install and use F3D
         </links>
       </event>
       <event guid="83d1f80f-1bae-520d-b95e-2c08eeb09f70" id="7671">
-        <date>2026-02-01T12:05:00+01:00</date>
-        <start>12:05</start>
-        <duration>00:30</duration>
+        <date>2026-02-01T11:40:00+01:00</date>
+        <start>11:40</start>
+        <duration>00:25</duration>
         <room>UA2.220 (Guillissen)</room>
         <slug>PUKMWN-how_to_do_a_podcast_with_free_software</slug>
         <url>https://fosdem.org/2026/schedule/event/PUKMWN-how_to_do_a_podcast_with_free_software/</url>
@@ -28633,9 +29201,9 @@ Anyone with a 3D model on their computer definitely wants to install and use F3D
         </links>
       </event>
       <event guid="6e010e71-c155-55a5-ae67-ecc107376d6d" id="8606">
-        <date>2026-02-01T12:40:00+01:00</date>
-        <start>12:40</start>
-        <duration>00:30</duration>
+        <date>2026-02-01T12:10:00+01:00</date>
+        <start>12:10</start>
+        <duration>00:25</duration>
         <room>UA2.220 (Guillissen)</room>
         <slug>YJSSDQ-podlibre-rethinking-audio-editing-for-podcasting</slug>
         <url>https://fosdem.org/2026/schedule/event/YJSSDQ-podlibre-rethinking-audio-editing-for-podcasting/</url>
@@ -29054,12 +29622,11 @@ The app lists rehearsal and concert playlists and has (optional) access manageme
         <language>en</language>
         <abstract>&lt;p&gt;Tired of the endless “search, copy, paste, test” routine, last year’s FOSDEM helped me break out of that loop thanks to two unexpected sparks: Rust and retrogaming. In this talk, I’ll share how discovering Rust and the Game Boy homebrew scene rekindled my passion for creating software bare metal, bringing back the artistic and playful side of programming. We’ll explore the current state of the Rust ecosystem for GB, GBC, and GBA development — from compilers and minimalist engines to demo ROMs and the ongoing work bridging these two worlds.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Links&lt;/strong&gt;
-https://github.com/zlfn/rust-gb
-https://gbdev.io/&lt;/p&gt;</abstract>
+https://github.com/ffex/rust-boy&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/W3UFSK/feedback/</feedback_url>
         <persons>
-          <person id="6411">ffex</person>
+          <person id="6411">Federico Bassini</person>
         </persons>
         <attachments>
         </attachments>
@@ -29293,7 +29860,7 @@ maintaining production reliability throughout the transition.&lt;/p&gt;
         <room>UB2.252A (Lameere)</room>
         <slug>KGBUNC-rust-mercurial-wider-benefits</slug>
         <url>https://fosdem.org/2026/schedule/event/KGBUNC-rust-mercurial-wider-benefits/</url>
-        <title>Rust in Mercurial: the wider benefits</title>
+        <title>Rust in Mercurial: The wider benefits</title>
         <subtitle></subtitle>
         <track slug="rust">Rust</track>
         <type>devroom</type>
@@ -29356,7 +29923,7 @@ maintaining production reliability throughout the transition.&lt;/p&gt;
         <room>UB2.252A (Lameere)</room>
         <slug>DTYYL9-rust-coreutils</slug>
         <url>https://fosdem.org/2026/schedule/event/DTYYL9-rust-coreutils/</url>
-        <title>Rust Coreutils in Ubuntu: Yes, We Rewrote /bin/true in Rust — Here’s What Really Happened</title>
+        <title>Rust Coreutils in Ubuntu: Yes, we rewrote /bin/true in Rust — Here’s what really happened</title>
         <subtitle></subtitle>
         <track slug="rust">Rust</track>
         <type>devroom</type>
@@ -32384,6 +32951,33 @@ https://github.com/peergos/peergos&lt;/p&gt;</abstract>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/J3FLC3/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="a20e3c7e-4ca7-55b8-bebc-f4717727317c" id="9682">
+        <date>2026-02-01T15:35:00+01:00</date>
+        <start>15:35</start>
+        <duration>00:30</duration>
+        <room>UD2.218A</room>
+        <slug>KF7STF-reticulum-rs_porting_the_trustless_mesh_from_python_to_rust</slug>
+        <url>https://fosdem.org/2026/schedule/event/KF7STF-reticulum-rs_porting_the_trustless_mesh_from_python_to_rust/</url>
+        <title>Reticulum-rs: Porting the Trustless Mesh from Python to Rust</title>
+        <subtitle></subtitle>
+        <track slug="decentralized-internet-and-privacy">Decentralized Internet and Privacy</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Reticulum is a cryptography-based networking stack designed for resilient, decentralised mesh communication without central coordination, source addresses, or trusted infrastructure. While the reference implementation in Python demonstrates the architecture’s strengths, running it on mobile and embedded systems revealed major performance bottlenecks: high latency, limited throughput, and heavy CPU overhead, especially on Android devices. This led us to re-implement Reticulum in Rust, a language whose safety guarantees and mature cryptographic ecosystem enable a fundamental architectural redesign rather than a direct port.&lt;/p&gt;
+&lt;p&gt;This talk presents Reticulum-rs, a modern async Rust implementation that eliminates circular dependencies, clarifies module boundaries, and enables components such as links, channels, and transport to be reasoned about and tested independently. We will discuss the concurrency model required for a fully distributed mesh, the challenges in rewriting a large cross-linked system in a type-safe language, and the roadmap toward embedded Rust and no_std targets for future low-power hardware. Finally, we introduce early applications built on the new stack, including a peer-to-peer VPN and MAVLink bridge operating over Reticulum, outlining how a high-performance Rust core unlocks new use cases across mobile mesh, and distributed robotics domains.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KF7STF/feedback/</feedback_url>
+        <persons>
+          <person id="6848">Shane Pearman</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-decentralized-internet-and-privacy:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-decentralized-internet-and-privacy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KF7STF/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="ebc5d295-6a3f-56fc-ba03-f33c070ad4c4" id="9567">
         <date>2026-02-01T16:05:00+01:00</date>
         <start>16:05</start>
@@ -32900,6 +33494,261 @@ sc:TransportEvent (Supply-Chain)
         </links>
       </event>
     </room>
+    <room name="UD6.203" slug="ud6203">
+      <event guid="17b36449-5939-55e0-b8c8-c8bd8b77e6c2" id="8768">
+        <date>2026-02-01T09:00:00+01:00</date>
+        <start>09:00</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>XXHYGF-escape-the-maze</slug>
+        <url>https://fosdem.org/2026/schedule/event/XXHYGF-escape-the-maze/</url>
+        <title>Escape the Maze! - Program a Game in Snap!</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Let's program an interactive maze game in Snap! This beginners workshop is open for children of all ages interested in learning how to make their own video games. We'll explore how to animate sprites, navigate them through a maze, prevent them from passing through walls, and make them reach the next level.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/XXHYGF/feedback/</feedback_url>
+        <persons>
+          <person id="1783">Jens Mönig</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/XXHYGF/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="f2139df2-784d-56e0-a235-98d7181118b7" id="8258">
+        <date>2026-02-01T10:45:00+01:00</date>
+        <start>10:45</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>F8LG98-createcritters</slug>
+        <url>https://fosdem.org/2026/schedule/event/F8LG98-createcritters/</url>
+        <title>Create a Critter</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Workshop: Create a Critter. Margaret Low. Audience: children aged 9 and up.
+Create your own finger puppet using turtlestitch. TurtleStitch is a block based language, that runs in the browser. Use turtlestitch to create the outline for your finger puppet. It’ll then be stitched by a digital embroidery machine onto two layers of felt, and you can then decorate it, adding eyes, hair, etc.&lt;/p&gt;
+&lt;p&gt;www.turtlestitch.org
+Tutorial: https://warwick.ac.uk/turtlestitch/project_2._finger_puppet.pdf&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/F8LG98/feedback/</feedback_url>
+        <persons>
+          <person id="3818">Margaret Low</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/F8LG98/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="984b5263-ca35-55bc-ae83-79022dc18d93" id="9395">
+        <date>2026-02-01T12:30:00+01:00</date>
+        <start>12:30</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>TZBMEY-microblocks-cocube-football</slug>
+        <url>https://fosdem.org/2026/schedule/event/TZBMEY-microblocks-cocube-football/</url>
+        <title>Play robot football: program a CoCube with MicroBlocks</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Score! Your goal will be to teach a CoCube robot how to "shoot a soccer ball into the net".&lt;/p&gt;
+&lt;p&gt;You'll first learn the basics: how to program a https://www.cocubefun.com/ using https://microblocks.fun.&lt;/p&gt;
+&lt;p&gt;Then you'll apply your new programming skills to shoot, and score!&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/TZBMEY/feedback/</feedback_url>
+        <persons>
+          <person id="1342">Kathy Giori</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/TZBMEY/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="0c458135-e600-53bb-90ec-b3bf4aeb6090" id="9113">
+        <date>2026-02-01T14:15:00+01:00</date>
+        <start>14:15</start>
+        <duration>01:30</duration>
+        <room>UD6.203</room>
+        <slug>AE8XJ9-make_a_controller_for_your_game</slug>
+        <url>https://fosdem.org/2026/schedule/event/AE8XJ9-make_a_controller_for_your_game/</url>
+        <title>Make a controller for your game</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;In this workshop you'll create a little game that works in your computer, plus a physical controller -like the ones in gaming consoles- that you'll use to control the game you've made.&lt;/p&gt;
+&lt;p&gt;To program the video game and the controller we are going to use two different blocks-based programming languages: Snap! and MicroBlocks.&lt;/p&gt;
+&lt;p&gt;Snap! is a live, blocks-based language that delves into advanced programming concepts and is suitable for a rigorous introduction to computer science. MicroBlocks is also a live blocks-based programming language that runs on microcontrollers and is ideal to get started with electronics and physical computing.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/AE8XJ9/feedback/</feedback_url>
+        <persons>
+          <person id="1541">Bernat Romagosa</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/AE8XJ9/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="b6c8b71d-50b0-5d64-9352-91ef362626c1" id="7998">
+        <date>2026-02-01T16:00:00+01:00</date>
+        <start>16:00</start>
+        <duration>01:00</duration>
+        <room>UD6.203</room>
+        <slug>8ZEMNZ-flowers-and-stars-embroidered</slug>
+        <url>https://fosdem.org/2026/schedule/event/8ZEMNZ-flowers-and-stars-embroidered/</url>
+        <title>Flowers and stars</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;A short talk to get you started in coding your own flowers and stars, which can be embroidered!&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/8ZEMNZ/feedback/</feedback_url>
+        <persons>
+          <person id="4661">Joek van Montfort</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/8ZEMNZ/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+    </room>
+    <room name="UD6.205" slug="ud6205">
+      <event guid="758da575-dcab-5677-b0ae-a1ba44a27c65" id="8320">
+        <date>2026-02-01T09:00:00+01:00</date>
+        <start>09:00</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>X877QY-create_your_own_art_with_p5_js</slug>
+        <url>https://fosdem.org/2026/schedule/event/X877QY-create_your_own_art_with_p5_js/</url>
+        <title>Create your own art (Mondriaan or Picasso) with coding in  p5.js</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Create your own art like Mondriaan or Picasso with coding in p5.js. An online scripting site where you can put in circle's, square's, lines etc in different colours to create a pattern. You will start off with some examples so you know how this scripting coding works. Then you can make your own.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/X877QY/feedback/</feedback_url>
+        <persons>
+          <person id="1774">Pauline Maas</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/X877QY/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="4b1509da-6f39-55e1-8a8f-1d11b077bba7" id="8852">
+        <date>2026-02-01T10:45:00+01:00</date>
+        <start>10:45</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>9BBCXW-exploring_gcompris_-_an_educational_software</slug>
+        <url>https://fosdem.org/2026/schedule/event/9BBCXW-exploring_gcompris_-_an_educational_software/</url>
+        <title>Exploring GCompris - an educational software</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;GCompris is an educational software with more than 100 educational activities, some of which are game oriented. Here you will hear some of the history as well as the prevalence of the application. Come and discover GCompris, and what it has to offer. 
+This workshop is most suitable for children up to age 10. Having GCompris installed before the workshop is recommended. You can use either a mobile phone or a computer.&lt;/p&gt;
+&lt;p&gt;https://gcompris.net/&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/9BBCXW/feedback/</feedback_url>
+        <persons>
+          <person id="6488">Jonas Jakštys</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9BBCXW/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="1e0e1a11-f4be-596e-abf2-f5d3c4ebf63b" id="8081">
+        <date>2026-02-01T12:30:00+01:00</date>
+        <start>12:30</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>GCGHHG-hedy-gradual-programming-workshop</slug>
+        <url>https://fosdem.org/2026/schedule/event/GCGHHG-hedy-gradual-programming-workshop/</url>
+        <title>Learn Python programming using Hedy</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Hedy is a programming language that aims to teach textual programming to kids. Hedy's unique approach involves gradual changes in the syntax of the programming language, so students are not overloaded with information right away. This devroom is aimed at students from 9 to 12 years old, but anyone with a desire to start learning programming (or teaching) with text based language is welcome. You'll need your own laptop (no installs needed, Hedy is webbased) and reading- and basic typing skills (or someone to help you read and type). No prior programming experience is needed. When you have finished all 16 levels of Hedy, you know the basics of Python.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/GCGHHG/feedback/</feedback_url>
+        <persons>
+          <person id="5384">Sami Finkbeiner</person>
+          <person id="6111">Amin</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GCGHHG/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="f53e3694-57c5-5a0c-bded-2843d8435413" id="9027">
+        <date>2026-02-01T14:15:00+01:00</date>
+        <start>14:15</start>
+        <duration>01:30</duration>
+        <room>UD6.205</room>
+        <slug>FBWS38-train_and_deploy_machine_learning_models_with_mit_app_inventor</slug>
+        <url>https://fosdem.org/2026/schedule/event/FBWS38-train_and_deploy_machine_learning_models_with_mit_app_inventor/</url>
+        <title>Train and Deploy Machine Learning Models with MIT App Inventor</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;MIT App Inventor is an intuitive, visual programming environment that allows everyone – even children – to build fully functional apps for Android phones, iPhones, and Android/iOS tablets. Those new to MIT App Inventor can have a simple first app up and running in less than 30 minutes. In this workshop, participants will train their own convolutional neural network (CNN) to play the game peek-a-boo. We will then play with the model on tablets/phones using an app built with MIT App Inventor.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/FBWS38/feedback/</feedback_url>
+        <persons>
+          <person id="1776">Evan Patton</person>
+          <person id="6604">Jos</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/FBWS38/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="eaf0a5cf-0eae-5098-a352-5c6feae6d4b8" id="8322">
+        <date>2026-02-01T16:00:00+01:00</date>
+        <start>16:00</start>
+        <duration>01:00</duration>
+        <room>UD6.205</room>
+        <slug>9RTXCA-music_by_coding</slug>
+        <url>https://fosdem.org/2026/schedule/event/9RTXCA-music_by_coding/</url>
+        <title>Music by Coding</title>
+        <subtitle></subtitle>
+        <track slug="junior">Junior</track>
+        <type>junior</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Sonic Pi is a free code-based music creation and performance tool. It is Powerful for professional musicians and DJs, Expressive for composition and performance. It is also accessible for blind and partially sighted people and is simple for computing and music lessons. Learn to code creatively by composing or performing music in an incredible range of styles from Classical &amp;amp; Jazz to Hip hop &amp;amp; EDM. Free for everyone with a friendly tutorial. https://sonic-pi.net/&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/9RTXCA/feedback/</feedback_url>
+        <persons>
+          <person id="1774">Pauline Maas</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9RTXCA/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+    </room>
     <room name="UD6.215" slug="ud6215">
       <event guid="e5525b8b-0a22-55b3-858d-66220efdaffe" id="9205">
         <date>2026-02-01T09:00:00+01:00</date>
@@ -33240,6 +34089,184 @@ firmware as opaque, trusted black boxes.&lt;/p&gt;
           <link href="https://chat.fosdem.org/#/room/#2026-confidential-computing:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-confidential-computing:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LKWQL7/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="1768b25b-24bd-51ed-928e-5dfa93b5e4e3" id="8623">
+        <date>2026-02-01T13:15:00+01:00</date>
+        <start>13:15</start>
+        <duration>00:30</duration>
+        <room>UD6.215</room>
+        <slug>KCWFBD-openflexure_education</slug>
+        <url>https://fosdem.org/2026/schedule/event/KCWFBD-openflexure_education/</url>
+        <title>Open-Education in the OpenFlexure Project</title>
+        <subtitle></subtitle>
+        <track slug="educational">Educational</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;As technology advances, the difference in cost and technical specifications between proprietary devices used in professional settings and education grows. We present the OpenFlexure Microscope, a locally manufacturable and 3D-printed, brightfield microscope as a solution to bridge the gap between teaching equipment and the devices medics are expected to use throughout labs around the world. The OpenFlexure Project develops all the hardware, software and documentation for education across all levels and disciplines. A locally manufacturable and affordable digital microscope allows pathologists to image and practice on local samples - something that is key to medical education - whilst also breaking down international barriers through collaborative initiatives such as the School of Open Pathology which seeks to connect pathologists around the world. High schools are becoming more invested in interdisciplinary projects across all age groups and the OpenFlexure Microscope gives students the opportunity to learn about biology, engineering, physics and computing science all in the same package. We have run workshops for high school science teachers around Glasgow, Scotland where we have shown them how to build the microscope and discussed challenges of integrating our microscope into a classroom environment.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/KCWFBD/feedback/</feedback_url>
+        <persons>
+          <person id="6391">Ben Chisholm</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-educational:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-educational:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KCWFBD/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="fc6c1fda-8814-5b82-9743-aa83e151c425" id="8752">
+        <date>2026-02-01T13:55:00+01:00</date>
+        <start>13:55</start>
+        <duration>00:30</duration>
+        <room>UD6.215</room>
+        <slug>EADBAK-gnu-octave-in-education</slug>
+        <url>https://fosdem.org/2026/schedule/event/EADBAK-gnu-octave-in-education/</url>
+        <title>GNU Octave in education: an insight beyond engineering into statistics and data analysis</title>
+        <subtitle></subtitle>
+        <track slug="educational">Educational</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;GNU Octave is programming language intended for numerical computations. Often quoted as the MATLAB open-source clone or alternative, Octave has been in constant development for more than three decades already.  Hundreds of engineering departments worldwide and tens of thousands of student have benefited from this free and open source software. Traditionally, Octave has been primarily targeting engineering applications due to its advanced computational capabilities with multidimensional arrays. Complementary to the core Octave capabilities, there has been Octave Forge, which for a long time served numerous packages extending Octave functionality for various domain-specific engineering applications.
+Since 2022, there has been a shift towards expanding the Octave ecosystem beyond engineering applications. This coincided with the development of Octave Packages, a new package indexing system that facilitates the development and integration of Octave package within the Octave ecosystem. This shift is most prominent by the recent advancements of the statistics package as well as a number of other packages focused on data analysis and visualization.
+This talk aims at a concise presentation of the current state of the Octave ecosystem with a special attention to the educational aspects and its benefits for educators and students alike. The talk will focus on statistics and data analysis with GNU Octave, and discuss its educational benefits in these two widely popular fields.
+https://octave.org
+https://gnu-octave.github.io/packages/
+https://github.com/gnu-octave/statistics
+https://github.com/pr0m1th3as/datatypes&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/EADBAK/feedback/</feedback_url>
+        <persons>
+          <person id="6445">Andreas Bertsatos</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-educational:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-educational:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EADBAK/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="c5064697-ac08-51cb-855f-a79f62e255c2" id="7749">
+        <date>2026-02-01T14:35:00+01:00</date>
+        <start>14:35</start>
+        <duration>00:30</duration>
+        <room>UD6.215</room>
+        <slug>7TY3JV-processing</slug>
+        <url>https://fosdem.org/2026/schedule/event/7TY3JV-processing/</url>
+        <title>Processing: Creative Coding and the Future of Education</title>
+        <subtitle></subtitle>
+        <track slug="educational">Educational</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;&lt;a href="https://processing.org/"&gt;Processing&lt;/a&gt; is one of the most widely used open-source tools for creative coding and computer science education. Since its first release in 2001, it has helped millions of students, artists, and designers learn programming through visual and interactive projects. It has been used in classrooms, art installations, interactive media, and data visualization worldwide. Processing popularized the term &lt;em&gt;creative coding&lt;/em&gt; and helped establish it as a field that bridges art, design, and computer science.&lt;/p&gt;
+&lt;p&gt;The values that shaped Processing (accessibility, creativity, and democratization) remain essential, but the context has changed. Computer science education is dealing with rapid shifts in technology and society and today’s learners encounter a software ecosystem dominated by opaque but tantalizing systems and automation. This raises new questions: What does it mean to learn to code today? Can we re-imagine coding tools in a way that preserves learner agency, curiosity, and critical thinking? Could creative coding hold some of the answers?&lt;/p&gt;
+&lt;p&gt;In this talk, we’ll share what we’re learning as stewards of Processing and how these efforts invite us to rethink creative coding’s role in the future of computer science education.&lt;/p&gt;
+&lt;p&gt;More about Processing:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/processing-foundation/a-modern-prometheus-59aed94abe85"&gt;A Modern Prometheus. The History of Processing by Casey Reas and Ben Fry&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://vimeo.com/60735314"&gt;Hello World! Processing - a documentary on creative coding&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://eyeondesign.aiga.org/processing-the-software-that-shaped-creative-coding/"&gt;Processing: the Software that Shaped Creative Coding&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://media.ccc.de/v/lgm25-upstream-2025-83647-the-state-of-processing-how-we-re-bringing-a-creative-coding-icon-back-to-life"&gt;The State of Processing: How We’re Bringing a Creative Coding Icon Back to Life - media.ccc.de&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/7TY3JV/feedback/</feedback_url>
+        <persons>
+          <person id="5773">Raphaël</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-educational:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-educational:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/7TY3JV/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="451501f8-762f-593e-a6f7-7534566003dd" id="8795">
+        <date>2026-02-01T15:15:00+01:00</date>
+        <start>15:15</start>
+        <duration>00:30</duration>
+        <room>UD6.215</room>
+        <slug>ZRFZHL-deep-learning-demystified</slug>
+        <url>https://fosdem.org/2026/schedule/event/ZRFZHL-deep-learning-demystified/</url>
+        <title>Deep Learning Demystified - Having Fun with Neural Networks in Snap!</title>
+        <subtitle></subtitle>
+        <track slug="educational">Educational</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;While "AI" is all the rage in current educational debates, the associated skills are mostly about prompting chat bots and generally becoming a productive user of commercial offerings. This talk will introduce new approaches to educate learners about the algorithms that make up modern AI systems, specifically neural networks, how to build them from scratch using free and open source materials, how to use them to diagnose data sets and enhance your personal projects, and how to form an informed critical and skeptical competence towards them.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ZRFZHL/feedback/</feedback_url>
+        <persons>
+          <person id="1783">Jens Mönig</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-educational:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-educational:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZRFZHL/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="fd19e85a-8666-5a04-961b-e9fa0596997a" id="8956">
+        <date>2026-02-01T15:55:00+01:00</date>
+        <start>15:55</start>
+        <duration>00:30</duration>
+        <room>UD6.215</room>
+        <slug>ABKYMT-execubot</slug>
+        <url>https://fosdem.org/2026/schedule/event/ABKYMT-execubot/</url>
+        <title>Learn Python with Execubot</title>
+        <subtitle></subtitle>
+        <track slug="educational">Educational</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Execubot (execubot.fr) is an open-source serious game designed to help students learn Python. It also offers a collaborative environment where both students and teachers can create and submit custom levels. Execubot can be used independently by learners or integrated into the classroom, with teacher-controlled settings that adapt the experience to specific learning objectives.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ABKYMT/feedback/</feedback_url>
+        <persons>
+          <person id="6514">Célia Piquet</person>
+          <person id="6933">Florent Gallaire</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-educational:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-educational:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ABKYMT/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="d584f553-a0eb-594f-8c06-acdff538b792" id="7158">
+        <date>2026-02-01T16:35:00+01:00</date>
+        <start>16:35</start>
+        <duration>00:25</duration>
+        <room>UD6.215</room>
+        <slug>QVRM9K-hedy-gradual-programming</slug>
+        <url>https://fosdem.org/2026/schedule/event/QVRM9K-hedy-gradual-programming/</url>
+        <title>Hedy - Textual programming made easy!</title>
+        <subtitle></subtitle>
+        <track slug="educational">Educational</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Hedy is an open-source programming language designed to make programming easier for children. It’s also easy for teachers without a technical background to adopt. Hedy bridges the gap between block-based tools like Scratch and text-based programming in Python.&lt;/p&gt;
+&lt;p&gt;In this talk, we’ll explore how Hedy gradually introduces programming concepts in three stages: Basic, Advanced, and Expert. Across 16 levels, learners progress from simple print statements to fully functional Python code. We’ll share how teachers around the world use Hedy in classrooms, how our global translator community has made Hedy available in over 40 languages, and how open-source collaboration drives its continuous evolution.&lt;/p&gt;
+&lt;p&gt;You will gain insight into Hedy’s design principles, pedagogical impact, and the challenges that come with developing an educational programming language. Whether you’re an educator, developer, or open-source contributor, come see how Hedy lowers the barriers to programming and inspires the next generation of coders!&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/QVRM9K/feedback/</feedback_url>
+        <persons>
+          <person id="5384">Sami Finkbeiner</person>
+          <person id="6086">Femke Weijsenfeld</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://hedy.org/">Hedy website</link>
+          <link href="https://github.com/hedyorg/hedy">Hedy on GitHub</link>
+          <link href="https://www.linkedin.com/company/hedyorg/">Hedy on LinkedIn</link>
+          <link href="https://chat.fosdem.org/#/room/#2026-educational:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-educational:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QVRM9K/feedback/">Submit Feedback</link>
         </links>
       </event>
     </room>
