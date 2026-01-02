@@ -42,7 +42,7 @@ deploy_staging_app:
 test_staging:
     TEST_BASE_URL=https://fosdem2024-staging.fly.dev cargo test --test integration_tests
 
-deploy_prod: deploy_prod_secrets deploy_prod_app
+deploy_prod: deploy_prod_secrets deploy_prod_app test_prod
 
 deploy_prod_secrets:
     fly secrets deploy --config fly.prod.toml
