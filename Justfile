@@ -31,13 +31,16 @@ bring_up_to_date: fetch_schedules import_schedules index_next
 webapp:
     RUST_LOG=info cargo run --bin fly -- --model-dir {{model_dir}} --current-year {{current_year}} --selectable-years "{{years}}"
 
-deploy_staging: deploy_staging_secrets deploy_staging_app
+deploy_staging: deploy_staging_secrets deploy_staging_app test_staging
 
 deploy_staging_secrets:
     fly secrets deploy --config fly.staging.toml
 
 deploy_staging_app:
     fly deploy --config fly.staging.toml
+
+test_staging:
+    TEST_BASE_URL=https://fosdem2024-staging.fly.dev cargo test --test integration_tests
 
 deploy_prod: deploy_prod_secrets deploy_prod_app
 
@@ -46,3 +49,6 @@ deploy_prod_secrets:
 
 deploy_prod_app:
     fly deploy --config fly.prod.toml
+
+test_prod:
+    TEST_BASE_URL=https://fosdem.houseofmoran.io cargo test --test integration_tests 
