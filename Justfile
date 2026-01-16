@@ -22,6 +22,7 @@ index_next: embeddings_next related_next
     
 embeddings_next:
     RUST_LOG=info cargo run --bin fetch_openai_embeddings --release -- --model-dir {{model_dir}}
+    gzip -9v {{model_dir}}/embeddings.json
 
 related_next:
     RUST_LOG=info cargo run --bin generate_related --release -- --model-dir {{model_dir}} --years "{{current_year}}" --limit 5 --json {{assets_dir}}/all.limit5.json
