@@ -22,6 +22,7 @@ index_next: embeddings_next related_next
     
 embeddings_next:
     RUST_LOG=info cargo run --bin fetch_openai_embeddings --release -- --model-dir {{model_dir}}
+    gzip -9v {{model_dir}}/embeddings.json
 
 related_next:
     RUST_LOG=info cargo run --bin generate_related --release -- --model-dir {{model_dir}} --years "{{current_year}}" --limit 5 --json {{assets_dir}}/all.limit5.json
@@ -42,7 +43,7 @@ deploy_staging_app:
 test_staging:
     TEST_BASE_URL=https://fosdem2024-staging.fly.dev cargo test --test integration_tests
 
-deploy_prod: deploy_prod_secrets deploy_prod_app
+deploy_prod: deploy_prod_secrets deploy_prod_app test_prod
 
 deploy_prod_secrets:
     fly secrets deploy --config fly.prod.toml

@@ -275,9 +275,14 @@ impl InMemoryOpenAIQueryable {
 }
 
 mod parsing {
-    use std::{fs::File, io::BufReader, path::Path};
+    use std::{
+        fs::File,
+        io::{BufReader, Read},
+        path::Path,
+    };
 
-    use tracing::debug;
+    use flate2::read::GzDecoder;
+    use tracing::{debug, info};
 
     use crate::model::{Event, OpenAIEmbedding};
 
@@ -288,8 +293,13 @@ mod parsing {
     ) -> Result<Vec<EmbeddedEvent>, Box<dyn std::error::Error>> {
         let events_path = model_dir.join("events").with_extension("json");
         let events = parse_all_events(&events_path)?;
-        let embeddings_path = model_dir.join("embeddings").with_extension("json");
+        let embeddings_path = model_dir.join("embeddings").with_extension("json.gz");
         let embeddings: Vec<OpenAIEmbedding> = parse_all_embeddings(&embeddings_path)?;
+
+        info!(
+            "Parsing embeddings and events from {:?} and {:?}",
+            events_path, embeddings_path
+        );
 
         let mut embedded_events = vec![];
         for event in events {
@@ -312,7 +322,7 @@ mod parsing {
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
         debug!("Loading events data from {:?}", events_path);
 
-        let reader = BufReader::new(File::open(events_path)?);
+        let reader = reader_for_path(events_path)?;
         let mut events: Vec<Event> = serde_json::from_reader(reader)?;
 
         events.sort_by(|a, b| a.id.cmp(&b.id));
@@ -324,9 +334,24 @@ mod parsing {
     ) -> Result<Vec<OpenAIEmbedding>, Box<dyn std::error::Error>> {
         debug!("Loading embeddings data from {:?}", embeddings_path);
 
-        let reader = BufReader::new(File::open(embeddings_path)?);
+        let reader = reader_for_path(embeddings_path)?;
         let embeddings: Vec<OpenAIEmbedding> = serde_json::from_reader(reader)?;
 
         Ok(embeddings)
+    }
+
+    fn reader_for_path(
+        path: &Path,
+    ) -> Result<BufReader<Box<dyn Read>>, Box<dyn std::error::Error>> {
+        let file = File::open(path)?;
+
+        let reader: BufReader<Box<dyn Read>> =
+            BufReader::new(if path.extension().is_some_and(|ext| ext == "gz") {
+                Box::new(GzDecoder::new(file))
+            } else {
+                Box::new(file)
+            });
+
+        Ok(reader)
     }
 }
