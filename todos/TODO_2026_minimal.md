@@ -1,4 +1,17 @@
-# Fosdem 2026 Minimal
+# Fosdem 2026
+
+## Things to try to do in two weeks before it
+
+* [ ] visualisation of bookmarks such that it can replace `/next` in intent
+  * [x] `/bookmarks2` page (same as before)
+  * [ ] show all rooms in a table
+  * [ ] ...
+
+* [ ] make bookmarks system work across machines
+  * consider creating/using a bridge between tinybase and durable streams
+  * [ ] ...
+
+## Minimal
 
 These are todos related to bringing things up-to-date without making any major changes in architecture or how it functions.
 

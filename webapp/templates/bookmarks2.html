@@ -4,39 +4,54 @@
 {%- import "components/external.html" as external -%}
 
 {% block content %}
-<section class="section hide-non-bookmarked">
-    <div class="columns">
-        <div class="column">
-            <div class="buttons has-addons is-centered">
-                <button class="button is-large is-responsive bookmark" id="export" disabled>
-                    <span class="icon is-small">
-                        <i class="fa-solid fa-upload"></i>
-                    </span>
-                    <span>Export</span>
-                </button>
-                <button class="button is-large is-responsive bookmark" id="import" disabled>
-                    <span class="icon is-small">
-                        <i class="fa-solid fa-download"></i>
-                    </span>
-                    <span>Import</span>
-                </button>
+<section class="section">
+    <div class="container is-fluid">
+        <h1 class="title">Bookmarked Events - {{ current_fosdem.year }}</h1>
+
+        {% for timetable in timetables %}
+        <div class="box">
+            <h2 class="subtitle">{{ timetable.day_name }} - {{ timetable.date }}</h2>
+
+            <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Time</th>
+                            {% for room in timetable.rooms %}
+                            <th>{{ room }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in timetable.rows %}
+                        <tr>
+                            <td>{{ row.time_slot.format("%H:%M") }}</td>
+                            {% for cell in row.cells %}
+                            {% match cell %}
+                            {% when Some with (c) %}
+                            <td rowspan="{{ c.rowspan }}"
+                                data-event-id="{{ c.event.id }}"
+                                data-bookmark-status="false"
+                                style="vertical-align: top; padding: 0.5rem;">
+                                <div class="content is-small">
+                                    <strong>{{ c.event.title }}</strong>
+                                    <br>
+                                    <small>{{ c.event.start.format("%H:%M") }} - {{ c.event.ending_time().format("%H:%M") }}</small>
+                                    <br>
+                                    <small>{{ c.event.track }}</small>
+                                </div>
+                            </td>
+                            {% when None %}
+                            {% endmatch %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% for event in events %}
-    <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
-        <div class="column">
-            <div class="card" >
-                {% call event::expandable_card_details(event) %}
-                <footer class="card-footer">
-                    {% call bookmark::bookmark_footer_item(event) %}
-                    {% call external::sojourner_event(event) %}
-                    {% call external::fosdem_event(event) %}
-                </footer>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
 </section>
 
 <dialog id="export-dialog">
