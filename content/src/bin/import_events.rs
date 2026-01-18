@@ -80,7 +80,7 @@ fn apply_fixups(event: &mut Event, year: u32) -> Result<(), Box<dyn std::error::
     // Fixup URL year segment if needed
     if let Some(segments) = event.url.path_segments() {
         let segments: Vec<&str> = segments.collect();
-        if segments.len() >= 1 {
+        if !segments.is_empty() {
             let expected_year_segment = format!("{}", year);
             if segments[0] != expected_year_segment {
                 let mut new_segments = segments.clone();

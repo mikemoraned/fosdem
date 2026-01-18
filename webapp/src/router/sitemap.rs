@@ -71,7 +71,7 @@ pub async fn sitemap(Host(host): Host, State(state): State<AppState>) -> Respons
 }
 
 fn base_url_from_host(host: &str) -> Result<String, Box<dyn std::error::Error>> {
-    let allowlist = vec!["fosdem.houseofmoran.io", "fosdem2024-staging.fly.dev"];
+    let allowlist = ["fosdem.houseofmoran.io", "fosdem2024-staging.fly.dev"];
     if host == "localhost" || host.starts_with("localhost:") {
         Ok(format!("http://{}", host))
     } else if allowlist.contains(&host) {
