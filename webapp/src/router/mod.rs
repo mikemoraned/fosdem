@@ -12,6 +12,7 @@ use tower_http::{
 use crate::state::AppState;
 
 mod bookmark;
+mod bookmarks2;
 mod event;
 mod index;
 mod next;
@@ -59,6 +60,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/sitemap.xml", get(sitemap::sitemap))
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
+        .route("/bookmarks2", get(bookmarks2::bookmarks2))
         .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/event/{event_in_year_id}/", get(event::event_2025))

@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{%- import "components/bookmark.html" as bookmark -%}
+{%- import "components/event.html" as event -%}
+{%- import "components/external.html" as external -%}
+
+{% block content %}
+<section class="section hide-non-bookmarked">
+    <div class="columns">
+        <div class="column">
+            <div class="buttons has-addons is-centered">
+                <button class="button is-large is-responsive bookmark" id="export" disabled>
+                    <span class="icon is-small">
+                        <i class="fa-solid fa-upload"></i>
+                    </span>
+                    <span>Export</span>
+                </button>
+                <button class="button is-large is-responsive bookmark" id="import" disabled>
+                    <span class="icon is-small">
+                        <i class="fa-solid fa-download"></i>
+                    </span>
+                    <span>Import</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% for event in events %}
+    <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
+        <div class="column">
+            <div class="card" >
+                {% call event::expandable_card_details(event) %}
+                <footer class="card-footer">
+                    {% call bookmark::bookmark_footer_item(event) %}
+                    {% call external::sojourner_event(event) %}
+                    {% call external::fosdem_event(event) %}
+                </footer>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<dialog id="export-dialog">
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">Export</p>
+            <button class="card-header-icon copy">
+                <span class="icon is-small">
+                    <i class="fa-solid fa-upload"></i>
+                </span>
+            </button>
+        </header>
+        <div class="card-content">
+            <textarea class="textarea is-info text" disabled></textarea>
+        </div>
+        <footer class="card-footer">
+            <a href="#" class="card-footer-item copy">Copy</a>
+            <a href="#" class="card-footer-item close">Close</a>
+        </footer>
+    </div>
+</dialog>
+
+<dialog id="import-dialog">
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">Import</p>
+            <button class="card-header-icon import">
+                <span class="icon is-small">
+                    <i class="fa-solid fa-download"></i>
+                </span>
+            </button>
+        </header>
+        <div class="card-content">
+            <textarea class="textarea is-info text"></textarea>
+        </div>
+        <footer class="card-footer">
+            <a href="#" class="card-footer-item import">Import</a>
+            <a href="#" class="card-footer-item close">Close</a>
+        </footer>
+    </div>
+</dialog>
+
+{% endblock %}
+
+{% block bookmarks_callbacks %}
+<script type="module">
+    import { bindExport, bindImport } from '/assets/bookmarks.js';
+
+    document.bookmarksCallbacks = [ bindExport, bindImport ];
+</script>
+{% endblock %}
