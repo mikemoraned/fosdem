@@ -31,14 +31,13 @@
                             {% for cell in row.cells %}
                             {% match cell %}
                             {% when Some with (c) %}
-                            <td rowspan="{{ c.rowspan }}" data-event-id="{{ c.event.id }}" data-bookmark-status="false"
+                            <td rowspan="{{ c.rowspan }}"
+                                data-event-id="{{ c.event.id }}"
+                                data-bookmark-status="false"
+                                class="event-cell"
                                 title="{{ c.event.title }}"
-                                style="vertical-align: middle; text-align: center; padding: 0.25rem;">
-                                <button class="button is-small is-info event-detail-button">
-                                    <span class="icon is-small">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </span>
-                                </button>
+                                style="vertical-align: middle; text-align: left; padding: 0.5rem; overflow: hidden; cursor: pointer; writing-mode: vertical-rl; white-space: nowrap; text-overflow: ellipsis; background-color: #3e8ed0; color: white;">
+                                {{ c.event.title }}
                                 <div class="event-detail-content" style="display: none;">
                                     <div class="card">
                                         {% call event::expandable_card_details(c.event) %}
@@ -84,11 +83,10 @@
     const dialog = document.getElementById('event-detail-dialog');
     const container = document.getElementById('event-detail-container');
 
-    // Open dialog when info button is clicked
-    document.querySelectorAll('.event-detail-button').forEach(button => {
-        button.addEventListener('click', (e) => {
+    // Open dialog when event cell is clicked
+    document.querySelectorAll('.event-cell').forEach(cell => {
+        cell.addEventListener('click', (e) => {
             e.preventDefault();
-            const cell = button.closest('td');
             const eventContent = cell.querySelector('.event-detail-content');
 
             if (eventContent) {
