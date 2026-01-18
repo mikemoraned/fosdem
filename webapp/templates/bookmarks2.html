@@ -32,13 +32,22 @@
                             <td rowspan="{{ c.rowspan }}"
                                 data-event-id="{{ c.event.id }}"
                                 data-bookmark-status="false"
-                                style="vertical-align: top; padding: 0.5rem;">
-                                <div class="content is-small">
-                                    <strong>{{ c.event.title }}</strong>
-                                    <br>
-                                    <small>{{ c.event.start.format("%H:%M") }} - {{ c.event.ending_time().format("%H:%M") }}</small>
-                                    <br>
-                                    <small>{{ c.event.track }}</small>
+                                title="{{ c.event.title }}"
+                                style="vertical-align: middle; text-align: center; padding: 0.25rem;">
+                                <button class="button is-small is-info event-detail-button">
+                                    <span class="icon is-small">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </span>
+                                </button>
+                                <div class="event-detail-content" style="display: none;">
+                                    <div class="card">
+                                        {% call event::expandable_card_details(c.event) %}
+                                        <footer class="card-footer">
+                                            {% call bookmark::bookmark_footer_item(c.event) %}
+                                            {% call external::sojourner_event(c.event) %}
+                                            {% call external::fosdem_event(c.event) %}
+                                        </footer>
+                                    </div>
                                 </div>
                             </td>
                             {% when None %}
@@ -54,43 +63,13 @@
     </div>
 </section>
 
-<dialog id="export-dialog">
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">Export</p>
-            <button class="card-header-icon copy">
-                <span class="icon is-small">
-                    <i class="fa-solid fa-upload"></i>
-                </span>
-            </button>
-        </header>
-        <div class="card-content">
-            <textarea class="textarea is-info text" disabled></textarea>
+<dialog id="event-detail-dialog">
+    <div style="max-width: 800px; background: white; border-radius: 6px; padding: 1rem;">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+            <button class="delete close-dialog" aria-label="close"></button>
         </div>
-        <footer class="card-footer">
-            <a href="#" class="card-footer-item copy">Copy</a>
-            <a href="#" class="card-footer-item close">Close</a>
-        </footer>
-    </div>
-</dialog>
-
-<dialog id="import-dialog">
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">Import</p>
-            <button class="card-header-icon import">
-                <span class="icon is-small">
-                    <i class="fa-solid fa-download"></i>
-                </span>
-            </button>
-        </header>
-        <div class="card-content">
-            <textarea class="textarea is-info text"></textarea>
+        <div id="event-detail-container">
         </div>
-        <footer class="card-footer">
-            <a href="#" class="card-footer-item import">Import</a>
-            <a href="#" class="card-footer-item close">Close</a>
-        </footer>
     </div>
 </dialog>
 
@@ -98,8 +77,44 @@
 
 {% block bookmarks_callbacks %}
 <script type="module">
-    import { bindExport, bindImport } from '/assets/bookmarks.js';
+    // Note: Not using bindExport/bindImport from bookmarks.js since we don't have those buttons in this view
+    document.bookmarksCallbacks = [];
 
-    document.bookmarksCallbacks = [ bindExport, bindImport ];
+    // Handle event detail dialog
+    const dialog = document.getElementById('event-detail-dialog');
+    const container = document.getElementById('event-detail-container');
+
+    // Open dialog when info button is clicked
+    document.querySelectorAll('.event-detail-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const cell = button.closest('td');
+            const eventContent = cell.querySelector('.event-detail-content');
+
+            if (eventContent) {
+                // Clone the content to avoid moving it from the original location
+                const clone = eventContent.cloneNode(true);
+                clone.style.display = 'block';
+                container.innerHTML = '';
+                container.appendChild(clone);
+                dialog.showModal();
+            }
+        });
+    });
+
+    // Close dialog
+    document.querySelectorAll('.close-dialog').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            dialog.close();
+        });
+    });
+
+    // Close on backdrop click
+    dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) {
+            dialog.close();
+        }
+    });
 </script>
 {% endblock %}

@@ -42,6 +42,7 @@ pub struct DayTimetable {
 #[template(path = "bookmarks2.html")]
 struct Bookmarks2Template {
     timetables: Vec<DayTimetable>,
+    current_event: Option<Event>,
     current_fosdem: shared::model::CurrentFosdem,
 }
 
@@ -60,6 +61,7 @@ pub async fn bookmarks2(State(state): State<AppState>) -> axum::response::Result
 
     let page = Bookmarks2Template {
         timetables,
+        current_event: None,
         current_fosdem: state.current_fosdem.clone(),
     };
     let html = page.render().unwrap();
