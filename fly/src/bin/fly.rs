@@ -40,14 +40,6 @@ struct Args {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    match dotenvy::dotenv() {
-        Ok(path) => println!("Loaded env file at {:?}", path),
-        Err(e) => println!(
-            "Failed to load env file, will use external env; error: {:?}",
-            e
-        ),
-    }
-
     let args = Args::parse();
 
     if args.opentelemetry {
