@@ -501,7 +501,7 @@ Identifying a strategic opportunity, he co-created a new software engineering de
     <person id="1667">
       <name>Brian Duggan</name>
       <slug>brian_duggan</slug>
-      <biography></biography>
+      <biography>&lt;p&gt;Brian is a long time open source author and has made many contributions to the Perl and Raku ecosystems over the past few decades.  He has worked in politics, remote sensing, climate science, and most recently, logistics.  He is based in Philadelphia, USA and enjoys playing chess and racquet sports.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="1674">
@@ -949,7 +949,8 @@ X: https://x.com/ming_rrr&lt;/p&gt;</biography>
     <person id="2140">
       <name>Jonathan Dowland</name>
       <slug>jonathan_dowland</slug>
-      <biography></biography>
+      <biography>&lt;p&gt;Jonathan Dowland is a principal software engineer working on containers and OpenJDK at IBM (after 10 years at Red Hat). Jonathan has been an open-source hacker for twice as long, is a developer in the Debian project, and recently completed a PhD on the topic of functional programming and stream processing.&lt;/p&gt;
+&lt;p&gt;Feel free to read more about me on &lt;a href="https://jmtd.net/about/"&gt;my blog&lt;/a&gt;.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="2141">
@@ -2319,7 +2320,10 @@ accelerator and firewall.&lt;/p&gt;</biography>
     <person id="4151">
       <name>Patricio WHITTINGSLOW</name>
       <slug>patricio_whittingslow</slug>
-      <biography></biography>
+      <biography>&lt;p&gt;Patricio Whittingslow (a.k.a. Pato) is a mechanical engineer turned Go enthusiast. He has used Go to model the physics of rockets and printed circuit boards, and has applied it in embedded systems for a rocket engine test stand as well as in controlling biological processes involving cell cultures.&lt;/p&gt;
+&lt;p&gt;linkedin: https://www.linkedin.com/in/patriciowhittingslow/
+Mastodon: https://hachyderm.io/@whittileaks
+github: https://github.com/soypat&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="4156">
@@ -3785,7 +3789,13 @@ around X, with this talk's subject as an example.&lt;/p&gt;</biography>
     <person id="5712">
       <name>Klemen</name>
       <slug>klemen</slug>
-      <biography></biography>
+      <biography>&lt;p&gt;I'm an open source enthusiast currently involved in the following projects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Current maintainer of QuaZIP, a Qt zip library.&lt;/li&gt;
+&lt;li&gt;PvPGN, GHost++, GProxy++ and other tooling related to classic battle.net gaming.&lt;/li&gt;
+&lt;li&gt;Involved with the Reproducible Builds community, running a rebuilderd instance for Arch, Debian and adding FreeBSD support.&lt;/li&gt;
+&lt;li&gt;Random other things, check cen1 on GH.&lt;/li&gt;
+&lt;/ul&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="5714">
@@ -7140,7 +7150,7 @@ Maintainer of slab and page allocators.&lt;/p&gt;</biography>
     <person id="7005">
       <name>Luiz Miguel</name>
       <slug>luiz_miguel</slug>
-      <biography>&lt;p&gt;Luiz Miguel is a Software engineer, developing new systems from scratch to production. He largely contributes to open source projects, with more participation on Paddler, a local infrastructure AI environment builder.&lt;/p&gt;</biography>
+      <biography>&lt;p&gt;Luiz Miguel is a Software engineer, developing new systems from scratch to production. Currently working on Intentee as Product Engineer. He largely contributes to open source projects, with more participation on Paddler, a local infrastructure AI environment builder.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="7007">
@@ -9360,7 +9370,7 @@ And because good open source is a two-way street we also contribute back by prov
           <person id="5703">Adam Pioterek</person>
         </persons>
         <attachments>
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/YVHDF7-from-first-floss-poznan-pt-app/slides/247195/fosdem202_fr5wjbg.pdf">Talk slides</attachment>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/YVHDF7-from-first-floss-poznan-pt-app/slides/248248/fosdem202_fr5wjbg.pdf">Talk slides</attachment>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
@@ -16652,7 +16662,7 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
           <person id="5503">Dominique Quatravaux</person>
         </persons>
         <attachments>
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/FLYWX7-wordpress-at-scale/slides/247069/wp-bom_xn_fp9git2.yml">Software Bill of Materials (SBOM) of our main Docker image. Homemade (nonstandard) YAML format</attachment>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/FLYWX7-wordpress-at-scale/slides/248119/wp-bom_xn_fp9git2.yml">Software Bill of Materials (SBOM) of our main Docker image. Homemade (nonstandard) YAML format</attachment>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-containers:fosdem.org">Chat room(web)</link>
@@ -26718,10 +26728,8 @@ If possible we could set up a demo where the avatar on screen is tracked off of 
         <links>
           <link href="https://github.com/eurobattle/pvpgn">PvPGN</link>
           <link href="https://github.com/cen1/pd-manager">pd-manager GHost++ fork</link>
-          <link href="https://github.com/cen1/bnet-guard">Guard GHost++ fork</link>
           <link href="https://github.com/BNETDocs/bncsutil">BNCSUtil library</link>
           <link href="https://github.com/cen1/gproxy">GProxy++</link>
-          <link href="https://eurobattle.net">Website</link>
           <link href="https://chat.fosdem.org/#/room/#2026-gaming-and-vr-devroom:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-gaming-and-vr-devroom:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/F3VSDB/feedback/">Submit Feedback</link>
@@ -30620,7 +30628,7 @@ Every attendee will leave knowing how to reproduce syzbot bugs safely and effici
           <person id="1748">Roman "Hedin" Storozhenko</person>
         </persons>
         <attachments>
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/99ULYW-repro-linux-kernel-bug-5-min-virtme-ng/slides/247714/syzboot_xlw899k.pdf">Slides</attachment>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/99ULYW-repro-linux-kernel-bug-5-min-virtme-ng/slides/248778/syzboot_xlw899k.pdf">Slides</attachment>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-kernel:fosdem.org">Chat room(web)</link>
@@ -33515,13 +33523,15 @@ Crystal’s runtime allows the programmer to write I/O operations as if they wer
         <type>devroom</type>
         <language>en</language>
         <abstract>&lt;p&gt;Ever wondered what is so special about Lisp's REPLs? Curious how to debug your Guile project or write tests? Lost in all the tools and libraries and not sure which to use or how? We've got you covered.&lt;/p&gt;
-&lt;p&gt;Today we will go through the fundamental tools needed for efficient Guile development. This will work for your personal Guix config, Guix itself, a new fancy Guile library, or Your Next Big Thing. We will go step by step from a simple project stub to a fully functional application covered with tests, and along the way we will learn about:
-- REPLs and highly interactive development environments
-- Ares/Arei Guile IDE
-- How to deal with exceptions and stack traces
-- Testing in the Scheme ecosystem and a new testing library, suitbl
-- Whether tests and TDD work with the REPL
-- Whether you need a debugger and how to use it&lt;/p&gt;
+&lt;p&gt;Today we will go through the fundamental tools needed for efficient Guile development. This will work for your personal Guix config, Guix itself, a new fancy Guile library, or Your Next Big Thing. We will go step by step from a simple project stub to a fully functional application covered with tests, and along the way we will learn about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;REPLs and highly interactive development environments&lt;/li&gt;
+&lt;li&gt;Ares/Arei Guile IDE&lt;/li&gt;
+&lt;li&gt;How to deal with exceptions and stack traces&lt;/li&gt;
+&lt;li&gt;Testing in the Scheme ecosystem and a new testing library, suitbl&lt;/li&gt;
+&lt;li&gt;Whether tests and TDD work with the REPL&lt;/li&gt;
+&lt;li&gt;Whether you need a debugger and how to use it&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Links:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.gnu.org/software/guile/libraries/"&gt;Guile&lt;/a&gt; and &lt;a href="https://srfi.schemers.org/"&gt;SRFI&lt;/a&gt; libraries&lt;/li&gt;
@@ -36927,8 +36937,8 @@ This will be mostly a QEMU centric presentation so we will also describe some fu
           <person id="2088">Anirban (Ani) Sinha</person>
         </persons>
         <attachments>
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/247412/sev-snp-r_3tttoqq.mp4">SEV-SNP demo video</attachment>
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/247412/tdx-guest_rve73f1.mp4">TDX demo video</attachment>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/248465/sev-snp-r_3tttoqq.mp4">SEV-SNP demo video</attachment>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/248465/tdx-guest_rve73f1.mp4">TDX demo video</attachment>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-confidential-computing:fosdem.org">Chat room(web)</link>
