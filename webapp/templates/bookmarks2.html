@@ -16,9 +16,11 @@
                 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                     <thead>
                         <tr>
-                            <th style="width: 80px;">Time</th>
+                            <th>Time</th>
                             {% for room in timetable.rooms %}
-                            <th>{{ room }}</th>
+                            <th style="writing-mode: vertical-rl;">
+                                {{ room }}
+                            </th>
                             {% endfor %}
                         </tr>
                     </thead>
@@ -29,9 +31,7 @@
                             {% for cell in row.cells %}
                             {% match cell %}
                             {% when Some with (c) %}
-                            <td rowspan="{{ c.rowspan }}"
-                                data-event-id="{{ c.event.id }}"
-                                data-bookmark-status="false"
+                            <td rowspan="{{ c.rowspan }}" data-event-id="{{ c.event.id }}" data-bookmark-status="false"
                                 title="{{ c.event.title }}"
                                 style="vertical-align: middle; text-align: center; padding: 0.25rem;">
                                 <button class="button is-small is-info event-detail-button">
