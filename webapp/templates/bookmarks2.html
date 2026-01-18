@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         {% for row in timetable.rows %}
-                        <tr>
+                        <tr style="height: 2em;">
                             <td>{{ row.time_slot.format("%H:%M") }}</td>
                             {% for cell in row.cells %}
                             {% match cell %}
@@ -36,7 +36,7 @@
                                 data-bookmark-status="false"
                                 class="event-cell"
                                 title="{{ c.event.title }}"
-                                style="vertical-align: middle; text-align: left; padding: 0.5rem; overflow: hidden; cursor: pointer; writing-mode: vertical-rl; white-space: nowrap; text-overflow: ellipsis; background-color: #3e8ed0; color: white;">
+                                style="vertical-align: top; text-align: left; padding: 0.5rem; overflow: hidden; cursor: pointer; writing-mode: vertical-rl; white-space: nowrap; text-overflow: ellipsis; background-color: #3e8ed0; color: white; max-height: {{ c.rowspan * 2 }}em; height: {{ c.rowspan * 2 }}em;">
                                 {{ c.event.title }}
                                 <div class="event-detail-content" style="display: none;">
                                     <div class="card">
