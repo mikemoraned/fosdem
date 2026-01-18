@@ -73,7 +73,7 @@ fn add_optional_resource_from_env(
     env_variable_name: &'static str,
     semantic_name: &'static str,
 ) -> Resource {
-    if let Ok(value) = dotenvy::var(env_variable_name) {
+    if let Ok(value) = std::env::var(env_variable_name) {
         resource.merge(&Resource::new([KeyValue::new(semantic_name, value)]))
     } else {
         resource

@@ -4,6 +4,8 @@ current_year := "2026"
 pentabarf_dir := "./content/schedule"
 assets_dir := "./assets"
 
+export OPENAI_API_KEY := `op read "op://Dev/fosdem-local-openai-key/password"`
+
 fresh_test:
     cargo clean
     cargo build --release

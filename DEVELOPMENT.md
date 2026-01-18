@@ -14,7 +14,9 @@ These are different service-accounts:
 
 These are remembered in 1Password under `OpenAI Fosdem {{service-account}} Key` e.g. `OpenAI Fosdem fosdem-local Key`
 
-For local dev key is stored in a `.env` file as `OPENAI_API_KEY` for access by the programs. For usage in `fly.io` the same password needs to be stored in secrets.
+For local dev, it is assumed that these keys live in 1Password, and they are fetched by the `Justfile` for use by local programs.
+
+For usage in `fly.io` the same password needs to be stored in secrets.
 
 ## Auth
 
