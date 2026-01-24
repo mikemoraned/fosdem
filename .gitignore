@@ -11,3 +11,4 @@ target/
 
 # environment variables
 .env*
+.aider*

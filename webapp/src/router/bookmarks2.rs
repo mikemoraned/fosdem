@@ -26,7 +26,7 @@ pub struct TimetableCell {
 
 #[derive(Debug, Clone)]
 pub struct TimetableRow {
-    pub time_slot: NaiveTime,
+    pub room: String,
     pub cells: Vec<Option<TimetableCell>>,
 }
 
@@ -34,7 +34,7 @@ pub struct TimetableRow {
 pub struct DayTimetable {
     pub date: NaiveDate,
     pub day_name: String,
-    pub rooms: Vec<String>,
+    pub time_slots: Vec<NaiveTime>,
     pub rows: Vec<TimetableRow>,
 }
 
@@ -135,15 +135,18 @@ fn build_day_timetable(date: NaiveDate, events: &[Event]) -> DayTimetable {
         }
     }
 
-    // Build rows
+    // Build rows (one per room)
     let mut rows = Vec::new();
-    for time_slot in time_slots {
+    for room in &rooms {
         let mut cells = Vec::new();
-        for room in &rooms {
-            let cell = cell_map.get(&(time_slot, room.clone())).cloned();
+        for time_slot in &time_slots {
+            let cell = cell_map.get(&(*time_slot, room.clone())).cloned();
             cells.push(cell);
         }
-        rows.push(TimetableRow { time_slot, cells });
+        rows.push(TimetableRow {
+            room: room.clone(),
+            cells,
+        });
     }
 
     let day_name = match date.weekday() {
@@ -155,7 +158,7 @@ fn build_day_timetable(date: NaiveDate, events: &[Event]) -> DayTimetable {
     DayTimetable {
         date,
         day_name,
-        rooms,
+        time_slots,
         rows,
     }
 }

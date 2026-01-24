@@ -13,13 +13,13 @@
             <h2 class="subtitle">{{ timetable.day_name }} - {{ timetable.date }}</h2>
 
             <div class="table-container">
-                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <table class="table is-bordered is-striped is-narrow is-hoverable">
                     <thead>
                         <tr>
-                            <th>Time</th>
-                            {% for room in timetable.rooms %}
-                            <th style="writing-mode: vertical-rl;">
-                                {{ room }}
+                            <th style="width: 10em;">Room</th>
+                            {% for time_slot in timetable.time_slots %}
+                            <th style="writing-mode: vertical-rl; width: 2em;">
+                                {{ time_slot.format("%H:%M") }}
                             </th>
                             {% endfor %}
                         </tr>
@@ -27,16 +27,14 @@
                     <tbody>
                         {% for row in timetable.rows %}
                         <tr style="height: 2em;">
-                            <td>{{ row.time_slot.format("%H:%M") }}</td>
+                            <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ row.room }}
+                            </td>
                             {% for cell in row.cells %}
                             {% match cell %}
                             {% when Some with (c) %}
-                            <td rowspan="{{ c.rowspan }}"
-                                data-event-id="{{ c.event.id }}"
-                                data-bookmark-status="false"
-                                class="event-cell"
-                                title="{{ c.event.title }}"
-                                style="vertical-align: top; text-align: left; padding: 0.5rem; overflow: hidden; cursor: pointer; writing-mode: vertical-rl; white-space: nowrap; text-overflow: ellipsis; background-color: #3e8ed0; color: white; max-height: {{ c.rowspan * 2 }}em; height: {{ c.rowspan * 2 }}em;">
+                            <td colspan="{{ c.rowspan }}" data-event-id="{{ c.event.id }}" data-bookmark-status="false"
+                                class="event-cell" title="{{ c.event.title }}"
+                                style="vertical-align: top; text-align: left; padding: 0.5rem; overflow: hidden; cursor: pointer; white-space: nowrap; text-overflow: ellipsis; background-color: #3e8ed0; color: white;">
                                 {{ c.event.title }}
                                 <div class="event-detail-content" style="display: none;">
                                     <div class="card">
