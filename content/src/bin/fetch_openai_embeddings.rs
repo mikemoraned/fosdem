@@ -15,7 +15,7 @@ use openai_dive::v1::resources::embedding::{
 
 use reqwest::ClientBuilder;
 use shared::cli::progress_bar;
-use shared::env::load_dotenv;
+use shared::env::load_secret;
 use shared::model::{self, Event, OpenAIEmbedding};
 use subtp::vtt::VttBlock;
 use tracing::{debug, info, warn};
@@ -57,16 +57,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     info!("args: {:?}", args);
 
-    load_dotenv()?;
-
-    let api_key_name = "OPENAI_API_KEY";
-    let api_key =
-        dotenvy::var(api_key_name).unwrap_or_else(|_| panic!("{} is not set", api_key_name));
+    let openai_api_key = load_secret("OPENAI_API_KEY")?;
 
     let reqwest_client = ClientBuilder::new().timeout(args.timeout).build()?;
 
     let openai_client = Client {
-        api_key,
+        api_key: openai_api_key,
         http_client: reqwest_client,
         ..Default::default()
     };

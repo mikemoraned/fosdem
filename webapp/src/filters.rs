@@ -78,7 +78,7 @@ pub fn group_items_by_year(
     for item in items {
         grouped
             .entry(item.event.year)
-            .or_insert_with(Vec::new)
+            .or_default()
             .push(item.clone());
     }
 
