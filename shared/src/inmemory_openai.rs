@@ -320,7 +320,7 @@ mod parsing {
     }
 
     fn parse_all_events(events_path: &Path) -> Result<Vec<Event>, Box<dyn std::error::Error>> {
-        debug!("Loading events data from {:?}", events_path);
+        info!("Loading events data from {:?}", events_path);
 
         let reader = reader_for_path(events_path)?;
         let mut events: Vec<Event> = serde_json::from_reader(reader)?;
@@ -332,7 +332,7 @@ mod parsing {
     fn parse_all_embeddings(
         embeddings_path: &Path,
     ) -> Result<Vec<OpenAIEmbedding>, Box<dyn std::error::Error>> {
-        debug!("Loading embeddings data from {:?}", embeddings_path);
+        info!("Loading embeddings data from {:?}", embeddings_path);
 
         let reader = reader_for_path(embeddings_path)?;
         let embeddings: Vec<OpenAIEmbedding> = serde_json::from_reader(reader)?;
