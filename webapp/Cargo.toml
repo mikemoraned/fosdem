@@ -24,3 +24,6 @@ shared = { path = "../shared" }
 content = { path = "../content" }
 sitemap-rs = "0.4.0"
 axum-extra = "0.12.3"
+
+[dev-dependencies]
+test_shared = { path = "../test_shared" }
