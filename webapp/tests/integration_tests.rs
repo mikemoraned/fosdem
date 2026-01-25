@@ -1,6 +1,12 @@
 use reqwest::blocking::{Client, Response};
 use reqwest::Result;
+use shared::model::EventId;
 use std::env;
+use test_shared::{
+    EVENT_ID_2025, EVENT_ID_2025_BACKWARDS_COMPATIBLE_PATH, EVENT_ID_2025_CANONICAL_PATH,
+    EVENT_ID_2025_CONTENT_SAMPLE, EVENT_ID_2026, EVENT_ID_2026_CANONICAL_PATH,
+    EVENT_ID_2026_CONTENT_SAMPLE, SEARCH_TERM,
+};
 
 fn get_base_url() -> String {
     env::var("TEST_BASE_URL").unwrap_or_else(|_| "http://localhost:8000".to_string())
@@ -14,7 +20,8 @@ fn client() -> Client {
 }
 
 fn exists_at_path(path: &str) -> Result<Response> {
-    let response = client().get(format!("{}{}", get_base_url(), path)).send()?;
+    let url = format!("{}{}", get_base_url(), path);
+    let response = client().get(url).send()?;
 
     assert_eq!(response.status(), 200);
 
@@ -44,6 +51,14 @@ fn test_homepage_contains_expected_content() {
     ));
 }
 
+fn event_id_as_anchor_text(event_id: EventId) -> String {
+    return format!(
+        "<a name=\"{}-{}\"></a>",
+        event_id.year(),
+        event_id.event_in_year()
+    );
+}
+
 fn assert_any_year_search(path_and_query: &str) {
     let response = client()
         .get(format!("{}{}", get_base_url(), path_and_query))
@@ -53,26 +68,27 @@ fn assert_any_year_search(path_and_query: &str) {
     assert_eq!(response.status(), 200);
 
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains("<a name=\"2026-8816\"></a>"));
-    assert!(body.contains("<a name=\"2025-5649\"></a>"));
+    assert!(body.contains(&event_id_as_anchor_text(EVENT_ID_2025)));
+    assert!(body.contains(&event_id_as_anchor_text(EVENT_ID_2026)));
 }
 
 #[test]
 fn test_search_for_any_year_no_year_param_specified() {
-    assert_any_year_search("/search?q=gnome&limit=20");
+    assert_any_year_search(&format!("/search?q={SEARCH_TERM}&limit=20"));
 }
 
 #[test]
 fn test_search_for_any_year_with_year_param_as_empty_string() {
-    assert_any_year_search("/search?q=gnome&limit=20&year=");
+    assert_any_year_search(&format!("/search?q={SEARCH_TERM}&limit=20&year="));
 }
 
 #[test]
 fn test_search_for_2025_only() {
     let response = client()
         .get(format!(
-            "{}/search?q=gnome&limit=20&year=2025",
-            get_base_url()
+            "{}/search?q={}&limit=20&year=2025",
+            get_base_url(),
+            SEARCH_TERM
         ))
         .send()
         .expect("Failed to send request");
@@ -80,35 +96,35 @@ fn test_search_for_2025_only() {
     assert_eq!(response.status(), 200);
 
     let body = response.text().expect("Failed to read body");
-    assert!(!body.contains("<a name=\"2026-8816\"></a>"));
-    assert!(body.contains("<a name=\"2025-5649\"></a>"));
+    assert!(body.contains(&event_id_as_anchor_text(EVENT_ID_2025)));
+    assert!(!body.contains(&event_id_as_anchor_text(EVENT_ID_2026)));
 }
 
 fn assert_2025_content(response: Response) {
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains("Using composefs and fs-verity"));
+    assert!(body.contains(EVENT_ID_2025_CONTENT_SAMPLE));
 }
 
 #[test]
 fn test_2025_content_in_backwards_compatible_place() {
-    let response = exists_at_path("/event/5191/").expect("exists");
+    let response = exists_at_path(EVENT_ID_2025_BACKWARDS_COMPATIBLE_PATH).expect("exists");
     assert_2025_content(response);
 }
 
 #[test]
 fn test_2025_content_in_canonical_place() {
-    let response = exists_at_path("/2025/event/5191/").expect("exists");
+    let response = exists_at_path(EVENT_ID_2025_CANONICAL_PATH).expect("exists");
     assert_2025_content(response);
 }
 
 fn assert_2026_content(response: Response) {
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains("Open source represents 70% to 90% of modern software codebases"));
+    assert!(body.contains(EVENT_ID_2026_CONTENT_SAMPLE));
 }
 
 #[test]
 fn test_2026_content_in_canonical_place() {
-    let response = exists_at_path("/2026/event/7910/").expect("exists");
+    let response = exists_at_path(EVENT_ID_2026_CANONICAL_PATH).expect("exists");
     assert_2026_content(response);
 }
 

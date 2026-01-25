@@ -32,11 +32,11 @@ impl EventId {
         EventId { year, id }
     }
 
-    pub fn year(&self) -> u32 {
+    pub const fn year(&self) -> u32 {
         self.year
     }
 
-    pub fn event_in_year(&self) -> u32 {
+    pub const fn event_in_year(&self) -> u32 {
         self.id
     }
 }
