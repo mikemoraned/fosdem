@@ -9,7 +9,7 @@ use chrono::{NaiveDate, NaiveTime, Timelike};
 use clap::Parser;
 use content::pentabarf::{Attachment, Schedule};
 use shared::model::{self, Event};
-use tracing::{info, warn};
+use tracing::{debug, info, warn};
 use url::Url;
 use xmlserde::xml_deserialize_from_str;
 
@@ -38,8 +38,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     for year in args.years.iter() {
         let pentabarf_path = PathBuf::from(&args.pentabarf_dir).join(format!("{}.xml", year));
         info!("Importing Pentabarf file from {:?}", pentabarf_path);
-        let xml = std::fs::read_to_string(pentabarf_path)?;
+        let mut events_added_count = 0;
+        let xml = std::fs::read_to_string(pentabarf_path.clone())?;
         let schedule: Schedule = xml_deserialize_from_str(&xml)?;
+        debug!("{} days of content to read", schedule.days.len());
         for day in schedule.days {
             for room in day.rooms {
                 for event in room.events {
@@ -62,8 +64,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     };
                     apply_fixups(&mut model_event, *year)?;
                     model_events.push(model_event);
+                    events_added_count += 1;
                 }
             }
+        }
+        info!("Imported {events_added_count} events from {pentabarf_path:?}");
+        if events_added_count == 0 {
+            warn!("did not import any events from {pentabarf_path:?}");
         }
     }
 

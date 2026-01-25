@@ -2566,6 +2566,7 @@ dependencies = [
  "openai_dive",
  "serde",
  "serde_json",
+ "tokio",
  "tracing",
  "tracing-subscriber",
  "url",

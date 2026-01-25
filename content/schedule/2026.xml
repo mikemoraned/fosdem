@@ -86,12 +86,19 @@
     <track online_qa="false" slug="bof">BOF/Unconference</track>
     <track online_qa="false" slug="dev-random">/dev/random</track>
     <track online_qa="false" slug="workshop">Workshops</track>
+    <track online_qa="false" slug="main_k">Main Track (K-building)</track>
   </tracks>
   <persons>
     <person id="2">
       <name>FOSDEM Staff</name>
       <slug>fosdem_staff</slug>
       <biography></biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="1324">
+      <name>Richard "RichiH" Hartmann</name>
+      <slug>richard_richih_hartmann</slug>
+      <biography>&lt;p&gt;Richard "RichiH" Hartmann is the Director of Community at Grafana Labs, a member of the Office of the CTO of Grafana Labs, Prometheus team member, OpenMetrics founder, OpenTelemetry member, CNCF Technical Oversight Committee member, CNCF Governing Board member, and more. He also leads, organizes, or helps run various conferences from hundreds to 18,000 attendess, including KubeCon, PromCon, FOSDEM, DENOG, DebConf, and Chaos Communication Congress. In the past, he made mainframe databases work, ISP backbones run, kept the largest IRC network on Earth running, and designed and built a datacenter from scratch. Go through his talks, podcasts, interviews, and articles at &lt;a href="https://github.com/RichiH/talks"&gt;https://github.com/RichiH/talks&lt;/a&gt; or follow him on Mastodon at &lt;a href="https://chaos.social/@RichiH"&gt;https://chaos.social/@RichiH&lt;/a&gt; for musings on the intersection of technology and society.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="1327">
@@ -351,7 +358,7 @@ For almost 10 years now she has been running the Go Devroom at FOSDEM with a ded
     <person id="1508">
       <name>Kate Stewart</name>
       <slug>kate_stewart</slug>
-      <biography>&lt;p&gt;Kate has been working with Open Source communities for over 25 years.  She was one of the founders of the SPDX project, and is currently one of the technical committee co-leads.   Since she joined the Linux Foundation in 2015, she has been instrumental in launching the Zephyr, RT Linux and ELISA projects.&lt;/p&gt;</biography>
+      <biography>&lt;p&gt;Kate has been working with Open Source communities for over 25 years.  She was one of the founders of the SPDX project, and is a technical committee co-lead.   Since she joined the Linux Foundation in 2015, she has been instrumental in launching the Zephyr, RT Linux and ELISA projects.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="1511">
@@ -375,6 +382,13 @@ For almost 10 years now she has been running the Go Devroom at FOSDEM with a ded
       <name>Wayne Stambaugh</name>
       <slug>wayne_stambaugh</slug>
       <biography>&lt;p&gt;I am the KiCad project lead developer.  I've been with the project since 2007 and the project lead since 2011.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="1534">
+      <name>Sebastian Schubert</name>
+      <slug>sebastian_schubert</slug>
+      <biography>&lt;p&gt;Basti is a Solutions Engineer at Grafana Labs and passionate about Open Source since he startet using Linux in 1994.&lt;/p&gt;
+&lt;p&gt;He helps customers on their journey to observability for their on-prem systems as well in the cloud. Before that, he ran the Unix/Linux based services at an ISP in Munich, and took care of the Datacenter Infrastructure as well. In the past he worked on Mainframes, built clouds from scratch and engaged with the Monitoring Community. He also runs the infra for munichs volunteer firebrigade.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="1538">
@@ -4050,15 +4064,9 @@ around X, with this talk's subject as an example.&lt;/p&gt;</biography>
     <person id="5712">
       <name>Klemen</name>
       <slug>klemen</slug>
-<<<<<<< HEAD
-      <biography>&lt;p&gt;I'm an open source enthusiast currently involved in the following projects:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Current maintainer of QuaZIP, a Qt zip library.&lt;/li&gt;
-=======
       <biography>&lt;p&gt;I'm an open source developer currently involved in the following projects:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintainer of QuaZIP, a Qt zip library.&lt;/li&gt;
->>>>>>> 9e65886 (update data)
 &lt;li&gt;PvPGN, GHost++, GProxy++ and other tooling related to classic battle.net gaming.&lt;/li&gt;
 &lt;li&gt;Involved with the Reproducible Builds community, running a rebuilderd instance for Arch, Debian and adding FreeBSD support.&lt;/li&gt;
 &lt;li&gt;Random other things, check cen1 on GH.&lt;/li&gt;
@@ -7146,6 +7154,13 @@ MobilityData helps the public and private sector in making sustainable mobility 
       <biography>&lt;p&gt;Josse Van Delm is a PhD researcher at KU Leuven doing research on Compilers for AI accelerators since 2021 with Prof. Marian Verhelst.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
+    <person id="6851">
+      <name>Harry Halpin</name>
+      <slug>harry_halpin</slug>
+      <biography>&lt;p&gt;Harry Halpin is the cofounder of Nym Technologies. He also has been a longtime anarchist and has over a thousand pages in his last FBI disclosure, over ten years ago. He received his PhD in informatics from the University of Edinburgh, standardized the WebCrypto API, and quit W3C/MIT over their standardization of DRM in web browsers.
+x/twitter: @harryhalpin, @nymproject&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
     <person id="6854">
       <name>Faith Ekstrand</name>
       <slug>faith_ekstrand</slug>
@@ -7487,9 +7502,9 @@ Vice-president of Pangea.org NGO, part of the eReuse.org initiative, senior prof
     <person id="6987">
       <name>Yann Sionneau</name>
       <slug>yann_sionneau</slug>
-      <biography>&lt;p&gt;37 year old French embedded and low level engineer.
-I'm currently working in the kernel and hypervisor team at Vates, a French company making an open source virtualization stack based on Xen called XCP-ng.
-I'm also the maintainer of Pytition (open source self-hosted petition software).&lt;/p&gt;</biography>
+      <biography>&lt;p&gt;37 year old French embedded and low level engineer.&lt;/p&gt;
+&lt;p&gt;I'm currently working in the kernel and hypervisor team at Vates, a French company making an open source virtualization stack based on Xen called XCP-ng.&lt;/p&gt;
+&lt;p&gt;I'm also the maintainer of Pytition (open source self-hosted petition software).&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6990">
@@ -7709,6 +7724,18 @@ Technological University of Dublin.&lt;/p&gt;
       <biography>&lt;p&gt;Larry leads DataKind's technology team, spearheading technology initiatives, implementing best-in-class data security systems, and building sustainable and responsible products across the organization's domains, including Economic Opportunity, Climate and Environment, and Humanitarian Action.&lt;/p&gt;
 &lt;p&gt;Larry has more than 20 years of experience at the intersection of technology strategy, organizational development, policy leadership, product management, and communications.&lt;/p&gt;
 &lt;p&gt;Larry's a technical strategist with a history of developing globally-reaching, data-driven solutions that span environmental and social justice campaigns, international development and fair trade, and internal operations to enable top performance.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="7053">
+      <name>Pedro Vílchez-Blanco</name>
+      <slug>pedro_vilchez-blanco</slug>
+      <biography>&lt;p&gt;Activist for technological accessibility. Focused on contributing to free software projects like ereuse.org, and to community networks like guifi.net &amp;amp; exo.cat. Promoter of local digital infrastructures and sovereign services.&lt;/p&gt;</biography>
+      <extended_biography></extended_biography>
+    </person>
+    <person id="7054">
+      <name>Alexis Roussel</name>
+      <slug>alexis_roussel</slug>
+      <biography></biography>
       <extended_biography></extended_biography>
     </person>
   </persons>
@@ -9911,11 +9938,7 @@ And because good open source is a two-way street we also contribute back by prov
           <person id="5703">Adam Pioterek</person>
         </persons>
         <attachments>
-<<<<<<< HEAD
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/YVHDF7-from-first-floss-poznan-pt-app/slides/248248/fosdem202_fr5wjbg.pdf">Talk slides</attachment>
-=======
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/YVHDF7-from-first-floss-poznan-pt-app/slides/249331/fosdem202_fr5wjbg.pdf">Talk slides</attachment>
->>>>>>> 9e65886 (update data)
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
@@ -17720,11 +17743,7 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
           <person id="5503">Dominique Quatravaux</person>
         </persons>
         <attachments>
-<<<<<<< HEAD
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/FLYWX7-wordpress-at-scale/slides/248119/wp-bom_xn_fp9git2.yml">Software Bill of Materials (SBOM) of our main Docker image. Homemade (nonstandard) YAML format</attachment>
-=======
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/FLYWX7-wordpress-at-scale/slides/249196/wp-bom_xn_fp9git2.yml">Software Bill of Materials (SBOM) of our main Docker image. Homemade (nonstandard) YAML format</attachment>
->>>>>>> 9e65886 (update data)
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-containers:fosdem.org">Chat room(web)</link>
@@ -30336,66 +30355,63 @@ https://www.isc.org/bind/&lt;/p&gt;</abstract>
       </event>
     </room>
     <room name="H.2215 (Ferrer)" slug="h2215">
-      <event guid="91e3f6d7-a1a3-5f10-b33d-c931c3545dd9" id="9790">
+      <event guid="12193213-649c-5b5d-8ec4-9c35dad87dd9" id="9816">
         <date>2026-02-01T09:00:00+01:00</date>
         <start>09:00</start>
         <duration>00:15</duration>
         <room>H.2215 (Ferrer)</room>
-        <slug>J8UCRH-why_i_volunteer_at_fosdem_and_you_should_too</slug>
-        <url>https://fosdem.org/2026/schedule/event/J8UCRH-why_i_volunteer_at_fosdem_and_you_should_too/</url>
-        <title>Why I Volunteer at FOSDEM and You Should Too!</title>
+        <slug>QU33MU-why-open-source-looks-different-in-china</slug>
+        <url>https://fosdem.org/2026/schedule/event/QU33MU-why-open-source-looks-different-in-china/</url>
+        <title>Why Open Source Looks Different in China: When Vendor Strategies, Policy Signals, and Market Pressure Converge</title>
         <subtitle></subtitle>
         <track slug="dev-random">/dev/random</track>
         <type>lightningtalk</type>
         <language>en</language>
-        <abstract>&lt;p&gt;&lt;strong&gt;FOSDEM is legendary, but it doesn't run on magic, it runs on people.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Apart from the core organizers, an enthusiastic team of volunteers helps make FOSDEM the fun and safe community event we all love every year. As a long-time attendee, I made the jump to volunteering during the event and discovered a new side of the conference.&lt;/p&gt;
-&lt;p&gt;In this talk, I'll share my personal journey and what volunteering involves: from simple tasks like setting up directional signs or assisting at the InfoDesk, to setting up and tearing down before and after the event, or helping the video streaming team. I'll share stories of the folks I've met, the behind-the-scenes glimpse I got into this impressive organization, and how truly impressed I am by its operation.&lt;/p&gt;
-&lt;p&gt;However, the real reason to join is a chance to give back, meet new people, and become an active community builder. FOSDEM needs you to make the event a fun and safe place for all visitors. &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;What's in it for you?&lt;/strong&gt; Join this session to learn how easy it is to sign up, the tasks you can pick (even just for a few hours!), and how you can join the effort to make FOSDEM 2026 the best one yet. &lt;/p&gt;
-&lt;p&gt;You can learn how to sign up at https://volunteers.fosdem.org/.&lt;/p&gt;</abstract>
+        <abstract>&lt;p&gt;Open source is often discussed through a familiar narrative: community-led collaboration, neutral governance, and voluntary participation driven by shared technical interests.&lt;/p&gt;
+&lt;p&gt;However, when looking at China in 2025, open source often looks noticeably different — not because different tools are used, but because the constraints shaping them are fundamentally different.&lt;/p&gt;
+&lt;p&gt;This talk explores how open source in China has evolved under the convergence of three forces: vendor-led engineering realities, explicit policy signals, and intense market pressure — especially under economic tightening and global uncertainty. In this environment, open source is frequently not a starting ideal, but a practical mechanism: to establish de facto standards, to gain global trust, and increasingly, to remain viable through international adoption.&lt;/p&gt;
+&lt;p&gt;The talk examines why many projects are company-led rather than community-born, why governance often lags behind engineering, and why “going global” is less about expansion than about survival.&lt;/p&gt;
+&lt;p&gt;The perspective offered is not representative of any state or corporation, but comes from someone who has worked between Taiwanese, Chinese, and global open source communities for over a decade. The goal is not to defend or promote a particular model, but to provide developers familiar with Western open source traditions with a clearer mental framework for understanding how open source behaves under non-ideal conditions — and what that means for future collaboration and governance in an increasingly interconnected open source world.&lt;/p&gt;</abstract>
         <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/J8UCRH/feedback/</feedback_url>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/QU33MU/feedback/</feedback_url>
         <persons>
-          <person id="2729">Imma Valls</person>
+          <person id="5423">Richard Lin</person>
         </persons>
         <attachments>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/J8UCRH/feedback/">Submit Feedback</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QU33MU/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="736d0e59-976e-52f4-be17-0857ebcfcabf" id="9947">
+      <event guid="d75192c1-bf27-5583-bd00-f420cda0616d" id="9940">
         <date>2026-02-01T09:20:00+01:00</date>
         <start>09:20</start>
         <duration>00:15</duration>
         <room>H.2215 (Ferrer)</room>
-        <slug>CMCWY9-os-test_measuring_posix_compliance_on_every_single_os</slug>
-        <url>https://fosdem.org/2026/schedule/event/CMCWY9-os-test_measuring_posix_compliance_on_every_single_os/</url>
-        <title>os-test: Measuring POSIX compliance on every single OS</title>
+        <slug>ZUVAZD-four_year_bus</slug>
+        <url>https://fosdem.org/2026/schedule/event/ZUVAZD-four_year_bus/</url>
+        <title>Four Year Bus</title>
         <subtitle></subtitle>
         <track slug="dev-random">/dev/random</track>
         <type>lightningtalk</type>
         <language>en</language>
-        <abstract>&lt;p&gt;os-test: Measuring POSIX compliance on every single OS&lt;/p&gt;
-&lt;p&gt;What happens if you run tests on every POSIX system? You find a &lt;em&gt;lot&lt;/em&gt; of bugs in every single OS. I parsed the new POSIX.1-2024 standard into API definitions, generated tests, and measured exactly how much of the standard is implemented. I invoked every libc function to see if they work, and began writing detailed test suites. As it turns out, if there's a sentence in POSIX, someone probably implemented it incorrectly. I found missing interfaces, incompatible declarations, namespace pollution, a lot of bugs, interesting benign differences, and many more issues. I published all tests and results as os-test. The volume of test failures makes it virtually impossible to report all individual issues to each upstream. However as all of the data is publicly available online, vendors are now beginning to incorporate os-test feedback into their development and testing process, which ultimately leads to improved POSIX compliance and software interoperability.&lt;/p&gt;
-&lt;p&gt;In this talk we will dive into the challenges of testing 16 different operating systems, survey the main findings of os-test, and finally determine which operating system takes the lead when it comes to POSIX conformance.&lt;/p&gt;
-&lt;p&gt;https://sortix.org/os-test/
-https://sortix.org/blog/os-testing-posix-headers/&lt;/p&gt;
-&lt;p&gt;os-test is currently funded by Next Generation Internet Zero Commons.&lt;/p&gt;</abstract>
+        <abstract>&lt;p&gt;&lt;a href="https://cspp.ie"&gt;CS++&lt;/a&gt; is an entirely-led student computer science society in TU Dublin.
+Our goal is to give our members experiences and skills they won't get in class, this includes going to FOSDEM!&lt;/p&gt;
+&lt;p&gt;Ontop of that, CS++ maintains a cluster of servers that runs services for themselves and several other societies in the university. Which we have to maintain even though students are in university for only four years.&lt;/p&gt;
+&lt;p&gt;This &lt;em&gt;Four Year Bus&lt;/em&gt; talk covers how we went from an empty room to our current tech stack, as well as how we manage training, handover and long-term planning when everyone involved has a timer until they are hit by a bus.&lt;/p&gt;</abstract>
         <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/CMCWY9/feedback/</feedback_url>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ZUVAZD/feedback/</feedback_url>
         <persons>
-          <person id="6316">Jonas 'Sortie' Termansen</person>
+          <person id="6993">rjmurg</person>
         </persons>
         <attachments>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CMCWY9/feedback/">Submit Feedback</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZUVAZD/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="4165c005-2d14-5ee0-9402-e61411ccc0f1" id="9855">
@@ -30447,9 +30463,9 @@ The board is open (all Kicad files), the PC software is open (sigrok/PulseView),
 the FPGA gateware is open (in Migen, based on LiteX SoC toolkit, available on gitlab),
 the mcu fw is open (also on gitlab) and you only need open source tools to hack it
 (gcc, NextPNR and Yosys: no closed source fpga toolchain needed).
-The idea is for someone to easily be able to understand, modify, improve and repair it. 
-Everything is available at https://gitlab.com/yannsionneau/SucreLA/
-Licenses: LGPL v2.1 and CERN-OHL-W v2&lt;/p&gt;</abstract>
+The idea is for someone to easily be able to understand, modify, improve and repair it. &lt;/p&gt;
+&lt;p&gt;Everything is available at https://gitlab.com/yannsionneau/SucreLA/&lt;/p&gt;
+&lt;p&gt;Licenses: LGPL v2.1 and CERN-OHL-W v2&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/WSKHHU/feedback/</feedback_url>
         <persons>
@@ -30463,33 +30479,35 @@ Licenses: LGPL v2.1 and CERN-OHL-W v2&lt;/p&gt;</abstract>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WSKHHU/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="d75192c1-bf27-5583-bd00-f420cda0616d" id="9940">
+      <event guid="9a3dbf5a-7622-54b3-899d-3dc20d11364e" id="9932">
         <date>2026-02-01T10:20:00+01:00</date>
         <start>10:20</start>
         <duration>00:15</duration>
         <room>H.2215 (Ferrer)</room>
-        <slug>ZUVAZD-four_year_bus</slug>
-        <url>https://fosdem.org/2026/schedule/event/ZUVAZD-four_year_bus/</url>
-        <title>Four Year Bus</title>
+        <slug>MUZ8LE-graffito</slug>
+        <url>https://fosdem.org/2026/schedule/event/MUZ8LE-graffito/</url>
+        <title>graffito: pretty cellular automata devoid of meaning</title>
         <subtitle></subtitle>
         <track slug="dev-random">/dev/random</track>
         <type>lightningtalk</type>
         <language>en</language>
-        <abstract>&lt;p&gt;&lt;a href="https://cspp.ie"&gt;CS++&lt;/a&gt; is an entirely-led student computer science society in TU Dublin.
-Our goal is to give our members experiences and skills they won't get in class, this includes going to FOSDEM!&lt;/p&gt;
-&lt;p&gt;Ontop of that, CS++ maintains a cluster of servers that runs services for themselves and several other societies in the university. Which we have to maintain even though students are in university for only four years.&lt;/p&gt;
-&lt;p&gt;This &lt;em&gt;Four Year Bus&lt;/em&gt; talk covers how we went from an empty room to our current tech stack, as well as how we manage training, handover and long-term planning when everyone involved has a timer until they are hit by a bus.&lt;/p&gt;</abstract>
+        <abstract>&lt;p&gt;The humble cellular automaton is a well-studied concept in computer science and has been around for many decades.&lt;/p&gt;
+&lt;p&gt;A very famous cellular automaton is Conway's Game of Life, which models a simple two-dimensional system of cells living and dying. This cellular automaton, and many others like it, are expressly designed to simulate some aspect of the real world, however simplified the model might be.&lt;/p&gt;
+&lt;p&gt;I instead like to design cellular automata that have pretty animations and do not attempt to model reality in any way.&lt;/p&gt;
+&lt;p&gt;In this talk I'll present my small cellular automaton framework "graffito" that I have been working on for the past three years in my spare time. I'll give a few examples of how I like to go about creating new automata and try to inspire you to create your own. I think it's really fun, and sometimes you might surprise yourself with something very cool-looking!&lt;/p&gt;
+&lt;p&gt;graffito is written in the Futhark programming language, but the takeaways from this talk will be applicable to any language you might want to use for writing cellular automata.&lt;/p&gt;</abstract>
         <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/ZUVAZD/feedback/</feedback_url>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/MUZ8LE/feedback/</feedback_url>
         <persons>
-          <person id="6993">rjmurg</person>
+          <person id="4020">Niels G. W. Serup</person>
         </persons>
         <attachments>
         </attachments>
         <links>
+          <link href="https://github.com/nqpz/graffito">GitHub repository</link>
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZUVAZD/feedback/">Submit Feedback</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/MUZ8LE/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="e0fa942a-54ab-5213-bf87-c98800c3e10b" id="9902">
@@ -30519,9 +30537,40 @@ Our goal is to give our members experiences and skills they won't get in class, 
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NGYLQZ/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="583663f3-9c13-56b6-8357-6cdd3bd73b1d" id="9868">
+      <event guid="91e3f6d7-a1a3-5f10-b33d-c931c3545dd9" id="9790">
         <date>2026-02-01T11:00:00+01:00</date>
         <start>11:00</start>
+        <duration>00:15</duration>
+        <room>H.2215 (Ferrer)</room>
+        <slug>J8UCRH-why_i_volunteer_at_fosdem_and_you_should_too</slug>
+        <url>https://fosdem.org/2026/schedule/event/J8UCRH-why_i_volunteer_at_fosdem_and_you_should_too/</url>
+        <title>Why I Volunteer at FOSDEM and You Should Too!</title>
+        <subtitle></subtitle>
+        <track slug="dev-random">/dev/random</track>
+        <type>lightningtalk</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;&lt;strong&gt;FOSDEM is legendary, but it doesn't run on magic, it runs on people.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Apart from the core organizers, an enthusiastic team of volunteers helps make FOSDEM the fun and safe community event we all love every year. As a long-time attendee, I made the jump to volunteering during the event and discovered a new side of the conference.&lt;/p&gt;
+&lt;p&gt;In this talk, I'll share my personal journey and what volunteering involves: from simple tasks like setting up directional signs or assisting at the InfoDesk, to setting up and tearing down before and after the event, or helping the video streaming team. I'll share stories of the folks I've met, the behind-the-scenes glimpse I got into this impressive organization, and how truly impressed I am by its operation.&lt;/p&gt;
+&lt;p&gt;However, the real reason to join is a chance to give back, meet new people, and become an active community builder. FOSDEM needs you to make the event a fun and safe place for all visitors. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What's in it for you?&lt;/strong&gt; Join this session to learn how easy it is to sign up, the tasks you can pick (even just for a few hours!), and how you can join the effort to make FOSDEM 2026 the best one yet. &lt;/p&gt;
+&lt;p&gt;You can learn how to sign up at https://volunteers.fosdem.org/.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/J8UCRH/feedback/</feedback_url>
+        <persons>
+          <person id="2729">Imma Valls</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/J8UCRH/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="583663f3-9c13-56b6-8357-6cdd3bd73b1d" id="9868">
+        <date>2026-02-01T11:20:00+01:00</date>
+        <start>11:20</start>
         <duration>00:15</duration>
         <room>H.2215 (Ferrer)</room>
         <slug>DCDAUY-the_v4_tape_in_the_unix_history_repo</slug>
@@ -30545,37 +30594,6 @@ Our goal is to give our members experiences and skills they won't get in class, 
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/DCDAUY/feedback/">Submit Feedback</link>
-        </links>
-      </event>
-      <event guid="9a3dbf5a-7622-54b3-899d-3dc20d11364e" id="9932">
-        <date>2026-02-01T11:20:00+01:00</date>
-        <start>11:20</start>
-        <duration>00:15</duration>
-        <room>H.2215 (Ferrer)</room>
-        <slug>MUZ8LE-graffito</slug>
-        <url>https://fosdem.org/2026/schedule/event/MUZ8LE-graffito/</url>
-        <title>graffito: pretty cellular automata devoid of meaning</title>
-        <subtitle></subtitle>
-        <track slug="dev-random">/dev/random</track>
-        <type>lightningtalk</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;The humble cellular automaton is a well-studied concept in computer science and has been around for many decades.&lt;/p&gt;
-&lt;p&gt;A very famous cellular automaton is Conway's Game of Life, which models a simple two-dimensional system of cells living and dying. This cellular automaton, and many others like it, are expressly designed to simulate some aspect of the real world, however simplified the model might be.&lt;/p&gt;
-&lt;p&gt;I instead like to design cellular automata that have pretty animations and do not attempt to model reality in any way.&lt;/p&gt;
-&lt;p&gt;In this talk I'll present my small cellular automaton framework "graffito" that I have been working on for the past three years in my spare time. I'll give a few examples of how I like to go about creating new automata and try to inspire you to create your own. I think it's really fun, and sometimes you might surprise yourself with something very cool-looking!&lt;/p&gt;
-&lt;p&gt;graffito is written in the Futhark programming language, but the takeaways from this talk will be applicable to any language you might want to use for writing cellular automata.&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/MUZ8LE/feedback/</feedback_url>
-        <persons>
-          <person id="4020">Niels G. W. Serup</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://github.com/nqpz/graffito">GitHub repository</link>
-          <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/MUZ8LE/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="08456f7f-2076-52d8-89e8-ed023546db27" id="9949">
@@ -30696,34 +30714,35 @@ I will present a robust design pattern for combing them - leveraging the fundame
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EBZV7M/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="12193213-649c-5b5d-8ec4-9c35dad87dd9" id="9816">
+      <event guid="736d0e59-976e-52f4-be17-0857ebcfcabf" id="9947">
         <date>2026-02-01T13:00:00+01:00</date>
         <start>13:00</start>
         <duration>00:15</duration>
         <room>H.2215 (Ferrer)</room>
-        <slug>QU33MU-why-open-source-looks-different-in-china</slug>
-        <url>https://fosdem.org/2026/schedule/event/QU33MU-why-open-source-looks-different-in-china/</url>
-        <title>Why Open Source Looks Different in China: When Vendor Strategies, Policy Signals, and Market Pressure Converge</title>
+        <slug>CMCWY9-os-test_measuring_posix_compliance_on_every_single_os</slug>
+        <url>https://fosdem.org/2026/schedule/event/CMCWY9-os-test_measuring_posix_compliance_on_every_single_os/</url>
+        <title>os-test: Measuring POSIX compliance on every single OS</title>
         <subtitle></subtitle>
         <track slug="dev-random">/dev/random</track>
         <type>lightningtalk</type>
         <language>en</language>
-        <abstract>&lt;p&gt;Open source is often discussed through a familiar narrative: community-led collaboration, neutral governance, and voluntary participation driven by shared technical interests.&lt;/p&gt;
-&lt;p&gt;However, when looking at China in 2025, open source often looks noticeably different — not because different tools are used, but because the constraints shaping them are fundamentally different.&lt;/p&gt;
-&lt;p&gt;This talk explores how open source in China has evolved under the convergence of three forces: vendor-led engineering realities, explicit policy signals, and intense market pressure — especially under economic tightening and global uncertainty. In this environment, open source is frequently not a starting ideal, but a practical mechanism: to establish de facto standards, to gain global trust, and increasingly, to remain viable through international adoption.&lt;/p&gt;
-&lt;p&gt;The talk examines why many projects are company-led rather than community-born, why governance often lags behind engineering, and why “going global” is less about expansion than about survival.&lt;/p&gt;
-&lt;p&gt;The perspective offered is not representative of any state or corporation, but comes from someone who has worked between Taiwanese, Chinese, and global open source communities for over a decade. The goal is not to defend or promote a particular model, but to provide developers familiar with Western open source traditions with a clearer mental framework for understanding how open source behaves under non-ideal conditions — and what that means for future collaboration and governance in an increasingly interconnected open source world.&lt;/p&gt;</abstract>
+        <abstract>&lt;p&gt;os-test: Measuring POSIX compliance on every single OS&lt;/p&gt;
+&lt;p&gt;What happens if you run tests on every POSIX system? You find a &lt;em&gt;lot&lt;/em&gt; of bugs in every single OS. I parsed the new POSIX.1-2024 standard into API definitions, generated tests, and measured exactly how much of the standard is implemented. I invoked every libc function to see if they work, and began writing detailed test suites. As it turns out, if there's a sentence in POSIX, someone probably implemented it incorrectly. I found missing interfaces, incompatible declarations, namespace pollution, a lot of bugs, interesting benign differences, and many more issues. I published all tests and results as os-test. The volume of test failures makes it virtually impossible to report all individual issues to each upstream. However as all of the data is publicly available online, vendors are now beginning to incorporate os-test feedback into their development and testing process, which ultimately leads to improved POSIX compliance and software interoperability.&lt;/p&gt;
+&lt;p&gt;In this talk we will dive into the challenges of testing 16 different operating systems, survey the main findings of os-test, and finally determine which operating system takes the lead when it comes to POSIX conformance.&lt;/p&gt;
+&lt;p&gt;https://sortix.org/os-test/
+https://sortix.org/blog/os-testing-posix-headers/&lt;/p&gt;
+&lt;p&gt;os-test is currently funded by Next Generation Internet Zero Commons.&lt;/p&gt;</abstract>
         <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/QU33MU/feedback/</feedback_url>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/CMCWY9/feedback/</feedback_url>
         <persons>
-          <person id="5423">Richard Lin</person>
+          <person id="6316">Jonas 'Sortie' Termansen</person>
         </persons>
         <attachments>
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/QU33MU/feedback/">Submit Feedback</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CMCWY9/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="13969fc3-168a-56da-a283-0af972b8e91b" id="9894">
@@ -30758,33 +30777,6 @@ https://datatracker.ietf.org/doc/html/rfc8915&lt;/p&gt;</abstract>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/J8UN83/feedback/">Submit Feedback</link>
         </links>
       </event>
-      <event guid="12526b9f-6a6b-594a-9de2-79a9f1323c72" id="9828">
-        <date>2026-02-01T13:40:00+01:00</date>
-        <start>13:40</start>
-        <duration>00:15</duration>
-        <room>H.2215 (Ferrer)</room>
-        <slug>GGLZS9-amber-lang-bash-transpiler</slug>
-        <url>https://fosdem.org/2026/schedule/event/GGLZS9-amber-lang-bash-transpiler/</url>
-        <title>Amber Lang - Easily write Bash with a transpiler</title>
-        <subtitle></subtitle>
-        <track slug="dev-random">/dev/random</track>
-        <type>lightningtalk</type>
-        <language>en</language>
-        <abstract>&lt;p&gt;Amber is an experimental programming language that transpiles to Bash, designed to make shell scripting more readable, safer, and easier to maintain. While Bash is ubiquitous, its syntax and error-prone patterns often slow down development, especially for complex scripts. Amber addresses these issues by offering a clearer syntax, basic typing, structured control flow, and a growing standard library, while still producing compatible Bash code (3.2–5.3). 
-Written in Rust and supported by modern tooling such as an LSP and editor plugins, Amber aims to improve the developer experience of writing portable shell scripts without abandoning the Bash ecosystem.&lt;/p&gt;</abstract>
-        <description></description>
-        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/GGLZS9/feedback/</feedback_url>
-        <persons>
-          <person id="1683">Daniele Scasciafratte</person>
-        </persons>
-        <attachments>
-        </attachments>
-        <links>
-          <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
-          <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
-          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GGLZS9/feedback/">Submit Feedback</link>
-        </links>
-      </event>
       <event guid="70ba490c-f948-5bed-a154-ce497c8d650a" id="9919">
         <date>2026-02-01T14:00:00+01:00</date>
         <start>14:00</start>
@@ -30808,6 +30800,7 @@ The talk concludes with a short, practical reflection on how developers can cont
         <persons>
           <person id="3787">Felix Freitag</person>
           <person id="6981">Leandro</person>
+          <person id="7053">Pedro Vílchez-Blanco</person>
         </persons>
         <attachments>
         </attachments>
@@ -30875,6 +30868,33 @@ The talk concludes with a short, practical reflection on how developers can cont
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/E7BQKK/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="12526b9f-6a6b-594a-9de2-79a9f1323c72" id="9828">
+        <date>2026-02-01T15:00:00+01:00</date>
+        <start>15:00</start>
+        <duration>00:15</duration>
+        <room>H.2215 (Ferrer)</room>
+        <slug>GGLZS9-amber-lang-bash-transpiler</slug>
+        <url>https://fosdem.org/2026/schedule/event/GGLZS9-amber-lang-bash-transpiler/</url>
+        <title>Amber Lang - Easily write Bash with a transpiler</title>
+        <subtitle></subtitle>
+        <track slug="dev-random">/dev/random</track>
+        <type>lightningtalk</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Amber is an experimental programming language that transpiles to Bash, designed to make shell scripting more readable, safer, and easier to maintain. While Bash is ubiquitous, its syntax and error-prone patterns often slow down development, especially for complex scripts. Amber addresses these issues by offering a clearer syntax, basic typing, structured control flow, and a growing standard library, while still producing compatible Bash code (3.2–5.3). 
+Written in Rust and supported by modern tooling such as an LSP and editor plugins, Amber aims to improve the developer experience of writing portable shell scripts without abandoning the Bash ecosystem.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/GGLZS9/feedback/</feedback_url>
+        <persons>
+          <person id="1683">Daniele Scasciafratte</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GGLZS9/feedback/">Submit Feedback</link>
         </links>
       </event>
       <event guid="d1d8c737-27bb-58cd-9891-01bd4fab8a60" id="9889">
@@ -30959,6 +30979,34 @@ The talk concludes with a short, practical reflection on how developers can cont
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ETMLM8/feedback/">Submit Feedback</link>
+        </links>
+      </event>
+      <event guid="3440d167-47ab-563e-9f4e-51c6aae17f07" id="9997">
+        <date>2026-02-01T16:20:00+01:00</date>
+        <start>16:20</start>
+        <duration>00:15</duration>
+        <room>H.2215 (Ferrer)</room>
+        <slug>WQ3F9A-fosdem_infrastructure_review</slug>
+        <url>https://fosdem.org/2026/schedule/event/WQ3F9A-fosdem_infrastructure_review/</url>
+        <title>FOSDEM infrastructure review</title>
+        <subtitle></subtitle>
+        <track slug="dev-random">/dev/random</track>
+        <type>lightningtalk</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Join us for the traditional FOSDEM infrastructure review.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/WQ3F9A/feedback/</feedback_url>
+        <persons>
+          <person id="2">FOSDEM Staff</person>
+          <person id="1324">Richard "RichiH" Hartmann</person>
+          <person id="1534">Sebastian Schubert</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WQ3F9A/feedback/">Submit Feedback</link>
         </links>
       </event>
     </room>
@@ -32710,11 +32758,7 @@ Every attendee will leave knowing how to reproduce syzbot bugs safely and effici
           <person id="1748">Roman "Hedin" Storozhenko</person>
         </persons>
         <attachments>
-<<<<<<< HEAD
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/99ULYW-repro-linux-kernel-bug-5-min-virtme-ng/slides/248778/syzboot_xlw899k.pdf">Slides</attachment>
-=======
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/99ULYW-repro-linux-kernel-bug-5-min-virtme-ng/slides/249874/syzboot_xlw899k.pdf">Slides</attachment>
->>>>>>> 9e65886 (update data)
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-kernel:fosdem.org">Chat room(web)</link>
@@ -37840,6 +37884,33 @@ Automotive
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WHHWGT/feedback/">Submit Feedback</link>
         </links>
       </event>
+      <event guid="0726f45e-7d76-507f-a6da-a1e2035d6002" id="9686">
+        <date>2026-02-01T10:50:00+01:00</date>
+        <start>10:50</start>
+        <duration>00:30</duration>
+        <room>UD2.218A</room>
+        <slug>U3UCKS-nymvpn_the_first_real-world_decentralized_noise-generating_mixnet_for_anonymity</slug>
+        <url>https://fosdem.org/2026/schedule/event/U3UCKS-nymvpn_the_first_real-world_decentralized_noise-generating_mixnet_for_anonymity/</url>
+        <title>NymVPN: The First Real-World Decentralized Noise-Generating Mixnet for Anonymity</title>
+        <subtitle></subtitle>
+        <track slug="decentralized-internet-and-privacy">Decentralized Internet and Privacy</track>
+        <type>devroom</type>
+        <language>en</language>
+        <abstract>&lt;p&gt;Nym is the first decentralized noise-generating mixnet to provision real-world network anonymity to Internet users even against nation-state adversaries. The aim here is to supersede existing VPNs in order to fight increasingly more powerful authoritarianism and surveillance. Unlike traditional centralized VPNs that can be de-anonymized by a global passive adversary - like the NSA - based on their traffic patterns, Nym adds noise (“cover traffic”) to existing Internet communications. Similar to Tor, Nym routes each packet separately over a decentralized network of servers, but unlike Tor, mixes traffic and adds noise at each hop. It has both a “fast” and “anonymous” mode. The “fast” mode features speeds comparable to centralized VPNs using the same decentralized network as the mixnet, but without mixing. We will also explore the effect on anonymity of fine-tuning cover traffic, mix delays, and the rate of the Poisson distribution. We'll briefly overview upcoming features on censorship-resistance and postquantum cryptographic security on the network-level Via the SDK, the Nym mixnet remains free to use by hackers to build the next generation of privacy infrastructure.&lt;/p&gt;</abstract>
+        <description></description>
+        <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/U3UCKS/feedback/</feedback_url>
+        <persons>
+          <person id="6851">Harry Halpin</person>
+          <person id="7054">Alexis Roussel</person>
+        </persons>
+        <attachments>
+        </attachments>
+        <links>
+          <link href="https://chat.fosdem.org/#/room/#2026-decentralized-internet-and-privacy:fosdem.org">Chat room(web)</link>
+          <link href="https://matrix.to/#/#2026-decentralized-internet-and-privacy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
+          <link href="https://pretalx.fosdem.org/fosdem-2026/talk/U3UCKS/feedback/">Submit Feedback</link>
+        </links>
+      </event>
       <event guid="3e6e23da-72c0-5ce1-a260-759a6777e5b4" id="9738">
         <date>2026-02-01T11:20:00+01:00</date>
         <start>11:20</start>
@@ -39191,14 +39262,9 @@ This will be mostly a QEMU centric presentation so we will also describe some fu
           <person id="2088">Anirban (Ani) Sinha</person>
         </persons>
         <attachments>
-<<<<<<< HEAD
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/248465/sev-snp-r_3tttoqq.mp4">SEV-SNP demo video</attachment>
-          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/248465/tdx-guest_rve73f1.mp4">TDX demo video</attachment>
-=======
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/249551/sev-es-fo_uoi8vz3.mp4">SEV-ES demo video</attachment>
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/249551/sev-snp-r_3tttoqq.mp4">SEV-SNP demo video</attachment>
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/WNSULX-restartable_confidential_guests_on_qemu_hypervisor_-_where_is_the_challenge/slides/249551/tdx-guest_rve73f1.mp4">TDX demo video</attachment>
->>>>>>> 9e65886 (update data)
         </attachments>
         <links>
           <link href="https://chat.fosdem.org/#/room/#2026-confidential-computing:fosdem.org">Chat room(web)</link>

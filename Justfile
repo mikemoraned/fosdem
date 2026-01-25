@@ -18,7 +18,7 @@ fetch_schedules:
 
 import_schedules:
     mkdir -p {{model_dir}}
-    RUST_LOG=info cargo run --bin import_events --release -- --pentabarf-dir {{pentabarf_dir}} --years "{{years}}" --model-dir {{model_dir}}
+    RUST_LOG=debug cargo run --bin import_events --release -- --pentabarf-dir {{pentabarf_dir}} --years "{{years}}" --model-dir {{model_dir}}
 
 index_next: embeddings_next related_next
     
@@ -30,9 +30,10 @@ related_next:
     RUST_LOG=info cargo run --bin generate_related --release -- --model-dir {{model_dir}} --years "{{current_year}}" --limit 5 --json {{assets_dir}}/all.limit5.json
 
 bring_up_to_date: fetch_schedules import_schedules index_next
+    cargo test -p shared --test integration_tests
 
 webapp:
-    RUST_LOG=info cargo run --bin fly -- --model-dir {{model_dir}} --current-year {{current_year}} --selectable-years "{{years}}"
+    RUST_LOG=debug cargo run --bin fly -- --model-dir {{model_dir}} --current-year {{current_year}} --selectable-years "{{years}}"
 
 deploy_staging: deploy_staging_secrets deploy_staging_app test_staging
 
@@ -43,7 +44,7 @@ deploy_staging_app:
     fly deploy --config fly.staging.toml
 
 test_staging:
-    TEST_BASE_URL=https://fosdem2024-staging.fly.dev cargo test --test integration_tests
+    TEST_BASE_URL=https://fosdem2024-staging.fly.dev cargo test -p webapp --test integration_tests
 
 deploy_prod: deploy_prod_secrets deploy_prod_app test_prod
 
@@ -54,4 +55,4 @@ deploy_prod_app:
     fly deploy --config fly.prod.toml
 
 test_prod:
-    TEST_BASE_URL=https://fosdem.houseofmoran.io cargo test --test integration_tests 
+    TEST_BASE_URL=https://fosdem.houseofmoran.io cargo test -p webapp --test integration_tests 
