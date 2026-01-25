@@ -21,3 +21,4 @@ flate2 = { workspace = true }
 
 [dev-dependencies]
 tokio = { workspace = true }
+test_shared = { path = "../test_shared" }

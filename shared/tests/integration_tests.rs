@@ -1,6 +1,7 @@
 use std::path::Path;
 
-use shared::{inmemory_openai::InMemoryOpenAIQueryable, model::EventId, queryable::Queryable};
+use shared::{inmemory_openai::InMemoryOpenAIQueryable, queryable::Queryable};
+use test_shared::EVENT_ID_2025;
 
 #[tokio::test]
 async fn test_can_find_expected_content() {
@@ -10,9 +11,7 @@ async fn test_can_find_expected_content() {
         .await
         .unwrap();
 
-    let event_id_2025 = EventId::new(2025, 5191);
-    let event_id_2026 = EventId::new(2026, 7910);
-    let expected_event_ids_found = vec![event_id_2025, event_id_2026];
+    let expected_event_ids_found = vec![EVENT_ID_2025, EVENT_ID_2025];
     let mut actual_event_ids_found = vec![];
     for event_id in expected_event_ids_found.iter() {
         if let Some(_) = queryable.find_event_by_id(event_id.clone()).await.unwrap() {

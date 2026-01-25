@@ -28,7 +28,7 @@ pub struct EventId {
 }
 
 impl EventId {
-    pub fn new(year: u32, id: u32) -> EventId {
+    pub const fn new(year: u32, id: u32) -> EventId {
         EventId { year, id }
     }
 

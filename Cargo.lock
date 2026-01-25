@@ -2566,6 +2566,7 @@ dependencies = [
  "openai_dive",
  "serde",
  "serde_json",
+ "test_shared",
  "tokio",
  "tracing",
  "tracing-subscriber",
@@ -2732,6 +2733,13 @@ checksum = "a75fb188eb626b924683e3b95e3a48e63551fcfb51949de2f06a9d91dbee93c9"
 dependencies = [
  "core-foundation-sys",
  "libc",
+]
+
+[[package]]
+name = "test_shared"
+version = "0.0.0"
+dependencies = [
+ "shared",
 ]
 
 [[package]]
