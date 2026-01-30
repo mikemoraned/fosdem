@@ -4,7 +4,7 @@ function bindBookmarks() {
     console.log("Binding Bookmarks");
     // find all bookmark buttons
     const buttons = Array.prototype.slice.call(
-        document.querySelectorAll("button.bookmark.control"),
+        document.querySelectorAll("button.bookmark"),
         0
     );
 
@@ -37,15 +37,15 @@ function bindModel(model) {
     // set up an observer which will propagate changes to the model
     const observer = new MutationObserver((mutationsList) => {
         mutationsList.forEach((mutation) => {
-          // we assume that we only see changes on 'data-bookmark-status' and that the element has a data-event-id
-          const isBookmarked = mutation.target.dataset.bookmarkStatus === "true";
-          const eventId = mutation.target.dataset.eventId;
-          model.setBookmarkStatus(eventId, isBookmarked);
+            // we assume that we only see changes on 'data-bookmark-status' and that the element has a data-event-id
+            const isBookmarked = mutation.target.dataset.bookmarkStatus === "true";
+            const eventId = mutation.target.dataset.eventId;
+            model.setBookmarkStatus(eventId, isBookmarked);
         });
-      });
+    });
 
     const observerOptions = {
-        attributes: true, 
+        attributes: true,
         attributeFilter: ['data-bookmark-status'],
     };
 

@@ -41,6 +41,14 @@
                                 data-event-id="{{ event.id }}" data-bookmark-status="false">
                                 {{ event.title }}
                             </a>
+                            <span data-event-id="{{ event.id }}" data-bookmark-status="false">
+                                <button class="button bookmark is-small" disabled>
+                                    <span class="icon is-small">
+                                        <i class="fa-solid fa-bookmark filled"></i>
+                                        <i class="fa-solid fa-bookmark-slash empty"></i>
+                                    </span>
+                                </button>
+                            </span>
                         </td>
                         {% when planning::EventOverlap::Middle with (event) %}
                         {# Skip - covered by rowspan from Beginning #}
