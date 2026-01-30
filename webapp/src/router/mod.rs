@@ -19,6 +19,7 @@ pub mod related;
 mod room;
 mod search;
 mod sitemap;
+mod timetable;
 mod video;
 
 pub async fn app_state(
@@ -59,6 +60,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/sitemap.xml", get(sitemap::sitemap))
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
+        .route("/timetables/", get(timetable::timetables))
         .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/event/{event_in_year_id}/", get(event::event_2025))
