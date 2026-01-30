@@ -109,108 +109,55 @@ mod tests {
         }
     }
 
-    // Invariant: A Timetable never spans multiple days
-    #[test]
-    fn timetable_single_day() {
-        let day1 = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-        let day2 = NaiveDate::from_ymd_opt(2024, 2, 4).unwrap();
-        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+    // Assertion helpers for invariants
 
-        let events = vec![
-            make_event(1, day1, start, 30, "Room1"),
-            make_event(2, day2, start, 30, "Room1"),
-        ];
-
-        let timetables = allocate(&events, Duration::minutes(15));
-
-        for timetable in &timetables {
-            for event in timetable.unique_events() {
-                assert_eq!(event.date, timetable.day);
-            }
+    fn assert_timetable_never_spans_multiple_days(timetable: &Timetable) {
+        for event in timetable.unique_events() {
+            assert_eq!(event.date, timetable.day);
         }
     }
 
-    // Invariant: slots is an ordered series of TimeSlots separated by slot_duration (no gaps)
-    #[test]
-    fn timetable_slots_no_gaps() {
-        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
-
-        let events = vec![make_event(1, day, start, 60, "Room1")];
-
-        let slot_duration = Duration::minutes(15);
-        let timetables = allocate(&events, slot_duration);
-
-        for timetable in &timetables {
-            for i in 1..timetable.slots.len() {
-                let prev_start = timetable.slots[i - 1].start;
-                let curr_start = timetable.slots[i].start;
-                let expected = prev_start + timetable.slot_duration;
-                assert_eq!(curr_start, expected, "Slots must be consecutive with no gaps");
-            }
+    fn assert_slots_have_no_gaps(timetable: &Timetable) {
+        for i in 1..timetable.slots.len() {
+            let prev_start = timetable.slots[i - 1].start;
+            let curr_start = timetable.slots[i].start;
+            let expected = prev_start + timetable.slot_duration;
+            assert_eq!(curr_start, expected, "Slots must be consecutive with no gaps");
         }
     }
 
-    // Invariant: An Event has one Beginning and one End overlap, with different Slots
-    #[test]
-    fn event_has_one_beginning_and_one_end_in_different_slots() {
-        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+    fn assert_event_has_one_beginning_and_one_end_in_different_slots(timetable: &Timetable) {
+        let mut beginnings: HashMap<EventId, Vec<usize>> = HashMap::new();
+        let mut ends: HashMap<EventId, Vec<usize>> = HashMap::new();
 
-        // Event spans multiple slots (60 min event with 15 min slots)
-        let events = vec![make_event(1, day, start, 60, "Room1")];
-
-        let timetables = allocate(&events, Duration::minutes(15));
-
-        for timetable in &timetables {
-            let mut beginnings: HashMap<EventId, Vec<usize>> = HashMap::new();
-            let mut ends: HashMap<EventId, Vec<usize>> = HashMap::new();
-
-            for (slot_idx, slot) in timetable.slots.iter().enumerate() {
-                for overlap in slot.overlaps.values() {
-                    match overlap {
-                        EventOverlap::Beginning(_) => {
-                            beginnings.entry(overlap.event().id).or_default().push(slot_idx);
-                        }
-                        EventOverlap::End(_) => {
-                            ends.entry(overlap.event().id).or_default().push(slot_idx);
-                        }
-                        EventOverlap::Middle(_) => {}
+        for (slot_idx, slot) in timetable.slots.iter().enumerate() {
+            for overlap in slot.overlaps.values() {
+                match overlap {
+                    EventOverlap::Beginning(_) => {
+                        beginnings.entry(overlap.event().id).or_default().push(slot_idx);
                     }
+                    EventOverlap::End(_) => {
+                        ends.entry(overlap.event().id).or_default().push(slot_idx);
+                    }
+                    EventOverlap::Middle(_) => {}
                 }
             }
+        }
 
-            for event in timetable.unique_events() {
-                let begin_slots = beginnings.get(&event.id).expect("Event should have Beginning");
-                let end_slots = ends.get(&event.id).expect("Event should have End");
+        for event in timetable.unique_events() {
+            let begin_slots = beginnings.get(&event.id).expect("Event should have Beginning");
+            let end_slots = ends.get(&event.id).expect("Event should have End");
 
-                assert_eq!(begin_slots.len(), 1, "Event should have exactly one Beginning");
-                assert_eq!(end_slots.len(), 1, "Event should have exactly one End");
-                assert_ne!(
-                    begin_slots[0], end_slots[0],
-                    "Beginning and End should be in different slots"
-                );
-            }
+            assert_eq!(begin_slots.len(), 1, "Event should have exactly one Beginning");
+            assert_eq!(end_slots.len(), 1, "Event should have exactly one End");
+            assert_ne!(
+                begin_slots[0], end_slots[0],
+                "Beginning and End should be in different slots"
+            );
         }
     }
 
-    // Invariant: Timetables are returned in sorted order, ordered by day
-    #[test]
-    fn allocate_returns_timetables_sorted_by_day() {
-        let day1 = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-        let day2 = NaiveDate::from_ymd_opt(2024, 2, 4).unwrap();
-        let day3 = NaiveDate::from_ymd_opt(2024, 2, 5).unwrap();
-        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
-
-        // Events in non-sorted order
-        let events = vec![
-            make_event(2, day2, start, 30, "Room1"),
-            make_event(3, day3, start, 30, "Room1"),
-            make_event(1, day1, start, 30, "Room1"),
-        ];
-
-        let timetables = allocate(&events, Duration::minutes(15));
-
+    fn assert_timetables_sorted_by_day(timetables: &[Timetable]) {
         for i in 1..timetables.len() {
             assert!(
                 timetables[i - 1].day <= timetables[i].day,
@@ -219,9 +166,30 @@ mod tests {
         }
     }
 
-    // Invariant: Each Event may only appear in a single Timetable
+    fn assert_event_appears_in_single_timetable(timetables: &[Timetable]) {
+        let mut event_to_timetables: HashMap<EventId, Vec<usize>> = HashMap::new();
+        for (tt_idx, timetable) in timetables.iter().enumerate() {
+            for event in timetable.unique_events() {
+                event_to_timetables.entry(event.id).or_default().push(tt_idx);
+            }
+        }
+
+        let events_in_multiple: Vec<_> = event_to_timetables
+            .iter()
+            .filter(|(_, tts)| tts.len() > 1)
+            .collect();
+
+        assert!(
+            events_in_multiple.is_empty(),
+            "Events appearing in multiple timetables: {:?}",
+            events_in_multiple
+        );
+    }
+
+    // Tests
+
     #[test]
-    fn event_appears_in_single_timetable() {
+    fn test_timetable_single_day() {
         let day1 = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
         let day2 = NaiveDate::from_ymd_opt(2024, 2, 4).unwrap();
         let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
@@ -233,25 +201,70 @@ mod tests {
 
         let timetables = allocate(&events, Duration::minutes(15));
 
-        // 1. Build inverse map: event -> timetables it appears in
-        let mut event_to_timetables: HashMap<EventId, Vec<usize>> = HashMap::new();
-        for (tt_idx, timetable) in timetables.iter().enumerate() {
-            for event in timetable.unique_events() {
-                event_to_timetables.entry(event.id).or_default().push(tt_idx);
-            }
+        for timetable in &timetables {
+            assert_timetable_never_spans_multiple_days(timetable);
         }
+    }
 
-        // 2. Collate events appearing in multiple timetables
-        let events_in_multiple: Vec<_> = event_to_timetables
-            .iter()
-            .filter(|(_, tts)| tts.len() > 1)
-            .collect();
+    #[test]
+    fn test_timetable_slots_no_gaps() {
+        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
 
-        // 3. Assert none exist
-        assert!(
-            events_in_multiple.is_empty(),
-            "Events appearing in multiple timetables: {:?}",
-            events_in_multiple
-        );
+        let events = vec![make_event(1, day, start, 60, "Room1")];
+
+        let timetables = allocate(&events, Duration::minutes(15));
+
+        for timetable in &timetables {
+            assert_slots_have_no_gaps(timetable);
+        }
+    }
+
+    #[test]
+    fn test_event_has_one_beginning_and_one_end_in_different_slots() {
+        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+
+        let events = vec![make_event(1, day, start, 60, "Room1")];
+
+        let timetables = allocate(&events, Duration::minutes(15));
+
+        for timetable in &timetables {
+            assert_event_has_one_beginning_and_one_end_in_different_slots(timetable);
+        }
+    }
+
+    #[test]
+    fn test_timetables_sorted_by_day() {
+        let day1 = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let day2 = NaiveDate::from_ymd_opt(2024, 2, 4).unwrap();
+        let day3 = NaiveDate::from_ymd_opt(2024, 2, 5).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+
+        let events = vec![
+            make_event(2, day2, start, 30, "Room1"),
+            make_event(3, day3, start, 30, "Room1"),
+            make_event(1, day1, start, 30, "Room1"),
+        ];
+
+        let timetables = allocate(&events, Duration::minutes(15));
+
+        assert_timetables_sorted_by_day(&timetables);
+    }
+
+    #[test]
+    fn test_event_appears_in_single_timetable() {
+        let day1 = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let day2 = NaiveDate::from_ymd_opt(2024, 2, 4).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+
+        let events = vec![
+            make_event(1, day1, start, 30, "Room1"),
+            make_event(2, day2, start, 30, "Room1"),
+        ];
+
+        let timetables = allocate(&events, Duration::minutes(15));
+
+        assert_event_appears_in_single_timetable(&timetables);
     }
 }
