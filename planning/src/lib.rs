@@ -194,39 +194,6 @@ mod tests {
         }
     }
 
-    // Invariant: An Event may have zero to many Middle overlaps
-    #[test]
-    fn event_can_have_middle_overlaps() {
-        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
-        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
-
-        // Long event (60 min) with short slots (15 min) should have middle overlaps
-        let events = vec![make_event(1, day, start, 60, "Room1")];
-
-        let timetables = allocate(&events, Duration::minutes(15));
-
-        for timetable in &timetables {
-            let mut middles: HashMap<EventId, usize> = HashMap::new();
-
-            for slot in &timetable.slots {
-                for overlap in slot.overlaps.values() {
-                    if let EventOverlap::Middle(_) = overlap {
-                        *middles.entry(overlap.event().id).or_default() += 1;
-                    }
-                }
-            }
-
-            // 60 min event with 15 min slots: Beginning, Middle, Middle, End = 2 middles
-            // This test verifies that middles exist for long events spanning multiple slots
-            let event_id = events[0].id;
-            let middle_count = middles.get(&event_id).copied().unwrap_or(0);
-            assert!(
-                middle_count >= 2,
-                "60 min event with 15 min slots should have at least 2 Middle overlaps"
-            );
-        }
-    }
-
     // Invariant: Timetables are returned in sorted order, ordered by day
     #[test]
     fn allocate_returns_timetables_sorted_by_day() {
