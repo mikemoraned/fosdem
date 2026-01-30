@@ -13,7 +13,7 @@
             </span>
         </h2>
         <div class="table-container">
-            <table class="table is-bordered is-striped is-narrow is-fullwidth">
+            <table class="table is-bordered is-narrow is-fullwidth highlight-bookmarked">
                 <thead>
                     <tr>
                         <th>Time</th>
@@ -32,18 +32,21 @@
                         {% if let planning::Stream::Room(room_name) = stream %}
                         {% match slot.overlaps.get(stream) %}
                         {% when Some with (overlap) %}
-                            {% match overlap %}
-                            {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
-                        <td rowspan="{{ slot_coverage }}" class="highlight-bookmarked" data-event-id="{{ event.id }}" data-bookmark-status="false">
-                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/" title="{{ event.starting_time().format("%H:%M") }}->{{ event.ending_time().format("%H:%M") }} {{ event.title }}">
+                        {% match overlap %}
+                        {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
+                        <td rowspan="{{ slot_coverage }}">
+                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                                title="{{ event.starting_time().format(" %H:%M") }}->{{
+                                event.ending_time().format("%H:%M") }} {{ event.title }}"
+                                data-event-id="{{ event.id }}" data-bookmark-status="false">
                                 {{ event.title }}
                             </a>
                         </td>
-                            {% when planning::EventOverlap::Middle with (event) %}
-                            {# Skip - covered by rowspan from Beginning #}
-                            {% when planning::EventOverlap::End with (event) %}
-                            {# Skip - covered by rowspan from Beginning #}
-                            {% endmatch %}
+                        {% when planning::EventOverlap::Middle with (event) %}
+                        {# Skip - covered by rowspan from Beginning #}
+                        {% when planning::EventOverlap::End with (event) %}
+                        {# Skip - covered by rowspan from Beginning #}
+                        {% endmatch %}
                         {% when None %}
                         <td></td>
                         {% endmatch %}
