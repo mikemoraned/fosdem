@@ -70,7 +70,10 @@ pub enum Stream {
 // * An Event may have zero to many Middle overlaps
 #[derive(Debug)]
 pub enum EventOverlap {
-    Beginning(Box<Event>),
+    Beginning {
+        event: Box<Event>,
+        slot_coverage: usize,
+    },
     Middle(Box<Event>),
     End(Box<Event>),
 }
@@ -78,7 +81,9 @@ pub enum EventOverlap {
 impl EventOverlap {
     pub fn event(&self) -> &Event {
         match self {
-            EventOverlap::Beginning(e) | EventOverlap::Middle(e) | EventOverlap::End(e) => e,
+            EventOverlap::Beginning { event, .. }
+            | EventOverlap::Middle(event)
+            | EventOverlap::End(event) => event,
         }
     }
 }
@@ -192,8 +197,12 @@ fn create_timetable_for_day(
                 return AllocationResult::Unsatisfied;
             }
 
+            let slot_coverage = last_slot - first_slot + 1;
             let overlap = if slot_idx == first_slot {
-                EventOverlap::Beginning(Box::new((*event).clone()))
+                EventOverlap::Beginning {
+                    event: Box::new((*event).clone()),
+                    slot_coverage,
+                }
             } else if slot_idx == last_slot {
                 EventOverlap::End(Box::new((*event).clone()))
             } else {
@@ -266,7 +275,7 @@ mod tests {
         for (slot_idx, slot) in timetable.slots.iter().enumerate() {
             for overlap in slot.overlaps.values() {
                 match overlap {
-                    EventOverlap::Beginning(_) => {
+                    EventOverlap::Beginning { .. } => {
                         beginnings.entry(overlap.event().id).or_default().push(slot_idx);
                     }
                     EventOverlap::End(_) => {
@@ -399,5 +408,74 @@ mod tests {
         let timetables = allocate(&events).unwrap();
 
         assert_event_appears_in_single_timetable(&timetables);
+    }
+
+    // slot_coverage tests
+
+    fn get_slot_coverage_for_event(timetable: &Timetable, event_id: EventId) -> Option<usize> {
+        for slot in &timetable.slots {
+            for overlap in slot.overlaps.values() {
+                if let EventOverlap::Beginning { slot_coverage, .. } = overlap {
+                    if overlap.event().id == event_id {
+                        return Some(*slot_coverage);
+                    }
+                }
+            }
+        }
+        None
+    }
+
+    #[test]
+    fn test_slot_coverage_15min_event_with_5min_slots() {
+        // 15 minute event with 5 minute slots = 3 slots
+        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+
+        let events = vec![make_event(1, day, start, 15, "Room1")];
+        let event_refs: Vec<&Event> = events.iter().collect();
+
+        let result = create_timetable_for_day(day, &event_refs, Duration::minutes(5));
+        let AllocationResult::Satisfied(timetable) = result else {
+            panic!("Expected Satisfied result");
+        };
+
+        let coverage = get_slot_coverage_for_event(&timetable, events[0].id);
+        assert_eq!(coverage, Some(3), "15min event with 5min slots should cover 3 slots");
+    }
+
+    #[test]
+    fn test_slot_coverage_30min_event_with_15min_slots() {
+        // 30 minute event with 15 minute slots = 2 slots
+        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+
+        let events = vec![make_event(1, day, start, 30, "Room1")];
+        let event_refs: Vec<&Event> = events.iter().collect();
+
+        let result = create_timetable_for_day(day, &event_refs, Duration::minutes(15));
+        let AllocationResult::Satisfied(timetable) = result else {
+            panic!("Expected Satisfied result");
+        };
+
+        let coverage = get_slot_coverage_for_event(&timetable, events[0].id);
+        assert_eq!(coverage, Some(2), "30min event with 15min slots should cover 2 slots");
+    }
+
+    #[test]
+    fn test_slot_coverage_60min_event_with_15min_slots() {
+        // 60 minute event with 15 minute slots = 4 slots
+        let day = NaiveDate::from_ymd_opt(2024, 2, 3).unwrap();
+        let start = NaiveTime::from_hms_opt(10, 0, 0).unwrap();
+
+        let events = vec![make_event(1, day, start, 60, "Room1")];
+        let event_refs: Vec<&Event> = events.iter().collect();
+
+        let result = create_timetable_for_day(day, &event_refs, Duration::minutes(15));
+        let AllocationResult::Satisfied(timetable) = result else {
+            panic!("Expected Satisfied result");
+        };
+
+        let coverage = get_slot_coverage_for_event(&timetable, events[0].id);
+        assert_eq!(coverage, Some(4), "60min event with 15min slots should cover 4 slots");
     }
 }
