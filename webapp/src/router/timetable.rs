@@ -6,13 +6,10 @@ use shared::queryable::Queryable;
 
 use crate::state::AppState;
 
-use shared::model::Event;
-
 #[derive(Template, Debug)]
 #[template(path = "timetables.html")]
 struct TimetablesTemplate {
     timetables: Vec<Timetable>,
-    current_event: Option<Event>,
     current_fosdem: shared::model::CurrentFosdem,
 }
 
@@ -33,7 +30,6 @@ pub async fn timetables(State(state): State<AppState>) -> axum::response::Result
 
     let page = TimetablesTemplate {
         timetables,
-        current_event: None,
         current_fosdem: state.current_fosdem.clone(),
     };
     let html = page.render().unwrap();

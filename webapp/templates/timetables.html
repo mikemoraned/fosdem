@@ -1,7 +1,4 @@
 {% extends "layout.html" %}
-{%- import "components/bookmark.html" as bookmark -%}
-{%- import "components/event.html" as event -%}
-{%- import "components/external.html" as external -%}
 
 {% block content %}
 <section class="section">
@@ -15,20 +12,15 @@
                 <span>{{ timetable.day.format("%A, %B %e, %Y") }}</span>
             </span>
         </h2>
-        {% for ev in timetable.unique_events() %}
-        <div class="columns highlight-bookmarked" data-event-id="{{ ev.id }}" data-bookmark-status="false">
-            <div class="column">
-                <div class="card">
-                    {% call event::expandable_card_details(ev) %}
-                    <footer class="card-footer">
-                        {% call bookmark::bookmark_footer_item(ev) %}
-                        {% call external::sojourner_event(ev) %}
-                        {% call external::fosdem_event(ev) %}
-                    </footer>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+        <ul>
+            {% for ev in timetable.unique_events() %}
+            <li class="highlight-bookmarked" data-event-id="{{ ev.id }}" data-bookmark-status="false">
+                <a href="/{{ ev.id.year() }}/event/{{ ev.id.event_in_year() }}/">
+                    {{ ev.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
     {% endfor %}
 </section>
