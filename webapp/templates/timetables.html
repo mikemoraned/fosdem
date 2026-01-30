@@ -12,15 +12,48 @@
                 <span>{{ timetable.day.format("%A, %B %e, %Y") }}</span>
             </span>
         </h2>
-        <ul>
-            {% for ev in timetable.unique_events() %}
-            <li class="highlight-bookmarked" data-event-id="{{ ev.id }}" data-bookmark-status="false">
-                <a href="/{{ ev.id.year() }}/event/{{ ev.id.event_in_year() }}/">
-                    {{ ev.title }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        {% for stream in timetable.unique_streams() %}
+                        {% if let planning::Stream::Room(room_name) = stream %}
+                        <th>{{ room_name }}</th>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for slot in timetable.slots %}
+                    <tr>
+                        <td>{{ slot.start.format("%H:%M") }}</td>
+                        {% for stream in timetable.unique_streams() %}
+                        {% if let planning::Stream::Room(room_name) = stream %}
+                        {% match slot.overlaps.get(stream) %}
+                        {% when Some with (overlap) %}
+                            {% match overlap %}
+                            {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
+                        <td rowspan="{{ slot_coverage }}" class="highlight-bookmarked" data-event-id="{{ event.id }}" data-bookmark-status="false">
+                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/">
+                                {{ event.title }}
+                            </a>
+                        </td>
+                            {% when planning::EventOverlap::Middle with (event) %}
+                            {# Skip - covered by rowspan from Beginning #}
+                            {% when planning::EventOverlap::End with (event) %}
+                            {# Skip - covered by rowspan from Beginning #}
+                            {% endmatch %}
+                        {% when None %}
+                        <td></td>
+                        {% endmatch %}
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
     {% endfor %}
 </section>
