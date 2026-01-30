@@ -22,6 +22,7 @@ url = { workspace = true }
 chrono = { workspace = true }
 shared = { path = "../shared" }
 content = { path = "../content" }
+planning = { path = "../planning" }
 sitemap-rs = "0.4.0"
 axum-extra = "0.12.3"
 

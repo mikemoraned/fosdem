@@ -1937,6 +1937,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "planning"
+version = "0.0.0"
+dependencies = [
+ "chrono",
+ "shared",
+ "url",
+]
+
+[[package]]
 name = "polling"
 version = "3.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3326,6 +3335,7 @@ dependencies = [
  "clap",
  "content",
  "indicatif",
+ "planning",
  "reqwest 0.12.25",
  "serde",
  "serde_json",

@@ -42,7 +42,8 @@
                 <ul>
                     {% for item in year_group.items %}
                     <li>
-                        <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/">
+                        <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/"
+                            data-event-id="{{ item.event.id }}" data-bookmark-status="false">
                             <span
                                 class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"</span>
