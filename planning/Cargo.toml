@@ -1,0 +1,8 @@
+[package]
+name = "planning"
+version = "0.0.0"
+edition = "2024"
+
+[dependencies]
+chrono = { workspace = true }
+shared = { path = "../shared" }
