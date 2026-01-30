@@ -122,7 +122,7 @@ fn create_timetable_for_day(
             start: current_time,
             overlaps: HashMap::new(),
         });
-        current_time = current_time + slot_duration;
+        current_time += slot_duration;
     }
 
     // Allocate each event to its overlapping slots
