@@ -17,6 +17,7 @@ enum AllocationResult {
 // invariants:
 // * A Timetable never spans multiple days
 // * `slots` is an ordered series of TimeSlots separated by `slot_duration`. In other words `slots` has no gaps
+#[derive(Debug)]
 pub struct Timetable {
     pub day: NaiveDate,
     pub slots: Vec<TimeSlot>,
@@ -52,6 +53,7 @@ impl Timetable {
 // invariants:
 // * The same Event event may appear in an EventOverlap in multiple Streams
 // * The same Event cannot have multiple occurrences via different EventOverlaps in the same Stream
+#[derive(Debug)]
 pub struct TimeSlot {
     pub start: NaiveTime,
     pub overlaps: HashMap<Stream, EventOverlap>,
@@ -66,6 +68,7 @@ pub enum Stream {
 // invariants:
 // * An Event has one Beginning and one End overlap, with different Slots
 // * An Event may have zero to many Middle overlaps
+#[derive(Debug)]
 pub enum EventOverlap {
     Beginning(Box<Event>),
     Middle(Box<Event>),

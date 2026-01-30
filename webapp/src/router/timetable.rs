@@ -1,24 +1,38 @@
 use askama::Template;
 use axum::{extract::State, response::Html};
 
-use shared::{model::Event, queryable::Queryable};
+use planning::Timetable;
+use shared::queryable::Queryable;
 
 use crate::state::AppState;
+
+use shared::model::Event;
 
 #[derive(Template, Debug)]
 #[template(path = "timetables.html")]
 struct TimetablesTemplate {
-    events: Vec<Event>,
-    current_event: Option<Event>, // TODO: remove this
+    timetables: Vec<Timetable>,
+    current_event: Option<Event>,
     current_fosdem: shared::model::CurrentFosdem,
 }
 
 #[tracing::instrument(skip(state))]
 pub async fn timetables(State(state): State<AppState>) -> axum::response::Result<Html<String>> {
-    let mut events = state.queryable.load_all_events().await.unwrap();
-    events.sort_by_key(|e| e.starting_time());
+    let all_events = state.queryable.load_all_events().await.unwrap();
+
+    // Filter events for the current FOSDEM year
+    let current_year = state.current_fosdem.year;
+    let events_for_year: Vec<_> = all_events
+        .into_iter()
+        .filter(|e| e.year == current_year)
+        .collect();
+
+    // Allocate events into timetables
+    let timetables = planning::allocate(&events_for_year)
+        .map_err(|_| axum::http::StatusCode::INTERNAL_SERVER_ERROR)?;
+
     let page = TimetablesTemplate {
-        events,
+        timetables,
         current_event: None,
         current_fosdem: state.current_fosdem.clone(),
     };
