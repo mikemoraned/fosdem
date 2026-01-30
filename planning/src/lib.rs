@@ -3,6 +3,16 @@ use std::collections::{HashMap, HashSet};
 use chrono::{Duration, NaiveDate, NaiveTime};
 use shared::model::Event;
 
+#[derive(Debug)]
+pub enum AllocationError {
+    NoValidSlotDuration(NaiveDate),
+}
+
+enum AllocationResult {
+    Satisfied(Timetable),
+    Unsatisfied,
+}
+
 // A Timetable is an allocation of Events into TimeSlots for a single day.
 // invariants:
 // * A Timetable never spans multiple days
@@ -70,40 +80,62 @@ impl EventOverlap {
     }
 }
 
-// takes multiple events and allocates them to Slots in a Timetable where each Slot has a `slot_duration`
+// takes multiple events and allocates them to Slots in a Timetable
+// automatically determines the maximum slot_duration that satisfies invariants
 // invariants:
 // * Timetables are returned in sorted order, ordered by `day`
 // * each Event may only appear in a single Timetable
-pub fn allocate(events: &[Event], slot_duration: Duration) -> Vec<Timetable> {
+pub fn allocate(events: &[Event]) -> Result<Vec<Timetable>, AllocationError> {
+    let slot_durations = [
+        Duration::minutes(15),
+        Duration::minutes(10),
+        Duration::minutes(5),
+        Duration::minutes(1),
+    ];
+
     // Group events by day
     let mut events_by_day: HashMap<NaiveDate, Vec<&Event>> = HashMap::new();
     for event in events {
         events_by_day.entry(event.date).or_default().push(event);
     }
 
-    // Create a Timetable for each day
-    let mut timetables: Vec<Timetable> = events_by_day
-        .into_iter()
-        .map(|(day, day_events)| create_timetable_for_day(day, &day_events, slot_duration))
-        .collect();
+    // Create a Timetable for each day, finding the maximum slot duration that works
+    let mut timetables: Vec<Timetable> = Vec::new();
+
+    for (day, day_events) in events_by_day {
+        let mut found = false;
+        for &duration in &slot_durations {
+            match create_timetable_for_day(day, &day_events, duration) {
+                AllocationResult::Satisfied(timetable) => {
+                    timetables.push(timetable);
+                    found = true;
+                    break;
+                }
+                AllocationResult::Unsatisfied => continue,
+            }
+        }
+        if !found {
+            return Err(AllocationError::NoValidSlotDuration(day));
+        }
+    }
 
     // Sort by day
     timetables.sort_by_key(|t| t.day);
 
-    timetables
+    Ok(timetables)
 }
 
 fn create_timetable_for_day(
     day: NaiveDate,
     events: &[&Event],
     slot_duration: Duration,
-) -> Timetable {
+) -> AllocationResult {
     if events.is_empty() {
-        return Timetable {
+        return AllocationResult::Satisfied(Timetable {
             day,
             slots: vec![],
             slot_duration,
-        };
+        });
     }
 
     // Find the earliest start and latest end times for this day
@@ -152,6 +184,11 @@ fn create_timetable_for_day(
         let last_slot = *overlapping_slots.last().unwrap();
 
         for slot_idx in overlapping_slots {
+            // Check invariant: same Event cannot have multiple occurrences in same Stream
+            if slots[slot_idx].overlaps.contains_key(&stream) {
+                return AllocationResult::Unsatisfied;
+            }
+
             let overlap = if slot_idx == first_slot {
                 EventOverlap::Beginning(Box::new((*event).clone()))
             } else if slot_idx == last_slot {
@@ -164,11 +201,11 @@ fn create_timetable_for_day(
         }
     }
 
-    Timetable {
+    AllocationResult::Satisfied(Timetable {
         day,
         slots,
         slot_duration,
-    }
+    })
 }
 
 #[cfg(test)]
@@ -292,7 +329,7 @@ mod tests {
             make_event(2, day2, start, 30, "Room1"),
         ];
 
-        let timetables = allocate(&events, Duration::minutes(15));
+        let timetables = allocate(&events).unwrap();
 
         for timetable in &timetables {
             assert_timetable_never_spans_multiple_days(timetable);
@@ -306,7 +343,7 @@ mod tests {
 
         let events = vec![make_event(1, day, start, 60, "Room1")];
 
-        let timetables = allocate(&events, Duration::minutes(15));
+        let timetables = allocate(&events).unwrap();
 
         for timetable in &timetables {
             assert_slots_have_no_gaps(timetable);
@@ -320,7 +357,7 @@ mod tests {
 
         let events = vec![make_event(1, day, start, 60, "Room1")];
 
-        let timetables = allocate(&events, Duration::minutes(15));
+        let timetables = allocate(&events).unwrap();
 
         for timetable in &timetables {
             assert_event_has_one_beginning_and_one_end_in_different_slots(timetable);
@@ -340,7 +377,7 @@ mod tests {
             make_event(1, day1, start, 30, "Room1"),
         ];
 
-        let timetables = allocate(&events, Duration::minutes(15));
+        let timetables = allocate(&events).unwrap();
 
         assert_timetables_sorted_by_day(&timetables);
     }
@@ -356,7 +393,7 @@ mod tests {
             make_event(2, day2, start, 30, "Room1"),
         ];
 
-        let timetables = allocate(&events, Duration::minutes(15));
+        let timetables = allocate(&events).unwrap();
 
         assert_event_appears_in_single_timetable(&timetables);
     }
