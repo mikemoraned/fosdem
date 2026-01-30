@@ -19,7 +19,10 @@
                         <th>Time</th>
                         {% for stream in timetable.unique_streams() %}
                         {% if let planning::Stream::Room(room_name) = stream %}
-                        <th>{{ room_name }}</th>
+                        <th><a href="/room/{{ room_name }}/">
+                                {{ room_name }}
+                            </a>
+                        </th>
                         {% endif %}
                         {% endfor %}
                     </tr>
@@ -49,6 +52,9 @@
                                     </span>
                                 </button>
                             </span>
+                            <a href="/room/{{ event.room }}/">
+                                <span class="tag">{{ event.room }}</span>
+                            </a>
                         </td>
                         {% when planning::EventOverlap::Middle with (event) %}
                         {# Skip - covered by rowspan from Beginning #}
