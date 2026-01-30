@@ -4,7 +4,7 @@
 {%- import "components/external.html" as external -%}
 
 {% block content %}
-<section class="section hide-non-bookmarked">
+<section class="section">
     {% for timetable in timetables %}
     <div class="box">
         <h2 class="title is-4">
@@ -16,7 +16,7 @@
             </span>
         </h2>
         {% for ev in timetable.unique_events() %}
-        <div class="columns" data-event-id="{{ ev.id }}" data-bookmark-status="false">
+        <div class="columns highlight-bookmarked" data-event-id="{{ ev.id }}" data-bookmark-status="false">
             <div class="column">
                 <div class="card">
                     {% call event::expandable_card_details(ev) %}
