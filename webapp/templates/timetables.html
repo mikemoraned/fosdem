@@ -35,7 +35,7 @@
                             {% match overlap %}
                             {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
                         <td rowspan="{{ slot_coverage }}" class="highlight-bookmarked" data-event-id="{{ event.id }}" data-bookmark-status="false">
-                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/">
+                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/" title="{{ event.starting_time().format("%H:%M") }}->{{ event.ending_time().format("%H:%M") }} {{ event.title }}">
                                 {{ event.title }}
                             </a>
                         </td>
