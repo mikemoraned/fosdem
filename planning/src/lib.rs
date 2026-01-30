@@ -75,7 +75,100 @@ impl EventOverlap {
 // * Timetables are returned in sorted order, ordered by `day`
 // * each Event may only appear in a single Timetable
 pub fn allocate(events: &[Event], slot_duration: Duration) -> Vec<Timetable> {
-    todo!()
+    // Group events by day
+    let mut events_by_day: HashMap<NaiveDate, Vec<&Event>> = HashMap::new();
+    for event in events {
+        events_by_day.entry(event.date).or_default().push(event);
+    }
+
+    // Create a Timetable for each day
+    let mut timetables: Vec<Timetable> = events_by_day
+        .into_iter()
+        .map(|(day, day_events)| create_timetable_for_day(day, &day_events, slot_duration))
+        .collect();
+
+    // Sort by day
+    timetables.sort_by_key(|t| t.day);
+
+    timetables
+}
+
+fn create_timetable_for_day(
+    day: NaiveDate,
+    events: &[&Event],
+    slot_duration: Duration,
+) -> Timetable {
+    if events.is_empty() {
+        return Timetable {
+            day,
+            slots: vec![],
+            slot_duration,
+        };
+    }
+
+    // Find the earliest start and latest end times for this day
+    let earliest_start = events
+        .iter()
+        .map(|e| e.starting_time().time())
+        .min()
+        .unwrap();
+    let latest_end = events.iter().map(|e| e.ending_time().time()).max().unwrap();
+
+    // Create contiguous slots from earliest to latest
+    let mut slots: Vec<TimeSlot> = vec![];
+    let mut current_time = earliest_start;
+    while current_time < latest_end {
+        slots.push(TimeSlot {
+            start: current_time,
+            overlaps: HashMap::new(),
+        });
+        current_time = current_time + slot_duration;
+    }
+
+    // Allocate each event to its overlapping slots
+    for event in events {
+        let event_start = event.starting_time().time();
+        let event_end = event.ending_time().time();
+        let stream = Stream::Room(event.room.clone());
+
+        // Find slots this event overlaps with
+        let overlapping_slots: Vec<usize> = slots
+            .iter()
+            .enumerate()
+            .filter(|(_, slot)| {
+                let slot_start = slot.start;
+                let slot_end = slot.start + slot_duration;
+                // Event overlaps with slot if they intersect
+                event_start < slot_end && event_end > slot_start
+            })
+            .map(|(idx, _)| idx)
+            .collect();
+
+        if overlapping_slots.is_empty() {
+            continue;
+        }
+
+        let first_slot = *overlapping_slots.first().unwrap();
+        let last_slot = *overlapping_slots.last().unwrap();
+
+        for slot_idx in overlapping_slots {
+            let overlap = if slot_idx == first_slot {
+                EventOverlap::Beginning(Box::new((*event).clone()))
+            } else if slot_idx == last_slot {
+                EventOverlap::End(Box::new((*event).clone()))
+            } else {
+                EventOverlap::Middle(Box::new((*event).clone()))
+            };
+
+            slots[slot_idx].overlaps.insert(stream.clone(), overlap);
+        }
+    }
+
+    Timetable {
+        day,
+        slots,
+        slot_duration,
+    }
 }
 
 #[cfg(test)]
