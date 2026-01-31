@@ -9,6 +9,18 @@
     svg[data-bookmark-status="true"] circle {
         fill: green;
     }
+
+    thead th.room {
+        writing-mode: vertical-rl;
+    }
+
+    div.normal {
+        display: none;
+    }
+
+    table {
+        font-size: x-small;
+    }
 </style>
 <section class="section">
     {% for timetable in timetables %}
@@ -28,7 +40,7 @@
                         <th>Time</th>
                         {% for stream in timetable.unique_streams() %}
                         {% if let planning::Stream::Room(room_name) = stream %}
-                        <th><a href="/room/{{ room_name }}/">
+                        <th class="room"><a href="/room/{{ room_name }}/">
                                 {{ room_name }}
                             </a>
                         </th>
@@ -47,12 +59,17 @@
                         {% match overlap %}
                         {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
                         <td rowspan="{{ slot_coverage }}">
-                            <svg data-event-id="{{ event.id }}" data-bookmark-status="false" width="10px" height="10px"
-                                viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
-                                preserveAspectRatio="xMidYMid meet">
-                                <circle cx="18" cy="18" r="18"></circle>
-                            </svg>
+                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                                title="{{ event.starting_time().format(" %H:%M") }}->{{
+                                event.ending_time().format("%H:%M") }} {{ event.title }}"
+                                >
+                                <svg data-event-id="{{ event.id }}" data-bookmark-status="false" width="10px"
+                                    height="10px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <circle cx="18" cy="18" r="18"></circle>
+                                </svg>
+                            </a>
                             <div class="normal">
                                 <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
                                     title="{{ event.starting_time().format(" %H:%M") }}->{{
