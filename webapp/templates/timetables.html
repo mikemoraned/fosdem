@@ -1,6 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<style>
+    svg[data-bookmark-status="false"] circle {
+        fill: red;
+    }
+
+    svg[data-bookmark-status="true"] circle {
+        fill: green;
+    }
+</style>
 <section class="section">
     {% for timetable in timetables %}
     <div class="box">
@@ -38,23 +47,31 @@
                         {% match overlap %}
                         {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
                         <td rowspan="{{ slot_coverage }}">
-                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
-                                title="{{ event.starting_time().format(" %H:%M") }}->{{
-                                event.ending_time().format("%H:%M") }} {{ event.title }}"
-                                data-event-id="{{ event.id }}" data-bookmark-status="false">
-                                {{ event.title|truncate_title(50) }}
-                            </a>
-                            <span data-event-id="{{ event.id }}" data-bookmark-status="false">
-                                <button class="button bookmark is-small" disabled>
-                                    <span class="icon is-small">
-                                        <i class="fa-solid fa-bookmark filled"></i>
-                                        <i class="fa-solid fa-bookmark-slash empty"></i>
-                                    </span>
-                                </button>
-                            </span>
-                            <a href="/room/{{ event.room }}/">
-                                <span class="tag">{{ event.room }}</span>
-                            </a>
+                            <svg data-event-id="{{ event.id }}" data-bookmark-status="false" width="10px" height="10px"
+                                viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                                preserveAspectRatio="xMidYMid meet">
+                                <circle cx="18" cy="18" r="18"></circle>
+                            </svg>
+                            <div class="normal">
+                                <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                                    title="{{ event.starting_time().format(" %H:%M") }}->{{
+                                    event.ending_time().format("%H:%M") }} {{ event.title }}"
+                                    data-event-id="{{ event.id }}" data-bookmark-status="false">
+                                    {{ event.title|truncate_title(50) }}
+                                </a>
+                                <span data-event-id="{{ event.id }}" data-bookmark-status="false">
+                                    <button class="button bookmark is-small" disabled>
+                                        <span class="icon is-small">
+                                            <i class="fa-solid fa-bookmark filled"></i>
+                                            <i class="fa-solid fa-bookmark-slash empty"></i>
+                                        </span>
+                                    </button>
+                                </span>
+                                <a href="/room/{{ event.room }}/">
+                                    <span class="tag">{{ event.room }}</span>
+                                </a>
+                            </div>
                         </td>
                         {% when planning::EventOverlap::Middle with (event) %}
                         {# Skip - covered by rowspan from Beginning #}
