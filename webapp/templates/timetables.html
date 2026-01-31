@@ -10,19 +10,24 @@
         fill: green;
     }
 
-    thead th.room {
+    section.compact thead th.room {
         writing-mode: vertical-rl;
     }
 
-    div.normal {
+    section.compact div.normal {
         display: none;
     }
 
-    table {
+    section.compact table {
         font-size: x-small;
     }
 </style>
-<section class="section">
+<section class="section compact">
+    <div class="column is-flex is-justify-content-flex-end">
+        <button id="toggle-compact" class="button is-small">
+            Toggle Compact
+        </button>
+    </div>
     {% for timetable in timetables %}
     <div class="box">
         <h2 class="title is-4">
@@ -108,4 +113,11 @@
     </div>
     {% endfor %}
 </section>
+<script>
+    document.getElementById('toggle-compact').addEventListener('click', function () {
+        document.querySelectorAll('section').forEach(function (section) {
+            section.classList.toggle('compact');
+        });
+    });
+</script>
 {% endblock %}
