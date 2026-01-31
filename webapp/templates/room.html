@@ -31,7 +31,11 @@
             </div>
         </div>
 
-       {% for event in events %}
+       {% for day in events|group_events_by_day %}
+        <h2 id="{{ day.anchor }}" class="title is-4 mt-5">
+            <a href="#{{ day.anchor }}">{{ day.short_name }}</a>
+        </h2>
+        {% for event in day.events %}
         <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
             <div class="column">
                 <div class="card" >
@@ -44,6 +48,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
         {% endfor %}
     </div>
 </section>
