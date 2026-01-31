@@ -66,7 +66,7 @@
                         <td rowspan="{{ slot_coverage }}">
                             <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
                                 title="{{ event.starting_time().format(" %H:%M") }}->{{
-                                event.ending_time().format("%H:%M") }} {{ event.title }}"
+                                event.ending_time().format("%H:%M") }} {{ event.title }}, {{ event.room }}"
                                 >
                                 <svg data-event-id="{{ event.id }}" data-bookmark-status="false" width="10px"
                                     height="10px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
