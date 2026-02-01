@@ -72,7 +72,7 @@
             event.duration }} minutes</span>,
         <a href="{{ event.nav_url(current_event) }}"><span><i class="fa-solid fa-location-dot"></i> {{ event.room
                 }}</span></a>,
-        <a href="/room/{{ event.room }}/"><span><i class="fa-solid fa-presentation-screen"></i> {{ event.room
+        <a href="/room/{{ event.room }}/#{{ event.date.format("%a")|lower }}"><span><i class="fa-solid fa-presentation-screen"></i> {{ event.room
                 }}</span></a>,
         <span><i class="fa-regular fa-train-track"></i> {{ event.track }}</span>
         {% for presenter in event.presenters %}

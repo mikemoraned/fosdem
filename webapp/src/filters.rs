@@ -1,3 +1,4 @@
+use chrono::NaiveDate;
 use shared::model::{Event, SearchItem};
 use std::collections::BTreeMap;
 use unicode_segmentation::UnicodeSegmentation;
@@ -5,6 +6,13 @@ use unicode_segmentation::UnicodeSegmentation;
 pub struct ItemsInYear {
     pub year: u32,
     pub items: Vec<SearchItem>,
+}
+
+pub struct EventsOnDay {
+    pub day: NaiveDate,
+    pub anchor: String,
+    pub short_name: String,
+    pub events: Vec<Event>,
 }
 
 fn count_graphemes(s: &str) -> usize {
@@ -88,6 +96,32 @@ pub fn group_items_by_year(
         .map(|(year, items)| ItemsInYear { year, items })
         .collect();
     result.sort_by(|a, b| b.year.cmp(&a.year));
+
+    Ok(result)
+}
+
+pub fn group_events_by_day(
+    events: &[Event],
+    _: &dyn askama::Values,
+) -> ::askama::Result<Vec<EventsOnDay>> {
+    let mut grouped: BTreeMap<NaiveDate, Vec<Event>> = BTreeMap::new();
+
+    for event in events {
+        grouped.entry(event.date).or_default().push(event.clone());
+    }
+
+    let result: Vec<EventsOnDay> = grouped
+        .into_iter()
+        .map(|(day, events)| {
+            let short_name = day.format("%a").to_string();
+            EventsOnDay {
+                day,
+                anchor: short_name.to_lowercase(),
+                short_name,
+                events,
+            }
+        })
+        .collect();
 
     Ok(result)
 }

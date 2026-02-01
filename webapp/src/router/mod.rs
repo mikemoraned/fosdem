@@ -60,7 +60,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/sitemap.xml", get(sitemap::sitemap))
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
-        .route("/timetables/", get(timetable::timetables))
+        .route("/{year}/timetable/", get(timetable::timetable))
         .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/event/{event_in_year_id}/", get(event::event_2025))

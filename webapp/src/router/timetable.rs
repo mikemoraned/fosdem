@@ -1,5 +1,8 @@
 use askama::Template;
-use axum::{extract::State, response::Html};
+use axum::{
+    extract::{Path, State},
+    response::Html,
+};
 
 use planning::Timetable;
 use shared::queryable::Queryable;
@@ -15,14 +18,16 @@ struct TimetablesTemplate {
 }
 
 #[tracing::instrument(skip(state))]
-pub async fn timetables(State(state): State<AppState>) -> axum::response::Result<Html<String>> {
+pub async fn timetable(
+    State(state): State<AppState>,
+    Path(year): Path<u32>,
+) -> axum::response::Result<Html<String>> {
     let all_events = state.queryable.load_all_events().await.unwrap();
 
-    // Filter events for the current FOSDEM year
-    let current_year = state.current_fosdem.year;
+    // Filter events for the requested year
     let events_for_year: Vec<_> = all_events
         .into_iter()
-        .filter(|e| e.year == current_year)
+        .filter(|e| e.year == year)
         .collect();
 
     // Allocate events into timetables
