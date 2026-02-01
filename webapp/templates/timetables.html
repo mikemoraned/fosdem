@@ -45,7 +45,7 @@
                         <th>Time</th>
                         {% for stream in timetable.unique_streams() %}
                         {% if let planning::Stream::Room(room_name) = stream %}
-                        <th class="room"><a href="/room/{{ room_name }}/">
+                        <th class="room"><a href="/room/{{ room_name }}/#{{ timetable.day.format("%a")|lower }}">
                                 {{ room_name }}
                             </a>
                         </th>
@@ -90,7 +90,7 @@
                                         </span>
                                     </button>
                                 </span>
-                                <a href="/room/{{ event.room }}/">
+                                <a href="/room/{{ event.room }}/#{{ event.date.format("%a")|lower }}">
                                     <span class="tag">{{ event.room }}</span>
                                 </a>
                             </div>
