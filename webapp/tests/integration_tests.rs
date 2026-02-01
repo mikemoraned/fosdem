@@ -150,3 +150,28 @@ fn test_404_for_nonexistent_route() {
 
     assert_eq!(response.status(), 404);
 }
+
+fn assert_generic_timetable_content(body: &str) {
+    // Should contain day headings (Saturday/Sunday for FOSDEM)
+    assert!(body.contains("Saturday"));
+    assert!(body.contains("Sunday"));
+    // Should contain table structure
+    assert!(body.contains("<table"));
+    assert!(body.contains("Time"));
+}
+
+#[test]
+fn test_timetable_2025_exists() {
+    let response = exists_at_path("/2025/timetable/").expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains("2025"));
+    assert_generic_timetable_content(&body);
+}
+
+#[test]
+fn test_timetable_2026_exists() {
+    let response = exists_at_path("/2026/timetable/").expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains("2026"));
+    assert_generic_timetable_content(&body);
+}
