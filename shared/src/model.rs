@@ -171,7 +171,10 @@ impl Event {
         let video_links: Vec<Url> = self
             .links
             .iter()
-            .filter(|l| l.name == "Video recording (mp4)" && l.url.to_string().ends_with(".mp4"))
+            .filter(|l| {
+                l.name.to_lowercase().contains("video recording (mp4)")
+                    && l.url.to_string().ends_with(".mp4")
+            })
             .map(|l| l.url.clone())
             .collect();
         video_links.first().cloned()
@@ -212,4 +215,70 @@ pub struct NextEvents {
 pub enum NextEventsContext {
     Now,
     EventId(model::EventId),
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use chrono::NaiveDate;
+
+    fn make_event_with_links(links: Vec<Link>) -> Event {
+        Event {
+            id: EventId::new(2024, 1),
+            guid: "guid".to_string(),
+            year: 2024,
+            date: NaiveDate::from_ymd_opt(2024, 1, 1).unwrap(),
+            start: NaiveTime::from_hms_opt(10, 0, 0).unwrap(),
+            duration: 30,
+            room: "Room".to_string(),
+            track: "Track".to_string(),
+            title: "Title".to_string(),
+            slug: "slug".to_string(),
+            url: "https://example.com".parse().unwrap(),
+            r#abstract: "Abstract".to_string(),
+            slides: vec![],
+            presenters: vec![],
+            links,
+        }
+    }
+
+    #[test]
+    fn test_mp4_video_link_exact_match() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording (mp4)".to_string(),
+            url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+        }]);
+
+        assert!(event.mp4_video_link().is_some());
+    }
+
+    #[test]
+    fn test_mp4_video_link_with_size_suffix() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording (MP4) - 357.1 MB".to_string(),
+            url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+        }]);
+
+        assert!(event.mp4_video_link().is_some());
+    }
+
+    #[test]
+    fn test_mp4_video_link_no_match() {
+        let event = make_event_with_links(vec![Link {
+            name: "Some other link".to_string(),
+            url: "https://example.com".parse().unwrap(),
+        }]);
+
+        assert!(event.mp4_video_link().is_none());
+    }
+
+    #[test]
+    fn test_mp4_video_link_wrong_extension() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording (mp4)".to_string(),
+            url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
+        }]);
+
+        assert!(event.mp4_video_link().is_none());
+    }
 }
