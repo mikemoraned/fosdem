@@ -35,6 +35,9 @@ bring_up_to_date: fetch_schedules import_schedules index_next
 webapp:
     RUST_LOG=debug cargo run --bin fly -- --model-dir {{model_dir}} --current-year {{current_year}} --selectable-years "{{years}}"
 
+test_webapp:
+    cargo test -p webapp --test integration_tests
+
 deploy_staging: deploy_staging_secrets deploy_staging_app test_staging
 
 deploy_staging_secrets:
