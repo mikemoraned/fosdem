@@ -4,3 +4,4 @@ pub mod inmemory_openai;
 pub mod model;
 pub mod openai;
 pub mod queryable;
+pub mod summary;

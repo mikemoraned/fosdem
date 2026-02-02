@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h1 class="title">Blog</h1>
+
+            {% if posts.is_empty() %}
+            <p>No posts yet.</p>
+            {% else %}
+            {% for post in posts %}
+            <div class="box">
+                <article class="media">
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <a href="{{ post.url_path() }}"><strong>{{ post.title }}</strong></a>
+                                <br>
+                                <small>{{ post.date.format("%B %d, %Y") }}</small>
+                                {% if !post.tags.is_empty() %}
+                                <br>
+                                <span class="tags mt-2">
+                                    {% for tag in post.tags %}
+                                    <span class="tag is-info is-light">{{ tag }}</span>
+                                    {% endfor %}
+                                </span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

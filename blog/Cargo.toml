@@ -1,0 +1,16 @@
+[package]
+name = "blog"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = { workspace = true }
+serde = { workspace = true }
+tokio = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+pulldown-cmark = "0.13"
+gray_matter = { version = "0.2", features = ["yaml"] }
+thiserror = "2.0"
+shared = { path = "../shared" }

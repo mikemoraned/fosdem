@@ -52,11 +52,11 @@ fn test_homepage_contains_expected_content() {
 }
 
 fn event_id_as_anchor_text(event_id: EventId) -> String {
-    return format!(
+    format!(
         "<a name=\"{}-{}\"></a>",
         event_id.year(),
         event_id.event_in_year()
-    );
+    )
 }
 
 fn assert_any_year_search(path_and_query: &str) {
@@ -174,4 +174,40 @@ fn test_timetable_2026_exists() {
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("2026"));
     assert_generic_timetable_content(&body);
+}
+
+#[test]
+fn test_blog_list_exists() {
+    let response = exists_at_path("/blog/").expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains("Blog"));
+    assert!(body.contains("Data Update"));
+}
+
+#[test]
+fn test_blog_post_exists() {
+    let response = exists_at_path("/blog/2026-02-02/").expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains("Data Update"));
+    assert!(body.contains("Updated event data."));
+}
+
+#[test]
+fn test_blog_post_404_for_nonexistent() {
+    let response = client()
+        .get(format!("{}/blog/1999-01-01/", get_base_url()))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 404);
+}
+
+#[test]
+fn test_rss_feed_exists() {
+    let response = exists_at_path("/rss.xml").expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains("<rss"));
+    assert!(body.contains("FOSDEM 2026"));
+    assert!(body.contains("Data Update"));
+    assert!(body.contains("/blog/2026-02-02/"));
 }

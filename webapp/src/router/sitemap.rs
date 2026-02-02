@@ -23,29 +23,36 @@ pub async fn sitemap(Host(host): Host, State(state): State<AppState>) -> Respons
             return (StatusCode::INTERNAL_SERVER_ERROR, "Failed to load events").into_response()
         }
     };
-    let urls = events
-        .into_iter()
-        .map(|event| {
-            let mut builder = Url::builder(format!(
-                "{}/{}/event/{}/",
-                base_url,
-                event.id.year(),
-                event.id.event_in_year()
-            ));
-            builder.last_modified(state.current_fosdem.updated_at.fixed_offset());
+    let event_urls = events.into_iter().map(|event| {
+        let mut builder = Url::builder(format!(
+            "{}/{}/event/{}/",
+            base_url,
+            event.id.year(),
+            event.id.event_in_year()
+        ));
+        builder.last_modified(state.current_fosdem.updated_at.fixed_offset());
 
-            if event.year == state.current_fosdem.year {
-                builder
-                    .change_frequency(ChangeFrequency::Daily)
-                    .priority(1.0);
-            } else {
-                builder
-                    .change_frequency(ChangeFrequency::Weekly)
-                    .priority(0.5);
-            }
-            builder.build().unwrap()
-        })
-        .collect::<Vec<Url>>();
+        if event.year == state.current_fosdem.year {
+            builder
+                .change_frequency(ChangeFrequency::Daily)
+                .priority(1.0);
+        } else {
+            builder
+                .change_frequency(ChangeFrequency::Weekly)
+                .priority(0.5);
+        }
+        builder.build().unwrap()
+    });
+
+    let blog_urls = state.blog_index.all_posts().iter().map(|post| {
+        Url::builder(format!("{}{}", base_url, post.url_path()))
+            .change_frequency(ChangeFrequency::Monthly)
+            .priority(0.6)
+            .build()
+            .unwrap()
+    });
+
+    let urls: Vec<Url> = event_urls.chain(blog_urls).collect();
 
     let url_set = match UrlSet::new(urls) {
         Ok(set) => set,

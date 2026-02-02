@@ -33,6 +33,10 @@ struct Args {
     #[arg(long)]
     include_video_content: Option<PathBuf>,
 
+    /// path to blog posts directory
+    #[arg(long)]
+    blog_content_dir: PathBuf,
+
     /// enable opentelemetry
     #[arg(long)]
     opentelemetry: bool,
@@ -64,6 +68,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         &openai_api_key,
         &args.model_dir,
         &args.include_video_content,
+        &args.blog_content_dir,
         args.current_year,
         args.selectable_years,
         Utc::now(),

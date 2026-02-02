@@ -1,6 +1,7 @@
 use std::{path::PathBuf, sync::Arc};
 
 use axum::{http::Method, routing::get, Router};
+use ::blog::BlogIndex;
 use chrono::{DateTime, Utc};
 use content::video_index::VideoIndex;
 use shared::inmemory_openai::InMemoryOpenAIQueryable;
@@ -11,6 +12,7 @@ use tower_http::{
 
 use crate::state::AppState;
 
+mod blog;
 mod bookmark;
 mod event;
 mod index;
@@ -26,6 +28,7 @@ pub async fn app_state(
     openai_api_key: &str,
     model_dir: &std::path::Path,
     video_content_dir: &Option<PathBuf>,
+    blog_content_dir: &std::path::Path,
     current_year: u32,
     selectable_years: Vec<u32>,
     started_at: DateTime<Utc>,
@@ -46,6 +49,7 @@ pub async fn app_state(
             selectable_years,
             updated_at: started_at,
         },
+        blog_index: Arc::new(BlogIndex::load_from_dir(blog_content_dir).unwrap()),
     }
 }
 
@@ -58,6 +62,9 @@ pub async fn router(state: AppState) -> Router {
     Router::new()
         .route("/", get(index::index))
         .route("/sitemap.xml", get(sitemap::sitemap))
+        .route("/rss.xml", get(blog::rss_feed))
+        .route("/blog/", get(blog::blog_list))
+        .route("/blog/{date}/", get(blog::blog_post))
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
         .route("/{year}/timetable/", get(timetable::timetable))
