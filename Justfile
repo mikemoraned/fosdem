@@ -3,6 +3,7 @@ years := "2024 2025 2026"
 current_year := "2026"
 pentabarf_dir := "./content/schedule"
 assets_dir := "./assets"
+blog_content_dir := "./blog/content/posts"
 
 export OPENAI_API_KEY := `op read "op://Dev/fosdem-local-openai-key/password"`
 
@@ -33,7 +34,7 @@ bring_up_to_date: fetch_schedules import_schedules index_next
     cargo test -p shared --test integration_tests
 
 webapp:
-    RUST_LOG=debug cargo run --bin fly -- --model-dir {{model_dir}} --current-year {{current_year}} --selectable-years "{{years}}"
+    RUST_LOG=debug cargo run --bin fly -- --model-dir {{model_dir}} --blog-content-dir {{blog_content_dir}} --current-year {{current_year}} --selectable-years "{{years}}"
 
 test_webapp:
     cargo test -p webapp --test integration_tests

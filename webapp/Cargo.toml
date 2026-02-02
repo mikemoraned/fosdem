@@ -23,7 +23,9 @@ chrono = { workspace = true }
 shared = { path = "../shared" }
 content = { path = "../content" }
 planning = { path = "../planning" }
+blog = { path = "../blog" }
 sitemap-rs = "0.4.0"
+rss = "2.0"
 axum-extra = "0.12.3"
 
 [dev-dependencies]

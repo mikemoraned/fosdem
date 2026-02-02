@@ -41,4 +41,22 @@
         </div>
     </div>
 </section>
+
+{% if !recent_posts.is_empty() %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h2 class="title is-4">Recent News</h2>
+            {% for post in recent_posts %}
+            <div class="box">
+                <a href="{{ post.url_path() }}"><strong>{{ post.title }}</strong></a>
+                <br>
+                <small>{{ post.date.format("%B %d, %Y") }}</small>
+            </div>
+            {% endfor %}
+            <a href="/blog/">View all news</a>
+        </div>
+    </div>
+</section>
+{% endif %}
 {% endblock %}
