@@ -437,10 +437,15 @@ name = "blog"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "clap",
  "gray_matter",
  "pulldown-cmark",
  "serde",
+ "shared",
  "thiserror 2.0.17",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
