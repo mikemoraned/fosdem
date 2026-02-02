@@ -37,14 +37,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     content.push_str("tags:\n");
     content.push_str("  - data\n");
     content.push_str("---\n\n");
-    content.push_str(&format!(
-        "Updated event data. Total events: {}.\n\n",
-        summary.total_events()
-    ));
-    content.push_str("| Year | Events |\n");
-    content.push_str("|------|--------|\n");
-    for (year, count) in &summary.events_by_year {
-        content.push_str(&format!("| {} | {} |\n", year, count));
+    content.push_str("Updated event data.\n\n");
+    content.push_str("| Year | Events | People | Rooms | Tracks |\n");
+    content.push_str("|------|--------|--------|-------|--------|\n");
+    for (year, s) in &summary.by_year {
+        content.push_str(&format!(
+            "| {} | {} | {} | {} | {} |\n",
+            year, s.events, s.people, s.rooms, s.tracks
+        ));
     }
 
     std::fs::write(&post_path, content)?;
