@@ -38,12 +38,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     content.push_str("  - data\n");
     content.push_str("---\n\n");
     content.push_str("Updated event data.\n\n");
-    content.push_str("| Year | Events | People | Rooms | Tracks |\n");
-    content.push_str("|------|--------|--------|-------|--------|\n");
+    content.push_str("| Year | Events | People | Rooms | Tracks | Videos | Slides | Links |\n");
+    content.push_str("|------|--------|--------|-------|--------|--------|--------|-------|\n");
     for (year, s) in &summary.by_year {
         content.push_str(&format!(
-            "| {} | {} | {} | {} | {} |\n",
-            year, s.events, s.people, s.rooms, s.tracks
+            "| {} | {} | {} | {} | {} | {} | {} | {} |\n",
+            year, s.events, s.people, s.rooms, s.tracks, s.videos, s.slides, s.links
         ));
     }
 
