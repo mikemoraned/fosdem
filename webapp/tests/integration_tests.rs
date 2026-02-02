@@ -181,15 +181,15 @@ fn test_blog_list_exists() {
     let response = exists_at_path("/blog/").expect("exists");
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("Blog"));
-    assert!(body.contains("Hello World"));
+    assert!(body.contains("Data Update"));
 }
 
 #[test]
 fn test_blog_post_exists() {
     let response = exists_at_path("/blog/2026-02-02/").expect("exists");
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains("Hello World"));
-    assert!(body.contains("First post"));
+    assert!(body.contains("Data Update"));
+    assert!(body.contains("Updated event data."));
 }
 
 #[test]
@@ -208,6 +208,6 @@ fn test_rss_feed_exists() {
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("<rss"));
     assert!(body.contains("FOSDEM 2026"));
-    assert!(body.contains("Hello World"));
+    assert!(body.contains("Data Update"));
     assert!(body.contains("/blog/2026-02-02/"));
 }
