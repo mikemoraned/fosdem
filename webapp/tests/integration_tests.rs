@@ -52,11 +52,11 @@ fn test_homepage_contains_expected_content() {
 }
 
 fn event_id_as_anchor_text(event_id: EventId) -> String {
-    return format!(
+    format!(
         "<a name=\"{}-{}\"></a>",
         event_id.year(),
         event_id.event_in_year()
-    );
+    )
 }
 
 fn assert_any_year_search(path_and_query: &str) {
