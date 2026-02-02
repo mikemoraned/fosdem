@@ -1,5 +1,7 @@
 use std::collections::{BTreeMap, HashSet};
 
+use chrono::Duration;
+
 use crate::{model::PersonId, queryable::Queryable};
 
 #[derive(Debug)]
@@ -9,6 +11,7 @@ pub struct Summary {
     pub rooms: usize,
     pub tracks: usize,
     pub videos: usize,
+    pub video_duration: Duration,
     pub slides: usize,
     pub links: usize,
 }
@@ -28,6 +31,7 @@ pub async fn load_summary<Q: Queryable>(
     let mut rooms_by_year: BTreeMap<u32, HashSet<String>> = BTreeMap::new();
     let mut tracks_by_year: BTreeMap<u32, HashSet<String>> = BTreeMap::new();
     let mut videos_by_year: BTreeMap<u32, usize> = BTreeMap::new();
+    let mut video_duration_by_year: BTreeMap<u32, Duration> = BTreeMap::new();
     let mut slides_by_year: BTreeMap<u32, usize> = BTreeMap::new();
     let mut links_by_year: BTreeMap<u32, usize> = BTreeMap::new();
 
@@ -51,6 +55,8 @@ pub async fn load_summary<Q: Queryable>(
 
         if event.mp4_video_link().is_some() {
             *videos_by_year.entry(year).or_insert(0) += 1;
+            *video_duration_by_year.entry(year).or_insert(Duration::zero()) +=
+                Duration::minutes(event.duration.into());
         }
 
         *slides_by_year.entry(year).or_insert(0) += event.slides.len();
@@ -67,6 +73,9 @@ pub async fn load_summary<Q: Queryable>(
                 rooms: rooms_by_year.get(year).map_or(0, |s| s.len()),
                 tracks: tracks_by_year.get(year).map_or(0, |s| s.len()),
                 videos: *videos_by_year.get(year).unwrap_or(&0),
+                video_duration: *video_duration_by_year
+                    .get(year)
+                    .unwrap_or(&Duration::zero()),
                 slides: *slides_by_year.get(year).unwrap_or(&0),
                 links: *links_by_year.get(year).unwrap_or(&0),
             },
@@ -246,6 +255,7 @@ mod tests {
 
         let year_2024 = summary.by_year.get(&2024).unwrap();
         assert_eq!(year_2024.videos, 1); // Only first event has video
+        assert_eq!(year_2024.video_duration, Duration::minutes(30)); // 30 min event duration
         assert_eq!(year_2024.slides, 3); // 2 + 1
         assert_eq!(year_2024.links, 4);  // 3 + 1
     }
@@ -259,6 +269,7 @@ mod tests {
 
         let year_2024 = summary.by_year.get(&2024).unwrap();
         assert_eq!(year_2024.videos, 0);
+        assert_eq!(year_2024.video_duration, Duration::zero());
         assert_eq!(year_2024.slides, 0);
         assert_eq!(year_2024.links, 0);
     }

@@ -41,9 +41,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     content.push_str("| Year | Events | People | Rooms | Tracks | Videos | Slides | Links |\n");
     content.push_str("|------|--------|--------|-------|--------|--------|--------|-------|\n");
     for (year, s) in &summary.by_year {
+        let video_hours = s.video_duration.num_hours();
         content.push_str(&format!(
-            "| {} | {} | {} | {} | {} | {} | {} | {} |\n",
-            year, s.events, s.people, s.rooms, s.tracks, s.videos, s.slides, s.links
+            "| {} | {} | {} | {} | {} | {} (~{}h) | {} | {} |\n",
+            year, s.events, s.people, s.rooms, s.tracks, s.videos, video_hours, s.slides, s.links
         ));
     }
 
