@@ -27,7 +27,7 @@
     * update nav to have a timetable link which goes to current year
     * choose an appropriate icon (`fa-calendar-days`)
     * use `is-hidden-mobile` on text labels so icons only show on mobile, icon+text on tablet/desktop
-* [ ] blog entry on changes
+* [x] blog entry on changes
 
 ## Ideas
 
