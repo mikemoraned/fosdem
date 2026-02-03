@@ -1,7 +1,7 @@
 use std::{path::PathBuf, sync::Arc};
 
-use axum::{http::Method, routing::get, Router};
 use ::blog::BlogIndex;
+use axum::{http::Method, routing::get, Router};
 use chrono::{DateTime, Utc};
 use content::video_index::VideoIndex;
 use shared::inmemory_openai::InMemoryOpenAIQueryable;
@@ -17,7 +17,6 @@ mod bookmark;
 mod event;
 mod index;
 mod next;
-pub mod related;
 mod room;
 mod search;
 mod sitemap;
@@ -68,7 +67,6 @@ pub async fn router(state: AppState) -> Router {
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
         .route("/{year}/timetable/", get(timetable::timetable))
-        .route("/connections/", get(related::related))
         .route("/next/", get(next::next))
         .route("/event/{event_in_year_id}/", get(event::event_2025))
         .route("/{year}/event/{event_in_year_id}/", get(event::event))

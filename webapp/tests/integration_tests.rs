@@ -45,7 +45,7 @@ fn test_homepage_contains_expected_content() {
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("<!DOCTYPE html>"));
     assert!(body.contains("<title>FOSDEM 2026</title>"));
-    assert!(body.contains("<a href=\"https://fosdem.org/2026/\">FOSDEM 2026</a>"));
+    assert!(body.contains("<a href=\"https://fosdem.org/2026/\">2026</a>"));
     assert!(body.contains(
         "All content such as talks and biographies is the sole responsibility of the speaker."
     ));
