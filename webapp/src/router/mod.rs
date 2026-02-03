@@ -16,7 +16,6 @@ mod blog;
 mod bookmark;
 mod event;
 mod index;
-mod next;
 mod room;
 mod search;
 mod sitemap;
@@ -67,7 +66,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/search", get(search::search))
         .route("/bookmarks", get(bookmark::bookmarks))
         .route("/{year}/timetable/", get(timetable::timetable))
-        .route("/next/", get(next::next))
+        .route("/next/", get(timetable::next_redirect))
         .route("/event/{event_in_year_id}/", get(event::event_2025))
         .route("/{year}/event/{event_in_year_id}/", get(event::event))
         .route("/room/{room_id}/", get(room::room))

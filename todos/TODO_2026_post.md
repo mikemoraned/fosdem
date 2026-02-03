@@ -14,12 +14,16 @@
         * related nav entries
         * home page explanation
         * route handler, `related.rs`
-* [ ] remove `next` feature
-    * [ ] add redirect from `/next` -> `/{current_year}/timetable/`
-    * [ ] 
-    * ...
-* [ ] inline blog entry:
-    * also do data update
+* [x] remove `next` feature
+    * [x] web:
+        * remove nav links for `/next`
+        * remove `now_and_next.html`
+    * [x] add a redirect from `/next` -> `/{current_year}/timetable/` (so people get taken to current years timetable)
+        * do this by removing `next.rs` handler and adding a `next` handler to `timetable.rs`
+    * [x] find and remove unneeded code like `find_next_events` or anything else that was previously used by `next.rs` and not by anything else
+* [ ] add timetable nav:
+    * update nav to have a timetable link which goes to current year
+* [ ] blog entry on changes
 
 ## Ideas
 

@@ -5,8 +5,6 @@ use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 use url::Url;
 
-use crate::model;
-
 #[derive(Debug, Clone)]
 pub struct CurrentFosdem {
     pub year: u32,
@@ -201,20 +199,6 @@ impl OpenAIEmbedding {
             }
         }
     }
-}
-
-#[derive(Debug, Clone)]
-pub struct NextEvents {
-    pub now: NaiveDateTime,
-    pub current: Vec<Event>,
-    pub selected: Event,
-    pub next: Vec<Event>,
-}
-
-#[derive(Debug)]
-pub enum NextEventsContext {
-    Now,
-    EventId(model::EventId),
 }
 
 #[cfg(test)]
