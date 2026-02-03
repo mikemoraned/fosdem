@@ -46,24 +46,14 @@
                 </span>
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMore">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarMore" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item bookmark is-disabled" href="/bookmarks">
-                    <span class="icon-text">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark"></i>
-                        </span>
-                        <span>Bookmarks</span>
+            <a class="navbar-item bookmark is-disabled" href="/bookmarks">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-solid fa-bookmark"></i>
                     </span>
-                </a>
-            </div>
+                    <span class="is-hidden-mobile">Bookmarks</span>
+                </span>
+            </a>
         </div>
     </nav>
 
@@ -88,7 +78,6 @@
             </p>
         </div>
     </footer>
-    <script src="/assets/nav.js"></script>
     {% block bookmarks_callbacks %}
     <script type="module">
         document.bookmarksCallbacks = [];
