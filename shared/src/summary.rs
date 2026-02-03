@@ -126,13 +126,6 @@ mod tests {
         ) -> Result<Vec<crate::model::SearchItem>, Box<dyn std::error::Error>> {
             unimplemented!()
         }
-
-        async fn find_next_events(
-            &self,
-            _: crate::model::NextEventsContext,
-        ) -> Result<crate::model::NextEvents, Box<dyn std::error::Error>> {
-            unimplemented!()
-        }
     }
 
     fn make_event(

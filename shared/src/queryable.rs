@@ -1,4 +1,4 @@
-use crate::model::{Event, EventId, NextEvents, NextEventsContext, SearchItem};
+use crate::model::{Event, EventId, SearchItem};
 
 pub const MAX_RELATED_EVENTS: u8 = 5;
 
@@ -25,9 +25,4 @@ pub trait Queryable {
         find_related: bool,
         year_filter: Option<u32>,
     ) -> Result<Vec<SearchItem>, Box<dyn std::error::Error>>;
-
-    async fn find_next_events(
-        &self,
-        context: NextEventsContext,
-    ) -> Result<NextEvents, Box<dyn std::error::Error>>;
 }

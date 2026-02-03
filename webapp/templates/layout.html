@@ -28,13 +28,12 @@
                 </span>
             </a>
 
-            <a class="navbar-item" href="/next/">
+            <a class="navbar-item" href="/{{ current_fosdem.year }}/timetable/">
                 <span class="icon-text">
                     <span class="icon">
-                        <i class="fa-duotone fa-person-running-fast"></i>
+                        <i class="fa-solid fa-calendar-days"></i>
                     </span>
-                    <span class="is-hidden-desktop">Next</span>
-                    <span class="is-hidden-touch">Now and Next</span>
+                    <span class="is-hidden-mobile">Timetable</span>
                 </span>
             </a>
 
@@ -43,37 +42,18 @@
                     <span class="icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <span>Search</span>
+                    <span class="is-hidden-mobile">Search</span>
                 </span>
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMore">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+            <a class="navbar-item bookmark is-disabled" href="/bookmarks">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </span>
+                    <span class="is-hidden-mobile">Bookmarks</span>
+                </span>
             </a>
-        </div>
-
-        <div id="navbarMore" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item bookmark is-disabled" href="/bookmarks">
-                    <span class="icon-text">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark"></i>
-                        </span>
-                        <span>Bookmarks</span>
-                    </span>
-                </a>
-
-                <a class="navbar-item" href="/connections/">
-                    <span class="icon-text">
-                        <span class="icon">
-                            <i class="fa-duotone fa-arrow-right-arrow-left"></i>
-                        </span>
-                        <span>Connections</span>
-                    </span>
-                </a>
-            </div>
         </div>
     </nav>
 
@@ -98,7 +78,6 @@
             </p>
         </div>
     </footer>
-    <script src="/assets/nav.js"></script>
     {% block bookmarks_callbacks %}
     <script type="module">
         document.bookmarksCallbacks = [];

@@ -45,7 +45,7 @@ fn test_homepage_contains_expected_content() {
     let body = response.text().expect("Failed to read body");
     assert!(body.contains("<!DOCTYPE html>"));
     assert!(body.contains("<title>FOSDEM 2026</title>"));
-    assert!(body.contains("<a href=\"https://fosdem.org/2026/\">FOSDEM 2026</a>"));
+    assert!(body.contains("<a href=\"https://fosdem.org/2026/\">2026</a>"));
     assert!(body.contains(
         "All content such as talks and biographies is the sole responsibility of the speaker."
     ));
@@ -210,4 +210,25 @@ fn test_rss_feed_exists() {
     assert!(body.contains("FOSDEM 2026"));
     assert!(body.contains("Data Update"));
     assert!(body.contains("/blog/2026-02-02/"));
+}
+
+#[test]
+fn test_next_redirects_to_current_year_timetable() {
+    let client = Client::builder()
+        .redirect(reqwest::redirect::Policy::none())
+        .timeout(std::time::Duration::from_secs(10))
+        .build()
+        .expect("Failed to create HTTP client");
+
+    let response = client
+        .get(format!("{}/next/", get_base_url()))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 307); // Temporary Redirect
+    let location = response
+        .headers()
+        .get("location")
+        .expect("Missing Location header");
+    assert_eq!(location, "/2026/timetable/");
 }

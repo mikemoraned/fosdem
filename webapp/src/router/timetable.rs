@@ -1,7 +1,7 @@
 use askama::Template;
 use axum::{
     extract::{Path, State},
-    response::Html,
+    response::{Html, Redirect},
 };
 
 use planning::Timetable;
@@ -9,6 +9,13 @@ use shared::queryable::Queryable;
 
 use crate::filters;
 use crate::state::AppState;
+
+/// Redirect /next/ to the current year's timetable
+#[tracing::instrument(skip(state))]
+pub async fn next_redirect(State(state): State<AppState>) -> Redirect {
+    let year = state.current_fosdem.year;
+    Redirect::temporary(&format!("/{}/timetable/", year))
+}
 
 #[derive(Template, Debug)]
 #[template(path = "timetables.html")]
