@@ -1,5 +1,7 @@
 # Post 2026 ideas / bugs / niggles
 
+(Some of these are TODO's for me, and some are specifically for claude)
+
 ## Cleanups
 
 * [x] remove `connections` feature
@@ -21,8 +23,10 @@
     * [x] add a redirect from `/next` -> `/{current_year}/timetable/` (so people get taken to current years timetable)
         * do this by removing `next.rs` handler and adding a `next` handler to `timetable.rs`
     * [x] find and remove unneeded code like `find_next_events` or anything else that was previously used by `next.rs` and not by anything else
-* [ ] add timetable nav:
+* [x] add timetable to nav:
     * update nav to have a timetable link which goes to current year
+    * choose an appropriate icon (`fa-calendar-days`)
+    * use `is-hidden-mobile` on text labels so icons only show on mobile, icon+text on tablet/desktop
 * [ ] blog entry on changes
 
 ## Ideas
