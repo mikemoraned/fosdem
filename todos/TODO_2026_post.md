@@ -15,6 +15,8 @@
         * home page explanation
         * route handler, `related.rs`
 * [ ] remove `next` feature
+    * [ ] add redirect from `/next` -> `/{current_year}/timetable/`
+    * [ ] 
     * ...
 * [ ] inline blog entry:
     * also do data update
