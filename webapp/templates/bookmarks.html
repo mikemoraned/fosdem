@@ -23,6 +23,15 @@
             </div>
         </div>
     </div>
+    <div class="columns" id="video-player-container" style="display: none;">
+        <div class="column">
+            <div class="box">
+                <h5 class="title is-5"><i class="fa-solid fa-video"></i> Bookmarked Videos</h5>
+                <video id="bookmarks-video" controls width="100%"></video>
+                <p class="mt-2"><span id="video-current">0</span> / <span id="video-total">0</span></p>
+            </div>
+        </div>
+    </div>
     {% for event in events %}
     <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
         <div class="column">
@@ -85,6 +94,65 @@
 <script type="module">
     import { bindExport, bindImport } from '/assets/bookmarks.js';
 
-    document.bookmarksCallbacks = [ bindExport, bindImport ];
+    function bindVideoPlayer(model) {
+        const container = document.getElementById('video-player-container');
+        const video = document.getElementById('bookmarks-video');
+        const currentSpan = document.getElementById('video-current');
+        const totalSpan = document.getElementById('video-total');
+
+        let playlist = [];
+        let currentIndex = 0;
+
+        function updatePlaylist() {
+            // Find video links in bookmarked events (document order)
+            const bookmarkedEvents = document.querySelectorAll('[data-event-id][data-bookmark-status="true"]');
+            playlist = [];
+            bookmarkedEvents.forEach(event => {
+                const videoLink = event.querySelector('a[data-type="video"]');
+                if (videoLink) {
+                    playlist.push(videoLink.href);
+                }
+            });
+
+            totalSpan.textContent = playlist.length;
+
+            if (playlist.length > 0) {
+                container.style.display = '';
+                if (currentIndex >= playlist.length) {
+                    currentIndex = 0;
+                }
+                loadVideo(currentIndex);
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        function loadVideo(index) {
+            if (index >= 0 && index < playlist.length) {
+                currentIndex = index;
+                video.src = playlist[index];
+                currentSpan.textContent = index + 1;
+            }
+        }
+
+        // Auto-advance on video end
+        video.addEventListener('ended', () => {
+            if (currentIndex < playlist.length - 1) {
+                loadVideo(currentIndex + 1);
+                video.play();
+            }
+        });
+
+        // Update playlist when bookmarks change
+        const observer = new MutationObserver(updatePlaylist);
+        document.querySelectorAll('[data-event-id][data-bookmark-status]').forEach(el => {
+            observer.observe(el, { attributes: true, attributeFilter: ['data-bookmark-status'] });
+        });
+
+        // Initial playlist build (after a small delay to let bookmark status settle)
+        setTimeout(updatePlaylist, 100);
+    }
+
+    document.bookmarksCallbacks = [ bindExport, bindImport, bindVideoPlayer ];
 </script>
 {% endblock %}

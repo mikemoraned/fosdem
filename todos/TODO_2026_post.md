@@ -29,6 +29,16 @@
     * use `is-hidden-mobile` on text labels so icons only show on mobile, icon+text on tablet/desktop
 * [x] blog entry on changes
 
+## Video
+
+* [x] add simple video player for bookmarks
+    * [x] annotate all `a` links in templates which are links to videos with `data-type="video"`
+    * client-side in the `/bookmarks/` page:
+        * [x] find all video links (using data attribute above)
+        * [x] assemble a video which contains all of these, ordered by document order
+        * [x] this video should be updated whenever the bookmark status of an event changes, which can happen once on init or afterwards
+        * [x] video's should autoplay i.e. advance to next once one ends
+
 ## Ideas
 
 * bookmark heatmap of rooms and times (helps identify where/when interesting things are)
