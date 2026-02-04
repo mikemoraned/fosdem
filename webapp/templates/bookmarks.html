@@ -28,7 +28,7 @@
             <div class="box">
                 <h5 class="title is-5"><i class="fa-solid fa-video"></i> Bookmarked Videos</h5>
                 <video id="bookmarks-video" controls width="100%"></video>
-                <p class="mt-2"><span id="video-current">0</span> / <span id="video-total">0</span></p>
+                <p class="mt-2"><span id="video-current">0</span> / <span id="video-total">0</span>: <span id="video-title"></span></p>
             </div>
         </div>
     </div>
@@ -99,6 +99,7 @@
         const video = document.getElementById('bookmarks-video');
         const currentSpan = document.getElementById('video-current');
         const totalSpan = document.getElementById('video-total');
+        const titleSpan = document.getElementById('video-title');
 
         let playlist = [];
         let currentIndex = 0;
@@ -110,7 +111,9 @@
             bookmarkedEvents.forEach(event => {
                 const videoLink = event.querySelector('a[data-type="video"]');
                 if (videoLink) {
-                    playlist.push(videoLink.href);
+                    const titleEl = event.querySelector('[data-event-title]');
+                    const title = titleEl ? titleEl.textContent : '';
+                    playlist.push({ url: videoLink.href, title });
                 }
             });
 
@@ -124,14 +127,16 @@
                 loadVideo(currentIndex);
             } else {
                 container.style.display = 'none';
+                titleSpan.textContent = '';
             }
         }
 
         function loadVideo(index) {
             if (index >= 0 && index < playlist.length) {
                 currentIndex = index;
-                video.src = playlist[index];
+                video.src = playlist[index].url;
                 currentSpan.textContent = index + 1;
+                titleSpan.textContent = playlist[index].title;
             }
         }
 
