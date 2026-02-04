@@ -64,7 +64,8 @@
 <div class="card-content">
     <p class="title is-5">
         <span>
-            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;"{{ event.title }}" ({% call event_year(event.year) %})
+            <i class="fa-duotone fa-calendar-clock"></i>&nbsp;<span data-event-title>"{{ event.title }}"</span> ({% call
+            event_year(event.year) %})
         </span>
     </p>
     <p class="subtitle is-7">
@@ -72,7 +73,8 @@
             event.duration }} minutes</span>,
         <a href="{{ event.nav_url(current_event) }}"><span><i class="fa-solid fa-location-dot"></i> {{ event.room
                 }}</span></a>,
-        <a href="/room/{{ event.room }}/#{{ event.date.format("%a")|lower }}"><span><i class="fa-solid fa-presentation-screen"></i> {{ event.room
+        <a href="/room/{{ event.room }}/#{{ event.date.format(" %a")|lower }}"><span><i
+                    class="fa-solid fa-presentation-screen"></i> {{ event.room
                 }}</span></a>,
         <span><i class="fa-regular fa-train-track"></i> {{ event.track }}</span>
         {% for presenter in event.presenters %}
@@ -82,7 +84,7 @@
         , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
         {% endif %}
         {% if let Some(url) = event.mp4_video_link() %}
-        , <a href="{{ url }}"><span><i class="fa-solid fa-video"></i> video</span></a>
+        , <a href="{{ url }}" data-type="video"><span><i class="fa-solid fa-video"></i> video</span></a>
         {% endif %}
     </p>
 </div>
