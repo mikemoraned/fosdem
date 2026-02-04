@@ -28,7 +28,21 @@
             <div class="box">
                 <h5 class="title is-5"><i class="fa-solid fa-video"></i> Bookmarked Videos</h5>
                 <video id="bookmarks-video" controls width="100%"></video>
-                <p class="mt-2"><span id="video-current">0</span> / <span id="video-total">0</span>: <span id="video-title"></span></p>
+                <div class="buttons has-addons is-centered mt-3">
+                    <button class="button" id="video-prev">
+                        <span class="icon"><i class="fa-solid fa-backward-step"></i></span>
+                    </button>
+                    <button class="button" id="video-play">
+                        <span class="icon"><i class="fa-solid fa-play"></i></span>
+                    </button>
+                    <button class="button" id="video-pause">
+                        <span class="icon"><i class="fa-solid fa-pause"></i></span>
+                    </button>
+                    <button class="button" id="video-next">
+                        <span class="icon"><i class="fa-solid fa-forward-step"></i></span>
+                    </button>
+                </div>
+                <p class="has-text-centered"><span id="video-current">0</span> / <span id="video-total">0</span>: <span id="video-title"></span></p>
             </div>
         </div>
     </div>
@@ -145,6 +159,20 @@
             if (currentIndex < playlist.length - 1) {
                 loadVideo(currentIndex + 1);
                 video.play();
+            }
+        });
+
+        // Playback controls
+        document.getElementById('video-prev').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                loadVideo(currentIndex - 1);
+            }
+        });
+        document.getElementById('video-play').addEventListener('click', () => video.play());
+        document.getElementById('video-pause').addEventListener('click', () => video.pause());
+        document.getElementById('video-next').addEventListener('click', () => {
+            if (currentIndex < playlist.length - 1) {
+                loadVideo(currentIndex + 1);
             }
         });
 
