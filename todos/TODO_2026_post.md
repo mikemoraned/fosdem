@@ -38,6 +38,16 @@
         * [x] assemble a video which contains all of these, ordered by document order
         * [x] this video should be updated whenever the bookmark status of an event changes, which can happen once on init or afterwards
         * [x] video's should autoplay i.e. advance to next once one ends
+* [x] add simple video player for search
+    * user-visible behaviour for this is that a [search](https://fosdem.houseofmoran.io/search?q=controversial&limit=20&year=2026):
+        * should be expanded to have two [tabs](https://bulma.io/documentation/components/tabs/):
+            * one is the current search content, labelled "Events"; this shows all events as now
+            * the other is labelled "Videos"; this shows a video player of Events that have videos available
+        * the two tabs should only appear if at least one of the Events has a video. If there are none, then only Events content should be shown.
+    * this should be implemented by:
+        * [x] extracting an askama component for the video player which still allows existing bookmarks video player to work. So:
+            * [x] when placed in bookmarks page it has existing behaviour i.e. it finds all events which are bookmarked and collates them into a video
+            * [x] when placed on search page, it finds all events which have a video and shows them, regardless of whether they are bookmarked
 
 ## Ideas
 

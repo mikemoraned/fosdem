@@ -3,19 +3,74 @@
 {%- import "components/bookmark.html" as bookmark -%}
 {%- import "components/event.html" as event -%}
 {%- import "components/external.html" as external -%}
+{%- import "components/video_player.html" as video_player -%}
 
 {% block content %}
-<section class="section">
+<section class="section" data-has-videos="{{ has_videos }}">
     <div class="columns">
         <div class="column">
             {% call search::form(query, year, current_fosdem.selectable_years) %}
         </div>
     </div>
 
-    {% for item in items %}
-    <a name="{{item.event.id}}"></a>
-    {% call event::card(item.event, item.related) %}
-    {% endfor %}
-</section>
+    {% if has_videos %}
+    <div class="tabs is-boxed" id="search-tabs">
+        <ul>
+            <li class="is-active" data-tab="events-tab">
+                <a>
+                    <span class="icon is-small"><i class="fa-solid fa-calendar-days"></i></span>
+                    <span>Events</span>
+                </a>
+            </li>
+            <li data-tab="videos-tab">
+                <a>
+                    <span class="icon is-small"><i class="fa-solid fa-video"></i></span>
+                    <span>Videos</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% endif %}
 
+    <div id="events-tab" class="tab-content">
+        {% for item in items %}
+        <a name="{{item.event.id}}"></a>
+        {% call event::card(item.event, item.related) %}
+        {% endfor %}
+    </div>
+
+    {% if has_videos %}
+    <div id="videos-tab" class="tab-content" style="display: none;">
+        {% call video_player::player("search-video") %}
+    </div>
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block bookmarks_callbacks %}
+{% if has_videos %}
+<script type="module">
+    import { createVideoPlayer } from '/assets/video_player.js';
+
+    function bindSearchVideoPlayer(model) {
+        createVideoPlayer('search-video', '[data-has-video="true"]');
+
+        const eventsTab = document.getElementById('events-tab');
+        const videosTab = document.getElementById('videos-tab');
+
+        document.querySelectorAll('#search-tabs li').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('#search-tabs li').forEach(t => t.classList.remove('is-active'));
+                tab.classList.add('is-active');
+
+                const targetId = tab.dataset.tab;
+                eventsTab.style.display = targetId === 'events-tab' ? '' : 'none';
+                videosTab.style.display = targetId === 'videos-tab' ? '' : 'none';
+            });
+        });
+    }
+
+    document.bookmarksCallbacks = [ bindSearchVideoPlayer ];
+</script>
+{% endif %}
 {% endblock %}

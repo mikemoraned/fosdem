@@ -1,0 +1,32 @@
+{% macro buttons(player_id, extra_classes) %}
+<div class="buttons has-addons is-centered mt-3 {{ extra_classes }}">
+    <button class="button video-prev" data-player="{{ player_id }}">
+        <span class="icon"><i class="fa-solid fa-backward-step"></i></span>
+    </button>
+    <button class="button video-play" data-player="{{ player_id }}">
+        <span class="icon"><i class="fa-solid fa-play"></i></span>
+    </button>
+    <button class="button video-pause" data-player="{{ player_id }}" disabled>
+        <span class="icon"><i class="fa-solid fa-pause"></i></span>
+    </button>
+    <button class="button video-next" data-player="{{ player_id }}">
+        <span class="icon"><i class="fa-solid fa-forward-step"></i></span>
+    </button>
+</div>
+{% endmacro %}
+
+{% macro player(player_id) %}
+<div class="columns" id="{{ player_id }}-container" style="display: none;">
+    <div class="column">
+        <div class="box">
+            <h5 class="title is-5"><i class="fa-solid fa-video"></i></h5>
+            <figure class="image is-16by9">
+                <video id="{{ player_id }}" class="has-ratio" controls></video>
+            </figure>
+            {% call buttons(player_id, "is-hidden-touch") %}
+            {% call buttons(player_id, "are-large is-hidden-desktop") %}
+            <p class="has-text-centered"><span class="video-current">0</span> / <span class="video-total">0</span>: <span class="video-title"></span></p>
+        </div>
+    </div>
+</div>
+{% endmacro %}

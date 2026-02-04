@@ -177,6 +177,10 @@ impl Event {
             .collect();
         video_links.first().cloned()
     }
+
+    pub fn has_video(&self) -> bool {
+        self.mp4_video_link().is_some()
+    }
 }
 
 pub type OpenAIVector = DVector<f64>;

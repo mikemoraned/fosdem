@@ -47,6 +47,7 @@ struct SearchTemplate {
     query: String,
     year: Option<u32>,
     items: Vec<SearchItem>,
+    has_videos: bool,
     current_event: Option<Event>, // TODO: remove this
     current_fosdem: shared::model::CurrentFosdem,
 }
@@ -63,10 +64,12 @@ pub async fn search(
         .await
     {
         Ok(items) => {
+            let has_videos = items.iter().any(|item| item.event.has_video());
             let page = SearchTemplate {
                 query: params.q,
                 year: params.year,
                 items,
+                has_videos,
                 current_event: None,
                 current_fosdem: state.current_fosdem.clone(),
             };
