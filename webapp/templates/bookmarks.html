@@ -30,17 +30,31 @@
                 <figure class="image is-16by9">
                     <video id="bookmarks-video" class="has-ratio" controls></video>
                 </figure>
-                <div class="buttons has-addons is-centered mt-3">
-                    <button class="button" id="video-prev">
+                <div class="buttons has-addons is-centered mt-3 is-hidden-touch">
+                    <button class="button video-prev">
                         <span class="icon"><i class="fa-solid fa-backward-step"></i></span>
                     </button>
-                    <button class="button" id="video-play">
+                    <button class="button video-play">
                         <span class="icon"><i class="fa-solid fa-play"></i></span>
                     </button>
-                    <button class="button" id="video-pause">
+                    <button class="button video-pause" disabled>
                         <span class="icon"><i class="fa-solid fa-pause"></i></span>
                     </button>
-                    <button class="button" id="video-next">
+                    <button class="button video-next">
+                        <span class="icon"><i class="fa-solid fa-forward-step"></i></span>
+                    </button>
+                </div>
+                <div class="buttons has-addons are-large is-centered mt-3 is-hidden-desktop">
+                    <button class="button video-prev">
+                        <span class="icon"><i class="fa-solid fa-backward-step"></i></span>
+                    </button>
+                    <button class="button video-play">
+                        <span class="icon"><i class="fa-solid fa-play"></i></span>
+                    </button>
+                    <button class="button video-pause" disabled>
+                        <span class="icon"><i class="fa-solid fa-pause"></i></span>
+                    </button>
+                    <button class="button video-next">
                         <span class="icon"><i class="fa-solid fa-forward-step"></i></span>
                     </button>
                 </div>
@@ -164,18 +178,35 @@
             }
         });
 
-        // Playback controls
-        document.getElementById('video-prev').addEventListener('click', () => {
-            if (currentIndex > 0) {
-                loadVideo(currentIndex - 1);
-            }
+        // Playback controls (both button sets)
+        const playBtns = document.querySelectorAll('.video-play');
+        const pauseBtns = document.querySelectorAll('.video-pause');
+
+        document.querySelectorAll('.video-prev').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentIndex > 0) loadVideo(currentIndex - 1);
+            });
         });
-        document.getElementById('video-play').addEventListener('click', () => video.play());
-        document.getElementById('video-pause').addEventListener('click', () => video.pause());
-        document.getElementById('video-next').addEventListener('click', () => {
-            if (currentIndex < playlist.length - 1) {
-                loadVideo(currentIndex + 1);
-            }
+        playBtns.forEach(btn => btn.addEventListener('click', () => video.play()));
+        pauseBtns.forEach(btn => btn.addEventListener('click', () => video.pause()));
+        document.querySelectorAll('.video-next').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentIndex < playlist.length - 1) loadVideo(currentIndex + 1);
+            });
+        });
+
+        // Toggle play/pause button states based on video state
+        video.addEventListener('play', () => {
+            playBtns.forEach(btn => btn.disabled = true);
+            pauseBtns.forEach(btn => btn.disabled = false);
+        });
+        video.addEventListener('pause', () => {
+            playBtns.forEach(btn => btn.disabled = false);
+            pauseBtns.forEach(btn => btn.disabled = true);
+        });
+        video.addEventListener('ended', () => {
+            playBtns.forEach(btn => btn.disabled = false);
+            pauseBtns.forEach(btn => btn.disabled = true);
         });
 
         // Update playlist when bookmarks change
