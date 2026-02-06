@@ -12,6 +12,36 @@
                     across the years. This is based on content search, and via <a href="/2026/event/7327/">related
                         events</a>.
                 </p>
+                {% if !summary.by_year.is_empty() %}
+                <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Events</th>
+                            <th>People</th>
+                            <th>Rooms</th>
+                            <th>Tracks</th>
+                            <th>Videos</th>
+                            <th>Slides</th>
+                            <th>Links</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for (year, s) in summary.by_year.iter() %}
+                        <tr>
+                            <td>{{ year }}</td>
+                            <td>{{ s.events }}</td>
+                            <td>{{ s.people }}</td>
+                            <td>{{ s.rooms }}</td>
+                            <td>{{ s.tracks }}</td>
+                            <td>{{ s.videos }} (~{{ s.video_duration.num_hours() }}h)</td>
+                            <td>{{ s.slides }}</td>
+                            <td>{{ s.links }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
                 <p>
                     <a href="https://www.houseofmoran.com">I (mike
                         moran)</a> originally wrote this back in 2024 because, whilst
