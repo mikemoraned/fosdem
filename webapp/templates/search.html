@@ -17,13 +17,13 @@
     <div class="tabs is-boxed" id="search-tabs">
         <ul>
             <li class="is-active" data-tab="events-tab">
-                <a>
+                <a href="#events">
                     <span class="icon is-small"><i class="fa-solid fa-calendar-days"></i></span>
                     <span>Events</span>
                 </a>
             </li>
             <li data-tab="videos-tab">
-                <a>
+                <a href="#videos">
                     <span class="icon is-small"><i class="fa-solid fa-video"></i></span>
                     <span>Videos</span>
                 </a>
@@ -55,18 +55,28 @@
     function bindSearchVideoPlayer(model) {
         createVideoPlayer('search-video', '[data-has-video="true"]');
 
-        const eventsTab = document.getElementById('events-tab');
-        const videosTab = document.getElementById('videos-tab');
+        const eventsTabContent = document.getElementById('events-tab');
+        const videosTabContent = document.getElementById('videos-tab');
+        const tabItems = document.querySelectorAll('#search-tabs li');
 
-        document.querySelectorAll('#search-tabs li').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('#search-tabs li').forEach(t => t.classList.remove('is-active'));
-                tab.classList.add('is-active');
-
-                const targetId = tab.dataset.tab;
-                eventsTab.style.display = targetId === 'events-tab' ? '' : 'none';
-                videosTab.style.display = targetId === 'videos-tab' ? '' : 'none';
+        function selectTab(tabId) {
+            tabItems.forEach(t => {
+                const isActive = t.dataset.tab === tabId;
+                t.classList.toggle('is-active', isActive);
             });
+            eventsTabContent.style.display = tabId === 'events-tab' ? '' : 'none';
+            videosTabContent.style.display = tabId === 'videos-tab' ? '' : 'none';
+        }
+
+        // Select tab based on URL hash
+        const hash = window.location.hash;
+        if (hash === '#videos') {
+            selectTab('videos-tab');
+        }
+
+        // Handle tab clicks
+        tabItems.forEach(tab => {
+            tab.addEventListener('click', () => selectTab(tab.dataset.tab));
         });
     }
 
