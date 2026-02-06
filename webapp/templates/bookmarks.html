@@ -2,6 +2,7 @@
 {%- import "components/bookmark.html" as bookmark -%}
 {%- import "components/event.html" as event -%}
 {%- import "components/external.html" as external -%}
+{%- import "components/video_player.html" as video_player -%}
 
 {% block content %}
 <section class="section hide-non-bookmarked">
@@ -23,45 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="columns" id="video-player-container" style="display: none;">
-        <div class="column">
-            <div class="box">
-                <h5 class="title is-5"><i class="fa-solid fa-video"></i> Bookmarked Videos</h5>
-                <figure class="image is-16by9">
-                    <video id="bookmarks-video" class="has-ratio" controls></video>
-                </figure>
-                <div class="buttons has-addons is-centered mt-3 is-hidden-touch">
-                    <button class="button video-prev">
-                        <span class="icon"><i class="fa-solid fa-backward-step"></i></span>
-                    </button>
-                    <button class="button video-play">
-                        <span class="icon"><i class="fa-solid fa-play"></i></span>
-                    </button>
-                    <button class="button video-pause" disabled>
-                        <span class="icon"><i class="fa-solid fa-pause"></i></span>
-                    </button>
-                    <button class="button video-next">
-                        <span class="icon"><i class="fa-solid fa-forward-step"></i></span>
-                    </button>
-                </div>
-                <div class="buttons has-addons are-large is-centered mt-3 is-hidden-desktop">
-                    <button class="button video-prev">
-                        <span class="icon"><i class="fa-solid fa-backward-step"></i></span>
-                    </button>
-                    <button class="button video-play">
-                        <span class="icon"><i class="fa-solid fa-play"></i></span>
-                    </button>
-                    <button class="button video-pause" disabled>
-                        <span class="icon"><i class="fa-solid fa-pause"></i></span>
-                    </button>
-                    <button class="button video-next">
-                        <span class="icon"><i class="fa-solid fa-forward-step"></i></span>
-                    </button>
-                </div>
-                <p class="has-text-centered"><span id="video-current">0</span> / <span id="video-total">0</span>: <span id="video-title"></span></p>
-            </div>
-        </div>
-    </div>
+    {% call video_player::player("bookmarks-video") %}
     {% for event in events %}
     <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
         <div class="column">
@@ -123,100 +86,10 @@
 {% block bookmarks_callbacks %}
 <script type="module">
     import { bindExport, bindImport } from '/assets/bookmarks.js';
+    import { createVideoPlayer } from '/assets/video_player.js';
 
     function bindVideoPlayer(model) {
-        const container = document.getElementById('video-player-container');
-        const video = document.getElementById('bookmarks-video');
-        const currentSpan = document.getElementById('video-current');
-        const totalSpan = document.getElementById('video-total');
-        const titleSpan = document.getElementById('video-title');
-
-        let playlist = [];
-        let currentIndex = 0;
-
-        function updatePlaylist() {
-            // Find video links in bookmarked events (document order)
-            const bookmarkedEvents = document.querySelectorAll('[data-event-id][data-bookmark-status="true"]');
-            playlist = [];
-            bookmarkedEvents.forEach(event => {
-                const videoLink = event.querySelector('a[data-type="video"]');
-                if (videoLink) {
-                    const titleEl = event.querySelector('[data-event-title]');
-                    const title = titleEl ? titleEl.textContent : '';
-                    playlist.push({ url: videoLink.href, title });
-                }
-            });
-
-            totalSpan.textContent = playlist.length;
-
-            if (playlist.length > 0) {
-                container.style.display = '';
-                if (currentIndex >= playlist.length) {
-                    currentIndex = 0;
-                }
-                loadVideo(currentIndex);
-            } else {
-                container.style.display = 'none';
-                titleSpan.textContent = '';
-            }
-        }
-
-        function loadVideo(index) {
-            if (index >= 0 && index < playlist.length) {
-                currentIndex = index;
-                video.src = playlist[index].url;
-                currentSpan.textContent = index + 1;
-                titleSpan.textContent = playlist[index].title;
-            }
-        }
-
-        // Auto-advance on video end
-        video.addEventListener('ended', () => {
-            if (currentIndex < playlist.length - 1) {
-                loadVideo(currentIndex + 1);
-                video.play();
-            }
-        });
-
-        // Playback controls (both button sets)
-        const playBtns = document.querySelectorAll('.video-play');
-        const pauseBtns = document.querySelectorAll('.video-pause');
-
-        document.querySelectorAll('.video-prev').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentIndex > 0) loadVideo(currentIndex - 1);
-            });
-        });
-        playBtns.forEach(btn => btn.addEventListener('click', () => video.play()));
-        pauseBtns.forEach(btn => btn.addEventListener('click', () => video.pause()));
-        document.querySelectorAll('.video-next').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentIndex < playlist.length - 1) loadVideo(currentIndex + 1);
-            });
-        });
-
-        // Toggle play/pause button states based on video state
-        video.addEventListener('play', () => {
-            playBtns.forEach(btn => btn.disabled = true);
-            pauseBtns.forEach(btn => btn.disabled = false);
-        });
-        video.addEventListener('pause', () => {
-            playBtns.forEach(btn => btn.disabled = false);
-            pauseBtns.forEach(btn => btn.disabled = true);
-        });
-        video.addEventListener('ended', () => {
-            playBtns.forEach(btn => btn.disabled = false);
-            pauseBtns.forEach(btn => btn.disabled = true);
-        });
-
-        // Update playlist when bookmarks change
-        const observer = new MutationObserver(updatePlaylist);
-        document.querySelectorAll('[data-event-id][data-bookmark-status]').forEach(el => {
-            observer.observe(el, { attributes: true, attributeFilter: ['data-bookmark-status'] });
-        });
-
-        // Initial playlist build (after a small delay to let bookmark status settle)
-        setTimeout(updatePlaylist, 100);
+        createVideoPlayer('bookmarks-video', '[data-event-id][data-bookmark-status="true"]');
     }
 
     document.bookmarksCallbacks = [ bindExport, bindImport, bindVideoPlayer ];

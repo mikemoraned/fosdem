@@ -43,12 +43,18 @@ fn test_homepage_contains_expected_content() {
     let response = exists_at_path("/").expect("exists");
 
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains("<!DOCTYPE html>"));
-    assert!(body.contains("<title>FOSDEM 2026</title>"));
-    assert!(body.contains("<a href=\"https://fosdem.org/2026/\">2026</a>"));
-    assert!(body.contains(
-        "All content such as talks and biographies is the sole responsibility of the speaker."
-    ));
+    assert!(body.contains("<!DOCTYPE html>"), "doctype");
+    assert!(body.contains("<title>FOSDEM 2026</title>"), "title");
+    assert!(
+        body.contains("href=\"https://fosdem.org/2026/\""),
+        "2026 link"
+    );
+    assert!(
+        body.contains(
+            "All content such as talks and biographies is the sole responsibility of the speaker."
+        ),
+        "footer"
+    );
 }
 
 fn event_id_as_anchor_text(event_id: EventId) -> String {

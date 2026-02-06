@@ -13,7 +13,7 @@
 {% macro card(event, related) %}
 <div class="columns highlight-bookmarked">
     <div class="column">
-        <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false">
+        <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false" data-has-video="{{ event.has_video() }}">
             {% call expandable_card_details(event) %}
             <footer class="card-footer">
                 {% call bookmark::bookmark_footer_item(event) %}

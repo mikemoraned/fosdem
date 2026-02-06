@@ -7,15 +7,52 @@
         <div class="column">
             <div class="content">
                 <p>
-                    This is a small website where you can find events in current FOSDEM (
-                    <a href="https://fosdem.org/{{ current_fosdem.year }}/">{{ current_fosdem.year }}</a>) and
+                    This is a small website where you can find events in current FOSDEM (<a
+                        href="https://fosdem.org/{{ current_fosdem.year }}/">{{ current_fosdem.year }}</a>) and
                     across the years. This is based on content search, and via <a href="/2026/event/7327/">related
                         events</a>.
                 </p>
+                {% if !summary.by_year.is_empty() %}
+                <style>
+                    /* 768px matches Bulma's mobile breakpoint ($tablet - 1px) */
+                    @media screen and (max-width: 768px) {
+                        .summary-table { font-size: x-small; }
+                    }
+                </style>
+                <table class="table is-striped is-narrow is-hoverable is-fullwidth summary-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Events</th>
+                            <th>Presenters</th>
+                            <th>Rooms</th>
+                            <th>Tracks</th>
+                            <th>Videos</th>
+                            <th>Slides</th>
+                            <th>Links</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for (year, s) in summary.by_year.iter() %}
+                        <tr>
+                            <td><a href="/{{ year }}/timetable/">{{ year }}</a></td>
+                            <td>{{ s.events }}</td>
+                            <td>{{ s.people }}</td>
+                            <td>{{ s.rooms }}</td>
+                            <td>{{ s.tracks }}</td>
+                            <td>{{ s.videos }} (~{{ s.video_duration.num_hours() }}h)</td>
+                            <td>{{ s.slides }}</td>
+                            <td>{{ s.links }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
                 <p>
                     <a href="https://www.houseofmoran.com">I (mike
                         moran)</a> originally wrote this back in 2024 because, whilst
-                    I really enjoy attending FOSDEM, the amount of possible things to see is large,
+                    I really enjoy attending FOSDEM, the amount of <a
+                        href="/{{ current_fosdem.year }}/timetable/">possible things to see</a> is large,
                     and there is always a chance I can miss something.
                 </p>
                 <p>
