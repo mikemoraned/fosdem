@@ -13,7 +13,13 @@
                         events</a>.
                 </p>
                 {% if !summary.by_year.is_empty() %}
-                <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+                <style>
+                    /* 768px matches Bulma's mobile breakpoint ($tablet - 1px) */
+                    @media screen and (max-width: 768px) {
+                        .summary-table { font-size: x-small; }
+                    }
+                </style>
+                <table class="table is-striped is-narrow is-hoverable is-fullwidth summary-table">
                     <thead>
                         <tr>
                             <th>Year</th>
