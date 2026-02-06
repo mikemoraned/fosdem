@@ -29,7 +29,7 @@
                     <tbody>
                         {% for (year, s) in summary.by_year.iter() %}
                         <tr>
-                            <td>{{ year }}</td>
+                            <td><a href="/{{ year }}/timetable/">{{ year }}</a></td>
                             <td>{{ s.events }}</td>
                             <td>{{ s.people }}</td>
                             <td>{{ s.rooms }}</td>
