@@ -42,7 +42,7 @@
                 <ul>
                     {% for item in year_group.items %}
                     <li>
-                        <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/"
+                        <a href="{{ item.event.id|event_url }}"
                             {% call event_attrs(item.event) %} {% call bookmark_attrs(item.event) %}>
                             <span
                                 class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
@@ -102,8 +102,7 @@
 {% endmacro %}
 
 {% macro event_attrs(event) %}
-data-event-id="{{ event.id }}" data-has-video="{{ event.has_video() }}" data-event-url="/{{ event.id.year() }}/event/{{
-event.id.event_in_year() }}/"
+data-event-id="{{ event.id }}" data-has-video="{{ event.has_video() }}" data-event-url="{{ event.id|event_url }}"
 {% endmacro %}
 
 {% macro bookmark_attrs(event) %}

@@ -3,6 +3,7 @@ use axum::{extract::State, response::Html};
 
 use shared::{model::Event, queryable::Queryable};
 
+use crate::filters;
 use crate::state::AppState;
 
 #[derive(Template, Debug)]
