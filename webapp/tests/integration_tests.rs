@@ -4,9 +4,9 @@ use shared::model::EventId;
 use std::env;
 use test_shared::{
     EVENT_ID_2025, EVENT_ID_2025_ABSTRACT_PATH, EVENT_ID_2025_BACKWARDS_COMPATIBLE_PATH,
-    EVENT_ID_2025_CANONICAL_PATH, EVENT_ID_2025_CONTENT_SAMPLE, EVENT_ID_2026,
-    EVENT_ID_2026_ABSTRACT_PATH, EVENT_ID_2026_CANONICAL_PATH, EVENT_ID_2026_CONTENT_SAMPLE,
-    SEARCH_TERM,
+    EVENT_ID_2025_CANONICAL_PATH, EVENT_ID_2025_CARD_PATH, EVENT_ID_2025_CONTENT_SAMPLE,
+    EVENT_ID_2026, EVENT_ID_2026_ABSTRACT_PATH, EVENT_ID_2026_CANONICAL_PATH,
+    EVENT_ID_2026_CARD_PATH, EVENT_ID_2026_CONTENT_SAMPLE, SEARCH_TERM,
 };
 
 fn get_base_url() -> String {
@@ -267,15 +267,15 @@ fn test_bookmarks_uses_lazy_loading() {
     let body = response.text().expect("Failed to read body");
 
     // Should contain abstract URLs for lazy loading
-    assert!(body.contains(EVENT_ID_2025_ABSTRACT_PATH));
-    assert!(body.contains(EVENT_ID_2026_ABSTRACT_PATH));
+    assert!(body.contains(EVENT_ID_2025_CARD_PATH));
+    assert!(body.contains(EVENT_ID_2026_CARD_PATH));
 
     // Should NOT contain the actual abstract content (it's lazy loaded)
     assert!(!body.contains(EVENT_ID_2025_CONTENT_SAMPLE));
     assert!(!body.contains(EVENT_ID_2026_CONTENT_SAMPLE));
 
     // Should contain skeleton placeholders
-    assert!(body.contains("skeleton-lines"));
+    assert!(body.contains("skeleton-block"));
 }
 
 #[test]
