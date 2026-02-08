@@ -5,6 +5,7 @@
  * @returns {Object|null} Controller object with updatePlaylist and loadVideo methods
  */
 export function createVideoPlayer(playerId, eventSelector) {
+    console.log(`[VideoPlayer:${playerId}] Starting createVideoPlayer`, { eventSelector });
 
     const container = document.getElementById(`${playerId}-container`);
     const video = document.getElementById(playerId);
@@ -22,6 +23,7 @@ export function createVideoPlayer(playerId, eventSelector) {
     let currentIndex = 0;
 
     function updatePlaylist() {
+        console.log(`[VideoPlayer:${playerId}] updatePlaylist called`);
         const events = document.querySelectorAll(eventSelector);
         playlist = [];
         events.forEach(event => {
@@ -55,13 +57,16 @@ export function createVideoPlayer(playerId, eventSelector) {
             titleLink.href = '#';
         }
 
+        console.log(`[VideoPlayer:${playerId}] updatePlaylist completed`, { playlistLength: playlist.length });
         return playlist.length;
     }
 
     function loadVideo(index) {
+        console.log(`[VideoPlayer:${playerId}] loadVideo called`, { index });
         if (index >= 0 && index < playlist.length) {
             currentIndex = index;
             const item = playlist[index];
+            console.log(`[VideoPlayer:${playerId}] loadVideo loading`, { index, title: item.title });
 
             // Clear existing sources
             while (video.firstChild) {
@@ -120,11 +125,6 @@ export function createVideoPlayer(playerId, eventSelector) {
         observer.observe(el, { attributes: true, attributeFilter: ['data-bookmark-status'] });
     });
 
-    // Update playlist when page finishes loading
-    window.addEventListener('load', updatePlaylist);
-
-    // Initial playlist build (after a small delay to let any statuses settle)
-    setTimeout(updatePlaylist, 100);
-
+    console.log(`[VideoPlayer:${playerId}] Setup completed`);
     return { updatePlaylist, loadVideo };
 }

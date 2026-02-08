@@ -28,7 +28,7 @@
     {% for event in events %}
     <div class="columns" {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
         <div class="column">
-            <div class="card" >
+            <div class="card">
                 {% call event::expandable_card_details(event) %}
                 <footer class="card-footer">
                     {% call bookmark::bookmark_footer_item(event) %}
@@ -89,9 +89,11 @@
     import { createVideoPlayer } from '/assets/video_player.js';
 
     function bindVideoPlayer(model) {
-        createVideoPlayer('bookmarks-video', '[data-event-id][data-bookmark-status="true"]');
+        console.log("binding video player");
+        const { updatePlaylist, loadVideo } = createVideoPlayer('bookmarks-video', '[data-event-id][data-bookmark-status="true"]');
+        updatePlaylist();
     }
 
-    document.bookmarksCallbacks = [ bindExport, bindImport, bindVideoPlayer ];
+    document.bookmarksCallbacks = [bindExport, bindImport, bindVideoPlayer];
 </script>
 {% endblock %}
