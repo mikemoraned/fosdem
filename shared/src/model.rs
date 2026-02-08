@@ -185,7 +185,7 @@ impl Event {
     }
 
     pub fn video_link(&self) -> Option<Url> {
-        self.webm_video_link().or_else(|| self.mp4_video_link())
+        self.mp4_video_link().or_else(|| self.webm_video_link())
     }
 
     pub fn has_video(&self) -> bool {
@@ -330,7 +330,7 @@ mod tests {
     }
 
     #[test]
-    fn test_video_link_prefers_webm() {
+    fn test_video_link_prefers_mp4() {
         let event = make_event_with_links(vec![
             Link {
                 name: "Video recording (mp4)".to_string(),
@@ -344,19 +344,19 @@ mod tests {
 
         let video = event.video_link();
         assert!(video.is_some());
-        assert!(video.unwrap().to_string().ends_with(".webm"));
+        assert!(video.unwrap().to_string().ends_with(".mp4"));
     }
 
     #[test]
-    fn test_video_link_falls_back_to_mp4() {
+    fn test_video_link_falls_back_to_webm() {
         let event = make_event_with_links(vec![Link {
-            name: "Video recording (mp4)".to_string(),
-            url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+            name: "Video recording (AV1/opus)".to_string(),
+            url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
         }]);
 
         let video = event.video_link();
         assert!(video.is_some());
-        assert!(video.unwrap().to_string().ends_with(".mp4"));
+        assert!(video.unwrap().to_string().ends_with(".webm"));
     }
 
     #[test]
