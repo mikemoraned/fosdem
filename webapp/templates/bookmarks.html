@@ -26,7 +26,7 @@
     </div>
     {% call video_player::player("bookmarks-video") %}
     {% for event in events %}
-    <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false" data-event-url="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/">
+    <div class="columns" {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
         <div class="column">
             <div class="card" >
                 {% call event::expandable_card_details(event) %}
