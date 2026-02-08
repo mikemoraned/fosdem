@@ -1,6 +1,7 @@
 use askama::Template;
 use axum::{
     extract::{Path, State},
+    http::StatusCode,
     response::Html,
 };
 use tracing::warn;
@@ -11,6 +12,12 @@ use serde::Deserialize;
 use shared::model::{Event, SearchItem};
 use shared::queryable::Queryable;
 use shared::{inmemory_openai::InMemoryOpenAIQueryable, model};
+
+#[derive(Template)]
+#[template(source = "{{ content|safe }}", ext = "html")]
+struct AbstractTemplate {
+    content: String,
+}
 use validator::Validate;
 
 #[derive(Deserialize, Validate, Debug)]
@@ -33,7 +40,7 @@ struct EventTemplate {
 pub async fn event_2025(
     State(state): State<AppState>,
     Path(event_in_year_id): Path<u32>,
-) -> axum::response::Result<Html<String>> {
+) -> Result<Html<String>, StatusCode> {
     event(State(state), Path((2025, event_in_year_id))).await
 }
 
@@ -41,7 +48,7 @@ pub async fn event_2025(
 pub async fn event(
     State(state): State<AppState>,
     Path((year, event_in_year_id)): Path<(u32, u32)>,
-) -> axum::response::Result<Html<String>> {
+) -> Result<Html<String>, StatusCode> {
     // TODO: this is all a bit contorted, for a couple of reasons:
     // - InMemoryOpenAIQueryable should really natively support finding related events, as opposed to
     // us having to find by event.title in `find_related_events`
@@ -64,7 +71,7 @@ pub async fn event(
         Ok(Html(html))
     } else {
         warn!("Could not find event: {}", event_id);
-        Err("Could not find event".into())
+        Err(StatusCode::NOT_FOUND)
     }
 }
 
@@ -73,4 +80,22 @@ async fn find_related_events(
     event: &Event,
 ) -> Option<Vec<SearchItem>> {
     (queryable.find_related_events(&event.title, 10, None).await).ok()
+}
+
+#[tracing::instrument(skip(state))]
+pub async fn event_abstract(
+    State(state): State<AppState>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
+) -> Result<Html<String>, StatusCode> {
+    let event_id = model::EventId::new(year, event_in_year_id);
+    match state.queryable.find_event_by_id(event_id).await.unwrap_or_default() {
+        Some(event) => {
+            let page = AbstractTemplate { content: event.r#abstract };
+            Ok(Html(page.render().unwrap()))
+        }
+        None => {
+            warn!("Could not find event abstract: {}", event_id);
+            Err(StatusCode::NOT_FOUND)
+        }
+    }
 }

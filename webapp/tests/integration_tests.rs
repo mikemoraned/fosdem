@@ -3,9 +3,10 @@ use reqwest::Result;
 use shared::model::EventId;
 use std::env;
 use test_shared::{
-    EVENT_ID_2025, EVENT_ID_2025_BACKWARDS_COMPATIBLE_PATH, EVENT_ID_2025_CANONICAL_PATH,
-    EVENT_ID_2025_CONTENT_SAMPLE, EVENT_ID_2026, EVENT_ID_2026_CANONICAL_PATH,
-    EVENT_ID_2026_CONTENT_SAMPLE, SEARCH_TERM,
+    EVENT_ID_2025, EVENT_ID_2025_ABSTRACT_PATH, EVENT_ID_2025_BACKWARDS_COMPATIBLE_PATH,
+    EVENT_ID_2025_CANONICAL_PATH, EVENT_ID_2025_CONTENT_SAMPLE, EVENT_ID_2026,
+    EVENT_ID_2026_ABSTRACT_PATH, EVENT_ID_2026_CANONICAL_PATH, EVENT_ID_2026_CONTENT_SAMPLE,
+    SEARCH_TERM,
 };
 
 fn get_base_url() -> String {
@@ -108,7 +109,9 @@ fn test_search_for_2025_only() {
 
 fn assert_2025_content(response: Response) {
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains(EVENT_ID_2025_CONTENT_SAMPLE));
+    // Abstract is lazy-loaded, so check for skeleton placeholder instead
+    assert!(body.contains("skeleton-lines"));
+    assert!(body.contains(EVENT_ID_2025_ABSTRACT_PATH));
 }
 
 #[test]
@@ -125,13 +128,53 @@ fn test_2025_content_in_canonical_place() {
 
 fn assert_2026_content(response: Response) {
     let body = response.text().expect("Failed to read body");
-    assert!(body.contains(EVENT_ID_2026_CONTENT_SAMPLE));
+    // Abstract is lazy-loaded, so check for skeleton placeholder instead
+    assert!(body.contains("skeleton-lines"));
+    assert!(body.contains(EVENT_ID_2026_ABSTRACT_PATH));
 }
 
 #[test]
 fn test_2026_content_in_canonical_place() {
     let response = exists_at_path(EVENT_ID_2026_CANONICAL_PATH).expect("exists");
     assert_2026_content(response);
+}
+
+#[test]
+fn test_2025_abstract_endpoint() {
+    let response = exists_at_path(EVENT_ID_2025_ABSTRACT_PATH).expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains(EVENT_ID_2025_CONTENT_SAMPLE));
+    // Abstract endpoint returns just the abstract HTML, not a full page
+    assert!(!body.contains("<!DOCTYPE html>"));
+}
+
+#[test]
+fn test_2026_abstract_endpoint() {
+    let response = exists_at_path(EVENT_ID_2026_ABSTRACT_PATH).expect("exists");
+    let body = response.text().expect("Failed to read body");
+    assert!(body.contains(EVENT_ID_2026_CONTENT_SAMPLE));
+    // Abstract endpoint returns just the abstract HTML, not a full page
+    assert!(!body.contains("<!DOCTYPE html>"));
+}
+
+#[test]
+fn test_event_404_for_nonexistent_event() {
+    let response = client()
+        .get(format!("{}/2026/event/99999/", get_base_url()))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 404);
+}
+
+#[test]
+fn test_abstract_404_for_nonexistent_event() {
+    let response = client()
+        .get(format!("{}/2026/event/99999/abstract/", get_base_url()))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 404);
 }
 
 #[test]
@@ -216,6 +259,23 @@ fn test_rss_feed_exists() {
     assert!(body.contains("FOSDEM 2026"));
     assert!(body.contains("Data Update"));
     assert!(body.contains("/blog/2026-02-02/"));
+}
+
+#[test]
+fn test_bookmarks_uses_lazy_loading() {
+    let response = exists_at_path("/bookmarks").expect("exists");
+    let body = response.text().expect("Failed to read body");
+
+    // Should contain abstract URLs for lazy loading
+    assert!(body.contains(EVENT_ID_2025_ABSTRACT_PATH));
+    assert!(body.contains(EVENT_ID_2026_ABSTRACT_PATH));
+
+    // Should NOT contain the actual abstract content (it's lazy loaded)
+    assert!(!body.contains(EVENT_ID_2025_CONTENT_SAMPLE));
+    assert!(!body.contains(EVENT_ID_2026_CONTENT_SAMPLE));
+
+    // Should contain skeleton placeholders
+    assert!(body.contains("skeleton-lines"));
 }
 
 #[test]

@@ -112,8 +112,15 @@
 <details class="event">
     <summary>{% call card_header(event) %}</summary>
     <div class="card-content">
-        <div class="content">
-            {{ event.abstract|safe }}
+        <div class="content"
+             hx-get="{{ event.id|event_abstract_url }}"
+             hx-trigger="intersect once"
+             hx-swap="innerHTML">
+            <div class="skeleton-lines">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
         {% call inline_video(event) %}
     </div>

@@ -79,14 +79,14 @@
 ## Performance
 
 * [ ] enable compression on all routes
-* [ ] a lot of the content is text, so update it so that is lazy-loaded. Rough approach:
-    * [ ] add a route like `/2026/event/8376/event-abstract/` which will return the equivalent of the following, from `expandable_card_details` macro:
+* [x] a lot of the content is text, so update it so that is lazy-loaded. Rough approach:
+    * [x]] add a route like `/2026/event/8376/event-abstract/` which will return the equivalent of the following, from `expandable_card_details` macro:
     ```
      <div class="content">
         {{ event.abstract|safe }}
     </div>
     ```
-    * [ ] update wherever we currently surface `event.abstract` to instead lazily load the text content. This should be done when content area becomes visible, and by default a skeleton (see https://bulma.io/documentation/features/skeletons/) should be used as a placeholder until it is loaded
+    * [x] update wherever we currently surface `event.abstract` to instead lazily load the text content. This should be done when content area becomes visible, and by default a skeleton (see https://bulma.io/documentation/features/skeletons/) should be used as a placeholder until it is loaded
         * we should aim to use built-in html/css-only where possible, but https://htmx.org can be added and used
 
 ## Ideas

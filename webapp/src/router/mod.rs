@@ -69,6 +69,7 @@ pub async fn router(state: AppState) -> Router {
         .route("/next/", get(timetable::next_redirect))
         .route("/event/{event_in_year_id}/", get(event::event_2025))
         .route("/{year}/event/{event_in_year_id}/", get(event::event))
+        .route("/{year}/event/{event_in_year_id}/abstract/", get(event::event_abstract))
         .route("/room/{room_id}/", get(room::room))
         .route("/{year}/video/{event_in_year_id}/", get(video::event_video))
         .route(
