@@ -3,7 +3,7 @@
 {% block content %}
 <section class="section">
     <h1>Event video</h1>
-    {% if let Some(video_url) = event.mp4_video_link() %}
+    {% if let Some(video_url) = event.video_link() %}
         <video controls src="{{ video_url }}">
             <track default kind="captions" srclang="en" src="captions.vtt" />
         </video>
