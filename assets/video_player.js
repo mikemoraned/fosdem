@@ -133,11 +133,14 @@ export function createVideoPlayer(playerId, eventSelector) {
         pauseBtns.forEach(btn => btn.disabled = true);
     });
 
-    // Observe DOM changes for dynamic updates
+    // Observe DOM changes for dynamic updates (bookmark status changes)
     const observer = new MutationObserver(updatePlaylist);
     document.querySelectorAll('[data-event-id][data-bookmark-status]').forEach(el => {
         observer.observe(el, { attributes: true, attributeFilter: ['data-bookmark-status'] });
     });
+
+    // Update playlist when page finishes loading
+    window.addEventListener('load', updatePlaylist);
 
     // Initial playlist build (after a small delay to let any statuses settle)
     setTimeout(updatePlaylist, 100);
