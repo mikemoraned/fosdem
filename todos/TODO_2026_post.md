@@ -1,4 +1,4 @@
-# Post 2026 ideas / bugs / niggles
+`# Post 2026 ideas / bugs / niggles
 
 (Some of these are TODO's for me, and some are specifically for claude)
 
@@ -50,7 +50,7 @@
             * [x] when placed on search page, it finds all events which have a video and shows them, regardless of whether they are bookmarked
 * [x] video improvements:
     * [x] in player, make title be a link to the event URL of the playing video
-    * [x] add ability to select webm video as preferred video type
+    * [x] add ability to select webm video as preferred video type, but don't use it yet
         * [x] modelled after `mp4_video_link` add `webm_video_link` which finds `.webm`
             * ensure tests added; if real examples needed, see `events.json` for current year (`2026`)
             * once tests passing, refactor to extract any shared code for finding video links
@@ -58,6 +58,22 @@
         * [x] update any calls of `mp4_video_link`:
             * [x] where it doesn't actually care about it being an mp4 video and just cares about a video existing, to use `has_video`
             * [x] where it just wants a link, to use `video_link`
+    * [x] support specifying multiple video formats and let the browser decide which it can show
+        * [x] refactor: follow the NewType pattern and make `mp4_video_link` and `webm_video_link` return a struct; update usages appropriately
+        * [x] add a `video_links` which returns a list of these NewTypes. add appropriate tests following existing semantics
+        * [x] update the askama event templates to have an inline <video> element section, wrapped in a details element which is closed by default, which contains multiple <source> elements, one for each type of video returned by `video_links`; if no videos are available then no section should exist
+        * [x] update video_player.js so that loadVideo uses the list of sources derived from above data i.e. so that multiple sources are listed if multiple formats available
+        * [x] update the event template so that the video link in the header which indicates it has a video is just a piece of text, not a link
+        * [x] favour webm over mp4 by returning that first in the list from `video_links`
+        * [x] remove `video_link` if it is no longer used
+        * [x] update video link parsing so that:
+            * [x] there is a new `codecs` method that returns an optional string
+                * [x] for mp4 this is None
+                * [x] for webm it is Some("av01.0.08M.08.0.110.01.01.01.0")
+                    * this is taken from main fosdem.org website
+        * [x] update askama templates so that when a VideoLink enum has Some `codec` then it is added as an attribute
+        * [x] update video link JS so that any `codec` attributes are copied over
+    * [ ] simplify video player by using the built-in controls, so no need for my own play/pause buttons
 
 ## Ideas
 

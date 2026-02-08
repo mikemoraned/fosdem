@@ -95,6 +95,35 @@ pub struct Link {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub enum VideoLink {
+    Mp4(Url),
+    Webm(Url),
+}
+
+impl VideoLink {
+    pub fn url(&self) -> &Url {
+        match self {
+            VideoLink::Mp4(url) => url,
+            VideoLink::Webm(url) => url,
+        }
+    }
+
+    pub fn mime_type(&self) -> &str {
+        match self {
+            VideoLink::Mp4(_) => "video/mp4",
+            VideoLink::Webm(_) => "video/webm",
+        }
+    }
+
+    pub fn codecs(&self) -> Option<&str> {
+        match self {
+            VideoLink::Mp4(_) => None,
+            VideoLink::Webm(_) => Some("av01.0.08M.08.0.110.01.01.01.0"),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct RoomId(String); // TODO: use RoomId instead of String in Event
 
 impl RoomId {
@@ -165,7 +194,7 @@ impl Event {
         }
     }
 
-    fn find_video_link(&self, extension: &str) -> Option<Url> {
+    fn find_video_url(&self, extension: &str) -> Option<Url> {
         self.links
             .iter()
             .filter(|l| {
@@ -176,20 +205,27 @@ impl Event {
             .next()
     }
 
-    pub fn mp4_video_link(&self) -> Option<Url> {
-        self.find_video_link(".mp4")
+    pub fn mp4_video_link(&self) -> Option<VideoLink> {
+        self.find_video_url(".mp4").map(VideoLink::Mp4)
     }
 
-    pub fn webm_video_link(&self) -> Option<Url> {
-        self.find_video_link(".webm")
+    pub fn webm_video_link(&self) -> Option<VideoLink> {
+        self.find_video_url(".webm").map(VideoLink::Webm)
     }
 
-    pub fn video_link(&self) -> Option<Url> {
-        self.mp4_video_link().or_else(|| self.webm_video_link())
+    pub fn video_links(&self) -> Vec<VideoLink> {
+        let mut links = Vec::new();
+        if let Some(webm) = self.webm_video_link() {
+            links.push(webm);
+        }
+        if let Some(mp4) = self.mp4_video_link() {
+            links.push(mp4);
+        }
+        links
     }
 
     pub fn has_video(&self) -> bool {
-        self.video_link().is_some()
+        !self.video_links().is_empty()
     }
 }
 
@@ -330,7 +366,7 @@ mod tests {
     }
 
     #[test]
-    fn test_video_link_prefers_mp4() {
+    fn test_video_links_returns_both_formats_webm_first() {
         let event = make_event_with_links(vec![
             Link {
                 name: "Video recording (mp4)".to_string(),
@@ -342,30 +378,44 @@ mod tests {
             },
         ]);
 
-        let video = event.video_link();
-        assert!(video.is_some());
-        assert!(video.unwrap().to_string().ends_with(".mp4"));
+        let links = event.video_links();
+        assert_eq!(links.len(), 2);
+        assert!(matches!(links[0], VideoLink::Webm(_)));
+        assert!(matches!(links[1], VideoLink::Mp4(_)));
     }
 
     #[test]
-    fn test_video_link_falls_back_to_webm() {
+    fn test_video_links_returns_mp4_only() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording (mp4)".to_string(),
+            url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+        }]);
+
+        let links = event.video_links();
+        assert_eq!(links.len(), 1);
+        assert!(matches!(links[0], VideoLink::Mp4(_)));
+    }
+
+    #[test]
+    fn test_video_links_returns_webm_only() {
         let event = make_event_with_links(vec![Link {
             name: "Video recording (AV1/opus)".to_string(),
             url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
         }]);
 
-        let video = event.video_link();
-        assert!(video.is_some());
-        assert!(video.unwrap().to_string().ends_with(".webm"));
+        let links = event.video_links();
+        assert_eq!(links.len(), 1);
+        assert!(matches!(links[0], VideoLink::Webm(_)));
     }
 
     #[test]
-    fn test_video_link_none_when_no_video() {
+    fn test_video_links_returns_empty_when_no_videos() {
         let event = make_event_with_links(vec![Link {
             name: "Some other link".to_string(),
             url: "https://example.com".parse().unwrap(),
         }]);
 
-        assert!(event.video_link().is_none());
+        let links = event.video_links();
+        assert!(links.is_empty());
     }
 }

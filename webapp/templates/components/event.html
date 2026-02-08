@@ -42,8 +42,8 @@
                 <ul>
                     {% for item in year_group.items %}
                     <li>
-                        <a href="{{ item.event.id|event_url }}"
-                            {% call event_attrs(item.event) %} {% call bookmark_attrs(item.event) %}>
+                        <a href="{{ item.event.id|event_url }}" {% call event_attrs(item.event) %} {% call
+                            bookmark_attrs(item.event) %}>
                             <span
                                 class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"</span>
@@ -83,11 +83,29 @@
         {% if event.slides.len() > 0 %}
         , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
         {% endif %}
-        {% if let Some(url) = event.video_link() %}
-        , <a href="{{ url }}" data-type="video"><span><i class="fa-solid fa-video"></i> video</span></a>
+        {% if event.has_video() %}
+        , <span data-type="video"><i class="fa-solid fa-video"></i> video</span>
         {% endif %}
     </p>
 </div>
+{% endmacro %}
+
+{% macro inline_video(event) %}
+{% let videos = event.video_links() %}
+{% if !videos.is_empty() %}
+<details class="video-details">
+    <summary><i class="fa-solid fa-video"></i> video</summary>
+    <video controls preload="none">
+        {% for video in videos %}
+        {% if let Some(codecs) = video.codecs() %}
+        <source src="{{ video.url() }}" type="{{ video.mime_type() }}; codecs=&quot;{{ codecs }}&quot;">
+        {% else %}
+        <source src="{{ video.url() }}" type="{{ video.mime_type() }}">
+        {% endif %}
+        {% endfor %}
+    </video>
+</details>
+{% endif %}
 {% endmacro %}
 
 {% macro expandable_card_details(event) %}
@@ -97,6 +115,7 @@
         <div class="content">
             {{ event.abstract|safe }}
         </div>
+        {% call inline_video(event) %}
     </div>
 </details>
 {% endmacro %}

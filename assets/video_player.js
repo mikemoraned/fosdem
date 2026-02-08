@@ -25,12 +25,19 @@ export function createVideoPlayer(playerId, eventSelector) {
         const events = document.querySelectorAll(eventSelector);
         playlist = [];
         events.forEach(event => {
-            const videoLink = event.querySelector('a[data-type="video"]');
-            if (videoLink) {
-                const titleEl = event.querySelector('[data-event-title]');
-                const title = titleEl ? titleEl.textContent : '';
-                const eventUrl = event.dataset.eventUrl || '#';
-                playlist.push({ url: videoLink.href, title, eventUrl });
+            const videoDetails = event.querySelector('.video-details');
+            if (videoDetails) {
+                const sourceEls = videoDetails.querySelectorAll('video source');
+                const sources = Array.from(sourceEls).map(el => ({
+                    url: el.src,
+                    type: el.type
+                }));
+                if (sources.length > 0) {
+                    const titleEl = event.querySelector('[data-event-title]');
+                    const title = titleEl ? titleEl.textContent : '';
+                    const eventUrl = event.dataset.eventUrl || '#';
+                    playlist.push({ sources, title, eventUrl });
+                }
             }
         });
 
@@ -54,10 +61,26 @@ export function createVideoPlayer(playerId, eventSelector) {
     function loadVideo(index) {
         if (index >= 0 && index < playlist.length) {
             currentIndex = index;
-            video.src = playlist[index].url;
+            const item = playlist[index];
+
+            // Clear existing sources
+            while (video.firstChild) {
+                video.removeChild(video.firstChild);
+            }
+
+            // Add new sources
+            item.sources.forEach(source => {
+                const sourceEl = document.createElement('source');
+                sourceEl.src = source.url;
+                sourceEl.type = source.type;
+                video.appendChild(sourceEl);
+            });
+
+            video.load(); // Reload with new sources
+
             currentSpan.textContent = index + 1;
-            titleLink.textContent = playlist[index].title;
-            titleLink.href = playlist[index].eventUrl;
+            titleLink.textContent = item.title;
+            titleLink.href = item.eventUrl;
         }
     }
 

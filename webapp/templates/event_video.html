@@ -3,11 +3,18 @@
 {% block content %}
 <section class="section">
     <h1>Event video</h1>
-    {% if let Some(video_url) = event.video_link() %}
-        <video controls src="{{ video_url }}">
-            <track default kind="captions" srclang="en" src="captions.vtt" />
-        </video>
+    {% let videos = event.video_links() %}
+    {% if !videos.is_empty() %}
+    <video controls preload="none">
+        {% for video in videos %}
+        {% if let Some(codecs) = video.codecs() %}
+        <source src="{{ video.url() }}" type="{{ video.mime_type() }}; codecs=&quot;{{ codecs }}&quot;">
+        {% else %}
+        <source src="{{ video.url() }}" type="{{ video.mime_type() }}">
+        {% endif %}
+        {% endfor %}
+        <track default kind="captions" srclang="en" src="captions.vtt" />
+    </video>
     {% endif %}
 </section>
 {% endblock %}
-
