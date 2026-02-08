@@ -31,7 +31,7 @@ bring_up_to_date: fetch_schedules import_schedules index_next
     RUST_LOG=info cargo run --bin add_data_post --release -- --model-dir {{ model_dir }} --blog-content-dir {{ blog_content_dir }}
 
 webapp:
-    RUST_LOG=debug cargo run --bin fly -- --model-dir {{ model_dir }} --blog-content-dir {{ blog_content_dir }} --current-year {{ current_year }} --selectable-years "{{ years }}"
+    RUST_LOG=debug cargo run --bin fly --release -- --model-dir {{ model_dir }} --blog-content-dir {{ blog_content_dir }} --current-year {{ current_year }} --selectable-years "{{ years }}"
 
 test_webapp:
     cargo test -p webapp --test integration_tests
