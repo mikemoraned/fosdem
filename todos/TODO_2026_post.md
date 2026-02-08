@@ -99,6 +99,7 @@
 ```
 OpenTelemetry trace error occurred. error sending request for url (https://api.honeycomb.io/v1/traces): error trying to connect: invalid peer certificate: UnknownIssuer
 ```
+    * [ ] for now, disable it by not passing `--opentelemetry` to startup
     * [ ] from a small investigation probably need to add `ca-certificates` installation to `Dockerfile`
 
 ## Niggles
