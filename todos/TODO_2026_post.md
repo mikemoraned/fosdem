@@ -1,4 +1,4 @@
-`# Post 2026 ideas / bugs / niggles
+# Post 2026 ideas / bugs / niggles
 
 (Some of these are TODO's for me, and some are specifically for claude)
 
@@ -92,6 +92,14 @@
 ## Ideas
 
 * bookmark heatmap of rooms and times (helps identify where/when interesting things are)
+
+## Bugs
+
+* [ ] getting a new error in fly.io logs related to opentelemetry
+```
+OpenTelemetry trace error occurred. error sending request for url (https://api.honeycomb.io/v1/traces): error trying to connect: invalid peer certificate: UnknownIssuer
+```
+    * [ ] from a small investigation probably need to add `ca-certificates` installation to `Dockerfile`
 
 ## Niggles
 
