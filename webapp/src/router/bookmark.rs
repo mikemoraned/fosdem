@@ -7,7 +7,7 @@ use crate::filters;
 use crate::state::AppState;
 
 #[derive(Template, Debug)]
-#[template(path = "bookmarks.html")]
+#[template(path = "bookmarks.html")] // TODO: revert to bookmarks.html after testing
 struct BookmarksTemplate {
     events: Vec<Event>,
     current_event: Option<Event>, // TODO: remove this

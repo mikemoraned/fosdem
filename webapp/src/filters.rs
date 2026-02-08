@@ -11,6 +11,10 @@ pub fn event_abstract_url(id: &EventId, _: &dyn askama::Values) -> ::askama::Res
     Ok(format!("/{}/event/{}/abstract/", id.year(), id.event_in_year()))
 }
 
+pub fn event_card_url(id: &EventId, _: &dyn askama::Values) -> ::askama::Result<String> {
+    Ok(format!("/{}/event/{}/card/", id.year(), id.event_in_year()))
+}
+
 pub struct ItemsInYear {
     pub year: u32,
     pub items: Vec<SearchItem>,
@@ -157,5 +161,12 @@ mod tests {
         let id = EventId::new(2026, 1158);
         let result = event_abstract_url(&id, &NoValues).unwrap();
         assert_eq!(result, "/2026/event/1158/abstract/");
+    }
+
+    #[test]
+    fn test_event_card_url() {
+        let id = EventId::new(2026, 1158);
+        let result = event_card_url(&id, &NoValues).unwrap();
+        assert_eq!(result, "/2026/event/1158/card/");
     }
 }

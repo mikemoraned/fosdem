@@ -18,6 +18,13 @@ use shared::{inmemory_openai::InMemoryOpenAIQueryable, model};
 struct AbstractTemplate {
     content: String,
 }
+
+#[derive(Template)]
+#[template(path = "event_card.html")]
+struct EventCardTemplate {
+    event: Event,
+    current_event: Option<Event>,
+}
 use validator::Validate;
 
 #[derive(Deserialize, Validate, Debug)]
@@ -88,13 +95,46 @@ pub async fn event_abstract(
     Path((year, event_in_year_id)): Path<(u32, u32)>,
 ) -> Result<Html<String>, StatusCode> {
     let event_id = model::EventId::new(year, event_in_year_id);
-    match state.queryable.find_event_by_id(event_id).await.unwrap_or_default() {
+    match state
+        .queryable
+        .find_event_by_id(event_id)
+        .await
+        .unwrap_or_default()
+    {
         Some(event) => {
-            let page = AbstractTemplate { content: event.r#abstract };
+            let page = AbstractTemplate {
+                content: event.r#abstract,
+            };
             Ok(Html(page.render().unwrap()))
         }
         None => {
             warn!("Could not find event abstract: {}", event_id);
+            Err(StatusCode::NOT_FOUND)
+        }
+    }
+}
+
+#[tracing::instrument(skip(state))]
+pub async fn event_card(
+    State(state): State<AppState>,
+    Path((year, event_in_year_id)): Path<(u32, u32)>,
+) -> Result<Html<String>, StatusCode> {
+    let event_id = model::EventId::new(year, event_in_year_id);
+    match state
+        .queryable
+        .find_event_by_id(event_id)
+        .await
+        .unwrap_or_default()
+    {
+        Some(event) => {
+            let page = EventCardTemplate {
+                event,
+                current_event: None,
+            };
+            Ok(Html(page.render().unwrap()))
+        }
+        None => {
+            warn!("Could not find event card: {}", event_id);
             Err(StatusCode::NOT_FOUND)
         }
     }

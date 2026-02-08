@@ -28,13 +28,10 @@
     {% for event in events %}
     <div class="columns" {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
         <div class="column">
-            <div class="card">
-                {% call event::expandable_card_details(event) %}
-                <footer class="card-footer">
-                    {% call bookmark::bookmark_footer_item(event) %}
-                    {% call external::sojourner_event(event) %}
-                    {% call external::fosdem_event(event) %}
-                </footer>
+            <div class="card" hx-get="{{ event.id|event_card_url }}" hx-trigger="intersect once" hx-swap="innerHTML">
+                <div class="card-content">
+                    <p>{{ event.title }}</p>
+                </div>
             </div>
         </div>
     </div>
