@@ -89,6 +89,10 @@
     * [x] update wherever we currently surface `event.abstract` to instead lazily load the text content. This should be done when content area becomes visible, and by default a skeleton (see https://bulma.io/documentation/features/skeletons/) should be used as a placeholder until it is loaded
         * we should aim to use built-in html/css-only where possible, but https://htmx.org can be added and used
 
+# [ ] transition to using `hx-get` for all content:
+    * [x] convert cards on bookmarks
+    * [ ] solve problem of enabling binding for newly-loaded elements
+
 ## Ideas
 
 * bookmark heatmap of rooms and times (helps identify where/when interesting things are)
