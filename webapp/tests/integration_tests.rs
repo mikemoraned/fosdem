@@ -279,6 +279,48 @@ fn test_bookmarks_uses_lazy_loading() {
 }
 
 #[test]
+fn test_compression_enabled_when_client_supports_gzip() {
+    let response = client()
+        .get(format!("{}/bookmarks", get_base_url()))
+        .header("Accept-Encoding", "gzip")
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 200);
+    let content_encoding = response.headers().get("content-encoding");
+    assert!(
+        content_encoding.is_some(),
+        "Expected content-encoding header when client accepts gzip"
+    );
+    assert_eq!(
+        content_encoding.unwrap().to_str().unwrap(),
+        "gzip",
+        "Expected gzip content-encoding"
+    );
+}
+
+#[test]
+fn test_no_compression_when_client_does_not_support_it() {
+    let no_compression_client = Client::builder()
+        .timeout(std::time::Duration::from_secs(10))
+        .no_gzip()
+        .build()
+        .expect("Failed to create HTTP client");
+
+    let response = no_compression_client
+        .get(format!("{}/bookmarks", get_base_url()))
+        .send()
+        .expect("Failed to send request");
+
+    assert_eq!(response.status(), 200);
+    let content_encoding = response.headers().get("content-encoding");
+    assert!(
+        content_encoding.is_none(),
+        "Expected no content-encoding header when client doesn't accept compression"
+    );
+}
+
+#[test]
 fn test_next_redirects_to_current_year_timetable() {
     let client = Client::builder()
         .redirect(reqwest::redirect::Policy::none())

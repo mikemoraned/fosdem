@@ -78,9 +78,9 @@
 
 ## Performance
 
-* [ ] enable compression on all routes
+* [x] enable compression on all routes
 * [x] a lot of the content is text, so update it so that is lazy-loaded. Rough approach:
-    * [x]] add a route like `/2026/event/8376/event-abstract/` which will return the equivalent of the following, from `expandable_card_details` macro:
+    * [x] add a route like `/2026/event/8376/event-abstract/` which will return the equivalent of the following, from `expandable_card_details` macro:
     ```
      <div class="content">
         {{ event.abstract|safe }}
