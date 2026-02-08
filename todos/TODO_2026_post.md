@@ -54,7 +54,7 @@
         * [x] modelled after `mp4_video_link` add `webm_video_link` which finds `.webm`
             * ensure tests added; if real examples needed, see `events.json` for current year (`2026`)
             * once tests passing, refactor to extract any shared code for finding video links
-        * [ ] add `video_link` which returns a generic link and chooses `mp4` if it is available, and falls back to `webm` if not
+        * [x] add `video_link` which returns a generic link and chooses `mp4` if it is available, and falls back to `webm` if not
         * [x] update any calls of `mp4_video_link`:
             * [x] where it doesn't actually care about it being an mp4 video and just cares about a video existing, to use `has_video`
             * [x] where it just wants a link, to use `video_link`
