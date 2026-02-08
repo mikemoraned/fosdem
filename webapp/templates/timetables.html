@@ -65,7 +65,7 @@
                         {% match overlap %}
                         {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
                         <td rowspan="{{ slot_coverage }}">
-                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                            <a href="{{ event.id|event_url }}"
                                 title="{{ event.starting_time().format(" %H:%M") }}->{{
                                 event.ending_time().format("%H:%M") }} {{ event.title }}, {{ event.room }}"
                                 >
@@ -77,7 +77,7 @@
                                 </svg>
                             </a>
                             <div class="normal">
-                                <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                                <a href="{{ event.id|event_url }}"
                                     title="{{ event.starting_time().format(" %H:%M") }}->{{
                                     event.ending_time().format("%H:%M") }} {{ event.title }}"
                                     {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
