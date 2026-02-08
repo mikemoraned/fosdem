@@ -16,7 +16,7 @@ export function createVideoPlayer(playerId, eventSelector) {
 
     const currentSpan = container.querySelector('.video-current');
     const totalSpan = container.querySelector('.video-total');
-    const titleSpan = container.querySelector('.video-title');
+    const titleLink = container.querySelector('.video-title');
 
     let playlist = [];
     let currentIndex = 0;
@@ -29,7 +29,8 @@ export function createVideoPlayer(playerId, eventSelector) {
             if (videoLink) {
                 const titleEl = event.querySelector('[data-event-title]');
                 const title = titleEl ? titleEl.textContent : '';
-                playlist.push({ url: videoLink.href, title });
+                const eventUrl = event.dataset.eventUrl || '#';
+                playlist.push({ url: videoLink.href, title, eventUrl });
             }
         });
 
@@ -43,7 +44,8 @@ export function createVideoPlayer(playerId, eventSelector) {
             loadVideo(currentIndex);
         } else {
             container.style.display = 'none';
-            titleSpan.textContent = '';
+            titleLink.textContent = '';
+            titleLink.href = '#';
         }
 
         return playlist.length;
@@ -54,7 +56,8 @@ export function createVideoPlayer(playerId, eventSelector) {
             currentIndex = index;
             video.src = playlist[index].url;
             currentSpan.textContent = index + 1;
-            titleSpan.textContent = playlist[index].title;
+            titleLink.textContent = playlist[index].title;
+            titleLink.href = playlist[index].eventUrl;
         }
     }
 
