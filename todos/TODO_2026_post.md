@@ -48,6 +48,16 @@
         * [x] extracting an askama component for the video player which still allows existing bookmarks video player to work. So:
             * [x] when placed in bookmarks page it has existing behaviour i.e. it finds all events which are bookmarked and collates them into a video
             * [x] when placed on search page, it finds all events which have a video and shows them, regardless of whether they are bookmarked
+* [ ] video improvements:
+    * [x] in player, make title be a link to the event URL of the playing video
+    * [ ] add ability to select webm video as preferred video type
+        * [ ] modelled after `mp4_video_link` add `webm_video_link` which finds `.webm`
+            * ensure tests added; if real examples needed, see `events.json` for current year (`2026`)
+            * once tests passing, refactor to extract any shared code for finding video links
+        * [ ] add `video_link` which returns a generic link and chooses `webm` if it is available
+        * [ ] update any calls of `mp4_video_link`:
+            * [ ] where it doesn't actually care about it being an mp4 video and just cares about a video existing, to use `has_video`
+            * [ ] where it just wants a link, to use `video_link`
 
 ## Ideas
 
