@@ -92,10 +92,7 @@ export function createVideoPlayer(playerId, eventSelector) {
         }
     });
 
-    // Playback controls (scoped to this container)
-    const playBtns = container.querySelectorAll('.video-play');
-    const pauseBtns = container.querySelectorAll('.video-pause');
-
+    // Playlist navigation controls
     container.querySelectorAll('.video-prev').forEach(btn => {
         btn.addEventListener('click', () => {
             if (currentIndex > 0) {
@@ -106,8 +103,6 @@ export function createVideoPlayer(playerId, eventSelector) {
             }
         });
     });
-    playBtns.forEach(btn => btn.addEventListener('click', () => video.play()));
-    pauseBtns.forEach(btn => btn.addEventListener('click', () => video.pause()));
     container.querySelectorAll('.video-next').forEach(btn => {
         btn.addEventListener('click', () => {
             if (currentIndex < playlist.length - 1) {
@@ -117,20 +112,6 @@ export function createVideoPlayer(playerId, eventSelector) {
                 if (wasPlaying) video.play();
             }
         });
-    });
-
-    // Toggle play/pause button states based on video state
-    video.addEventListener('play', () => {
-        playBtns.forEach(btn => btn.disabled = true);
-        pauseBtns.forEach(btn => btn.disabled = false);
-    });
-    video.addEventListener('pause', () => {
-        playBtns.forEach(btn => btn.disabled = false);
-        pauseBtns.forEach(btn => btn.disabled = true);
-    });
-    video.addEventListener('ended', () => {
-        playBtns.forEach(btn => btn.disabled = false);
-        pauseBtns.forEach(btn => btn.disabled = true);
     });
 
     // Observe DOM changes for dynamic updates (bookmark status changes)

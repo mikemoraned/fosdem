@@ -73,7 +73,7 @@
                     * this is taken from main fosdem.org website
         * [x] update askama templates so that when a VideoLink enum has Some `codec` then it is added as an attribute
         * [x] update video link JS so that any `codec` attributes are copied over
-    * [ ] simplify video player by using the built-in controls, so no need for my own play/pause buttons
+    * [x] simplify video player by using the built-in controls, so no need for my own play/pause buttons
     * [x] update video player so that it will update itself and find new content when page finishes loading
 
 ## Performance
