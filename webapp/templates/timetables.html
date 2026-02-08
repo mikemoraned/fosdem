@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{%- import "components/event.html" as event -%}
 
 {% block content %}
 <style>
@@ -64,11 +65,11 @@
                         {% match overlap %}
                         {% when planning::EventOverlap::Beginning { event, slot_coverage } %}
                         <td rowspan="{{ slot_coverage }}">
-                            <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                            <a href="{{ event.id|event_url }}"
                                 title="{{ event.starting_time().format(" %H:%M") }}->{{
                                 event.ending_time().format("%H:%M") }} {{ event.title }}, {{ event.room }}"
                                 >
-                                <svg data-event-id="{{ event.id }}" data-bookmark-status="false" width="10px"
+                                <svg {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %} width="10px"
                                     height="10px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
                                     preserveAspectRatio="xMidYMid meet">
@@ -76,13 +77,13 @@
                                 </svg>
                             </a>
                             <div class="normal">
-                                <a href="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/"
+                                <a href="{{ event.id|event_url }}"
                                     title="{{ event.starting_time().format(" %H:%M") }}->{{
                                     event.ending_time().format("%H:%M") }} {{ event.title }}"
-                                    data-event-id="{{ event.id }}" data-bookmark-status="false">
+                                    {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
                                     {{ event.title|truncate_title(50) }}
                                 </a>
-                                <span data-event-id="{{ event.id }}" data-bookmark-status="false">
+                                <span {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
                                     <button class="button bookmark is-small" disabled>
                                         <span class="icon is-small">
                                             <i class="fa-solid fa-bookmark filled"></i>

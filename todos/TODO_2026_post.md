@@ -48,10 +48,63 @@
         * [x] extracting an askama component for the video player which still allows existing bookmarks video player to work. So:
             * [x] when placed in bookmarks page it has existing behaviour i.e. it finds all events which are bookmarked and collates them into a video
             * [x] when placed on search page, it finds all events which have a video and shows them, regardless of whether they are bookmarked
+* [x] video improvements:
+    * [x] in player, make title be a link to the event URL of the playing video
+    * [x] add ability to select webm video as preferred video type, but don't use it yet
+        * [x] modelled after `mp4_video_link` add `webm_video_link` which finds `.webm`
+            * ensure tests added; if real examples needed, see `events.json` for current year (`2026`)
+            * once tests passing, refactor to extract any shared code for finding video links
+        * [x] add `video_link` which returns a generic link and chooses `mp4` if it is available, and falls back to `webm` if not
+        * [x] update any calls of `mp4_video_link`:
+            * [x] where it doesn't actually care about it being an mp4 video and just cares about a video existing, to use `has_video`
+            * [x] where it just wants a link, to use `video_link`
+    * [x] support specifying multiple video formats and let the browser decide which it can show
+        * [x] refactor: follow the NewType pattern and make `mp4_video_link` and `webm_video_link` return a struct; update usages appropriately
+        * [x] add a `video_links` which returns a list of these NewTypes. add appropriate tests following existing semantics
+        * [x] update the askama event templates to have an inline <video> element section, wrapped in a details element which is closed by default, which contains multiple <source> elements, one for each type of video returned by `video_links`; if no videos are available then no section should exist
+        * [x] update video_player.js so that loadVideo uses the list of sources derived from above data i.e. so that multiple sources are listed if multiple formats available
+        * [x] update the event template so that the video link in the header which indicates it has a video is just a piece of text, not a link
+        * [x] favour webm over mp4 by returning that first in the list from `video_links`
+        * [x] remove `video_link` if it is no longer used
+        * [x] update video link parsing so that:
+            * [x] there is a new `codecs` method that returns an optional string
+                * [x] for mp4 this is None
+                * [x] for webm it is Some("av01.0.08M.08.0.110.01.01.01.0")
+                    * this is taken from main fosdem.org website
+        * [x] update askama templates so that when a VideoLink enum has Some `codec` then it is added as an attribute
+        * [x] update video link JS so that any `codec` attributes are copied over
+    * [x] simplify video player by using the built-in controls, so no need for my own play/pause buttons
+    * [x] update video player so that it will update itself and find new content when page finishes loading
+
+## Performance
+
+* [x] enable compression on all routes
+* [x] a lot of the content is text, so update it so that is lazy-loaded. Rough approach:
+    * [x] add a route like `/2026/event/8376/event-abstract/` which will return the equivalent of the following, from `expandable_card_details` macro:
+    ```
+     <div class="content">
+        {{ event.abstract|safe }}
+    </div>
+    ```
+    * [x] update wherever we currently surface `event.abstract` to instead lazily load the text content. This should be done when content area becomes visible, and by default a skeleton (see https://bulma.io/documentation/features/skeletons/) should be used as a placeholder until it is loaded
+        * we should aim to use built-in html/css-only where possible, but https://htmx.org can be added and used
+
+# [ ] transition to using `hx-get` for all content:
+    * [x] convert cards on bookmarks
+    * [ ] solve problem of enabling binding for newly-loaded elements
 
 ## Ideas
 
 * bookmark heatmap of rooms and times (helps identify where/when interesting things are)
+
+## Bugs
+
+* [ ] getting a new error in fly.io logs related to opentelemetry
+```
+OpenTelemetry trace error occurred. error sending request for url (https://api.honeycomb.io/v1/traces): error trying to connect: invalid peer certificate: UnknownIssuer
+```
+    * [x] for now, disable it by not passing `--opentelemetry` to startup
+    * [ ] from a small investigation probably need to add `ca-certificates` installation to `Dockerfile`
 
 ## Niggles
 

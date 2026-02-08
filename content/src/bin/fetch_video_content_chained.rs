@@ -91,7 +91,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let pending_downloads: Vec<VideoDownload> = events
         .into_iter()
         .filter_map(|e| e.mp4_video_link())
-        .map(|url| VideoDownload::Command(url.clone(), video_path(&args.video_dir, &url)))
+        .map(|video| {
+            let url = video.url().clone();
+            VideoDownload::Command(url.clone(), video_path(&args.video_dir, &url))
+        })
         .collect();
 
     let pending_downloads = subset(pending_downloads, args.offset, args.limit);
