@@ -13,7 +13,7 @@
 {% macro card(event, related) %}
 <div class="columns highlight-bookmarked">
     <div class="column">
-        <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false" data-has-video="{{ event.has_video() }}" data-event-url="/{{ event.id.year() }}/event/{{ event.id.event_in_year() }}/">
+        <div class="card" {% call event_attrs(event) %} {% call bookmark_attrs(event) %}>
             {% call expandable_card_details(event) %}
             <footer class="card-footer">
                 {% call bookmark::bookmark_footer_item(event) %}
@@ -43,7 +43,7 @@
                     {% for item in year_group.items %}
                     <li>
                         <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/"
-                            data-event-id="{{ item.event.id }}" data-bookmark-status="false">
+                            {% call event_attrs(item.event) %} {% call bookmark_attrs(item.event) %}>
                             <span
                                 class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"</span>
@@ -99,4 +99,13 @@
         </div>
     </div>
 </details>
+{% endmacro %}
+
+{% macro event_attrs(event) %}
+data-event-id="{{ event.id }}" data-has-video="{{ event.has_video() }}" data-event-url="/{{ event.id.year() }}/event/{{
+event.id.event_in_year() }}/"
+{% endmacro %}
+
+{% macro bookmark_attrs(event) %}
+data-bookmark-status="false"
 {% endmacro %}
