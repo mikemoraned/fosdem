@@ -13,7 +13,7 @@
 {% macro card(event, related) %}
 <div class="columns highlight-bookmarked">
     <div class="column">
-        <div class="card" data-event-id="{{ event.id }}" data-bookmark-status="false" data-has-video="{{ event.has_video() }}">
+        <div class="card" {% call event_attrs(event) %} {% call bookmark_attrs(event) %}>
             {% call expandable_card_details(event) %}
             <footer class="card-footer">
                 {% call bookmark::bookmark_footer_item(event) %}
@@ -42,8 +42,8 @@
                 <ul>
                     {% for item in year_group.items %}
                     <li>
-                        <a href="/{{ item.event.id.year() }}/event/{{ item.event.id.event_in_year() }}/"
-                            data-event-id="{{ item.event.id }}" data-bookmark-status="false">
+                        <a href="{{ item.event.id|event_url }}" {% call event_attrs(item.event) %} {% call
+                            bookmark_attrs(item.event) %}>
                             <span
                                 class="tag is-info">{{item.distance|distance_icon|safe}}&nbsp;{{item.distance|distance_similarity}}</span>
                             <span>"{{ item.event.title }}"</span>
@@ -83,20 +83,54 @@
         {% if event.slides.len() > 0 %}
         , <a href="{{ event.slides[0] }}"><span><i class="fa-solid fa-presentation-screen"></i> slides</span></a>
         {% endif %}
-        {% if let Some(url) = event.mp4_video_link() %}
-        , <a href="{{ url }}" data-type="video"><span><i class="fa-solid fa-video"></i> video</span></a>
+        {% if event.has_video() %}
+        , <span data-type="video"><i class="fa-solid fa-video"></i> video</span>
         {% endif %}
     </p>
 </div>
+{% endmacro %}
+
+{% macro inline_video(event) %}
+{% let videos = event.video_links() %}
+{% if !videos.is_empty() %}
+<details class="video-details">
+    <summary><i class="fa-solid fa-video"></i> video</summary>
+    <video controls preload="none">
+        {% for video in videos %}
+        {% if let Some(codecs) = video.codecs() %}
+        <source src="{{ video.url() }}" type="{{ video.mime_type() }}; codecs=&quot;{{ codecs }}&quot;">
+        {% else %}
+        <source src="{{ video.url() }}" type="{{ video.mime_type() }}">
+        {% endif %}
+        {% endfor %}
+    </video>
+</details>
+{% endif %}
 {% endmacro %}
 
 {% macro expandable_card_details(event) %}
 <details class="event">
     <summary>{% call card_header(event) %}</summary>
     <div class="card-content">
-        <div class="content">
-            {{ event.abstract|safe }}
+        <div class="content"
+             hx-get="{{ event.id|event_abstract_url }}"
+             hx-trigger="intersect once"
+             hx-swap="innerHTML">
+            <div class="skeleton-lines">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
+        {% call inline_video(event) %}
     </div>
 </details>
+{% endmacro %}
+
+{% macro event_attrs(event) %}
+data-event-id="{{ event.id }}" data-has-video="{{ event.has_video() }}" data-event-url="{{ event.id|event_url }}"
+{% endmacro %}
+
+{% macro bookmark_attrs(event) %}
+data-bookmark-status="false"
 {% endmacro %}

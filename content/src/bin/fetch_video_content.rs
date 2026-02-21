@@ -67,7 +67,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let events_with_videos: Vec<Event> = events
         .into_iter()
-        .filter(|e| e.mp4_video_link().is_some())
+        .filter(|e| e.has_video())
         .collect();
 
     let events_with_videos: Vec<Event> = if let Some(n) = args.offset {
@@ -88,8 +88,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         events_with_videos
             .into_iter()
             .filter(|e| {
-                if let Some(url) = e.mp4_video_link() {
-                    let video_path = video_path(&args.video_dir, &url);
+                if let Some(video) = e.mp4_video_link() {
+                    let video_path = video_path(&args.video_dir, video.url());
                     let audio_path = audio_path(&args.audio_dir, &video_path);
                     let wav_path = wav_path(&audio_path);
                     let webvtt_path = webvtt_path(&args.webvtt_dir, &wav_path);
@@ -117,8 +117,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut video_paths = vec![];
     let mut video_paths_missing = 0;
     for event in events_with_videos {
-        if let Some(url) = event.mp4_video_link() {
-            let video_path = video_path(&args.video_dir, &url);
+        if let Some(video) = event.mp4_video_link() {
+            let url = video.url();
+            let video_path = video_path(&args.video_dir, url);
             if video_path.exists() {
                 debug!("{:?} already downloaded, skipping", video_path);
                 progress.inc(1);
@@ -127,8 +128,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 debug!("{:?} verify only, skipping", video_path);
                 video_paths_missing += 1;
                 video_paths.push(video_path);
-            } else if url_reachable(&url).await? {
-                fetch_video(&url, &video_path).await?;
+            } else if url_reachable(url).await? {
+                fetch_video(url, &video_path).await?;
                 progress.inc(1);
                 video_paths.push(video_path);
             }
