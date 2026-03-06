@@ -4194,11 +4194,11 @@ around X, with this talk's subject as an example.&lt;/p&gt;</biography>
       <name>Isaac Freund</name>
       <slug>isaac_freund</slug>
       <biography>&lt;p&gt;Hello, I'm Isaac Freund. I create things, the most public of which are currently my free and open source software projects.&lt;/p&gt;
-&lt;p&gt;My largest project is currently the &lt;a href="/software/river/"&gt;river&lt;/a&gt; Wayland compositor.  I also spend significant time on the upstream projects river depends on, I'm a &lt;a href="https://gitlab.freedesktop.org/wlroots/wlroots"&gt;wlroots&lt;/a&gt; developer and &lt;a href="https://ziglang.org"&gt;Zig&lt;/a&gt; core team member.&lt;/p&gt;
-&lt;p&gt;Outside of my software projects I spend my time playing bass guitar, bouldering, hiking, &lt;a href="/reading/"&gt;reading&lt;/a&gt;, and occasionally writing &lt;a href="/poetry/"&gt;poetry&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My largest project is currently the &lt;a href="https://isaacfreund.com/software/river/"&gt;river&lt;/a&gt; Wayland compositor.  I also spend significant time on the upstream projects river depends on, I'm a &lt;a href="https://gitlab.freedesktop.org/wlroots/wlroots"&gt;wlroots&lt;/a&gt; developer and &lt;a href="https://ziglang.org"&gt;Zig&lt;/a&gt; core team member.&lt;/p&gt;
+&lt;p&gt;Outside of my software projects I spend my time playing double bass, bass guitar, and clarinet as well as bouldering, hiking, &lt;a href="https://isaacfreund.com/reading/"&gt;reading&lt;/a&gt;, and occasionally writing &lt;a href="https://isaacfreund.com/poetry/"&gt;poetry&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I can be reached by &lt;a href="mailto:mail@isaacfreund.com"&gt;email&lt;/a&gt; (&lt;a href="/public_key.txt"&gt;PGP key&lt;/a&gt;) and can also be found with the username "ifreund" on &lt;a href="https://hachyderm.io/@ifreund"&gt;mastodon&lt;/a&gt; and various IRC networks.&lt;/p&gt;
 &lt;p&gt;The source code for my software projects is hosted on &lt;a href="https://codeberg.org/ifreund"&gt;codeberg&lt;/a&gt; with mirrors on &lt;a href="https://github.com/ifreund"&gt;github&lt;/a&gt; and &lt;a href="https://git.sr.ht/~ifreund"&gt;sourcehut&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;https://isaacfreund.com/&lt;/p&gt;</biography>
+&lt;p&gt;&lt;a href="https://isaacfreund.com"&gt;https://isaacfreund.com&lt;/a&gt;&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="5720">
@@ -6735,7 +6735,7 @@ Have worked in R&amp;amp;D and Consultancy around the world during the last 15 y
     <person id="6651">
       <name>Hannah Aubry</name>
       <slug>hannah_aubry</slug>
-      <biography>&lt;p&gt;Hannah Aubry is a community builder and an advocate for open technologies with roots in communications and program management. Currently, she serves as the Community Director for the Mastodon project, leading Trust &amp;amp; Safety as well as the day-to-day operations of Mastodon's flagship instances. Previously, she led Fastly's $50 million commitment to the open internet through its Fast Forward initiative, coordinated the world’s largest multi-team system study to date as part of the S.O.N.I.C. Research Group, and created activism-driven installation art &amp;amp; theatre. If she were a bird she’d be a roseate spoonbill.&lt;/p&gt;</biography>
+      <biography>&lt;p&gt;Hannah Aubry is a community builder and an advocate for open technologies with roots in communications and program management. Currently, she serves as the Community Director for the Mastodon project, leading the day-to-day operations of Mastodon's flagship instances. Previously, she led Fastly's $50 million commitment to the open internet through its Fast Forward initiative, coordinated the world’s largest multi-team system study to date as part of the S.O.N.I.C. Research Group, and created activism-driven installation art &amp;amp; theatre. If she were a bird she’d be a roseate spoonbill.&lt;/p&gt;</biography>
       <extended_biography></extended_biography>
     </person>
     <person id="6652">
@@ -10789,8 +10789,8 @@ It covers the steps from collecting the vehicle positions from people's phones i
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/Z9GDAF-crowdsourcing_delay_information/slides/267040/slides_uiqxbon.pdf">Slides</attachment>
         </attachments>
         <links>
-          <link href="https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.av1.webm">Video recording (AV1/WebM; preferred) - 27.0 MB</link>
-          <link href="https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.mp4">Video recording (MP4; for legacy systems) - 255.5 MB</link>
+          <link href="https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.av1.webm">Video recording (AV1/WebM; preferred) - 12.0 MB</link>
+          <link href="https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.mp4">Video recording (MP4; for legacy systems) - 128.1 MB</link>
           <link href="https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-railways-and-open-transport:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
@@ -13305,6 +13305,10 @@ Through this session, we aim to present users with openEO and its capabilities. 
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h1301/9XN89G-geohouse.av1.webm">Video recording (AV1/WebM; preferred) - 295.7 MB</link>
+          <link href="https://video.fosdem.org/2026/h1301/9XN89G-geohouse.mp4">Video recording (MP4; for legacy systems) - 772.5 MB</link>
+          <link href="https://video.fosdem.org/2026/h1301/9XN89G-geohouse.vtt">Video recording subtitle file (VTT)</link>
+          <link href="https://presentations.clickhouse.com/2026-fosdem-geospatial/">Slides</link>
           <link href="https://chat.fosdem.org/#/room/#2026-geospatial:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-geospatial:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9XN89G/feedback/">Submit Feedback</link>
@@ -13387,6 +13391,9 @@ https://www.centipede-rtk.org/fr&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h1301/X7FTTA-millipede_and_centipede-rtk_centimeter-level_gnss_positioning_for_the_rest_of_us.av1.webm">Video recording (AV1/WebM; preferred) - 110.4 MB</link>
+          <link href="https://video.fosdem.org/2026/h1301/X7FTTA-millipede_and_centipede-rtk_centimeter-level_gnss_positioning_for_the_rest_of_us.mp4">Video recording (MP4; for legacy systems) - 810.0 MB</link>
+          <link href="https://video.fosdem.org/2026/h1301/X7FTTA-millipede_and_centipede-rtk_centimeter-level_gnss_positioning_for_the_rest_of_us.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-geospatial:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-geospatial:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/X7FTTA/feedback/">Submit Feedback</link>
@@ -15099,6 +15106,9 @@ it will be moderated&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h1309/ZVYAPN-the_gaps_we_inherit.av1.webm">Video recording (AV1/WebM; preferred) - 70.2 MB</link>
+          <link href="https://video.fosdem.org/2026/h1309/ZVYAPN-the_gaps_we_inherit.mp4">Video recording (MP4; for legacy systems) - 581.2 MB</link>
+          <link href="https://video.fosdem.org/2026/h1309/ZVYAPN-the_gaps_we_inherit.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZVYAPN/feedback/">Submit Feedback</link>
@@ -15365,6 +15375,9 @@ https://github.com/servo/servo&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h1309/HRACSM-midori_browser_a_free_and_open-source_privacy_ecosystem.av1.webm">Video recording (AV1/WebM; preferred) - 26.5 MB</link>
+          <link href="https://video.fosdem.org/2026/h1309/HRACSM-midori_browser_a_free_and_open-source_privacy_ecosystem.mp4">Video recording (MP4; for legacy systems) - 212.9 MB</link>
+          <link href="https://video.fosdem.org/2026/h1309/HRACSM-midori_browser_a_free_and_open-source_privacy_ecosystem.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-browser-and-web-platform:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-browser-and-web-platform:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/HRACSM/feedback/">Submit Feedback</link>
@@ -16213,9 +16226,9 @@ The time is truly ripe for embedded Linux to shine on RISC-V!&lt;/p&gt;</abstrac
         <attachments>
         </attachments>
         <links>
-          <link href="https://video.fosdem.org/2026/h2214/LX3NNU-upstream-embedded-linux-on-risc-v-sbcs.vtt">Video recording subtitle file (VTT)</link>
-          <link href="https://video.fosdem.org/2026/h2214/LX3NNU-upstream-embedded-linux-on-risc-v-sbcs.av1.webm">Video recording (AV1/WebM; preferred) - 157.1 MB</link>
+          <link href="https://video.fosdem.org/2026/h2214/LX3NNU-upstream-embedded-linux-on-risc-v-sbcs.av1.webm">Video recording (AV1/WebM; preferred) - 157.0 MB</link>
           <link href="https://video.fosdem.org/2026/h2214/LX3NNU-upstream-embedded-linux-on-risc-v-sbcs.mp4">Video recording (MP4; for legacy systems) - 627.3 MB</link>
+          <link href="https://video.fosdem.org/2026/h2214/LX3NNU-upstream-embedded-linux-on-risc-v-sbcs.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-risc-v:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-risc-v:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LX3NNU/feedback/">Submit Feedback</link>
@@ -16637,6 +16650,9 @@ I'll explain how this works as a companion when exploring the small web as part 
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/YAMEDX-federated_bookmark_sharing/slides/266866/ties_fede_utvqobn.pdf">Slides</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h2215/YAMEDX-federated_bookmark_sharing.av1.webm">Video recording (AV1/WebM; preferred) - 25.6 MB</link>
+          <link href="https://video.fosdem.org/2026/h2215/YAMEDX-federated_bookmark_sharing.mp4">Video recording (MP4; for legacy systems) - 196.6 MB</link>
+          <link href="https://video.fosdem.org/2026/h2215/YAMEDX-federated_bookmark_sharing.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-social-web:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-social-web:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/YAMEDX/feedback/">Submit Feedback</link>
@@ -17910,6 +17926,9 @@ Of course the configuration files for all components as well as links to the rel
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/ETVUZV-flurfunk-sovereign-real-world-wifi-wlan-network/slides/266914/fosdem_20_ajmrpys.pdf">Slides</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1120/ETVUZV-flurfunk-sovereign-real-world-wifi-wlan-network.av1.webm">Video recording (AV1/WebM; preferred) - 49.5 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/ETVUZV-flurfunk-sovereign-real-world-wifi-wlan-network.mp4">Video recording (MP4; for legacy systems) - 375.6 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/ETVUZV-flurfunk-sovereign-real-world-wifi-wlan-network.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-building-europes-public-digital-infrastructure:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-building-europes-public-digital-infrastructure:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ETVUZV/feedback/">Submit Feedback</link>
@@ -17938,6 +17957,9 @@ Of course the configuration files for all components as well as links to the rel
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1120/CCJG9G-mzansi-xchange-dpi.av1.webm">Video recording (AV1/WebM; preferred) - 66.3 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/CCJG9G-mzansi-xchange-dpi.mp4">Video recording (MP4; for legacy systems) - 565.7 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/CCJG9G-mzansi-xchange-dpi.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-building-europes-public-digital-infrastructure:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-building-europes-public-digital-infrastructure:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CCJG9G/feedback/">Submit Feedback</link>
@@ -18134,6 +18156,9 @@ DevGuard itself is an OWASP Incubator Project which is available via the openCod
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1126/LHANGM-open_source_in_public_utilities_-_collaboration_with_diy_communities_for_better_.av1.webm">Video recording (AV1/WebM; preferred) - 128.8 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1126/LHANGM-open_source_in_public_utilities_-_collaboration_with_diy_communities_for_better_.mp4">Video recording (MP4; for legacy systems) - 563.9 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1126/LHANGM-open_source_in_public_utilities_-_collaboration_with_diy_communities_for_better_.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-energy:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-energy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LHANGM/feedback/">Submit Feedback</link>
@@ -18425,6 +18450,9 @@ Github Discussions: https://github.com/alliander-opensource/transformer-thermal-
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1126/NM9YQN-ttm.av1.webm">Video recording (AV1/WebM; preferred) - 208.5 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1126/NM9YQN-ttm.mp4">Video recording (MP4; for legacy systems) - 926.2 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1126/NM9YQN-ttm.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-energy:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-energy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NM9YQN/feedback/">Submit Feedback</link>
@@ -18795,6 +18823,9 @@ https://lcd-mikroelektronik.de/kategorie/e-paper/&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ua2114/CHC7YN-welcome_to_the_devroom.av1.webm">Video recording (AV1/WebM; preferred) - 19.9 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2114/CHC7YN-welcome_to_the_devroom.mp4">Video recording (MP4; for legacy systems) - 76.4 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2114/CHC7YN-welcome_to_the_devroom.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-cra-in-practice:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-cra-in-practice:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/CHC7YN/feedback/">Submit Feedback</link>
@@ -19096,6 +19127,9 @@ Facilitate cross-project collaboration, shared tooling, and evidence collection 
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/AATKG8-cra-security-attestations-in-practice/slides/267152/unlockope_cyespxw.pdf">Slides</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ua2114/AATKG8-cra-security-attestations-in-practice.av1.webm">Video recording (AV1/WebM; preferred) - 51.1 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2114/AATKG8-cra-security-attestations-in-practice.mp4">Video recording (MP4; for legacy systems) - 249.5 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2114/AATKG8-cra-security-attestations-in-practice.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-cra-in-practice:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-cra-in-practice:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/AATKG8/feedback/">Submit Feedback</link>
@@ -19573,7 +19607,7 @@ https://rh-openjdk.github.io/redhat-openjdk-containers/&lt;/p&gt;</abstract>
         <links>
           <link href="https://video.fosdem.org/2026/ua2118/FLYWX7-wordpress-at-scale.av1.webm">Video recording (AV1/WebM; preferred) - 95.6 MB</link>
           <link href="https://video.fosdem.org/2026/ua2118/FLYWX7-wordpress-at-scale.mp4">Video recording (MP4; for legacy systems) - 372.5 MB</link>
-          <link href="https://go.epfl.ch/wpatscale">Presentation slides, online</link>
+          <link href="https://go.epfl.ch/wpatscale-slides">Presentation slides, online</link>
           <link href="https://video.fosdem.org/2026/ua2118/FLYWX7-wordpress-at-scale.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-containers:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-containers:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
@@ -24057,6 +24091,9 @@ Modern ZTA implementations employ AI and automation for adaptive threat detectio
         </attachments>
         <links>
           <link href="https://code.gov.tw/?lang=zh-TW">code.gov.tw - the Official Policy Code Website of Taiwan</link>
+          <link href="https://video.fosdem.org/2026/ub5230/9HAMJC-fork_the_government_the_back_and_forth_open_source_advocacy_road_in_taiwan.av1.webm">Video recording (AV1/WebM; preferred) - 72.3 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/9HAMJC-fork_the_government_the_back_and_forth_open_source_advocacy_road_in_taiwan.mp4">Video recording (MP4; for legacy systems) - 533.1 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/9HAMJC-fork_the_government_the_back_and_forth_open_source_advocacy_road_in_taiwan.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-legal:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-legal:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/9HAMJC/feedback/">Submit Feedback</link>
@@ -24248,6 +24285,9 @@ Modern ZTA implementations employ AI and automation for adaptive threat detectio
         </attachments>
         <links>
           <link href="https://sfc.ngo/idea">Submit your idea: https://sfc.ngo/idea</link>
+          <link href="https://video.fosdem.org/2026/ub5230/RJPLXP-hot_topic_audience_choice.av1.webm">Video recording (AV1/WebM; preferred) - 173.5 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/RJPLXP-hot_topic_audience_choice.mp4">Video recording (MP4; for legacy systems) - 522.9 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/RJPLXP-hot_topic_audience_choice.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-legal:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-legal:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/RJPLXP/feedback/">Submit Feedback</link>
@@ -26641,6 +26681,7 @@ We'll cover:
           <person id="2362">Pierrick Philippe</person>
         </persons>
         <attachments>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/HGLHTN-tentative_definition_of_the_secret_attribute_in_gcc/slides/266889/main_yoeaaoy.pdf">Slides</attachment>
         </attachments>
         <links>
           <link href="https://video.fosdem.org/2026/ud6215/HGLHTN-tentative_definition_of_the_secret_attribute_in_gcc.av1.webm">Video recording (AV1/WebM; preferred) - 90.6 MB</link>
@@ -26858,6 +26899,9 @@ In this talk, we'll demonstrate:
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/GTQRZE-programmable-npu-generation-from-linalg-mlir-circt/slides/267063/generatin_gvzr9x9.pdf">slides</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ud6215/GTQRZE-programmable-npu-generation-from-linalg-mlir-circt.av1.webm">Video recording (AV1/WebM; preferred) - 60.3 MB</link>
+          <link href="https://video.fosdem.org/2026/ud6215/GTQRZE-programmable-npu-generation-from-linalg-mlir-circt.mp4">Video recording (MP4; for legacy systems) - 472.2 MB</link>
+          <link href="https://video.fosdem.org/2026/ud6215/GTQRZE-programmable-npu-generation-from-linalg-mlir-circt.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-llvm:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-llvm:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/GTQRZE/feedback/">Submit Feedback</link>
@@ -28438,6 +28482,7 @@ Advice from the devroom managers: Don't miss the next talk: Jazz is a great fram
           <person id="6772">fintohaps</person>
         </persons>
         <attachments>
+          <attachment type="slides" href="https://fosdem.org/2026/events/attachments/BCVGUW-radicle/slides/267510/fosdem_20_lpldnvz.pdf">Slides</attachment>
         </attachments>
         <links>
           <link href="https://radicle.xyz/">homepage</link>
@@ -29175,6 +29220,9 @@ Because it offered no significant advantages over using a DNS server like &lt;em
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/NSMPFQ-translations-welcome/slides/267503/welcome_t_pte2pmi.pdf">slides</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/k3401/NSMPFQ-translations-welcome.av1.webm">Video recording (AV1/WebM; preferred) - 131.0 MB</link>
+          <link href="https://video.fosdem.org/2026/k3401/NSMPFQ-translations-welcome.mp4">Video recording (MP4; for legacy systems) - 424.2 MB</link>
+          <link href="https://video.fosdem.org/2026/k3401/NSMPFQ-translations-welcome.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-translations:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-translations:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NSMPFQ/feedback/">Submit Feedback</link>
@@ -29900,6 +29948,9 @@ optimal on all axes, but good enough for daily use.&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/k4201/JSRDR8-audio_and_music_production_on_plan_9.av1.webm">Video recording (AV1/WebM; preferred) - 96.8 MB</link>
+          <link href="https://video.fosdem.org/2026/k4201/JSRDR8-audio_and_music_production_on_plan_9.mp4">Video recording (MP4; for legacy systems) - 759.5 MB</link>
+          <link href="https://video.fosdem.org/2026/k4201/JSRDR8-audio_and_music_production_on_plan_9.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-plan9:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-plan9:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/JSRDR8/feedback/">Submit Feedback</link>
@@ -30640,7 +30691,7 @@ for applications which are themselves event-driven.&lt;/p&gt;</abstract>
         <type>devroom</type>
         <language>en</language>
         <abstract>&lt;p&gt;Current Wayland compositor implementations handle window management and compositing in the same monolithic process. Wayland does not however force this architecture.&lt;/p&gt;
-&lt;p&gt;I am the author of the &lt;a href="https://isaacfreund.com/software/river/"&gt;river&lt;/a&gt; Wayland compositor. It supports a custom Wayland protocol, &lt;a href="https://codeberg.org/river/river/src/branch/main/protocol/river-window-management-v1.xml"&gt;river-window-management-v1&lt;/a&gt;, which allows a special "window manager" Wayland client to handle all window management policy, draw server side decorations, setup keybindings, and more.&lt;/p&gt;
+&lt;p&gt;I am the author of the &lt;a href="https://isaacfreund.com/software/river/"&gt;river&lt;/a&gt; Wayland compositor. It supports a custom Wayland protocol, &lt;a href="https://isaacfreund.com/docs/wayland/river-window-management-v1/"&gt;river-window-management-v1&lt;/a&gt;, which allows a special "window manager" Wayland client to handle all window management policy, draw server side decorations, setup keybindings, and more.&lt;/p&gt;
 &lt;p&gt;My goal with this work is to make hacking on Wayland window managers significantly more accessible and promote ecosystem diversity. There is already a &lt;a href="https://codeberg.org/river/wiki/src/branch/main/pages/wm-list.md"&gt;growing list of window managers&lt;/a&gt; developed for the new protocol.&lt;/p&gt;
 &lt;p&gt;This talk will give an overview of this new protocol and the advantages/disadvantages of separating the Wayland compositor and window manager. There will also be a brief demo.&lt;/p&gt;</abstract>
         <description></description>
@@ -30943,9 +30994,7 @@ Today’s rapidly diversifying High-Performance Computing (HPC) landscape makes 
         <language>en</language>
         <abstract>&lt;p&gt;Reliable performance measurement remains an unsolved problem across most open source projects. Benchmarks are often an afterthought, and when they aren't they can be noisy, non-repeatable, and hard to act on.&lt;/p&gt;
 &lt;p&gt;This talk shares lessons learned from building a large-scale benchmarking system at Datadog and shows how small fixes can make a big difference: controlling environmental noise, designing benchmarks, interpreting results with sound statistical methods, and more.&lt;/p&gt;
-&lt;p&gt;Attendees should leave with practical principles they can apply in their own projects to make benchmarks trustworthy and actionable. We'll illustrate each principle with real data — for instance, environment tuning that cut variance by 100x, or design changes that turned a flaky benchmark into a reliable one.&lt;/p&gt;
-&lt;p&gt;https://www.linkedin.com/in/augustodeoli/
-https://www.linkedin.com/in/kakkoyun/&lt;/p&gt;</abstract>
+&lt;p&gt;Attendees should leave with practical principles they can apply in their own projects to make benchmarks trustworthy and actionable. We'll illustrate each principle with real data — for instance, environment tuning that cut variance by 100x, or design changes that turned a flaky benchmark into a reliable one.&lt;/p&gt;</abstract>
         <description></description>
         <feedback_url>https://pretalx.fosdem.org/fosdem-2026/talk/8AS3XD/feedback/</feedback_url>
         <persons>
@@ -31126,6 +31175,10 @@ It goes over the challenges that arise from exchanging data in a DVCS, and the l
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h1301/PAXHDR-memcpy.av1.webm">Video recording (AV1/WebM; preferred) - 196.4 MB</link>
+          <link href="https://video.fosdem.org/2026/h1301/PAXHDR-memcpy.mp4">Video recording (MP4; for legacy systems) - 943.1 MB</link>
+          <link href="https://video.fosdem.org/2026/h1301/PAXHDR-memcpy.vtt">Video recording subtitle file (VTT)</link>
+          <link href="https://presentations.clickhouse.com/2026-fosdem-memcpy/">Slides</link>
           <link href="https://chat.fosdem.org/#/room/#2026-software-performance:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-software-performance:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/PAXHDR/feedback/">Submit Feedback</link>
@@ -32547,6 +32600,9 @@ I'll cover three critical gaps in current HPC monitoring:
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/UHBKS8-ecad-mcad-collaboration-idx/slides/267267/20260201-_awxjivw.pdf">Slides (.pdf)</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h1309/UHBKS8-ecad-mcad-collaboration-idx.av1.webm">Video recording (AV1/WebM; preferred) - 90.8 MB</link>
+          <link href="https://video.fosdem.org/2026/h1309/UHBKS8-ecad-mcad-collaboration-idx.mp4">Video recording (MP4; for legacy systems) - 653.8 MB</link>
+          <link href="https://video.fosdem.org/2026/h1309/UHBKS8-ecad-mcad-collaboration-idx.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-hardware-and-cadcam:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-hardware-and-cadcam:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/UHBKS8/feedback/">Submit Feedback</link>
@@ -33705,6 +33761,9 @@ This talk introduces the Shared Signals Framework and explains how it enhances s
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h2214/ESUPAM-inside_proconnect_building_a_modern_federated_identity_provider_for_government_s.av1.webm">Video recording (AV1/WebM; preferred) - 115.1 MB</link>
+          <link href="https://video.fosdem.org/2026/h2214/ESUPAM-inside_proconnect_building_a_modern_federated_identity_provider_for_government_s.mp4">Video recording (MP4; for legacy systems) - 598.4 MB</link>
+          <link href="https://video.fosdem.org/2026/h2214/ESUPAM-inside_proconnect_building_a_modern_federated_identity_provider_for_government_s.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-identity-and-access-management:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-identity-and-access-management:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ESUPAM/feedback/">Submit Feedback</link>
@@ -34801,6 +34860,9 @@ Written in Rust and supported by modern tooling such as an LSP and editor plugin
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/h2215/TWAMGG-youth_hacking_4_freedom_2026_a_programming_competition_for_teenagers.av1.webm">Video recording (AV1/WebM; preferred) - 61.9 MB</link>
+          <link href="https://video.fosdem.org/2026/h2215/TWAMGG-youth_hacking_4_freedom_2026_a_programming_competition_for_teenagers.mp4">Video recording (MP4; for legacy systems) - 331.9 MB</link>
+          <link href="https://video.fosdem.org/2026/h2215/TWAMGG-youth_hacking_4_freedom_2026_a_programming_competition_for_teenagers.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-dev-random:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/TWAMGG/feedback/">Submit Feedback</link>
@@ -35387,6 +35449,8 @@ https://github.com/diSSCo&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1120/WJUJ3R-accelerating_vllm_inference_with_quantization_and_speculative_decoding.av1.webm">Video recording (AV1/WebM; preferred) - 99.1 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/WJUJ3R-accelerating_vllm_inference_with_quantization_and_speculative_decoding.mp4">Video recording (MP4; for legacy systems) - 605.4 MB</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-research:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-research:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/WJUJ3R/feedback/">Submit Feedback</link>
@@ -35489,6 +35553,9 @@ OQTOPUS provides a complete cloud architecture for quantum computers, covering t
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1120/RUJFXG-open_research_organizers_panel.av1.webm">Video recording (AV1/WebM; preferred) - 112.8 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/RUJFXG-open_research_organizers_panel.mp4">Video recording (MP4; for legacy systems) - 309.3 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1120/RUJFXG-open_research_organizers_panel.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-research:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-research:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/RUJFXG/feedback/">Submit Feedback</link>
@@ -36127,6 +36194,9 @@ We built RRP with a modular architecture and open-source ethos, inviting develop
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/aw1126/7XJL9E-engineering_xmpp_federation_building_messaging_voice_social_features_across_inde.av1.webm">Video recording (AV1/WebM; preferred) - 230.2 MB</link>
+          <link href="https://video.fosdem.org/2026/aw1126/7XJL9E-engineering_xmpp_federation_building_messaging_voice_social_features_across_inde.mp4">Video recording (MP4; for legacy systems) - 1.3 GB</link>
+          <link href="https://video.fosdem.org/2026/aw1126/7XJL9E-engineering_xmpp_federation_building_messaging_voice_social_features_across_inde.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-decentralised-communication:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-decentralised-communication:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/7XJL9E/feedback/">Submit Feedback</link>
@@ -37384,6 +37454,9 @@ SEAL-4: Full Digital Sovereignty&lt;/p&gt;
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ua2118/7AUMEC-cloudsovereignframeworkexplained.av1.webm">Video recording (AV1/WebM; preferred) - 40.2 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2118/7AUMEC-cloudsovereignframeworkexplained.mp4">Video recording (MP4; for legacy systems) - 192.2 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2118/7AUMEC-cloudsovereignframeworkexplained.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-source-eu-policy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/7AUMEC/feedback/">Submit Feedback</link>
@@ -37579,6 +37652,9 @@ https://code.europa.eu/simpl&lt;/p&gt;</abstract>
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ua2118/KS8EY3-how_to_engage_with_policymakers_as_civil_society.av1.webm">Video recording (AV1/WebM; preferred) - 122.2 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2118/KS8EY3-how_to_engage_with_policymakers_as_civil_society.mp4">Video recording (MP4; for legacy systems) - 640.0 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2118/KS8EY3-how_to_engage_with_policymakers_as_civil_society.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-source-eu-policy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/KS8EY3/feedback/">Submit Feedback</link>
@@ -37709,6 +37785,9 @@ This session is aimed at open-source developers, civic tech builders, data space
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ua2118/EZKMCZ-cra-for-everyone.av1.webm">Video recording (AV1/WebM; preferred) - 115.2 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2118/EZKMCZ-cra-for-everyone.mp4">Video recording (MP4; for legacy systems) - 932.8 MB</link>
+          <link href="https://video.fosdem.org/2026/ua2118/EZKMCZ-cra-for-everyone.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-source-eu-policy:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/EZKMCZ/feedback/">Submit Feedback</link>
@@ -39374,6 +39453,7 @@ Given its traits, CEL is the perfect match for any Rust project that requires so
           <link href="https://video.fosdem.org/2026/ub2252a/NBLNRY-rust-clickhouse.av1.webm">Video recording (AV1/WebM; preferred) - 83.4 MB</link>
           <link href="https://video.fosdem.org/2026/ub2252a/NBLNRY-rust-clickhouse.mp4">Video recording (MP4; for legacy systems) - 527.3 MB</link>
           <link href="https://video.fosdem.org/2026/ub2252a/NBLNRY-rust-clickhouse.vtt">Video recording subtitle file (VTT)</link>
+          <link href="https://presentations.clickhouse.com/2025-p99/">Slides</link>
           <link href="https://chat.fosdem.org/#/room/#2026-rust:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-rust:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NBLNRY/feedback/">Submit Feedback</link>
@@ -39775,6 +39855,7 @@ Links:&lt;/p&gt;
           <link href="https://video.fosdem.org/2026/ub4132/LVQGLQ-bugbane.av1.webm">Video recording (AV1/WebM; preferred) - 157.8 MB</link>
           <link href="https://video.fosdem.org/2026/ub4132/LVQGLQ-bugbane.mp4">Video recording (MP4; for legacy systems) - 577.1 MB</link>
           <link href="https://video.fosdem.org/2026/ub4132/LVQGLQ-bugbane.vtt">Video recording subtitle file (VTT)</link>
+          <link href="https://osservatorionessuno.org/attachments/slide_fosdem_2026.pdf">Slides</link>
           <link href="https://chat.fosdem.org/#/room/#2026-open-source-digital-forensics:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-open-source-digital-forensics:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/LVQGLQ/feedback/">Submit Feedback</link>
@@ -40164,9 +40245,9 @@ As such, KDE Plasma saw an opportunity to build something unique to develop the 
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/Y7HLDE-you_dont_need_to_be_a_designer_to_design_fixing_ux_in_open_source/slides/267651/fosdem_20_82n9qyu.pdf">Presentation slides in pdf</attachment>
         </attachments>
         <links>
-          <link href="https://video.fosdem.org/2026/ub4132/Y7HLDE-you_dont_need_to_be_a_designer_to_design_fixing_ux_in_open_source.av1.webm">Video recording (AV1/WebM; preferred) - 63.8 MB</link>
-          <link href="https://video.fosdem.org/2026/ub4132/Y7HLDE-you_dont_need_to_be_a_designer_to_design_fixing_ux_in_open_source.mp4">Video recording (MP4; for legacy systems) - 594.6 MB</link>
+          <link href="https://video.fosdem.org/2026/ub4132/Y7HLDE-you_dont_need_to_be_a_designer_to_design_fixing_ux_in_open_source.mp4">Video recording (MP4; for legacy systems) - 594.5 MB</link>
           <link href="https://video.fosdem.org/2026/ub4132/Y7HLDE-you_dont_need_to_be_a_designer_to_design_fixing_ux_in_open_source.vtt">Video recording subtitle file (VTT)</link>
+          <link href="https://video.fosdem.org/2026/ub4132/Y7HLDE-you_dont_need_to_be_a_designer_to_design_fixing_ux_in_open_source.av1.webm">Video recording (AV1/WebM; preferred) - 63.6 MB</link>
           <link href="https://chat.fosdem.org/#/room/#2026-design:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-design:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/Y7HLDE/feedback/">Submit Feedback</link>
@@ -40753,6 +40834,9 @@ Multi-Vector vision embeddings demo: https://github.com/antas-marcin/weaviate-mu
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/ZVGHWC-multi-stage_retrieval_in_elasticsearch_-_present_and_future/slides/267712/fosdem26_u48cwax.pdf">Slides (updated)</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ub4136/ZVGHWC-multi-stage_retrieval_in_elasticsearch_-_present_and_future.av1.webm">Video recording (AV1/WebM; preferred) - 64.4 MB</link>
+          <link href="https://video.fosdem.org/2026/ub4136/ZVGHWC-multi-stage_retrieval_in_elasticsearch_-_present_and_future.mp4">Video recording (MP4; for legacy systems) - 556.1 MB</link>
+          <link href="https://video.fosdem.org/2026/ub4136/ZVGHWC-multi-stage_retrieval_in_elasticsearch_-_present_and_future.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-search:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-search:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/ZVGHWC/feedback/">Submit Feedback</link>
@@ -41669,6 +41753,9 @@ What was once an ecosystem fueled by collaboration and curiosity now feels incre
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ub5230/8KPSMC-from_vibrant_to_silent_has_the_community_lost_its_voice.av1.webm">Video recording (AV1/WebM; preferred) - 89.8 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/8KPSMC-from_vibrant_to_silent_has_the_community_lost_its_voice.mp4">Video recording (MP4; for legacy systems) - 581.0 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/8KPSMC-from_vibrant_to_silent_has_the_community_lost_its_voice.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/8KPSMC/feedback/">Submit Feedback</link>
@@ -41824,6 +41911,9 @@ What was once an ecosystem fueled by collaboration and curiosity now feels incre
         <attachments>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ub5230/NMLPUP-sustainability.av1.webm">Video recording (AV1/WebM; preferred) - 35.8 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/NMLPUP-sustainability.mp4">Video recording (MP4; for legacy systems) - 540.7 MB</link>
+          <link href="https://video.fosdem.org/2026/ub5230/NMLPUP-sustainability.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-community:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-community:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/NMLPUP/feedback/">Submit Feedback</link>
@@ -43733,6 +43823,9 @@ This talk explores the concept of shared responsibility in software security and
           <attachment type="slides" href="https://fosdem.org/2026/events/attachments/938CKB-how_to_create_the_sbom_for_the_linux_kernel/slides/267529/kernelsbo_sez6ok7.pdf">Slides</attachment>
         </attachments>
         <links>
+          <link href="https://video.fosdem.org/2026/ud2208/938CKB-how_to_create_the_sbom_for_the_linux_kernel.av1.webm">Video recording (AV1/WebM; preferred) - 61.8 MB</link>
+          <link href="https://video.fosdem.org/2026/ud2208/938CKB-how_to_create_the_sbom_for_the_linux_kernel.mp4">Video recording (MP4; for legacy systems) - 420.1 MB</link>
+          <link href="https://video.fosdem.org/2026/ud2208/938CKB-how_to_create_the_sbom_for_the_linux_kernel.vtt">Video recording subtitle file (VTT)</link>
           <link href="https://chat.fosdem.org/#/room/#2026-sboms-and-supply-chains:fosdem.org">Chat room(web)</link>
           <link href="https://matrix.to/#/#2026-sboms-and-supply-chains:fosdem.org?web-instance[element.io]=chat.fosdem.org">Chat room(app)</link>
           <link href="https://pretalx.fosdem.org/fosdem-2026/talk/938CKB/feedback/">Submit Feedback</link>
