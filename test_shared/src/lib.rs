@@ -13,12 +13,32 @@ pub const EVENT_ID_2025_CANONICAL_PATH: &str = formatcp!(
     EVENT_ID_2025.year(),
     EVENT_ID_2025.event_in_year()
 );
+pub const EVENT_ID_2025_ABSTRACT_PATH: &str = formatcp!(
+    "/{}/event/{}/abstract/",
+    EVENT_ID_2025.year(),
+    EVENT_ID_2025.event_in_year()
+);
+pub const EVENT_ID_2025_CARD_PATH: &str = formatcp!(
+    "/{}/event/{}/card/",
+    EVENT_ID_2025.year(),
+    EVENT_ID_2025.event_in_year()
+);
 pub const EVENT_ID_2025_CONTENT_SAMPLE: &str =
     "The GNOME project has some end-to-end tests running with openQA and os-autoinst";
 
 pub const EVENT_ID_2026: EventId = EventId::new(2026, 8816);
 pub const EVENT_ID_2026_CANONICAL_PATH: &str = formatcp!(
     "/{}/event/{}/",
+    EVENT_ID_2026.year(),
+    EVENT_ID_2026.event_in_year()
+);
+pub const EVENT_ID_2026_ABSTRACT_PATH: &str = formatcp!(
+    "/{}/event/{}/abstract/",
+    EVENT_ID_2026.year(),
+    EVENT_ID_2026.event_in_year()
+);
+pub const EVENT_ID_2026_CARD_PATH: &str = formatcp!(
+    "/{}/event/{}/card/",
     EVENT_ID_2026.year(),
     EVENT_ID_2026.event_in_year()
 );

@@ -95,6 +95,35 @@ pub struct Link {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
+pub enum VideoLink {
+    Mp4(Url),
+    Webm(Url),
+}
+
+impl VideoLink {
+    pub fn url(&self) -> &Url {
+        match self {
+            VideoLink::Mp4(url) => url,
+            VideoLink::Webm(url) => url,
+        }
+    }
+
+    pub fn mime_type(&self) -> &str {
+        match self {
+            VideoLink::Mp4(_) => "video/mp4",
+            VideoLink::Webm(_) => "video/webm",
+        }
+    }
+
+    pub fn codecs(&self) -> Option<&str> {
+        match self {
+            VideoLink::Mp4(_) => None,
+            VideoLink::Webm(_) => Some("av01.0.08M.08.0.110.01.01.01.0"),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
 pub struct RoomId(String); // TODO: use RoomId instead of String in Event
 
 impl RoomId {
@@ -165,21 +194,38 @@ impl Event {
         }
     }
 
-    pub fn mp4_video_link(&self) -> Option<Url> {
-        let video_links: Vec<Url> = self
-            .links
+    fn find_video_url(&self, extension: &str) -> Option<Url> {
+        self.links
             .iter()
             .filter(|l| {
                 l.name.to_lowercase().contains("video recording")
-                    && l.url.to_string().ends_with(".mp4")
+                    && l.url.to_string().ends_with(extension)
             })
             .map(|l| l.url.clone())
-            .collect();
-        video_links.first().cloned()
+            .next()
+    }
+
+    pub fn mp4_video_link(&self) -> Option<VideoLink> {
+        self.find_video_url(".mp4").map(VideoLink::Mp4)
+    }
+
+    pub fn webm_video_link(&self) -> Option<VideoLink> {
+        self.find_video_url(".webm").map(VideoLink::Webm)
+    }
+
+    pub fn video_links(&self) -> Vec<VideoLink> {
+        let mut links = Vec::new();
+        if let Some(webm) = self.webm_video_link() {
+            links.push(webm);
+        }
+        if let Some(mp4) = self.mp4_video_link() {
+            links.push(mp4);
+        }
+        links
     }
 
     pub fn has_video(&self) -> bool {
-        self.mp4_video_link().is_some()
+        !self.video_links().is_empty()
     }
 }
 
@@ -274,5 +320,102 @@ mod tests {
         }]);
 
         assert!(event.mp4_video_link().is_none(), "event: {:?}", event);
+    }
+
+    #[test]
+    fn test_webm_video_link_exact_name_match() {
+        let name = "Video recording";
+        let event = make_event_with_links(vec![Link {
+            name: name.to_string(),
+            url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
+        }]);
+
+        assert!(event.webm_video_link().is_some(), "name: {:?}", name);
+    }
+
+    #[test]
+    fn test_webm_video_link_partial_name_match() {
+        let names = ["Video recording (AV1/opus)", "Video recording (webm)"];
+        for name in names.iter() {
+            let event = make_event_with_links(vec![Link {
+                name: name.to_string(),
+                url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
+            }]);
+            assert!(event.webm_video_link().is_some(), "name: {:?}", name);
+        }
+    }
+
+    #[test]
+    fn test_webm_video_link_no_match() {
+        let event = make_event_with_links(vec![Link {
+            name: "Some other link".to_string(),
+            url: "https://example.com".parse().unwrap(),
+        }]);
+
+        assert!(event.webm_video_link().is_none(), "event: {:?}", event);
+    }
+
+    #[test]
+    fn test_webm_video_link_wrong_extension() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording".to_string(),
+            url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+        }]);
+
+        assert!(event.webm_video_link().is_none(), "event: {:?}", event);
+    }
+
+    #[test]
+    fn test_video_links_returns_both_formats_webm_first() {
+        let event = make_event_with_links(vec![
+            Link {
+                name: "Video recording (mp4)".to_string(),
+                url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+            },
+            Link {
+                name: "Video recording (AV1/opus)".to_string(),
+                url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
+            },
+        ]);
+
+        let links = event.video_links();
+        assert_eq!(links.len(), 2);
+        assert!(matches!(links[0], VideoLink::Webm(_)));
+        assert!(matches!(links[1], VideoLink::Mp4(_)));
+    }
+
+    #[test]
+    fn test_video_links_returns_mp4_only() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording (mp4)".to_string(),
+            url: "https://video.fosdem.org/2024/test.mp4".parse().unwrap(),
+        }]);
+
+        let links = event.video_links();
+        assert_eq!(links.len(), 1);
+        assert!(matches!(links[0], VideoLink::Mp4(_)));
+    }
+
+    #[test]
+    fn test_video_links_returns_webm_only() {
+        let event = make_event_with_links(vec![Link {
+            name: "Video recording (AV1/opus)".to_string(),
+            url: "https://video.fosdem.org/2024/test.webm".parse().unwrap(),
+        }]);
+
+        let links = event.video_links();
+        assert_eq!(links.len(), 1);
+        assert!(matches!(links[0], VideoLink::Webm(_)));
+    }
+
+    #[test]
+    fn test_video_links_returns_empty_when_no_videos() {
+        let event = make_event_with_links(vec![Link {
+            name: "Some other link".to_string(),
+            url: "https://example.com".parse().unwrap(),
+        }]);
+
+        let links = event.video_links();
+        assert!(links.is_empty());
     }
 }

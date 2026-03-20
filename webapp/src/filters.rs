@@ -1,7 +1,19 @@
 use chrono::NaiveDate;
-use shared::model::{Event, SearchItem};
+use shared::model::{Event, EventId, SearchItem};
 use std::collections::BTreeMap;
 use unicode_segmentation::UnicodeSegmentation;
+
+pub fn event_url(id: &EventId, _: &dyn askama::Values) -> ::askama::Result<String> {
+    Ok(format!("/{}/event/{}/", id.year(), id.event_in_year()))
+}
+
+pub fn event_abstract_url(id: &EventId, _: &dyn askama::Values) -> ::askama::Result<String> {
+    Ok(format!("/{}/event/{}/abstract/", id.year(), id.event_in_year()))
+}
+
+pub fn event_card_url(id: &EventId, _: &dyn askama::Values) -> ::askama::Result<String> {
+    Ok(format!("/{}/event/{}/card/", id.year(), id.event_in_year()))
+}
 
 pub struct ItemsInYear {
     pub year: u32,
@@ -124,4 +136,37 @@ pub fn group_events_by_day(
         .collect();
 
     Ok(result)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct NoValues;
+    impl askama::Values for NoValues {
+        fn get_value(&self, _key: &str) -> Option<&dyn std::any::Any> {
+            None
+        }
+    }
+
+    #[test]
+    fn test_event_url() {
+        let id = EventId::new(2026, 1158);
+        let result = event_url(&id, &NoValues).unwrap();
+        assert_eq!(result, "/2026/event/1158/");
+    }
+
+    #[test]
+    fn test_event_abstract_url() {
+        let id = EventId::new(2026, 1158);
+        let result = event_abstract_url(&id, &NoValues).unwrap();
+        assert_eq!(result, "/2026/event/1158/abstract/");
+    }
+
+    #[test]
+    fn test_event_card_url() {
+        let id = EventId::new(2026, 1158);
+        let result = event_card_url(&id, &NoValues).unwrap();
+        assert_eq!(result, "/2026/event/1158/card/");
+    }
 }

@@ -6,6 +6,7 @@ use chrono::{DateTime, Utc};
 use content::video_index::VideoIndex;
 use shared::inmemory_openai::InMemoryOpenAIQueryable;
 use tower_http::{
+    compression::CompressionLayer,
     cors::{Any, CorsLayer},
     services::ServeDir,
 };
@@ -69,6 +70,8 @@ pub async fn router(state: AppState) -> Router {
         .route("/next/", get(timetable::next_redirect))
         .route("/event/{event_in_year_id}/", get(event::event_2025))
         .route("/{year}/event/{event_in_year_id}/", get(event::event))
+        .route("/{year}/event/{event_in_year_id}/abstract/", get(event::event_abstract))
+        .route("/{year}/event/{event_in_year_id}/card/", get(event::event_card))
         .route("/room/{room_id}/", get(room::room))
         .route("/{year}/video/{event_in_year_id}/", get(video::event_video))
         .route(
@@ -76,6 +79,7 @@ pub async fn router(state: AppState) -> Router {
             get(video::event_video_webvtt),
         )
         .layer(cors)
+        .layer(CompressionLayer::new())
         .nest_service("/assets", ServeDir::new("assets"))
         .with_state(state)
 }
