@@ -114498,12 +114498,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k1105/GWT99L-kde_at_30_still_looking_ahead.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 144.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k1105/GWT99L-kde_at_30_still_looking_ahead.mp4",
         "name": "Video recording (MP4; for legacy systems) - 1.1 GB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k1105/GWT99L-kde_at_30_still_looking_ahead.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 144.6 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-main_k:fosdem.org",
@@ -115306,12 +115306,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3201/3SANYS-package-managers-a-la-carte.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 82.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3201/3SANYS-package-managers-a-la-carte.mp4",
         "name": "Video recording (MP4; for legacy systems) - 649.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3201/3SANYS-package-managers-a-la-carte.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 82.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3201/3SANYS-package-managers-a-la-carte.vtt",
@@ -115359,12 +115359,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3201/EP8AMW-oss-rebuild-observability.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 63.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3201/EP8AMW-oss-rebuild-observability.mp4",
         "name": "Video recording (MP4; for legacy systems) - 597.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3201/EP8AMW-oss-rebuild-observability.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 63.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3201/EP8AMW-oss-rebuild-observability.vtt",
@@ -115887,12 +115887,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3201/YTBHYC-swift-on-freebsd.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 105.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3201/YTBHYC-swift-on-freebsd.mp4",
         "name": "Video recording (MP4; for legacy systems) - 546.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3201/YTBHYC-swift-on-freebsd.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 105.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3201/YTBHYC-swift-on-freebsd.vtt",
@@ -116368,12 +116368,12 @@
         "name": "Website of Tenzu"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3401/3D8D7R-taiga_tenzu_and_the_small_story_of_sustainability_in_opensource.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 454.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3401/3D8D7R-taiga_tenzu_and_the_small_story_of_sustainability_in_opensource.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 58.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3401/3D8D7R-taiga_tenzu_and_the_small_story_of_sustainability_in_opensource.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 454.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3401/3D8D7R-taiga_tenzu_and_the_small_story_of_sustainability_in_opensource.vtt",
@@ -116808,12 +116808,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3401/SQEJFE-collabora-slideshow.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 32.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3401/SQEJFE-collabora-slideshow.mp4",
         "name": "Video recording (MP4; for legacy systems) - 280.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3401/SQEJFE-collabora-slideshow.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 32.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3401/SQEJFE-collabora-slideshow.vtt",
@@ -117153,12 +117153,12 @@
         "name": "demo"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3401/ZZNCKU-building_a_todo_app_on_top_of_forgejo.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 58.4 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3401/ZZNCKU-building_a_todo_app_on_top_of_forgejo.mp4",
         "name": "Video recording (MP4; for legacy systems) - 461.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3401/ZZNCKU-building_a_todo_app_on_top_of_forgejo.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 58.4 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3401/ZZNCKU-building_a_todo_app_on_top_of_forgejo.vtt",
@@ -117946,16 +117946,16 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 12.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.mp4",
         "name": "Video recording (MP4; for legacy systems) - 128.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.vtt",
         "name": "Video recording subtitle file (VTT)"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3601/Z9GDAF-crowdsourcing_delay_information.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 12.0 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org",
@@ -118005,12 +118005,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3601/WQS9YL-openstation.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 24.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3601/WQS9YL-openstation.mp4",
         "name": "Video recording (MP4; for legacy systems) - 168.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3601/WQS9YL-openstation.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 24.2 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-railways-and-open-transport:fosdem.org",
@@ -118285,12 +118285,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3601/RV3KS9-railway-analysis-workflow-osrd-sumo.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 65.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3601/RV3KS9-railway-analysis-workflow-osrd-sumo.mp4",
         "name": "Video recording (MP4; for legacy systems) - 434.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3601/RV3KS9-railway-analysis-workflow-osrd-sumo.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 65.5 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3601/RV3KS9-railway-analysis-workflow-osrd-sumo.vtt",
@@ -119153,12 +119153,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k4201/CNMT8K-messages_how_a_french_government_agency_broke_free_of_imap.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 88.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k4201/CNMT8K-messages_how_a_french_government_agency_broke_free_of_imap.mp4",
         "name": "Video recording (MP4; for legacy systems) - 581.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k4201/CNMT8K-messages_how_a_french_government_agency_broke_free_of_imap.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 88.5 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-modern-email:fosdem.org",
@@ -120015,12 +120015,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k4601/ADXJMU-innovations-with-yaml-cabac-simd-in-h264-decoding.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 51.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k4601/ADXJMU-innovations-with-yaml-cabac-simd-in-h264-decoding.mp4",
         "name": "Video recording (MP4; for legacy systems) - 353.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k4601/ADXJMU-innovations-with-yaml-cabac-simd-in-h264-decoding.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 51.1 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-open-media-devroom:fosdem.org",
@@ -121344,12 +121344,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1301/BDSKNU-gis-plugins.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 151.4 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1301/BDSKNU-gis-plugins.mp4",
         "name": "Video recording (MP4; for legacy systems) - 626.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/BDSKNU-gis-plugins.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 151.4 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1301/BDSKNU-gis-plugins.vtt",
@@ -121512,12 +121512,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1301/TJ8TQS-openstreetmap-podoma-monitoring-worldwide.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 154.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1301/TJ8TQS-openstreetmap-podoma-monitoring-worldwide.mp4",
         "name": "Video recording (MP4; for legacy systems) - 733.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/TJ8TQS-openstreetmap-podoma-monitoring-worldwide.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 154.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1301/TJ8TQS-openstreetmap-podoma-monitoring-worldwide.vtt",
@@ -121899,6 +121899,18 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/h1301/JGKKFF-jupytergis.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 121.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/JGKKFF-jupytergis.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 632.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/JGKKFF-jupytergis.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2026-geospatial:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -122000,12 +122012,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1301/HKDSCY-climate-health-pulse.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 103.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1301/HKDSCY-climate-health-pulse.mp4",
         "name": "Video recording (MP4; for legacy systems) - 755.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/HKDSCY-climate-health-pulse.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 103.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1301/HKDSCY-climate-health-pulse.vtt",
@@ -122336,16 +122348,16 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1302/XGKCJU-building_quic_multipath.vtt",
-        "name": "Video recording subtitle file (VTT)"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1302/XGKCJU-building_quic_multipath.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 52.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1302/XGKCJU-building_quic_multipath.mp4",
         "name": "Video recording (MP4; for legacy systems) - 469.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1302/XGKCJU-building_quic_multipath.vtt",
+        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-network:fosdem.org",
@@ -122877,12 +122889,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/h1302/RLNUAB-rtrs.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 62.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1302/RLNUAB-rtrs.mp4",
         "name": "Video recording (MP4; for legacy systems) - 347.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1302/RLNUAB-rtrs.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 62.2 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-network:fosdem.org",
@@ -123428,12 +123440,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1302/RPJHYK-automating_bgp_peerings_in_the_dn42_environment.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 68.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1302/RPJHYK-automating_bgp_peerings_in_the_dn42_environment.mp4",
         "name": "Video recording (MP4; for legacy systems) - 418.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1302/RPJHYK-automating_bgp_peerings_in_the_dn42_environment.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 68.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1302/RPJHYK-automating_bgp_peerings_in_the_dn42_environment.vtt",
@@ -123840,12 +123852,12 @@
         "name": "Repo"
       },
       {
-        "url": "https://video.fosdem.org/2026/h1308/XHZVPF-inxpect-profiling.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 78.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1308/XHZVPF-inxpect-profiling.mp4",
         "name": "Video recording (MP4; for legacy systems) - 424.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1308/XHZVPF-inxpect-profiling.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 78.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1308/XHZVPF-inxpect-profiling.vtt",
@@ -124725,12 +124737,12 @@
         "name": "MDN - WebTransport"
       },
       {
-        "url": "https://video.fosdem.org/2026/h1309/9DEU7E-intro_to_webtransport_-_the_next_websocket.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 54.3 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1309/9DEU7E-intro_to_webtransport_-_the_next_websocket.mp4",
         "name": "Video recording (MP4; for legacy systems) - 563.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1309/9DEU7E-intro_to_webtransport_-_the_next_websocket.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 54.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1309/9DEU7E-intro_to_webtransport_-_the_next_websocket.vtt",
@@ -125740,12 +125752,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2213/BFQ8XA-introducing-mshv-accelerator-in-qemu.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 71.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2213/BFQ8XA-introducing-mshv-accelerator-in-qemu.mp4",
         "name": "Video recording (MP4; for legacy systems) - 510.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2213/BFQ8XA-introducing-mshv-accelerator-in-qemu.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 71.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2213/BFQ8XA-introducing-mshv-accelerator-in-qemu.vtt",
@@ -127731,12 +127743,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/h2215/RCV98B-the-social-web-and-digital-sovereignty.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 82.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/RCV98B-the-social-web-and-digital-sovereignty.mp4",
         "name": "Video recording (MP4; for legacy systems) - 384.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/RCV98B-the-social-web-and-digital-sovereignty.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 82.9 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-social-web:fosdem.org",
@@ -128091,12 +128103,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2215/JEMNBZ-decentralised-badges-activitypub-badgefed.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 54.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/JEMNBZ-decentralised-badges-activitypub-badgefed.mp4",
         "name": "Video recording (MP4; for legacy systems) - 400.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/JEMNBZ-decentralised-badges-activitypub-badgefed.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 54.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2215/JEMNBZ-decentralised-badges-activitypub-badgefed.vtt",
@@ -128148,12 +128160,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/h2215/LQUELQ-splinter.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 25.4 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/LQUELQ-splinter.mp4",
         "name": "Video recording (MP4; for legacy systems) - 198.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/LQUELQ-splinter.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 25.4 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-social-web:fosdem.org",
@@ -128204,12 +128216,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2215/3QHALR-bonfire_building_modular_consentful_and_federated_social_networks.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 258.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/3QHALR-bonfire_building_modular_consentful_and_federated_social_networks.mp4",
         "name": "Video recording (MP4; for legacy systems) - 435.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/3QHALR-bonfire_building_modular_consentful_and_federated_social_networks.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 258.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2215/3QHALR-bonfire_building_modular_consentful_and_federated_social_networks.vtt",
@@ -128320,12 +128332,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/h2215/DNS7Z8-friendica_-_hidden_in_plain_sight_since_2025.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 60.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/DNS7Z8-friendica_-_hidden_in_plain_sight_since_2025.mp4",
         "name": "Video recording (MP4; for legacy systems) - 369.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/DNS7Z8-friendica_-_hidden_in_plain_sight_since_2025.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 60.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-social-web:fosdem.org",
@@ -129231,12 +129243,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/aw1120/PRKWTE-universal_software_maturity_indicators_and_government_os_readiness.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 102.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1120/PRKWTE-universal_software_maturity_indicators_and_government_os_readiness.mp4",
         "name": "Video recording (MP4; for legacy systems) - 959.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1120/PRKWTE-universal_software_maturity_indicators_and_government_os_readiness.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 102.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/aw1120/PRKWTE-universal_software_maturity_indicators_and_government_os_readiness.vtt",
@@ -129675,12 +129687,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/aw1120/DC97FQ-building_digital_workplace_solutions_on_top_of_foundational_libraries_blocknote_.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 75.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1120/DC97FQ-building_digital_workplace_solutions_on_top_of_foundational_libraries_blocknote_.mp4",
         "name": "Video recording (MP4; for legacy systems) - 522.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1120/DC97FQ-building_digital_workplace_solutions_on_top_of_foundational_libraries_blocknote_.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 75.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/aw1120/DC97FQ-building_digital_workplace_solutions_on_top_of_foundational_libraries_blocknote_.vtt",
@@ -129788,12 +129800,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/aw1120/SDVZGB-tappaas_a_sovereign_paas_blueprint_for_europes_public_and_civic_sector.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 68.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1120/SDVZGB-tappaas_a_sovereign_paas_blueprint_for_europes_public_and_civic_sector.mp4",
         "name": "Video recording (MP4; for legacy systems) - 589.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1120/SDVZGB-tappaas_a_sovereign_paas_blueprint_for_europes_public_and_civic_sector.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 68.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/aw1120/SDVZGB-tappaas_a_sovereign_paas_blueprint_for_europes_public_and_civic_sector.vtt",
@@ -130119,12 +130131,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/aw1126/M3TKEE-ocf-global-solar-forecast.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 41.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1126/M3TKEE-ocf-global-solar-forecast.mp4",
         "name": "Video recording (MP4; for legacy systems) - 337.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1126/M3TKEE-ocf-global-solar-forecast.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 41.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/aw1126/M3TKEE-ocf-global-solar-forecast.vtt",
@@ -131088,12 +131100,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2114/ZSWH3N-deutsche-bahn-supply-chain-cra-strategy.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 71.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2114/ZSWH3N-deutsche-bahn-supply-chain-cra-strategy.mp4",
         "name": "Video recording (MP4; for legacy systems) - 456.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2114/ZSWH3N-deutsche-bahn-supply-chain-cra-strategy.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 71.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2114/ZSWH3N-deutsche-bahn-supply-chain-cra-strategy.vtt",
@@ -131401,12 +131413,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ua2114/FEJGDD-panel_from_minimum_compliance_to_meaningful_stewardship.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 181.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2114/FEJGDD-panel_from_minimum_compliance_to_meaningful_stewardship.mp4",
         "name": "Video recording (MP4; for legacy systems) - 613.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2114/FEJGDD-panel_from_minimum_compliance_to_meaningful_stewardship.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 181.9 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-cra-in-practice:fosdem.org",
@@ -132222,12 +132234,12 @@
         "name": "runc"
       },
       {
-        "url": "https://video.fosdem.org/2026/ua2118/H39QZD-path_safety_in_the_trenches.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 51.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2118/H39QZD-path_safety_in_the_trenches.mp4",
         "name": "Video recording (MP4; for legacy systems) - 561.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/H39QZD-path_safety_in_the_trenches.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 51.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/H39QZD-path_safety_in_the_trenches.vtt",
@@ -132337,12 +132349,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2118/GPEJ8H-kubeklipper-3d-printer-kubernetes.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 23.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2118/GPEJ8H-kubeklipper-3d-printer-kubernetes.mp4",
         "name": "Video recording (MP4; for legacy systems) - 214.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/GPEJ8H-kubeklipper-3d-printer-kubernetes.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 23.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/GPEJ8H-kubeklipper-3d-printer-kubernetes.vtt",
@@ -132799,12 +132811,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2118/HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 17.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2118/HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem.mp4",
         "name": "Video recording (MP4; for legacy systems) - 167.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 17.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/HGC788-lila_decentralized_reproducible-builds_verification_for_the_nixos_ecosystem.vtt",
@@ -133454,16 +133466,16 @@
         "name": "Slides"
       },
       {
+        "url": "https://video.fosdem.org/2026/ua2118/GBNGRQ-tips-tricks-fix-nix.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 387.4 MB"
+      },
+      {
         "url": "https://video.fosdem.org/2026/ua2118/GBNGRQ-tips-tricks-fix-nix.vtt",
         "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/GBNGRQ-tips-tricks-fix-nix.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 54.0 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/ua2118/GBNGRQ-tips-tricks-fix-nix.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 387.4 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-nix-and-nixos:fosdem.org",
@@ -134274,12 +134286,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub2147/KCPTX7-just1.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 13.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2147/KCPTX7-just1.mp4",
         "name": "Video recording (MP4; for legacy systems) - 80.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2147/KCPTX7-just1.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 13.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub2147/KCPTX7-just1.vtt",
@@ -134382,12 +134394,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub2147/HCE8C9-lambkin_benchmarking_for_localization_ekumen.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 16.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2147/HCE8C9-lambkin_benchmarking_for_localization_ekumen.mp4",
         "name": "Video recording (MP4; for legacy systems) - 121.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2147/HCE8C9-lambkin_benchmarking_for_localization_ekumen.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 16.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub2147/HCE8C9-lambkin_benchmarking_for_localization_ekumen.vtt",
@@ -134729,12 +134741,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub2147/XRE97C-precision_landing_with_px4_and_ros_2_using_aruco_markers.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 588.4 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2147/XRE97C-precision_landing_with_px4_and_ros_2_using_aruco_markers.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 139.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2147/XRE97C-precision_landing_with_px4_and_ros_2_using_aruco_markers.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 588.4 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-robotics-and-simulation:fosdem.org",
@@ -135203,12 +135215,12 @@
     ],
     "links": [
       {
-        "url": "https://robin-mueller.github.io/fosdem26-devtalk-autoapms/",
-        "name": "Slides (HTML)"
+        "url": "https://autoapms.github.io/auto-apms-guide/",
+        "name": "User Guide"
       },
       {
-        "url": "https://autoapms.github.io/auto-apms-guide/index.html",
-        "name": "User Guide"
+        "url": "https://robin-mueller.github.io/fosdem26-devtalk-autoapms/",
+        "name": "Slides (HTML)"
       },
       {
         "url": "https://github.com/AutoAPMS/auto-apms",
@@ -135346,6 +135358,18 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/ub2252a/JWX9UM-postgres-mysql-two-databases-three-perspectives.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 151.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2252a/JWX9UM-postgres-mysql-two-databases-three-perspectives.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 1.1 GB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2252a/JWX9UM-postgres-mysql-two-databases-three-perspectives.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2026-databases:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -135396,12 +135420,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub2252a/ZMDB3S-defining-compatibility-postgres-mysql-derivatives.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 62.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2252a/ZMDB3S-defining-compatibility-postgres-mysql-derivatives.mp4",
         "name": "Video recording (MP4; for legacy systems) - 471.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2252a/ZMDB3S-defining-compatibility-postgres-mysql-derivatives.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 62.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub2252a/ZMDB3S-defining-compatibility-postgres-mysql-derivatives.vtt",
@@ -136315,16 +136339,16 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/ub2252a/LVUP9J-apache-arrow-hostage-negotiator.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://video.fosdem.org/2026/ub2252a/LVUP9J-apache-arrow-hostage-negotiator.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 56.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub2252a/LVUP9J-apache-arrow-hostage-negotiator.mp4",
         "name": "Video recording (MP4; for legacy systems) - 446.1 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/ub2252a/LVUP9J-apache-arrow-hostage-negotiator.vtt",
-        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-databases:fosdem.org",
@@ -136780,12 +136804,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub4132/KX88W8-aosp-build.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 88.3 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub4132/KX88W8-aosp-build.mp4",
         "name": "Video recording (MP4; for legacy systems) - 593.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub4132/KX88W8-aosp-build.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 88.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub4132/KX88W8-aosp-build.vtt",
@@ -136835,12 +136859,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub4132/8VDKQR-reproducible_builds_for_android_apps.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 535.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub4132/8VDKQR-reproducible_builds_for_android_apps.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 67.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub4132/8VDKQR-reproducible_builds_for_android_apps.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 535.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub4132/8VDKQR-reproducible_builds_for_android_apps.vtt",
@@ -137299,12 +137323,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub4132/ZNAAZX-mainline_kernel_for_fairphones_-_2026_update.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 35.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub4132/ZNAAZX-mainline_kernel_for_fairphones_-_2026_update.mp4",
         "name": "Video recording (MP4; for legacy systems) - 207.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub4132/ZNAAZX-mainline_kernel_for_fairphones_-_2026_update.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 35.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub4132/ZNAAZX-mainline_kernel_for_fairphones_-_2026_update.vtt",
@@ -138745,12 +138769,12 @@
         "name": "FOSDEM 2026 Streamlining signed artifacts"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub5132/HJAJTU-streamlining_signed_artifacts_in_container_ecosystems.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 104.4 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5132/HJAJTU-streamlining_signed_artifacts_in_container_ecosystems.mp4",
         "name": "Video recording (MP4; for legacy systems) - 558.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5132/HJAJTU-streamlining_signed_artifacts_in_container_ecosystems.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 104.4 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub5132/HJAJTU-streamlining_signed_artifacts_in_container_ecosystems.vtt",
@@ -139982,12 +140006,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub5230/GSERGW-the_story_of_the_vizio_lawsuit_-_a_historic_case_for_user_rights_nearly_complete.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 184.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5230/GSERGW-the_story_of_the_vizio_lawsuit_-_a_historic_case_for_user_rights_nearly_complete.mp4",
         "name": "Video recording (MP4; for legacy systems) - 1.1 GB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5230/GSERGW-the_story_of_the_vizio_lawsuit_-_a_historic_case_for_user_rights_nearly_complete.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 184.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub5230/GSERGW-the_story_of_the_vizio_lawsuit_-_a_historic_case_for_user_rights_nearly_complete.vtt",
@@ -140621,12 +140645,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud2120/YJJQTD-tract-and-torch-to-nnef.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 52.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2120/YJJQTD-tract-and-torch-to-nnef.mp4",
         "name": "Video recording (MP4; for legacy systems) - 286.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2120/YJJQTD-tract-and-torch-to-nnef.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 52.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2120/YJJQTD-tract-and-torch-to-nnef.vtt",
@@ -140778,12 +140802,12 @@
         "name": "CV32E40Pv2 Verilog RTL source"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2120/Z3TEMS-executorch-for-bare-metal-microcontrollers.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 58.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2120/Z3TEMS-executorch-for-bare-metal-microcontrollers.mp4",
         "name": "Video recording (MP4; for legacy systems) - 467.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2120/Z3TEMS-executorch-for-bare-metal-microcontrollers.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 58.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2120/Z3TEMS-executorch-for-bare-metal-microcontrollers.vtt",
@@ -141112,12 +141136,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud2120/CZSPSC-llama-cpp-vulkan.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 64.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2120/CZSPSC-llama-cpp-vulkan.mp4",
         "name": "Video recording (MP4; for legacy systems) - 483.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2120/CZSPSC-llama-cpp-vulkan.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 64.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2120/CZSPSC-llama-cpp-vulkan.vtt",
@@ -141506,16 +141530,16 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/ud2120/J9B9TR-et-platform-intro.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://video.fosdem.org/2026/ud2120/J9B9TR-et-platform-intro.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 66.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2120/J9B9TR-et-platform-intro.mp4",
         "name": "Video recording (MP4; for legacy systems) - 408.4 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/ud2120/J9B9TR-et-platform-intro.vtt",
-        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-ai:fosdem.org",
@@ -142382,12 +142406,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2218a/KVJZCS-self-sustainability.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 99.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2218a/KVJZCS-self-sustainability.mp4",
         "name": "Video recording (MP4; for legacy systems) - 565.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2218a/KVJZCS-self-sustainability.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 99.5 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-funding-the-foss-ecosystem:fosdem.org",
@@ -142447,12 +142471,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud2218a/8KAEK8-oss_funding_in_industry_and_large_enterprises.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 132.4 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2218a/8KAEK8-oss_funding_in_industry_and_large_enterprises.mp4",
         "name": "Video recording (MP4; for legacy systems) - 679.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2218a/8KAEK8-oss_funding_in_industry_and_large_enterprises.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 132.4 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2218a/8KAEK8-oss_funding_in_industry_and_large_enterprises.vtt",
@@ -142964,12 +142988,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud2208/VDZR7S-lasuite-docs.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 73.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2208/VDZR7S-lasuite-docs.mp4",
         "name": "Video recording (MP4; for legacy systems) - 502.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2208/VDZR7S-lasuite-docs.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 73.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2208/VDZR7S-lasuite-docs.vtt",
@@ -143133,12 +143157,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2208/SVNUX9-print-doc-as-code.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 80.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2208/SVNUX9-print-doc-as-code.mp4",
         "name": "Video recording (MP4; for legacy systems) - 537.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2208/SVNUX9-print-doc-as-code.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 80.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-tool-the-docs:fosdem.org",
@@ -143865,12 +143889,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud6215/ZKJZCX-designing_fibers_for_systemd_structured_posix_avoidance_in_pid_1.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 72.3 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud6215/ZKJZCX-designing_fibers_for_systemd_structured_posix_avoidance_in_pid_1.mp4",
         "name": "Video recording (MP4; for legacy systems) - 584.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud6215/ZKJZCX-designing_fibers_for_systemd_structured_posix_avoidance_in_pid_1.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 72.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud6215/ZKJZCX-designing_fibers_for_systemd_structured_posix_avoidance_in_pid_1.vtt",
@@ -144209,12 +144233,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud6215/3BJTEE-welcome_to_the_llvm_dev_room.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 16.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud6215/3BJTEE-welcome_to_the_llvm_dev_room.mp4",
         "name": "Video recording (MP4; for legacy systems) - 108.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud6215/3BJTEE-welcome_to_the_llvm_dev_room.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 16.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud6215/3BJTEE-welcome_to_the_llvm_dev_room.vtt",
@@ -144539,12 +144563,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud6215/87ZLQV-wasm-debugging-lldb.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 48.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud6215/87ZLQV-wasm-debugging-lldb.mp4",
         "name": "Video recording (MP4; for legacy systems) - 402.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud6215/87ZLQV-wasm-debugging-lldb.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 48.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud6215/87ZLQV-wasm-debugging-lldb.vtt",
@@ -144738,12 +144762,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud6215/YJJDKM-clang-_tidying_up_includes_in_systemd.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 47.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud6215/YJJDKM-clang-_tidying_up_includes_in_systemd.mp4",
         "name": "Video recording (MP4; for legacy systems) - 456.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud6215/YJJDKM-clang-_tidying_up_includes_in_systemd.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 47.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud6215/YJJDKM-clang-_tidying_up_includes_in_systemd.vtt",
@@ -144800,12 +144824,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud6215/F8SDAA-zero-sysroot_hermetic_llvm_cross-compilation_using_bazel.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 77.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud6215/F8SDAA-zero-sysroot_hermetic_llvm_cross-compilation_using_bazel.mp4",
         "name": "Video recording (MP4; for legacy systems) - 502.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud6215/F8SDAA-zero-sysroot_hermetic_llvm_cross-compilation_using_bazel.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 77.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud6215/F8SDAA-zero-sysroot_hermetic_llvm_cross-compilation_using_bazel.vtt",
@@ -145463,12 +145487,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/janson/XWSW3R-the_geopolitics_of_open_source_software.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 1.0 GB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/janson/XWSW3R-the_geopolitics_of_open_source_software.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 199.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/janson/XWSW3R-the_geopolitics_of_open_source_software.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 1.0 GB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-main:fosdem.org",
@@ -145781,12 +145805,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/janson/XN9DAW-closing_fosdem_2026.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 48.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/janson/XN9DAW-closing_fosdem_2026.mp4",
         "name": "Video recording (MP4; for legacy systems) - 328.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/janson/XN9DAW-closing_fosdem_2026.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 48.5 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-main:fosdem.org",
@@ -146054,10 +146078,6 @@
     ],
     "links": [
       {
-        "url": "https://elenya.net/",
-        "name": "Pablo Ruiz-Múzquiz biopage"
-      },
-      {
         "url": "https://github.com/penpot/penpot",
         "name": "Penpot open source repository"
       },
@@ -146066,12 +146086,16 @@
         "name": "Penpot website"
       },
       {
-        "url": "https://video.fosdem.org/2026/k1105/JPBRAQ-open_source_design_the_wake-up_call_for_developers.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 58.3 MB"
+        "url": "https://elenya.net/",
+        "name": "Pablo Ruiz-Múzquiz biopage"
       },
       {
         "url": "https://video.fosdem.org/2026/k1105/JPBRAQ-open_source_design_the_wake-up_call_for_developers.mp4",
         "name": "Video recording (MP4; for legacy systems) - 562.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k1105/JPBRAQ-open_source_design_the_wake-up_call_for_developers.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 58.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k1105/JPBRAQ-open_source_design_the_wake-up_call_for_developers.vtt",
@@ -146311,8 +146335,8 @@
     ],
     "links": [
       {
-        "url": "https://docs.cloud.google.com/container-optimized-os/docs/release-notes/m125",
-        "name": "Container-Optimized OS adds Btrfs in Milestone 125"
+        "url": "https://m.jakstys.lt/2026/scaling-btrfs-in-an-enterprise/",
+        "name": "Accompanying blog post"
       },
       {
         "url": "https://video.fosdem.org/2026/k1105/YVK8KP-scaling-btrfs-in-an-enterprise.av1.webm",
@@ -146554,12 +146578,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3201/ZYLKMM-optimising-yjs.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 88.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3201/ZYLKMM-optimising-yjs.mp4",
         "name": "Video recording (MP4; for legacy systems) - 560.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3201/ZYLKMM-optimising-yjs.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 88.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-local-first:fosdem.org",
@@ -146611,12 +146635,12 @@
         "name": "Blog article"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3201/TCH8XQ-plane-wiki-local-first-in-production-with-yjs.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 99.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3201/TCH8XQ-plane-wiki-local-first-in-production-with-yjs.mp4",
         "name": "Video recording (MP4; for legacy systems) - 333.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3201/TCH8XQ-plane-wiki-local-first-in-production-with-yjs.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 99.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3201/TCH8XQ-plane-wiki-local-first-in-production-with-yjs.vtt",
@@ -146952,6 +146976,10 @@
     ],
     "links": [
       {
+        "url": "https://github.com/p2panda/reflection",
+        "name": "📝 Reflection Text-Editor @ GitHub"
+      },
+      {
         "url": "https://modal.cx/",
         "name": "Ⅲ Modal Website & Blog"
       },
@@ -146970,10 +146998,6 @@
       {
         "url": "https://github.com/p2panda/p2panda",
         "name": "🐼 p2panda @ GitHub"
-      },
-      {
-        "url": "https://github.com/p2panda/reflection",
-        "name": "📝 Reflection Text-Editor @ GitHub"
       },
       {
         "url": "https://video.fosdem.org/2026/k3201/MCVBNK-p2panda-modal-reflection.mp4",
@@ -147036,12 +147060,12 @@
     ],
     "links": [
       {
-        "url": "https://teamtype.org/",
-        "name": "Project"
-      },
-      {
         "url": "https://teamtype.github.io/teamtype/",
         "name": "Documentation"
+      },
+      {
+        "url": "https://teamtype.org/",
+        "name": "Project"
       },
       {
         "url": "https://video.fosdem.org/2026/k3201/CQHN8T-teamtype-towards-a-collaborative-editing-protocol.av1.webm",
@@ -147826,12 +147850,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3201/EFHNGH-seed-hypermedia-digital-sovereignty.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 90.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3201/EFHNGH-seed-hypermedia-digital-sovereignty.mp4",
         "name": "Video recording (MP4; for legacy systems) - 473.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3201/EFHNGH-seed-hypermedia-digital-sovereignty.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 90.2 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-local-first:fosdem.org",
@@ -148392,12 +148416,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/k3401/LKRSPX-using_automatic_translations_the_dos_and_donts.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 106.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3401/LKRSPX-using_automatic_translations_the_dos_and_donts.mp4",
         "name": "Video recording (MP4; for legacy systems) - 582.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3401/LKRSPX-using_automatic_translations_the_dos_and_donts.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 106.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3401/LKRSPX-using_automatic_translations_the_dos_and_donts.vtt",
@@ -148504,16 +148528,16 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/k3401/93VVPX-what_translating_thunderbird_taught_me.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 354.4 MB"
+      },
+      {
         "url": "https://video.fosdem.org/2026/k3401/93VVPX-what_translating_thunderbird_taught_me.vtt",
         "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://video.fosdem.org/2026/k3401/93VVPX-what_translating_thunderbird_taught_me.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 66.5 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/k3401/93VVPX-what_translating_thunderbird_taught_me.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 354.4 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-translations:fosdem.org",
@@ -148671,16 +148695,16 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/k3401/QCNWZT-making_the_best_of_partially_translated_pages.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://video.fosdem.org/2026/k3401/QCNWZT-making_the_best_of_partially_translated_pages.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 135.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k3401/QCNWZT-making_the_best_of_partially_translated_pages.mp4",
         "name": "Video recording (MP4; for legacy systems) - 658.0 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/k3401/QCNWZT-making_the_best_of_partially_translated_pages.vtt",
-        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-translations:fosdem.org",
@@ -148901,12 +148925,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/k3601/ELCVLE-very_low_frequency_vlf_time_and_frequency_transfer_signal_analysis_using_kiwisdr.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 288.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k3601/ELCVLE-very_low_frequency_vlf_time_and_frequency_transfer_signal_analysis_using_kiwisdr.mp4",
         "name": "Video recording (MP4; for legacy systems) - 740.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k3601/ELCVLE-very_low_frequency_vlf_time_and_frequency_transfer_signal_analysis_using_kiwisdr.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 288.9 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-sdr-dsp:fosdem.org",
@@ -149503,6 +149527,18 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/k4201/U8J9UG-an-introduction-to-plan-9.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 89.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k4201/U8J9UG-an-introduction-to-plan-9.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 823.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k4201/U8J9UG-an-introduction-to-plan-9.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2026-plan9:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -149828,12 +149864,12 @@
         "name": "Sculpt OS user documentation"
       },
       {
-        "url": "https://video.fosdem.org/2026/k4201/HZ9VUV-rethink-scheduling-for-sculpt-os.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 95.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k4201/HZ9VUV-rethink-scheduling-for-sculpt-os.mp4",
         "name": "Video recording (MP4; for legacy systems) - 717.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k4201/HZ9VUV-rethink-scheduling-for-sculpt-os.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 95.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k4201/HZ9VUV-rethink-scheduling-for-sculpt-os.vtt",
@@ -150132,12 +150168,12 @@
         "name": "GNU Guix/Hurd distribution"
       },
       {
-        "url": "https://video.fosdem.org/2026/k4201/7FZXHF-updates_on_gnuhurd_progress_rump_drivers_64bit_smp_software_bootstrapping.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 77.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/k4201/7FZXHF-updates_on_gnuhurd_progress_rump_drivers_64bit_smp_software_bootstrapping.mp4",
         "name": "Video recording (MP4; for legacy systems) - 694.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/k4201/7FZXHF-updates_on_gnuhurd_progress_rump_drivers_64bit_smp_software_bootstrapping.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 77.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/k4201/7FZXHF-updates_on_gnuhurd_progress_rump_drivers_64bit_smp_software_bootstrapping.vtt",
@@ -151129,12 +151165,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1301/BBYZLU-gpu-performance-monitoring.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 50.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1301/BBYZLU-gpu-performance-monitoring.mp4",
         "name": "Video recording (MP4; for legacy systems) - 323.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/BBYZLU-gpu-performance-monitoring.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 50.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1301/BBYZLU-gpu-performance-monitoring.vtt",
@@ -151434,12 +151470,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1301/9WM9QU-database_benchmarks_lessons_learned_from_running_a_benchmark_standard_organizati.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 108.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1301/9WM9QU-database_benchmarks_lessons_learned_from_running_a_benchmark_standard_organizati.mp4",
         "name": "Video recording (MP4; for legacy systems) - 758.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/9WM9QU-database_benchmarks_lessons_learned_from_running_a_benchmark_standard_organizati.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 108.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1301/9WM9QU-database_benchmarks_lessons_learned_from_running_a_benchmark_standard_organizati.vtt",
@@ -151489,12 +151525,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1301/YNB7KR-continuous-perf-engineering.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 163.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1301/YNB7KR-continuous-perf-engineering.mp4",
         "name": "Video recording (MP4; for legacy systems) - 797.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1301/YNB7KR-continuous-perf-engineering.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 163.8 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1301/YNB7KR-continuous-perf-engineering.vtt",
@@ -152049,12 +152085,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/h1302/T38AKM-monado-and-beyond.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 79.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1302/T38AKM-monado-and-beyond.mp4",
         "name": "Video recording (MP4; for legacy systems) - 448.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1302/T38AKM-monado-and-beyond.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 79.5 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-gaming-and-vr-devroom:fosdem.org",
@@ -152218,12 +152254,12 @@
         "name": "GProxy++"
       },
       {
-        "url": "https://video.fosdem.org/2026/h1302/F3VSDB-20-years-of-eurobattle-net-a-retrospective.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 127.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1302/F3VSDB-20-years-of-eurobattle-net-a-retrospective.mp4",
         "name": "Video recording (MP4; for legacy systems) - 646.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1302/F3VSDB-20-years-of-eurobattle-net-a-retrospective.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 127.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1302/F3VSDB-20-years-of-eurobattle-net-a-retrospective.vtt",
@@ -152328,12 +152364,12 @@
         "name": "The initial 60th anniversary version!"
       },
       {
-        "url": "https://video.fosdem.org/2026/h1302/B7BVVJ-eliza_rewriting_the_original_ai_chatbot_from_60_years_bc_before_chatgpt.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 126.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1302/B7BVVJ-eliza_rewriting_the_original_ai_chatbot_from_60_years_bc_before_chatgpt.mp4",
         "name": "Video recording (MP4; for legacy systems) - 418.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1302/B7BVVJ-eliza_rewriting_the_original_ai_chatbot_from_60_years_bc_before_chatgpt.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 126.9 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1302/B7BVVJ-eliza_rewriting_the_original_ai_chatbot_from_60_years_bc_before_chatgpt.vtt",
@@ -153402,12 +153438,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h1308/3TA3JX-accelerated-and-differentiable-sci-comp-with-jax.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 28.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h1308/3TA3JX-accelerated-and-differentiable-sci-comp-with-jax.mp4",
         "name": "Video recording (MP4; for legacy systems) - 225.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h1308/3TA3JX-accelerated-and-differentiable-sci-comp-with-jax.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 28.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h1308/3TA3JX-accelerated-and-differentiable-sci-comp-with-jax.vtt",
@@ -155529,12 +155565,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2213/GCG83H-ai-based_failure_aggregation.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 65.3 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2213/GCG83H-ai-based_failure_aggregation.mp4",
         "name": "Video recording (MP4; for legacy systems) - 525.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2213/GCG83H-ai-based_failure_aggregation.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 65.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2213/GCG83H-ai-based_failure_aggregation.vtt",
@@ -155818,12 +155854,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2214/ATMQVL-intro-to-shared-signals-framework.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 101.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2214/ATMQVL-intro-to-shared-signals-framework.mp4",
         "name": "Video recording (MP4; for legacy systems) - 541.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2214/ATMQVL-intro-to-shared-signals-framework.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 101.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2214/ATMQVL-intro-to-shared-signals-framework.vtt",
@@ -156939,12 +156975,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/h2215/WSKHHU-sucrela_open_source_usb_3_0_logic_analyzer_based_on_fpga.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 44.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/WSKHHU-sucrela_open_source_usb_3_0_logic_analyzer_based_on_fpga.mp4",
         "name": "Video recording (MP4; for legacy systems) - 361.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/WSKHHU-sucrela_open_source_usb_3_0_logic_analyzer_based_on_fpga.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 44.0 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org",
@@ -157330,12 +157366,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2215/J8HPZD-julia-unitful-differentialequations.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 287.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/J8HPZD-julia-unitful-differentialequations.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 42.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/J8HPZD-julia-unitful-differentialequations.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 287.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2215/J8HPZD-julia-unitful-differentialequations.vtt",
@@ -157440,12 +157476,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/h2215/CMCWY9-os-test_measuring_posix_compliance_on_every_single_os.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 55.3 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/h2215/CMCWY9-os-test_measuring_posix_compliance_on_every_single_os.mp4",
         "name": "Video recording (MP4; for legacy systems) - 356.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/h2215/CMCWY9-os-test_measuring_posix_compliance_on_every_single_os.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 55.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2215/CMCWY9-os-test_measuring_posix_compliance_on_every_single_os.vtt",
@@ -157551,16 +157587,16 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/h2215/YSWEHE-self-hosting_a_student_radio_station.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 68.4 MB"
+      },
+      {
         "url": "https://video.fosdem.org/2026/h2215/YSWEHE-self-hosting_a_student_radio_station.mp4",
         "name": "Video recording (MP4; for legacy systems) - 293.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/h2215/YSWEHE-self-hosting_a_student_radio_station.vtt",
         "name": "Video recording subtitle file (VTT)"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/h2215/YSWEHE-self-hosting_a_student_radio_station.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 68.4 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-dev-random:fosdem.org",
@@ -158705,12 +158741,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/aw1120/MJWTX3-colandr-sifting-through-the-evidence.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 86.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1120/MJWTX3-colandr-sifting-through-the-evidence.mp4",
         "name": "Video recording (MP4; for legacy systems) - 547.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1120/MJWTX3-colandr-sifting-through-the-evidence.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 86.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-open-research:fosdem.org",
@@ -158813,6 +158849,10 @@
       {
         "url": "https://video.fosdem.org/2026/aw1120/WJUJ3R-accelerating_vllm_inference_with_quantization_and_speculative_decoding.mp4",
         "name": "Video recording (MP4; for legacy systems) - 605.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1120/WJUJ3R-accelerating_vllm_inference_with_quantization_and_speculative_decoding.vtt",
+        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-open-research:fosdem.org",
@@ -159743,12 +159783,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/aw1126/U7ABHE-roost-osprey.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 105.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1126/U7ABHE-roost-osprey.mp4",
         "name": "Video recording (MP4; for legacy systems) - 557.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1126/U7ABHE-roost-osprey.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 105.5 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-decentralised-communication:fosdem.org",
@@ -159799,12 +159839,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/aw1126/URX89L-matrix-state-of-the-union.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 103.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/aw1126/URX89L-matrix-state-of-the-union.mp4",
         "name": "Video recording (MP4; for legacy systems) - 548.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/aw1126/URX89L-matrix-state-of-the-union.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 103.9 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/aw1126/URX89L-matrix-state-of-the-union.vtt",
@@ -160655,12 +160695,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2114/FJ3FTJ-of-nodes_fwnodes_swnodes_devlinks_properties_-_understanding_how_devices_are_mod.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 56.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2114/FJ3FTJ-of-nodes_fwnodes_swnodes_devlinks_properties_-_understanding_how_devices_are_mod.mp4",
         "name": "Video recording (MP4; for legacy systems) - 431.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2114/FJ3FTJ-of-nodes_fwnodes_swnodes_devlinks_properties_-_understanding_how_devices_are_mod.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 56.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2114/FJ3FTJ-of-nodes_fwnodes_swnodes_devlinks_properties_-_understanding_how_devices_are_mod.vtt",
@@ -161207,12 +161247,12 @@
         "name": "slides"
       },
       {
-        "url": "https://video.fosdem.org/2026/ua2114/HWLQDV-nommu-uml-thehajime.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 93.2 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2114/HWLQDV-nommu-uml-thehajime.mp4",
         "name": "Video recording (MP4; for legacy systems) - 662.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2114/HWLQDV-nommu-uml-thehajime.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 93.2 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2114/HWLQDV-nommu-uml-thehajime.vtt",
@@ -161840,12 +161880,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2118/DNUTXJ-eu-global-digital-sovereignty.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 129.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2118/DNUTXJ-eu-global-digital-sovereignty.mp4",
         "name": "Video recording (MP4; for legacy systems) - 703.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/DNUTXJ-eu-global-digital-sovereignty.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 129.7 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/DNUTXJ-eu-global-digital-sovereignty.vtt",
@@ -162340,12 +162380,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2118/W8RCMT-the_fediverse_and_the_eus_digital_services_act_solving_the_challenges_of_modern_.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 140.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2118/W8RCMT-the_fediverse_and_the_eus_digital_services_act_solving_the_challenges_of_modern_.mp4",
         "name": "Video recording (MP4; for legacy systems) - 700.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/W8RCMT-the_fediverse_and_the_eus_digital_services_act_solving_the_challenges_of_modern_.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 140.5 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/W8RCMT-the_fediverse_and_the_eus_digital_services_act_solving_the_challenges_of_modern_.vtt",
@@ -162665,12 +162705,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2118/39YMYR-how-they-vote.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 31.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2118/39YMYR-how-they-vote.mp4",
         "name": "Video recording (MP4; for legacy systems) - 201.0 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/39YMYR-how-they-vote.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 31.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2118/39YMYR-how-they-vote.vtt",
@@ -162986,6 +163026,18 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/ua2118/QZ3GCJ-participating_in_standardisation_around_the_cra.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 42.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/QZ3GCJ-participating_in_standardisation_around_the_cra.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 218.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/QZ3GCJ-participating_in_standardisation_around_the_cra.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -163026,6 +163078,18 @@
       }
     ],
     "links": [
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/M77AGB-effective-standard-setting.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 41.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/M77AGB-effective-standard-setting.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 489.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2118/M77AGB-effective-standard-setting.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-open-source-eu-policy:fosdem.org",
         "name": "Chat room(web)"
@@ -163132,12 +163196,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ua2220/UXCJM3-qtmultimedia.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 82.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2220/UXCJM3-qtmultimedia.mp4",
         "name": "Video recording (MP4; for legacy systems) - 582.7 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2220/UXCJM3-qtmultimedia.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 82.6 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2220/UXCJM3-qtmultimedia.vtt",
@@ -163587,12 +163651,12 @@
         "name": "Video recording (AV1/WebM; preferred) - 87.7 MB"
       },
       {
-        "url": "https://video.fosdem.org/2026/ua2220/QQRETA-midimesh_network_midi_with_elixir_on_esp32_via_atomvm.vtt",
-        "name": "Video recording subtitle file (VTT)"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ua2220/QQRETA-midimesh_network_midi_with_elixir_on_esp32_via_atomvm.mp4",
         "name": "Video recording (MP4; for legacy systems) - 430.4 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ua2220/QQRETA-midimesh_network_midi_with_elixir_on_esp32_via_atomvm.vtt",
+        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://github.com/nanassound/midimesh_esp32",
@@ -163889,16 +163953,16 @@
         "name": "Real-time MIDI control and playback for NodeJS"
       },
       {
+        "url": "https://video.fosdem.org/2026/ua2220/FE7Y87-midi_live_performer.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://video.fosdem.org/2026/ua2220/FE7Y87-midi_live_performer.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 53.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ua2220/FE7Y87-midi_live_performer.mp4",
         "name": "Video recording (MP4; for legacy systems) - 363.7 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/ua2220/FE7Y87-midi_live_performer.vtt",
-        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-music-production:fosdem.org",
@@ -164408,12 +164472,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub2147/AT3RQ3-commoditizing_the_build_how_containers_save_our_contributor_base.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 60.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2147/AT3RQ3-commoditizing_the_build_how_containers_save_our_contributor_base.mp4",
         "name": "Video recording (MP4; for legacy systems) - 522.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2147/AT3RQ3-commoditizing_the_build_how_containers_save_our_contributor_base.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 60.9 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub2147/AT3RQ3-commoditizing_the_build_how_containers_save_our_contributor_base.vtt",
@@ -165350,16 +165414,16 @@
         "name": "(Github) rust-boy"
       },
       {
+        "url": "https://video.fosdem.org/2026/ub2252a/W3UFSK-rust-game-boy.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 538.7 MB"
+      },
+      {
         "url": "https://video.fosdem.org/2026/ub2252a/W3UFSK-rust-game-boy.vtt",
         "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://video.fosdem.org/2026/ub2252a/W3UFSK-rust-game-boy.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 75.0 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/ub2252a/W3UFSK-rust-game-boy.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 538.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-rust:fosdem.org",
@@ -165415,12 +165479,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub2252a/ED3EWJ-rust-godot4-async.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 37.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2252a/ED3EWJ-rust-godot4-async.mp4",
         "name": "Video recording (MP4; for legacy systems) - 382.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2252a/ED3EWJ-rust-godot4-async.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 37.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-rust:fosdem.org",
@@ -165821,12 +165885,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub2252a/KGBUNC-rust-mercurial-wider-benefits.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 45.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub2252a/KGBUNC-rust-mercurial-wider-benefits.mp4",
         "name": "Video recording (MP4; for legacy systems) - 515.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub2252a/KGBUNC-rust-mercurial-wider-benefits.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 45.8 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-rust:fosdem.org",
@@ -166782,6 +166846,18 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/ub4132/PRLSR3-designing_for_safety_in_the_age_of_predatory_tech.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 130.3 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub4132/PRLSR3-designing_for_safety_in_the_age_of_predatory_tech.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 693.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub4132/PRLSR3-designing_for_safety_in_the_age_of_predatory_tech.vtt",
+        "name": "Video recording subtitle file (VTT)"
+      },
+      {
         "url": "https://chat.fosdem.org/#/room/#2026-design:fosdem.org",
         "name": "Chat room(web)"
       },
@@ -167688,12 +167764,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub4136/CB7MBQ-rust-block-max-pruning.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 676.5 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub4136/CB7MBQ-rust-block-max-pruning.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 80.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub4136/CB7MBQ-rust-block-max-pruning.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 676.5 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-search:fosdem.org",
@@ -168211,12 +168287,12 @@
         "name": "[GitHub] perfgo/perfgo"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub5132/Q7R9F8-understanding_why_your_cpu_is_slow_hardware_performance_insights_with_perfgo.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 127.9 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5132/Q7R9F8-understanding_why_your_cpu_is_slow_hardware_performance_insights_with_perfgo.mp4",
         "name": "Video recording (MP4; for legacy systems) - 694.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5132/Q7R9F8-understanding_why_your_cpu_is_slow_hardware_performance_insights_with_perfgo.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 127.9 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub5132/Q7R9F8-understanding_why_your_cpu_is_slow_hardware_performance_insights_with_perfgo.vtt",
@@ -168272,12 +168348,12 @@
         "name": "Go Docs: testing/synctest"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub5132/BDH7G7-go-testing-synctest.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 66.3 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5132/BDH7G7-go-testing-synctest.mp4",
         "name": "Video recording (MP4; for legacy systems) - 495.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5132/BDH7G7-go-testing-synctest.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 66.3 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub5132/BDH7G7-go-testing-synctest.vtt",
@@ -168335,12 +168411,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub5132/37NC8K-gomodjail.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 95.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5132/37NC8K-gomodjail.mp4",
         "name": "Video recording (MP4; for legacy systems) - 593.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5132/37NC8K-gomodjail.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 95.8 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-go:fosdem.org",
@@ -168819,12 +168895,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ub5132/HZVQMD-go-lightning.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 145.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5132/HZVQMD-go-lightning.mp4",
         "name": "Video recording (MP4; for legacy systems) - 732.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5132/HZVQMD-go-lightning.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 145.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ub5132/HZVQMD-go-lightning.vtt",
@@ -168952,12 +169028,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ub5230/E8WAPT-there-are-no-adults-in-the-room.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 75.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ub5230/E8WAPT-there-are-no-adults-in-the-room.mp4",
         "name": "Video recording (MP4; for legacy systems) - 482.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ub5230/E8WAPT-there-are-no-adults-in-the-room.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 75.1 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-community:fosdem.org",
@@ -169657,16 +169733,16 @@
     ],
     "links": [
       {
+        "url": "https://video.fosdem.org/2026/ub5230/ZTBCQ9-self-raising_lazarus_all_contributors_and_how_open_source_can_rise_again.mp4",
+        "name": "Video recording (MP4; for legacy systems) - 537.6 MB"
+      },
+      {
         "url": "https://video.fosdem.org/2026/ub5230/ZTBCQ9-self-raising_lazarus_all_contributors_and_how_open_source_can_rise_again.vtt",
         "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://video.fosdem.org/2026/ub5230/ZTBCQ9-self-raising_lazarus_all_contributors_and_how_open_source_can_rise_again.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 60.7 MB"
-      },
-      {
-        "url": "https://video.fosdem.org/2026/ub5230/ZTBCQ9-self-raising_lazarus_all_contributors_and_how_open_source_can_rise_again.mp4",
-        "name": "Video recording (MP4; for legacy systems) - 537.6 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-community:fosdem.org",
@@ -169999,12 +170075,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2120/BGPKAM-ariel-os-embedded-rtos.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 70.6 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2120/BGPKAM-ariel-os-embedded-rtos.mp4",
         "name": "Video recording (MP4; for legacy systems) - 530.2 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2120/BGPKAM-ariel-os-embedded-rtos.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 70.6 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-embedded-mobile-and-automotive:fosdem.org",
@@ -170458,12 +170534,12 @@
         "name": "slide source"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2120/A7P7XE-v4l2-flash-control.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 27.0 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2120/A7P7XE-v4l2-flash-control.mp4",
         "name": "Video recording (MP4; for legacy systems) - 198.9 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2120/A7P7XE-v4l2-flash-control.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 27.0 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2120/A7P7XE-v4l2-flash-control.vtt",
@@ -171140,12 +171216,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2218a/EBMAJA-surfing-on-torrents.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 87.7 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2218a/EBMAJA-surfing-on-torrents.mp4",
         "name": "Video recording (MP4; for legacy systems) - 545.5 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2218a/EBMAJA-surfing-on-torrents.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 87.7 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-decentralized-internet-and-privacy:fosdem.org",
@@ -171536,12 +171612,12 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud2218a/TMQZTP-radicle.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 73.1 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2218a/TMQZTP-radicle.mp4",
         "name": "Video recording (MP4; for legacy systems) - 677.6 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2218a/TMQZTP-radicle.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 73.1 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2218a/TMQZTP-radicle.vtt",
@@ -171896,16 +171972,16 @@
     ],
     "links": [
       {
-        "url": "https://video.fosdem.org/2026/ud2218a/KF7STF-reticulum-rs_porting_the_trustless_mesh_from_python_to_rust.vtt",
-        "name": "Video recording subtitle file (VTT)"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2218a/KF7STF-reticulum-rs_porting_the_trustless_mesh_from_python_to_rust.av1.webm",
         "name": "Video recording (AV1/WebM; preferred) - 69.9 MB"
       },
       {
         "url": "https://video.fosdem.org/2026/ud2218a/KF7STF-reticulum-rs_porting_the_trustless_mesh_from_python_to_rust.mp4",
         "name": "Video recording (MP4; for legacy systems) - 152.1 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2218a/KF7STF-reticulum-rs_porting_the_trustless_mesh_from_python_to_rust.vtt",
+        "name": "Video recording subtitle file (VTT)"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-decentralized-internet-and-privacy:fosdem.org",
@@ -172449,12 +172525,12 @@
         "name": "Video recording subtitle file (VTT)"
       },
       {
-        "url": "https://video.fosdem.org/2026/ud2208/NLCRCU-integrating-vex-into-oss.av1.webm",
-        "name": "Video recording (AV1/WebM; preferred) - 85.8 MB"
-      },
-      {
         "url": "https://video.fosdem.org/2026/ud2208/NLCRCU-integrating-vex-into-oss.mp4",
         "name": "Video recording (MP4; for legacy systems) - 609.8 MB"
+      },
+      {
+        "url": "https://video.fosdem.org/2026/ud2208/NLCRCU-integrating-vex-into-oss.av1.webm",
+        "name": "Video recording (AV1/WebM; preferred) - 85.8 MB"
       },
       {
         "url": "https://chat.fosdem.org/#/room/#2026-sboms-and-supply-chains:fosdem.org",
