@@ -53,7 +53,7 @@ pub async fn load_summary<Q: Queryable>(
             people_by_year.entry(year).or_default().insert(person.id);
         }
 
-        if event.mp4_video_link().is_some() {
+        if event.has_video() {
             *videos_by_year.entry(year).or_insert(0) += 1;
             *video_duration_by_year.entry(year).or_insert(Duration::zero()) +=
                 Duration::minutes(event.duration.into());

@@ -26,15 +26,10 @@
     </div>
     {% call video_player::player("bookmarks-video") %}
     {% for event in events %}
-    <div class="columns" data-event-id="{{ event.id }}" data-bookmark-status="false">
+    <div class="columns" {% call event::event_attrs(event) %} {% call event::bookmark_attrs(event) %}>
         <div class="column">
-            <div class="card" >
-                {% call event::expandable_card_details(event) %}
-                <footer class="card-footer">
-                    {% call bookmark::bookmark_footer_item(event) %}
-                    {% call external::sojourner_event(event) %}
-                    {% call external::fosdem_event(event) %}
-                </footer>
+            <div class="skeleton-block" hx-get="{{ event.id|event_card_url }}" hx-trigger="intersect once"
+                hx-swap="outerHTML" hx-target="this">
             </div>
         </div>
     </div>
@@ -89,9 +84,11 @@
     import { createVideoPlayer } from '/assets/video_player.js';
 
     function bindVideoPlayer(model) {
-        createVideoPlayer('bookmarks-video', '[data-event-id][data-bookmark-status="true"]');
+        console.log("binding video player");
+        const { updatePlaylist, loadVideo } = createVideoPlayer('bookmarks-video', '[data-event-id][data-bookmark-status="true"]');
+        updatePlaylist();
     }
 
-    document.bookmarksCallbacks = [ bindExport, bindImport, bindVideoPlayer ];
+    document.bookmarksCallbacks = [bindExport, bindImport, bindVideoPlayer];
 </script>
 {% endblock %}

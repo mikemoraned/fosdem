@@ -12,4 +12,4 @@ COPY --from=builder /prod/shared/data/model/ /model/
 COPY --from=builder /prod/blog/content/posts/ /blog/posts/
 RUN ls -R .
 
-CMD ./bin/fly --model-dir ./model --blog-content-dir ./blog/posts --opentelemetry --current-year 2026 --selectable-years "2024 2025 2026"
+CMD ./bin/fly --model-dir ./model --blog-content-dir ./blog/posts --current-year 2026 --selectable-years "2024 2025 2026"

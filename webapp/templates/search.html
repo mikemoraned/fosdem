@@ -53,7 +53,7 @@
     import { createVideoPlayer } from '/assets/video_player.js';
 
     function bindSearchVideoPlayer(model) {
-        createVideoPlayer('search-video', '[data-has-video="true"]');
+        const { updatePlaylist, loadVideo } = createVideoPlayer('search-video', '[data-has-video="true"]');
 
         const eventsTabContent = document.getElementById('events-tab');
         const videosTabContent = document.getElementById('videos-tab');
@@ -78,9 +78,11 @@
         tabItems.forEach(tab => {
             tab.addEventListener('click', () => selectTab(tab.dataset.tab));
         });
+
+        updatePlaylist();
     }
 
-    document.bookmarksCallbacks = [ bindSearchVideoPlayer ];
+    document.bookmarksCallbacks = [bindSearchVideoPlayer];
 </script>
 {% endif %}
 {% endblock %}

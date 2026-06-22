@@ -168,7 +168,9 @@ export async function init(callbacks) {
     const model = await createModel();
     bindModel(model);
 
-    callbacks.forEach((callback) => {
+    console.log("num callbacks: ", callbacks.length);
+    callbacks.forEach((callback, i) => {
+        console.log("calling callback, " + i);
         callback(model);
     });
 

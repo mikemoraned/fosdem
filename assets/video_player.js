@@ -5,6 +5,7 @@
  * @returns {Object|null} Controller object with updatePlaylist and loadVideo methods
  */
 export function createVideoPlayer(playerId, eventSelector) {
+    console.log(`[VideoPlayer:${playerId}] Starting createVideoPlayer`, { eventSelector });
 
     const container = document.getElementById(`${playerId}-container`);
     const video = document.getElementById(playerId);
@@ -16,20 +17,29 @@ export function createVideoPlayer(playerId, eventSelector) {
 
     const currentSpan = container.querySelector('.video-current');
     const totalSpan = container.querySelector('.video-total');
-    const titleSpan = container.querySelector('.video-title');
+    const titleLink = container.querySelector('.video-title');
 
     let playlist = [];
     let currentIndex = 0;
 
     function updatePlaylist() {
+        console.log(`[VideoPlayer:${playerId}] updatePlaylist called`);
         const events = document.querySelectorAll(eventSelector);
         playlist = [];
         events.forEach(event => {
-            const videoLink = event.querySelector('a[data-type="video"]');
-            if (videoLink) {
-                const titleEl = event.querySelector('[data-event-title]');
-                const title = titleEl ? titleEl.textContent : '';
-                playlist.push({ url: videoLink.href, title });
+            const videoDetails = event.querySelector('.video-details');
+            if (videoDetails) {
+                const sourceEls = videoDetails.querySelectorAll('video source');
+                const sources = Array.from(sourceEls).map(el => ({
+                    url: el.src,
+                    type: el.type
+                }));
+                if (sources.length > 0) {
+                    const titleEl = event.querySelector('[data-event-title]');
+                    const title = titleEl ? titleEl.textContent : '';
+                    const eventUrl = event.dataset.eventUrl || '#';
+                    playlist.push({ sources, title, eventUrl });
+                }
             }
         });
 
@@ -43,18 +53,39 @@ export function createVideoPlayer(playerId, eventSelector) {
             loadVideo(currentIndex);
         } else {
             container.style.display = 'none';
-            titleSpan.textContent = '';
+            titleLink.textContent = '';
+            titleLink.href = '#';
         }
 
+        console.log(`[VideoPlayer:${playerId}] updatePlaylist completed`, { playlistLength: playlist.length });
         return playlist.length;
     }
 
     function loadVideo(index) {
+        console.log(`[VideoPlayer:${playerId}] loadVideo called`, { index });
         if (index >= 0 && index < playlist.length) {
             currentIndex = index;
-            video.src = playlist[index].url;
+            const item = playlist[index];
+            console.log(`[VideoPlayer:${playerId}] loadVideo loading`, { index, title: item.title });
+
+            // Clear existing sources
+            while (video.firstChild) {
+                video.removeChild(video.firstChild);
+            }
+
+            // Add new sources
+            item.sources.forEach(source => {
+                const sourceEl = document.createElement('source');
+                sourceEl.src = source.url;
+                sourceEl.type = source.type;
+                video.appendChild(sourceEl);
+            });
+
+            video.load(); // Reload with new sources
+
             currentSpan.textContent = index + 1;
-            titleSpan.textContent = playlist[index].title;
+            titleLink.textContent = item.title;
+            titleLink.href = item.eventUrl;
         }
     }
 
@@ -66,10 +97,7 @@ export function createVideoPlayer(playerId, eventSelector) {
         }
     });
 
-    // Playback controls (scoped to this container)
-    const playBtns = container.querySelectorAll('.video-play');
-    const pauseBtns = container.querySelectorAll('.video-pause');
-
+    // Playlist navigation controls
     container.querySelectorAll('.video-prev').forEach(btn => {
         btn.addEventListener('click', () => {
             if (currentIndex > 0) {
@@ -80,8 +108,6 @@ export function createVideoPlayer(playerId, eventSelector) {
             }
         });
     });
-    playBtns.forEach(btn => btn.addEventListener('click', () => video.play()));
-    pauseBtns.forEach(btn => btn.addEventListener('click', () => video.pause()));
     container.querySelectorAll('.video-next').forEach(btn => {
         btn.addEventListener('click', () => {
             if (currentIndex < playlist.length - 1) {
@@ -93,28 +119,12 @@ export function createVideoPlayer(playerId, eventSelector) {
         });
     });
 
-    // Toggle play/pause button states based on video state
-    video.addEventListener('play', () => {
-        playBtns.forEach(btn => btn.disabled = true);
-        pauseBtns.forEach(btn => btn.disabled = false);
-    });
-    video.addEventListener('pause', () => {
-        playBtns.forEach(btn => btn.disabled = false);
-        pauseBtns.forEach(btn => btn.disabled = true);
-    });
-    video.addEventListener('ended', () => {
-        playBtns.forEach(btn => btn.disabled = false);
-        pauseBtns.forEach(btn => btn.disabled = true);
-    });
-
-    // Observe DOM changes for dynamic updates
+    // Observe DOM changes for dynamic updates (bookmark status changes)
     const observer = new MutationObserver(updatePlaylist);
     document.querySelectorAll('[data-event-id][data-bookmark-status]').forEach(el => {
         observer.observe(el, { attributes: true, attributeFilter: ['data-bookmark-status'] });
     });
 
-    // Initial playlist build (after a small delay to let any statuses settle)
-    setTimeout(updatePlaylist, 100);
-
+    console.log(`[VideoPlayer:${playerId}] Setup completed`);
     return { updatePlaylist, loadVideo };
 }
